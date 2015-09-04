@@ -1,0 +1,48 @@
+\documentclass{report}
+
+%
+% any packages we may need to load
+%
+\include{other/packages}
+
+
+\begin{document}
+%
+% title page
+%
+%\include{other/titlepage}
+%
+% contents ...
+%
+\include{other/contents}
+%
+% summary ...
+%
+\include{other/summary}
+%
+% declaration ...
+%
+\include{other/declaration}
+%
+% thanks ...
+%
+\include{other/thanks}
+%
+% chapters ...
+%
+\graphicspath{{.}{./chapter_kinetic_dominance/figures/}}
+\include{chapter_kinetic_dominance/kinetic_dominance}
+%
+% appendices...
+%
+\appendix
+%
+\graphicspath{{.}{./appendix_temp/figures/}}
+\include{appendix_temp/temp}
+%
+% The bibliography
+%
+\include{other/references}
+%
+\end{document}
+

@@ -1,0 +1,53 @@
+#!/bin/bash
+
+
+if [[ $# -eq 0 ]] ; then
+    echo "You need at least one argument."
+    echo "   correct usage is: "
+    echo "     mkchp <chapter-name> "
+    echo "     mkchp <appendix-name> app "
+    exit 1
+fi
+
+if [[ $# -eq 2 ]] ; then
+    root="appendix"
+else
+    root="chapter"
+fi
+
+
+
+
+
+
+# define the chapter name
+name=$root"_"$1
+
+# Check to see if the directory already exists
+if [ -d $name ] ; then
+    echo "$name already exists"
+    exit 1
+fi
+
+mkdir $name   # Make the directory
+cd $name      # change to the directory
+
+tex=$1".tex"
+
+# Create the tex file
+touch $tex
+echo "\\chapter{<++>}"    >> $tex
+echo "\\label{chap:<++>}" >> $tex
+echo ""                   >> $tex
+echo "\\section{<++>}"    >> $tex
+echo "\\label{sec:<++>}"  >> $tex
+
+mkdir figures # create the figures directory
+mkdir tables  # create the tables directory
+mkdir data    # create the data directory
+mkdir plots   # create the plotting directory
+
+
+
+
+
