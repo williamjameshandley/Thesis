@@ -5,6 +5,11 @@
 %
 \include{other/packages}
 
+%
+% any commands that should be defined
+\include{commands/programs}  %code commands
+%
+
 
 \begin{document}
 %
@@ -50,7 +55,11 @@
 % Bayesian inference
 % ------------------
 %
-\graphicspath{{.}{./chapter_bayesian_inference/figures/}}
+
+
+\makeatletter
+\def\input@path{{.}{./chapter_bayesian_inference/}}
+\makeatother
 \include{chapter_bayesian_inference/bayesian_inference}
 %
 % PolyChord

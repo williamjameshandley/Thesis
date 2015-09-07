@@ -1,0 +1,26 @@
+\def\firstcircle{(-0.75,0) circle (1.5)}
+\def\secondcircle{(0.75,0) circle (1.5)}
+
+\begin{tikzpicture}
+  \draw \firstcircle;
+  \draw \secondcircle;
+  \draw (-3,-2) rectangle (3,2);
+
+  \begin{scope}
+    \fill[blue!30!white] \firstcircle;
+    \clip \secondcircle;
+  \end{scope}
+
+  \begin{scope}
+    \clip \firstcircle;
+    \fill[blue!60!white] \secondcircle;
+  \end{scope}
+
+  \draw[above left] node at (-1,0) {$A$};
+  \draw[above right] node at (1,0) {$B$};
+  \draw[below ] node at (0,0) {$A\cap B$};
+  \draw[below left] node at (3,2) {$\Omega$};
+
+
+\end{tikzpicture}
+
