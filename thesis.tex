@@ -7,6 +7,7 @@
 
 %
 % any commands that should be defined
+\include{commands/people}    %References to people
 \include{commands/programs}  %code commands
 %
 
@@ -65,8 +66,19 @@
 % PolyChord
 % ------------------
 %
-\graphicspath{{.}{./chapter_polychord/figures/}}
+\makeatletter
+\def\input@path{{.}{./chapter_polychord/}}
+\makeatother
 \include{chapter_polychord/polychord}
+%
+% Function fitting
+% ------------------
+%
+\makeatletter
+\def\input@path{{.}{./chapter_function_fitting/}}
+\makeatother
+\graphicspath{{.}{./chapter_function_fitting/figures/}}
+\include{chapter_function_fitting/function_fitting}
 %
 %
 %
