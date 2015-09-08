@@ -1,0 +1,18 @@
+#!/bin/bash
+
+THESIS='thesis.tex'
+
+if [[ ! -e $THESIS ]]; then
+    echo "Please execute this command in the base thesis directory"
+    exit 1
+fi
+
+
+if which latexmk > /dev/null; then
+    LATEXMK=`which latexmk`
+else
+    echo "latexmk could not be found"
+    exit 1
+fi
+
+$LATEXMK -c $THESIS
