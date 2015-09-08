@@ -4,22 +4,16 @@
 
 \epigraph{We anticipate the sun will rise tomorrow, not just because it has always done so far, but because this is predicted by {\em models}, which accord with {\em data}. Any perceived failure of the sun to rise would more likely be a hallucination.}{\davidmackay{}}
 
-\begin{itemize}
-  \item BRIEF intro to difference between bayesian and frequentist, and the nature of probability
-    \begin{itemize}
-      \item Continuous vs. Discrete
-      \item Aleatoric vs. Epistemological \davidspiegelhalter
-    \end{itemize}
-  \item Parameter estimation and model comparison
-    \begin{itemize}
-      \item Example? (e.g.\ coin flipping, --- anything better?)
-    \end{itemize}
-  \item Sampling as method for describing high-dimensional probability distributions.
-    \begin{itemize}
-      \item MH as good technique
-      \item Need for evidences
-    \end{itemize}
-\end{itemize}
+%  * BRIEF intro to difference between bayesian and frequentist, and the nature of probability
+%      - Continuous vs. Discrete
+%      - Aleatoric vs. Epistemological \davidspiegelhalter
+%
+%  * Parameter estimation and model comparison
+%       -Example? (e.g.\ coin flipping, --- anything better?)
+%
+%  * Sampling as method for describing high-dimensional probability distributions.
+%      - MH as good technique
+%      - Need for evidences
 
 
 Science is not the search for truth. Instead, scientists concern themselves with the construction of models. These models have their relative merit determined using data.\footnote{The opening statement of this chapter was in fact the first thing \rafiblumenfeld{} said to us for our part IB Physics supervisions.}
@@ -45,7 +39,7 @@ For example, an event could be that the electrons position $x$ is measured to be
 \end{equation}
 One also normalises the probability distribution so that $\Prob{\Omega} = 1$. The above is effectively a paraphrasing of Kolmogorov's axioms of probability.
 
-In addition, if one has two disjoint sample spaces, for example $\Omega_1$ and $\Omega_2$ mentioned above, one may combine these into a single samples space ${\Omega=\Omega_1\otimes\Omega_2}$, then probability should be multiplicative.
+%In addition, if one has two disjoint sample spaces, for example $\Omega_1$ and $\Omega_2$ mentioned above, one may combine these into a single samples space ${\Omega=\Omega_1\otimes\Omega_2}$, then probability should be multiplicative.
 
 
 
@@ -56,6 +50,41 @@ This entire section may be summarised succinctly and formally as:
   Probability is any additive mapping $\mathrm{P}$ from the power set $2^\Omega$ of the sample space $\Omega$ to $[0,1]\in \mathbb{R}$, such that $\Prob{\Omega}=1$.
 \end{quote}
 \johnskilling{} has derived probability from measurement-theoretical grounds\citep[chap. 1]{Bayesian_methods_in_cosmology}, which provides a more intuitive backing to the definition.
+
+
+
+\section{Bayesian vs.\ Frequentist}
+\label{sec:bay:bayesian_frequentist}
+
+Whilst the previous section outlined the properties that probability must satisfy, it has not detailed how one should assign probability. Indeed, we have merely referred to probability as a measure of ``chance'', but declined to define what this means.
+
+There are two fundamental types of probability: {\em Aleatoric\/} and {\em Epistemological}. Aleatoric systems are genuinely random, for example: the flip of a coin, or the click on a Geiger counter. Epistemological probability governs systems where the randomness is associated with a subjective lack of knowledge. For example, before prince George was born, bookmakers took bets on whether William and Kate's baby was a boy or a girl. 
+
+The Frequentist school of thought defines probability as:
+\begin{description}
+  \item[Frequentist Probability:]``The limiting relative frequency of an event.''
+\end{description}
+I.e.\ if a coin has $\Prob{\mathrm{Head}}=\frac{1}{2}$, then if you were to toss it an arbitrarily large number of times, the fraction of times one would get closer and closer to $\frac{1}{2}$. This is the version of probability that most people encounter early in their mathematical education, but it has several issues.
+
+This definition applies relatively well to Aleatoric systems (since an experiment can often be run a large number of times). However, for epistemological systems, it is all but useless. The frequentist solution is therefore to disregard the latter kind of probability.
+
+Most people's experiences with probability will likely involve betting scenarios, such as William and Kate's baby. Here it is obvious that the betting odds should be approximately $1:1$,\footnote{Betting odds of $a:b$ against indicates a probability of success of $\frac{b}{a+b}$.}\footnote{In fact the probability of a boy being conceived across the population is roughly 51\%, in order to biologically account for male infant mortality. An individual's probability of conceiving a boy or a girl will vary from person to person and in time.}\footnote{A good bookmaker will obviously take this into account, and give you slightly worse odds in order to ensure their profit.} but it should be also be clear that these odds most certainly do not refer to an event that can be repeated an arbitrarily large number of times.
+
+The alternative definition of probability is {\em Bayesian\/}:
+\begin{description}
+  \item[Bayesian Probability:] ``A degree of belief that an event will occur.'' 
+\end{description}
+Note that Bayesian probability is {\em subjective}, it matters who's degree of belief one is considering. Probabilities are assigned only with a given state of knowledge. Effectively, Bayesians place aleatoric and epistemological probability under the same umbrella. 
+
+Pure mathematics deals in relative truth or falsity, i.e.\ given initial assumptions, all statements are assigned to the set $\{F,T\}\equiv\{0,1\}$. Bayesian probability can be thought of as a blurring of this process, namely from initial assumptions, various conclusions are assigned a number between $[0,1]$.
+
+\section{Parameter Estimation \& Model Comparison}
+\label{sec:bay:model_comp}
+
+
+\section{Sampling}
+\label{sec:bay:samp}
+
 
 \begin{figure}
   \centerline{%
@@ -81,29 +110,4 @@ one may then derive Bayes' theorem:
   \label{eqn:bay:bayes}
   \tag{Bayes' Theorem}
 \end{align}
-
-
-\section{Bayesian vs.\ Frequentist}
-\label{sec:bay:bayesian_frequentist}
-
-Whilst the previous section outlined the properties that probability must satisfy, it has not detailed how one should assign probability. Indeed, we have merely referred to probability as a measure of ``chance'', but declined to define what this means.
-
-The Frequentist school of thought defines probability as:
-\begin{description}
-  \item[Frequentist Probability:]``The limiting relative frequency of an event.''
-\end{description}
-I.e.\ if a coin has $\Prob{\mathrm{Head}}=\frac{1}{2}$, then if you were to toss it an arbitrarily large number of times, the fraction of times one would get closer and closer to $\frac{1}{2}$. There is certainly nothing incorrect about this definition, but it is too stringent. Most people's experiences with probability will likely involve betting scenarios. If a sports team's victory has betting odds of $5:1$ (or $\Prob{\mathrm{Win}} = \frac{1}{6}$), one {\em cannot\/} repeat the experiment an arbitrarily large number of times. The alternative definition of probability is {\em Bayesian\/}:
-\begin{description}
-  \item[Bayesian Probability:] ``A degree of belief that an event will occur.'' 
-\end{description}
-Note that Bayesian probability is {\em subjective}, it matters who's degree of belief one is considering. Probabilities are assigned only with a given state of knowledge. 
-
-Pure mathematics deals in relative truth or falsity, i.e.\ given initial assumptions, all statements are assigned to the set $\{F,T\}\equiv\{0,1\}$. Bayesian probability can be thought of as a blurring of this process, namely from initial assumptions, various conclusions are assigned a number between $[0,1]$.
-
-\section{Parameter Estimation \& Model Comparison}
-\label{sec:bay:model_comp}
-
-
-\section{Sampling}
-\label{sec:bay:samp}
 
