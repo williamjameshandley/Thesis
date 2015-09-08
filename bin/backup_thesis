@@ -21,6 +21,13 @@ then
     git remote add appcs wh260@appcs.ra.phy.cam.ac.uk:~/thesis.git 
 fi
 
+# Add srcf if it doesn't exist
+if [[ $(git remote | grep srcf) == '' ]];
+then
+    echo "Adding srcf as remote"
+    git remote add srcf wh260@shell.srcf.net:~/thesis.git 
+fi
+
 # Add the local one if it doesn't exist
 if [[ $(git remote | grep local) == '' ]]
 then
@@ -49,7 +56,7 @@ fi
 
 
 # Now back them up
-for i in origin local house appcs;
+for i in origin local house appcs srcf;
 do
     echo "======================== Pushing to $i =============================="
     git push $i $branch
