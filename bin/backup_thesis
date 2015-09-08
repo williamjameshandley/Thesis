@@ -11,27 +11,27 @@ fi
 if [[ $(git remote | grep origin) == '' ]];
 then
     echo "Adding origin as remote"
-    git remote add origin wh260@appcs.ra.phy.cam.ac.uk:~/thesis.git 
+    git remote add origin ssh://wh260@appcs.ra.phy.cam.ac.uk:/home/wh260/thesis.git 
 fi
 
 # Add appcs if it doesn't exist
 if [[ $(git remote | grep appcs) == '' ]];
 then
     echo "Adding appcs as remote"
-    git remote add appcs wh260@appcs.ra.phy.cam.ac.uk:~/thesis.git 
+    git remote add appcs ssh://wh260@appcs.ra.phy.cam.ac.uk:/home/wh260/thesis.git 
 fi
 
 # Add srcf if it doesn't exist
 if [[ $(git remote | grep srcf) == '' ]];
 then
     echo "Adding srcf as remote"
-    git remote add srcf wh260@shell.srcf.net:~/thesis.git 
+    git remote add srcf ssh://wh260@shell.srcf.net:/home/wh260/thesis.git 
 fi
 
 # Add the local one if it doesn't exist
 if [[ $(git remote | grep local) == '' ]]
 then
-    backup_dir="~/.thesis_backup.git"
+    backup_dir="$HOME/.thesis_backup.git"
     # If a local directory doesn't exists, then create it
     if [[ ! -d $backup_dir ]]
     then
@@ -47,10 +47,10 @@ then
 fi
 
 # Add the home backup 
-if [[ $(git remote | grep local) == '' ]]
+if [[ $(git remote | grep house) == '' ]]
 then
     echo "Adding house as remote"
-    git remote add house will@8parkterrace.homelinux.com:/media/will/Bernoulli/thesis_backup.git
+    git remote add house ssh://will@8parkterrace.homelinux.com:1990/media/will/Bernoulli/thesis_backup.git
 fi
 
 
