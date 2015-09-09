@@ -10,6 +10,10 @@
 \include{commands/people}    %References to people
 \include{commands/programs}  %code commands
 \include{commands/tools}     %tex tools
+\include{commands/bayesian}  %Bayesian nomenclature
+\include{commands/code}      %code
+\include{commands/biblio}    %bibliographic
+\include{commands/maths}     %maths
 %
 
 
@@ -70,6 +74,7 @@
 \makeatletter
 \def\input@path{{.}{./chapter_polychord/}}
 \makeatother
+\graphicspath{{.}{./chapter_polychord/figures/}}
 \include{chapter_polychord/polychord}
 %
 % Function fitting
@@ -101,6 +106,9 @@
 % Kinetic dominance in the early universe
 % ---------------------------------------
 %
+\makeatletter
+\def\input@path{{.}{./chapter_kinetic_dominance/}}
+\makeatother
 \graphicspath{{.}{./chapter_kinetic_dominance/figures/}}
 \include{chapter_kinetic_dominance/kinetic_dominance}
 %
