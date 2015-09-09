@@ -77,6 +77,49 @@ Pure mathematics deals in relative truth or falsity, i.e.\ given initial assumpt
 
 \section{Parameter Estimation \& Model Comparison}
 \label{sec:bay:model_comp}
+The typical problem of science is the construction of a model $\model$ in order to explain some dataset $\data$. 
+
+
+\section{An example: biased coins}
+For example, assume that you toss a coin $N=20$ times, and observe a dataset of $\data = 15$ heads. Is this enough to cause us to doubt the fairness of the coin?
+
+The standard model $\model_0$ is that a coin toss consists of a binomial trial with probability $\frac{1}{2}$. Elementary probability tells us that the chance of getting this data is:
+\begin{equation}
+  \Probc{\data}{\model_0}= {^{N}C_\data} {\left( \frac{1}{2} \right)}^{\data} {\left(1 - \frac{1}{2} \right)}^{N-\data} = 4.8\times 10^{-6}.
+  \label{eqn:bay:M0}
+\end{equation}
+
+
+Note that as expected, the chance of obtaining this precise dataset is vanishingly small.
+If we allow for the possibility that the coin could be any probability $p$, we can encapsulate this in a second model $\model_1$.
+\begin{equation}
+  \Probc{\data}{p,\model_1}= {^{N}C_\data}\: {p}^{\data} {\left(1 - p \right)}^{N-\data} 
+  \label{eqn:bay:M1}
+\end{equation}
+The probability of getting data given a model both~(\ref{eqn:bay:M0})
+
+
+This second model is not ideal, since we haven't specified the parameter $p$. If we choose $p=\frac{1}{2}$ we recover $\model_0$. It is tempting to choose $p$ such that the chance of obtaining 
+
+
+Ideally we would like to remove it in order to compare the two models, but this requires putting some additional assumptions on $p$. If we assume that it is equally likely to take any value in between $0$ and $1$, then we have:
+\begin{equation}
+  \Prob{p}=\left\{
+  \begin{array}{lr}
+    1 &:0\le p\le1\\
+    0 &:\text{otherwise.}\\
+  \end{array}
+  \right.\label{eqn:bay:prior1}
+\end{equation}
+These constitute our prior assumptions, and allow us to marginalise over $p$.
+\begin{align}
+  \Probc{\data}{\model_1} 
+  &= \int \Probc{\data}{p,\model_1}\Prob{p}\: dp \\
+  &= \int_0^1 {^{N}C_\data}\: {p}^{\data} {\left(1 - p \right)}^{N-\data}\: dp \\
+  &= \frac{1}{n+1} = 1.5\times10^{-5}
+  \label{eqn:bay:marg}
+\end{align}
+Whilst this probability is small, it larger than~(\ref{eqn:bay:M0}). However, these idea
 
 \subsection{Nomenclature}
 \label{sec:pc:nomenclature}
