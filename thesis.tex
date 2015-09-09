@@ -140,8 +140,11 @@
 %
 \appendix
 %
-\graphicspath{{.}{./appendix_temp/figures/}}
-\include{appendix_temp/temp}
+\makeatletter
+\def\input@path{{.}{./appendix_RKWKB/}}
+\makeatother
+\graphicspath{{.}{./appendix_RKWKB/figures/}}
+\include{appendix_RKWKB/RKWKB}
 %
 % The bibliography
 %
