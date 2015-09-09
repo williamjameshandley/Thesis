@@ -169,7 +169,7 @@ two more variables to parameterize the new knot position.
 Prior for moveable knot positions.
 The $\PR$ positions are distributed in a log-uniform manner across a wide range.
 The $k$ positions are also log-uniformly distributed
-across the entire range needed by {\tt CosmoMC} and are sorted so that ${k_1<\ldots<k_{\Nknots}}$. 
+across the entire range needed by \CosmoMC and are sorted so that ${k_1<\ldots<k_{\Nknots}}$. 
 When we marginalize over the number of knots, $\Nknots$, we assume a uniform prior between 2 and 10. 
   \label{tab:P_k_priors}  }                          % Label goes here.
 \end{table}                        % table* is a two-column table.  Drop the * for one column
@@ -238,10 +238,10 @@ Priors for the reconstruction and cosmological parameters are detailed in Table~
 We report evidence ratios with respect to the base $\Lambda$CDM case. The cosmological priors remain the
 same for all models, and this part of the prior has almost no impact on the evidence ratios.
 The choice of prior on the reconstruction parameters
-$\{\Pknotj{i}\}$ does affect the Bayes factor. \CosmoMC , however, puts an implicit prior on all models by excluding
-parameter choices that render the internal computational approximations in {\tt CAMB} invalid.
+$\{\Pknotj{i}\}$ does affect the Bayes factor. \CosmoMC{}, however, puts an implicit prior on all models by excluding
+parameter choices that render the internal computational approximations in \CAMB{} invalid.
 The baseline prior for the vertical position of the knots includes all
-of the range allowed by \CosmoMC, so slighly increasing this prior range will not affect the evidence ratios. If
+of the range allowed by \CosmoMC{}, so slightly increasing this prior range will not affect the evidence ratios. If
 one were to reduce the prior widths significantly, the evidence ratios would be increased.
 The allowed horizontal range includes all $k$-scales accessible to \Planck. Thus, altering this
 width would be unphysical.

@@ -18,13 +18,13 @@
 \newcommand{\nrepeats}{n_\srepeats} % number of repeats
 
 % Vectors
-\newcommand{\nhatx}{{\bf\hat{n}}}        % direction 
+\newcommand{\nhatx}{\mathbf{\hat{n}}}        % direction 
 \newcommand{\nhat}[1]{\nhatx_{#1}} % indexed direction 
-\newcommand{\bxx}{{\bf x}}                % position
-\newcommand{\bmew}{{\bf \mu}}                % position
-\newcommand{\bzero}{{\bf 0}}                % position
-\newcommand{\byy}{{\bf y}}                % position
-\newcommand{\bFF}{{\bf F}}                % position
+\newcommand{\bxx}{\mathbf{x}}                % position
+\newcommand{\bmew}{\mathbf{\mu}}                % position
+\newcommand{\bzero}{\mathbf{0}}                % position
+\newcommand{\byy}{\mathbf{y}}                % position
+\newcommand{\bFF}{\mathbf{F}}                % position
 \newcommand{\bx}[1]{\bxx_{#1}}         % indexed position
 
 % Maths
@@ -558,7 +558,7 @@ We choose $r=2$, $w=0.1$, and $\mu_1$ and $\mu_2$ are separated by $7$ units. Wi
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{cosmochord}
-  \caption{\CosmoChord{} (red) vs.\ \CosmoMC{} (black). We use the 2013 {\tt CAMSPEC}+{\tt commander} likelihoods with a standard six-parameter $\Lambda$CDM cosmology, varying all 14 nuisance parameters.  We compare the $1$ and $2$-dimensional marginalised posteriors of the $6$ $\Lambda$CDM parameters. \CosmoChord{} is in close agreement with the posteriors produced by \CosmoMC{}, recovering the correct mean values of and degeneracies between the parameters. The slight deviations between the red and black curves are sampling noise. \label{fig:pc:cosmochord}}
+  \caption{\CosmoChord{} (red) vs.\ \CosmoMC{} (black). We use the 2013 {\texttt CAMSPEC}+{\texttt commander} likelihoods with a standard six-parameter $\Lambda$CDM cosmology, varying all 14 nuisance parameters.  We compare the $1$ and $2$-dimensional marginalised posteriors of the $6$ $\Lambda$CDM parameters. \CosmoChord{} is in close agreement with the posteriors produced by \CosmoMC{}, recovering the correct mean values of and degeneracies between the parameters. The slight deviations between the red and black curves are sampling noise. \label{fig:pc:cosmochord}}
 \end{figure}
 
 An additional strength of \PolyChord{} lies in its ability to exploit a fast-slow hierarchy common in many cosmological applications. 
