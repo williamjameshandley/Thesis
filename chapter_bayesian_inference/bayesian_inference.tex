@@ -78,6 +78,65 @@ Pure mathematics deals in relative truth or falsity, i.e.\ given initial assumpt
 \section{Parameter Estimation \& Model Comparison}
 \label{sec:bay:model_comp}
 
+\subsection{Nomenclature}
+\label{sec:pc:nomenclature}
+Scientific theory is concerned with the construction of predictive models in the context of some dataset $\data$.
+A typical model $\model$ contains a set of variable parameters $\params_\model$. One may use $\model$ to calculate the probability of observing the data given a specific parameter choice:
+\begin{equation}
+  \Probc{\data}{\params_\model,\model}\equiv\lik.
+  \label{eqn:pc:lik_def}
+\end{equation}
+This distribution on $\data$ is termed the {\em likelihood\/} $\lik$. From a Bayesian standpoint a model must also specify our initial degree of belief on the parameters $\params_\model$:
+\begin{equation}
+  \Probc{\params_\model}{\model} \equiv \prior,
+  \label{eqn:pc:prior_def}
+\end{equation}
+This distribution on $\params_\model$ is termed the {\em prior\/} $\prior$. Typically this is a parametric distribution which quantifies our initial assumptions on the scale and spread of the parameters\footnote{Common examples include a uniform distribution between two bounds, or a Gaussian distribution with specified mean and variance.}.
+
+The likelihood~(\ref{eqn:pc:lik_def}) is conditioned on a set of chosen values for the model parameters $\params_\model$. One may marginalise out the dependence on $\params_\model$ by integrating over the prior distribution:
+\begin{equation}
+  \Probc{\data}{\model} \equiv \ev = \int  \Probc{\data}{\params_\model,\model}\Probc{\params_\model}{\model}\:d\params_\model.
+  \label{eqn:pc:ev_int}
+\end{equation}
+This quantity is termed the {\em evidence\/} $\ev$, or {\em marginalised likelihood}, and gives the probability of observing the data $\data$, conditioned on the model $\model$. Suppressing explicit dependence on the model, the evidence computation can be written as:
+\begin{equation}
+  \ev = \int \lik(\params)\prior(\params)\:d\params.
+  \label{eqn:pc:evidence}
+\end{equation}
+
+\subsection{Parameter estimation}
+\label{sec:pc:param_est}
+
+If the prior has been specified, Bayes theorem allows us to invert the conditioning in equation~(\ref{eqn:pc:lik_def}) and find the {\em posterior\/} $\posterior$ by combining the likelihood, prior and evidence:
+%
+\begin{equation}
+  \Probc{\params_\model}{\data,\model} = \frac{\Probc{\data}{\params_\model,\model} \Probc{\params_\model}{\model}}{\Probc{\data}{\model}},
+  \label{eqn:pc:bayes_theorem}
+\end{equation}
+%
+which is schematically written as:
+\begin{equation}
+  \posterior = \frac{\lik \times \pi }{\ev }.
+  \label{eqn:pc:bayes_theorem_abbrv}
+\end{equation}
+This describes how our initial knowledge $\prior$ of the parameters updates to $\posterior$ in light of the data $\data$.
+Calculation of the posterior $\posterior(\theta)$ is the domain of {\em parameter estimation}, and in high dimensions is best performed by sampling the space with a Markov-Chain Monte-Carlo approach (MCMC). Examples include Metropolis--Hastings, Gibbs sampling and Slice sampling. For the most part, the evidence $\ev$ is ignored during such calculations, and one works with an unnormalised posterior ${\posterior\propto\lik\times\prior}$.
+
+\subsection{Model comparison}
+\label{sec:pc:model_comp}
+
+Of equal importance in scientific investigation is {\em model comparison}. Typically one has multiple competing models ${\{\model_1,\model_2,\cdots\}}$, each with their own parameters and assumptions. The data $\data$ are able to decide on the relative merits of each of these models via Bayes theorem:
+\begin{align}
+  \Probc{\model_i}{\data} &= \frac{\Probc{\data}{\model_i}\Prob{\model_i}}{\Prob{\data}}, \\
+  &= \frac{\ev_i\pi_i}{\sum_j \ev_j\pi_j}.
+\end{align}
+In contrast to parameter estimation, the evidences of each model $\ev_i$ take the leading role in model comparison. One typically will choose uniform priors on the models, ${\pi_i\equiv\Prob{\model_i}= \mathrm{const}}$, and then choose to use the model with the highest evidence. However, when evidences are similar in magnitude, the correct Bayesian approach is to make inferences by marginalising over all models considered. If there is a common derived parameter $y$, with marginalised posterior $\Probc{y}{\data,\model_i}$ then one may produce the fully marginalised posterior:
+\begin{equation}
+  \Probc{y}{\data} = \frac{\sum_i\Probc{y}{\data,\model_i}\ev_i\pi_i}{\sum_j\ev_j\pi_j}.
+\end{equation}
+This fully Bayesian approach has been historically under utilised due to the difficulties in computing the evidence numerically from the integral~(\ref{eqn:pc:evidence}).
+
+
 
 \section{Sampling}
 \label{sec:bay:samp}
@@ -107,4 +166,7 @@ one may then derive Bayes' theorem:
   \label{eqn:bay:bayes}
   \tag{Bayes' Theorem}
 \end{align}
+
+
+
 
