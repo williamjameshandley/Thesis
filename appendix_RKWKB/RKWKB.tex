@@ -1,17 +1,4 @@
 
-\newcommand{\meff}{m_\mathrm{eff}}
-\newcommand{\meffs}{m_\mathrm{eff}^2}
-
-\newcommand{\bk}{\mathbf{k}}
-\newcommand{\bkp}{\mathbf{k}^\prime}
-\newcommand{\by}{\mathbf{y}}
-\newcommand{\bff}{\mathbf{f}}
-
-\newcommand{\ket}[1]{\left|#1\right\rangle}
-\newcommand{\bra}[1]{\left\langle#1\right|}
-\newcommand{\braket}[2]{\left\langle#1\middle|#2\right\rangle}
-\newcommand{\bracket}[3]{\left\langle#1\middle|#2\middle|#3\right\rangle}
-
 
 \chapter{The Runge-Kutta-Wentzel-Kramers-Brillioun method}
 \label{chap:RK}
@@ -61,19 +48,19 @@ For a more detailed introduction to the numerical solution of ordinary different
 
 A general non-linear differential equation in $n$ variables can be written in terms of vectors as:
 \begin{equation}
-  \dot{\by}(t) = \bff(\by(t),t).
+  \dot{\mathbf{y}}(t) = \mathbf{f}(\mathbf{y}(t),t).
   \label{eqn:ode}
 \end{equation}
 Note that any higher order differential equation can be re-written in this form by introducing new variables for each of the higher derivative terms.
 
 Runge-Kutta methods work effectively by generalising the Taylor expansion:
 \begin{equation}
-  \by(t+h)  = \by(t) + h\:\bff(\by(t),t) + \mathcal{O}(h^2).
+  \mathbf{y}(t+h)  = \mathbf{y}(t) + h\:\mathbf{f}(\mathbf{y}(t),t) + \mathcal{O}(h^2).
   \label{eqn:euler}
 \end{equation}
-Given the value of a solution $\by_j$ at some time $t_j$, one may advance to the value of the solution $\by_{j+1}$ at some finite time later $t_{j+1} = t_j + h$ by using the recursion relation:
+Given the value of a solution $\mathbf{y}_j$ at some time $t_j$, one may advance to the value of the solution $\mathbf{y}_{j+1}$ at some finite time later $t_{j+1} = t_j + h$ by using the recursion relation:
 \begin{align}
-  \by_{j+1} &=  \by_{j} + h\:\bff(\by_j,t_j),
+  \mathbf{y}_{j+1} &=  \mathbf{y}_{j} + h\:\mathbf{f}(\mathbf{y}_j,t_j),
   \label{eqn:y_step}\\
   t_{j+1} &=  t_{j} + h.
   \label{eqn:t_step}
@@ -214,7 +201,7 @@ In contrast to a ``pure'' RK method, the RKWKB method finds the Airy equation ma
 \label{sec:iserles_comparison}
 Iserles has written extensively on the difficulty of solving problems of the form~(\ref{eqn:lode}). His approach is to turn~(\ref{eqn:lode}) into a Lie-group differential equation~\citep{Iserles00lie-groupmethods} by writing:
 \begin{align}
-  \by &= (x,\dot{x})^\top, 
+  \mathbf{y} &= (x,\dot{x})^\top, 
   \mathrm{A}(t) = 
   \left(
   \begin{array}{cc}
@@ -224,7 +211,7 @@ Iserles has written extensively on the difficulty of solving problems of the for
   \right),
   \nonumber\\
   \Rightarrow\quad 
-  \dot{\by} &= \mathrm{A}(t) \: \by.
+  \dot{\mathbf{y}} &= \mathrm{A}(t) \: \mathbf{y}.
   \label{eqn:lie_eqn}
 \end{align}
 This may then be attacked with a variety of Lie group methods. For example, one may write the full solution as a Magnus expansion:
@@ -238,7 +225,7 @@ This may then be attacked with a variety of Lie group methods. For example, one 
 and then use a truncated series to create a stepping algorithm.
 This approach is much improved by transferring to a fast rotating frame:
 \begin{equation}
-  \by(t_n+\tau) = e^{\tau \mathrm{A}(t_n+h/2)} \mathbf{x},
+  \mathbf{y}(t_n+\tau) = e^{\tau \mathrm{A}(t_n+h/2)} \mathbf{x},
   \label{eqn:rotating_frame}
 \end{equation}
 the end product is then termed the {\em modified Magnus method}~\citep{Iserles01thinkglobally}.
