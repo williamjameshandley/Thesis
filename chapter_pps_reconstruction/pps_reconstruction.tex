@@ -1,5 +1,289 @@
+\newcommand{\PR}{\mathcal{P}_\mathcal{R}}
+\newcommand{\alphamink}{\alpha_\mathrm{min}^{(k)}}
+\newcommand{\alphamaxk}{\alpha_\mathrm{max}^{(k)}}
+\newcommand{\Pknotj}[1]{\mathcal{P}_{#1}}
+\newcommand{\Pknot}{\mathcal{P}}
+\newcommand{\As}{A_\mathrm{s}}
+\newcommand{\Asj}[1]{A_\mathrm{s}^{(#1)}}
+\newcommand{\Nint}{N_\mathrm{int}}
+\newcommand{\Nknots}{N_\mathrm{knots}}
+\newcommand{\Planck}{\textit{Planck}}
+
+
 \chapter{Reconstructing the Primordial Power Spectrum}
 \label{chap:rec}
 
-\section{Introduction}
-\label{sec:rec:intro}
+\begin{figure}[b!]
+  \resizebox{\columnwidth} {!} {%
+
+    \begin{tikzpicture}
+    % width of axes
+      \def\xwidth{7}
+      \def\ywidth{4}
+    % min coordinate
+      \def\xmn{0.5}
+      \def\ymn{2}
+    % start coordinate
+      \def\xstart{2}
+      \def\ystart{3}
+    % middle coordinate
+      \def\xmid{3}
+      \def\ymid{1}
+    % end coordinate
+      \def\xend{5.5}
+      \def\yend{3}
+    % max coordinate
+      \def\xmx{6.5}
+      \def\ymx{1.5}
+
+    % length of crosses
+      \def\croslen{0.4}
+
+      \newcommand{\movablecross}[1]{%
+        \draw[->](#1) -- ++(0:\croslen);
+        \draw[->](#1) -- ++(90:\croslen);
+        \draw[->](#1) -- ++(180:\croslen);
+        \draw[->](#1) -- ++(270:\croslen);
+        \fill[red!70!black] (#1) circle (2pt);
+      }
+
+      \newcommand{\movablevert}[1]{%
+        \draw[->](#1) -- ++(90:\croslen);
+        \draw[->](#1) -- ++(270:\croslen);
+        \fill[red!70!black] (#1) circle (2pt);
+      }
+
+
+
+    % Draw axes
+      \draw [<->,thick] (0,\ywidth) node (yaxis) [above] {$\log\PR(k)$}
+      |- (\xwidth,0) node (xaxis) [right] {$\log k$};
+    % Draw limits
+      %\draw [-,dashed] (\xmn,0) node[below] {$\log_{10}k_1$} -- (\xmn,\ywidth) ;
+      %\draw [-,dashed] (\xmx,0) node[below] {$\log_{10}k_N$} -- (\xmx,\ywidth) ;
+
+    % Draw the line joining start and end
+      \draw (\xmn,\ymn) coordinate (mn) -- (\xstart,\ystart) coordinate (start) -- (\xmid,\ymid) coordinate (mid) --  (\xend,\yend) coordinate(end) -- (\xmx,\ymx) coordinate(mx);
+
+    % Draw the point labels
+      \draw (mn) node[below right]    {$(k_1,\Pknotj{1})$};
+      \draw (start) node[above right] {$(k_2,\Pknotj{2})$};
+      \draw (mid) node[below right]   {$(k_3,\Pknotj{3})$};
+      \draw (end) node[above right]   {$(k_4,\Pknotj{4})$};
+      \draw (mx) node[below left]     {$(k_{\Nknots},\Pknotj{{\Nknots}})$};
+
+    % Draw a dashed line indicating the coordinate names
+      %\draw[dashed] (yaxis |- start) node[left] {$y_{1}$}
+      %-| (xaxis -| start) node[below] {$x_1$};
+      %\draw[dashed] (yaxis |- mid) node[left] {$y_{2}$}
+      %-| (xaxis -| mid) node[below] {$x_2$};
+      %\draw[dashed] (yaxis |- end) node[left] {$y_{N}$}
+      %-| (xaxis -| end) node[below] {$x_N$};
+      %\draw  (xaxis -| start) node[below] {$\log_{10}k_2$};
+      %\draw  (xaxis -| mid) node[below] {$\log_{10}k_3$};
+      %\draw  (xaxis -| end) node[below] {$\log_{10}k_4$};
+
+      % Draw the crosses
+      \movablevert{mn}
+      \movablecross{start}
+      \movablecross{mid}
+      \movablecross{end}
+      \movablevert{mx}
+
+    % put some ellipses in between the start and end point
+
+    \end{tikzpicture}
+  }
+  \caption{%
+Linear spline reconstruction. The primordial power spectrum is reconstructed using $\Nknots$ interpolation points
+${\{(k_i,\Pknotj{i}):i=1,2,\ldots {\Nknots}\}}$. The end knots are fixed in $k$ but allowed to
+vary in ${\Pknot}$, whereas the internal knots can vary subject to the constraint that ${k_1<k_2<\cdots<k_{\Nknots}}$.
+The function $\mathcal{P}_\mathcal{R}(k)$ is constructed within the range $[k_1,k_{\Nknots}]$
+by interpolating logarithmically between adjacent knots (i.e., linearly in $\log$-$\log$ space). Outside this range the function is extrapolated logarithmically.
+The function $\mathcal{P}_\mathcal{R}(k;\{k_i,\Pknotj{i}\})$ thus has $2\Nknots-2$ parameters.
+\label{fig:linear_spline_reconstruction}
+}
+\end{figure}
+
+
+
+In this section we model the PPS $\PR(k)$ using a nested
+family of models where $\PR(k)$ is piecewise linear
+in the $\ln (\mathcal{P})$-$\ln (k)$ plane
+between a number of knots, $\Nknots$,
+that is allowed to vary. The question arises as to how many knots one should use,
+and we address this question using Bayesian model comparison.
+A family of priors
+is chosen where both the horizontal and vertical positions of the knots are allowed
+to vary. We examine the ``Bayes factor'' or ``Bayesian evidence'' as a function of
+$\Nknots$ to decide how many knots are statistically justified. 
+A similar analysis has been performed by \cite{vazquez_knots} and \cite{knottedsky1}.
+In addition, we marginalize over all possible numbers of knots to obtain 
+an averaged reconstruction weighted according to the Bayesian evidence.
+
+The generic prescription is illustrated in Fig.~\ref{fig:linear_spline_reconstruction}. $\Nknots$ knots
+$\{(k_i,\Pknotj{i})\,$: $i=1,\ldots,\Nknots\}$ are placed in the $(k,\PR)$ plane and the function $\PR(k)$ is
+constructed by logarithmic interpolation (a linear interpolation in $\log$-$\log$ space) between adjacent points.
+Outside the horizontal range $[k_1,k_N]$ the function is extrapolated using the outermost interval.
+
+Within this framework, base $\Lambda$CDM arises when ${\Nknots=2}$---in other words, when there are two boundary knots
+and no internal knots, and the parameters $\Pknotj{1}$ and $\Pknotj{2}$ (in place of $A_\mathrm{s}$ and $n_\mathrm{s}$) parameterize
+the simple power-law PPS. There are also, of course,
+the four standard cosmological parameters $(\Omega_{\mathrm{b}} h^2$, $\Omega_{\mathrm{c}} h^2$, $100\theta_{\mathrm{MC}}$, and 
+$\tau$), as well the numerous foreground parameters associated with the \Planck\ high-$\ell$ likelihood, all of which are unrelated to the PPS.
+This simplest model can be extended iteratively by successively inserting an additional internal knot, thus requiring with each iteration
+two more variables to parameterize the new knot position.
+
+
+\begin{table}
+  \begin{tabular}{ll}
+      Parameter range &
+      Prior type
+      \\
+      \hline
+      $10^{-4}\,\mathrm{Mpc}^{-1} = k_1< k_2 < \ldots < k_{\Nknots} = 0.3\,\mathrm{Mpc}^{-1}$ &
+      log uniform (sorted)
+      \\
+      $ 2 < \ln\left(10^{10}\Pknotj{1}\right), \ldots ,\ln\left(10^{10}\Pknotj{{\Nknots}}\right) < 4 $  &
+      log uniform
+      \\
+      $2\le \Nknots \le 10 $ &
+      integer uniform
+      \\
+      \hline
+      $0.019< \Omega_\mathrm{b} h^2 <0.025$ &
+      uniform
+      \\
+      $0.095< \Omega_\mathrm{c} h^2 <0.145$ &
+      uniform
+      \\
+      $1.03< 100\theta_\mathrm{MC} <1.05$ &
+      uniform
+      \\
+      $0.01< \tau< 0.4$ &
+      uniform
+      \\
+      \hline
+    \end{tabular}
+\caption{%
+Prior for moveable knot positions.
+The $\PR$ positions are distributed in a log-uniform manner across a wide range.
+The $k$ positions are also log-uniformly distributed
+across the entire range needed by {\tt CosmoMC} and are sorted so that ${k_1<\ldots<k_{\Nknots}}$. 
+When we marginalize over the number of knots, $\Nknots$, we assume a uniform prior between 2 and 10. 
+  \label{tab:P_k_priors}  }                          % Label goes here.
+\end{table}                        % table* is a two-column table.  Drop the * for one column
+
+We run models for a variety of numbers of internal knots, $\Nint =\Nknots -2$, evaluating the evidence for $\Nint$.
+Under the assumption that the prior is justified, the most likely, or preferred, model is the one with the highest
+evidence.  Evidences are evaluated using the \PolyChord\ sampler \citep{Polycord} 
+in \CAMB\ and \CosmoMC. The use of \PolyChord\ is
+essential, as the posteriors in this parameterization are often multi-modal. Also, the ordered log-uniform priors on
+the $k_i$ are easy to implement within the \PolyChord\ framework. All runs were performed with $1000$ live points, 
+oversampling the semi-slow and fast parameters by a factor of $5$ and $100$, respectively.
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.3\textwidth]{0TT_fgivenx}
+  \includegraphics[width=0.3\textwidth]{1TT_fgivenx}
+  \includegraphics[width=0.3\textwidth]{2TT_fgivenx}\\
+  \includegraphics[width=0.3\textwidth]{3TT_fgivenx}
+  \includegraphics[width=0.3\textwidth]{4TT_fgivenx}
+  \includegraphics[width=0.3\textwidth]{5TT_fgivenx}\\
+  \includegraphics[width=0.3\textwidth]{6TT_fgivenx}
+  \includegraphics[width=0.3\textwidth]{7TT_fgivenx}
+  \includegraphics[width=0.3\textwidth]{8TT_fgivenx}
+\end{center}
+\caption{Bayesian movable knot reconstructions of the primordial power spectrum $\PR(k)$ using \Planck\ TT data.
+%{\color{red}[\Planck\ TT+lowP? (JZ)]}
+The plots indicate our knowledge of the PPS $P(\PR(k)|k,N)$ for a given number of knots.
+The number of internal knots $\Nint$ increases (left to right and top to bottom) from $0$ to $8$.
+For each $k$-slice, equal colours have equal probabilities. The colour scale is chosen so that darker regions
+correspond to lower-$\sigma$ confidence intervals.
+$1\,\sigma $ and $2\,\sigma $ confidence intervals are also sketched (black curves).
+The upper horizontal axes give the approximate corresponding multipoles via $\ell \approx k/D_\mathrm{rec}$,
+where $D_\mathrm{rec}$ is the comoving distance to recombination.
+    \label{fig:Pkr0}}
+\end{figure}
+
+
+\begin{figure}
+\includegraphics[width=\textwidth]{Bayes_PR.pdf}
+  \caption{
+    Bayes factor (relative to the base $\Lambda$CDM model) as a function of the number of knots
+for three separate runs. Solid line: \Planck\ TT. Dashed line: \Planck\ TT,TE,EE. Dotted line:
+\Planck\ TT, with priors on the $\Pknot$ parameters reduced in width by a factor of 2 ($2.5<\ln(10^{10}\Pknot)<3.5$).
+%{\color{red}[Each +lowP? (JZ)]}
+\label{fig:Bayes_Factors}
+}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=\textwidth]{combined_fgivenx.png}
+\end{center}
+\caption{
+Bayesian reconstruction of the primordial power spectrum averaged over different values of $N_\mathrm{int}$
+(as shown in Fig.~\protect\ref{fig:Pkr0}), weighted according to the Bayesian evidence.
+The region ${30<\ell<2300}$ is highly constrained, but the resolution is lacking to say anything precise 
+about higher $\ell$. At lower $\ell$, cosmic variance reduces our knowledge of $\PR(k).$
+The weights assigned to the lower $\Nint$ models outweigh those of the higher models, so no oscillatory 
+features are visible here.
+\label{fig:full_bayes_knots}}
+\end{figure}
+
+
+
+Priors for the reconstruction and cosmological parameters are detailed in Table~\ref{tab:P_k_priors}.
+We report evidence ratios with respect to the base $\Lambda$CDM case. The cosmological priors remain the
+same for all models, and this part of the prior has almost no impact on the evidence ratios.
+The choice of prior on the reconstruction parameters
+$\{\Pknotj{i}\}$ does affect the Bayes factor. \CosmoMC , however, puts an implicit prior on all models by excluding
+parameter choices that render the internal computational approximations in {\tt CAMB} invalid.
+The baseline prior for the vertical position of the knots includes all
+of the range allowed by \CosmoMC, so slighly increasing this prior range will not affect the evidence ratios. If
+one were to reduce the prior widths significantly, the evidence ratios would be increased.
+The allowed horizontal range includes all $k$-scales accessible to \Planck. Thus, altering this
+width would be unphysical.
+
+
+After completion of an evidence calculation, \PolyChord\ generates a representative set of samples of the posterior for each model
+$P(\Theta) \equiv P(\Theta|\mathrm{data},\Nint)$. We may use this to calculate a marginalized probability distribution
+for the PPS:
+\begin{equation}
+  P(\log\PR|k,\Nint) = \int \delta\left(\log\PR - \log\PR(k;\Theta)\right)P(\Theta)\:d\Theta.
+  \label{eqn:margPR}
+\end{equation}
+This expression encapsulates our knowledge of $\PR$ at each value of $k$ for a given number of knots.
+Plots of this PPS posterior are shown in Fig.~\ref{fig:Pkr0} using \Planck\ TT data.
+
+
+
+If one considers the Bayesian evidences of each model, Fig.~\ref{fig:Bayes_Factors} shows that although no model is 
+preferred over base $\Lambda$CDM, the case $\Nint=1$
+is competitive. This model is analogous to the broken-power-law spectrum of
+Sect.~4.4,
+although the models differ significantly in terms of the priors used. In this case, the
+additional freedom of one knot allows a reconstruction of the suppression of power at low $\ell$. Adding polarization data does not alter 
+the evidences significantly, although $\Nint=1$ is strengthened. We also plot a \Planck\ TT run,
+%{\color{red}[+lowP? (JZ)]} 
+but with the reduced vertical priors ${2.5<\ln\left(10^{10}\Pknot\right)<3.5}$. 
+As expected, this increases the evidence ratios, but does not alter the above conclusion.
+
+For increasing numbers of internal knots, the Bayesian evidence monotonically decreases. Occam's razor dictates,
+therefore, that these models should not be preferred, due to their higher complexity. However, there is an
+intriguing stable oscillatory feature, at $20\lesssim\ell\lesssim50$, that appears once there are enough knots to reconstruct it.
+This is a qualitative feature predicted by several inflationary models (discussed in Sect.~9),
+and a possible hint of new physics, although
+its statistical significance is not compelling.
+
+A full Bayesian analysis marginalizes over all models weighted according to the normalized evidence $Z_{\Nint},$
+so that
+\begin{equation}
+  P(\log\PR|k) = \sum\limits_{\Nint} P(\log\PR|k,\Nint) Z_{\Nint},
+  \label{eqn:margPR_full}
+\end{equation}
+%{\color{red}[Define $Z_{\Nint}$. (JZ)]}
+as indicated in Fig.~\ref{fig:full_bayes_knots}.
+This reconstruction is sensitive to how model complexity is penalized in the prior distribution. 
+
