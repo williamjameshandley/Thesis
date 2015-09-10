@@ -73,7 +73,7 @@ The alternative definition of probability is {\em Bayesian\/}:
 \end{description}
 Note that Bayesian probability is {\em subjective}, it matters who's degree of belief one is considering. Probabilities are assigned only with a given state of knowledge. Effectively, Bayesians place aleatoric and epistemological probability under the same umbrella. 
 
-Pure mathematics deals in relative truth or falsity, i.e.\ given initial assumptions, all statements are assigned to the set $\{F,T\}\equiv\{0,1\}$. Bayesian probability can be thought of as a blurring of this process, namely from initial assumptions, various conclusions are assigned a number between $[0,1]$.
+Pure mathematics deals in relative truth or falsity, i.e.\ given initial assumptions, all statements are assigned to the set $\{F,T\}\equiv\{0,1\}$. Bayesian probability can be thought of as a blurring of this process, namely from initial assumptions, various conclusions are assigned a number from the continuum between $[0,1]$.
 
 \section{Parameter Estimation \& Model Comparison}
 \label{sec:bay:model_comp}
@@ -81,45 +81,69 @@ The typical problem of science is the construction of a model $\model$ in order 
 
 
 \section{An example: biased coins}
-For example, assume that you toss a coin $N=20$ times, and observe a dataset of $\data = 15$ heads. Is this enough to cause us to doubt the fairness of the coin?
+For example, assume that you toss a coin $N=20$ times, and observe a dataset of $\data = 16$ heads. Is this enough to cause us to doubt the fairness of the coin?
 
 The standard model $\model_0$ is that a coin toss consists of a binomial trial with probability $\frac{1}{2}$. Elementary probability tells us that the chance of getting this data is:
 \begin{equation}
-  \Probc{\data}{\model_0}= {^{N}C_\data} {\left( \frac{1}{2} \right)}^{\data} {\left(1 - \frac{1}{2} \right)}^{N-\data} = 4.8\times 10^{-6}.
+  \Probc{\data}{\model_0}= {^{N}C_\data} {\left( \frac{1}{2} \right)}^{N}  = 4.6\times 10^{-3}.
   \label{eqn:bay:M0}
 \end{equation}
+Note that as should be expected, the chance of obtaining this exact dataset is small. 
 
-
-Note that as expected, the chance of obtaining this precise dataset is vanishingly small.
 If we allow for the possibility that the coin could be any probability $p$, we can encapsulate this in a second model $\model_1$.
 \begin{equation}
   \Probc{\data}{p,\model_1}= {^{N}C_\data}\: {p}^{\data} {\left(1 - p \right)}^{N-\data} 
   \label{eqn:bay:M1}
 \end{equation}
-The probability of getting data given a model both~(\ref{eqn:bay:M0})
+This second model is not ideal, since we haven't specified the parameter $p$. If we choose $p=\frac{1}{2}$ we recover $\model_0$. It is tempting to choose $p$ such that the probability of getting the data is maximised. This would be an example of a {\em maximum likelihood\/} approach. In this case, the method indicates\footnote{Proof left as exercise to the reader.} we should choose $p = \frac{\data}{N}$. 
 
-
-This second model is not ideal, since we haven't specified the parameter $p$. If we choose $p=\frac{1}{2}$ we recover $\model_0$. It is tempting to choose $p$ such that the chance of obtaining 
-
-
-Ideally we would like to remove it in order to compare the two models, but this requires putting some additional assumptions on $p$. If we assume that it is equally likely to take any value in between $0$ and $1$, then we have:
+Maximum likelihood has its drawbacks, particularly in the case of a low volume of data. After $N=1$ toss, it seems a little premature to choose either $p=1$ or $p=0$ depending on whether we see a head or a tail. Instead picking a specific value of $p$, one could instead ``spread your bets'' and consider several different values of $p$. The full generalisation of this is to consider a continuum of models, and define an initial probability distribution $\Probc{p}{\model_1}$. These can be interpreted as our initial assumptions on the value of $p$, or our initial degree of belief in its value
+A natural assumption is to try and be as unbiased as possible and assume that $p$ is equally likely to take any value in between $0$ and $1$. We therefore have:
 \begin{equation}
-  \Prob{p}=\left\{
+  \Probc{p}{\model_1}=\left\{
   \begin{array}{lr}
     1 &:0\le p\le1\\
     0 &:\text{otherwise.}\\
   \end{array}
   \right.\label{eqn:bay:prior1}
 \end{equation}
-These constitute our prior assumptions, and allow us to marginalise over $p$.
+With this distribution, we can work out what the overall probability of obtaining the dataset $\data$ is, by marginalising over all values of $p$:
 \begin{align}
   \Probc{\data}{\model_1} 
-  &= \int \Probc{\data}{p,\model_1}\Prob{p}\: dp \\
+  &= \int \Probc{\data}{p,\model_1}\Probc{p}{\model_1}\: dp \\
   &= \int_0^1 {^{N}C_\data}\: {p}^{\data} {\left(1 - p \right)}^{N-\data}\: dp \\
-  &= \frac{1}{n+1} = 1.5\times10^{-5}
+  &= \frac{1}{n+1} = 4.8\times10^{-2}
   \label{eqn:bay:marg}
 \end{align}
-Whilst this probability is small, it larger than~(\ref{eqn:bay:M0}). However, these idea
+This is quite telling, because our initial choice for $\Probc{p}{\model_1}$~(\ref{eqn:bay:prior1}) indicates that we expect all data sets with equal probability (independent of $\data$). This is therefore a ``minimally suspicious'' choice in spread.
+
+We now have two equations~(\ref{eqn:bay:M0})~\&~(\ref{eqn:bay:marg}) which detail the probability of getting the dataset $\data$ given the choice of model. However, what we are really after is the probability of the model, given the dataset $\Probc{\model}{\data}$. To compute this, we use Bayes' theorem
+\begin{equation}
+  \Probc{\model}{\data} = \frac{\Probc{\data}{\model}\Prob{\model}}{\Prob{\data}}.
+  \label{eqn:bay:bay_md}
+\end{equation}
+In order to complete the calculation, we must assign a probability to each model. A natural choice is to consider $\Prob{\model_0}=\Prob{\model_1}=\frac{1}{2}$. $\Prob{\data}$ is just a normalising constant, computed as:
+\begin{equation}
+  \Prob{\data} = \sum_i \Probc{\data}{\model_i}\Prob{\model_i}, 
+  \label{eqn:bay:norm}
+\end{equation}
+so we may finally compute
+\begin{equation}
+  \Probc{\model_0}{\data} = 0.088 \qquad
+  \Probc{\model_1}{\data} = 0.922
+  \label{eqn:bay:comp}
+\end{equation}
+In other words, a betting man would put money on $\model_1$ with odds of $10:1$ for. Another way of thinking of this is that $\model_1$ is ten times better at describing the data than $\model_0$.
+
+$\model_1$ can go further however. We may also use Bayes' theorem to compute 
+\begin{equation}
+  \Probc{p}{\data,\model_1} = \frac{\Probc{\data}{p,\model_1}\Probc{p}{\model_1}}{\Probc{\data}{\model_1}}.
+  \label{eqn:bay:bay_p}
+\end{equation}
+
+
+
+
 
 \subsection{Nomenclature}
 \label{sec:pc:nomenclature}
@@ -163,7 +187,7 @@ which is schematically written as:
   \label{eqn:pc:bayes_theorem_abbrv}
 \end{equation}
 This describes how our initial knowledge $\prior$ of the parameters updates to $\posterior$ in light of the data $\data$.
-Calculation of the posterior $\posterior(\theta)$ is the domain of {\em parameter estimation}, and in high dimensions is best performed by sampling the space with a Markov-Chain Monte-Carlo approach (MCMC). Examples include Metropolis--Hastings, Gibbs sampling and Slice sampling. For the most part, the evidence $\ev$ is ignored during such calculations, and one works with an unnormalised posterior ${\posterior\propto\lik\times\prior}$.
+Calculation of the posterior $\posterior(\theta)$ is the domain of {\em parameter estimation}, and in high dimensions is best performed by sampling the space with a Markov-Chain Monte-Carlo approach (MCMC). Examples include Metropolis-Hastings, Gibbs sampling and Slice sampling. For the most part, the evidence $\ev$ is ignored during such calculations, and one works with an unnormalised posterior ${\posterior\propto\lik\times\prior}$.
 
 \subsection{Model comparison}
 \label{sec:pc:model_comp}
@@ -178,7 +202,6 @@ In contrast to parameter estimation, the evidences of each model $\ev_i$ take th
   \Probc{y}{\data} = \frac{\sum_i\Probc{y}{\data,\model_i}\ev_i\pi_i}{\sum_j\ev_j\pi_j}.
 \end{equation}
 This fully Bayesian approach has been historically under utilised due to the difficulties in computing the evidence numerically from the integral~(\ref{eqn:pc:evidence}).
-
 
 
 \section{Sampling}
