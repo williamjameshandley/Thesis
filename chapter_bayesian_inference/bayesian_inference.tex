@@ -50,6 +50,34 @@ This entire section may be summarised succinctly and formally as:
 
 
 
+
+\subsection{Bayes' theorem}
+
+
+\begin{figure}
+  \centerline{%
+    \input{plots/probability}
+  }
+  \caption{Beer-mat mathematics. This diagram is how \edjaynes{} explained Bayes' theorem to a young \stevegull{}. Out of the entire sample space $\Omega$, if we observe $A$ to be true (blue region), then the probability of $B$ given that we know $A$ is simply $\Prob{A\cap B}/\Prob{A}$. Bayes' theorem then follows by rearrangement and symmetry.}
+\end{figure}
+
+
+From this definition, it is useful to define conditional probability via:
+\begin{equation}
+  \Probc{B}{A} = \frac{\Prob{A\cap B}}{\Prob{A}}.
+  \label{eqn:bay:cond}
+\end{equation}
+Multiplying both sides by $\Prob{A}$, and noting the symmetrical alternative:
+\begin{equation}
+  \Probc{B}{A}\Prob{A} = \Prob{A\cap B} = \Probc{A}{B}\Prob{B},
+  \label{eqn:bay:sym}
+\end{equation}
+one may then derive Bayes' theorem:
+\begin{align}
+  \Probc{B}{A} &= \frac{\Probc{A}{B}\Prob{B}}{\Prob{A}}.\\
+  \label{eqn:bay:bayes}
+  \tag{Bayes' Theorem}
+\end{align}
 \section{Bayesian vs.\ Frequentist}
 \label{sec:bay:bayesian_frequentist}
 
@@ -74,11 +102,6 @@ The alternative definition of probability is {\em Bayesian\/}:
 Note that Bayesian probability is {\em subjective}, it matters who's degree of belief one is considering. Probabilities are assigned only with a given state of knowledge. Effectively, Bayesians place aleatoric and epistemological probability under the same umbrella. 
 
 Pure mathematics deals in relative truth or falsity, i.e.\ given initial assumptions, all statements are assigned to the set $\{F,T\}\equiv\{0,1\}$. Bayesian probability can be thought of as a blurring of this process, namely from initial assumptions, various conclusions are assigned a number from the continuum between $[0,1]$.
-
-\section{Parameter Estimation \& Model Comparison}
-\label{sec:bay:model_comp}
-The typical problem of science is the construction of a model $\model$ in order to explain some dataset $\data$. 
-
 
 \section{An example: biased coins}
 For example, assume that you toss a coin $N=20$ times, and observe a dataset of $\data = 16$ heads. Is this enough to cause us to doubt the fairness of the coin?
@@ -140,98 +163,154 @@ $\model_1$ can go further however. We may also use Bayes' theorem to compute
   \Probc{p}{\data,\model_1} = \frac{\Probc{\data}{p,\model_1}\Probc{p}{\model_1}}{\Probc{\data}{\model_1}}.
   \label{eqn:bay:bay_p}
 \end{equation}
+This here gives us the distribution on $p$ {\em given the data}. Namely, how the data should update our ``spread bet''. We already have the ingredients for the above construction from equations~(\ref{eqn:bay:M1}),~(\ref{eqn:bay:prior1}),~\&~(\ref{eqn:bay:marg}), and given the uniform prior, we find our updated bet on $p$ is proportional to $p^\data{(1-p)}^{N-\data}$, a function of $p$. This is a beta distribution, and is indicated in Figure~\ref{fig:bay:beta}.
 
+\begin{figure}
+  \centerline{%
+    \input{plots/beta_function}
+  }
+  \caption{%
+  Beta function.\label{fig:bay:beta}
+}
+\end{figure}
 
+\section{Parameter Estimation \& Model Comparison}
+\label{sec:bay:model_comp}
+We shall now take the concepts of the previous section, and put them in a general setting. 
 
+The typical problem of science is the construction of a model $\model$ in order to explain some dataset $\data$. Typically, scientific models have a set of continuous parameters $\params_\model$, where $\params_\model$ is normally multi-dimensional, and may contain a variety of parameter types such as integers, vectors, tensors and more exotic components.
 
-
-\subsection{Nomenclature}
-\label{sec:pc:nomenclature}
-Scientific theory is concerned with the construction of predictive models in the context of some dataset $\data$.
-A typical model $\model$ contains a set of variable parameters $\params_\model$. One may use $\model$ to calculate the probability of observing the data given a specific parameter choice:
+Elementary probability theory then enables us to calculate the probability of the data, given the choice of model along with a specific parameter choice.
 \begin{equation}
-  \Probc{\data}{\params_\model,\model}\equiv\lik.
-  \label{eqn:pc:lik_def}
+  \lik\equiv\Probc{\data}{\params_\model,\model}.
+  \label{eqn:bay:lik_def}
 \end{equation}
-This distribution on $\data$ is termed the {\em likelihood\/} $\lik$. From a Bayesian standpoint a model must also specify our initial degree of belief on the parameters $\params_\model$:
+This distribution is called the {\em likelihood}, which is denoted with a calligraphic~$\lik$ to differentiate between rapidly proliferating conditional probabilities. It is also clearer in many situations to supress explicit data, model and/or parameter-dependence of the likelihood, and instead write:
 \begin{equation}
-  \Probc{\params_\model}{\model} \equiv \prior,
-  \label{eqn:pc:prior_def}
+  \Probc{\data}{\params_\model,\model}
+  \equiv
+  \lik_\model(\params_\model)
+  \equiv
+  \lik(\params)
+  \equiv
+  \lik_\model
+  \equiv
+  \lik.\nonumber
 \end{equation}
-This distribution on $\params_\model$ is termed the {\em prior\/} $\prior$. Typically this is a parametric distribution which quantifies our initial assumptions on the scale and spread of the parameters\footnote{Common examples include a uniform distribution between two bounds, or a Gaussian distribution with specified mean and variance.}.
+This is a generic overloading technique which I utilise throughout this thesis.
 
-The likelihood~(\ref{eqn:pc:lik_def}) is conditioned on a set of chosen values for the model parameters $\params_\model$. One may marginalise out the dependence on $\params_\model$ by integrating over the prior distribution:
+In order to perform Bayesian inference, another requirement of the model $\model$ is that it must specify an initial degree of knowledge of the parameters:
 \begin{equation}
-  \Probc{\data}{\model} \equiv \ev = \int  \Probc{\data}{\params_\model,\model}\Probc{\params_\model}{\model}\:d\params_\model.
-  \label{eqn:pc:ev_int}
+  \prior\equiv\Probc{\params_\model}{\model}.
+  \label{eqn:bay:prior_def}
 \end{equation}
-This quantity is termed the {\em evidence\/} $\ev$, or {\em marginalised likelihood}, and gives the probability of observing the data $\data$, conditioned on the model $\model$. Suppressing explicit dependence on the model, the evidence computation can be written as:
+Since no model occurs in isolation, it is generally not difficult to theoretically produce upper and lower bounds on parameter values. The normal strategy is to choose fairly conservative uniform or Gaussian priors on parameter values. In general, the prior should encapsulate the scale and spread of our current expectation of the parameter value.
+
+Once a prior has been specified, the model $\model$ is complete. The scientific aspect of the problem is complete, and the rest mere statistics. Statistical analysis may be neatly partitioned into two problems: {\em model comparison\/} and {\em parameter estimation}.
+
+\subsection{Model comparison}
+It is usually the case in science that there is not a single model available to explain the data. Typically one will have a set of models ${\{\model_1,\model_2,\ldots\}}$, which we wish to scientifically determine the relative merits of given the data $\data$.
+
+We may use the prior to marginalise out all parameter dependence of the each model:
 \begin{equation}
-  \ev = \int \lik(\params)\prior(\params)\:d\params.
-  \label{eqn:pc:evidence}
+  \ev\equiv\Probc{\data}{\model} 
+  =
+  \int  \Probc{\data}{\params_\model,\model}\Probc{\params_\model}{\model}\:d\params_\model.
+  \label{eqn:bay:ev_def}
 \end{equation}
+This quantity is termed the {\em evidence\/} $\ev$, or {\em marginalised likelihood}, and gives the probability of observing the data $\data$, conditioned on the model $\model$. The quantity we seek however is the probability of each model $\model$ given the data $\data$, which may be obtained using Bayes' theorem:
+\begin{equation}
+  \Probc{\model_i}{\data} = \frac{\Probc{\data}{\model_i}\Prob{\model_i}}{\Prob{\data}}.
+  \label{eqn:bay:bayM}
+\end{equation}
+In order to utilise this however, we must specify our prior degree of belief in each model
+\begin{equation}
+  \Prob{\model_i} = \priorM_i
+\end{equation}
+These may have been obtained from previous analyses, but a non-partisan choice would be too choose the models to be equally weighted. The denominator of~(\ref{eqn:bay:bayM}) is then simply a normalising constant, and the posterior degree of belief in each model may be obtained via:
+\begin{equation}
+  \Probc{\model_i}{\data} 
+  \equiv
+  \Wmodel_i
+  =
+  \frac{\ev_i\priorM_i}{\sum_j \ev_j\priorM_j}.
+\end{equation}
+These model weights $\Wmodel$ may then be used to determine the ``most probable model''. In some cases there is a clear winner, and the other models may be safely discarded, but the more usual scenario is that there are several competing alternatives. It is for this reason that we prefer the term ``model comparison'' to the more oft-quoted {\em model selection}. Additional datasets may determine a clear winner, but in the mean-time the weights $\Wmodel$ can be used to perform proper inference. 
+
+For example, model often predict a distribution for a common derived parameter $\Probc{y}{\model,\data}$.\footnote{E.g.\ in cosmology, various models of the universe will predict an age or curvature of the cosmos} If the data are not strong enough to distinguish a given model, the correct inference on $y$ is to use a posterior which marginalises over all models:
+\begin{equation}
+  \Probc{y}{\data} 
+  = \sum_i\Probc{y}{\data,\model_i}\Probc{\model_i}{\data}
+  = \sum_i\Probc{y}{\data,\model_i}\Wmodel_i.
+\end{equation}
+This fully Bayesian approach has been historically under-utilised due to the difficulties in numerically computing the evidence.
+
+
 
 \subsection{Parameter estimation}
-\label{sec:pc:param_est}
-
-If the prior has been specified, Bayes theorem allows us to invert the conditioning in equation~(\ref{eqn:pc:lik_def}) and find the {\em posterior\/} $\posterior$ by combining the likelihood, prior and evidence:
+Of equal interest to scientists is to ask what the data tells us about the various parameters.  
+Bayes' theorem allows us to invert the conditioning in equation~(\ref{eqn:bay:lik_def}) and find the {\em posterior\/} $\posterior$ by combining the likelihood~(\ref{eqn:bay:lik_def}), prior~(\ref{eqn:bay:prior_def}) and evidence~(\ref{eqn:bay:ev_def}):
 %
 \begin{equation}
+  \posterior\equiv
   \Probc{\params_\model}{\data,\model} = \frac{\Probc{\data}{\params_\model,\model} \Probc{\params_\model}{\model}}{\Probc{\data}{\model}},
-  \label{eqn:pc:bayes_theorem}
+  \label{eqn:bay:bayes_theorem}
 \end{equation}
 %
 which is schematically written as:
-\begin{equation}
-  \posterior = \frac{\lik \times \pi }{\ev }.
-  \label{eqn:pc:bayes_theorem_abbrv}
-\end{equation}
-This describes how our initial knowledge $\prior$ of the parameters updates to $\posterior$ in light of the data $\data$.
-Calculation of the posterior $\posterior(\theta)$ is the domain of {\em parameter estimation}, and in high dimensions is best performed by sampling the space with a Markov-Chain Monte-Carlo approach (MCMC). Examples include Metropolis-Hastings, Gibbs sampling and Slice sampling. For the most part, the evidence $\ev$ is ignored during such calculations, and one works with an unnormalised posterior ${\posterior\propto\lik\times\prior}$.
-
-\subsection{Model comparison}
-\label{sec:pc:model_comp}
-
-Of equal importance in scientific investigation is {\em model comparison}. Typically one has multiple competing models ${\{\model_1,\model_2,\cdots\}}$, each with their own parameters and assumptions. The data $\data$ are able to decide on the relative merits of each of these models via Bayes theorem:
 \begin{align}
-  \Probc{\model_i}{\data} &= \frac{\Probc{\data}{\model_i}\Prob{\model_i}}{\Prob{\data}}, \\
-  &= \frac{\ev_i\pi_i}{\sum_j \ev_j\pi_j}.
+  \posterior &= \frac{\lik \times \prior }{\ev }
+  \label{eqn:bay:bayes_theorem_abbrv}\\
+  \mathrm{Posterior} &= \frac{\mathrm{Likelihood} \times \mathrm{Prior} }{\mathrm{Evidence} }
 \end{align}
-In contrast to parameter estimation, the evidences of each model $\ev_i$ take the leading role in model comparison. One typically will choose uniform priors on the models, ${\pi_i\equiv\Prob{\model_i}= \mathrm{const}}$, and then choose to use the model with the highest evidence. However, when evidences are similar in magnitude, the correct Bayesian approach is to make inferences by marginalising over all models considered. If there is a common derived parameter $y$, with marginalised posterior $\Probc{y}{\data,\model_i}$ then one may produce the fully marginalised posterior:
-\begin{equation}
-  \Probc{y}{\data} = \frac{\sum_i\Probc{y}{\data,\model_i}\ev_i\pi_i}{\sum_j\ev_j\pi_j}.
-\end{equation}
-This fully Bayesian approach has been historically under utilised due to the difficulties in computing the evidence numerically from the integral~(\ref{eqn:pc:evidence}).
+This describes how our initial knowledge $\prior$ of the parameters updates to $\posterior$ in light of the data $\data$. Note that the evidence $\ev$ features in both model selection and parameter estimation, and its computation is therefore of great significance.
 
 
-\section{Sampling}
+
+
+
+
+
+\section{Numerical statistics: Sampling}
 \label{sec:bay:samp}
+Having discussed the theory of Bayesian statistics, we now turn to the more tricky aspect of actually computing these various inferences. The likelihood~(\ref{eqn:bay:lik_def}) $\lik(\params)$ is a routine, if often challenging, quantity to compute. It is the job of observational scientists to provide this function, and for the purposes of inference we may consider it a ``black box''. In general, $\lik$ will be not be analytical, but instead is a numerical and computationally expensive quantity. Any calculation we perform must aim to minimise the number of times we attempt to evaluate $\lik$. The prior $\prior$ is typically much less expensive to compute and is normally expressed using analytic functions such as a uniform or Gaussian distribution.
+
+Typically, in inference calculation we wish to compute quantities that are marginalised over by the posterior. For example means and variances will typically take the form:
+\begin{align}
+  \mean{f} 
+  &= \int f(\params)\posterior(\params)\:d\params,
+  \label{eqn:bay:mean}\\
+  &= \int f(\params)\frac{\lik(\params)\prior(\params)}{\ev}\:d\params.
+\end{align}
+Given a likelihood $\like$ and a prior $\prior$, a naive approach would be to first compute the evidence
+\begin{equation}
+  \ev = \int \lik(\params) \prior(\params) \: d\params,
+  \label{eqn:bay:ev_short}
+\end{equation}
+and then perform the integral~(\ref{eqn:bay:mean}) using a traditional numerical quadrature procedure. In most cases, this method fails at both steps, due to the fact that the dimensionality of the integration is too high for numerical quadrature to succeed.
+
+To see this issue, consider the integration of a function along $[0,1]$
+\begin{equation}
+  \int_0^1 f(x) dx \approx \sum\limits_{i=0}^{n} f(x_i) w_i,
+\end{equation}
+where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the quadrature weights.\footnote{For example, if $x_i = \frac{i}{n}$ and $w_i=\frac{1}{n+1}$ then one obtains the left rectangle rule}
 
 
 \begin{figure}
   \centerline{%
-    \input{plots/probability}
+    \input{plots/1d_left_rectangle}
   }
-  \caption{Beer-mat mathematics. This diagram is how \edjaynes{} explained Bayes' theorem to a young \stevegull{}. Out of the entire sample space $\Omega$, if we observe $A$ to be true (blue region), then the probability of $B$ given that we know $A$ is simply $\Prob{A\cap B}/\Prob{A}$. Bayes' theorem then follows by rearrangement and symmetry.}
+  \caption{}
 \end{figure}
 
 
-From this definition, it is useful to define conditional probability via:
-\begin{equation}
-  \Probc{B}{A} = \frac{\Prob{A\cap B}}{\Prob{A}}.
-  \label{eqn:bay:cond}
-\end{equation}
-Multiplying both sides by $\Prob{A}$, and noting the symmetrical alternative:
-\begin{equation}
-  \Probc{B}{A}\Prob{A} = \Prob{A\cap B} = \Probc{A}{B}\Prob{B},
-  \label{eqn:bay:sym}
-\end{equation}
-one may then derive Bayes' theorem:
-\begin{align}
-  \Probc{B}{A} &= \frac{\Probc{A}{B}\Prob{B}}{\Prob{A}}.\\
-  \label{eqn:bay:bayes}
-  \tag{Bayes' Theorem}
-\end{align}
+
+\section{Nested Sampling}
+
+
+
+
+%Calculation of the posterior $\posterior(\theta)$ is the domain of {\em parameter estimation}, and in high dimensions is best performed by sampling the space with a Markov-Chain Monte-Carlo approach (MCMC). Examples include Metropolis-Hastings, Gibbs sampling and Slice sampling. For the most part, the evidence $\ev$ is ignored during such calculations, and one works with an unnormalised posterior ${\posterior\propto\lik\times\prior}$.
 
 
 

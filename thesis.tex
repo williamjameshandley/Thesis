@@ -10,20 +10,22 @@
 %
 % any packages we may need to load
 %
-\include{other/packages}
+\input{other/packages}
 
 %
 % any commands that should be defined
-\include{commands/people}    %References to people
-\include{commands/programs}  %code commands
-\include{commands/tools}     %tex tools
-\include{commands/bayesian}  %Bayesian nomenclature
-\include{commands/code}      %code
-\include{commands/biblio}    %bibliographic
-\include{commands/maths}     %maths
-\include{commands/constants} %constants
+\input{commands/people}    %References to people
+\input{commands/programs}  %code commands
+\input{commands/tools}     %tex tools
+\input{commands/bayesian}  %Bayesian nomenclature
+\input{commands/code}      %code
+\input{commands/biblio}    %bibliographic
+\input{commands/maths}     %maths
+\input{commands/constants} %constants
 %
 
+
+\includeonly{chapter_bayesian_inference/bayesian_inference}
 
 \begin{document}
 %
@@ -168,7 +170,7 @@
 %
 % The bibliography
 %
-\include{other/references}
+\input{other/references}
 %
 \end{document}
 
