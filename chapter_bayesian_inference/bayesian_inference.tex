@@ -282,7 +282,7 @@ Typically, in inference calculation we wish to compute quantities that are margi
   \label{eqn:bay:mean}\\
   &= \int f(\params)\frac{\lik(\params)\prior(\params)}{\ev}\:d\params.
 \end{align}
-Given a likelihood $\like$ and a prior $\prior$, a naive approach would be to first compute the evidence
+Given a likelihood $\lik$ and a prior $\prior$, a naive approach would be to first compute the evidence
 \begin{equation}
   \ev = \int \lik(\params) \prior(\params) \: d\params,
   \label{eqn:bay:ev_short}
@@ -299,10 +299,10 @@ where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the qua
 \begin{figure}
   \centerline{%
     \input{plots/1d_left_rectangle}
+    \input{plots/2d_left_rectangle}
   }
   \caption{}
 \end{figure}
-
 
 
 \section{Nested Sampling}

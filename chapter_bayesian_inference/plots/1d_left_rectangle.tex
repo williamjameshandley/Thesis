@@ -1,16 +1,26 @@
-\begin{tikzpicture}
-  \draw[->] (-.2,0) -- (8.2,0) node[below right] {$x$};
-  \draw[->] (0,-.2) -- (0,4.2) node[above right] {$y$};
+\begin{tikzpicture}[
+    declare function={fone(\x)=((3-\x)^3)/8+2;}, 
+  very thick, line join=round]
 
-  \foreach \x in {0,1,...,5} {%
-    \draw[fill=gray!50] (\x + 1,0) -- ++(1,0) -- ++(0,{sin(\x r) ++ 2}) --
-    ++(-1,0) -- ++(0,{-sin(\x r) - 2});
+  % Draw squares
+  \foreach [evaluate={\y=fone(\x);}] \x in {0.5,...,3.5}{
+    \path [fill=black!25, draw=white] 
+    (\x, 0) -- 
+    (\x+1, 0) -- 
+    (\x+1, \y) -- 
+    (\x, \y) -- 
+    cycle;
   }
 
-  \draw[domain=0:6,samples=100] plot(\x + 1,{sin(\x r) + 2})
-  node[right] {$y = f(x)$};
+  % Draw functions
+  \draw [black, domain=0.25:4.75, samples=100, variable=\t] 
+  plot (\t, {fone(\t)});
 
-  \foreach \x in {0,1,...,6} {%
-    \draw (\x + 1,0) node[below] {$x_{\x}$};
-  }
+  % x-axis
+  \draw [-stealth, black!75] (0,0) -- (5,0) node [below right] {$x$};
+
+  % y-axis
+  \draw [-stealth, black!75] (0,0) -- (0,5) node [above right] {$y$};
+
+
 \end{tikzpicture}

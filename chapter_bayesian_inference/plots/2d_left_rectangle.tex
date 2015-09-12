@@ -1,16 +1,56 @@
-\begin{tikzpicture}
-  \draw[->] (-.2,0) -- (8.2,0) node[below right] {$x$};
-  \draw[->] (0,-.2) -- (0,4.2) node[above right] {$y$};
+\begin{tikzpicture}[
+    x=(215:2em/sqrt 2), y=(0:2em), z=(90:2em),
+    declare function={ftwo(\x,\y)=((\x-3)^2+(-\y+3)^3)/8+3;}, 
+  very thick, line join=round]
 
-  \foreach \x in {0,1,...,5} {%
-    \draw[fill=gray!50] (\x + 1,0) -- ++(1,0) -- ++(0,{sin(\x r) ++ 2}) --
-    ++(-1,0) -- ++(0,{-sin(\x r) - 2});
+  % x-axis
+  \draw [-stealth, black!75] (0,0,0) -- (5,0,0) node [below left] {$x$};
+
+  % y-axis
+  \draw [-stealth, black!75] (0,0,0) -- (0,5,0) node [below right] {$y$};
+
+  % z-axis
+  \draw [-stealth, black!75] (0,0,0) -- (0,0,5) node [right] {$z$};
+
+
+  % Draw cubes
+  \foreach \x in {1,...,4}
+  \foreach \y [evaluate={\j=\x+.5; \i=\y+.5; \k=ftwo(\j,\i);}] in {1,...,4}{
+
+    % x-z planes (dark) -- right
+    \path [fill=black!50, draw=white] 
+    (\x, \y+1, 0) -- 
+    (\x+1, \y+1, 0) -- 
+    (\x+1, \y+1, \k) -- 
+    (\x, \y+1, \k) -- 
+    cycle;
+
+    % z-y planes (medium) -- front
+    \path [fill=black!25, draw=white] 
+    (\x+1, \y, 0) -- 
+    (\x+1, \y+1, 0) -- 
+    (\x+1, \y+1, \k) -- 
+    (\x+1, \y, \k) -- 
+    cycle;
+
+    % x-y planes (light) -- top
+    \path [fill=black!10, draw=white] 
+    (\x, \y, \k)  -- 
+    (\x+1, \y, \k) -- 
+    (\x+1, \y+1, \k) -- 
+    (\x, \y+1, \k) -- 
+    cycle;
   }
 
-  \draw[domain=0:6,samples=100] plot(\x + 1,{sin(\x r) + 2})
-  node[right] {$y = f(x)$};
-
-  \foreach \x in {0,1,...,6} {%
-    \draw (\x + 1,0) node[below] {$x_{\x}$};
+  % Draw functions
+  \foreach \x in {1,...,4}
+  \foreach \y in {1,...,4}{
+    \draw [black, fill=black, fill opacity=0.125, 
+    domain=0:1, samples=10, variable=\t] 
+    plot (\x+\t, \y, {ftwo(\x+\t,\y)}) -- 
+    plot (\x+1, \y+\t, {ftwo(\x+1,\y+\t)}) -- 
+    plot (\x+1-\t, \y+1, {ftwo(\x+1-\t,\y+1)}) --
+    plot (\x, \y+1-\t, {ftwo(\x,\y+1-\t)}) -- 
+    cycle;
   }
 \end{tikzpicture}
