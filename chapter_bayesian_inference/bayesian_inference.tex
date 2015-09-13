@@ -292,22 +292,37 @@ and then perform the integral~(\ref{eqn:bay:mean}) using a traditional numerical
 To see this issue, consider the integration of a function $g$ along $[0,1]$
 \begin{equation}
   \int_0^1 g(x) dx \approx \sum\limits_{i=0}^{n} g(x_i) w_i,
+  \label{eqn:bay:quadrature_1d}
 \end{equation}
-where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the quadrature weights. For example, if $x_i = \frac{i}{n}$ and $w_i=\frac{1}{n+1}$ then one obtains the left rectangle rule (Figure~\ref{fig:bay:quadrature}). This calculation therefore requires $\bigO{n}$ calculations of the function In the $d$-dimensional case, then one has the generalisation:
+where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the quadrature weights. For example, if $x_i = \frac{i}{n}$ and $w_i=\frac{1}{n+1}$ then one obtains the left rectangle rule (Figure~\ref{fig:bay:quadrature}). This calculation therefore requires $\bigO{n}$ calculations of the function. In the $d$-dimensional case, then one has the generalisation:
 \begin{equation}
-  \int_0^1\cdots\int_0^1 g(x_1,\cdots,x_d) dx_1\cdots \: dx_d \approx \sum\limits_{i_1,\cdots,i_d=0}^{n} g(x_{i_1},\cdots,x_{i_d}) w_{i_1,\cdots,i_d},
+  \int_0^1\cdots\int_0^1 g(x_1,\ldots,x_d) dx_1\cdots \: dx_d \approx \sum\limits_{i_1,\ldots,i_d=0}^{n} g(x_{i_1},\ldots,x_{i_d}) w_{i_1,\ldots,i_d},
+  \label{eqn:bay:quadrature_nd}
 \end{equation}
 This calculation however requires $\bigO{n^d}$ function evaluations. This is an exponential scaling with $d$, and is an example of the {\em curse of dimensionality}. Even for modest number of parameters $\left[ d\bigO{4} \right]$ these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which $\lik$ is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the data should update the prior by some amount in each dimension.}. The gridding size $n$ must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
 
 \begin{figure}
   \centerline{%
-    \input{plots/1d_left_rectangle}
-    \input{plots/2d_left_rectangle}
+%    \input{plots/1d_left_rectangle}
+%    \input{plots/2d_left_rectangle}
   }
   \caption{\label{fig:bay:quadrature}}
 \end{figure}
 
-Fortunately there is a better way. Since we only need points within the region 
+Fortunately there is a better way. If one has a set of $n_s$ samples 
+\begin{equation}
+  S = \left\{ \params_i\sim\posterior:i=1,\ldots,n_s \right\}
+  \label{eqn:bay:samples}
+\end{equation}
+distributed according to the posterior $\posterior$, then we may use the samples to compute the sample average of $f$:
+\begin{equation}
+  \hat{E}_f = \frac{1}{n_s}\sum\limits_{i=1}^{n_s} f(\params_i).
+  \label{eqn:bay:Ehat}
+\end{equation}
+The central limit theorem states that this quantity is normally distributed with mean $\mean{\hat{E}_f} = \mean{f}$ and standard deviation $\sigma_f/\sqrt{n_s}$, where $\sigma_f$ is the true standard deviation $\sqrt{\mean{f^2}-\mean{f}^2}$. If $n_s\gg 1$ is large, then $\hat{E}_f$ will closely approximate the true mean. 
+
+This approach has several advantages. If one has the set $S$ of samples~(\ref{eqn:bay:samples}), the computation~(\ref{eqn:bay:Ehat}) is extremely cheap, in contrast to a full integral~(\ref{eqn:bay:quadrature_nd}). 
+
 
 
 
