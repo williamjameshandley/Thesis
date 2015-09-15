@@ -24,9 +24,13 @@
 \input{commands/constants} %constants
 %
 
+% Code to remove figures
+\newcommand{\lightweight}{}
+
 
 \includeonly{%
-chapter_bayesian_inference/bayesian_inference
+chapter_bayesian_inference/bayesian_inference,
+appendix_sampling_methods/sampling_methods
 }
 
 \begin{document}
@@ -67,8 +71,8 @@ chapter_bayesian_inference/bayesian_inference
 % Statistics
 % ==========
 %
-%\part{Statistics}
-%\label{part:statistics}
+\part{Statistics}
+\label{part:statistics}
 %
 % Bayesian inference
 % ------------------
@@ -106,8 +110,8 @@ chapter_bayesian_inference/bayesian_inference
 % Cosmology
 % ==========
 %
-%\part{Cosmology}
-%\label{part:cosmology}
+\part{Cosmology}
+\label{part:cosmology}
 %
 % Inflationary Cosmology
 % ----------------------
@@ -160,9 +164,15 @@ chapter_bayesian_inference/bayesian_inference
 % Appendices
 % ==========
 %
-%\part{Appendices}
+\part{Appendices}
 %
 \appendix
+%
+\makeatletter
+\def\input@path{{.}{./appendix_sampling_methods/}}
+\makeatother
+\graphicspath{{.}{./appendix_sampling_methods/figures/}}
+\include{appendix_sampling_methods/sampling_methods}
 %
 \makeatletter
 \def\input@path{{.}{./appendix_RKWKB/}}

@@ -2,6 +2,10 @@
 
 \addcontentsline{toc}{chapter}{Declaration}
 
-Word Count: %\wordcount{}words (including text, headers, captions, floats, inlined formulae and displayed formulae).
+\ifdefined\lightweight{}
+\else
+Word Count: \wordcount{}words (including text, headers, captions, floats, inlined formulae and displayed formulae).
+\fi
+
 
 \cleardoublepage{}

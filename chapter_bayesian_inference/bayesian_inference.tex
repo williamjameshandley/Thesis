@@ -166,9 +166,12 @@ $\model_1$ can go further however. We may also use Bayes' theorem to compute
 This here gives us the distribution on $p$ {\em given the data}. Namely, how the data should update our ``spread bet''. We already have the ingredients for the above construction from equations~(\ref{eqn:bay:M1}),~(\ref{eqn:bay:prior1}),~\&~(\ref{eqn:bay:marg}), and given the uniform prior, we find our updated bet on $p$ is proportional to $p^\data{(1-p)}^{N-\data}$, a function of $p$. This is a beta distribution, and is indicated in Figure~\ref{fig:bay:beta}.
 
 \begin{figure}
+  \ifdefined\lightweight
+  \else
   \centerline{%
     \input{plots/beta_function}
   }
+  \fi
   \caption{%
   Beta function.\label{fig:bay:beta}
 }
@@ -302,10 +305,13 @@ where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the qua
 This calculation however requires $\bigO{n^d}$ function evaluations. This is an exponential scaling with $d$, and is an example of the {\em curse of dimensionality}. Even for modest number of parameters $\left[ d\bigO{4} \right]$ these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which $\lik$ is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the data should update the prior by some amount in each dimension.}. The gridding size $n$ must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
 
 \begin{figure}
+  \ifdefined\lightweight{}
+  \else
   \centerline{%
-%    \input{plots/1d_left_rectangle}
-%    \input{plots/2d_left_rectangle}
+    \input{plots/1d_left_rectangle}
+    \input{plots/2d_left_rectangle}
   }
+  \fi
   \caption{\label{fig:bay:quadrature}}
 \end{figure}
 
@@ -317,11 +323,16 @@ Fortunately there is a better way. If one has a set of $n_s$ samples
 distributed according to the posterior $\posterior$, then we may use the samples to compute the sample average of $f$:
 \begin{equation}
   \hat{E}_f = \frac{1}{n_s}\sum\limits_{i=1}^{n_s} f(\params_i).
-  \label{eqn:bay:Ehat}
+  \label{eqn:bay:ehat}
 \end{equation}
 The central limit theorem states that this quantity is normally distributed with mean $\mean{\hat{E}_f} = \mean{f}$ and standard deviation $\sigma_f/\sqrt{n_s}$, where $\sigma_f$ is the true standard deviation $\sqrt{\mean{f^2}-\mean{f}^2}$. If $n_s\gg 1$ is large, then $\hat{E}_f$ will closely approximate the true mean. 
 
-This approach has several advantages. If one has the set $S$ of samples~(\ref{eqn:bay:samples}), the computation~(\ref{eqn:bay:Ehat}) is extremely cheap, in contrast to a full integral~(\ref{eqn:bay:quadrature_nd}). 
+This approach has several advantages. If one has the set $S$ of samples~(\ref{eqn:bay:samples}), the computation~(\ref{eqn:bay:ehat}) is extremely cheap, in contrast to a full integral~(\ref{eqn:bay:quadrature_nd}). 
+
+All that remains in order to compute~(\ref{eqn:bay:ehat}) is a methodology for cheaply generating samples according to a given distribution $\posterior$. In many cases, one does not even need the normalisation constant $\ev$ in order to sample from $\posterior$, merely an unnormalised posterior $\str{\posterior}= \lik\times\prior$. Suffice to say that this is a well established problem, and for readers unfamiliar with a given sampling method I defer them to Appendix~\ref{chap:sm}.
+
+However, even if one can generate reliably and cheaply a full set $S$ of samples, this is not a full solution to the entire Bayesian inference problem problem. Computing means with it is only a reasonable methodology when $\sigma_f$ is small (or even defined at all). A very important example of a case where this is not true is the computation of the evidence integral~(\ref{eqn:bay:ev_short}).
+
 
 
 
