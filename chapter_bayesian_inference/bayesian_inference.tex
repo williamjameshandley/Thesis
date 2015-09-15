@@ -292,17 +292,17 @@ Given a likelihood $\lik$ and a prior $\prior$, a naive approach would be to fir
 \end{equation}
 and then perform the integral~(\ref{eqn:bay:mean}) using a traditional numerical quadrature procedure. In most cases, this method fails at both steps, due to the fact that the dimensionality of the integration is too high for numerical quadrature to succeed.
 
-To see this issue, consider the integration of a function $g$ along $[0,1]$
+To see this issue, consider the quadrature integration of a function $g$ along $[0,1]$
 \begin{equation}
   \int_0^1 g(x) dx \approx \sum\limits_{i=0}^{n} g(x_i) w_i,
   \label{eqn:bay:quadrature_1d}
 \end{equation}
-where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the quadrature weights. For example, if $x_i = \frac{i}{n}$ and $w_i=\frac{1}{n+1}$ then one obtains the left rectangle rule (Figure~\ref{fig:bay:quadrature}). This calculation therefore requires $\bigO{n}$ calculations of the function. In the $d$-dimensional case, then one has the generalisation:
+where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the quadrature weights. For example, if $x_i = \frac{i}{n}$ and $w_i=\frac{1}{n+1}$ then one obtains the left rectangle rule (Figure~\ref{fig:bay:quadrature}). This calculation therefore requires $\bigO{n}$ calculations of the function. In the $d$-dimensional case the generalisation is:
 \begin{equation}
   \int_0^1\cdots\int_0^1 g(x_1,\ldots,x_d) dx_1\cdots \: dx_d \approx \sum\limits_{i_1,\ldots,i_d=0}^{n} g(x_{i_1},\ldots,x_{i_d}) w_{i_1,\ldots,i_d},
   \label{eqn:bay:quadrature_nd}
 \end{equation}
-This calculation however requires $\bigO{n^d}$ function evaluations. This is an exponential scaling with $d$, and is an example of the {\em curse of dimensionality}. Even for modest number of parameters $\left[ d\bigO{4} \right]$ these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which $\lik$ is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the data should update the prior by some amount in each dimension.}. The gridding size $n$ must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
+This calculation however requires $\bigO{n^d}$ function evaluations. This is an exponential scaling with $d$, and is an example of the {\em curse of dimensionality}. Even for modest number of parameters $\left[ d\bigO{4} \right]$ these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which $\lik$ is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the good data will update the prior information by some significant amount in each dimension.}. The grid size $n$ must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
 
 \begin{figure}
   \ifdefined\lightweight{}
@@ -325,20 +325,238 @@ distributed according to the posterior $\posterior$, then we may use the samples
   \hat{E}_f = \frac{1}{n_s}\sum\limits_{i=1}^{n_s} f(\params_i).
   \label{eqn:bay:ehat}
 \end{equation}
-The central limit theorem states that this quantity is normally distributed with mean $\mean{\hat{E}_f} = \mean{f}$ and standard deviation $\sigma_f/\sqrt{n_s}$, where $\sigma_f$ is the true standard deviation $\sqrt{\mean{f^2}-\mean{f}^2}$. If $n_s\gg 1$ is large, then $\hat{E}_f$ will closely approximate the true mean. 
+The central limit theorem states that $\hat{E}_f$ is normally distributed with mean $\mean{f}$ and standard deviation $\sigma_f/\sqrt{n_s}$, where $\sigma_f$ is the true standard deviation ${(\mean{f^2}-\mean{f}^2)^{1/2}}$. If $n_s\gg 1$ is large, then $\hat{E}_f$ will closely approximate the true mean. 
 
-This approach has several advantages. If one has the set $S$ of samples~(\ref{eqn:bay:samples}), the computation~(\ref{eqn:bay:ehat}) is extremely cheap, in contrast to a full integral~(\ref{eqn:bay:quadrature_nd}). 
+This approach has several advantages. If one already has the set $S$ of samples~(\ref{eqn:bay:samples}), the computation~(\ref{eqn:bay:ehat}) is extremely cheap, in contrast to a full integral~(\ref{eqn:bay:quadrature_nd}). Further, it has excellent scaling with dimensionality. 
 
 All that remains in order to compute~(\ref{eqn:bay:ehat}) is a methodology for cheaply generating samples according to a given distribution $\posterior$. In many cases, one does not even need the normalisation constant $\ev$ in order to sample from $\posterior$, merely an unnormalised posterior $\str{\posterior}= \lik\times\prior$. Suffice to say that this is a well established problem, and for readers unfamiliar with a given sampling method I defer them to Appendix~\ref{chap:sm}.
 
-However, even if one can generate reliably and cheaply a full set $S$ of samples, this is not a full solution to the entire Bayesian inference problem problem. Computing means with it is only a reasonable methodology when $\sigma_f$ is small (or even defined at all). A very important example of a case where this is not true is the computation of the evidence integral~(\ref{eqn:bay:ev_short}).
+However, even if one can generate reliably and cheaply a full set $S$ of samples, this is not a full solution to the entire Bayesian inference problem problem. Computing $\mean{f}$ with sampling is only a reasonable methodology when $\sigma_f$ is small (or even defined at all). A very important example of a case where this is not true is the computation of the evidence integral~(\ref{eqn:bay:ev_short}). For these kind of problems we must turn to a more sophisticated methodology
+
+
+
+\section{Nested sampling}
+\label{sec:bay:nested_sampling}
+%
+Nested sampling is a methodology devised by \citet{skilling2006} to effectively compute the evidence:
+\begin{equation}
+  \ev = \int \lik(\params) \prior(\params) \: d\params.
+  \tag{\ref{eqn:bay:ev_short} revisited}
+\end{equation}
+This integral is typically over a high-dimensional parameter space, only a small fraction of which contributes to $\ev$. The size and position of the region surrounding the peak(s) will not be known {\em a priori}, and in high dimensions is challenging to find.  
+
+\subsection{The prior volume transformation $\lik(X)$}
+The first trick is to transform~(\ref{eqn:bay:ev_short}) into an effectively one dimensional problem. We define an iso-likelihood contour as usual:
+\begin{equation}
+  C(\liks) = \{\params : \lik(\params)=\liks \}.
+  \label{eqn:bay:contour_def}
+\end{equation}
+Each contour defined by $\liks$ will also enclose a $\params$-region containing some fraction of the prior:
+\begin{equation}
+  X(\liks) = \int_{\lik(\params)>\liks} \prior(\params) d\params,
+  \label{eqn:bay:prior_volume}
+\end{equation}
+which is termed the {\em prior volume\/} by physicists and {\em prior mass\/} by mathematicians. For each contour $C$, there corresponds a likelihood and a prior volume. We may use this to re-write the likelihood as a function $\lik(X)$.\footnote{More rigorously, one may invert equation~(\protect\ref{eqn:bay:prior_volume}) since $X(\lik)$ is monotonic.} and thus the integral~(\ref{eqn:bay:ev_short}) as:
+\begin{equation}
+  \ev = \int_0^1 \lik(X)\:dX.
+  \label{eqn:bay:ev_X}
+\end{equation}
+This process is graphically depicted in Figure~\ref{fig:bay:prior_volume} for a two dimensional likelihood. Note the limits are from $0$ to $1$ since $X$ denotes the {\em fraction\/} of the prior enclosed by the likelihood contour\footnote{or alternatively because $X$ is simply a form of cumulative distribution function}.
+%
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{contour_nested}
+  \caption{%
+    The nested sampling volume transformation.
+    Left: five iso-likelihood contours of a two-dimensional multi-modal likelihood function $\lik(\params)$. Each contour encloses some fraction of the prior $X$, indicated by colour.
+    Right: Likelihood $\lik$ as a function of the volume $X$ enclosed by the contour. The evidence is the area under this curve.\label{fig:bay:prior_volume}
+  }
+\end{figure}
+
+An inverse derivation is to examine~(\ref{eqn:bay:ev_short}), and define a new integration variable $dX = \prior(\params)\:d\params$. From this definition, the notion of prior volume~(\ref{eqn:bay:prior_volume}) follows, which may be inverted to give $\lik(X)$. Mathematically inclined readers may find Appendix~\ref{sec:MA:lesbesque} of interest, which details how this procedure is related to Lesbesque integration.
+
+The beauty of this process is that it completely removes all complications such as geometry, topology and dimensionality, reducing~(\ref{eqn:bay:ev_X}) to a one dimensional integral.  We may now evaluate the evidence using standard quadrature techniques:
+\begin{equation}
+  \ev \approx \sum_{i} w_i \lik(X_i),
+  \label{eqn:bay:quadrature}
+\end{equation}
+where $\{X_i\}$ are the quadrature points and $\{w_i\}$ are the quadrature weights. 
+
+\subsection{Computing the prior volumes}
+
+This is all well and good, but so far all we have done is transfer the complications (geometry, topology and dimensionality) from the evidence integral~(\ref{eqn:bay:ev_short}) to the integral which calculates the prior volume~(\ref{eqn:bay:prior_volume}). John's true genius is to come up with a scheme that allows one to {\em estimate\/} the prior volume $X$ in a quantifiable way.
+
+For now, let us assume that we have a sampling procedure capable of producing a sample $\tilde{\params}$ distributed according to the prior $\prior$, subject to the constraint that it lies within the likelihood contour $C(\liks)$.  This is termed ``sampling within a hard-edged likelihood constraint'', and in theory shouldn't be any more challenging than traditional sampling techniques such as Metropolis-Hastings \citep{skilling2006}. 
+
+If one draws an initial sample from $C(0)$ (i.e.\ the entire space) according to the prior $\prior$, one will have generated a point with prior volume $X_1$ and likelihood $\lik_1$. On average, the sample will cut the prior in two, and the mean $\mean{X_1}=\frac{1}{2}$. If one then generates $X_2$ by sampling from $C(\lik_1)$, then $\mean{X_2}=\frac{1}{4}$. Repeating this process by using the previous contour as the hard likelihood constraint
+
+A sample within $\liks$ distributed according to the prior $\prior$ will have its prior volume $X$ drawn from a uniform distribution within $X_\ast=X(\liks)$. 
+
+\clearpage{}
 
 
 
 
 
 
-\section{Nested Sampling}
+\subsection{Compressing the space}
+\label{sec:bay:comp_space}
+Nested sampling maintains a population of $\nlive$ {\em live points\/} within a region of the parameter space. These points are sequentially updated so that the region that they occupy contracts around the peak(s) of the posterior. 
+
+One begins by sampling $\nlive$ points from the prior distribution $\prior(\params)$. At iteration $i$, the point with the lowest likelihood $\lik_i$ is deleted, and then replaced by a new point. The new point is drawn from the prior, subject to the constraint that its likelihood is greater than $\lik_i$.
+
+The fraction of the prior contained within an iso-likelihood contour $\lik(\params) = \lik$ is denoted the {\em prior volume\/}:
+%
+\begin{equation}
+  X(\lik) = \int_{\lik(\params)>\lik} \prior(\params) d\params.
+  \label{eqn:bay:prior_volume}
+\end{equation}
+%
+Since the live points are always drawn uniformly from $\prior(\params)$, at iteration $i$ the volume containing the live points will contract on average by a factor of ${\nlive/(\nlive+1)}$. Initially the prior volume is $1$, so at iteration $i$:
+\begin{equation}
+  \mean{X_i} = {\left( \frac{\nlive}{\nlive+1} \right)}^i \approx e^{-i/\nlive}.
+  \label{eqn:bay:X_full}
+\end{equation}
+The live points thus compress the prior {\em exponentially}. As the nested sampling run progresses, one is left with a sequence of discarded points (termed {\em dead points\/}). Each dead point will have a set of parameter values $\params_i$, a likelihood $\lik_i$ and an estimated prior volume $X_i$.
+
+\subsection{Evidence estimation}
+\label{sec:bay:ev_es}
+We can use the dead and live points to estimate the evidence. By differentiating the prior volume~(\ref{eqn:bay:prior_volume}), we may re-write the evidence calculation~(\ref{eqn:bay:evidence}) as an integral over a single variable:
+%
+\begin{equation}
+  \ev = \int_0^1 \lik(X)dX.
+  \label{eqn:bay:evidence_short}
+\end{equation}
+%
+This is detailed graphically in Figure~\ref{fig:bay:prior_volume}. We may thus estimate the evidence by quadrature:
+%
+\begin{equation}
+  \ev \approx \sum_{i\in\sdead} w_i \lik_i,
+  \label{eqn:bay:quadrature}
+\end{equation}
+%
+where for simplicity we take $w_i = X_{i-1}-X_{i}$. Of course, this is only an estimate, since we are inferring the mean values $\mean{X_i}$ from the sampling procedure. One may however estimate the error in our inference, the full details of which can be found in Section~\ref{sec:bay:evidences}.
+
+\subsection{Parameter estimation}
+\label{sec:bay:param_es}
+Nested sampling can also perform parameter estimation by using the dead and live points as samples from the posterior, provided that the $i$th point is given the importance weighting:
+\begin{equation}
+  p_i = \frac{w_i\lik_i}{\ev},
+  \label{eqn:bay:importance_weighting}
+\end{equation}
+where $w_i$ is the prior volume of the shell in which point $i$ was sampled. 
+
+\subsection{Algorithm termination}
+\label{sec:bay:alg_term}
+%
+\begin{figure}
+  \centering
+  \includegraphics[width=\columnwidth]{gaussian_weight}
+  \caption{%
+    Plot of a generic likelihood as a function of the prior volume $\lik(X)$. In high dimensions, the likelihood is only visible if plotted against $\log X$ (dashed curve). However, the evidence is better visualised by plotting $X\log(X)$ (solid curve). The area under the solid curve corresponds to the evidence. The magnitude of the solid curve is proportional to the importance weighting. Nested sampling proceeds from high to low volumes. After some time, the live points no longer contribute significantly to the evidence, and the algorithm terminates at this point.\label{fig:bay:gaussian_weight}
+  }
+\end{figure}
+%
+As nested sampling proceeds, the likelihoods $\lik_i$ monotonically increase, but the weights $w_i$ monotonically decrease. This results in a peak in importance weights~(\ref{eqn:bay:importance_weighting}) that can be seen in Figure~\ref{fig:bay:gaussian_weight}. We terminate the algorithm once the remaining posterior mass (white region) left in the live points is some small fraction of the currently calculated evidence (dark region). The posterior mass left in the live points at iteration $i$ can be estimated by:
+\begin{equation}
+  \ev_\slive \approx \mean{\lik}_\slive X_i,
+  \label{eqn:bay:live_evidence}
+\end{equation}
+where the average is taken over the live points. Since this is typically an underestimate at early times, this will not cause premature termination.
+
+
+\subsection{The unit hypercube}
+\label{sec:bay:unit_hypercube}
+Each iteration of nested sampling requires one to sample from the prior (subject to a hard likelihood constraint). 
+Typically, priors are defined in terms of simple analytic functions such as uniform or Gaussian distributions, and may be sampled using  inverse transform sampling. 
+
+In the one-dimensional case, this amounts to converting a uniform random variable (which are easy to generate) into a variable sampled from a general distribution $f(\theta)$. One first finds its cumulative distribution function (CDF):
+\begin{equation}
+  F(\theta) = \int\limits_{-\infty}^\theta f(\theta^\prime) d\theta^\prime,
+\end{equation}
+computes the inverse of the CDF, and then applies this function to a uniform random variable  $x\sim U(0,1)$ to generate a variable $\theta = F^{-1}(x)$, which is distributed according to $f(\theta)$. 
+
+In the general $D$-dimensional case, one calculates $D$ conditional distributions $\{f_i:i=1\ldots,D\}$: by marginalising over parameters with indices greater than $i$ and conditioning on parameters with indices less than $i$:
+%
+\begin{equation}
+  f_i(\theta_i|\theta_{i-1},\ldots,\theta_1) 
+  =
+  \frac{%
+    \int f_i(\params) d\theta_{i+1}\ldots d\theta_{N}
+  }{%
+    \int f_i(\params) d\theta_{i}\ldots d\theta_{N}
+  },
+\end{equation}
+%
+Integrating these yields $D$ conditional CDFs:
+%
+\begin{equation}
+  x_i = F_i(\theta_i|\theta_{i-1},\ldots,\theta_1) = \int\limits_0^{\theta_i} f_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) d\theta_i^\prime.
+\end{equation}
+%
+Inverting this gives $\theta_i = F^{-1}_i(x_i|\theta_{i-1},\ldots,\theta_1)$, which constitutes a set of relations sequentially transforming $D$ uniform random variables $\{x_i\}$ into $\{\theta_i\}$ distributed according to $f(\params)$.
+
+In many cases, the prior $\prior(\params)$ is separable, and the above equations are easily calculated. For sections of the parameters which are not separable, the calculation can become more involved. We include a few demonstrations of this procedure in Section~\ref{sec:bay:prior_tranformations}.
+
+Nested sampling can thus be performed in the unit $D$-dimensional hypercube, $\bxx\in {[0,1]}^D$, defining a new likelihood function via $\lik(\params)= \lik(\bFF^{-1}(\bxx))$. This has numerous advantages, the first being that one only needs to be able to generate uniform random variables in $[0,1]$. The second is more subtle; it is more natural to define a distance metric in the unit hypercube than in the physical space. Unit hypercube variables all have the same dimensionality: probability.
+
+
+
+
+
+
+
+
+\section{Sampling within an iso-likelihood contour}
+\label{sec:bay:iso_likelihood_sampling}
+Now that the nested sampling meta-algorithm has been described, we briefly review the various instantiations that exist, and introduce \PolyChord{} as an algorithm utilising slice sampling at each iteration to generate new live points.
+
+The most challenging aspect of nested sampling is drawing a new point from the prior subject to the hard likelihood constraint $\lik>\lik_i$. This may be done in a variety of ways, and distinguishes the various historical implementations.
+
+\subsection{Previous Methods}
+\label{sec:bay:previous_methods}
+For some problems, the iso-likelihood contour is known analytically, allowing one to construct a sampling procedure specific to that problem. This is demonstrated by~\cite{Keeton}, and can be useful for testing nested sampling's theoretical behaviour. In most cases, however, the likelihood contour is unknown a-priori, so a more numerical approach must be taken.
+
+\cite{Mukherjee} implemented a rejection sampling method, which was later incorporated into the widely-used~\MultiNest{} algorithm~\citep{MultiNest1,MultiNest2,MultiNest3}.
+These algorithms sample by using the live points to construct a set of intersecting ellipsoids which together aim to enclose the likelihood contour, and then performs rejection sampling within the ellipsoids.
+ Whilst being an excellent algorithm for modest numbers of parameters, any rejection sampling algorithm has an exponential scaling with dimensionality that eventually emerges.
+
+An alternative approach (the one initially envisaged by Skilling) is to sample with the hard likelihood constraint using a Markov-Chain based procedure. One makes several steps according to some proposal distribution until one is satisfied an independent sample is produced. This has significant advantages over a rejection-based approach, the most obvious being that the scaling with dimensionality is polynomial rather than exponential. In rejection sampling, points are drawn until one is found within the likelihood contour (often with extremely low efficiency). Using a Markov-chain approach however, (correlated) points are continually generated within the contour, until one is happy that a sample independent from the initial seed has been generated. These ``intra-chain points'' which we term {\em phantom points\/} have the potential to provide a great deal more information.
+
+A traditional Metropolis--Hastings (MH) or Gibbs sampling approach may be utilised, but in general such algorithms are ill-suited to sampling from a hard likelihood constraint without a significant amount of tuning of a proposal matrix. This is examined in section 6 of~\cite{MultiNest1}.
+
+Galilean (Hamiltonian) sampling~\citep{GalileanNestedSampling,Betancourt2011} improves upon the traditional MH sampler by using proposal points generated by reflecting off iso-likelihood contours. This however requires gradients to be calculated, and can become inefficient if the step size is chosen incorrectly, or if the contour has a shape which is difficult to `step back into'
+
+Diffusive nested sampling~\citep{DiffusiveNestedSampling} is an alternative and promising variation on~\citepos{skilling2006} algorithm, which utilises MCMC to explore a mixture of nested probability distributions. Since it is MCMC based, it scales well with dimensionality. In addition, it can deal with multimodal and degenerate posteriors, unlike traditional MCMC\@. It does however have multiple tuning parameters.
+
+
+\subsection{Slice sampling}
+\label{sec:bay:slice_sampling}
+We have found that a Markov-Chain based procedure utilising~\citepos{NealSlice} slice sampling at each step is well suited to sampling uniformly within an iso-likelihood contour.
+Radford Neal initially proposed slice sampling as an effective methodology for generating samples numerically from a given posterior $\posterior(\params)$. One first chooses a `slice' (or probability level) $\posterior_0$ uniformly within $[0,\posterior_\smax]$. One then samples uniformly within the $\params$-region defined by $\posterior(\params)>\posterior_0$. The similarity with the iso-likelihood contour sampling required by nested sampling should be clear. In the one-dimensional case, he suggests the sampling procedure detailed in Figure~\ref{fig:bay:1d_slice}.
+
+\begin{figure}
+  \centerline{%
+    \includegraphics[width=\textwidth]{slice}
+  }
+
+  \caption{Slice sampling in one dimension. 
+    Given a probability level (or slice) $\posterior_0$, slice sampling samples within the horizontal region defined by $\posterior>\posterior_0$. 
+    From an initial point $x_0$ within the slice ($\posterior(x_0)>\posterior_0$), a new point $x_1$ is generated within the slice with a distribution $P(x_1|x_0)$.
+    External bounds are first set on the slice $\hat{L}<x_0<\hat{R}$ by uniformly expanding a random initial bound of width $w$ until they lie outside the slice (Neal terms this the {\em stepping out\/} procedure). 
+    $x_1$ is then sampled uniformly within these bounds.  
+    If $x_1$ is not in the slice, then $\hat{L}$ or $\hat{R}$ is replaced with $x_1$, ensuring that $x_0$ is still within the slice.
+    This procedure is guaranteed to generate a new point $x_1$, and satisfies detailed balance $P(x_0|x_1) = P(x_1|x_0)$. Thus, if $x_0$ is drawn from a uniform distribution within the slice, so is $x_1$.\label{fig:bay:1d_slice}
+  }
+\end{figure}
+
+
+This procedure for sampling within a likelihood bound is ideal for nested sampling. It samples uniformly with minimal information: an initial bound size $w$, and a point $x_0$ that is within the contour. In general $w$ must be chosen so that it is roughly the size of the bound, but if one overestimates it then the bounds will contract exponentially. Indeed, one may consider this as being equivalent to a prior space compression~(\ref{eqn:bay:X_full}) with $\nlive=\ndims=1$. As a starting point, one may use one of the live points, which is already uniformly sampled. Since the procedure above satisfies detailed balance, this will produce a point which is also uniformly sampled within the iso-likelihood contour.
+
+In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. The simplest of these is implemented by sampling each of the parameter directions in turn. Since each one-dimensional slice requires $\bigO{\text{a few}}$ likelihood calculations, the number of likelihood calculations required scales linearly with dimensionality, providing the region is efficiently navigated. Multi-dimensional slice sampling has many of the benefits of a traditional MH approach, and uses a proposal distribution which is much more efficient at sampling a hard likelihood constraint.
+
+\cite{SystemsBio} have already applied this procedure to nested sampling. This works exceptionally well for cases in which the parameters are non-degenerate. However, this becomes inefficient in the case of correlated parameters, or curving degeneracies.
+
 
 
 
