@@ -22,6 +22,7 @@
 \input{commands/biblio}    %bibliographic
 \input{commands/maths}     %maths
 \input{commands/constants} %constants
+\input{commands/polychord} %polychord commands
 %
 
 % Code to remove figures
@@ -82,6 +83,7 @@ appendix_sampling_methods/sampling_methods
 \makeatletter
 \def\input@path{{.}{./chapter_bayesian_inference/}}
 \makeatother
+\graphicspath{{.}{./chapter_bayesian_inference/figures/}}
 \include{chapter_bayesian_inference/bayesian_inference}
 %
 % PolyChord
@@ -173,6 +175,12 @@ appendix_sampling_methods/sampling_methods
 \makeatother
 \graphicspath{{.}{./appendix_sampling_methods/figures/}}
 \include{appendix_sampling_methods/sampling_methods}
+%
+\makeatletter
+\def\input@path{{.}{./appendix_mathematical_asides/}}
+\makeatother
+\graphicspath{{.}{./appendix_mathematical_asides/figures/}}
+\include{appendix_mathematical_asides/mathematical_asides}
 %
 \makeatletter
 \def\input@path{{.}{./appendix_RKWKB/}}
