@@ -7,6 +7,5 @@
 *.blg
 *.out
 *.toc
-*.swp
-*.swo
+*.sw[a-z]
 other/count.txt
