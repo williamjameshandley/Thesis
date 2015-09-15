@@ -1,0 +1,3 @@
+#!/bin/bash
+
+texcount -inc -sum=1,1,1,1,1,1,1 -0 -template={SUM} thesis.tex 2> /dev/null | sed '/^$/d'
