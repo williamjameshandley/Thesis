@@ -78,6 +78,8 @@ one may then derive Bayes' theorem:
   \label{eqn:bay:bayes}
   \tag{Bayes' Theorem}
 \end{align}
+Conditional probabilities draw attention to a particularly interesting aspect of probability from a measurement theory perspective. Probability has a closed addition and multiplication associated with it. No other measurable quantity has this property.
+
 \section{Bayesian vs.\ Frequentist}
 \label{sec:bay:bayesian_frequentist}
 
@@ -343,7 +345,14 @@ Nested sampling is a methodology devised by \citet{skilling2006} to effectively 
   \ev = \int \lik(\params) \prior(\params) \: d\params.
   \tag{\ref{eqn:bay:ev_short} revisited}
 \end{equation}
-This integral is typically over a high-dimensional parameter space, only a small fraction of which contributes to $\ev$. The size and position of the region surrounding the peak(s) will not be known {\em a priori}, and in high dimensions is challenging to find.  
+This integral is typically over a high-dimensional parameter space, only a small fraction of which contributes to $\ev$. We may quantify the size of this region by considering the {\em relative entropy\/}\footnote{aka: Kullback-Leibler divergence, information divergence, information gain, KLIC, KL divergence.} of the prior from the posterior distribution:
+\begin{equation}
+  H = \int \log\left( \frac{\posterior(\params)}{\prior(\params)}\right) \posterior(\params)\: d\params
+  \label{eqn:bay:rel_ent}
+\end{equation}  
+This quantifies the number of nats\footnote{if ``bits'' are a measure of information in base 2, then ``nats'' is information in base $e$.} of information that have been gained on account of the data. Equivalently, the fraction of the prior which contributes non-negligibly to~(\ref{eqn:bay:ev_short}) is approximately $X\sim e^{-H}$.
+
+The size and position of the region surrounding the peak(s) will not be known {\em a priori}, and in high dimensions is challenging to find.  
 
 \subsection{The prior volume transformation $\lik(X)$}
 The first trick is to transform~(\ref{eqn:bay:ev_short}) into an effectively one dimensional problem. We define an iso-likelihood contour as usual:
@@ -388,9 +397,16 @@ This is all well and good, but so far all we have done is transfer the complicat
 
 For now, let us assume that we have a sampling procedure capable of producing a sample $\tilde{\params}$ distributed according to the prior $\prior$, subject to the constraint that it lies within the likelihood contour $C(\liks)$.  This is termed ``sampling within a hard-edged likelihood constraint'', and in theory shouldn't be any more challenging than traditional sampling techniques such as Metropolis-Hastings \citep{skilling2006}. 
 
-If one draws an initial sample from $C(0)$ (i.e.\ the entire space) according to the prior $\prior$, one will have generated a point with prior volume $X_1$ and likelihood $\lik_1$. On average, the sample will cut the prior in two, and the mean $\mean{X_1}=\frac{1}{2}$. If one then generates $X_2$ by sampling from $C(\lik_1)$, then $\mean{X_2}=\frac{1}{4}$. Repeating this process by using the previous contour as the hard likelihood constraint
+Importantly, a sample within $C(\liks)$ distributed according to the prior $\prior$ will have its prior volume $X$ drawn {\em uniformly\/} within $[0,X_\ast]$, $X_\ast=X(\liks)$. This demonstrates another reason why the prior volume is a powerful variable to work with.
 
-A sample within $\liks$ distributed according to the prior $\prior$ will have its prior volume $X$ drawn from a uniform distribution within $X_\ast=X(\liks)$. 
+\subsection{Single-point nested sampling}
+
+If one draws an initial sample from $C(0)$ (i.e.\ the entire space) according to the prior $\prior$, one will have generated a point with prior volume $X_1$ and likelihood $\lik_1$. On average, a single sample will cut the prior in two, and the mean $\mean{X_1}=\frac{1}{2}$. At this value of $X_1$, it is unlikely that the likelihood is large enough to contribute to the evidence integral ($X_1\gg e^{-H}$) so we should go deeper.
+
+If one then generates $X_2$ by sampling from the contour defined by the previous point $C(\lik_1)$, then $\mean{X_2}=\frac{1}{4}$. Repeating this process by using the previous contour as the hard likelihood constraint will mean that we sample within regions closer and closer to the peak. When $X_i\sim e^{-H}$, then the samples with these quadrature points start contributing to the evidence integral. Eventually, the samples compress too far ($X_i\ll e^{-H}$) and no longer contribute to the evidence, and the algorithm should stop.
+
+\subsection{Multi-point nested sampling}
+
 
 \clearpage{}
 

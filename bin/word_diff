@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Find the current word count
+CURRENT=$(./bin/word_count)
+
+# Find the last word count
+LAST=$(git log | grep -i 'word count' | head -n1 | grep -o '[0-9]*') 
+
+DIFFERENCE=$( echo $CURRENT - $LAST | bc )
+
+echo $DIFFERENCE
+
+printf "Current count:   %6s\n" "$CURRENT"
+printf "   Last count:  -%6s\n" "$LAST"
+printf "               --------\n"
+printf "   Difference:   %6s\n" "$DIFFERENCE"
