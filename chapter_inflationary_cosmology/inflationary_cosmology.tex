@@ -50,7 +50,8 @@ This coordinate system defines a {\em contravariant\/} set of basis vectors at e
   \gamma^\mu = \{x^\nu=\mathrm{const} : \mu\ne\nu\},
   \label{eqn:cos:coordinate_curve}
 \end{equation}
-at the point $p$.  Vectors at {\em at a given point\/} $p$ form a vector space which may be summed and scaled. Thus, a general vector $\vv$ may be written as a linear combination of basis vectors $\vv = v^\mu \ve_\mu$, where we use Einstein's summation convention that repeated upstairs and downstairs indices should be summed over. In addition, these vectors are equipped with a dot-product $\vv\cdot\vw$ which encapsulates the geometry of the vectors; namely spacetime angles and magnitudes. If a specific coordinate system is chosen, then:
+at the point $p$.\footnote{Experienced readers will know that this notion is normally regarded as far from trivial.}
+  Vectors at {\em at a given point\/} $p$ form a vector space which may be summed and scaled. Thus, a general vector $\vv$ may be written as a linear combination of basis vectors $\vv = v^\mu \ve_\mu$, where we use Einstein's summation convention that repeated upstairs and downstairs indices should be summed over. In addition, these vectors are equipped with a dot-product $\vv\cdot\vw$ which encapsulates the geometry of the vectors; namely spacetime angles and magnitudes. If a coordinate system is chosen, then:
 \begin{equation}
   \vv\cdot\vw = (v^\mu\ve_\mu)\cdot(w^\nu\ve_\nu) = v^\mu (\ve_\mu\cdot\ve_\nu)w^\nu =  v^\mu g_{\mu\nu} w^\nu
   \label{eqn:cos:dot_product}
@@ -60,7 +61,66 @@ where
   g_{\mu\nu} = \ve_\mu\cdot\ve_\nu
   \label{eqn:cos:metric_def}
 \end{equation}
-is the {\em metric}, and is simply the dot product expressed in a specific coordinate system.
+is the {\em metric}, and is simply the dot product at a given point, expressed in a specific coordinate system.
+
+Once a dot product is defined, it is convenient to define a set of {\em covariant\/} basis vectors $\{\ve^\mu\}$ via:
+\begin{equation}
+  \ve^\mu \cdot \ve_\nu = \delta^\mu_\nu 
+  \qquad\Leftrightarrow\qquad
+  \ve^\mu = g^{\mu\nu} \ve_\nu,
+  \label{eqn:cos:covariant_basis}
+\end{equation}
+where $g^{\mu\nu}$ is the upstairs version of \eqref{eqn:cos:metric_def}, and by simple linear algebra is the matrix inverse of $g_{\mu\nu}$. Now that a dot product is defined, the covariant basis vector $\ve^\mu$ can be thought of as orthogonal to the coordinate surface $x^\mu=\mathrm{const}$. Materials scientists should recognise the covariant basis as simply the reciprocal basis. 
+
+We can choose to write vectors in either the covariant or contravariant basis:
+\begin{equation}
+  \vv=v^\nu \ve_\nu = v_\mu \ve^\mu 
+  \qquad\Rightarrow\qquad
+  v_\mu = g_{\mu\nu} v^\nu.
+  \label{eqn:cos:covariant_vector}
+\end{equation}
+The metric can therefore be used to ``raise'' or ``lower'' indices of vectors. The fact that the metric performs this operation should be intuitively obvious, since raised or lowered indexed vectors correspond to placing the vector in the covariant or contravariant coordinate system, whose definition \eqref{eqn:cos:covariant_basis} is defined via the dot-product.
+
+\subsection{Tensors}
+A Tensor $T$ is a multi-linear mapping of vectors onto a scalar at a given point:
+\begin{align}
+  T 
+  &= 
+  T(\va,\:\vb,\ldots,\:\vz)
+  &
+  \nonumber
+  \\
+  &= 
+  T(a^\alpha\ve_\alpha,\:b^\beta\ve_\beta,\ldots,z^\zeta\ve_\zeta)  
+  &\text{vectors in coordinate basis}
+  \nonumber
+  \\
+  &= 
+  a^\alpha b^\beta \ldots z^\zeta \: 
+  T(\ve_\alpha,\:\ve_\beta,\:\ldots,\:\ve_\zeta)  
+  &\text{apply multi-linearity}
+  \nonumber
+  \\
+  T_{\alpha,\beta,\ldots,\zeta} 
+  &=  
+  T(\ve_\alpha,\:\ve_\beta,\:\ldots,\:\ve_\zeta)
+  &\text{define a new set of numbers}
+  \nonumber
+  \\
+  \Rightarrow\qquad
+  T
+  &= 
+  a^\alpha b^\beta \ldots z^\zeta \: 
+  T_{\alpha,\beta,\ldots,\zeta}
+  &
+  \nonumber
+\end{align}
+Upstairs components of a vector are defined similarly. It is interesting (although not surprising) that the metric is also a tensor, albeit a very special one which defines the geometry. The mapping is coordinate independent, but components are produced when a specific coordinate basis is chosen for each ``slot'' (each of which may be covariant or contravariant).
+
+A mapping of a rank $m$ tensor onto a rank $n$ tensor may be produced from a rank $m+n$ tensor by simply leaving $n$ of the slots blank. In this sense, a vector can be considered as a rank $1$ tensor, its linear action defined by the dot product.
+
+\subsection{Calculus}
+
 
 
 
