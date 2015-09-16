@@ -1,9 +1,3 @@
-\newcommand{\bk}{\mathbf{k}}
-
-\newcommand{\ket}[1]{\left|#1\right\rangle}
-\newcommand{\bra}[1]{\left\langle#1\right|}
-\newcommand{\braket}[2]{\left\langle#1\middle|#2\right\rangle}
-\newcommand{\bracket}[3]{\left\langle#1\middle|#2\middle|#3\right\rangle}
 
 \chapter{Defining the Quantum Vacuum}
 \label{chap:qv}
@@ -28,48 +22,6 @@ After the relevant background material is reviewed, we develop a generic mechani
 We then apply this procedure to the kinetically dominated universe, but delay the observational analysis to a later work.
 
 \section{Background}
-\label{sec:background}
-
-We denote a general action via
-\begin{equation}
-  S_I = \int d^4x\sqrt{|g|}\mathcal{L}_I,
-  \label{eqn:general_action}
-\end{equation}
-where $\mathcal{L}_I$ is the {\em Lagrangian density}. We work in natural units $\hbar=c=1$ and set the reduced Planck mass $m_\mathrm{p} = {(8\pi G)}^{-1/2} = 1$. Dots denote differentiation with respect to cosmic time $\dot{f}\equiv \frac{d}{dt}f$, and primes denote differentiation with respect to conformal time $\prm{f}\equiv\frac{d}{d\eta}f$.
-
-We begin by briefly summarising the classical theory of cosmological perturbations for a general scalar field, before discussing the quantisation of such a theory
-
-
-\subsection{The classical action}
-\label{sec:inflation}
-Consider~\cite{Baumann+2009} a canonical scalar field $\phi$ minimally coupled to gravity $S= S_G + S_\phi$ with:
-\begin{equation}
-  \mathcal{L}_G = \frac{1}{2}R, 
-  \qquad
-  \mathcal{L}_\phi = \frac{1}{2}g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi - V(\phi),
-  \label{eqn:action}
-\end{equation}
-Extremising this action with respect to the fields $\phi$ and $g_{\mu\nu}$ recovers the Klein-Gordan and Einstein equations respectively:
-\begin{align}
-  \left( g^{\mu\nu}\nabla_\mu\nabla_\nu + \frac{dV}{d\phi} \right) \phi &= 0,
-  \label{eqn:klein_gordon}\\
-  G_{\mu\nu}\equiv R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R&= T_{\mu\nu},
-  \label{eqn:einstein}
-\end{align}
-where the stress-energy tensor is:
-\begin{equation}
-  T_{\mu\nu} = \nabla_\mu\phi \nabla_\nu\phi - \frac{1}{2}g_{\mu\nu} \nabla_\alpha\phi \nabla^\alpha\phi +g_{\mu\nu} V(\phi).
-  \label{eqn:SET}
-\end{equation}
-
-In cosmology, we assume that at zeroth order both the metric $g_{\mu\nu}$ and scalar field $\phi$ are homogeneous and isotropic. Applying these assumptions to equations~(\ref{eqn:klein_gordon})~\&~(\ref{eqn:einstein}), we find:
-\begin{align}
-  \dot{H}+H^2 &= -\frac{1}{3}\left( \dot{\phi}^2 - V(\phi) \right),
-  \label{eqn:Raychaudhuri}\\
-  0&=\ddot{\phi} + 3H\dot{\phi} + \frac{dV}{d\phi},
-\end{align}
-where the Hubble parameter $H = \dot{a}/a$.
-
 \subsection{Inflationary perturbations}
 One then considers perturbations about these background solutions 
 \begin{align}
@@ -108,66 +60,66 @@ This is the canonically normalised action for a scalar field with time-dependent
 \label{sec:mukhanov}
 We now consider the traditional quantisation of the action~(\ref{eqn:v_action}) via Hamiltonian diagonalisation. This is a standard method in the inflationary literature, but has several theoretical issues which will be discussed. To begin, one writes;
 \begin{equation}
-  v = \int \frac{d^3 k}{(2\pi)^3} \left[ a_\bk \chi_\bk(\eta)e^{i\bk\cdot\mathbf{x}} + a_{\bk}^{\dagger} \str{\chi_\bk}(\eta)e^{-i\bk\cdot\mathbf{x}} \right], 
+  v = \int \frac{d^3 k}{(2\pi)^3} \left[ a_\vk \chi_\vk(\eta)e^{i\vk\cdot\vx} + a_{\vk}^{\dagger} \str{\chi_\vk}(\eta)e^{-i\vk\cdot\vx} \right], 
   \label{eqn:v_quant}
 \end{equation}
-which expresses the operator $v$ as a superposition of creation and annihilation operators $\{a_\bk,a_\bk^\dagger\}$~\cite{Mukhanov+2007}, with the mode functions written in separated form ${u_\bk = \chi_\bk(\eta) e^{i\bk\cdot\mathbf{x}}}$. If one requires that the scalar field satisfies the equations of motion, and that canonical commutator relation:
+which expresses the operator $v$ as a superposition of creation and annihilation operators $\{a_\vk,a_\vk^\dagger\}$~\cite{Mukhanov+2007}, with the mode functions written in separated form ${u_\vk = \chi_\vk(\eta) e^{i\vk\cdot\vx}}$. If one requires that the scalar field satisfies the equations of motion, and that canonical commutator relation:
 \begin{equation}
-  [ a_\bk^{\phantom\dagger} a_{\prm{\bk}}^{\dagger} ] = (2\pi)^3\delta^{(3)}(\bk-\prm{\bk}),
+  [ a_\vk^{\phantom\dagger} a_{\prm{\vk}}^{\dagger} ] = (2\pi)^3\delta^{(3)}(\vk-\prm{\vk}),
   \label{eqn:commutator}
 \end{equation}
-holds true, then the temporal part $\chi_\bk(\eta)$ of the mode functions $u_\bk$ must satisfy:
+holds true, then the temporal part $\chi_\vk(\eta)$ of the mode functions $u_\vk$ must satisfy:
 \begin{align}
-  \dprm{\chi_\bk} + \left( k^2 - \frac{\dprm{z}}{z} \right)\chi_\bk &= 0,
+  \dprm{\chi_\vk} + \left( k^2 - \frac{\dprm{z}}{z} \right)\chi_\vk &= 0,
   \label{eqn:mode_mukhanov}
   \\
-  \prm{\chi_\bk} \str{\chi_\bk} - \prm{\str{\chi_\bk}} \chi_\bk &= -i.
+  \prm{\chi_\vk} \str{\chi_\vk} - \prm{\str{\chi_\vk}} \chi_\vk &= -i.
   \label{eqn:normalisation}
 \end{align}
 The first of these is the classical equation of motion of the action~(\ref{eqn:v_action}), whilst the second is a normalisation constraint.
 
 \subsection{Choosing a vacuum}
 \label{sec:hamiltonian_diagonalisation}
-The complex mode functions $\chi_\bk$ are not fully determined by condition~(\ref{eqn:normalisation}). Although the overall phase of the mode $\chi_\bk$ is unimportant, there is an additional degree of freedom for each $\bk$ to be determined. The choice of this is equivalent to choosing a vacuum state $\ket{0}$, defined by $a_\bk\ket{0}=0$.
+The complex mode functions $\chi_\vk$ are not fully determined by condition~(\ref{eqn:normalisation}). Although the overall phase of the mode $\chi_\vk$ is unimportant, there is an additional degree of freedom for each $\vk$ to be determined. The choice of this is equivalent to choosing a vacuum state $\ket{0}$, defined by $a_\vk\ket{0}=0$.
 
 The traditional approach is to consider the Hamiltonian of the Mukhanov variable, which after normal ordering takes the form:
 \begin{align}
   H = \frac{1}{2}\int\frac{d^3k}{{(2\pi)}^3} 
-  &\Big[ a_\bk a_{-\bk} F_\bk(\eta) + a_\bk^\dagger a_{-\bk}^\dagger \str{F_\bk}(\eta) \nonumber \\
-  &+ \left(2a_\bk^\dagger a_\bk + \delta^{(3)}(0)\right)E_\bk(\eta) \Big], 
+  &\Big[ a_\vk a_{-\vk} F_\vk(\eta) + a_\vk^\dagger a_{-\vk}^\dagger \str{F_\vk}(\eta) \nonumber \\
+  &+ \left(2a_\vk^\dagger a_\vk + \delta^{(3)}(0)\right)E_\vk(\eta) \Big], 
 \end{align}
 where
 \begin{align}
-  E_\bk(\eta) &= |\chi_\bk^\prime|^2 + \omega_k^2|\chi_\bk|^2,\quad
-  F_\bk(\eta) = {\chi_\bk^\prime}^2 + \omega_k^2{\chi_\bk}^2,\\
+  E_\vk(\eta) &= |\chi_\vk^\prime|^2 + \omega_k^2|\chi_\vk|^2,\quad
+  F_\vk(\eta) = {\chi_\vk^\prime}^2 + \omega_k^2{\chi_\vk}^2,\\
   \omega_k^2(\eta) &= k^2-\frac{\dprm{z}}{z}.
   \label{eqn:def_omega}
 \end{align}
 It is therefore attractive to choose either (i) the vacuum as an eigenstate of the Hamiltonian:
 \begin{equation}
-  H\ket{0}\propto\ket{0} \Rightarrow F_\bk=0,
+  H\ket{0}\propto\ket{0} \Rightarrow F_\vk=0,
   \label{eqn:eigenstate}
 \end{equation}
 or (ii) that the vacuum minimises the expected energy:
 \begin{equation}
-  \bracket{0}{H}{0} \propto \int \frac{d^3k}{{(2\pi)}^3} E_\bk.
+  \bracket{0}{H}{0} \propto \int \frac{d^3k}{{(2\pi)}^3} E_\vk.
   \label{eqn:hamil}
 \end{equation}
 As can be shown with standard linear algebra, these two conditions are equivalent, and result in the requirement that:
 \begin{equation}
-  |\chi_\bk|^2 = \frac{1}{2\omega_k}, \qquad \prm{\chi_\bk} = -i \omega_k \chi_\bk.
+  |\chi_\vk|^2 = \frac{1}{2\omega_k}, \qquad \prm{\chi_\vk} = -i \omega_k \chi_\vk.
   \label{eqn:hd_condition}
 \end{equation}
 which provides enough information to set unambiguous initial conditions for the mode equation~(\ref{eqn:mode_mukhanov}).
 When the condition~(\ref{eqn:hd_condition}) is satisfied, the Hamiltonian is diagonalised such that:
 \begin{equation}
   H(\eta_0) = \int\frac{d^3k}{{(2\pi)}^3} 
-  \left(a_\bk^\dagger a_\bk + \frac{1}{2}\delta^{(3)}(0)\right)\omega_k(\eta_0). 
+  \left(a_\vk^\dagger a_\vk + \frac{1}{2}\delta^{(3)}(0)\right)\omega_k(\eta_0). 
   \label{eqn:diag_hamil}
 \end{equation}
 We henceforth refer to~(\ref{eqn:hd_condition}) as the Hamiltonian diagonalising (HD) vacuum choice.
 
-From~(\ref{eqn:diag_hamil}), one may easily show that $a_\bk^\dagger\ket{0}$ is a state with energy $\omega_k(\eta_0)$ and momentum $\bk$. One therefore traditionally interprets the action of $a_\bk^\dagger$ at time $\eta_0$ as creating a ``particle'' from the vacuum. This is a well established interpretation in flat Minkowski space. %In curved spacetime however, we shall see in the following section that this interpretation becomes troublesome.
+From~(\ref{eqn:diag_hamil}), one may easily show that $a_\vk^\dagger\ket{0}$ is a state with energy $\omega_k(\eta_0)$ and momentum $\vk$. One therefore traditionally interprets the action of $a_\vk^\dagger$ at time $\eta_0$ as creating a ``particle'' from the vacuum. This is a well established interpretation in flat Minkowski space. %In curved spacetime however, we shall see in the following section that this interpretation becomes troublesome.
 
 Note that in general, the conditions~(\ref{eqn:hd_condition}) are only satisfied at a specific time $\eta_0$, and the vacuum is thus a time-dependent notion. 
 Indeed, it is straightforward to show that at some different time $\eta_1$, the expectation $\bracket{0}{H(\eta_1)}{0}$ of the Hamiltonian in the ground state $\ket{0}$ is in general larger than the minimum possible value at $\eta_1$. This is interpreted as the vacuum state $\ket{0}$ at $\eta_0$ containing particles at other times $\eta_1$.
@@ -177,7 +129,7 @@ Thus, if one sets these conditions at a time $\eta_0$, one is effectively settin
 
 \subsection{Criticism of Hamiltonian diagonalisation}
 
-Astute readers will have spotted that the expected energy~(\ref{eqn:hamil}) is divergent. Whilst the implicit $\delta^{(3)}(0)$ in the proportionality constant of~(\ref{eqn:hamil}) is harmless, and merely accounts for the contribution from the infinite volume of space, there is a second divergence which requires closer attention. For large $k$, $E_\bk\sim \omega_k \sim k$, and hence the integral~(\ref{eqn:hamil}), which represents the energy density, is ultraviolet divergent as $k^4$. 
+Astute readers will have spotted that the expected energy~(\ref{eqn:hamil}) is divergent. Whilst the implicit $\delta^{(3)}(0)$ in the proportionality constant of~(\ref{eqn:hamil}) is harmless, and merely accounts for the contribution from the infinite volume of space, there is a second divergence which requires closer attention. For large $k$, $E_\vk\sim \omega_k \sim k$, and hence the integral~(\ref{eqn:hamil}), which represents the energy density, is ultraviolet divergent as $k^4$. 
 
 In traditional quantum field theory, this divergence is subtracted as one only measures energy differences. This is also applicable to spacetimes that are asymptotically static (such as de-Sitter space).
 However, in changing spacetimes, where the vacuum is time dependent, this subtraction can only be performed at a single instant. If one then advances in time by some finite amount, the space-time generates an infinite particle density~\cite{Fulling_HD,Fulling+1989}. 
@@ -189,7 +141,7 @@ The particle concept can be somewhat rescued by considering the adiabatic vacuum
 
 However, there are still some issues with this vacuum. First, it is only usable in slowly changing spacetimes, so only goes halfway to solving the general problem. Second, it introduces a further ambiguity in vacuum choice, namely that of which value of $n$ to choose. Since the adiabatic expansion is asymptotic, it does not in general converge for large $n$. One must pick a specific term of the series to truncate at, and there is little theoretical guidance as to what value $n$ to choose.
 
-We believe that the adiabatic vacuum is in fact trying to rescue the particle concept unnecessarily. A particle interpretation is doomed to failure in general curved spacetime because of the global nature of their definition. Particles are defined in terms of field modes over a large patch of the manifold. Whilst for higher $\bk$ modes the environment looks effectively Minkowksi, low $\bk$ modes are sensitive to the large scale structure of spacetime.
+We believe that the adiabatic vacuum is in fact trying to rescue the particle concept unnecessarily. A particle interpretation is doomed to failure in general curved spacetime because of the global nature of their definition. Particles are defined in terms of field modes over a large patch of the manifold. Whilst for higher $\vk$ modes the environment looks effectively Minkowksi, low $\vk$ modes are sensitive to the large scale structure of spacetime.
 
 It would be more sensible to base the notion of a vacuum not in terms of a ``particle-less'' state, but in terms of the minimisation of a {\em local energy density}, such as the $0$-$0$ component of the stress-energy tensor. Unfortunately being quadratic in the field $\phi$, like the Hamiltonian, $\bracket{0}{T_{00}}{0}$ is also divergent.
 
@@ -207,16 +159,16 @@ Traditionally~\cite{Birrell+1984,Parker+2009}, one considers a scalar field Lagr
 where for simplicity we are considering the case of minimal coupling $\xi=0$.  
 In the context of FRW spacetime, the modes are quantised as:
 \begin{equation}
-  \phi(x) = \int\frac{d^3 k}{{(2\pi)}^3a(\eta)} \left[ a_\bk \chi_\bk(\eta)e^{i\bk\cdot\mathbf{x}} + a_{\bk}^{\dagger} \str{\chi_\bk}(\eta)e^{-i\bk\cdot\mathbf{x}} \right],
+  \phi(x) = \int\frac{d^3 k}{{(2\pi)}^3a(\eta)} \left[ a_\vk \chi_\vk(\eta)e^{i\vk\cdot\vx} + a_{\vk}^{\dagger} \str{\chi_\vk}(\eta)e^{-i\vk\cdot\vx} \right],
   \label{eqn:mode_expansion}
 \end{equation}
-where the mode functions are written in separated form $u_\bk = a(\eta)^{-1}\chi_\bk(\eta)e^{i \bk\cdot\mathbf{x}}$. The additional conformal factor of $a(\eta)^{-1}$ generates mode equations without first order derivatives in $\eta$.
+where the mode functions are written in separated form $u_\vk = a(\eta)^{-1}\chi_\vk(\eta)e^{i \vk\cdot\vx}$. The additional conformal factor of $a(\eta)^{-1}$ generates mode equations without first order derivatives in $\eta$.
 Requiring that the scalar field satisfies the equations of motion, and that the commutation relation~(\ref{eqn:commutator}) remain true,
-one finds that the mode functions $\chi_\bk$ must satisfy:
+one finds that the mode functions $\chi_\vk$ must satisfy:
 \begin{align}
-  \dprm{\chi}_\bk + \left[ k^2 + a^2 m^2 - \frac{\dprm{a}}{a}  \right] \chi_\bk &= 0,
+  \dprm{\chi}_\vk + \left[ k^2 + a^2 m^2 - \frac{\dprm{a}}{a}  \right] \chi_\vk &= 0,
   \label{eqn:chi_equation}\\
-  \prm{\chi_\bk} \str{\chi_\bk} - \prm{\str{\chi_\bk}} \chi_\bk &= -i
+  \prm{\chi_\vk} \str{\chi_\vk} - \prm{\str{\chi_\vk}} \chi_\vk &= -i
   \label{eqn:normalisation_1}
 \end{align}
 
@@ -261,30 +213,30 @@ The Hadamard Green function~(\ref{eqn:green_function}) using the mode expansion~
   G^{(1)}(x,\prm{x}) = 
   \int\frac{d^3 k\:}{(2\pi)^3a(\eta)a(\prm{\eta})}&
   \Big(
-  \chi_\bk(\eta)
-  \str{\chi_{\bk}}(\prm{\eta})e^{i\bk\cdot(\mathbf{x}-\prm{\mathbf{x}})}+\nonumber\\
+  \chi_\vk(\eta)
+  \str{\chi_{\vk}}(\prm{\eta})e^{i\vk\cdot(\vx-\prm{\vx})}+\nonumber\\
   &
-  \str{\chi_\bk}(\eta)
-  \chi_{\bk}(\prm{\eta})e^{-i\bk\cdot(\mathbf{x}-\prm{\mathbf{x}})}
+  \str{\chi_\vk}(\eta)
+  \chi_{\vk}(\prm{\eta})e^{-i\vk\cdot(\vx-\prm{\vx})}
   \Big).
   \nonumber
 \end{align}
-Inserting this expression into~(\ref{eqn:point_splitting}) will yield an expression which depends on the specific choice of mode function $\chi_\bk$. We now regard this expression as a {\em functional\/} of the independent variables 
+Inserting this expression into~(\ref{eqn:point_splitting}) will yield an expression which depends on the specific choice of mode function $\chi_\vk$. We now regard this expression as a {\em functional\/} of the independent variables 
 \begin{equation}
-  \mathcal{X} = \{\chi_\bk,\str{\chi_\bk},\prm{\chi_\bk},\prm{\str{\chi_\bk}}\},
+  \mathcal{X} = \{\chi_\vk,\str{\chi_\vk},\prm{\chi_\vk},\prm{\str{\chi_\vk}}\},
   \label{eqn:vars}
 \end{equation}
-and aim to minimise this with respect to the functions. Since $G^{(1)}_{\mathrm{DS}}$ does not depend on these variables, this term can be ignored for the purposes of extremisation. Further, the functional derivatives such as $\frac{\delta}{\delta \chi_\bk}$ commute with the limit expression, so in fact minimising the renormalised tensor with respect to the mode functions is equivalent to naively minimising the traditional stress-energy tensor~(\ref{eqn:SET}). Inserting the mode function~(\ref{eqn:mode_expansion}) into~(\ref{eqn:point_splitting}) and taking the coincidence limit, one finds:
+and aim to minimise this with respect to the functions. Since $G^{(1)}_{\mathrm{DS}}$ does not depend on these variables, this term can be ignored for the purposes of extremisation. Further, the functional derivatives such as $\frac{\delta}{\delta \chi_\vk}$ commute with the limit expression, so in fact minimising the renormalised tensor with respect to the mode functions is equivalent to naively minimising the traditional stress-energy tensor~(\ref{eqn:SET}). Inserting the mode function~(\ref{eqn:mode_expansion}) into~(\ref{eqn:point_splitting}) and taking the coincidence limit, one finds:
 \begin{align}
-  \bracket{0}{T_{00}(x)}{0}_\mathrm{ren} = &\frac{1}{2}\int \frac{d^3 k}{{(2\pi)}^3 a^2} (\prm{\chi_\bk}-\frac{\prm{a}}{a}\chi_\bk)(\prm{\str{\chi_\bk}}-\frac{\prm{a}}{a}\str{\chi_\bk})
+  \bracket{0}{T_{00}(x)}{0}_\mathrm{ren} = &\frac{1}{2}\int \frac{d^3 k}{{(2\pi)}^3 a^2} (\prm{\chi_\vk}-\frac{\prm{a}}{a}\chi_\vk)(\prm{\str{\chi_\vk}}-\frac{\prm{a}}{a}\str{\chi_\vk})
   \nonumber \\
-  &+\left( k^2 + m^2a^2 \right)\chi_\bk {\chi_\bk}^\ast + \tilde{T},
+  &+\left( k^2 + m^2a^2 \right)\chi_\vk {\chi_\vk}^\ast + \tilde{T},
 \end{align}
 where $\tilde{T}$ signifies the plethora of additional terms arising from the renormalisation process that have no dependence on the variables $\mathcal{X}$.
 Minimising this with respect to $\mathcal{X}$ subject to the constraint~(\ref{eqn:normalisation_1}) yields the relations:
 \begin{align}
-  |\chi_\bk|^2 &= \frac{1}{2\sqrt{k^2+m^2a^2}}, \\
-  \prm{\chi_\bk} &= \left( -i \sqrt{k^2+m^2a^2} + \frac{\prm{a}}{a} \right) \chi_\bk.
+  |\chi_\vk|^2 &= \frac{1}{2\sqrt{k^2+m^2a^2}}, \\
+  \prm{\chi_\vk} &= \left( -i \sqrt{k^2+m^2a^2} + \frac{\prm{a}}{a} \right) \chi_\vk.
   \label{eqn:rn_condition_m}
 \end{align}
 %We note that since these conditions are derived from the unrenormalised stress-energy tensor, the result would be achieved for any renormalisation procedure.
@@ -293,14 +245,14 @@ Minimising this with respect to $\mathcal{X}$ subject to the constraint~(\ref{eq
 \subsection{Application to the Mukhanov variable.}
 Recalling Section~\ref{sec:bridge}, to apply this formalism to the Mukhanov variable, one should take set $m=0$ and replace $a$ with $z$:
 \begin{equation}        
-  |\chi_\bk|^2 = \frac{1}{2k},\qquad
-  \prm{\chi_\bk} = \left( -i k + \frac{\prm{z}}{z} \right) \chi_\bk.
+  |\chi_\vk|^2 = \frac{1}{2k},\qquad
+  \prm{\chi_\vk} = \left( -i k + \frac{\prm{z}}{z} \right) \chi_\vk.
   \label{eqn:rn_condition}
 \end{equation}
 This should now be compared with the more usual HD conditions~(\ref{eqn:hd_condition}). Deep inside the horizon (${k\gg -{\prm{z}}/{z}}$) these two initial conditions are equivalent, but yield very different answers for infra-red modes (small $k$).
 The second of these equations may be re-written in a more illuminating form:
 \begin{equation}
-  \prm{\left( \frac{\chi_\bk}{z} \right)} = -i k \left( \frac{\chi_\bk}{z} \right),
+  \prm{\left( \frac{\chi_\vk}{z} \right)} = -i k \left( \frac{\chi_\vk}{z} \right),
 \end{equation}
 which suggests that the co-moving curvature $\mathcal{R}=v/z$ is set with a ``positive frequency mode'' independent from any spacetime variation.
 
@@ -321,7 +273,7 @@ In this semi-classical pre-inflationary context, one finds that $\dot{\phi}\prop
 In the same manner as a de-Sitter universe, quantising the co-moving curvature perturbation is equivalent to quantising a massless scalar field on the same background spacetime. 
 In this case though, the scale factor ${a \propto \eta^{1/2}}$, so the mode equations have the general solution:
 \begin{align}
-  \chi_\bk(\eta) &= \frac{1}{2}\sqrt{\pi\eta}\left( A_k H_{0}^{(1)}(k\eta) + B_k H_{0}^{(2)}(k\eta) \right), \nonumber \\
+  \chi_\vk(\eta) &= \frac{1}{2}\sqrt{\pi\eta}\left( A_k H_{0}^{(1)}(k\eta) + B_k H_{0}^{(2)}(k\eta) \right), \nonumber \\
   1&=|B_k|^2 - |A_k|^2, \label{eqn:kd_modes} 
 \end{align}
 where without loss of generality we assume $A_k$ is real.

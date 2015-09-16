@@ -3,3 +3,96 @@
 
 \section{Introduction}
 \label{sec:cos:intro}
+
+\section{Conventions}
+\label{sec:cos:conventions}
+
+
+\begin{enumerate}
+  \item We work using a metric with a positive signature $(+,-,-,-)$.
+  \item Fourier transforms are written with an overloaded notation, and defined so that Fourier synthesis carries the factor of $2\pi$:
+    \begin{equation}
+      f(\vk) = \int_{-\infty}^{+\infty} e^{-i k
+      \label{<++>}
+    \end{equation}<++>
+    
+\end{enumerate}<++>
+
+
+\section{Differential geometry}
+\label{sec:cos:differential_geometry}
+
+\section{Einstein's gravity}
+\label{sec:cos:einsteins_gravity}
+
+Einstein's gravity can be effectively summarised using the Einstein-Hilbert action formalism. An action $S$ is written as a general relativistic integral over a Lagrangian density $\mathcal{L}$:\footnote{This should not be confused with a likelihood, also denoted with $\lik$.}
+\begin{equation}
+  S = \int d^4 x \sqrt{|g|} R
+  \label{eqn:cos:action}
+\end{equation}
+where $g=\det(g_{\mu\nu})$ is the determinant of the metric, and $R$ is the Ricci scalar, defined by
+\begin{align}
+  R &= R^\mu_\mu \label{eqn:cos:ricci_scalar_def} \\
+  R_{\mu\nu} &= R^\rho_{\mu\rho\nu} \label{eqn:cos:ricci_tensor_def} \\
+  R_{\mu\nu} &= R^\rho_{\mu\rho\nu} \label{eqn:cos:riemann_tensor_def} \\
+  R^\rho_{\sigma\mu\nu} &= \partial_\mu\Gamma^\rho{}_{\nu\sigma}
+    - \partial_\nu\Gamma^\rho{}_{\mu\sigma}
+    + \Gamma^\rho{}_{\mu\lambda}\Gamma^\lambda{}_{\nu\sigma}
+    - \Gamma^\rho{}_{\nu\lambda}\Gamma^\lambda{}_{\mu\sigma}
+\end{align}
+
+We define the action:
+\begin{equation}
+  S = S_G + S_m
+  \label{eqn:cos:action}
+\end{equation}
+where
+\begin{equation}
+  S_G = \int \frac{1}{2}
+  \label{<++>}
+\end{equation}<++>
+
+\section{Background}
+\label{sec:background}
+
+\clearpage{}
+
+We denote a general action via
+\begin{equation}
+  S_I = \int d^4x\sqrt{|g|}\mathcal{L}_I,
+  \label{eqn:general_action}
+\end{equation}
+where $\mathcal{L}_I$ is the {\em Lagrangian density}. We work in natural units $\hbar=c=1$ and set the reduced Planck mass $m_\mathrm{p} = {(8\pi G)}^{-1/2} = 1$. Dots denote differentiation with respect to cosmic time $\dot{f}\equiv \frac{d}{dt}f$, and primes denote differentiation with respect to conformal time $\prm{f}\equiv\frac{d}{d\eta}f$.
+
+We begin by briefly summarising the classical theory of cosmological perturbations for a general scalar field, before discussing the quantisation of such a theory
+
+
+\subsection{The classical action}
+\label{sec:inflation}
+Consider~\cite{Baumann+2009} a canonical scalar field $\phi$ minimally coupled to gravity $S= S_G + S_\phi$ with:
+\begin{equation}
+  \mathcal{L}_G = \frac{1}{2}R, 
+  \qquad
+  \mathcal{L}_\phi = \frac{1}{2}g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi - V(\phi),
+  \label{eqn:action}
+\end{equation}
+Extremising this action with respect to the fields $\phi$ and $g_{\mu\nu}$ recovers the Klein-Gordan and Einstein equations respectively:
+\begin{align}
+  \left( g^{\mu\nu}\nabla_\mu\nabla_\nu + \frac{dV}{d\phi} \right) \phi &= 0,
+  \label{eqn:klein_gordon}\\
+  G_{\mu\nu}\equiv R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R&= T_{\mu\nu},
+  \label{eqn:einstein}
+\end{align}
+where the stress-energy tensor is:
+\begin{equation}
+  T_{\mu\nu} = \nabla_\mu\phi \nabla_\nu\phi - \frac{1}{2}g_{\mu\nu} \nabla_\alpha\phi \nabla^\alpha\phi +g_{\mu\nu} V(\phi).
+  \label{eqn:SET}
+\end{equation}
+
+In cosmology, we assume that at zeroth order both the metric $g_{\mu\nu}$ and scalar field $\phi$ are homogeneous and isotropic. Applying these assumptions to equations~(\ref{eqn:klein_gordon})~\&~(\ref{eqn:einstein}), we find:
+\begin{align}
+  \dot{H}+H^2 &= -\frac{1}{3}\left( \dot{\phi}^2 - V(\phi) \right),
+  \label{eqn:Raychaudhuri}\\
+  0&=\ddot{\phi} + 3H\dot{\phi} + \frac{dV}{d\phi},
+\end{align}
+where the Hubble parameter $H = \dot{a}/a$.
