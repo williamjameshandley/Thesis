@@ -9,18 +9,60 @@
 
 
 \begin{enumerate}
-  \item We work using a metric with a positive signature $(+,-,-,-)$.
-  \item Fourier transforms are written with an overloaded notation, and defined so that Fourier synthesis carries the factor of $2\pi$:
+  \item I work using a metric with a positive signature $(+,-,-,-)$.
+  \item Fourier transforms are written with an overloaded notation, and defined so that Fourier synthesis carries the factors of $2\pi$:
     \begin{equation}
-      f(\vk) = \int_{-\infty}^{+\infty} e^{-i k
-      \label{<++>}
-    \end{equation}<++>
+      f(\vk) = \int_{-\infty}^{\infty} d^3\vx\: e^{-i \vk\cdot\vx} f(\vx) \qquad f(\vx) = \int_{-\infty}^{\infty} \frac{d^3\vk}{(2\pi)^3}\: e^{i \vx\cdot\vk} f(\vk).
+      \label{eqn:cos:fourier_transform}
+    \end{equation}
+  \item I work in natural units so that 
+    \begin{equation}
+      c = \hbar = G = k_B = 1,
+      \label{eqn:cos:natural_units}
+    \end{equation}
+    but retain the reduced Planck mass for clarity:
+    \begin{equation}
+      \m = \frac{1}{8\pi G}.
+      \label{eqn:cos:reduced_planck_mass}
+    \end{equation}
     
-\end{enumerate}<++>
+\end{enumerate}
 
 
 \section{Differential geometry}
 \label{sec:cos:differential_geometry}
+
+The application and understanding of Einstein's theory of general relativity requires an understanding of curved spacetime.
+
+\begin{figure}
+  \centerline{%
+    \input{plots/differential_geometry}
+  }
+  \caption{\label{fig:cos:differenial_geometry}}
+\end{figure}
+
+\subsection{Coordinates}
+Curved spacetime is a collection of events (or points) $p$ in a manifold $\mathcal{M}$. Semi-global patches of it may have their events labelled with coordinates $x^\mu = x^\mu(p)$, which are always ``upstairs'' indexed. Since we are in $1+3$ spacetime, typically, $\mu=0$ will denote a time-like coordinate, and $\mu=1,2,3$ space-like coordinates.
+
+\subsection{Vectors}
+This coordinate system defines a {\em contravariant\/} set of basis vectors at each point $\ve_\mu = \ve_\mu(p)$. Here the basis vector $\ve_\mu(p)$ is tangent to the coordinate curve:
+\begin{equation}
+  \gamma^\mu = \{x^\nu=\mathrm{const} : \mu\ne\nu\},
+  \label{eqn:cos:coordinate_curve}
+\end{equation}
+at the point $p$.  Vectors at {\em at a given point\/} $p$ form a vector space which may be summed and scaled. Thus, a general vector $\vv$ may be written as a linear combination of basis vectors $\vv = v^\mu \ve_\mu$, where we use Einstein's summation convention that repeated upstairs and downstairs indices should be summed over. In addition, these vectors are equipped with a dot-product $\vv\cdot\vw$ which encapsulates the geometry of the vectors; namely spacetime angles and magnitudes. If a specific coordinate system is chosen, then:
+\begin{equation}
+  \vv\cdot\vw = (v^\mu\ve_\mu)\cdot(w^\nu\ve_\nu) = v^\mu (\ve_\mu\cdot\ve_\nu)w^\nu =  v^\mu g_{\mu\nu} w^\nu
+  \label{eqn:cos:dot_product}
+\end{equation}
+where 
+\begin{equation}
+  g_{\mu\nu} = \ve_\mu\cdot\ve_\nu
+  \label{eqn:cos:metric_def}
+\end{equation}
+is the {\em metric}, and is simply the dot product expressed in a specific coordinate system.
+
+
 
 \section{Einstein's gravity}
 \label{sec:cos:einsteins_gravity}
