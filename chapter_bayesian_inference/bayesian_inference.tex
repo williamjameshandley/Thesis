@@ -142,7 +142,7 @@ With this distribution, we can work out what the overall probability of obtainin
 \end{align}
 This is quite telling, because our initial choice for $\Probc{p}{\model_1}$~\ref{eqn:bay:prior1}) indicates that we expect all data sets with equal probability (independent of $\data$). This is therefore a ``minimally suspicious'' choice in spread.
 
-We now have two equations~(\ref{eqn:bay:M0})~\&~(\ref{eqn:bay:marg}) which detail the probability of getting the dataset $\data$ given the choice of model. However, what we are really after is the probability of the model, given the dataset $\Probc{\model}{\data}$. To compute this, we use Bayes' theorem
+We now have two equations~\eqref{eqn:bay:M0}~\&~\eqref{eqn:bay:marg} which detail the probability of getting the dataset $\data$ given the choice of model. However, what we are really after is the probability of the model, given the dataset $\Probc{\model}{\data}$. To compute this, we use Bayes' theorem
 \begin{equation}
   \Probc{\model}{\data} = \frac{\Probc{\data}{\model}\Prob{\model}}{\Prob{\data}}.
   \label{eqn:bay:bay_md}
@@ -165,7 +165,7 @@ $\model_1$ can go further however. We may also use Bayes' theorem to compute
   \Probc{p}{\data,\model_1} = \frac{\Probc{\data}{p,\model_1}\Probc{p}{\model_1}}{\Probc{\data}{\model_1}}.
   \label{eqn:bay:bay_p}
 \end{equation}
-This here gives us the distribution on $p$ {\em given the data}. Namely, how the data should update our ``spread bet''. We already have the ingredients for the above construction from equations~(\ref{eqn:bay:M1}),~(\ref{eqn:bay:prior1}),~\&~(\ref{eqn:bay:marg}), and given the uniform prior, we find our updated bet on $p$ is proportional to $p^\data{(1-p)}^{N-\data}$, a function of $p$. This is a beta distribution, and is indicated in Figure~\ref{fig:bay:beta}.
+This here gives us the distribution on $p$ {\em given the data}. Namely, how the data should update our ``spread bet''. We already have the ingredients for the above construction from equations~\eqref{eqn:bay:M1},~\eqref{eqn:bay:prior1},~\&~\eqref{eqn:bay:marg}, and given the uniform prior, we find our updated bet on $p$ is proportional to $p^\data{(1-p)}^{N-\data}$, a function of $p$. This is a beta distribution, and is indicated in Figure~\ref{fig:bay:beta}.
 
 \begin{figure}
   \ifdefined\lightweight
@@ -232,7 +232,7 @@ In order to utilise this however, we must specify our prior degree of belief in 
 \begin{equation}
   \Prob{\model_i} = \priorM_i
 \end{equation}
-These may have been obtained from previous analyses, but a non-partisan choice would be too choose the models to be equally weighted. The denominator of~(\ref{eqn:bay:bayM}) is then simply a normalising constant, and the posterior degree of belief in each model may be obtained via:
+These may have been obtained from previous analyses, but a non-partisan choice would be too choose the models to be equally weighted. The denominator of~\eqref{eqn:bay:bayM} is then simply a normalising constant, and the posterior degree of belief in each model may be obtained via:
 \begin{equation}
   \Probc{\model_i}{\data} 
   \equiv
@@ -254,7 +254,7 @@ This fully Bayesian approach has been historically under-utilised due to the dif
 
 \subsection{Parameter estimation}
 Of equal interest to scientists is to ask what the data tells us about the various parameters.  
-Bayes' theorem allows us to invert the conditioning in equation~(\ref{eqn:bay:lik_def}) and find the {\em posterior\/} $\posterior$ by combining the likelihood~(\ref{eqn:bay:lik_def}), prior~(\ref{eqn:bay:prior_def}) and evidence~(\ref{eqn:bay:ev_def}):
+Bayes' theorem allows us to invert the conditioning in equation~\eqref{eqn:bay:lik_def} and find the {\em posterior\/} $\posterior$ by combining the likelihood~\eqref{eqn:bay:lik_def}, prior~\eqref{eqn:bay:prior_def} and evidence~\eqref{eqn:bay:ev_def}:
 %
 \begin{equation}
   \posterior\equiv
@@ -278,7 +278,7 @@ This describes how our initial knowledge $\prior$ of the parameters updates to $
 
 \section{Numerical statistics: Sampling}
 \label{sec:bay:samp}
-Having discussed the theory of Bayesian statistics, we now turn to the more tricky aspect of actually computing these various inferences. The likelihood~(\ref{eqn:bay:lik_def}) $\lik(\params)$ is a routine, if often challenging, quantity to compute. It is the job of observational scientists to provide this function, and for the purposes of inference we may consider it a ``black box''. In general, $\lik$ will be not be analytical, but instead is a numerical and computationally expensive quantity. Any calculation we perform must aim to minimise the number of times we attempt to evaluate $\lik$. The prior $\prior$ is typically much less expensive to compute and is normally expressed using analytic functions such as a uniform or Gaussian distribution.
+Having discussed the theory of Bayesian statistics, we now turn to the more tricky aspect of actually computing these various inferences. The likelihood~\eqref{eqn:bay:lik_def} $\lik(\params)$ is a routine, if often challenging, quantity to compute. It is the job of observational scientists to provide this function, and for the purposes of inference we may consider it a ``black box''. In general, $\lik$ will be not be analytical, but instead is a numerical and computationally expensive quantity. Any calculation we perform must aim to minimise the number of times we attempt to evaluate $\lik$. The prior $\prior$ is typically much less expensive to compute and is normally expressed using analytic functions such as a uniform or Gaussian distribution.
 
 Typically, in inference calculation we wish to compute quantities that are marginalised over by the posterior. For example means and variances will typically take the form:
 \begin{align}
@@ -292,7 +292,7 @@ Given a likelihood $\lik$ and a prior $\prior$, a naive approach would be to fir
   \ev = \int \lik(\params) \prior(\params) \: d\params,
   \label{eqn:bay:ev_short}
 \end{equation}
-and then perform the integral~(\ref{eqn:bay:mean}) using a traditional numerical quadrature procedure. In most cases, this method fails at both steps, due to the fact that the dimensionality of the integration is too high for numerical quadrature to succeed.
+and then perform the integral~\eqref{eqn:bay:mean} using a traditional numerical quadrature procedure. In most cases, this method fails at both steps, due to the fact that the dimensionality of the integration is too high for numerical quadrature to succeed.
 
 To see this issue, consider the quadrature integration of a function $g$ along $[0,1]$
 \begin{equation}
@@ -329,11 +329,11 @@ distributed according to the posterior $\posterior$, then we may use the samples
 \end{equation}
 The central limit theorem states that $\hat{E}_f$ is normally distributed with mean $\mean{f}$ and standard deviation $\sigma_f/\sqrt{n_s}$, where $\sigma_f$ is the true standard deviation ${(\mean{f^2}-\mean{f}^2)^{1/2}}$. If $n_s\gg 1$ is large, then $\hat{E}_f$ will closely approximate the true mean. 
 
-This approach has several advantages. If one already has the set $S$ of samples~(\ref{eqn:bay:samples}), the computation~(\ref{eqn:bay:ehat}) is extremely cheap, in contrast to a full integral~(\ref{eqn:bay:quadrature_nd}). Further, it has excellent scaling with dimensionality. 
+This approach has several advantages. If one already has the set $S$ of samples~\eqref{eqn:bay:samples}, the computation~\eqref{eqn:bay:ehat} is extremely cheap, in contrast to a full integral~\eqref{eqn:bay:quadrature_nd}. Further, it has excellent scaling with dimensionality. 
 
-All that remains in order to compute~(\ref{eqn:bay:ehat}) is a methodology for cheaply generating samples according to a given distribution $\posterior$. In many cases, one does not even need the normalisation constant $\ev$ in order to sample from $\posterior$, merely an unnormalised posterior $\str{\posterior}= \lik\times\prior$. Suffice to say that this is a well established problem, and for readers unfamiliar with a given sampling method I defer them to Appendix~\ref{chap:sm}.
+All that remains in order to compute~\eqref{eqn:bay:ehat} is a methodology for cheaply generating samples according to a given distribution $\posterior$. In many cases, one does not even need the normalisation constant $\ev$ in order to sample from $\posterior$, merely an unnormalised posterior $\str{\posterior}= \lik\times\prior$. Suffice to say that this is a well established problem, and for readers unfamiliar with a given sampling method I defer them to Appendix~\ref{chap:sm}.
 
-However, even if one can generate reliably and cheaply a full set $S$ of samples, this is not a full solution to the entire Bayesian inference problem problem. Computing $\mean{f}$ with sampling is only a reasonable methodology when $\sigma_f$ is small (or even defined at all). A very important example of a case where this is not true is the computation of the evidence integral~(\ref{eqn:bay:ev_short}). For these kind of problems we must turn to a more sophisticated methodology
+However, even if one can generate reliably and cheaply a full set $S$ of samples, this is not a full solution to the entire Bayesian inference problem problem. Computing $\mean{f}$ with sampling is only a reasonable methodology when $\sigma_f$ is small (or even defined at all). A very important example of a case where this is not true is the computation of the evidence integral~\eqref{eqn:bay:ev_short}. For these kind of problems we must turn to a more sophisticated methodology
 
 
 
@@ -350,12 +350,12 @@ This integral is typically over a high-dimensional parameter space, only a small
   H = \int \log\left( \frac{\posterior(\params)}{\prior(\params)}\right) \posterior(\params)\: d\params
   \label{eqn:bay:rel_ent}
 \end{equation}  
-This quantifies the number of nats\footnote{if ``bits'' are a measure of information in base 2, then ``nats'' is information in base $e$.} of information that have been gained on account of the data. Equivalently, the fraction of the prior which contributes non-negligibly to~(\ref{eqn:bay:ev_short}) is approximately $X\sim e^{-H}$.
+This quantifies the number of nats\footnote{if ``bits'' are a measure of information in base 2, then ``nats'' is information in base $e$.} of information that have been gained on account of the data. Equivalently, the fraction of the prior which contributes non-negligibly to~\eqref{eqn:bay:ev_short} is approximately $X\sim e^{-H}$.
 
 The size and position of the region surrounding the peak(s) will not be known {\em a priori}, and in high dimensions is challenging to find.  
 
 \subsection{The prior volume transformation $\lik(X)$}
-The first trick is to transform~(\ref{eqn:bay:ev_short}) into an effectively one dimensional problem. We define an iso-likelihood contour as usual:
+The first trick is to transform~\eqref{eqn:bay:ev_short} into an effectively one dimensional problem. We define an iso-likelihood contour as usual:
 \begin{equation}
   C(\liks) = \{\params : \lik(\params)=\liks \}.
   \label{eqn:bay:contour_def}
@@ -365,7 +365,7 @@ Each contour defined by $\liks$ will also enclose a $\params$-region containing 
   X(\liks) = \int_{\lik(\params)>\liks} \prior(\params) d\params,
   \label{eqn:bay:prior_volume}
 \end{equation}
-which is termed the {\em prior volume\/} by physicists and {\em prior mass\/} by mathematicians. For each contour $C$, there corresponds a likelihood and a prior volume. We may use this to re-write the likelihood as a function $\lik(X)$.\footnote{More rigorously, one may invert equation~(\protect\ref{eqn:bay:prior_volume}) since $X(\lik)$ is monotonic.} and thus the integral~(\ref{eqn:bay:ev_short}) as:
+which is termed the {\em prior volume\/} by physicists and {\em prior mass\/} by mathematicians. For each contour $C$, there corresponds a likelihood and a prior volume. We may use this to re-write the likelihood as a function $\lik(X)$.\footnote{More rigorously, one may invert equation~\protect\eqref{eqn:bay:prior_volume} since $X(\lik)$ is monotonic.} and thus the integral~\eqref{eqn:bay:ev_short} as:
 \begin{equation}
   \ev = \int_0^1 \lik(X)\:dX.
   \label{eqn:bay:ev_X}
@@ -382,9 +382,9 @@ This process is graphically depicted in Figure~\ref{fig:bay:prior_volume} for a 
   }
 \end{figure}
 
-An inverse derivation is to examine~(\ref{eqn:bay:ev_short}), and define a new integration variable $dX = \prior(\params)\:d\params$. From this definition, the notion of prior volume~(\ref{eqn:bay:prior_volume}) follows, which may be inverted to give $\lik(X)$. Mathematically inclined readers may find Appendix~\ref{sec:MA:lesbesque} of interest, which details how this procedure is related to Lesbesque integration.
+An inverse derivation is to examine~\eqref{eqn:bay:ev_short}, and define a new integration variable $dX = \prior(\params)\:d\params$. From this definition, the notion of prior volume~\eqref{eqn:bay:prior_volume} follows, which may be inverted to give $\lik(X)$. Mathematically inclined readers may find Appendix~\ref{sec:MA:lesbesque} of interest, which details how this procedure is related to Lesbesque integration.
 
-The beauty of this process is that it completely removes all complications such as geometry, topology and dimensionality, reducing~(\ref{eqn:bay:ev_X}) to a one dimensional integral.  We may now evaluate the evidence using standard quadrature techniques:
+The beauty of this process is that it completely removes all complications such as geometry, topology and dimensionality, reducing~\eqref{eqn:bay:ev_X} to a one dimensional integral.  We may now evaluate the evidence using standard quadrature techniques:
 \begin{equation}
   \ev \approx \sum_{i} w_i \lik(X_i),
   \label{eqn:bay:quadrature}
@@ -393,7 +393,7 @@ where $\{X_i\}$ are the quadrature points and $\{w_i\}$ are the quadrature weigh
 
 \subsection{Computing the prior volumes}
 
-This is all well and good, but so far all we have done is transfer the complications (geometry, topology and dimensionality) from the evidence integral~(\ref{eqn:bay:ev_short}) to the integral which calculates the prior volume~(\ref{eqn:bay:prior_volume}). John's true genius is to come up with a scheme that allows one to {\em estimate\/} the prior volume $X$ in a quantifiable way.
+This is all well and good, but so far all we have done is transfer the complications (geometry, topology and dimensionality) from the evidence integral~\eqref{eqn:bay:ev_short} to the integral which calculates the prior volume~\eqref{eqn:bay:prior_volume}. John's true genius is to come up with a scheme that allows one to {\em estimate\/} the prior volume $X$ in a quantifiable way.
 
 The method relies on having a sampling procedure capable of producing a sample $\tilde{\params}$ distributed according to the prior $\prior$, subject to the constraint that it lies within the likelihood contour $C(\liks)$.  This is termed ``sampling within a hard-edged likelihood constraint''.  In theory shouldn't be any more challenging than traditional sampling techniques such as Metropolis-Hastings \citep{skilling2006}. 
 
@@ -420,9 +420,9 @@ where each $t_j$ is an independent random variable drawn uniformly from $[0,1]$.
   P(X_i) &= \frac{1}{\sqrt{2\pi i} X}\exp\left[ -\frac{{\left( \log X_i - i \right)}^2}{2 i}  \right],
   \label{eqn:bay:log_normal_1_2}
 \end{align}
-This follows by taking logarithms of~(\ref{eqn:bay:X_i}) and applying the central limit theorem. This is particularly impressive, since one finds that the samples compress the prior space {\em exponentially}. In general, the logarithmic compression from the prior to the posterior $H$ tends to be linear in dimensionality $d$, so single point nested sampling scales linearly with dimensionality.
+This follows by taking logarithms of~\eqref{eqn:bay:X_i} and applying the central limit theorem. This is particularly impressive, since one finds that the samples compress the prior space {\em exponentially}. In general, the logarithmic compression from the prior to the posterior $H$ tends to be linear in dimensionality $d$, so single point nested sampling scales linearly with dimensionality.
 
-As this scheme progresses, one is left with a set of likelihoods $\lik_i$, each paired with a volume $X_i$. These volumes are not deterministically known, but defined by the probabilistic definition~(\ref{eqn:bay:X_i}). The evidence may be approximated as:
+As this scheme progresses, one is left with a set of likelihoods $\lik_i$, each paired with a volume $X_i$. These volumes are not deterministically known, but defined by the probabilistic definition~\eqref{eqn:bay:X_i}. The evidence may be approximated as:
 \begin{equation}
   Z = \sum_{i=1}^n \lik_i \times (X_{i-1}-X_{i}),
   \label{eqn:bay:ev_sum}
@@ -445,7 +445,7 @@ If this point is deleted, and replaced with a new point drawn from the contour d
 \end{align}
 The prior space compression is slower than single point nested sampling, but with a correspondingly lower error. This therefore produces a more accurate inference on the evidence.
 
-The deleted point is then added to a list of ``dead points'' which can then be used to make inferences on the evidence using equation~(\ref{eqn:bay:ev_sum}).
+The deleted point is then added to a list of ``dead points'' which can then be used to make inferences on the evidence using equation~\eqref{eqn:bay:ev_sum}.
 
 \subsection{Terminating the algorithm}
 One does not wish to continue compressing the space once $X_i\ll e^{-H}$ for two reasons. The first reason is simply that this will not give any further accuracy on the evidence calculation. The second is more important. The region beneath $X_i\ll e^{-H}$ is not statistically relevant. Scientists used to maximum likelihood methods find this difficult to swallow, and often desire algorithms that will maximise the function to find the highest peak. In high dimensions, the absolute peak occupies such a vanishingly small percentage of the prior mass that it is totally irrelevant for the purposes of inference. In the case of a Gaussian likelihood, the peak value is a useful {\em summary statistic\/} but nothing more than that. Otherwise, one should not concern oneself with maximum likelihood, only in an accurate description of the peak provided by a set of samples.
@@ -459,7 +459,7 @@ One does not wish to continue compressing the space once $X_i\ll e^{-H}$ for two
   }
 \end{figure}
 %
-As nested sampling proceeds, the likelihoods $\lik_i$ monotonically increase, but the weights $w_i$ monotonically decrease. This results in a peak in importance weights~(\ref{eqn:bay:importance_weighting}) that can be seen in Figure~\ref{fig:bay:gaussian_weight}. We terminate the algorithm once the remaining posterior mass (white region) left in the live points is some small fraction of the currently calculated evidence (dark region). The posterior mass left in the live points at iteration $i$ can be estimated by:
+As nested sampling proceeds, the likelihoods $\lik_i$ monotonically increase, but the weights $w_i$ monotonically decrease. This results in a peak in importance weights~\eqref{eqn:bay:importance_weighting} that can be seen in Figure~\ref{fig:bay:gaussian_weight}. We terminate the algorithm once the remaining posterior mass (white region) left in the live points is some small fraction of the currently calculated evidence (dark region). The posterior mass left in the live points at iteration $i$ can be estimated by:
 \begin{equation}
   \ev_\slive \approx \mean{\lik}_\slive X_i,
   \label{eqn:bay:live_evidence}

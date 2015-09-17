@@ -46,10 +46,10 @@ It is worth noting that the procedure described below will generate the mean and
 \subsection{Computing the mean evidence}
 \label{sec:ens:basic_mean}
 
-While it is possible to take equations~(\ref{eqn:ens:app_ev},\ref{eqn:ens:rr_x} \&~\ref{eqn:ens:Pt}) and compute the mean as a general formula~\citep{Keeton}, in the case of clustering this is uninformative. 
+While it is possible to take equations~\eqref{eqn:ens:app_ev},\ref{eqn:ens:rr_x} \&~\ref{eqn:ens:Pt} and compute the mean as a general formula~\citep{Keeton}, in the case of clustering this is uninformative. 
 In fact, for large-dimensional spaces using the full formula would require storage of a prohibitively large amount of data. The calculation is better accomplished by a set of recursion relations, which update the mean evidence and its error at each step. 
 
-For now, assume that we have $n$ live points currently enclosed by some likelihood contour $\lik$ of volume $X$, and $\ev$ is the last value of the evidence calculated from all of the points that have died so far. By considering~(\ref{eqn:ens:app_ev},\ref{eqn:ens:rr_x}\&\ref{eqn:ens:Pt}), when we kill off the outermost point, we may adjust the values of $\ev$ and $X$ using:
+For now, assume that we have $n$ live points currently enclosed by some likelihood contour $\lik$ of volume $X$, and $\ev$ is the last value of the evidence calculated from all of the points that have died so far. By considering~\eqref{eqn:ens:app_ev},\ref{eqn:ens:rr_x}\&\ref{eqn:ens:Pt}, when we kill off the outermost point, we may adjust the values of $\ev$ and $X$ using:
 %
 \begin{align}                                                         
 \ev &\to \ev + (1-t)X\lik,
@@ -71,7 +71,7 @@ Taking the mean of these relations, we may use the facts that $t$ and $X$ are in
 
 \subsection{Computing the evidence error}
 \label{sec:ens:basic_error}
-To estimate $\overline{\ev^2}$, we square~(\ref{eqn:ens:rr_Z}) and~(\ref{eqn:ens:rr_X}) and multiply both together to obtain:
+To estimate $\overline{\ev^2}$, we square~\eqref{eqn:ens:rr_Z} and~\eqref{eqn:ens:rr_X} and multiply both together to obtain:
 %
 \begin{align}
   \ev^2 &\to \ev^2 + 2(1-t)\ev X\lik +  {(1-t)}^2X^2\lik ^2,
@@ -99,7 +99,7 @@ Taking the averages of the above yields:
 
 There are therefore five quantities to keep track of: 
 \[ \overline{\ev},\quad\overline{\ev^2},\quad\overline{\ev X},\quad \overline{X},\quad\overline{X^2}.\]
-These should be initialised at $\{0,0,0,1,1\}$ respectively, and updated using equations~(\ref{eqn:ens:rr_Zb},\ref{eqn:ens:rr_Z2b},\ref{eqn:ens:rr_ZXb},\ref{eqn:ens:rr_Xb},\ref{eqn:ens:rr_X2b}) in that order. In fact, we keep track of the logarithm of these quantities, in order to avoid machine precision errors.
+These should be initialised at $\{0,0,0,1,1\}$ respectively, and updated using equations~\eqref{eqn:ens:rr_Zb},\ref{eqn:ens:rr_Z2b},\ref{eqn:ens:rr_ZXb},\ref{eqn:ens:rr_Xb},\ref{eqn:ens:rr_X2b} in that order. In fact, we keep track of the logarithm of these quantities, in order to avoid machine precision errors.
 
 
 
@@ -142,14 +142,14 @@ Keeping track of $\{\overline{\ev},\overline{\ev_p},\overline{X_p},p=1\ldots m\}
 \subsection{Evidence errors}
 \label{sec:ens:cluster_err}
 
-We must also keep track of the local and global evidence errors. Taking the square of equations~(\ref{eqn:ens:rr_ev} \&~\ref{eqn:ens:rr_evi}) yields:
+We must also keep track of the local and global evidence errors. Taking the square of equations~\eqref{eqn:ens:rr_ev} \&~\ref{eqn:ens:rr_evi} yields:
 %
 \begin{align}
   \ev^2 &\to \ev^2 + 2 (1-t) \ev X_p \lik +  {(1-t)}^2 X_p^2 \lik^2, \\
   \ev_p^2 &\to \ev_p^2 + 2 (1-t) \ev_p X_p \lik +  {(1-t)}^2 X_p^2 \lik^2.
 \end{align}
 %
-We can see that we're going to need to keep track of $\{\overline{\ev X_p}, \overline{\ev_p X_p}, \overline{X_p^2}\}$ in addition to $\{ \overline{\ev^2}, \overline{\ev_p^2} \}$. Taking various multiplications of equations~(\ref{eqn:ens:rr_ev},~\ref{eqn:ens:rr_evi} \&~\ref{eqn:ens:rr_Xi}) finds:
+We can see that we're going to need to keep track of $\{\overline{\ev X_p}, \overline{\ev_p X_p}, \overline{X_p^2}\}$ in addition to $\{ \overline{\ev^2}, \overline{\ev_p^2} \}$. Taking various multiplications of equations~\eqref{eqn:ens:rr_ev},~\ref{eqn:ens:rr_evi} \&~\ref{eqn:ens:rr_Xi} finds:
 %
 \begin{align}
   \ev X_p   &\to t \ev X_p + (1-t)t X_p^2 \lik, \\
