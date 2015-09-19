@@ -57,10 +57,29 @@ where
 \end{equation}
 is the stress energy tensor, and
 \begin{equation}
-  G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}g_{\mu\nu},
+  G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}g_{\mu\nu} R,
   \label{eqn:cos:SET_fundamantal}
 \end{equation}
 is the Einstein tensor.
+
+\section{Friedman-Robertson-Walker spacetime}
+
+Cosmological principle:
+\begin{quote}
+  At any particular time, the universe looks the same in all directions from any position in space.
+\end{quote}
+
+On the largest scales, the universe is observed to be {\em homogeneous\/} and {\em isotropic}.
+\begin{equation}
+  ds^2 = dt^2 - a{(t)}^2\left( d\chi^2 + S^2{(\chi)} d\Omega \right)
+  \label{eqn:cos:FRW_metric}
+\end{equation}
+
+\section{The $\Lambda$CDM concordance cosmology}
+
+\section{The horizon problem}
+
+\section{Inflation}
 
 
 \clearpage{}
@@ -86,7 +105,7 @@ $\{\rho_i\}$ and pressures $\{P_i\}$ has the evolution equations
 %
 where $H=\dot{a}/a$ is the Hubble parameter, $a$ is the normalized scale factor and a dot denotes differentiation with respect to cosmic time, $\dot{f}\equiv df/dt$. The first equation is the {\em Raychaudhuri\/} equation, and is derived from the trace of the Einstein equations. The second is the {\em Friedmann\/} equation and represents the conservation of energy. The third is the {\em continuity\/} equation for the fluid $\rho_i$. It should be noted that these equations are not independent, and that the Raychaudhuri equation may be straightforwardly derived from the Friedmann and continuity equations.  For convenience, we use Planck units ($G=c=\hbar=1$) throughout, but for clarity retain the reduced Planck mass: 
 %
-\[\m = \sqrt{\frac{\hbar c}{8\pi G}} = (8\pi)^{-1/2}.\]  
+\[\m = \sqrt{\frac{\hbar c}{8\pi G}} = {(8\pi)}^{-1/2}.\]  
 %
 
 
@@ -109,19 +128,23 @@ In addition to the scalar field, we shall allow the possibility of including a c
 where ${w_i}$ are a set of constants determining the type of each fluid. Some commonly assumed cosmological fluids are listed in Table~\ref{tab:type_of_fluid} along with their $w$-values. Note that we are accommodating the possibility of spatially curved universes implicitly by including the case $w_i=-1/3$. We shall term all of these {\em auxiliary fluids}.
 %
 \begin{table}
-  \caption{Commonly assumed cosmological fluids and their
-    equation-of-state parameters $w$, defined by equation equation (\protect\ref{eqn:equation_of_state}).  For more information on ``missing matter'', see \protect\citet{vazquez_2012}\label{tab:type_of_fluid}.
-  }
+  \centerline{%
     \begin{tabular}{lc}
+      \toprule
       Type of fluid & $w$ \\
-      \hline
+      \midrule
       Scalar field during KD & $ \phantom{-}1\phantom{/3} $ \\
       Radiation & $ \phantom{-}1/3 $ \\
       Matter & $ \phantom{-}0\phantom{/3} $ \\
       Spatial curvature & $ -1/3$ \\
       Missing matter & $ -2/3$ \\
       Dark energy (cosmological constant) & $ -1\phantom{/3} $ \\
+      \bottomrule
     \end{tabular}
+  }
+  \caption{Commonly assumed cosmological fluids and their
+    equation-of-state parameters $w$, defined by equation equation (\protect\ref{eqn:equation_of_state}).  For more information on ``missing matter'', see \protect\citet{vazquez_2012}\label{tab:type_of_fluid}.
+  }
 \end{table}
 %
 
