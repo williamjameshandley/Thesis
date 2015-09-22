@@ -7,13 +7,13 @@ The application and understanding of Einstein's theory of general relativity req
   \centerline{%
     \input{plots/differential_geometry}
   }
-  \caption{\label{fig:dg:differenial_geometry}}
+  \caption{\label{fig:dg:differential_geometry}}
 \end{figure}
 
 \section{Coordinates}
 Curved spacetime is a collection of events (or points) $p$ in a manifold $\mathcal{M}$. Semi-global patches of it may have their events labelled with coordinates $x^a = x^a(p)$, which are always ``upstairs'' indexed. Since we are in $1+3$ spacetime, typically, $a=0$ will denote a time-like coordinate, and $a=1,2,3$ space-like coordinates.
 
-Technically, a coordinate is a scalar field defined on the manifold. A coordinate system is a set of scalar fields which provide a one-to-one mapping semi-global mapping from $\mathbb{R}^4$ to $\mathcal{M}$.
+Technically, a coordinate is a {\em scalar field}. This is a real number $\phi=\phi(p)$ defined for each point $p\in \mathcal{M}$. A coordinate {\em system\/} is therefore a set of scalar fields which provide a one-to-one semi-global mapping from $\mathcal{M}$ to $\mathbb{R}^4$.
 
 We will suppress indices on coordinates when the meaning is clear, for example in the case of a scalar field $\phi$ we write:
 \begin{equation}
@@ -25,6 +25,9 @@ We will suppress indices on coordinates when the meaning is clear, for example i
 %In general, the points $p\in \mathcal{M}$ will not form a vector space, and they cannot be added to one another in a meaningful way. Whilst there may be a physically meaningful addition and scaling of points in flat spacetimes, in the more general case there is not. For example, consider the manifold defined by the surface of the two-dimensional sphere $\mathcal{M}=S^2$. It is not possible to find an addition which is commutative and scalable
 
 \section{Vectors}
+
+
+
 This coordinate system defines a {\em contravariant\/} set of basis vectors at each point $\ve_a = \ve_a(p)$. Here the basis vector $\ve_a(p)$ is tangent to the coordinate curve:
 \begin{equation}
   \gamma^a = \{x^b=\mathrm{const} : a\ne \nu\},
@@ -102,6 +105,23 @@ A mapping of a rank $m$ tensor onto a rank $n$ tensor may be produced from a ran
 \section{Calculus}
 So far, all we have discussed is a way of dealing with vectors whose bases are defined by an arbitrary coordinate system. The maths becomes interesting when we start to ask questions about how these vectors change from point to point on the manifold.
 
+
+A vector is a geometrical object with magnitude and length. Intuition is usually introduced in terms of position vectors, where operationally a vector is what is needed to carry a point $A$ to point $B$.\footnote{In Latin, vector means ``one who carries''}. This is only a valid interpretation in flat space, as in curved space (such as the surface of the sphere) it is impossible to define a ``step in space'' such that those steps form a set of vectors (a vector space) which may be added and multiplied in the usual manner. 
+
+A given coordinate system
+
+In curved space, vectors may only be added {\em locally}. Each point $p\in \mathcal{M}$ defines its own vector space $T_p$. If we travel from a point $p$ to a point $q$ along a curve $\gamma: \mathbb{R}\to \mathcal{M}$, we must find a way $\Gamma$ of associating the two spaces, such that:
+\begin{align}
+  \Gamma(\gamma)^t_s &: T_{\gamma(s)} \to T_{\gamma(t)} \\
+  \Gamma(\gamma)^s_s &= I \\
+  \Gamma(\gamma)^t_u &\circ \Gamma(\gamma)^u_s =  \Gamma(\gamma)^t_s.
+\end{align}
+Note that this will depend on the choice of curve $\gamma$.  In addition, one should also demand that this mapping be in some sense smooth.
+
+In particular, if we consider this association in the limit of an infinitesimal curve, we may write the small change in position as a vector $d\vx = dx^a \ve_a$. We should therefore find that each vector satisfies:
+
+
+
 For scalar fields, the partial derivative is easy to define and calculate.
 
 For a vector field:
@@ -116,7 +136,7 @@ the problem is not so straightforward. First we now have two dependencies on pos
 \end{equation}
 we find that the only bit that we should be confused about is the final term involving the partial derivative of the basis vector. We have no means of computing this (yet), but it is certainly true that it will be a linear combination of the basis vectors:
 \begin{equation}
-  \partial_a\ve_b = \Gamma^c_{ba} \ve_c.
+  \partial_a\ve_b = \TG{c}{ba} \ve_c.
   \label{eqn:dg:gamma_def}
 \end{equation}
 The $\Gamma$ coefficients here are termed {\em Christoffel symbols}, and despite the notation are not the components of a tensor. We may also compute $\partial_a \ve^b$ by considering:
@@ -125,37 +145,37 @@ The $\Gamma$ coefficients here are termed {\em Christoffel symbols}, and despite
   \nonumber\\
   &= (\partial_a\ve^b)\cdot\ve_c + \ve^b\cdot(\partial_a\ve_c)
   \nonumber \\
-  &= (\partial_a\ve^b)\cdot\ve_c + \ve^b\cdot\Gamma^d_{ca} \ve_d 
+  &= (\partial_a\ve^b)\cdot\ve_c + \ve^b\cdot\TG{d}{ca} \ve_d 
   \nonumber \\
-  &= (\partial_a\ve^b)\cdot\ve_c + \Gamma^d_{ca} \delta^b_d
+  &= (\partial_a\ve^b)\cdot\ve_c + \TG{d}{ca} \delta^b_d
   \nonumber \\
-  &= (\partial_a\ve^b)\cdot\ve_c + \Gamma^b_{ca} 
+  &= (\partial_a\ve^b)\cdot\ve_c + \TG{b}{ca} 
   \nonumber \\
-  &= (\partial_a\ve^b)\cdot\ve_c + \Gamma^b_{ca} 
+  &= (\partial_a\ve^b)\cdot\ve_c + \TG{b}{ca} 
   \nonumber \\
   \Rightarrow \partial_a\ve^b
-  &=  - \Gamma^b_{ca} \ve^c
+  &=  - \TG{b}{ca} \ve^c
   \label{eqn:dg:chris_deriv}
 \end{align}
 With this, we may define a new {\em covariant derivative\/} for vector fields such that:
 \begin{align}
   \partial_a\vv &= (\nabla_a v^b) \ve_b = (\nabla_a v_b) \ve^b,
   \\
-   \nabla_a v^b &= \partial_a v^b + \Gamma^b_{ca}v^c,
+  \nabla_a v^b &= \partial_a v^b + \TG{b}{ca} v^c,
    \\
-   \nabla_a v_b &= \partial_a v_b - \Gamma^c_{ba}v_c.
+   \nabla_a v_b &= \partial_a v_b - \TG{c}{ba} v_c.
 \end{align}
 Tensors may be defined similarly so that
 \begin{align}
   \partial_a \uT &= (\nabla_a T^{bc}),
   \\
-  \nabla_a T^{bc} &= \partial_a T^{bc} + \Gamma^b_{da}T^{dc} + \Gamma^c_{da}T^{bd},
+  \nabla_a T^{bc} &= \partial_a T^{bc} + \TG{b}{da}T^{dc} + \TG{c}{da}T^{bd},
 \end{align}
 with similar formulae for downstairs components.
 
 All that remains is to find out what the Christoffel symbols actually are. Demanding metric compatibility and torsionlessness yields:
 \begin{equation}
-  \Gamma^a_{bc} = \frac{1}{2}g^{ad}
+  \TG{a}{bc} = \frac{1}{2}g^{ad}
   \left( 
   \partial_b g_{dc} 
   +\partial_c g_{bd} 
@@ -166,14 +186,14 @@ All that remains is to find out what the Christoffel symbols actually are. Deman
 
 We define the curvature tensor as
 \begin{align}
-  R^d_{abc} v_d &= \left( \nabla_{bc} - \nabla_{cb} \right) v_a
+  \tensor{R}{^d_{abc}} v_d &= \left( \nabla_{bc} - \nabla_{cb} \right) v_a
   \label{eqn:dg:riemann_def}\\
-  R^d_{abc} &= \partial_b \Gamma^d_{ac} - \partial_c \Gamma^d_{ab} + \Gamma^e_{ac}\Gamma^d_{ab} - \Gamma^e_{ab}\Gamma^d_{ec}
+  \tensor{R}{^d_{abc}} &= \partial_b \TG{d}{ac} - \partial_c \TG{d}{ab} + \TG{e}{ac} \TG{d}{ab} - \TG{e}{ab} \TG{d}{ec}
 \end{align}
 
 The Ricci tensor is defined as:
 \begin{equation}
-  R_{ab} = R^d_{dab}
+  R_{ab} = \tensor{R}{^d_{dab}}
   \label{eqn:dg:ricci_tensor}
 \end{equation}
 
@@ -185,7 +205,16 @@ The Ricci scalar is defined as:
 
 
 
-
+\section{FRW quantities}
+\begin{align}
+  \TG{0}{00} &= \TG{0}{0i} = \TG{0}{i0} = 0 \\
+  \TG{0}{ij} &= \delta_{ij} \dot{a}a \\
+  \TG{i}{0j} &= \TG{j}{i0} = \delta_{ij} \frac{\dot{a}}{a} \\
+  R_{00} &= -3 \frac{\ddot{a}}{a} \\
+  R_{ij} &= -3 \delta_{ij}\left[ 2{\dot{a}}^2 + a \ddot{a} \right] \\
+  R      &=  6 \left[ \frac{\ddot{a}}{a} + {\left( \frac{\dot{a}}{a} \right)}^2 \right] \\
+  G_{00} &= 3 {\left( \frac{\dot{a}}{a} \right)}^2
+\end{align}
 
 
 
