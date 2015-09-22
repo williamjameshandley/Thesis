@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $(dirname $0)/..  # change to the correct directory
+
 # Find the current word count
 CURRENT=$(./bin/word_count)
 

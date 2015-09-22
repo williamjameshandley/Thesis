@@ -1,7 +1,10 @@
 #!/bin/bash
 
+cd $(dirname $0)/..  # change to the correct directory
+
 # check to see if we're going to push another branch
-if [[ $# -eq 0 ]] ; then
+if [[ $# -eq 0 ]] 
+then
     branch="master"
 else
     branch=$1

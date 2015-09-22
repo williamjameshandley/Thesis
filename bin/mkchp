@@ -1,15 +1,18 @@
 #!/bin/bash
 
+cd $(dirname $0)/..  # change to the correct directory
 
-if [[ $# -eq 0 ]] ; then
-    echo "You need at least one argument."
-    echo "   correct usage is: "
-    echo "     mkchp <chapter-name> "
-    echo "     mkchp <appendix-name> app "
+if [[ $# -eq 0 ]] 
+then
+    >&2 echo "You need at least one argument."
+    >&2 echo "   correct usage is: "
+    >&2 echo "     mkchp <chapter-name> "
+    >&2 echo "     mkchp <appendix-name> app "
     exit 1
 fi
 
-if [[ $# -eq 2 ]] ; then
+if [[ $# -eq 2 ]] 
+then
     root="appendix"
 else
     root="chapter"
@@ -24,8 +27,9 @@ fi
 name=$root"_"$1
 
 # Check to see if the directory already exists
-if [ -d $name ] ; then
-    echo "$name already exists"
+if [ -d $name ] 
+then
+    >&2 echo "$name already exists"
     exit 1
 fi
 
