@@ -4,9 +4,12 @@
 The application and understanding of Einstein's theory of general relativity requires an understanding of curved spacetime.
 
 \begin{figure}
+  \ifdefined\lightweight{}
+  \else
   \centerline{%
     \input{plots/differential_geometry}
   }
+  \fi
   \caption{\label{fig:dg:differential_geometry}}
 \end{figure}
 
@@ -105,6 +108,38 @@ A mapping of a rank $m$ tensor onto a rank $n$ tensor may be produced from a ran
 \section{Calculus}
 So far, all we have discussed is a way of dealing with vectors whose bases are defined by an arbitrary coordinate system. The maths becomes interesting when we start to ask questions about how these vectors change from point to point on the manifold.
 
+For scalar fields, the partial derivative is easy to define and calculate. Taylor's theorem:
+\begin{equation}
+  \phi(x+dx) = \phi(x) + d\vx\cdot\nabla\phi(x),
+  \label{eqn:dg:taylor_scalar}
+\end{equation}
+serves as a powerful definition for the derivative $\nabla$.
+
+For vectors it is not so simple:
+\begin{equation}
+  \vv(x+dx) = P_{x}^{x+dx} \left[ \vv(x) + (d\vx\cdot\nabla)\vv(x)  \right]
+  \label{eqn:dg:taylor_vector}
+\end{equation}
+in components:
+\begin{align}
+  \ve_a(x+dx) &= P_{x}^{x+dx} \left[ \ve_a(x) + (d\vx\cdot\nabla)\ve_a(x)  \right] 
+  \label{eqn:dg:taylor_vector_comp} \\
+  &= P_{x}^{x+dx} \left[ \ve_a(x) + dx^{b}\TG{c}{ab}\ve_c(x)  \right] 
+  \label{eqn:dg:taylor_vector_comp} \\
+\end{align}
+
+
+
+\begin{equation}
+  v^a(x+dx)\ve_a(x+dx) = P_{x}^{x+dx} \left[ v^a(x)\ve_a(x) + dx^b\nabla_b(v^a(x)\ve_a(x))  \right]
+  \label{eqn:dg:taylor_scalar}
+\end{equation}
+
+\begin{equation}
+  v^a(x+dx) = v^a(x) + dx^b\left( \partial_b v^a(x) + \TG{a}{cb}v^c(x) \right)
+  \label{eqn:dg:taylor_vector}
+\end{equation}
+
 
 A vector is a geometrical object with magnitude and length. Intuition is usually introduced in terms of position vectors, where operationally a vector is what is needed to carry a point $A$ to point $B$.\footnote{In Latin, vector means ``one who carries''}. This is only a valid interpretation in flat space, as in curved space (such as the surface of the sphere) it is impossible to define a ``step in space'' such that those steps form a set of vectors (a vector space) which may be added and multiplied in the usual manner. 
 
@@ -119,10 +154,6 @@ In curved space, vectors may only be added {\em locally}. Each point $p\in \math
 Note that this will depend on the choice of curve $\gamma$.  In addition, one should also demand that this mapping be in some sense smooth.
 
 In particular, if we consider this association in the limit of an infinitesimal curve, we may write the small change in position as a vector $d\vx = dx^a \ve_a$. We should therefore find that each vector satisfies:
-
-
-
-For scalar fields, the partial derivative is easy to define and calculate.
 
 For a vector field:
 \begin{equation}

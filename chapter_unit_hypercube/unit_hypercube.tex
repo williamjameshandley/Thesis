@@ -1,0 +1,20 @@
+\chapter{The unit hypercube}
+\label{chap:hc}
+
+
+Nested sampling's power derives from the fact that to compute the evidence:
+\begin{equation}
+  \ev = \int_\mathcal{M} \lik(\params) \prior(\params)\: d^D\params
+  \label{eqn:hc:evidence}
+\end{equation}
+we transform from the $D$-dimensional physical parameter space $\mathcal{M}$ to the one-dimensional prior volume $X$:
+\begin{align}
+  dX &= \prior(\params)d^D\params
+  \label{eqn:hc:prior_vol_def} \\
+  \Rightarrow \ev &= \int_0^1 \lik(X) \: dX.
+\end{align}
+However, for the purposes of actual sampling algorithms, one still must work in a $D$-dimensional space. More precisely, the requirement at any iteration is to sample from the prior density $\prior(\params)$ subject to a hard likelihood constraint ($\lik>\liks$). 
+
+Normally, the prior density is given as an analytic function, and as such can be sampled using inverse transform sampling (see Appendix~\ref{sec:sm:inverse_transform}). Inverse transform sampling functions by converting a set of independent uniform random variables (which are easy to generate) into a variable distributed according to some other distribution (which in general is harder). The transformation is performed using the inverse of the conditional cumulative distribution function. 
+
+A particularly efficient methodology, first posed by~\cite{}<++>
