@@ -17,5 +17,16 @@ However, for the purposes of actual sampling algorithms, one still must work in 
 
 Normally, the prior density is given as an analytic function, and as such can be sampled using inverse transform sampling (see Appendix~\ref{sec:sm:inverse_transform}). Inverse transform sampling functions by converting a set of independent uniform random variables (which are easy to generate) into a variable distributed according to some other distribution (which in general is harder). The transformation is performed using the inverse of the conditional cumulative distribution function. 
 
-A particularly efficient methodology, first posed by~\cite{}<++>
+A particularly efficient methodology, first used in \MultiNest{} by~\cite{MultiNest2} is to encapsulate prior sampling by working in the {\em unit hypercube}. The approach produces samples $\vx\in{[0,1]}^D$, and when a likelihood calculation is required, first transforms via the conditional cumulative distribution function of the prior $F:\vx\to\params$, before computing the likelihood $\lik(\params)$. For the purposes of the sampler, it merely samples uniformly in the $\vx$-space subject to a hard likelihood constraint, and treats the likelihood $\lik(\vx)$ as a function of $\vx$.
+
+
+We now aim to extend this idea to the most general kind of parameters available to nested sampling.
+
+\section{Generalised parameters}
+\label{sec:uh:generalised_parameters}
+
+Nested sampling is designed to work in a parameter space $\mathcal{M}$ which is continuously parameterised. The most general version of such a space is encompassed by a {\em topological manifold}. This is any structure that locally looks like Euclidean space\footnote{More formally, a manifold is locally homeomorphic to Euclidean space: Every point has an invertibly continuous bijection to the Euclidean $n$-ball $B_n = \{ \vx\in\mathbb{R}^n : \vx\cdot\vx<1\}$.}. An atlas of charts must be created which map portions of the manifold to $\mathbb{R}^n$ in order to create a description of $\mathcal{M}$.
+
+A down-to-earth example would be if one wish to find a posterior distribution on the space of all directions in three dimensional space. In this case the manifold is the surface of a sphere $S^2$ which may be nearly covered by the chart provided by the spherical polar coordinates $(\theta,\phi)$. However, this chart does not technically include the poles, so a second chart is required to create a continuous map which includes the poles (for example, two maps with two different polar axis will suffice).
+
 
