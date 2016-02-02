@@ -31,11 +31,11 @@
 \newcommand{\lightweight}{}
 
 
-\includeonly{%
-  chapter_outline/outline,
-  chapter_inflationary_cosmology/inflationary_cosmology,
-  chapter_kinetic_dominance/kinetic_dominance
-}
+%\includeonly{%
+%  chapter_outline/outline,
+%  chapter_inflationary_cosmology/inflationary_cosmology,
+%  chapter_kinetic_dominance/kinetic_dominance
+%}
 
 \begin{document}
 %
@@ -156,15 +156,6 @@
 \graphicspath{{.}{./chapter_extending_nested_sampling/figures/}}
 \include{chapter_extending_nested_sampling/extending_nested_sampling}
 %
-% The unit hypercube
-% ------------------
-%
-\makeatletter
-\def\input@path{{.}{./chapter_unit_hypercube/}}
-\makeatother
-\graphicspath{{.}{./chapter_unit_hypercube/figures/}}
-\include{chapter_unit_hypercube/unit_hypercube}
-%
 % PolyChord
 % ------------------
 %
@@ -182,6 +173,12 @@
 \makeatother
 \graphicspath{{.}{./chapter_function_fitting/figures/}}
 \include{chapter_function_fitting/function_fitting}
+%
+\makeatletter
+\def\input@path{{.}{./chapter_RKWKB/}}
+\makeatother
+\graphicspath{{.}{./chapter_RKWKB/figures/}}
+\include{chapter_RKWKB/RKWKB}
 %
 %
 %
@@ -206,18 +203,6 @@
 \makeatother
 \graphicspath{{.}{./appendix_mathematical_asides/figures/}}
 \include{appendix_mathematical_asides/mathematical_asides}
-%
-\makeatletter
-\def\input@path{{.}{./appendix_differential_geometry/}}
-\makeatother
-\graphicspath{{.}{./appendix_differential_geometry/figures/}}
-\include{appendix_differential_geometry/differential_geometry}
-%
-\makeatletter
-\def\input@path{{.}{./appendix_RKWKB/}}
-\makeatother
-\graphicspath{{.}{./appendix_RKWKB/figures/}}
-\include{appendix_RKWKB/RKWKB}
 %
 % The bibliography
 %
