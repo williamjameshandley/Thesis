@@ -21,7 +21,52 @@ After the relevant background material is reviewed, we develop a generic mechani
 
 We then apply this procedure to the kinetically dominated universe, but delay the observational analysis to a later work.
 
+
+
 \section{Background}
+\label{sec:background}
+
+\clearpage{}
+
+We denote a general action via
+\begin{equation}
+  S_I = \int d^4x\sqrt{|g|}\mathcal{L}_I,
+  \label{eqn:general_action}
+\end{equation}
+where $\mathcal{L}_I$ is the {\em Lagrangian density}. We work in natural units $\hbar=c=1$ and set the reduced Planck mass $m_\mathrm{p} = {(8\pi G)}^{-1/2} = 1$. Dots denote differentiation with respect to cosmic time $\dot{f}\equiv \frac{d}{dt}f$, and primes denote differentiation with respect to conformal time $\prm{f}\equiv\frac{d}{d\eta}f$.
+
+We begin by briefly summarising the classical theory of cosmological perturbations for a general scalar field, before discussing the quantisation of such a theory
+
+
+\subsection{The classical action}
+\label{sec:inflation}
+Consider~\cite{Baumann+2009} a canonical scalar field $\phi$ minimally coupled to gravity $S= S_G + S_\phi$ with:
+\begin{equation}
+  \mathcal{L}_G = \frac{1}{2}R, 
+  \qquad
+  \mathcal{L}_\phi = \frac{1}{2}g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi - V(\phi),
+  \label{eqn:action}
+\end{equation}
+Extremising this action with respect to the fields $\phi$ and $g_{\mu\nu}$ recovers the Klein-Gordan and Einstein equations respectively:
+\begin{align}
+  \left( g^{\mu\nu}\nabla_\mu\nabla_\nu + \frac{dV}{d\phi} \right) \phi &= 0,
+  \label{eqn:klein_gordon}\\
+  G_{\mu\nu}\equiv R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R&= T_{\mu\nu},
+  \label{eqn:einstein}
+\end{align}
+where the stress-energy tensor is:
+\begin{equation}
+  T_{\mu\nu} = \nabla_\mu\phi \nabla_\nu\phi - \frac{1}{2}g_{\mu\nu} \nabla_\alpha\phi \nabla^\alpha\phi +g_{\mu\nu} V(\phi).
+  \label{eqn:SET}
+\end{equation}
+
+In cosmology, we assume that at zeroth order both the metric $g_{\mu\nu}$ and scalar field $\phi$ are homogeneous and isotropic. Applying these assumptions to equations~\eqref{eqn:klein_gordon}~\&~\eqref{eqn:einstein}, we find:
+\begin{align}
+  \dot{H}+H^2 &= -\frac{1}{3}\left( \dot{\phi}^2 - V(\phi) \right),
+  \label{eqn:Raychaudhuri}\\
+  0&=\ddot{\phi} + 3H\dot{\phi} + \frac{dV}{d\phi},
+\end{align}
+where the Hubble parameter $H = \dot{a}/a$.
 \subsection{Inflationary perturbations}
 One then considers perturbations about these background solutions 
 \begin{align}

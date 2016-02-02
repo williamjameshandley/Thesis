@@ -32,8 +32,8 @@
 
 
 \includeonly{%
-chapter_bayesian_inference/bayesian_inference,
-appendix_sampling_methods/sampling_methods
+chapter_inflationary_cosmology/inflationary_cosmology,
+chapter_kinetic_dominance/kinetic_dominance
 }
 
 \begin{document}
@@ -58,6 +58,10 @@ appendix_sampling_methods/sampling_methods
 %
 \include{other/thanks}
 %
+% thanks ...
+%
+\include{other/conventions}
+%
 % chapters ...
 %
 % Outline
@@ -72,6 +76,60 @@ appendix_sampling_methods/sampling_methods
 %
 %
 % Statistics
+% ==========
+%
+\part{Cosmology}
+\label{part:cosmology}
+%
+% Inflationary Cosmology
+% ----------------------
+%
+\makeatletter
+\def\input@path{{.}{./chapter_inflationary_cosmology/}}
+\makeatother
+\graphicspath{{.}{./chapter_inflationary_cosmology/figures/}}
+\include{chapter_inflationary_cosmology/inflationary_cosmology}
+%
+% Kinetic dominance in the early universe
+% ---------------------------------------
+%
+\makeatletter
+\def\input@path{{.}{./chapter_kinetic_dominance/}}
+\makeatother
+\graphicspath{{.}{./chapter_kinetic_dominance/figures/}}
+\include{chapter_kinetic_dominance/kinetic_dominance}
+%
+% Reconstructing the primordial power spectrum
+% --------------------------------------------
+%
+\makeatletter
+\def\input@path{{.}{./chapter_pps_reconstruction/}}
+\makeatother
+\graphicspath{{.}{./chapter_pps_reconstruction/figures/}}
+\include{chapter_pps_reconstruction/pps_reconstruction}
+%
+% Defining the quantum vacuum
+% ---------------------------
+%
+\makeatletter
+\def\input@path{{.}{./chapter_quantum_vacuum/}}
+\makeatother
+\graphicspath{{.}{./chapter_quantum_vacuum/figures/}}
+\include{chapter_quantum_vacuum/quantum_vacuum}
+%
+% Kinetic initial conditions for inflation
+% ----------------------------------------
+%
+\makeatletter
+\def\input@path{{.}{./chapter_kinetic_initial_conditions/}}
+\makeatother
+\graphicspath{{.}{./chapter_kinetic_initial_conditions/figures/}}
+\include{chapter_kinetic_initial_conditions/kinetic_initial_conditions}
+%
+%
+%
+%
+% Appendices
 % ==========
 %
 \part{Statistics}
@@ -130,60 +188,6 @@ appendix_sampling_methods/sampling_methods
 %
 %
 % Cosmology
-% ==========
-%
-\part{Cosmology}
-\label{part:cosmology}
-%
-% Inflationary Cosmology
-% ----------------------
-%
-\makeatletter
-\def\input@path{{.}{./chapter_inflationary_cosmology/}}
-\makeatother
-\graphicspath{{.}{./chapter_inflationary_cosmology/figures/}}
-\include{chapter_inflationary_cosmology/inflationary_cosmology}
-%
-% Kinetic dominance in the early universe
-% ---------------------------------------
-%
-\makeatletter
-\def\input@path{{.}{./chapter_kinetic_dominance/}}
-\makeatother
-\graphicspath{{.}{./chapter_kinetic_dominance/figures/}}
-\include{chapter_kinetic_dominance/kinetic_dominance}
-%
-% Reconstructing the primordial power spectrum
-% --------------------------------------------
-%
-\makeatletter
-\def\input@path{{.}{./chapter_pps_reconstruction/}}
-\makeatother
-\graphicspath{{.}{./chapter_pps_reconstruction/figures/}}
-\include{chapter_pps_reconstruction/pps_reconstruction}
-%
-% Defining the quantum vacuum
-% ---------------------------
-%
-\makeatletter
-\def\input@path{{.}{./chapter_quantum_vacuum/}}
-\makeatother
-\graphicspath{{.}{./chapter_quantum_vacuum/figures/}}
-\include{chapter_quantum_vacuum/quantum_vacuum}
-%
-% Kinetic initial conditions for inflation
-% ----------------------------------------
-%
-\makeatletter
-\def\input@path{{.}{./chapter_kinetic_initial_conditions/}}
-\makeatother
-\graphicspath{{.}{./chapter_kinetic_initial_conditions/figures/}}
-\include{chapter_kinetic_initial_conditions/kinetic_initial_conditions}
-%
-%
-%
-%
-% Appendices
 % ==========
 %
 \part{Appendices}
