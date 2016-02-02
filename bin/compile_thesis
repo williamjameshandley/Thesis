@@ -19,9 +19,15 @@ else
     exit 1
 fi
 
-$LATEXMK \
+if [ $# -eq 0 ]
+then
+    ARGS=''
+else
+    ARGS=$1
+fi
+
+$LATEXMK $ARGS \
     -pdf \
-    -pvc \
     -pdflatex='pdflatex --shell-escape %O %S' \
     -interaction=nonstopmode \
     thesis.tex

@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+  % Draw the grids
+  \draw[step=0.1,opacity=0.2] (0,0) grid (1,1));
+  \draw[step=1] (0,0) grid (1,1));
+
+  \draw[xshift=2cm,scale=2,step=0.1,opacity=0.2] (0,0) grid (1,1));
+  \draw[xshift=2cm,scale=2,step=1] (0,0) grid (1,1));
+
+  \draw[xshift=5cm,scale=3,step=0.1,opacity=0.2] (0,0) grid (1,1));
+  \draw[xshift=5cm,scale=3,step=1] (0,0) grid (1,1));
+
+  % Arrow of time
+  \path[->, very thick] 
+  (0,-1) 
+  edge node[below] {Time}
+  (8,-1);
+
+  % Time Labels
+  \node[below] at (0.5,0) {$t_1$};
+  \node[below] at (3,0) {$t_2$};
+  \node[below] at (6.5,0) {$t_3$};
+
+  \node[] (A1) at (0.3,0.3) {\textbullet};
+  \node[] (B1) at (0.8,0.6) {\textbullet};
+
+  \node[] (A2) at (2.6,0.6) {\textbullet};
+  \node[] (B2) at (3.6,1.2) {\textbullet};
+
+  \node[] (A3) at (5.9,0.9) {\textbullet};
+  \node[] (B3) at (7.4,1.8) {\textbullet};
+
+\end{tikzpicture}

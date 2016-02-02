@@ -1,6 +1,51 @@
 \chapter{Outline}
 \label{chap:out}
 
+As cosmologists, nature has been incredibly kind to us. We have been given a near crystal clear snapshot of the universe a mere 300,000 years after its birth. Figure 1 shows the Planck satellites image of the universe at this time, detailing the regions of higher and lower density. For cosmologists this is interesting in two ways. 
+
+First, these distortions in density are the beginnings of the formation of stars, galaxies and galaxy clusters. If one were to wind the clock forwards from this moment we would see cosmic structure coalescing around the regions of higher density.
+
+Second, these distortions tell us a great deal about physics at much earlier times. Observations from particle physics experiments allow us to confidently wind the clock backwards to mere microseconds after the big bang.
+However, the expansion of the universe itself allows us to look even further back than this. We now have a wealth of evidence that early in its history, the universe went though a rapid accelerated epoch.  This expansion acts as a cosmic magnifying glass, allowing us to observe patterns a billion trillion trillions of a second after the big bang using the universe we see today. The upshot of this is that cosmologists effectively have access the to most powerful particle accelerator imaginable, trillions of times stronger than the Large Hadron Collider. 
+
+The canonical explanation for the early period of accelerated expansion is the theory of inflation, with quantum fields providing the necessary driving force. This thesis focusses on the initial conditions for inflation; i.e.\ what started this all off.
+
+
+\section{Outline}
+
 This thesis is divided into two parts. The first details my work on Bayesian inference, and the second in inflationary cosmology.
 
 The first chapter of each part (chapters~\ref{chap:bay} and~\ref{chap:cos}) are introductory, establishing basic theory and notation, as well as my own interpretation of established concepts. The remainder of the thesis is entirely my own work, except where references explicitly state otherwise.
+
+\section{Rough ideas}
+
+\subsection{Theory}
+Usually, cosmologists work under the assumption that at these early times the universe was in an effectively beginningless inflating state, with no detectable beginning. Early in my PhD I rigorously proved a result that suggests this picture was somewhat incomplete.  Instead, all classical universes begin at a finite time in the past.  Moreover this beginning is dominated by kinetic energy, and not inflating. This provides a novel and arguably simpler mechanism for setting the initial conditions of the universe. More importantly, I showed that this period could have produced a distinct observational signature that we would see in the sky today.
+
+My current work focusses on the quantum mechanical initial conditions of the early universe. A full theoretical treatment of this epoch requires a consideration of quantum fields in curved spacetime, a discipline that was pioneered by our own Professor Hawking. One of the critical issues is that our basic ideas about how we talk about quantum particles are not designed to work in the context of gravity as a curved spacetime background. My latest research aims to resolve some of these issues, by re-defining the quantum mechanical notion of empty space. I also demonstrated that in the context of the early universe this alternative viewpoint makes detectable predictions which again differ from standard theory.
+
+Whilst examining this, I realised that I needed a better way of solving the equations of the early universe. Whilst this is not central to my physics research, I did indeed succeeded in developing a novel class of extremely efficient numerical methods for solving these, which I term RKWKB approaches.
+
+\subsection{Observations}
+Alongside my theoretical work, I take a hands on role in testing my theories against observational data. In 2014, I became the youngest UK member of the 800-strong Planck team. My main aim was to extract my predicted primordial signal of the early universe using the microwave satellite data.
+
+I have already shown you Planck's view of the early universe in Figure 1, but this is in fact a processed image. The picture it actually takes is more akin to Figure 2. The obvious difference between the two is the presence of a red band in the center of the image, which are the microwaves emitted by our own Milky Way galaxy. In order to observe the microwaves from by the beginning of the universe, we must first remove the contaminating information of the Milky Way. This requires a sophisticated model of the galaxy, with many parameters that must be simultaneously determined and quantified. 
+
+I sucessfully reconstructed the primordial signal of the early universe, an example of which can be seen in Figure 3. Alongside it in Figure 4 you can see the signal as predicted by the theory of my kinetically dominated universe in red, along with the more traditional theoretical prediction in blue. Whilst nothing conclusive could be gained from this analysis, there certainly are tantalising suggestions that a more detailed examination would be able to say which of the two is actually favoured by the data.
+
+\subsection{Statistics}
+Whilst working on Planck, it became apparent that the principle difficulty of searching for this signal was an absence of data analysis tools. There was no servicable method for analysing complicated Bayesian models such as those found in the galactic foregrounds of Figure 2.
+
+The Cavendish astrophysics department has long been a pioneer in proposing and developing groundbreaking Bayesian statistical approaches. With this in mind, I designed and implemented a novel algorithm which was christened PolyChord. This was designed to gather information from data about complicated scientific models, whilst simultaneously calculating the probability that the model is true.  PolyChord proved extremely successful in the Planck analysis, and was rapidly adopted by many members of the team as its de Facto inference tool
+
+\subsection{Work on the side}
+Alongside my observational work, I also use my data analysis algorithms to scientifically investigate regions of astrophysics outside cosmology.
+
+The nature of these Bayesian approaches means that they are applicable to a much broader range of astrophysical problems. I have been working with other members of the department who to test Einstein's general theory of relativity in pulsar timing arrays, and to identify galaxies in clusters. Further afield, I have been asked to work with teams in London to analyse FERMI x-rays in the search for dark matter and the Colorado DARE team to analyse the cosmic dark ages using radio wave data. The fast adoption of these tools by the community is due to the fact that they are the first algorithms of their kind which are able to cope with these charateristically high dimensional problems.
+
+\subsection{Future}
+As well as this collaborative work, I am also excited about the scientific possibilities that PolyChord has opened up outside of the field of astrophysics. The kind of problems it attacks are ubiquitous in science, and tend to stand out as long-standing unsolved theoretical issues. Examples range from the training of neural networks in machine learning to computing protein folds in biochemistry.
+
+I have already developed a preliminary second version 2.0, capable of tackling even harder problems, and I anticipate the full exploration of the scientific applications forming a significant part of my future research. In a more theoretical Bayesian setting, it is my belief that this is in fact the first in a large class of algorithms, the true potential of which has only just begun to be tapped.
+
+Within the field of cosmology, my work on the quantum mechanics of the early universe has raised as many questions as it has answered.  Theoretically, the nature and status of quantum mechanical particles in curving spacetime has not yet been satisfactorily resolved.  Observationally, I believe that a full analysis using polarisation and non-gaussianities could yield more powerful constraints on the primordial universe. I am very keen to synthesise my theoretical, statistical and observational research in order to produce an effective observational probe of semi-classical quantum gravity.

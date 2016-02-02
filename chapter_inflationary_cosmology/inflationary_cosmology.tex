@@ -37,7 +37,7 @@ is the stress energy tensor, and
 \end{equation}
 is the Einstein tensor.
 
-\section{Friedman-Robertson-Walker spacetime}
+\section{Friedman-Robertson-Walker spacetime: the smooth, expanding universe}
 \begin{table}
   \centering
 \begin{tabular}{ll}
@@ -59,8 +59,7 @@ is the Einstein tensor.
 \caption{Definitions of terms in the FRW metric}\label{tab:cos:metric}
 \end{table}
 
-
-On the largest scales, the universe is observed to be {\em homogeneous\/} and {\em isotropic}. Making these assumptions, the metric can only take one of three generic forms:
+On the largest scales, the universe is observed to be {\em homogeneous\/} and {\em isotropic}. This provides a good 0\textsuperscript{th}-order approximation to our actual universe. Making these assumptions, the metric can take one of three generic forms:
 \begin{align}
   ds^2 &= dt^2 - a{(t)}^2\left( d\chi^2 + S_k^2{(\chi)} d\Omega \right)
   \label{eqn:cos:FRW_metric}\\
@@ -75,16 +74,24 @@ On the largest scales, the universe is observed to be {\em homogeneous\/} and {\
   \end{array}
   \right.\label{eqn:cos:S_def}
 \end{align}
-The definitions of these terms can be found in Table~\ref{tab:cos:metric}. 
+The definitions of these terms can be found in Table~\ref{tab:cos:metric}. The scale factor $a(t)$ connects {\em comoving coordinates\/} $\chi$ with {\em physical coordinates}. Comoving variables can be thought of as a time-independent grid, which expand with the universe. Physical coordinates are found by multiplying via the scale factor $a(t)$ to account for the effect of the expansion of the universe.
+\begin{figure}
+  \centering
+  \input{plots/comoving}
+  \caption{Comoving vs.\ physical coordinates.\label{fig:cos:comoving_vs_physical}}
+\end{figure}
 
-In order to obtain the equations governing $a(t)$ and thus the dynamics of the universe, we must make some assumptions about the universes contents. A perfect fluid in thermodynamic equilibrium has stress-energy tensor:
+
+
+
+In order to obtain the equations governing $a(t)$ and thus the dynamics of the universe, we must make some assumptions about the universes contents. For a smooth universe, one may model its contents as a collection of non-interacting, comoving, uniform, perfect fluids. A perfect fluid in thermodynamic equilibrium has stress-energy tensor:
 \begin{equation}
   T^{\mu\nu} = (P+\rho)u^{\mu}u^{\nu} - P g^{\mu\nu}
   \label{eqn:cos:SET_perfect_fluid}
 \end{equation}
-where $\rho$ is the energy density, $P$ is the pressure, and $u^\mu$ is the four velocity of the fluid. In accordance with the cosmological principle, we shall assume that in the comoving frame the fluid is stationary ($u^\mu = [1,\bzero]$), and that $\rho=\rho(t)$ and $P=P(t)$ depend only on time and not on position.  
+where $\rho$ is the energy density, $P$ is the pressure, and $u^\mu$ is the four velocity of the fluid. In accordance with the cosmological principle, we shall assume that in the comoving frame the fluid is stationary ($u^\mu = [1,\bzero]$), and uniform ($\rho=\rho(t),P=P(t)$).  
 
-Applying the metric~\eqref{eqn:cos:FRW_metric} to the Einstein equations\eqref{eqn:cos:einsteins_equations}, with the stress-energy tensor~\eqref{eqn:cos:SET_perfect_fluid} one finds:
+Applying the metric~\eqref{eqn:cos:FRW_metric} to the Einstein equations~\eqref{eqn:cos:einsteins_equations}, with the stress-energy tensor~\eqref{eqn:cos:SET_perfect_fluid} one finds:
 \begin{align}
   \dot{H}+H^2 &= 
   -\frac{1}{6\m^2}\left( \rho + 3P\right), 
@@ -112,22 +119,31 @@ so that the line element becomes:
   ds^2 = a(\eta)\left( dt^2 - d{\vx}^2 \right).
   \label{eqn:cos:flat_FRW}
 \end{equation}
-This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons travel in straight lines. Alternatively, it is the time measured by a small light clock that expands comovingly with the universe.
+Here, one can see that the metric is now conformally equivalent to Minkowski space\footnote{hence the name ``conformal time''.}.
+This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons travel in straight lines. Alternatively, it is the time measured by a small light clock that expands comovingly with the universe. It can also be thought of as a ``comoving'' time. Most usefully, if the lower end of the integral in~\eqref{eqn:cos:conformal_time} is the origin of the universe, then this amounts to the largest comoving distance that light could have travelled by that moment in time.
                                                                      
 \section{Cosmic Horizons}
-The cosmic microwave background provides a near crystal-clear snapshot of the universe a mere $300,000$ years after its birth.
+There are several useful scales in cosmology. The first is the Hubble radius and Hubble time:
+\begin{equation}
+  \text{Hubble time} = \frac{1}{H} = \text{Hubble radius}.
+  \label{eqn:cos:Hubble_def}
+\end{equation}
+The Hubble time is the timescale on which the universe approximately doubles in size. Since the speed of light $c=1$, this is also equal to the Hubble radius, which is approximately the distance over which particles can communicate subluminally over a Hubble time.
 
-If one assumes a matter-dominated universe with $P=0$, then one finds $a\propto t^{1/3}$
+The second scale is the comoving Hubble radius:
+\begin{equation}
+  \text{conformal Hubble time} = \frac{1}{aH} = \text{comoving Hubble radius}.
+  \label{eqn:cos:com_Hubble_def}
+\end{equation}
+This is very similar to the physical Hubble radius and time, but now represented in comoving coordinates.
 
-
-\section{The $\Lambda$CDM concordance cosmology}
-
-\begin{figure}
-\centerline{%
-\input{plots/interactions}
-}
-\caption{Composition of the universe, along with the interaction of the components.\label{fig:cos:composition}}
-\end{figure}
+%\section{The $\Lambda$CDM concordance cosmology}
+%
+%\begin{figure}
+%\centering
+%\input{plots/interactions}
+%\caption{Composition of the universe, along with the interaction of the components.\label{fig:cos:composition}}
+%\end{figure}
 
 
 \section{Inflation}

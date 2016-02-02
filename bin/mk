@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd $(dirname $0)/..  # change to the correct directory
+
+THESIS="thesis.tex"
+
+if [[ ! -e $THESIS ]]
+then
+    >&2 echo "Please execute this command in the base thesis directory"
+    exit 1
+fi
+
+pdflatex thesis.tex
+bibtex thesis.tex
+pdflatex thesis.tex
+pdflatex thesis.tex
