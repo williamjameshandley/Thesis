@@ -7,13 +7,19 @@ I assume a working knowledge of Einstein's theory of general relativity. Review 
 
 \section{Einstein's gravity}
 \label{sec:cos:einsteins_gravity}
+\begin{quote}
+  {\em Spacetime tells matter how to move;\\ matter tells spacetime how to curve.}\hfill
+  --- \johnwheeler{}
+\end{quote}
 
-Einstein's gravity can be effectively summarised using the Einstein-Hilbert action formalism. An action $S$ is written as a general relativistic integral over a Lagrangian density $\mathcal{L}$:\footnote{This should not be confused with a likelihood, also denoted with $\lik$.}
+Einstein's theory of general relativity accounts for gravity by removing it as a fundamental ``force'' and replacing it as an effect of spacetime itself. Objects and fields still interact with one another on a spacetime background via the usual forces (electromagnetic, strong and weak nuclear forces). The spacetime itself can be thought of as being curved, and the effect of gravitation is due to objects moving on paths through a curved spacetime. Finally, the curvature is influenced by the matter content of the spacetime.
+
+The formalism of Einstein's gravity can be effectively summarised using the Einstein-Hilbert action. An action $S$ is written as a general relativistic integral over a Lagrangian density $\mathcal{L}$:\footnote{This should not be confused with a likelihood, also denoted with $\lik$.}
 \begin{equation}
   S = \int d^4 x \sqrt{|g|} \mathcal{L}.
   \label{eqn:cos:generic_lagrangian}
 \end{equation}
-note that the factor of $\sqrt{g}$, $g=\left|\det\left( g_{\mu\nu} \right)\right|$ ensures a relativistic volume element for integration.
+where the factor of $\sqrt{g}$, $g=\left|\det\left( g_{\mu\nu} \right)\right|$ ensures a relativistic volume element for integration.
 We typically decompose the Lagrangian $\mathcal{L}$ into a gravitational and matter part:
 \begin{align}
   \mathcal{L} &= \mathcal{L}_G + \mathcal{L}_M
@@ -21,7 +27,7 @@ We typically decompose the Lagrangian $\mathcal{L}$ into a gravitational and mat
   \mathcal{L}_G &= \frac{1}{2} \m^2 R
   \label{eqn:cos:L_grav}
 \end{align}
-where $R$ is the Ricci scalar~\eqref{eqn:dg:ricci_scalar} and $\mathcal{L}_M$ is the portion of the Lagrangian pertaining to the material content of spacetime. Requiring that the action~\eqref{eqn:cos:generic_lagrangian} is extremal ($\delta S = 0$) yields Einstein's equations:
+where $R$ is the Ricci scalar and $\mathcal{L}_M$ is the portion of the Lagrangian pertaining to the material content of spacetime. Requiring that the action~\eqref{eqn:cos:generic_lagrangian} is extremal ($\delta S = 0$) yields Einstein's equations:
 \begin{equation}
  \m^2 G_{\mu\nu} = T_{\mu\nu},
   \label{eqn:cos:einsteins_equations}
@@ -38,7 +44,7 @@ is the stress energy tensor, and
 \end{equation}
 is the Einstein tensor.
 
-\section{Friedman-Robertson-Walker spacetime: the smooth, expanding universe}
+\section{The smooth, expanding universe}
 \begin{table}
   \centering
 \begin{tabular}{ll}
@@ -75,7 +81,7 @@ On the largest scales, the universe is observed to be {\em homogeneous\/} and {\
   \end{array}
   \right.\label{eqn:cos:S_def}
 \end{align}
-The definitions of these terms can be found in Table~\ref{tab:cos:metric}. The scale factor $a(t)$ connects {\em comoving coordinates\/} $\chi$ with {\em physical coordinates}. Comoving variables can be thought of as a time-independent grid, which expand with the universe. Physical coordinates are found by multiplying via the scale factor $a(t)$ to account for the effect of the expansion of the universe.
+The definitions of these terms can be found in Table~\ref{tab:cos:metric}. The scale factor $a(t)$ connects {\em comoving coordinates\/} $\chi$ with {\em physical coordinates}. Comoving variables can be thought of as a time-independent grid, which expand with the universe (Figure~\ref{fig:cos:comoving_vs_physical}). Physical coordinates are found by multiplying via the scale factor $a(t)$ to account for the effect of the expansion of the universe.
 \begin{figure}
   \centering
   \input{plots/comoving}
@@ -87,10 +93,10 @@ The definitions of these terms can be found in Table~\ref{tab:cos:metric}. The s
 
 In order to obtain the equations governing $a(t)$ and thus the dynamics of the universe, we must make some assumptions about the universes contents. For a smooth universe, one may model its contents as a collection of non-interacting, comoving, uniform, perfect fluids. A perfect fluid in thermodynamic equilibrium has stress-energy tensor:
 \begin{equation}
-  T^{\mu\nu} = (P+\rho)u^{\mu}u^{\nu} - P g^{\mu\nu}
+  T^{\mu\nu} = (P+\rho)u^{\mu}u^{\nu} - P g^{\mu\nu} + \Sigma^{\mu\nu}
   \label{eqn:cos:SET_perfect_fluid}
 \end{equation}
-where $\rho$ is the energy density, $P$ is the pressure, and $u^\mu$ is the four velocity of the fluid. In accordance with the cosmological principle, we shall assume that in the comoving frame the fluid is stationary ($u^\mu = [1,\bzero]$), and uniform ($\rho=\rho(t),P=P(t)$).  
+where $\rho$ is the energy density, $P$ is the pressure, $u^\mu$ is the four velocity of the fluid, and $\Sigma^{\mu\nu}$ is a traceless, symmetric, anisotropic stress term. In accordance with the cosmological principle, we shall assume that in the comoving frame the fluid is stationary ($u^\mu = [1,\bzero]$), and uniform ($\rho=\rho(t),P=P(t)$), with no anisotropy $\Sigma=0$.  
 
 Applying the metric~\eqref{eqn:cos:FRW_metric} to the Einstein equations~\eqref{eqn:cos:einsteins_equations}, with the stress-energy tensor~\eqref{eqn:cos:SET_perfect_fluid} one finds:
 \begin{align}
@@ -123,6 +129,168 @@ so that the line element becomes:
 Here, one can see that the metric is now conformally equivalent to Minkowski space\footnote{hence the name ``conformal time''.}.
 This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons travel in straight lines. Alternatively, it is the time measured by a small light clock that expands comovingly with the universe. It can also be thought of as a ``comoving'' time. Most usefully, if the lower end of the integral in~\eqref{eqn:cos:conformal_time} is the origin of the universe, then this amounts to the largest comoving distance that light could have travelled by that moment in time.
                                                                      
+\section{The perturbed universe}
+The real universe is not smooth, despite how much of a good approximation that might be. Using the FRW metric as a 0\textsuperscript{th} order approximation, we may expand about these smooth solutions. In general then, we write each quantity as:
+\begin{equation}
+  X(t,\vx) = X(t) + \delta X(t,\vx)
+  \label{eqn:cos:expansion}
+\end{equation}
+Since in the early universe the perturbations were small $\delta X \ll X$, we may expand all equations to linear order to very high accuracy.
+
+\begin{table}
+  \centering
+\begin{tabular}{lll}
+ \toprule
+  Symbol & Definition & Properties \\
+ \midrule
+ \midrule
+ $\Phi$ & lapse & scalar\\
+ $B_i$ & shift & vector\\
+ $\Psi$ & (spatial) curvature perturbation  & scalar\\
+ $E_{ij}$ & (spatial) shear (3-tensor) & symmetric \& traceless tensor\\
+ \bottomrule
+\end{tabular}
+\caption{Definitions of terms in the perturbed FRW metric}\label{tab:cos:perturbed_metric}
+\end{table}
+
+
+A general perturbation of the FRW metric will take the form:
+\begin{equation}
+  ds^2 = (1+2\Phi)dt^2 -2a B_i dx^i dt  -a{(t)}^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + E_{ij} \right] dx^i dx^j,
+  \label{eqn:cos:FRW_perturb}
+\end{equation}
+where the various terms in the above expression are defined in Table~\ref{tab:cos:perturbed_metric}. Perturbing the matter content will yield:
+\begin{align}
+  \rho &= \rho + \delta\rho 
+  \label{eqn:cos:rho_perturb}\\
+  P &= P + \delta P 
+  \label{eqn:cos:P_perturb}\\
+  u^\mu &= u^\mu + \delta u^\mu 
+  \label{eqn:cos:u_perturb}\\
+  \Sigma^{\mu\nu} &= \Sigma^{\mu\nu}+ \delta\Sigma^{\mu\nu}
+  \label{eqn:cos:sigma_perturb}
+\end{align}
+We may constrain $\delta u^\mu$ by the requirement that $u^2=1$, so:
+\begin{equation}
+  \delta u^\mu = (-\Phi,\delta u^i).
+\end{equation}
+Similarly, the anisotropic stress is constrained such that only the $\delta\Sigma^{ij}$ terms are non-zero.
+
+When combining separate components, density, pressure and anisotropic stress add linearly, but velocities do not. It is convenient to define the 3-momentum density:
+\begin{equation}
+  \delta q^i = (\rho+P)/a^2 \delta u^i,
+\end{equation}
+which is additive.
+
+
+\subsection{Fourier modes and SVT decomposition}
+In general, the Einstein equations~\eqref{eqn:cos:einstein_tensor} are non-linear, second order, partial differential equations and are therefore extremely challenging to solve. However, the symmetry of the unperturbed universe makes linear perturbations much simpler. 
+\begin{itemize}
+  \item Translational invariance of the unperturbed universe means that the Fourier modes of the perturbations do not interact, simply turning spacial derivatives into multiples of wavevectors. 
+  \item Further the rotational invariance of  the unperturbed universe means that when the 3-vector and 3-tensor perturbations are decomposed into helicity modes, these helicity modes are also non-interacting.
+\end{itemize}
+Formally, a general field can be written in Fourier modes as:
+\begin{align}
+  \delta X(t,\vk) &= \int d^3\vx\: \delta X(t,\vx) e^{-i\vk \cdot \vx},\\
+  \delta X(t,\vx) &= \int \frac{d^3\vk}{{(2\pi)}^3}\: \delta X(t,\vx) e^{i\vk \cdot \vx}.
+\end{align}
+A vector field $V_i$ and a symmetric, traceless tensor field $T_{ij}$ can be decomposed into helicity modes as:
+\begin{align}
+  V_i =& \partial_i V + V_i,   \nonumber\\
+  &(\partial^k V_k=0) \\
+  T_{ij} =& (\partial_i\partial_j - \frac{\delta_{ij}}{3}\partial^k\partial_k)T + \frac{1}{2}(\partial_i T_j + \partial_j T_i) + T_{ij} \nonumber\\ 
+  &(\partial^k T_{ki} = \partial^k T_k = 0),
+\end{align}
+where $V$ and $T$ are helicity scalars, $V_i$ and $T_i$ are divergenceless 3-vectors and $T_{ij}$ is a divergenceless, symmetric, traceless 3-tensor\footnote{Note the overloaded notation: $V_i$ and $T_{ij}$ mean different things on either side of each equation.}.
+
+
+
+\subsection{Einstein equations}
+We now have the ingredients to form the first-order Einstein equations of the perturbed universe. Solving equation~\eqref{eqn:cos:einsteins_equations} using the perturbed forms~\eqref{eqn:cos:FRW_perturb}--\eqref{eqn:cos:sigma_perturb} with all variables decomposed into Fourier and helicity modes yields separate equations for scalars vectors and tensors listed below.
+\subsubsection{Scalars}
+\begin{align}
+  3H\left( \dot{\Psi} + H \Phi  \right) + \frac{k^2}{a^2}\left[ \Psi + H\left( a^2\dot{E}-aB \right) \right] &= -4\pi G \delta\rho
+  \label{eqn:cos:scalar_1} \\
+  \dot{\Psi} + H \Phi &= -4\pi G \delta q 
+  \label{eqn:cos:scalar_2}\\
+  \dot{\Psi} + 3 H \dot{\Psi} + H \dot{\Phi} + \left( 3H^2 + 2\dot{H} \right)\Phi &= 4\pi G \left( \delta\rho - \frac{2}{3}k^2\delta\Sigma \right)
+  \label{eqn:cos:scalar_3}\\
+  \left( \partial_t + 3H \right)\left( \dot{E}-B/a \right) + \frac{\Psi-\Phi}{a^2} &= 8\pi G \delta\Sigma
+  \label{eqn:cos:scalar_4}
+\end{align}
+\subsubsection{Vectors}
+\begin{align}
+  \delta \dot{q}_i + 3H \delta q_i &= k^2 \delta \Sigma_i \\
+  k^2\left( \dot{E}_i + B_i/a  \right) &= 16\pi G \delta q_i
+\end{align}
+
+
+\subsubsection{Tensors}
+\begin{align}
+  S&=\ddot{h} + 3H \dot{h} + \frac{k^2}{a^2}h \\
+  E_{ij} &= h(t) e_{ij}^{(+,\times)}(x), \qquad 
+  \delta\Sigma_{ij} = S(t) e_{ij}^{(+,\times)}(x), \qquad 
+  \nabla^2e_{ij} = -k^2 e_{ij}
+\end{align}
+
+\subsection{Gauge choice}
+Observant readers will have noted that these equations are incomplete. For example, the scalar equations~\eqref{eqn:cos:scalar_1}--\eqref{eqn:cos:scalar_4} constitute four equations in seven perturbed variables. Now, $\delta\rho$, $\delta P$ and $\delta\Sigma$ will be supplemented with equations of state (typically $\delta\rho = w\:\delta P$, $\delta\Sigma=0$), but that still leaves two degrees of freedom to be fixed.
+
+This lack of constraint arises from the fact that the split into background and perturbation $X=X+\delta X$ implied by~\eqref{eqn:cos:expansion} is more subtle than first appears. 
+
+Gauge\footnote{$\delta X$ is defined as the difference between the value $X$ has in the physical (perturbed) spacetime, and the value $X$ has in the background (unperturbed) spacetime. This can only be done if there is a prescription for identifying points between the two spacetimes, and in the language of differential geometry, this is termed a {\em gauge choice}.}
+
+\begin{table}
+  \centering
+\begin{tabular}{ll}
+ \toprule
+  Name & Definition \\
+ \midrule
+ \midrule
+ Synchronous & $\Phi=B=0$ \\
+ Newtonian & $B=E=0$ \\
+ Uniform density & $\delta\rho=0$ and e.g.\ $E=0$ \\
+ Comoving & $\delta q = E = 0$ \\
+ Spatially-flat & $\Psi=E=0$ \\
+ \bottomrule
+\end{tabular}
+\caption{Popular gauge choices}\label{tab:cos:gauge_choice}
+\end{table}
+Scalar gauge transformations:
+\begin{align}
+      t &\rightarrow t + \delta t 
+  & x^i &\rightarrow x^i + \partial^i \delta x  \\
+   \Phi &\rightarrow \Phi - \delta \dot{t}
+  &\Psi &\rightarrow \Psi +H \delta t  \\
+      B &\rightarrow B + \delta t/a - a\delta \dot{x}
+  &   E &\rightarrow E - \delta x 
+\end{align}
+Vector gauge transformations:
+\begin{align}
+  x^i &\rightarrow x^i + \delta x^i, \qquad \partial^k\delta x_k = 0   \\
+  B_i &\rightarrow  B_i + a \delta\dot{x}_i \\
+  E_i & \rightarrow E_i - \delta x_i
+\end{align}
+
+We will also have an equation of state, which links $\delta\rho$, $\delta P$ and $\delta\Sigma$, typically $\delta\rho = w \delta P$, $\delta\Sigma=0$.
+
+Five equations in Seven variables $\{\delta\rho, \delta P, \Phi, \Psi, B, E, \delta q, \delta\Sigma\}$. But gauge transformations can remove a further two of them.
+
+Gauge independent variables:
+
+\subsection{Metric perturbations}
+
+\subsection{Matter perturbations}
+
+\begin{align}
+  -\zeta &\equiv \Psi + \frac{H}{\dot{\rho}}\delta\rho
+  \label{eqn:cos:gauge_zeta}\\
+  \mathcal{R} &\equiv \Psi + \frac{H}{P+\rho}\delta q
+  \label{eqn:cos:gauge_R}\\
+  Q &\equiv \delta q + \frac{\dot{\phi}}{H}\Psi
+  \label{eqn:cos:gauge_Q}\\
+\end{align}
+
 \section{Cosmic Horizons}
 There are several useful scales in cosmology. The first is the Hubble radius and Hubble time:
 \begin{equation}
