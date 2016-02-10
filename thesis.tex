@@ -32,7 +32,8 @@
 
 
 \includeonly{%
-  chapter_inflationary_cosmology/inflationary_cosmology
+  chapter_inflationary_cosmology/inflationary_cosmology,
+  chapter_classical_perturbations/classical_perturbations
 }
 
 \begin{document}
@@ -97,6 +98,15 @@
 \makeatother
 \graphicspath{{.}{./chapter_kinetic_dominance/figures/}}
 \include{chapter_kinetic_dominance/kinetic_dominance}
+%
+% classical perturbations
+% ---------------------------------------
+%
+\makeatletter
+\def\input@path{{.}{./chapter_classical_perturbations/}}
+\makeatother
+\graphicspath{{.}{./chapter_classical_perturbations/figures/}}
+\include{chapter_classical_perturbations/classical_perturbations}
 %
 % Reconstructing the primordial power spectrum
 % --------------------------------------------
