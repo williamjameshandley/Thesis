@@ -28,7 +28,7 @@ Since in the early universe the perturbations were small $\delta X \ll X$, we ma
 
 A general perturbation of the FRW metric will take the form:
 \begin{equation}
-  ds^2 = (1+2\Phi)dt^2 -2a B_i dx^i dt  -a{(t)}^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + E_{ij} \right] dx^i dx^j,
+  ds^2 = (1+2\Phi)dt^2 -2a B_i dx^i dt  -a{(t)}^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + 2E_{ij} \right] dx^i dx^j,
   \label{eqn:cos:FRW_perturb}
 \end{equation}
 where the various terms in the above expression are defined in Table~\ref{tab:cos:perturbed_metric}, and $\Phi,B_i,\Psi,E_{ij}\ll1$. Perturbing the matter content will yield a perturbed stress energy tensor, and to first order the Einstein equation~\eqref{eqn:cos:einsteins_equations} becomes:
@@ -58,37 +58,10 @@ A vector field $V_i$ and a symmetric, traceless tensor field $T_{ij}$ can be dec
 \end{align}
 where $V$ and $T$ are helicity scalars, $V_i$ and $T_i$ are divergenceless 3-vectors and $T_{ij}$ is a divergenceless, symmetric, traceless 3-tensor\footnote{Note the overloaded notation: $V_i$ and $T_{ij}$ mean different things on either side of each equation.}.
 
+We may therefore decompose the 
 \subsection{Gauge invariant equations}
 
 
-
-\subsection{Einstein equations}
-We now have the ingredients to form the first-order Einstein equations of the perturbed universe. Solving equation~\eqref{eqn:cos:einsteins_equations} using the perturbed forms~\eqref{eqn:cos:FRW_perturb}--\eqref{eqn:cos:sigma_perturb} with all variables decomposed into Fourier and helicity modes yields separate equations for scalars vectors and tensors listed below.
-\subsubsection{Scalars}
-\begin{align}
-  3H\left( \dot{\Psi} + H \Phi  \right) + \frac{k^2}{a^2}\left[ \Psi + H\left( a^2\dot{E}-aB \right) \right] &= -4\pi G \delta\rho
-  \label{eqn:cos:scalar_1} \\
-  \dot{\Psi} + H \Phi &= -4\pi G \delta q 
-  \label{eqn:cos:scalar_2}\\
-  \dot{\Psi} + 3 H \dot{\Psi} + H \dot{\Phi} + \left( 3H^2 + 2\dot{H} \right)\Phi &= 4\pi G \left( \delta\rho - \frac{2}{3}k^2\delta\Sigma \right)
-  \label{eqn:cos:scalar_3}\\
-  \left( \partial_t + 3H \right)\left( \dot{E}-B/a \right) + \frac{\Psi-\Phi}{a^2} &= 8\pi G \delta\Sigma
-  \label{eqn:cos:scalar_4}
-\end{align}
-\subsubsection{Vectors}
-\begin{align}
-  \delta \dot{q}_i + 3H \delta q_i &= k^2 \delta \Sigma_i \\
-  k^2\left( \dot{E}_i + B_i/a  \right) &= 16\pi G \delta q_i
-\end{align}
-
-
-\subsubsection{Tensors}
-\begin{align}
-  S&=\ddot{h} + 3H \dot{h} + \frac{k^2}{a^2}h \\
-  E_{ij} &= h(t) e_{ij}^{(+,\times)}(x), \qquad 
-  \delta\Sigma_{ij} = S(t) e_{ij}^{(+,\times)}(x), \qquad 
-  \nabla^2e_{ij} = -k^2 e_{ij}
-\end{align}
 
 \subsection{Gauge choice}
 Observant readers will have noted that these equations are incomplete. For example, the scalar equations~\eqref{eqn:cos:scalar_1}--\eqref{eqn:cos:scalar_4} constitute four equations in seven perturbed variables. Now, $\delta\rho$, $\delta P$ and $\delta\Sigma$ will be supplemented with equations of state (typically $\delta\rho = w\:\delta P$, $\delta\Sigma=0$), but that still leaves two degrees of freedom to be fixed.
@@ -113,62 +86,33 @@ Gauge\footnote{$\delta X$ is defined as the difference between the value $X$ has
 \end{tabular}
 \caption{Popular gauge choices}\label{tab:cos:gauge_choice}
 \end{table}
-Scalar gauge transformations:
+Gauge transformations
 \begin{align}
-      t &\rightarrow t + \delta t 
-  & x^i &\rightarrow x^i + \partial^i \delta x  \\
-   \Phi &\rightarrow \Phi - \delta \dot{t}
-  &\Psi &\rightarrow \Psi +H \delta t  \\
-      B &\rightarrow B + \delta t/a - a\delta \dot{x}
-  &   E &\rightarrow E - \delta x 
+  t &\rightarrow t + \delta t  \\
+  x^i &\rightarrow x^i  + \delta x^i \nonumber\\
+  &=   x^i + \partial^i \delta x + \delta x^i
 \end{align}
-Vector gauge transformations:
 \begin{align}
-  x^i &\rightarrow x^i + \delta x^i, \qquad \partial^k\delta x_k = 0   \\
-  B_i &\rightarrow  B_i + a \delta\dot{x}_i \\
-  E_i & \rightarrow E_i - \delta x_i
+  \Phi &\rightarrow \Phi - \delta \dot{t} &
+  E &\rightarrow E - \delta x \nonumber \\
+  \Psi &\rightarrow \Psi +H \delta t &
+  E_i & \rightarrow E_i - \delta x_i\nonumber \\
+  B &\rightarrow B + \delta t/a - a\delta \dot{x} &
+  E_{ij} &\rightarrow E_{ij}\nonumber \\
+  B_i &\rightarrow  B_i + a \delta\dot{x}_i &
 \end{align}
-
-We will also have an equation of state, which links $\delta\rho$, $\delta P$ and $\delta\Sigma$, typically $\delta\rho = w \delta P$, $\delta\Sigma=0$.
-
-Five equations in Seven variables $\{\delta\rho, \delta P, \Phi, \Psi, B, E, \delta q, \delta\Sigma\}$. But gauge transformations can remove a further two of them.
 
 Gauge independent variables:
 
-\subsection{Metric perturbations}
-
-\subsection{Matter perturbations}
-Perturbing the matter content will yield:
+Einstein tensor:
 \begin{align}
-  \rho &= \rho + \delta\rho 
-  \label{eqn:cos:rho_perturb}\\
-  P &= P + \delta P 
-  \label{eqn:cos:P_perturb}\\
-  u^\mu &= u^\mu + \delta u^\mu 
-  \label{eqn:cos:u_perturb}\\
-  \Sigma^{\mu\nu} &= \Sigma^{\mu\nu}+ \delta\Sigma^{\mu\nu}
-  \label{eqn:cos:sigma_perturb}
-\end{align}
-We may constrain $\delta u^\mu$ by the requirement that $u^2=1$, so:
-\begin{equation}
-  \delta u^\mu = (-\Phi,\delta u^i).
-\end{equation}
-Similarly, the anisotropic stress is constrained such that only the $\delta\Sigma^{ij}$ terms are non-zero.
-
-When combining separate components, density, pressure and anisotropic stress add linearly, but velocities do not. It is convenient to define the 3-momentum density:
-\begin{equation}
-  \delta q^i = (\rho+P)/a^2 \delta u^i,
-\end{equation}
-which is additive.
-
-
-
-\begin{align}
-  -\zeta &\equiv \Psi + \frac{H}{\dot{\rho}}\delta\rho
-  \label{eqn:cos:gauge_zeta}\\
-  \mathcal{R} &\equiv \Psi + \frac{H}{P+\rho}\delta q
-  \label{eqn:cos:gauge_R}\\
-  Q &\equiv \delta q + \frac{\dot{\phi}}{H}\Psi
-  \label{eqn:cos:gauge_Q}\\
+  G^{0}_{0} &= 3 H^2 \\
+  G^{i}_{j} &= \left( 2\dot{H} + 3H^2 \right)\delta^{i}_{j}
 \end{align}
 
+Perturbed Einstein tensor:
+\begin{align}
+  \delta G^{0}_{0} &=-6H^2\Phi-6H\dot{\Psi} -2k^2 \Psi + 6H \Psi  \\
+  \delta G^{0}_{i} &=ik\left( 2H\Phi + 2\dot{\Phi} \right)\\
+  \delta G^{i}_{j} &=ik\left( 2H\Phi + 2\dot{\Phi} \right)
+\end{align}
