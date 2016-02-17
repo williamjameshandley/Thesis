@@ -103,6 +103,10 @@ Gauge transformations
 \end{align}
 
 Gauge independent variables:
+\begin{align}
+  \Phi_B &=  \Phi - \frac{d}{dt}(a^2[\dot{E}-B/a]) \\
+  \Psi_B &=  \Psi + Ha^2[\dot{E}-B/a] \\
+\end{align}
 
 Einstein tensor:
 \begin{align}
@@ -110,9 +114,9 @@ Einstein tensor:
   G^{i}_{j} &= \left( 2\dot{H} + 3H^2 \right)\delta^{i}_{j}
 \end{align}
 
-Perturbed Einstein tensor:
+Perturbed Einstein tensor for scalar parts, $E=B=0$:
 \begin{align}
-  \delta G^{0}_{0} &=-6H^2\Phi-6H\dot{\Psi} -2k^2 \Psi + 6H \Psi  \\
-  \delta G^{0}_{i} &=ik\left( 2H\Phi + 2\dot{\Phi} \right)\\
-  \delta G^{i}_{j} &=ik\left( 2H\Phi + 2\dot{\Phi} \right)
+  \delta G^{0}_{0} &= 2\frac{\nabla^2}{a^2} \Psi -6H\dot{\Psi} -6H^2\Phi\\
+  \delta G^{0}_{i} &= 2\nabla_i(\dot{\Psi} + \Phi H) \\
+  \delta G^{i}_{j} &= -\left( 2 \Phi H^2 +4 \Phi \dot{H} + 2\dot{\Phi}H +6H\dot{\Psi} +2 \ddot{\Psi} + \frac{\nabla^2}{a^2}[\Phi-\Psi] \right)\delta^{i}_{j} + \frac{\nabla^{i}\nabla_{j}}{a^2}[\Phi-\Psi]
 \end{align}
