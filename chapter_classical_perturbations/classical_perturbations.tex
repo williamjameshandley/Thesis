@@ -120,3 +120,36 @@ Perturbed Einstein tensor for scalar parts, $E=B=0$:
   \delta G^{0}_{i} &= 2\nabla_i(\dot{\Psi} + \Phi H) \\
   \delta G^{i}_{j} &= -\left( 2 \Phi H^2 +4 \Phi \dot{H} + 2\dot{\Phi}H +6H\dot{\Psi} +2 \ddot{\Psi} + \frac{\nabla^2}{a^2}[\Phi-\Psi] \right)\delta^{i}_{j} + \frac{\nabla^{i}\nabla_{j}}{a^2}[\Phi-\Psi]
 \end{align}
+
+\subsection{Stress-energy for scalar field}
+Scalar field with minimal coupling action:
+\begin{equation}
+  S_\phi = \int d^4x\:\sqrt{|g|}\left( \frac{1}{2}\nabla^\mu\phi\nabla_\mu\phi - V(\phi) \right)
+\end{equation}
+Energy momentum tensor:
+\begin{equation}
+  T^{\mu}_{\nu} = \nabla^\mu\phi\nabla_\nu\phi - \left( \frac{1}{2}\nabla^\alpha\phi \nabla_\alpha\phi - V(\phi)  \right)\delta^{\mu}_{\nu}
+\end{equation}
+Split into homogenous and inhomogeneous part:
+\begin{equation}
+  \phi = \phi(t) + \delta\phi(t,x)
+\end{equation}
+so stress energy tensor:
+\begin{equation}
+  T^{\mu}_{\nu} = T^{\mu}_{\nu} + \delta T^{\mu}_{\nu}
+\end{equation}
+
+Background:
+\begin{align}
+  T^{0}_{0} &= \frac{1}{2}\dot{\phi}^2 + V(\phi) = \rho \\
+  T^{0}_{i} &= 0 \\
+  T^{i}_{j} &= -\left( \frac{1}{2}\dot{\phi}^2 - V(\phi) \right)\delta^{i}_{j} = -P\delta^{i}_{j}
+\end{align}
+
+First order:
+\begin{align}
+  \delta T^{0}_{0} &= -\dot{\phi}^2\Phi + \dot{\phi}\delta\dot{\phi} + \frac{dV}{d\phi} \delta\phi \\
+  \delta T^{0}_{i} &= \dot{\phi}\nabla_i\delta\phi\\
+  \delta T^{i}_{j} &= \left( \dot{\phi}\Phi-\dot{\phi}\delta\dot{\phi}+\frac{dV}{d\phi} \delta\phi \right)\delta^{i}_{j}
+\end{align}
+
