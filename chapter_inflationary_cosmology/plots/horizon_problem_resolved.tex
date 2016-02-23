@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+  \draw [<->,thick] (0,7) node (yaxis) [left] {$\eta$}
+  |- (11,-5) node (xaxis) [below] {$\chi$};
+
+  % CMB
+
+  % singularity
+  \draw[] (1,-4) -- (9,-4) node [right] {Singularity};
+  \draw[decorate,decoration=snake] (1,2) node (CMBl) {}  -- (9,2) node (CMBr) [right] {CMB};
+  \draw[dashed] (1,6) -- (9,6) node [right] {Today};
+
+  % causal contacts
+  \draw (2,1) node (s1) {};
+  \draw (8,1) node (s4) {};
+
+  \draw (1,2) node (c1) {};
+  \draw (9,2) node (c5) {};
+  \draw (5,6) node (now) {};
+  \draw (5,-2) node (then) {};
+
+  
+  \draw (c1) -- (now) -- (c5);
+  \draw (c1) -- (then) -- (c5);
+  \draw (now) node [above] {Here};
+  \draw (now) node [above] {Here};
+
+\end{tikzpicture}
