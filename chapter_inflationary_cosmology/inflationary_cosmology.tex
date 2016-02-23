@@ -42,9 +42,15 @@ is the stress energy tensor, and
   G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}g_{\mu\nu} R,
   \label{eqn:cos:einstein_tensor}
 \end{equation}
-is the Einstein tensor. The symmetries of the Einstein tensor~\eqref{eqn:cos:einstein_tensor} mean that there are in fact only six independent equations in~\eqref{eqn:cos:einsteins_equations}.
+is the Einstein tensor. The symmetries of the Einstein tensor~\eqref{eqn:cos:einstein_tensor} mean that there are in fact only six independent equations in~\eqref{eqn:cos:einsteins_equations}. Further, the fact that $\nabla^\mu G_{\mu\nu}=0$ means that the stress energy tensor is conserved:
+\begin{equation}
+  \nabla_\mu T^{\mu}_{\nu} = 0
+  \label{eqn:cos:SET_conservation}
+\end{equation}
+This conservation equation can provide a fast means for deriving alternative rearragements of the Einstein equations.
 
 \section{The smooth, expanding universe}
+\subsection{Metric}
 \begin{table}
   \centering
 \begin{tabular}{ll}
@@ -91,6 +97,7 @@ The definitions of these terms can be found in Table~\ref{tab:cos:metric}. The s
 
 
 
+\subsection{Dynamics}
 In order to obtain the equations governing $a(t)$ and thus the dynamics of the universe, we must make some assumptions about the universes contents. For a smooth universe, one may model its contents as a collection of non-interacting, comoving, uniform, perfect fluids. A perfect fluid in thermodynamic equilibrium has stress-energy tensor:
 \begin{equation}
   T^{\mu\nu} = (P+\rho)u^{\mu}u^{\nu} - P g^{\mu\nu} + \Sigma^{\mu\nu}
@@ -111,6 +118,7 @@ Applying the metric~\eqref{eqn:cos:FRW_metric} to the Einstein equations~\eqref{
 %
 where $H=\dot{a}/a$ is the Hubble parameter and a dot denotes differentiation with respect to cosmic time, $\dot{f}\equiv df/dt$. These are termed the {\em Raychaudhuri\/} and {\em Friedmann\/} equations respectively, and implicitly govern the dynamics of the scale factor $a(t)$. It should be noted that these equations are not complete, as additionally one requires an equation of state linking $\rho$ and $P$.
 
+\subsection{Simple solutions}
 A reasonable model for the universe we observe today is as a multi-component fluid, each with its own simple equation of state:
 \begin{equation}
   \rho = \sum_i \rho_i, \qquad P = \sum_i P_i, \qquad P_i = w_i \rho_i
@@ -148,34 +156,37 @@ We can see immediately that in a universe dominated by dark energy $(w=-1)$ the 
 \end{figure}
 
 
-\section{Measures of time}
+\section{Conformal time and redshift}
+\subsection{Conformal time $\eta$}
 
-Typically we will assume that the universe is flat $(k=0)$ for simplicity, although most analyses can be extended to the open or closed cases. In the flat case, we may write the spatial part with vectors:
-\begin{equation}
-  ds^2 = dt^2 - a{(t)}^2 d{\vx}^2.
-  \label{eqn:cos:flat_FRW}
-\end{equation}
-It is also convenient to define conformal time as:
+It convenient to define conformal time as:
 \begin{equation}
   \eta = \int \frac{dt}{a},
   \label{eqn:cos:conformal_time}
 \end{equation}
 so that the line element becomes:
-\begin{equation}
-  ds^2 = a(\eta)\left( dt^2 - d{\vx}^2 \right).
+\begin{equation}          
+  ds^2 = a(\eta)\left( d\eta^2 - dX^2 \right).
   \label{eqn:cos:flat_FRW}
 \end{equation}
-Here, one can see that the metric is now conformally equivalent to Minkowski space\footnote{Hence the name ``conformal time''.}.
-This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons travel in straight lines on spacetime diagrams. Alternatively, it is the time measured by a small light clock that expands comovingly with the universe. It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial coordinates.
+where $dX^2 = d\chi^2 + S_k^2(\chi) d\Omega$.
+This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons appear as if they were in flt space: If we consider (without loss of generality) radially travelling photons $d\Omega=0$ the line element is simply:
+\begin{equation}          
+  ds^2 = a(\eta)\left( d\eta^2 - d\chi^2 \right).
+  \label{eqn:cos:flat_FRW}
+\end{equation}
+and the metric is conformally equivalent to two-dimensional Minkowski space\footnote{Hence the name ``conformal time''.}. We have thus removed all of the complexities of curvature and comoving coordinates. Since photons have a null trajectory, $ds^2=0\Rightarrow d\eta = \pm d\chi$, and therefore  travel in straight lines on spacetime diagrams with $\eta$ and $\chi$ as axes. This considerably simplifies most pictures.
+Alternatively, conformal time is the time measured by a small light clock that expands comovingly with the universe. It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial coordinates.
 
-  The expansion of the universe causes the wavelengths of a photons to increase: Photons have a four-momentum proportional to their wavevector $p^\mu \propto k^\mu$. Since the FRW metric has no explicit $\chi$-dependence for radially travelling photons, $p_\chi$ is conserved: $p_\chi(t_1) = p_\chi(t_2)$. Using the metric to raise the indices, one finds that $p^\chi(t_2)/a(t_2)=p^\chi(t_1)/a(t_1)$. Identifying ${p^\chi \propto k^r \propto \lambda^{-1}}$ where $\lambda$ is the wavelength of the photon, one finds:
+\subsection{Redshift $z$}
+We now show that the expansion of the universe causes the wavelengths of a photons to increase: Photons have a four-momentum proportional to their wavevector $p^\mu \propto k^\mu$. Since the FRW metric has no explicit $\chi$-dependence for radially travelling photons, $p_\chi$ is conserved: $p_\chi(t_1) = p_\chi(t_2)$. Using the metric to raise the indices, one finds that $p^\chi(t_2)/a(t_2)=p^\chi(t_1)/a(t_1)$. Identifying ${p^\chi \propto k^r \propto \lambda^{-1}}$ where $\lambda$ is the wavelength of the photon, one finds:
 \begin{equation}
   \frac{\lambda_2}{\lambda_1} = \frac{a_2}{a_1},
 \end{equation}
-and thus the wavelengths of photons increase with the expansion of the universe.
+and thus the wavelengths of photons increase with the expansion of the universe. Physically, the stretching of spacetime stretches the wavelengths of photons.
 The redshift $z$ of the photon from some early time $t_1$, relative to the current epoch $t_0$, is defined as usual as:
 \begin{equation}
-  z = \frac{\lambda_1-\lambda_0}{\lambda_0},
+  z = \frac{\lambda_0-\lambda_1}{\lambda_1},
 \end{equation}
 which gives a relation between the redshift of a photon and the scale factor:
 \begin{equation}
@@ -243,16 +254,18 @@ One may think of this in terms of initial conditions\footnote{Specifically Cauch
 \end{equation}
 Modelling as a single component universe with equation of state parameter $w$, equation~\eqref{eqn:cos:expansion_history} yields:
 \begin{equation}
-  H = H_0a^{-3(1+w)/2} \Rightarrow \eta \propto a^{(1+3w)/2} %=\frac{a^{(1+3w)/2}}{H_0(1+3w)/2}
+  H = H_0a^{-3(1+w)/2} \Rightarrow \eta =\frac{a^{(1+3w)/2}}{H_0(1+3w)/2}%\propto a^{(1+3w)/2} %
 \end{equation}
-The furthest back we are able to see is $z\approx1000\approx a^{-1}$, where we observe a very homogeneous universe. The comoving size of the universe we see at time $\eta$ is equal to $1-\eta$, 
-
-For conventional matter $(w\ge0)$, this means that $\Delta \eta$
+For conventional matter $(w\ge0)$, this means that $\eta$ increases with time. Now, for photons:
+\begin{equation}
+  \Delta\chi = \chi_2 - \chi_1 = \eta_2 - \eta_1 = \Delta\eta
+\end{equation}
+represents the particle horizon, i.e. the furthest apart\ldots 
 
 \begin{figure}
   \centering
   \input{plots/horizon_problem}
-  \caption{Horizon problem.\label{fig:cos:horizon_problem}}
+  \caption{The horizon problem. From our position, we observe the CMB as a surface at some earlier time. The homogeneity of the CMB suggests that there must have been some physical mechanism to smooth it out. However, in cosmologies with traditional matter, there is not enough time before the CMB to allow this to occur. In fact, the CMB appears to be made up of causally disconnected regions. There is thus no dynamical reason as to why these disconeccetd regions should show such similar physical conditions. As a rough guideline, a causal patch is roughly a thumb-width on the sky.}\label{fig:cos:horizon_problem}
 \end{figure}
 
 \begin{figure}
@@ -262,6 +275,67 @@ For conventional matter $(w\ge0)$, this means that $\Delta \eta$
 \end{figure}
 
 \section{An accelerating universe}
+\section{Inflation}
+The canonical way to explain this early accelerated phase is via the phenomenon of {\em inflation}. This early accelerated phase will have occurred when the universe was at extremely high energy, which suggests that we should turn to particle physics phenomenology.
+It turns out if we consider even the most simple particle physics models, these are capable of generating a sustained accelerated phase in the context of general relativity.
+
+\subsection{Basic theory}
+Consider the Lagrangian:
+\begin{equation}
+  \mathcal{L}_\phi = \frac{1}{2}\nabla^\mu\phi\nabla_\mu\phi - V(\phi) 
+  \label{eqn:cos:scalar_field_lagrangian}
+\end{equation}
+This represents a scalar field $\phi$, minimally coupled to gravity with some unspecified potential $V$.  Inserting this into~\eqref{eqn:cos:SET_fundamantal} yields a stress energy tensor of:
+\begin{equation}
+  T^{\mu}_{\nu} = \nabla^\mu\phi\nabla_\nu\phi - \left( \frac{1}{2}\nabla^\alpha\phi \nabla_\alpha\phi - V(\phi)  \right)\delta^{\mu}_{\nu}
+  \label{eqn:cos:scalar_field_SET}
+\end{equation}
+If we initially assume in accordance with the cosmological principle that the field has no spatial dependence $\phi = \phi(t)$, then the stress energy tensor becomes:
+\begin{align}
+  T^{0}_{0} &=\frac{1}{2}\dot\phi^2 + V(\phi) = \rho 
+  \label{eqn:cos:scalar_field_rho}\\
+  T^{i}_{j} &=-\left[ \frac{1}{2}\dot\phi^2 - V(\phi)\right]\delta^{i}_{j} = -P\delta^{i}_{j}
+  \label{eqn:cos:scalar_field_P}
+\end{align}
+Thus, a scalar field acts as a perfect fluid with pressure and density as shown above. In order to derive the equation of state, we need to generate an equation of motion for $\phi$. This can be done other by extremising $S_\phi = \int d^4 x \sqrt{|g|} \mathcal{L}_\phi$, or by applying the continuity equation~\eqref{eqn:cos:SET_conservation} to the stress energy tensor~\eqref{eqn:cos:scalar_field_SET}: 
+\begin{equation}
+  0 = \ddot{\phi} + 3 H \dot{\phi} + \frac{d}{d\phi}V(\phi)
+  \label{eqn:cos:KG}
+\end{equation}
+The middle term involving $H$ is the term that arises as a result of including the effects of gravity (i.e.\ an expanding universe). The homogenous value of the scalar field $\phi$ satisfies the equation of a harmonic oscillator in potential $V(\phi)$ with a frictional term $H$.
+To get an equation for $H$, we use the Raychaudhuri equation~\eqref{eqn:cos:Raychaudhuri} along with our formulae~\eqref{eqn:cos:scalar_field_rho}~\&~\eqref{eqn:cos:scalar_field_P} for $\rho$ and $P$, to find
+\begin{equation}
+  \dot{H}+H^2 = -\frac{1}{3\m^2}\left(\dot{\phi}^2-V(\phi)\right)
+  \label{eqn:cos:ray_scalar}
+\end{equation}
+Equation~\eqref{eqn:cos:KG} represents space telling matter how to move and equation~\eqref{eqn:cos:ray_scalar} represents matter telling space how to curve respectively. These are tightly coupled, and result in far less trivial behaviour compared with a simple perfect fluid.
+
+
+\subsection{Phenomenology}
+One way to trigger an accelerated phase is to set the inflaton as trapped in a false vacuum (Figure~\ref{fig:cos:potential}). This sets $\dot{\phi}=0$, $V(\phi)=V_0$ and therefore $H=H_0=V_0/3\m^2$ and $a\sim e^{H_0t}$, which is an exponential and therefore accelerated expansion. However, to end this accelerated phase, the inflaton would have to tunnel quantum mechanically out of its false vacuum. It turns out that the false vacuum is too stable, and results in unphysical predictions.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{potential}
+  \caption{An example inflationary potential.}
+  \label{fig:cos:potential}
+\end{figure}
+
+In fact, one does not need a false vacuum, one merely needs the inflaton to be rolling slowly down the potential with its speed small in comparison to the potential energy:
+\begin{equation}
+  \dot{\phi}^2 \ll V(\phi)
+  \label{eqn:cos:slow_roll}
+\end{equation}
+In this case, one still has the Hubble parameter $H\approx H_0$ being approximately constant and therefore exponential expansion. Since the frictional term in~\eqref{eqn:cos:KG} robs the particle of energy, one finds that in fact these slowly rolling phases are generic attractors for most inflationary potentials. All one requires is that the inflaton begins a reasonable way from the potential minimum.
+
+Thus, a very general scalar particle is capable of triggering a generic exponential accelerated expansion. This epoch of the universe is termed inflation.
+
+\subsection{Reheating}
+Inflation finishes when the inflaton reaches its true vacuum, and oscillates about its minimum. One then imagines that the inflaton then decays into more traditional matter in a period called reheating. This is theoretically interesting, and an area of active research, but for the purposes of setting initial conditions on the remainder of the contents of the universe it can often be ignored.
+
+
+
+
 \section{Perturbations}
 \section{Statistics of the CMB}
 We write a general perturbation to the temperature field of the universe as:
@@ -287,20 +361,7 @@ Note then that the error therefore in the sample variance obeys:
 \end{equation}
 This means that on larger angular scales, we have fewer $a_{\ell m}$'s to use to compute the sample variance, and hence have a larger sample error. This is a manifestation of {\em cosmic variance}, resulting from the fact that we only have one universe to observe. 
 
-Computing the theoretical predictions of these $C_\ell$ is complicated, requiring one to evolve the contents of the universe from some initial early time through the hot big bang era, past the surface of last scattering at recombination and all the way to the sky we see today. Treating this stage fully is beyond the scope of this thesis, but it suffices to say that this is extremely well understood physics, and can be computed using codes such as \CAMB{} in a matter of seconds.
-
-\section{Inflation}
-The canonical way to explain this early accelerated phase is via the phnomenon of {\em inflation}.
-
-Scalar fields:
-
-\begin{align}
-  \rho &= \frac{1}{2}\dot{\phi}^2 + V(\phi) \\
-  P &= \frac{1}{2}\dot{\phi}^2 - V(\phi) \\
-  0 &= \ddot{\phi} + 3 H \dot{\phi} + \frac{d}{d\phi}V(\phi)
-\end{align}
-
-
+Computing the theoretical predictions of these $C_\ell$'s from a given cosmology is complicated, requiring one to evolve the contents of the universe from some initial early time through the hot big bang era, past the surface of last scattering at recombination and all the way to the sky we see today. Treating this calculation fully is beyond the scope of this thesis, but it suffices to say that this is now extremely well understood physics, and a full set of $C_\ell$'s can be computed for a given cosmology using codes such as \CAMB{} in a matter of seconds.
 
 \clearpage{}
 
