@@ -16,7 +16,7 @@ Einstein's theory of general relativity accounts for gravity by removing it as a
 
 The formalism of Einstein's gravity can be effectively summarised using the Einstein-Hilbert action. An action $S$ is written as a general relativistic integral over a Lagrangian density $\mathcal{L}$:\footnote{This should not be confused with a likelihood, also denoted with $\lik$.}
 \begin{equation}
-  S = \int d^4 x \sqrt{|g|} \mathcal{L}.
+  S = \int\d[4]{x} \sqrt{|g|} \mathcal{L}.
   \label{eqn:cos:generic_lagrangian}
 \end{equation}
 where the factor of $\sqrt{g}$, $g=\left|\det\left( g_{\mu\nu} \right)\right|$ ensures a relativistic volume element for integration.
@@ -74,9 +74,9 @@ This conservation equation can provide a fast means for deriving alternative rea
 
 On the largest scales, the universe is observed to be {\em homogeneous\/} and {\em isotropic}. This provides a good 0\textsuperscript{th}-order approximation to our actual universe. Making these assumptions, the metric can take one of three generic forms:
 \begin{align}
-  ds^2 &= dt^2 - a{(t)}^2\left( d\chi^2 + S_k^2{(\chi)} d\Omega \right)
+  ds^2 &= \d{t}^2 - a{(t)}^2\left( \d{\chi}^2 + S_k^2{(\chi)} \d{\Omega} \right)
   \label{eqn:cos:FRW_metric}\\
-  d\Omega &= d\theta^2 + \sin^2\theta d\phi^2
+  \d{\Omega} &= d\theta^2 + \sin^2\theta d\phi^2
   \label{eqn:cos:angle_element}\\
   S_k^2(\chi) &=
   \left\{
@@ -116,9 +116,9 @@ Applying the metric~\eqref{eqn:cos:FRW_metric} to the Einstein equations~\eqref{
   \label{eqn:cos:Friedmann}
 \end{align}
 %
-where $H=\dot{a}/a$ is the Hubble parameter and a dot denotes differentiation with respect to cosmic time, $\dot{f}\equiv df/dt$. These are termed the {\em Raychaudhuri\/} and {\em Friedmann\/} equations respectively, and implicitly govern the dynamics of the scale factor $a(t)$. It should be noted that these equations are not complete, as additionally one requires an equation of state linking $\rho$ and $P$.
+where $H=\dot{a}/a$ is the Hubble parameter and a dot denotes differentiation with respect to cosmic time, $\dot{f}\equiv df/\d{t}$. These are termed the {\em Raychaudhuri\/} and {\em Friedmann\/} equations respectively, and implicitly govern the dynamics of the scale factor $a(t)$. It should be noted that these equations are not complete, as additionally one requires an equation of state linking $\rho$ and $P$.
 
-\subsection{Simple solutions}
+\subsection{Basic solutions}
 A reasonable model for the universe we observe today is as a multi-component fluid, each with its own simple equation of state:
 \begin{equation}
   \rho = \sum_i \rho_i, \qquad P = \sum_i P_i, \qquad P_i = w_i \rho_i
@@ -162,21 +162,21 @@ We can see immediately that in a universe dominated by dark energy $(w=-1)$ the 
 
 It convenient to define conformal time as:
 \begin{equation}
-  \eta = \int \frac{dt}{a},
+  \eta = \int \frac{\d{t}}{a},
   \label{eqn:cos:conformal_time}
 \end{equation}
 so that the line element becomes:
 \begin{equation}          
-  ds^2 = a(\eta)\left( d\eta^2 - dX^2 \right).
+  ds^2 = a(\eta)\left( \d{\eta}^2 - d{X}^2 \right).
   \label{eqn:cos:flat_FRW}
 \end{equation}
-where $dX^2 = d\chi^2 + S_k^2(\chi) d\Omega$.
-This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons appear as if they were in flt space: If we consider (without loss of generality) radially travelling photons $d\Omega=0$ the line element is simply:
+where $d{X}^2 = \d{\chi}^2 + S_k^2(\chi) \d{\Omega}$.
+This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons appear as if they were in flt space: If we consider (without loss of generality) radially travelling photons $\d{\Omega}=0$ the line element is simply:
 \begin{equation}          
-  ds^2 = a(\eta)\left( d\eta^2 - d\chi^2 \right).
+  ds^2 = a(\eta)\left( \d{\eta}^2 - \d{\chi}^2 \right).
   \label{eqn:cos:flat_FRW}
 \end{equation}
-and the metric is conformally equivalent to two-dimensional Minkowski space\footnote{Hence the name ``conformal time''.}. We have thus removed all of the complexities of curvature and comoving coordinates. Since photons have a null trajectory, $ds^2=0\Rightarrow d\eta = \pm d\chi$, and therefore  travel in straight lines on spacetime diagrams with $\eta$ and $\chi$ as axes. This considerably simplifies most pictures.
+and the metric is conformally equivalent to two-dimensional Minkowski space\footnote{Hence the name ``conformal time''.}. We have thus removed all of the complexities of curvature and comoving coordinates. Since photons have a null trajectory, $ds^2=0\Rightarrow \d{\eta} = \pm \d{\chi}$, and therefore  travel in straight lines on spacetime diagrams with $\eta$ and $\chi$ as axes. This considerably simplifies most pictures.
 Alternatively, conformal time is the time measured by a small light clock that expands comovingly with the universe. It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial coordinates.
 
 \subsection{Redshift $z$}
@@ -251,9 +251,9 @@ The near-perfect isotropy of the CMB presents a problem. In
 One may think of this in terms of initial conditions\footnote{Specifically Cauchy initial conditions}, by stating that on some early spatial slice of the universe, the value of $X$ and $\dot{X}$ was extremely uniform, corresponding to the horizon and flatness problems respectively. 
 
 \begin{equation}
-  \eta = \int \frac{dt}{a} = \int \frac{da}{a^2H}
+  \eta = \int \frac{\d{t}}{a} = \int \frac{\d{a}}{a^2H}
 \end{equation}
-Modelling as a single component universe with equation of state parameter $w$, equation~\eqref{eqn:cos:expansion_history} yields:
+Modelling as a single component universe with equation of state parameter $w$, equation~\eqref{eqn:cos:expansion_history} yield:
 \begin{equation}
   H = H_0a^{-3(1+w)/2} \Rightarrow \eta =\frac{a^{(1+3w)/2}}{H_0(1+3w)/2}%\propto a^{(1+3w)/2} %
 \end{equation}
@@ -298,7 +298,7 @@ If we initially assume in accordance with the cosmological principle that the fi
   T^{i}_{j} &=-\left[ \frac{1}{2}\dot\phi^2 - V(\phi)\right]\delta^{i}_{j} = -P\delta^{i}_{j}
   \label{eqn:cos:scalar_field_P}
 \end{align}
-Thus, a scalar field acts as a perfect fluid with pressure and density as shown above. In order to derive the equation of state, we need to generate an equation of motion for $\phi$. This can be done other by extremising $S_\phi = \int d^4 x \sqrt{|g|} \mathcal{L}_\phi$, or by applying the continuity equation~\eqref{eqn:cos:SET_conservation} to the stress energy tensor~\eqref{eqn:cos:scalar_field_SET}: 
+Thus, a scalar field acts as a perfect fluid with pressure and density as shown above. In order to derive the equation of state, we need to generate an equation of motion for $\phi$. This can be done other by extremising $S_\phi = \int \d[4]{x} \sqrt{|g|} \mathcal{L}_\phi$, or by applying the continuity equation~\eqref{eqn:cos:SET_conservation} to the stress energy tensor~\eqref{eqn:cos:scalar_field_SET}: 
 \begin{equation}
   0 = \ddot{\phi} + 3 H \dot{\phi} + \frac{d}{d\phi}V(\phi)
   \label{eqn:cos:KG}
@@ -365,7 +365,7 @@ Since in the early universe the perturbations were small $\delta X \ll X$, we ma
 \subsection{Metric perturbation}
 A general perturbation of the FRW metric will take the form:
 \begin{equation}
-  ds^2 = (1+2\Phi)dt^2 -2a B_i dx^i dt  -a^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + 2E_{ij} \right] dx^i dx^j,
+  ds^2 = (1+2\Phi)\d{t}^2 -2a B_i \d{x}^i \d{t}  -a^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + 2E_{ij} \right] \d{x}^i \d{x}^j,
   \label{eqn:cos:FRW_perturb}
 \end{equation}
 where the various terms in the above expression are defined in Table~\ref{tab:cos:perturbed_metric}, and ${\Phi,B_i,\Psi,E_{ij}\ll1}$ are small. 
@@ -378,7 +378,7 @@ Perturbations of the matter content will take the form:
   u^\mu = \left[ 1-\Phi, a^{-2} \delta q^i/(\rho+P)\right].
   \label{eqn:cos:matter_perturb}
 \end{equation}
-The density and pressure perturbations are self-explanatory. The perturbation to the fluid velocity is first chosen so that $u^\mu u_\mu=1$ to first order, and $\delta q^i$ is the perturbation to the momentum density. The advantage of this is that for non-interacting fluids, \delta $\rho$, $\delta P$ and $\delta q^i$ are all additive, as in equation~\eqref{eqn:cos:multi_component}. We have neglected a perturbation to the anisotropic stress. Anisotropic stress may be included if desired, but is typically not a physical phenomenon. 
+The density and pressure perturbations are self-explanatory. The perturbation to the fluid velocity is first chosen so that $u^\mu u_\mu=1$ to first order, and $\delta q^i$ is the perturbation to the momentum density. The advantage of this is that for non-interacting fluids, $\delta\rho$, $\delta P$ and $\delta q^i$ are all additive, as in equation~\eqref{eqn:cos:multi_component}. We have neglected a perturbation to the anisotropic stress. Anisotropic stress may be included if desired, but is typically not a physical phenomenon. 
 
 At some point one must also assume an equation of state for the fluid which provides equations to constrain $P$ and $\rho$. We shall limit ourselves to adiabatic matter, which satisfies:
 \begin{equation}
@@ -408,8 +408,8 @@ We may go further and exploit the symmetry of the background unperturbed univers
 \end{itemize}
 Formally, a general field $\varphi(t,\vx)$ can be written in Fourier modes as:
 \begin{align}
-  \varphi(t,\vk) &= \int d^3\vx\: \varphi(t,\vx) e^{-i\vk \cdot \vx},\\
-  \varphi(t,\vx) &= \int \frac{d^3\vk}{{(2\pi)}^3}\: \varphi(t,\vx) e^{i\vk \cdot \vx}.
+  \varphi(t,\vk) &= \int \d[3]{\vx}\: \varphi(t,\vx) e^{-i\vk \cdot \vx},\\
+  \varphi(t,\vx) &= \int \frac{\d[3]{\vk}}{{(2\pi)}^3}\: \varphi(t,\vx) e^{i\vk \cdot \vx}.
 \end{align}
 A vector field $V_i$ and a symmetric, traceless tensor field $T_{ij}$ can be decomposed into helicity modes as:
 \begin{align}
@@ -510,11 +510,11 @@ Given that $\rho,P\sim H^2$, the above equation says that: $\frac{d\log \mathcal
 \subsection{Quantum behaviour}
 Using the Lagrangians are defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{eqn:cos:scalar_field_lagrangian}, we may define the action:
 \begin{equation}
-  S = \int d^4x\sqrt{|g|}\mathcal{L}_G + \mathcal{L}_\phi.
+  S = \int \d[4]{x}\sqrt{|g|}\mathcal{L}_G + \mathcal{L}_\phi.
 \end{equation}
 If we expand this action to second order in $\mathcal{R}$, we find (after some effort):
 \begin{equation}
-  S^{(2)} = \int d^4x\: a^3 \frac{\dot{\phi}^2}{H^2}\left[ \mathcal{\dot{R}}^2 -a^{-2}{\left( \delta_i\mathcal{R} \right)}^2 \right]
+  S^{(2)} = \int \d[4]{x}\: a^3 \frac{\dot{\phi}^2}{H^2}\left[ \mathcal{\dot{R}}^2 -a^{-2}{\left( \delta_i\mathcal{R} \right)}^2 \right]
 \end{equation}
 Switching to conformal time and defining:
 \begin{equation}
@@ -523,13 +523,13 @@ Switching to conformal time and defining:
 \end{equation}
 the action becomes:
 \begin{equation}
-  S^{(2)} = \int d^4x\: \left[ {\left( v^{\prime} \right)}^2 - {\left( \partial_i v \right)}^2 + \frac{z^{\prime\prime}}{z}v^2\right],
+  S^{(2)} = \int \d[4]{x}\: \left[ {\left( v^{\prime} \right)}^2 - {\left( \partial_i v \right)}^2 + \frac{z^{\prime\prime}}{z}v^2\right],
 \end{equation}
 where primes denote derivatives with respect to conformal time.
 
 To quantise, we promote the field variable $v$ to a quantum operator, and write it as a Fourier superposition:
 \begin{equation}
-  v = \int \frac{d^3k}{{\left( 2\pi \right)}^3}
+  v = \int \frac{\d[3]{\vk}}{{\left( 2\pi \right)}^3}
   \left[ 
     \chi_k^{\phantom\ast}(\eta) a_\vk^{\phantom\dagger}e^{i\vk\cdot\vx} + 
     \chi_k^\ast(\eta) a_\vk^{\dagger}e^{-i\vk\cdot\vx}  
@@ -538,18 +538,107 @@ To quantise, we promote the field variable $v$ to a quantum operator, and write 
 of mode functions $v_\vk = \chi_k a_\vk$
 Requiring that the canonical commutator relation:
 \begin{equation}
-  \left[ a_{\vk^{\phantom\prime}}^{\dagger}, a_{\vk^{\prime}}^{\phantom\dagger}\right] = {\left( 2\pi \right)}^3\delta^{(3)}\left( \vk^{\phantom\prime}-\vk^{\prime} \right),
+  [ a_{\vk^{\phantom\prime}}^{\phantom\dagger}, a_{\vk^{\prime}}^{\dagger}] = {\left( 2\pi \right)}^3\delta^{(3)}\left( \vk^{\phantom\prime}-\vk^{\prime} \right),
 \end{equation}
 holds true, then the wavefunction $\chi_k(\eta)$ must satisfy:
 \begin{align}
-  \chi_k^{\prime\prime} + \left( k^2 - \frac{z^{\prime\prime}}{z} \right) \chi_k &=0 \\
+  \chi_k^{\prime\prime} + \left( k^2 - \frac{z^{\prime\prime}}{z} \right) \chi_k &=0 
+  \label{eqn:cos:mode_func}
+  \\
   {\chi_k^{\phantom\ast}}^{\prime} 
   {\chi_k^{\ast}}^{\phantom\prime} 
   -
   {\chi_k^{\ast}}^{\prime} 
   {\chi_k^{\phantom\ast}}^{\phantom\prime} 
   &= -i.
+  \label{eqn:cos:mode_func_normalisation}
 \end{align}
+\subsection{de-Sitter limit}
+A perfectly inflating universe is a de-Sitter space with:
+\begin{equation}
+  H=\dot{\phi}=\text{const}\Rightarrow z=a,\quad a = \frac{1}{H(\eta_\mathrm{end}-\eta)} \propto e^{Ht}, \quad -\infty<\eta<\eta_\mathrm{end}.
+  \label{eqn:cos:de-sitter}
+\end{equation}
+Thus, in a pure de-Sitter space, ${z^{\prime\prime}/z = 2(\eta_\mathrm{end}-\eta)^{-2}}$ and the differential equation~\eqref{eqn:cos:mode_func} has the general solution:
+\begin{align}
+  \chi_k = &A_k \frac{1}{\sqrt{2k}}\left( 1+\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{ik(\eta_\mathrm{end}-\eta)} \nonumber\\
+  + &B_k \frac{1}{\sqrt{2k}}\left( 1-\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{-ik(\eta_\mathrm{end}-\eta)}
+  \label{eqn:cos:mode_func_gs}
+\end{align}
+whilst the mode normalisation condition~\eqref{eqn:cos:mode_func_normalisation} is:
+\begin{equation}
+  |A_k|^2 - |B_k|^2 = 1.
+  \label{eqn:cos:mode_func_norm_AB}
+\end{equation}
+The overall phase in the solution~\eqref{eqn:cos:mode_func_gs} is unimportant, so along with~\eqref{eqn:cos:mode_func_norm_AB}, there are two degrees of freedom remaining. Fixing these degrees of freedom amounts to choosing the vacuum, which is easy in de-Sitter space: As $\eta\rightarrow -\infty$, the mode equations become those of Minkowski spacetime ($\chi_k^{\prime\prime} +k^2 \chi_k$=0), and one should therefore select $B_k=0$, $A_k=1$ as the remaining condition. These are termed Bunch-Davies initial conditions.
+
+\subsection{Power Spectra}
+The two point correlation function of a general spatial field $\varphi(\vx)$ is defined as:
+\begin{equation}
+  \xi_\varphi(\vr) = \mean{\varphi(\vx)\varphi(\vx + \vr)}
+\end{equation}
+Re-writing $\varphi(\vx)$ as a Fourier synthesis yields:
+\begin{align}
+  \xi_\varphi(\vr) &= \mean{\int \frac{\d[3]{\vk^{\phantom\prime}}}{{(2\pi)}^3} \varphi(\vk)e^{i\vk\cdot\vx} \int \frac{\d[3]{\vk^{\prime}}}{{(2\pi)}^3} \varphi(\vk^{\prime})e^{i\vk^{\prime}\cdot(\vx+\vr)}}\\
+  &= \int \frac{\d[3]{\vk^{\phantom\prime}}}{{(2\pi)}^3} \frac{\d[3]{\vk^{\prime}}}{{(2\pi)}^3} \mean{\varphi(\vk)\varphi(\vk^{\prime})}e^{i\vk\cdot\vx + i\vk^{\prime}\cdot(\vx+\vr)}
+\end{align}
+and taking the Fourier transform of both sides with respect to $\vx$ and $\vr$ yields:
+\begin{equation}
+  \mean{\varphi(\vk)\varphi(\vk^{\prime})} = {\left( 2\pi \right)}^3\delta^{(3)}(\vk + \vk^{\prime}) \mathcal{P}_\varphi(\vk)
+  \label{eqn:cos:power_spectrum_definition}
+\end{equation}
+where the power spectrum:
+\begin{equation}
+  \mathcal{P}_\varphi(\vk) = \int \d[3]{r}\: \xi_\varphi(\vr)e^{-i\vk\cdot\vr}
+\end{equation}
+is the Fourier transform of the two-point correlation function.
+
+For an isotropic and homogeneous space, the quantities $\xi_\phi(\vr)$ and $\mathcal{P}_\varphi(\vk)$ are all simply a function of spatial distance ${\xi(\vr) = \xi(r)}$ or wavevector magnitude ${\mathcal{P}_\varphi(\vk) = \mathcal{P}_\varphi(k)}$.
+It is also conventional in this case to define a ``normalised'' power spectrum as:
+\begin{equation}
+  \Delta_\varphi^2(k) = \frac{k^3}{2\pi^2} \mathcal{P}_\varphi(k)
+\end{equation}
+as this has the property that:
+\begin{equation}
+  \int \d{(\log k)} \Delta_\varphi^2(k) = {\left( 2\pi \right)}^3\int\d[3]{k}\: \mathcal{P}_\varphi(k) = \mean{\varphi^2(x)} 
+\end{equation}
+i.e.\ $\Delta_\phi^2(k)$ may be thought of as the logarithmic spectral density of the point-wise spatial variance of the field.
+
+
+\subsection{Power spectrum of comoving curvature perturbations}
+To compute the power spectrum of comoving curvature perturbations $\mathcal{R}$, one therefore needs to compute the average on the left hand side of equation~\eqref{eqn:cos:power_spectrum_definition}. Quantum mechanically this is:
+\begin{equation}
+  \mean{\mathcal{R}_{\vk^{\phantom\prime}}\mathcal{R}_{\vk^{\prime}}} = 
+  \frac{1}{z^2}\mean{v_{\vk^{\phantom\prime}}^{\phantom\dagger}v_{\vk^{\prime}}^{\dagger}} = 
+  \frac{\chi_{k^{\phantom\prime}}^{\phantom\ast}\chi_{k^{\prime}}^\ast}{z^2}\mean{a_{\vk^{\phantom\prime}}^{\phantom\dagger}a_{\vk^{\prime}}^{\dagger}} = 
+  {(2\pi)}^3\delta^{(3)}(\vk^{\phantom\prime}+\vk^{\prime}) {\left|\frac{\chi_k}{z}\right|}^2,
+\end{equation}
+giving:
+\begin{equation}
+  \mathcal{P}_\mathcal{R}(k) = {\left|\frac{\chi_k}{z}\right|}^2.
+\end{equation}
+For pure de-Sitter space~\eqref{eqn:cos:de-sitter}, as $\eta\to\eta_\mathrm{end}$,
+\begin{align}
+  |\chi_k|^2 &\rightarrow 2k^3 {(\eta_\mathrm{end}-\eta)}^{-2}\nonumber\\
+  a& \rightarrow H(\eta_\mathrm{end}-\eta)^{-1} \nonumber\\
+  \Delta_{\mathcal{R},\text{de-Sitter}}^2(k) &\rightarrow \frac{H^2}{(2\pi)^2}\left( \frac{H}{\dot{\phi}} \right)^2 
+  \label{eqn:cos:de-sitter_power}
+\end{align}
+Given that $H=\dot{\phi}=\mathrm{const}$, a de-Sitter inflationary phase therefore predicts a scale-invariant (Harrison-Zel'dovich) power spectrum. Now, true inflationary phases are not pure de-sitter, since $H$ is not quite constant. We may extend the de-Sitter result however by noting that at the time $t_*$ of horizon crossing  $k\approx a_*H_*$ the mode functions freeze out. For a given $k$ mode, the universe is still effectively de-Sitter at this point, with $z=a_*\dot{\phi}_*/H_*$. We may therefore evaluate equation~\eqref{eqn:cos:de-sitter_power} at horizon crossing to yield:
+\begin{equation}
+  \Delta_\mathcal{R}^2(k) = \frac{H_*^2}{(2\pi)^2}\left( \frac{H_*}{\dot{\phi}_*} \right)^2.
+  \label{eqn:cos:inflation_power}
+\end{equation}
+This therefore predicts a slowly varying power spectrum, since different $k$ modes exit at different times, $H_*$ and $\dot{\phi}_*$ are $k$-dependent. This is normally parameterised as:
+\begin{equation}
+  \Delta_\mathcal{R}^2(k) = A_s {\left( \frac{k}{k_s} \right)}^{n_s-1},
+  \label{eqn:cos:lcdm_power}
+\end{equation}
+where $k_s$ is some pre-defined pivot scale.
+Different inflationary models predict different values of $A_s$ and $n_s$, with $n_s$ typically less than $1$, in contrast to the Harrison-Zel'dovich spectrum.
+
+
+
 
 
 
@@ -563,7 +652,7 @@ We write a general perturbation to the temperature field of the universe as:
 Note that the temperature field is anisotropic (i.e.\ has a $\vp$ dependency) on account of the relativistic nature of photons. We may separate this angular dependence by expanding $\Theta$ in spherical harmonics:
 \begin{align}
   \Theta(t,\vx,\vp) &= \sum_{\ell=1}^{\infty}\sum_{m=-\ell}^{\ell}a_{\ell m}(t,\vx) Y_{\ell m}(\vp)\\
-  a_{\ell m}(t,\vx) &= \int d\Omega Y_{\ell m}(\vp) \Theta(t,\vx,\vp)
+  a_{\ell m}(t,\vx) &= \int \d{\Omega} Y_{\ell m}(\vp) \Theta(t,\vx,\vp)
   \label{eqn:cos:alm_integral}
 \end{align}
 We only observe the temperature field here (at $\vx_0$) and now (at $t_0$). By taking sufficiently many measurements in different directions of $\vp$ of the temperature field $\Theta$ we can compute the integral~\eqref{eqn:cos:alm_integral}, to obtain $a_{\ell m}(t_0,\vx_0)$ up to some $\ell_{\max{}}$.\footnote{As a rough guide, if one has $N_\mathrm{pix}$ independent pixels, there are ${(\ell_{\max{}}+1)}^2$ different $a_{\ell m}$'s to measure, so $\ell_{\max{}} \sim \sqrt{N_\mathrm{pix}}$.}
