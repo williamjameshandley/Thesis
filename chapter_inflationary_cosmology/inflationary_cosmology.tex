@@ -349,13 +349,13 @@ Since in the early universe the perturbations were small $\delta X \ll X$, we ma
   \centering
 \begin{tabular}{lll}
  \toprule
-  Symbol & Definition & Properties \\
+  Symbol & Definition \\
  \midrule
  \midrule
- $\Phi$ & lapse & scalar\\
- $B_i$ & shift & vector\\
- $\Psi$ & (spatial) curvature perturbation  & scalar\\
- $E_{ij}$ & (spatial) shear (3-tensor) & symmetric \& traceless tensor\\
+ $\Phi$ & lapse \\
+ $B_i$ & shift \\
+ $\Psi$ & (spatial) curvature perturbation  \\
+ $E_{ij}$ & (spatial) shear (3-tensor) \\
  \bottomrule
 \end{tabular}
 \caption{Definitions of terms in the perturbed FRW metric}\label{tab:cos:perturbed_metric}
@@ -365,10 +365,10 @@ Since in the early universe the perturbations were small $\delta X \ll X$, we ma
 \subsection{Metric perturbation}
 A general perturbation of the FRW metric will take the form:
 \begin{equation}
-  ds^2 = (1+2\Phi)dt^2 -2a B_i dx^i dt  -a{(t)}^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + 2E_{ij} \right] dx^i dx^j,
+  ds^2 = (1+2\Phi)dt^2 -2a B_i dx^i dt  -a^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + 2E_{ij} \right] dx^i dx^j,
   \label{eqn:cos:FRW_perturb}
 \end{equation}
-where the various terms in the above expression are defined in Table~\ref{tab:cos:perturbed_metric}, and $\Phi,B_i,\Psi,E_{ij}\ll1$. 
+where the various terms in the above expression are defined in Table~\ref{tab:cos:perturbed_metric}, and ${\Phi,B_i,\Psi,E_{ij}\ll1}$ are small. 
 
 \subsection{Matter perturbation}
 Perturbations of the matter content will take the form:
@@ -376,6 +376,7 @@ Perturbations of the matter content will take the form:
   \rho = \rho + \delta \rho, \qquad 
   P = P + \delta P, \qquad
   u^\mu = \left[ 1-\Phi, a^{-2} \delta q^i/(\rho+P)\right].
+  \label{eqn:cos:matter_perturb}
 \end{equation}
 The density and pressure perturbations are self-explanatory. The perturbation to the fluid velocity is first chosen so that $u^\mu u_\mu=1$ to first order, and $\delta q^i$ is the perturbation to the momentum density. The advantage of this is that for non-interacting fluids, \delta $\rho$, $\delta P$ and $\delta q^i$ are all additive, as in equation~\eqref{eqn:cos:multi_component}. We have neglected a perturbation to the anisotropic stress. Anisotropic stress may be included if desired, but is typically not a physical phenomenon. 
 
@@ -392,11 +393,13 @@ The scalar field perturbation is similarly simple:
 \end{equation}
 
 \subsection{Fourier modes and SVT decomposition}
-In general, the Einstein equations~\eqref{eqn:cos:einstein_tensor} are non-linear, second order, partial differential equations and are therefore extremely challenging to solve. Perturbing about a background as in the previous section yields linearised Einstein equations:
-\begin{equation}
- \m^2 \delta G_{\mu\nu} = \delta T_{\mu\nu},
-  \label{eqn:cos:einsteins_equations_perturb}
-\end{equation}
+In general, the Einstein equations~\eqref{eqn:cos:einstein_tensor} are non-linear, second order, partial differential equations and are therefore extremely challenging to solve. Perturbing about a background as in the previous section yields linearised versions of the Einstein~\eqref{eqn:cos:einsteins_equations} and conservation equations~\eqref{eqn:cos:SET_conservation}:
+\begin{align}
+  \delta G_{\mu\nu} &= \frac{1}{\m^2}\delta T_{\mu\nu}
+  \label{eqn:cos:einsteins_equations_perturb} \\
+  \nabla_\mu\delta T^{\mu}_{\nu} &=0
+  \label{eqn:cos:SET_conservation_perturb}
+\end{align}
 which simplifies matters.  
 We may go further and exploit the symmetry of the background unperturbed universe to make life even easier:
 \begin{itemize}
@@ -468,7 +471,7 @@ Whilst choosing a gauge will give one a set of soluble equations, the question s
 \end{align}
 where $T = a^2[\dot{E}-B/a]$. These variables remain unchanged under gauge transformations, and are independent of coordinate perturbations. Any perturbation in these variables cannot be ``gauged away''. Of course, these are not unique as any linear combination of them is also gauge invariant, but the above set results in a reasonable basis. 
 
-Procedurally, one of  the most powerful approaches is to choose the Newtonian gauge ${B=E=E_i=0}$. In this gauge, $X^{(B)}=X$. At the end of the computation, we may note that any equations in $X$ will be manifestly gauge invariant, so we may re-promote all variables $X$ to the gauge-invariant ones $X^{(B)}$.
+Procedurally, one of  the most powerful approaches is to choose the Newtonian gauge ${B=E=E_i=0}$. In this gauge, $X^{(B)}=X^{(\text{Newt.})}$. At the end of the computation, we may note that any equations in $X^{(\text{Newt.})}$ will be manifestly gauge invariant, so we may re-promote all variables $X^{(\text{Newt.})}$ to the gauge-invariant ones $X^{(B)}$.
 
 
 \begin{table}
@@ -487,6 +490,67 @@ Procedurally, one of  the most powerful approaches is to choose the Newtonian ga
 \end{tabular}
 \caption{Popular gauge choices for the scalar components of the metric}\label{tab:cos:gauge_choice}
 \end{table}
+
+\section{Comoving curvature perturbation}
+
+\subsection{Classical behaviour}
+It is convenient to examine the gauge invariant variable:
+\begin{equation}
+  \mathcal{R} = \Psi - \frac{H}{\rho+P}\delta q.
+  \label{eqn:cos:CCP}
+\end{equation}
+This is termed the {\em comoving curvature perturbation}, since in the comoving gauge ($\delta q=0$) $\mathcal{R}=\Psi$.
+After some effort, the Einstein equations~\eqref{eqn:cos:einsteins_equations}~\&~\eqref{eqn:cos:einsteins_equations_perturb} and conservation equations~\eqref{eqn:cos:SET_conservation}~\&~\eqref{eqn:cos:SET_conservation_perturb} evaluated using the perturbed metric~\eqref{eqn:cos:FRW_perturb} and the perturbed stress energy tensor~\eqref{eqn:cos:SET_perfect_fluid}~\&~\eqref{eqn:cos:matter_perturb} yields:
+\begin{equation}
+  \frac{d \log \mathcal{R}}{d \log a} = 
+  -\frac{k^2}{a^2(5\rho + 3P)}\frac{\dot{P}}{\dot{\rho}}.
+\end{equation}
+Given that $\rho,P\sim H^2$, the above equation says that: $\frac{d\log \mathcal{R}}{d\log a} \sim \frac{k^2}{a^2H^2}$. As the universe inflates, $k\ll aH$, and $\mathcal{R}$ ``freezes out'' and becomes constant.
+
+\subsection{Quantum behaviour}
+Using the Lagrangians are defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{eqn:cos:scalar_field_lagrangian}, we may define the action:
+\begin{equation}
+  S = \int d^4x\sqrt{|g|}\mathcal{L}_G + \mathcal{L}_\phi.
+\end{equation}
+If we expand this action to second order in $\mathcal{R}$, we find (after some effort):
+\begin{equation}
+  S^{(2)} = \int d^4x\: a^3 \frac{\dot{\phi}^2}{H^2}\left[ \mathcal{\dot{R}}^2 -a^{-2}{\left( \delta_i\mathcal{R} \right)}^2 \right]
+\end{equation}
+Switching to conformal time and defining:
+\begin{equation}
+  v = z \mathcal{R}, \qquad
+  z = \frac{a \dot{\phi}}{H},
+\end{equation}
+the action becomes:
+\begin{equation}
+  S^{(2)} = \int d^4x\: \left[ {\left( v^{\prime} \right)}^2 - {\left( \partial_i v \right)}^2 + \frac{z^{\prime\prime}}{z}v^2\right],
+\end{equation}
+where primes denote derivatives with respect to conformal time.
+
+To quantise, we promote the field variable $v$ to a quantum operator, and write it as a Fourier superposition:
+\begin{equation}
+  v = \int \frac{d^3k}{{\left( 2\pi \right)}^3}
+  \left[ 
+    \chi_k^{\phantom\ast}(\eta) a_\vk^{\phantom\dagger}e^{i\vk\cdot\vx} + 
+    \chi_k^\ast(\eta) a_\vk^{\dagger}e^{-i\vk\cdot\vx}  
+  \right]
+\end{equation}
+of mode functions $v_\vk = \chi_k a_\vk$
+Requiring that the canonical commutator relation:
+\begin{equation}
+  \left[ a_{\vk^{\phantom\prime}}^{\dagger}, a_{\vk^{\prime}}^{\phantom\dagger}\right] = {\left( 2\pi \right)}^3\delta^{(3)}\left( \vk^{\phantom\prime}-\vk^{\prime} \right),
+\end{equation}
+holds true, then the wavefunction $\chi_k(\eta)$ must satisfy:
+\begin{align}
+  \chi_k^{\prime\prime} + \left( k^2 - \frac{z^{\prime\prime}}{z} \right) \chi_k &=0 \\
+  {\chi_k^{\phantom\ast}}^{\prime} 
+  {\chi_k^{\ast}}^{\phantom\prime} 
+  -
+  {\chi_k^{\ast}}^{\prime} 
+  {\chi_k^{\phantom\ast}}^{\phantom\prime} 
+  &= -i.
+\end{align}
+
 
 
 
