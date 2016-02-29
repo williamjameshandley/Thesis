@@ -137,6 +137,7 @@ where $w_i$ is the equation of state parameter. In our universe, we observe matt
 where quantities subscripted with $0$ indicate the present day $(t=t_0)$ value of the parameter, the present scale factor is chosen to be unity $(a(t_0)=1)$, and the density parameter $\Omega$ is defined as:
 \begin{equation}
   \Omega = \frac{\rho}{3\m^2H^2},
+  \label{eqn:cos:omega_def}
 \end{equation}
 which measures the fraction of of the critical density $\rho_c = 3\m^2H^2$ taken up by a given component. This equation cannot be analytically solved in this form, but if one assumes that one component is dominant, and the rest negligible, then one recovers the solution:
 \begin{equation}
@@ -245,14 +246,49 @@ The cosmic microwave background (CMB) is found to be:
   \item Anisotropic with non-trivial power spectrum.
 \end{enumerate}
 
-\section{The horizon and flatness problems}
-The near-perfect isotropy of the CMB presents a problem. In 
+\section{Problems in the CMB}
+\subsection{Flatness problem}
+The degree to which the universe is not flat can be measured by re-writing the Friedmann equation~\eqref{eqn:cos:Friedmann} in terms of $\Omega$ as in~\eqref{eqn:cos:omega_def}:
+\begin{equation}
+  1-\Omega = -\frac{k}{{(aH)}^2} \equiv \Omega_k.
+  \label{eqn:cos:friedmann_omega}
+\end{equation}
+In terms of these kind of variables, the Raychaudhuri equation~\eqref{eqn:cos:Raychaudhuri} is:
+\begin{equation}
+  \frac{\d{\log aH}}{\d{\log a} } = -\frac{1}{2}\Omega(1+3w),
+  \label{eqn:cos:raychaudhuri_omega}
+\end{equation}
+where here $w=P/\rho$ is not necessarily constant.
+Taking absolute logarithms of~\eqref{eqn:cos:friedmann_omega}, differentiating and applying~\eqref{eqn:cos:raychaudhuri_omega} yields:
+\begin{equation}
+  \frac{\d{\log |\Omega-1|}}{\d{\log a} } = \Omega(1+3w).
+  \label{eqn:cos:instability}
+\end{equation}
+One can see from this that a flat universe $(\Omega=1)$ is an unstable point of equilibrium of these equations, providing that $1+3w>0$. For both matter (${w=0}$) and radiation (${w=\frac{1}{3}}$), the universe is rapidly driven away from flatness as the universe expands. The effect of traditional mass-energy is to increase the curvature of space.
 
-One may think of this in terms of initial conditions\footnote{Specifically Cauchy initial conditions}, by stating that on some early spatial slice of the universe, the value of $X$ and $\dot{X}$ was extremely uniform, corresponding to the horizon and flatness problems respectively. 
+This presents a problem. The universe we see today is measured to be flat to at least one part in $10^{-2}$, which means that at earlier times it would have been even flatter still. Given that within the context of cosmology there is no a-priori reason to believe the universe should be exactly flat, this requires a unreasonable quantity of fine tuning. It would be more satisfactory if we had a dynamical reason to explain why the universe is as flat as it is.
+
+However, if for some period $w<-1/3$ at some earlier time, then~\eqref{eqn:cos:instability} says that $\Omega=1$ is an attractor state. The Raychaudhuri equation shows that:
+\begin{equation}
+  \ddot{a} \propto -(1+3w)
+  \label{eqn:cos:Raychaudhuri_acc}
+\end{equation}
+thus, the condition that $w<-1/3$ is equivalent to requiring that at some point early in its history the universe was {\em accelerating\/} $\ddot{a}>0$. It is also equivalent to having a form of matter which satisfies:
+\begin{equation}
+  P < -\frac{1}{3}\rho,
+  \label{eqn:cos:SEC_violation}
+\end{equation}
+which can be recognised as a violation of the {\em strong energy condition}.
+
+\subsection{Horizon problem}
+The near-perfect isotropy of the CMB also presents a problem. 
+
+
 
 \begin{equation}
-  \eta = \int \frac{\d{t}}{a} = \int \frac{\d{a}}{a^2H}
+  \eta = \int \frac{\d{t}}{a} = \int \frac{\d{z}}{H}
 \end{equation}
+
 Modelling as a single component universe with equation of state parameter $w$, equation~\eqref{eqn:cos:expansion_history} yield:
 \begin{equation}
   H = H_0a^{-3(1+w)/2} \Rightarrow \eta =\frac{a^{(1+3w)/2}}{H_0(1+3w)/2}%\propto a^{(1+3w)/2} %
@@ -261,7 +297,7 @@ For conventional matter $(w\ge0)$, this means that $\eta$ increases with time. N
 \begin{equation}
   \Delta\chi = \chi_2 - \chi_1 = \eta_2 - \eta_1 = \Delta\eta
 \end{equation}
-represents the particle horizon, i.e. the furthest apart\ldots 
+represents the particle horizon, i.e.\ the furthest apart.
 
 \begin{figure}
   \centering
@@ -272,8 +308,10 @@ represents the particle horizon, i.e. the furthest apart\ldots
 \begin{figure}
   \centering
   \input{plots/horizon_problem_resolved}
-  \caption{Horizon problem resolved.\label{fig:cos:horizon_problem_resolved}}
+  \caption{Horizon problem resolved. An early accelerating phase pushes the singularity far into the conformal past, meaning there is more than enough time for the CMB to come to equilibrium.\label{fig:cos:horizon_problem_resolved}}
 \end{figure}
+
+One may think of this in terms of initial conditions\footnote{Specifically Cauchy initial conditions}, by stating that on some early spatial slice of the universe, the value of $X$ and $\dot{X}$ was extremely uniform, corresponding to the horizon and flatness problems respectively. 
 
 \section{An accelerating universe}
 \section{Inflation}
@@ -318,8 +356,7 @@ One way to trigger an accelerated phase is to set the inflaton as trapped in a f
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{potential}
-  \caption{An example inflationary potential.}
-  \label{fig:cos:potential}
+  \caption{An example inflationary potential.}\label{fig:cos:potential}
 \end{figure}
 
 In fact, one does not need a false vacuum, one merely needs the inflaton to be rolling slowly down the potential with its speed small in comparison to the potential energy:
@@ -559,7 +596,7 @@ A perfectly inflating universe is a de-Sitter space with:
   H=\dot{\phi}=\text{const}\Rightarrow z=a,\quad a = \frac{1}{H(\eta_\mathrm{end}-\eta)} \propto e^{Ht}, \quad -\infty<\eta<\eta_\mathrm{end}.
   \label{eqn:cos:de-sitter}
 \end{equation}
-Thus, in a pure de-Sitter space, ${z^{\prime\prime}/z = 2(\eta_\mathrm{end}-\eta)^{-2}}$ and the differential equation~\eqref{eqn:cos:mode_func} has the general solution:
+Thus, in a pure de-Sitter space, ${z^{\prime\prime}/z = 2{(\eta_\mathrm{end}-\eta)}^{-2}}$ and the differential equation~\eqref{eqn:cos:mode_func} has the general solution:
 \begin{align}
   \chi_k = &A_k \frac{1}{\sqrt{2k}}\left( 1+\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{ik(\eta_\mathrm{end}-\eta)} \nonumber\\
   + &B_k \frac{1}{\sqrt{2k}}\left( 1-\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{-ik(\eta_\mathrm{end}-\eta)}
@@ -620,13 +657,13 @@ giving:
 For pure de-Sitter space~\eqref{eqn:cos:de-sitter}, as $\eta\to\eta_\mathrm{end}$,
 \begin{align}
   |\chi_k|^2 &\rightarrow 2k^3 {(\eta_\mathrm{end}-\eta)}^{-2}\nonumber\\
-  a& \rightarrow H(\eta_\mathrm{end}-\eta)^{-1} \nonumber\\
-  \Delta_{\mathcal{R},\text{de-Sitter}}^2(k) &\rightarrow \frac{H^2}{(2\pi)^2}\left( \frac{H}{\dot{\phi}} \right)^2 
+  a& \rightarrow H{(\eta_\mathrm{end}-\eta)}^{-1} \nonumber\\
+  \Delta_{\mathcal{R},\text{de-Sitter}}^2(k) &\rightarrow \frac{H^2}{{(2\pi)}^2}{\left( \frac{H}{\dot{\phi}} \right)}^2 
   \label{eqn:cos:de-sitter_power}
 \end{align}
 Given that $H=\dot{\phi}=\mathrm{const}$, a de-Sitter inflationary phase therefore predicts a scale-invariant (Harrison-Zel'dovich) power spectrum. Now, true inflationary phases are not pure de-sitter, since $H$ is not quite constant. We may extend the de-Sitter result however by noting that at the time $t_*$ of horizon crossing  $k\approx a_*H_*$ the mode functions freeze out. For a given $k$ mode, the universe is still effectively de-Sitter at this point, with $z=a_*\dot{\phi}_*/H_*$. We may therefore evaluate equation~\eqref{eqn:cos:de-sitter_power} at horizon crossing to yield:
 \begin{equation}
-  \Delta_\mathcal{R}^2(k) = \frac{H_*^2}{(2\pi)^2}\left( \frac{H_*}{\dot{\phi}_*} \right)^2.
+  \Delta_\mathcal{R}^2(k) = \frac{H_*^2}{{(2\pi)}^2}{\left( \frac{H_*}{\dot{\phi}_*} \right)}^2.
   \label{eqn:cos:inflation_power}
 \end{equation}
 This therefore predicts a slowly varying power spectrum, since different $k$ modes exit at different times, $H_*$ and $\dot{\phi}_*$ are $k$-dependent. This is normally parameterised as:
@@ -668,7 +705,20 @@ Note then that the error therefore in the sample variance obeys:
 \end{equation}
 This means that on larger angular scales, we have fewer $a_{\ell m}$'s to use to compute the sample variance, and hence have a larger sample error. This is a manifestation of {\em cosmic variance}, resulting from the fact that we only have one universe to observe. 
 
-Computing the theoretical predictions of these $C_\ell$'s from a given cosmology is complicated, requiring one to evolve the contents of the universe from some initial early time through the hot big bang era, past the surface of last scattering at recombination and all the way to the sky we see today. Treating this calculation fully is beyond the scope of this thesis, but it suffices to say that this is now extremely well understood physics, and a full set of $C_\ell$'s can be computed for a given cosmology using codes such as \CAMB{} in a matter of seconds.
+Computing the theoretical predictions of these $C_\ell$'s from a given cosmology is complicated, but amounts to an integral:
+\begin{equation}
+  C_\ell^{XY} = \frac{2}{\pi}\int k^2 \d{k} \: \mathcal{P}_\mathcal{R}(k) \Delta_{X\ell}(k)\Delta_{Y\ell}(k),
+\end{equation}
+where $\Delta_{X\ell}(k)$ are the transfer functions and ${X\in\left\{ T,E,B \right\}}$ represents the polarisation of the photon field. These transfer functions are computed from line of sight integrals, requiring one to evolve the contents of the universe from the $k$-mode's horizon re-entry point through the hot big bang era, past the surface of last scattering at recombination and all the way to the current epoch before projecting the photon field onto the sky we see today. Treating this calculation fully is beyond the scope of this thesis, but it suffices to say that this is now extremely well understood physics, and a full set of $C_\ell$'s can be computed for a given cosmology using codes such as \CAMB{} in a matter of seconds.
+
+\begin{figure}
+  \centering
+  \input{plots/transfer}
+  \caption{History of the early universe.\label{fig:cos:comoving_vs_physical}}
+\end{figure}
+
+\section{Conclusions}
+We have now covered all of the necessary background theory. Inflation's fundamental 
 
 \clearpage{}
 

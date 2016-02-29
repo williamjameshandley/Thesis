@@ -1,0 +1,48 @@
+\begin{tikzpicture}
+  \def\yt{4.5};
+  \def\yk{3.5};
+  \def\yb{1};
+
+  \def\xcmb{8.5};
+  \def\xtoday{10};
+
+  % Axis
+  \draw [<->,thick] 
+  (0,6) node  (yaxis) [right] {Perturbation scale}
+  |-
+  (11,0) node (xaxis) [below] {$\eta$};
+
+  \coordinate (H1) at (0.5,\yt);
+  \coordinate (H2) at (4,\yb);
+  \coordinate (H3) at (7.5,\yt);
+
+
+  \draw[name path=CMBslice,decorate,decoration=snake] (\xcmb,\yb) node (CMBl) {}  -- (\xcmb,\yt) node (CMBr) [right] {CMB};
+
+  \draw[name path=todayslice,dotted] (\xtoday,\yb) -- (\xtoday,\yt) node [right]  {Today};
+
+  \draw[name path=kmode,dashed] (0.5,\yk)  -- (10.5,\yk) node [right] {$k$-mode};
+
+  % Horizon motion
+  \draw[name path=horizondecr,thick] (H1) -- (H2) node [midway, below, sloped]{Inflation}; 
+  \draw[name path=horizonincr,thick] (H2) -- (H3) ;
+
+  % intersection coordinates
+  \coordinate[name intersections={of=horizondecr and kmode, by={horizonexit}}  ];
+  \coordinate[name intersections={of=horizonincr and kmode, by={horizonentry}} ];
+  \coordinate[name intersections={of=CMBslice    and kmode, by={CMB}}          ];
+  \coordinate[name intersections={of=todayslice  and kmode, by={today}}        ];
+
+  \draw[fill=black] (horizonexit) circle (2pt) node[above right] {Horizon exit};
+  \draw[fill=black] (horizonentry) circle (2pt) node[above left] {Horizon re-entry};
+
+  \draw[] (H2) node[below] {Reheating};
+  \draw[] (H1) node[above right] {Comoving horizon $1/(aH)$};
+
+  \draw[] (horizonexit) node[below left] {$\mathcal{P}_\mathcal{R}(k)$};
+
+  \draw[] (today) node[below right] {$C_\ell$};
+  \draw[-latex] (horizonentry) [out=-30, in=-150] to node[below left]{$\Delta_{X\ell}(k)$}  (today); 
+
+
+\end{tikzpicture}
