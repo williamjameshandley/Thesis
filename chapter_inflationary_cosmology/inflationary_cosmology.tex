@@ -3,6 +3,7 @@
 
 \section{Introduction}
 \label{sec:cos:intro}
+
 I assume a working knowledge of Einstein's theory of general relativity. Review the key concepts mostly to establish notation. Excellent references can be found in~\cite{Wald},~\cite{Hobson} \&~\cite{Dodelson}.
 
 \section{Einstein's gravity}
@@ -403,11 +404,17 @@ Perturbations of the matter content will take the form:
 \end{equation}
 The density and pressure perturbations are self-explanatory. The perturbation to the fluid velocity is first chosen so that $u^\mu u_\mu=1$ to first order, and $\delta q^i$ is the perturbation to the momentum density. The advantage of this is that for non-interacting fluids, $\delta\rho$, $\delta P$ and $\delta q^i$ are all additive, as in equation~\eqref{eqn:cos:multi_component}. We have neglected a perturbation to the anisotropic stress. Anisotropic stress may be included if desired, but is typically not a physical phenomenon. 
 
-At some point one must also assume an equation of state for the fluid which provides equations to constrain $P$ and $\rho$. We shall limit ourselves to adiabatic matter, which satisfies:
+At some point one must also assume an equation of state for the fluid which provides equations to constrain $P$ and $\rho$. One can remain fairly general by splitting the pressure perturbation into adiabatic and entropic parts:
 \begin{equation}
-  \frac{\delta P}{\dot{P}} = \frac{\delta\rho}{\dot{\rho}}.
+  \delta P = \delta P_\mathrm{ad} + \delta P_\mathrm{en},
+  \label{eqn:cos:adiabatic_entropic}
+\end{equation} 
+where
+\begin{equation}
+  \frac{\delta P_\mathrm{ad}}{\dot{P}} = \frac{\delta\rho}{\dot{\rho}}.
   \label{eqn:cos:adiabatic}
-\end{equation}
+\end{equation} 
+In most cases, we limit ourselves to adiabatic matter $\delta P_\en{en}=0$.
 This is not particularly restrictive, and is naturally satisfied by the equations of state~\eqref{eqn:cos:multi_component}.
 
 The scalar field perturbation is similarly simple:
@@ -523,12 +530,13 @@ It is convenient to examine the gauge invariant variable:
   \label{eqn:cos:CCP}
 \end{equation}
 This is termed the {\em comoving curvature perturbation}, since in the comoving gauge ($\delta q=0$) $\mathcal{R}=\Psi$.
-After some effort, the Einstein equations~\eqref{eqn:cos:einsteins_equations}~\&~\eqref{eqn:cos:einsteins_equations_perturb} and conservation equations~\eqref{eqn:cos:SET_conservation}~\&~\eqref{eqn:cos:SET_conservation_perturb} evaluated using the perturbed metric~\eqref{eqn:cos:FRW_perturb} and the perturbed stress energy tensor~\eqref{eqn:cos:SET_perfect_fluid}~\&~\eqref{eqn:cos:matter_perturb} yields:
+After some effort, the Einstein equations~\eqref{eqn:cos:einsteins_equations}~\&~\eqref{eqn:cos:einsteins_equations_perturb} and conservation equations~\eqref{eqn:cos:SET_conservation}~\&~\eqref{eqn:cos:SET_conservation_perturb} evaluated using the perturbed metric~\eqref{eqn:cos:FRW_perturb} and the perturbed stress energy tensor~\eqref{eqn:cos:SET_perfect_fluid}~\&~\eqref{eqn:cos:matter_perturb} yield:
 \begin{equation}
-  \frac{d \log \mathcal{R}}{d \log a} = 
-  -\frac{k^2}{a^2(5\rho + 3P)}\frac{\dot{P}}{\dot{\rho}}.
+  \frac{d \mathcal{R}}{d \log a} = 
+  -\frac{k^2}{a^2}\frac{\dot{P}}{\dot{\rho}}\frac{\mathcal{R}}{(5\rho + 3P)}
+  -\frac{\delta P_\mathrm{en}}{\rho+P}
 \end{equation}
-Given that $\rho,P\sim H^2$, the above equation says that: $\frac{d\log \mathcal{R}}{d\log a} \sim \frac{k^2}{a^2H^2}$. As the universe inflates, $k\ll aH$, and $\mathcal{R}$ ``freezes out'' and becomes constant.
+For adiabatic perturbations $\delta P_\mathrm{en}=0$, and given that $\rho,P\sim H^2$, the above equation says that: $\frac{d\log \mathcal{R}}{d\log a} \sim \frac{k^2}{a^2H^2}$. As the universe inflates, $k\ll aH$, and $\mathcal{R}$ ``freezes out'' and becomes constant.
 
 \subsection{Quantum behaviour}
 Using the Lagrangians are defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{eqn:cos:scalar_field_lagrangian}, we may define the action:

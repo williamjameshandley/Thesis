@@ -3,7 +3,6 @@
 
 \section{Inverse transform sampling}
 \label{sec:sm:inverse_transform}
- inverse transform sampling. 
 
 In the one-dimensional case, this amounts to converting a uniform random variable (which are easy to generate) into a variable sampled from a general distribution $f(\theta)$. One first finds its cumulative distribution function (CDF):
 \begin{equation}
@@ -41,8 +40,51 @@ In many cases, the prior $\prior(\params)$ is separable, and the above equations
 \section{Importance Sampling}
 \label{sec:sm:importance}
 
-\section{Metropolis Methods}
+\section{Metropolis---Hastings}
 \label{sec:sm:mh}
+Metropolis---Hastings approaches are an extremely widely used methodology for generating a sequence of samples (or points) from some posterior $\posterior(x)$.
+
+A sequence of $T$ points is termed a {\em chain\/} $\chain_T$:
+\begin{equation}
+  \chain_T = \{ x^{(t)}: t=1\cdots T \}
+\end{equation}
+A new point $x^{(t+1)}$ is generated from a proposal density $\proposal$ which depends on the current state $x^{(t)}$. Typically $\proposal(x|x^{(t)})$ might be a Gaussian distribution centered on the current value of $x^{(t)}$:
+\begin{equation}
+  \log \proposal(x|x^{(t)}) = \text{const} -\frac{{\left[ x-x^{(t)} \right]}^2}{2\varepsilon^2},
+\end{equation}
+but in general the proposal density can be any fixed density from which we may draw samples easily.
+
+A new state $x$ is proposed from the proposal density $\proposal(x|x^{(t)})$, and it is accepted with probability:
+\begin{equation}
+  p_\mathrm{accept}(x|x^{(t)}) = \frac{\posterior(x)}{\posterior(x^{(t)})}\frac{\proposal(x^{(t)}|x)}{\proposal(x|x^{(t)})}.
+\end{equation}
+If the step is accepted, then $x^{(t+1)}=x$, otherwise $x^{(t+1)} = x^{(t)}$. This procedure can be seen schematically in Figure~\ref{fig:sm:MH}.
+\begin{figure}
+  \centering
+  \input{plots/MH}
+  \caption{Metropolis---Hastings. Here we have some degenerate two-dimensional posterior $\posterior$, and a circular proposal distribution $\proposal$.\label{fig:sm:MH}}.
+\end{figure}
+
+
+This has the distinct advantage that it does not require one to take into account the overall normalisation of the posterior, circumnavigating any issues associated with computing the evidence $\evidence$, since:
+\begin{equation}
+  \frac{\posterior(x)}{\posterior(x^{(t)})} \equiv
+  \frac{\lik(x)\prior(x)}{\lik(x^{(t)})\prior(x^{(t)})} 
+\end{equation}
+It is important to note that the chain $C_T$ will comprise $T$ samples which are {\em correlated}. If the proposal distribution amounts to a random walk with step size $\varepsilon<\sigma_{\min{}}$, and the longest lengthscale in the probably region is $\sigma_{\max{}}$  then one will expect: $\tau \sim {(L/\varepsilon)}^2$. If $\varepsilon>\sigma_{\min{}}$, then one starts to expect a very low acceptance rate, so typically for a isotropic random walk, the timescale on which one expects to generate independent samples is:
+\begin{equation}
+  \tau \sim \left( \frac{\sigma_{\max{}}}{\sigma_{\min{}}} \right).
+\end{equation}
+In theory, given that the above relation has no dimensionality attached to it, Metropolis Hastings can be extremely successful in high dimensions. However, there are several issues.
+
+First, one does not initially a-priori have a good starting point. There is therefore a period of ``burn-in'' attached to MH methods. Knowing when this period is truely over, and one is starting to generate random samples can be challenging in the general case.
+
+In many cases, $\tau\gg1$ resulting in unacceptable run-times. This can be ameliorated by choosing a proposal distribution $\proposal$ that better agrees with the posterior $\posterior$. However, this amounts to adding in many effective tuning parameters. Many algorithms work by having a ``learning'' phase, whereby the algorithm deduces for itself a good correlated Gaussian proposal distribution, but given the fact that this is not strictly Markovian care must be taken.
+
+
+
+\section{Gibbs Sampling}
+
 
 \section{Slice sampling}
 \label{sec:sm:slice}

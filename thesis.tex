@@ -31,9 +31,12 @@
 \newcommand{\lightweight}{}
 
 
-\includeonly{%
-  chapter_inflationary_cosmology/inflationary_cosmology
-}
+%\includeonly{%
+%  chapter_bayesian_inference/bayesian_inference,
+%  chapter_extending_nested_sampling/extending_nested_sampling,
+%  appendix_sampling_methods/sampling_methods,
+%  appendix_mathematical_asides/mathematical_asides
+%}
 
 \begin{document}
 %
@@ -44,10 +47,6 @@
 % contents ...
 %
 \include{other/contents}
-%
-% summary ...
-%
-\include{other/summary}
 %
 % declaration ...
 %
@@ -61,11 +60,19 @@
 %
 \include{other/conventions}
 %
+% Abstract
+%
+\include{other/abstract}
+%
+%
 % chapters ...
 %
 % Outline
 % -------
 %
+\makeatletter
+\def\input@path{{.}{./chapter_inflationary_cosmology/}}
+\makeatother
 \graphicspath{{.}{./chapter_outline/figures/}}
 \include{chapter_outline/outline}
 %
@@ -128,19 +135,20 @@
 % Kinetic initial conditions for inflation
 % ----------------------------------------
 %
-\makeatletter
-\def\input@path{{.}{./chapter_kinetic_initial_conditions/}}
-\makeatother
-\graphicspath{{.}{./chapter_kinetic_initial_conditions/figures/}}
-\include{chapter_kinetic_initial_conditions/kinetic_initial_conditions}
+%\makeatletter
+%\def\input@path{{.}{./chapter_kinetic_initial_conditions/}}
+%\makeatother
+%\graphicspath{{.}{./chapter_kinetic_initial_conditions/figures/}}
+%\include{chapter_kinetic_initial_conditions/kinetic_initial_conditions}
 %
+\include{other/cosmology_conclusion}
 %
 %
 %
 % Appendices
 % ==========
 %
-\part{Statistics}
+\part{Methods}
 \label{part:statistics}
 %
 % Bayesian inference
@@ -175,11 +183,11 @@
 % Function fitting
 % ------------------
 %
-\makeatletter
-\def\input@path{{.}{./chapter_function_fitting/}}
-\makeatother
-\graphicspath{{.}{./chapter_function_fitting/figures/}}
-\include{chapter_function_fitting/function_fitting}
+%\makeatletter
+%\def\input@path{{.}{./chapter_function_fitting/}}
+%\makeatother
+%\graphicspath{{.}{./chapter_function_fitting/figures/}}
+%\include{chapter_function_fitting/function_fitting}
 %
 \makeatletter
 \def\input@path{{.}{./chapter_RKWKB/}}
@@ -188,28 +196,31 @@
 \include{chapter_RKWKB/RKWKB}
 %
 %
+\include{other/methods_conclusion}
 %
 %
+\include{other/conclusion}
 %
 %
 % Cosmology
 % ==========
 %
-\part{Appendices}
+%\part{Appendices}
 %
 \appendix
 %
-\makeatletter
-\def\input@path{{.}{./appendix_sampling_methods/}}
-\makeatother
-\graphicspath{{.}{./appendix_sampling_methods/figures/}}
-\include{appendix_sampling_methods/sampling_methods}
 %
-\makeatletter
-\def\input@path{{.}{./appendix_mathematical_asides/}}
-\makeatother
-\graphicspath{{.}{./appendix_mathematical_asides/figures/}}
-\include{appendix_mathematical_asides/mathematical_asides}
+%\makeatletter
+%\def\input@path{{.}{./appendix_sampling_methods/}}
+%\makeatother
+%\graphicspath{{.}{./appendix_sampling_methods/figures/}}
+%\include{appendix_sampling_methods/sampling_methods}
+%
+%\makeatletter
+%\def\input@path{{.}{./appendix_mathematical_asides/}}
+%\makeatother
+%\graphicspath{{.}{./appendix_mathematical_asides/figures/}}
+%\include{appendix_mathematical_asides/mathematical_asides}
 %
 % The bibliography
 %
