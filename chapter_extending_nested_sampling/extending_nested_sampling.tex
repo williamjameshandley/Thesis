@@ -215,3 +215,47 @@ Thus, at cluster splitting, all of the new local evidences, volumes and cross co
 
 This completes the mechanism for keeping track of the local and global evidences, their errors, and the local cluster volumes.
 
+
+\section{Further generalisations}
+
+It's worth noting that the procedures in the previous sections are amenable to a great many generalisations. We give a few examples in order to demonstrate this
+
+First, if one desires a higher order of accuracy, one may update the rather simple quadrature in equation~\eqref{eqn:ens:app_ev} to:
+\begin{equation}
+  \ev = \sum\limits_{i} (X_{i-1}-X_{i}) \times \frac{1}{2}(\lik_i+\lik_{i-1}).
+  \label{eqn:ens:app_trap_ev}
+\end{equation}
+In this case, the approach is identical to the method described above, one merely replaces the likelihood value with that of the average value of the last two likelihoods $(\lik_i + \lik_{i-1})/2$.
+It is better to phrase the trapezoidal rule as in equation~\eqref{eqn:ens:app_trap_ev} as oppose to the more traditionally cited:
+\begin{equation}
+  \ev = \sum\limits_{i} \frac{1}{2}(X_{i-1}-X_{i+1}) \lik_i.
+  \label{eqn:ens:app_trap_normal_ev}
+\end{equation}
+Equations~\eqref{eqn:ens:app_trap_ev} and~\eqref{eqn:ens:app_trap_normal_ev} are equivalent, but the first formulation can be calculated at run time, whereas the second requires knowledge of future values of $X_{i}$, which tends to result in programs with a lot of awkward bookkeeping.
+
+Second, if one wishes to re-phrase the evidence integral
+\begin{equation}
+  \ev = \int \lik \: dX = \int X\lik \: d\log X
+\end{equation}
+then the trapezoidal quadrature must be modified:
+\begin{equation}
+  \ev = \sum\limits_{i} (\log X_{i-1}-\log X_{i}) \times \frac{1}{2}(\lik_iX_i+\lik_{i-1}X_{i-1}).
+\end{equation}
+This therefore amount to an update of:
+\begin{align}
+  \ev &\to \ev + X \times \frac{1}{2}\left(t\log\frac{1}{t}\lik_i + \log\frac{1}{t}\lik_{i-1} \right)
+  \\
+  X &\to t X.
+\end{align}
+The analysis then proceeds exactly as before. 
+
+In general, when playing with various formulations, it suffices to know the averages:
+\begin{equation}
+\left\langle t^a{(1-t)}^b \right\rangle = n\frac{b!(a+n-1)!}{(a+b+n)!},
+\end{equation}
+and
+\begin{equation}
+  \left\langle t^a{\left( \log1/t \right)}^b \right\rangle 
+  = 
+  \frac{n\: b!}{{(n+a)}^{b+1}}.
+\end{equation}
