@@ -3,12 +3,12 @@
 
 
 \begin{itemize}
-  \item I make significant use of symbolic overloading, using the same symbol in different contexts where their mathematical meaning is distinct, but their physical meaning is related. For example:
-    \begin{enumerate}
+  \item I make full use of symbolic overloading; using the same symbol in different contexts where their mathematical meaning is distinct, but their physical meaning is related. For example:
+    \begin{itemize}
       \item $f=f(x)$, where $f$ on the right hand side refers to a function ${f:X\to Y}$, but on the left hand side $f\in Y$ refers to the image of $x\in X$ under the function $f$.
       \item $\rho = \rho + \delta\rho$, where on the right hand side $\rho$ refers to the unperturbed solution, whilst on the left $\rho$ refers to the perturbed solution.
       \item $v_i = \partial_i v + v_i$, where on the left $v_i$ refers to a generic vector, but on the right $v$ refers to the helicity scalar part of the vector and $v_i$ refers to the helicity vector part.
-    \end{enumerate}
+    \end{itemize}
   \item I work using a metric with a positive signature $(+,-,-,-)$.
   \item Fourier transforms are defined so that Fourier synthesis carries the factors of $2\pi$:
     \begin{equation}
