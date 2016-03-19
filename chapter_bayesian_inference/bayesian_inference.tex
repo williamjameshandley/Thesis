@@ -1,6 +1,6 @@
 \chapter{Bayesian Inference}
 \label{chap:bay}
-%\includegraphics[width=\textwidth]{bayesian_evol}
+%\includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/bayesian_evol}
 
 \epigraph{We anticipate the sun will rise tomorrow, not just because it has always done so far, but because this is predicted by {\em models}, which accord with {\em data}. Any perceived failure of the sun to rise would more likely be a hallucination.}{\davidmackay{}}
 
@@ -55,7 +55,7 @@ This entire section may be summarised succinctly and formally as:
 
 \begin{figure}
   \centerline{%
-    \input{plots/bayes_theorem}
+    \input{chapter_bayesian_inference/plots/bayes_theorem}
   }
   \caption{Diagrammatic Bayes theorem. Nodes indicate the occurrence of an event. Edges indicate the probability of an event occurring, and are multiplicative in the direction of the arrows. Bayes theorem~\protect\eqref{eqn:bay:bayes} may be derived by equating the path $A\to A\cap B$ with $A\to\Omega\to B\to A\cap B$}\label{fig:bay:bayes_theorem}
 \end{figure}
@@ -63,7 +63,7 @@ This entire section may be summarised succinctly and formally as:
 
 %\begin{figure}
 %  \centerline{%
-%    \input{plots/probability}
+%    \input{chapter_bayesian_inference/plots/probability}
 %  }
 %  \caption{Beer-mat mathematics. This diagram is how \edjaynes{} explained Bayes' theorem to a young \stevegull{}. Out of the entire sample space $\Omega$, if we observe $A$ to be true (blue region), then the probability of $B$ given that we know $A$ is simply $\Prob{A\cap B}/\Prob{A}$. Bayes' theorem then follows by rearrangement and symmetry.}
 %\end{figure}
@@ -178,7 +178,7 @@ This here gives us the distribution on $p$ {\em given the data}. Namely, how the
   \ifdefined\lightweight
   \else
   \centerline{%
-    \input{plots/beta_function}
+    \input{chapter_bayesian_inference/plots/beta_function}
   }
   \fi
   \caption{%
@@ -317,8 +317,8 @@ This calculation however requires $\bigO{n^d}$ function evaluations. This is an 
   \ifdefined\lightweight{}
   \else
   \centerline{%
-    \input{plots/1d_left_rectangle}
-    \input{plots/2d_left_rectangle}
+    \input{chapter_bayesian_inference/plots/1d_left_rectangle}
+    \input{chapter_bayesian_inference/plots/2d_left_rectangle}
   }
   \fi
   \caption{\label{fig:bay:quadrature}}
@@ -381,7 +381,7 @@ This process is graphically depicted in Figure~\ref{fig:bay:prior_volume} for a 
 %
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{contour_nested}
+  \includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/contour_nested}
   \caption{%
     The nested sampling volume transformation.
     Left: five iso-likelihood contours of a two-dimensional multi-modal likelihood function $\lik(\params)$. Each contour encloses some fraction of the prior $X$, indicated by colour.
@@ -460,7 +460,7 @@ One does not wish to continue compressing the space once $X_i\ll e^{-H}$ for two
 %
 \begin{figure}
   \centering
-  \includegraphics[width=\columnwidth]{gaussian_weight}
+  \includegraphics[width=\columnwidth]{chapter_bayesian_inference/figures/gaussian_weight}
   \caption{%
     Plot of a generic likelihood as a function of the prior volume $\lik(X)$. In high dimensions, the likelihood is only visible if plotted against $\log X$ (dashed curve). However, the evidence is better visualised by plotting $X\log(X)$ (solid curve). The area under the solid curve corresponds to the evidence. The magnitude of the solid curve is proportional to the importance weighting. Nested sampling proceeds from high to low volumes. After some time, the live points no longer contribute significantly to the evidence, and the algorithm terminates at this point.\label{fig:bay:gaussian_weight}
   }
@@ -481,7 +481,7 @@ Nested sampling is designed to calculate the evidence, but it also produces post
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{skilling}
+  \includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/skilling}
   \caption{%
   %TO DO: update this figure
   \label{fig:bay:posterior}
@@ -586,7 +586,7 @@ A new state $x$ is proposed from the proposal density $\proposal(x|x^{(t)})$, an
 If the step is accepted, then $x^{(t+1)}=x$, otherwise $x^{(t+1)} = x^{(t)}$. This procedure can be seen schematically in Figure~\ref{fig:sm:MH}.
 \begin{figure}
   \centering
-  \input{plots/MH}
+  \input{chapter_bayesian_inference/plots/MH}
   \caption{Metropolis---Hastings. Here we have some degenerate two-dimensional posterior $\posterior$, and a circular proposal distribution $\proposal$.\label{fig:sm:MH}}.
 \end{figure}
 
@@ -617,7 +617,7 @@ Radford Neal initially proposed slice sampling as an effective methodology for g
 
 \begin{figure}
   \centerline{%
-    \includegraphics[width=\textwidth]{slice}
+    \includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/slice}
   }
 
   \caption{Slice sampling in one dimension. 
