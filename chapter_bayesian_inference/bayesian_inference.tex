@@ -142,8 +142,8 @@ A natural assumption is to try and be as unbiased as possible and assume that $p
 With this distribution, we can work out what the overall probability of obtaining the dataset $\data$ is, by marginalising over all values of $p$:
 \begin{align}
   \Probc{\data}{\model_1} 
-  &= \int \Probc{\data}{p,\model_1}\Probc{p}{\model_1}\: dp \\
-  &= \int_0^1 {^{N}C_\data}\: {p}^{\data} {\left(1 - p \right)}^{N-\data}\: dp \\
+  &= \int \Probc{\data}{p,\model_1}\Probc{p}{\model_1}\: \d{p} \\
+  &= \int_0^1 {^{N}C_\data}\: {p}^{\data} {\left(1 - p \right)}^{N-\data}\: \d{p} \\
   &= \frac{1}{n+1} = 4.8\times10^{-2}
   \label{eqn:bay:marg}
 \end{align}
@@ -227,7 +227,7 @@ We may use the prior to marginalise out all parameter dependence of the each mod
 \begin{equation}
   \ev\equiv\Probc{\data}{\model} 
   =
-  \int  \Probc{\data}{\params_\model,\model}\Probc{\params_\model}{\model}\:d\params_\model.
+  \int  \Probc{\data}{\params_\model,\model}\Probc{\params_\model}{\model}\:\d{\params_\model}.
   \label{eqn:bay:ev_def}
 \end{equation}
 This quantity is termed the {\em evidence\/} $\ev$, or {\em marginalised likelihood}, and gives the probability of observing the data $\data$, conditioned on the model $\model$. The quantity we seek however is the probability of each model $\model$ given the data $\data$, which may be obtained using Bayes' theorem:
@@ -290,25 +290,25 @@ Having discussed the theory of Bayesian statistics, we now turn to the more tric
 Typically, in inference calculation we wish to compute quantities that are marginalised over by the posterior. For example means and variances will typically take the form:
 \begin{align}
   \mean{f} 
-  &= \int f(\params)\posterior(\params)\:d\params,
+  &= \int f(\params)\posterior(\params)\:\d{\params},
   \label{eqn:bay:mean}\\
-  &= \int f(\params)\frac{\lik(\params)\prior(\params)}{\ev}\:d\params.
+  &= \int f(\params)\frac{\lik(\params)\prior(\params)}{\ev}\:\d{\params}.
 \end{align}
 Given a likelihood $\lik$ and a prior $\prior$, a naive approach would be to first compute the evidence
 \begin{equation}
-  \ev = \int \lik(\params) \prior(\params) \: d\params,
+  \ev = \int \lik(\params) \prior(\params) \: \d{\params},
   \label{eqn:bay:ev_short}
 \end{equation}
 and then perform the integral~\eqref{eqn:bay:mean} using a traditional numerical quadrature procedure. In most cases, this method fails at both steps, due to the fact that the dimensionality of the integration is too high for numerical quadrature to succeed.
 
 To see this issue, consider the quadrature integration of a function $g$ along $[0,1]$
 \begin{equation}
-  \int_0^1 g(x) dx \approx \sum\limits_{i=0}^{n} g(x_i) w_i,
+  \int_0^1 g(x) \d{x} \approx \sum\limits_{i=0}^{n} g(x_i) w_i,
   \label{eqn:bay:quadrature_1d}
 \end{equation}
 where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the quadrature weights. For example, if $x_i = \frac{i}{n}$ and $w_i=\frac{1}{n+1}$ then one obtains the left rectangle rule (Figure~\ref{fig:bay:quadrature}). This calculation therefore requires $\bigO{n}$ calculations of the function. In the $d$-dimensional case the generalisation is:
 \begin{equation}
-  \int_0^1\cdots\int_0^1 g(x_1,\ldots,x_d) dx_1\cdots \: dx_d \approx \sum\limits_{i_1,\ldots,i_d=0}^{n} g(x_{i_1},\ldots,x_{i_d}) w_{i_1,\ldots,i_d},
+  \int_0^1\cdots\int_0^1 g(x_1,\ldots,x_d) \d{x_1}\cdots \: \d{x_d} \approx \sum\limits_{i_1,\ldots,i_d=0}^{n} g(x_{i_1},\ldots,x_{i_d}) w_{i_1,\ldots,i_d},
   \label{eqn:bay:quadrature_nd}
 \end{equation}
 This calculation however requires $\bigO{n^d}$ function evaluations. This is an exponential scaling with $d$, and is an example of the {\em curse of dimensionality}. Even for modest number of parameters $\left[ d\bigO{4} \right]$ these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which $\lik$ is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the good data will update the prior information by some significant amount in each dimension.}. The grid size $n$ must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
@@ -349,12 +349,12 @@ However, even if one can generate reliably and cheaply a full set $S$ of samples
 %
 Nested sampling is a methodology devised by \citet{skilling2006} to effectively compute the evidence:
 \begin{equation}
-  \ev = \int \lik(\params) \prior(\params) \: d\params.
+  \ev = \int \lik(\params) \prior(\params) \: \d{\params}.
   \tag{\ref{eqn:bay:ev_short} revisited}
 \end{equation}
 This integral is typically over a high-dimensional parameter space, only a small fraction of which contributes to $\ev$. We may quantify the size of this region by considering the {\em relative entropy\/}\footnote{aka: Kullback-Leibler divergence, information divergence, information gain, KLIC, KL divergence.} of the prior from the posterior distribution:
 \begin{equation}
-  H = \int \log\left( \frac{\posterior(\params)}{\prior(\params)}\right) \posterior(\params)\: d\params
+  H = \int \log\left( \frac{\posterior(\params)}{\prior(\params)}\right) \posterior(\params)\: \d{\params}
   \label{eqn:bay:rel_ent}
 \end{equation}  
 This quantifies the number of nats\footnote{if ``bits'' are a measure of information in base 2, then ``nats'' is information in base $e$.} of information that have been gained on account of the data. Equivalently, the fraction of the prior which contributes non-negligibly to~\eqref{eqn:bay:ev_short} is approximately $X\sim e^{-H}$.
@@ -369,12 +369,12 @@ The first trick is to transform~\eqref{eqn:bay:ev_short} into an effectively one
 \end{equation}
 Each contour defined by $\liks$ will also enclose a $\params$-region containing some fraction of the prior:
 \begin{equation}
-  X(\liks) = \int_{\lik(\params)>\liks} \prior(\params) d\params,
+  X(\liks) = \int_{\lik(\params)>\liks} \prior(\params) \d{\params},
   \label{eqn:bay:prior_volume}
 \end{equation}
 which is termed the {\em prior volume\/} by physicists and {\em prior mass\/} by mathematicians. For each contour $C$, there corresponds a likelihood and a prior volume. We may use this to re-write the likelihood as a function $\lik(X)$.\footnote{More rigorously, one may invert equation~\protect\eqref{eqn:bay:prior_volume} since $X(\lik)$ is monotonic.} and thus the integral~\eqref{eqn:bay:ev_short} as:
 \begin{equation}
-  \ev = \int_0^1 \lik(X)\:dX.
+  \ev = \int_0^1 \lik(X)\:\d{X}.
   \label{eqn:bay:ev_X}
 \end{equation}
 This process is graphically depicted in Figure~\ref{fig:bay:prior_volume} for a two dimensional likelihood. Note the limits are from $0$ to $1$ since $X$ denotes the {\em fraction\/} of the prior enclosed by the likelihood contour\footnote{or alternatively because $X$ is simply a form of cumulative distribution function}.
@@ -531,7 +531,7 @@ where the additional factor of $Z$ merely ensures that they sum to $1$ for consi
 
 In the one-dimensional case, this amounts to converting a uniform random variable (which are easy to generate) into a variable sampled from a general distribution $f(\theta)$. One first finds its cumulative distribution function (CDF):
 \begin{equation}
-  F(\theta) = \int\limits_{-\infty}^\theta f(\theta^\prime) d\theta^\prime,
+  F(\theta) = \int\limits_{-\infty}^\theta f(\theta^\prime) \d{\theta^\prime},
 \end{equation}
 computes the inverse of the CDF, and then applies this function to a uniform random variable  $x\sim U(0,1)$ to generate a variable $\theta = F^{-1}(x)$, which is distributed according to $f(\theta)$. 
 
@@ -541,16 +541,16 @@ In the general $D$-dimensional case, one calculates $D$ conditional distribution
   f_i(\theta_i|\theta_{i-1},\ldots,\theta_1) 
   =
   \frac{%
-    \int f_i(\params) d\theta_{i+1}\ldots d\theta_{N}
+    \int f_i(\params) d\theta_{i+1}\ldots \d{\theta_{N}}
   }{%
-    \int f_i(\params) d\theta_{i}\ldots d\theta_{N}
+    \int f_i(\params) d\theta_{i}\ldots \d{\theta_{N}}
   },
 \end{equation}
 %
 Integrating these yields $D$ conditional CDFs:
 %
 \begin{equation}
-  x_i = F_i(\theta_i|\theta_{i-1},\ldots,\theta_1) = \int\limits_0^{\theta_i} f_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) d\theta_i^\prime.
+  x_i = F_i(\theta_i|\theta_{i-1},\ldots,\theta_1) = \int\limits_0^{\theta_i} f_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) \d{\theta_i^\prime}.
 \end{equation}
 %
 Inverting this gives $\theta_i = F^{-1}_i(x_i|\theta_{i-1},\ldots,\theta_1)$, which constitutes a set of relations sequentially transforming $D$ uniform random variables $\{x_i\}$ into $\{\theta_i\}$ distributed according to $f(\params)$.

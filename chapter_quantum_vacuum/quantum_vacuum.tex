@@ -30,10 +30,10 @@ We then apply this procedure to the kinetically dominated universe, but delay th
 
 We denote a general action via
 \begin{equation}
-  S_I = \int d^4x\sqrt{|g|}\mathcal{L}_I,
+  S_I = \int \d[4]{x}\sqrt{|g|}\mathcal{L}_I,
   \label{eqn:general_action}
 \end{equation}
-where $\mathcal{L}_I$ is the {\em Lagrangian density}. We work in natural units $\hbar=c=1$ and set the reduced Planck mass $m_\mathrm{p} = {(8\pi G)}^{-1/2} = 1$. Dots denote differentiation with respect to cosmic time $\dot{f}\equiv \frac{d}{dt}f$, and primes denote differentiation with respect to conformal time $\prm{f}\equiv\frac{d}{d\eta}f$.
+where $\mathcal{L}_I$ is the {\em Lagrangian density}. We work in natural units $\hbar=c=1$ and set the reduced Planck mass $m_\mathrm{p} = {(8\pi G)}^{-1/2} = 1$. Dots denote differentiation with respect to cosmic time $\dot{f}\equiv \frac{\d{}}{\d{t}}f$, and primes denote differentiation with respect to conformal time $\prm{f}\equiv\frac{\d{}}{\d{\eta}}f$.
 
 We begin by briefly summarising the classical theory of cosmological perturbations for a general scalar field, before discussing the quantisation of such a theory
 
@@ -49,7 +49,7 @@ Consider~\cite{Baumann+2009} a canonical scalar field $\phi$ minimally coupled t
 \end{equation}
 Extremising this action with respect to the fields $\phi$ and $g_{\mu\nu}$ recovers the Klein-Gordan and Einstein equations respectively:
 \begin{align}
-  \left( g^{\mu\nu}\nabla_\mu\nabla_\nu + \frac{dV}{d\phi} \right) \phi &= 0,
+  \left( g^{\mu\nu}\nabla_\mu\nabla_\nu + \frac{\d{V}}{\d{\phi}} \right) \phi &= 0,
   \label{eqn:klein_gordon}\\
   G_{\mu\nu}\equiv R_{\mu\nu}-\frac{1}{2}g_{\mu\nu}R&= T_{\mu\nu},
   \label{eqn:einstein}
@@ -64,7 +64,7 @@ In cosmology, we assume that at zeroth order both the metric $g_{\mu\nu}$ and sc
 \begin{align}
   \dot{H}+H^2 &= -\frac{1}{3}\left( \dot{\phi}^2 - V(\phi) \right),
   \label{eqn:Raychaudhuri}\\
-  0&=\ddot{\phi} + 3H\dot{\phi} + \frac{dV}{d\phi},
+  0&=\ddot{\phi} + 3H\dot{\phi} + \frac{\d{V}}{\d{\phi}},
 \end{align}
 where the Hubble parameter $H = \dot{a}/a$.
 \subsection{Inflationary perturbations}
@@ -72,9 +72,9 @@ One then considers perturbations about these background solutions
 \begin{align}
   \phi=&\phi(t) + \delta\phi(t,x),
   \label{eqn:phi_perturbation} \\
-  ds^2 =& (1+2\Phi)dt^2 + 2a\left( \partial_i B-S_i \right)dx_idt \nonumber\\
-  &+a^2(1-2\Psi)\delta_{ij}dx_idx_j \nonumber\\
-  &+\left( 2\partial_i\partial_jE + 2\partial_{(i}F_{j)} + h_{ij} \right)dx_idx_j,
+  \d{s}^2 =& (1+2\Phi)dt^2 + 2a\left( \partial_i B-S_i \right)\d{x_i} \d{t} \nonumber\\
+  &+a^2(1-2\Psi)\delta_{ij} \d{x_i} \d{x_j} \nonumber\\
+  &+\left( 2\partial_i\partial_jE + 2\partial_{(i}F_{j)} + h_{ij} \right) \d{x_i}\d{x_j},
 \end{align}
 where without loss of generality, the vector fields $S_i,F_i$ are divergenceless, and the tensor field $h_{ij}$ is symmetric, divergenceless and traceless.
 
@@ -85,7 +85,7 @@ We are interested in the gauge-invariant co-moving curvature perturbation:
 \end{equation}
 since it is this quantity which defines the primordial power spectrum for seeding cosmological perturbations. Working in the co-moving gauge $\delta\phi=0$, and expanding the action $S$ to second order in $\mathcal{R}$, gives:
 \begin{equation}
-  S_{(2)} =  \int d^4 x a^3\frac{\dot{\phi}^2}{H^2}{\left[ \dot{\mathcal{R}}^2 - a^{-2} {\left( \partial_i\mathcal{R} \right)}^2 \right]}.
+  S_{(2)} =  \int \d[4]{x} a^3\frac{\dot{\phi}^2}{H^2}{\left[ \dot{\mathcal{R}}^2 - a^{-2} {\left( \partial_i\mathcal{R} \right)}^2 \right]}.
   \label{eqn:R_action}
 \end{equation}
 Note that the dependence on $V(\phi)$ is implicit in the variables $H,\dot{\phi},a$ and $\mathcal{R}$.
@@ -94,9 +94,9 @@ Defining the Mukhanov variable,
   v = z\mathcal{R},\qquad z=\frac{a\dot{\phi}}{H},
   \label{eqn:mukhanov_variable}
 \end{equation}
-and transforming $t$ into conformal time $\eta = \int^t d\tau/a(\tau) $ yields:
+and transforming $t$ into conformal time $\eta = \int^t \d{\tau}/a(\tau) $ yields:
 \begin{equation}                                 
-  S_{(2)} =  \int d\eta d^3x {\left[ {\left( \prm{v} \right)}^2 - {\left( \partial_iv \right)}^2 + \frac{\dprm{z}}{z} v^2 \right]}.
+  S_{(2)} =  \int \d{\eta} \d[3]{x} {\left[ {\left( \prm{v} \right)}^2 - {\left( \partial_i v \right)}^2 + \frac{\dprm{z}}{z} v^2 \right]}.
   \label{eqn:v_action}
 \end{equation}
 This is the canonically normalised action for a scalar field with time-dependent ``effective'' mass $\meffs = -\dprm{z}/z$.
@@ -105,12 +105,12 @@ This is the canonically normalised action for a scalar field with time-dependent
 \label{sec:mukhanov}
 We now consider the traditional quantisation of the action~\eqref{eqn:v_action} via Hamiltonian diagonalisation. This is a standard method in the inflationary literature, but has several theoretical issues which will be discussed. To begin, one writes;
 \begin{equation}
-  v = \int \frac{d^3 k}{(2\pi)^3} \left[ a_\vk \chi_\vk(\eta)e^{i\vk\cdot\vx} + a_{\vk}^{\dagger} \str{\chi_\vk}(\eta)e^{-i\vk\cdot\vx} \right], 
+  v = \int \frac{\d[3]{k}}{{(2\pi)}^3} \left[ a_\vk \chi_\vk(\eta)e^{i\vk\cdot\vx} + a_{\vk}^{\dagger} \str{\chi_\vk}(\eta)e^{-i\vk\cdot\vx} \right], 
   \label{eqn:v_quant}
 \end{equation}
 which expresses the operator $v$ as a superposition of creation and annihilation operators $\{a_\vk,a_\vk^\dagger\}$~\cite{Mukhanov+2007}, with the mode functions written in separated form ${u_\vk = \chi_\vk(\eta) e^{i\vk\cdot\vx}}$. If one requires that the scalar field satisfies the equations of motion, and that canonical commutator relation:
 \begin{equation}
-  [ a_\vk^{\phantom\dagger} a_{\prm{\vk}}^{\dagger} ] = (2\pi)^3\delta^{(3)}(\vk-\prm{\vk}),
+  [ a_\vk^{\phantom\dagger} a_{\prm{\vk}}^{\dagger} ] = {(2\pi)}^3\delta^{(3)}(\vk-\prm{\vk}),
   \label{eqn:commutator}
 \end{equation}
 holds true, then the temporal part $\chi_\vk(\eta)$ of the mode functions $u_\vk$ must satisfy:
@@ -129,7 +129,7 @@ The complex mode functions $\chi_\vk$ are not fully determined by condition~\eqr
 
 The traditional approach is to consider the Hamiltonian of the Mukhanov variable, which after normal ordering takes the form:
 \begin{align}
-  H = \frac{1}{2}\int\frac{d^3k}{{(2\pi)}^3} 
+  H = \frac{1}{2}\int\frac{\d[3]{k}}{{(2\pi)}^3} 
   &\Big[ a_\vk a_{-\vk} F_\vk(\eta) + a_\vk^\dagger a_{-\vk}^\dagger \str{F_\vk}(\eta) \nonumber \\
   &+ \left(2a_\vk^\dagger a_\vk + \delta^{(3)}(0)\right)E_\vk(\eta) \Big], 
 \end{align}
@@ -147,7 +147,7 @@ It is therefore attractive to choose either (i) the vacuum as an eigenstate of t
 \end{equation}
 or (ii) that the vacuum minimises the expected energy:
 \begin{equation}
-  \bracket{0}{H}{0} \propto \int \frac{d^3k}{{(2\pi)}^3} E_\vk.
+  \bracket{0}{H}{0} \propto \int \frac{\d[3]{k}}{{(2\pi)}^3} E_\vk.
   \label{eqn:hamil}
 \end{equation}
 As can be shown with standard linear algebra, these two conditions are equivalent, and result in the requirement that:
@@ -158,7 +158,7 @@ As can be shown with standard linear algebra, these two conditions are equivalen
 which provides enough information to set unambiguous initial conditions for the mode equation~\eqref{eqn:mode_mukhanov}.
 When the condition~\eqref{eqn:hd_condition} is satisfied, the Hamiltonian is diagonalised such that:
 \begin{equation}
-  H(\eta_0) = \int\frac{d^3k}{{(2\pi)}^3} 
+  H(\eta_0) = \int\frac{\d[3]{k}}{{(2\pi)}^3} 
   \left(a_\vk^\dagger a_\vk + \frac{1}{2}\delta^{(3)}(0)\right)\omega_k(\eta_0). 
   \label{eqn:diag_hamil}
 \end{equation}
@@ -198,16 +198,16 @@ This is the semi-rigorous theory of fields in which gravity is strong enough to 
 
 Traditionally~\cite{Birrell+1984,Parker+2009}, one considers a scalar field Lagrangian with mass $m$, with action:
 \begin{equation}
-  S = \int d^4x \sqrt{|g|}\left( \frac{1}{2}g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi - \frac{1}{2}m^2\phi^2 \right),
+  S = \int \d[4]{x} \sqrt{|g|}\left( \frac{1}{2}g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi - \frac{1}{2}m^2\phi^2 \right),
   \label{eqn:scalar_field}
 \end{equation}
 where for simplicity we are considering the case of minimal coupling $\xi=0$.  
 In the context of FRW spacetime, the modes are quantised as:
 \begin{equation}
-  \phi(x) = \int\frac{d^3 k}{{(2\pi)}^3a(\eta)} \left[ a_\vk \chi_\vk(\eta)e^{i\vk\cdot\vx} + a_{\vk}^{\dagger} \str{\chi_\vk}(\eta)e^{-i\vk\cdot\vx} \right],
+  \phi(x) = \int\frac{\d[3]{k}}{{(2\pi)}^3a(\eta)} \left[ a_\vk \chi_\vk(\eta)e^{i\vk\cdot\vx} + a_{\vk}^{\dagger} \str{\chi_\vk}(\eta)e^{-i\vk\cdot\vx} \right],
   \label{eqn:mode_expansion}
 \end{equation}
-where the mode functions are written in separated form $u_\vk = a(\eta)^{-1}\chi_\vk(\eta)e^{i \vk\cdot\vx}$. The additional conformal factor of $a(\eta)^{-1}$ generates mode equations without first order derivatives in $\eta$.
+where the mode functions are written in separated form $u_\vk = a{(\eta)}^{-1}\chi_\vk(\eta)e^{i \vk\cdot\vx}$. The additional conformal factor of ${a(\eta)}^{-1}$ generates mode equations without first order derivatives in $\eta$.
 Requiring that the scalar field satisfies the equations of motion, and that the commutation relation~\eqref{eqn:commutator} remain true,
 one finds that the mode functions $\chi_\vk$ must satisfy:
 \begin{align}
@@ -226,7 +226,7 @@ The similarity between equations~\eqref{eqn:mode_mukhanov} and~\eqref{eqn:chi_eq
 \end{equation}
 This may be explicitly solved for $a(\eta)$ as:
 \begin{equation}
-  a(\eta) = A\:z(\eta) + B\:z(\eta) \int^\eta \frac{dx}{{z(x)}^2},
+  a(\eta) = A\:z(\eta) + B\:z(\eta) \int^\eta \frac{\d{x}}{{z(x)}^2},
   \label{eqn:a_sol}
 \end{equation}
 where $A$ and $B$ are constants of integration. 
@@ -256,7 +256,7 @@ To form the stress-energy tensor from the Green function, one operates with a bi
 The Hadamard Green function~\eqref{eqn:green_function} using the mode expansion~\eqref{eqn:mode_expansion} becomes:
 \begin{align}
   G^{(1)}(x,\prm{x}) = 
-  \int\frac{d^3 k\:}{(2\pi)^3a(\eta)a(\prm{\eta})}&
+  \int\frac{\d[3]{k}\:}{{(2\pi)}^3a(\eta)a(\prm{\eta})}&
   \Big(
   \chi_\vk(\eta)
   \str{\chi_{\vk}}(\prm{\eta})e^{i\vk\cdot(\vx-\prm{\vx})}+\nonumber\\
@@ -273,7 +273,7 @@ Inserting this expression into~\eqref{eqn:point_splitting} will yield an express
 \end{equation}
 and aim to minimise this with respect to the functions. Since $G^{(1)}_{\mathrm{DS}}$ does not depend on these variables, this term can be ignored for the purposes of extremisation. Further, the functional derivatives such as $\frac{\delta}{\delta \chi_\vk}$ commute with the limit expression, so in fact minimising the renormalised tensor with respect to the mode functions is equivalent to naively minimising the traditional stress-energy tensor~\eqref{eqn:SET}. Inserting the mode function~\eqref{eqn:mode_expansion} into~\eqref{eqn:point_splitting} and taking the coincidence limit, one finds:
 \begin{align}
-  \bracket{0}{T_{00}(x)}{0}_\mathrm{ren} = &\frac{1}{2}\int \frac{d^3 k}{{(2\pi)}^3 a^2} (\prm{\chi_\vk}-\frac{\prm{a}}{a}\chi_\vk)(\prm{\str{\chi_\vk}}-\frac{\prm{a}}{a}\str{\chi_\vk})
+  \bracket{0}{T_{00}(x)}{0}_\mathrm{ren} = &\frac{1}{2}\int \frac{\d[3]{k}}{{(2\pi)}^3 a^2} (\prm{\chi_\vk}-\frac{\prm{a}}{a}\chi_\vk)(\prm{\str{\chi_\vk}}-\frac{\prm{a}}{a}\str{\chi_\vk})
   \nonumber \\
   &+\left( k^2 + m^2a^2 \right)\chi_\vk {\chi_\vk}^\ast + \tilde{T},
 \end{align}

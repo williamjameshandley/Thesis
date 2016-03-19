@@ -89,13 +89,13 @@ If $T\gg1$ then $\omega$ is slowly varying, or equivalently the solutions have v
 \end{equation}
 Substituting this into~\eqref{eqn:lode_T} and setting each coefficient of $T$ equal to zero yields a sequence of solvable equations. One finds the first four solutions are:
 \begin{align}
-  S_0(t) &= \pm i \int^t \omega(\tau)\: d\tau,
+  S_0(t) &= \pm i \int^t \omega(\tau)\: \d{\tau},
   \label{eqn:S0}\\
   S_1(t) &= -\frac{1}{2}\log \omega(t),\\
-  S_2(t) &=  i \int^t \frac{1}{4}\frac{\ddot{\omega}(\tau)}{\omega^{2}(\tau)} - \frac{3}{8}\frac{\dot{\omega}^2(\tau)}{\omega^{3}(\tau)}\: d\tau, \\
+  S_2(t) &=  i \int^t \frac{1}{4}\frac{\ddot{\omega}(\tau)}{\omega^{2}(\tau)} - \frac{3}{8}\frac{\dot{\omega}^2(\tau)}{\omega^{3}(\tau)}\: \d{\tau}, \\
   S_3(t) &=  \frac{1}{8}\frac{\ddot{\omega}(t)}{\omega^{3}(t)} - \frac{3}{16} \frac{\dot{\omega}^{2}(t)}{\omega^{4}(t)}.
 \end{align}
-Note that at $0$\textsuperscript{th} order, the solution is $x\propto\exp\left( \int \omega dt \right)$, which should be compared with the traditional sinusoidal solution.
+Note that at $0$\textsuperscript{th} order, the solution is $x\propto\exp\left( \int \omega \d{t} \right)$, which should be compared with the traditional sinusoidal solution.
 Typically $T$ is considered a power counting parameter, and set equal to $1$ at the end of the analysis.
 
 There are two integration constants associated with the either sign of equation~\eqref{eqn:S0}. The other integration constants from the remaining equations may be absorbed into the first two. The $n$\textsuperscript{th} order solution thus takes the form:
@@ -118,7 +118,7 @@ then the coeffients $A_\mu$ may be determined by:
   &\times\left( x_0 \pm  \frac{\dot{x}_0-x_0\sum_{i=1}^n \dot{S}_i(t_0)}{\dot{S}_0(t_0)}\right).
   \label{eqn:i_c_Apm}
 \end{align}
-For further detail on the intricacies of WKB approaches, the reader should consult \cite{RHB,Bender+2010}.
+For further detail on the intricacies of WKB approaches, the reader should consult~\cite{RHB,Bender+2010}.
 
 \section{The RKWKB method}
 Our strategy is to combine the versatility of RK methods with the power of WKB in dealing with oscillating solutions. We term the combination RKWKB.
@@ -218,8 +218,8 @@ This may then be attacked with a variety of Lie group methods. For example, one 
 \begin{align}
   \mathbf{x}(t) &= e^{\Omega(t,t_0)} \mathbf{x}_0,
   \label{eqn:magnus}\\
-  \Omega(t,t_0) &= \int_{t_0}^t \mathrm{A}(x) dx \nonumber \\
-  &- \frac{1}{2}\int_{t_0}^t\int_{t_0}^{x_1} \left[\mathrm{A}(x_2),\mathrm{A}(x_1)\right] dx_2 dx_1 + \ldots
+  \Omega(t,t_0) &= \int_{t_0}^t \mathrm{A}(x) \d{x} \nonumber \\
+  &- \frac{1}{2}\int_{t_0}^t\int_{t_0}^{x_1} \left[\mathrm{A}(x_2),\mathrm{A}(x_1)\right] \d{x_2} \d{x_1} + \ldots
   \nonumber
 \end{align}
 and then use a truncated series to create a stepping algorithm.
