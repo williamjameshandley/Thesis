@@ -23,9 +23,9 @@ The formalism of Einstein's gravity can be effectively summarised using the Eins
 where the factor of $\sqrt{g}$, $g=\left|\det\left( g_{\mu\nu} \right)\right|$ ensures a relativistic volume element for integration.
 We typically decompose the Lagrangian $\mathcal{L}$ into a gravitational and matter part:
 \begin{align}
-  \mathcal{L} &= \mathcal{L}_G + \mathcal{L}_M
+  \mathcal{L} &= \mathcal{L}_G + \mathcal{L}_M,
   \label{eqn:cos:decomp}\\
-  \mathcal{L}_G &= \frac{1}{2} \m^2 R
+  \mathcal{L}_G &= \frac{1}{2} \m^2 R,
   \label{eqn:cos:L_grav}
 \end{align}
 where $R$ is the Ricci scalar and $\mathcal{L}_M$ is the portion of the Lagrangian pertaining to the material content of spacetime. Requiring that the action~\eqref{eqn:cos:generic_lagrangian} is extremal ($\delta S = 0$) yields Einstein's equations:
@@ -35,7 +35,7 @@ where $R$ is the Ricci scalar and $\mathcal{L}_M$ is the portion of the Lagrangi
 \end{equation}
 where
 \begin{equation}
-  T_{\mu\nu} = \frac{-2}{\sqrt{\abs{g}}}\frac{\delta}{\delta g^{\mu\nu}}\left( \sqrt{\abs{g} \mathcal{L}_M} \right)
+  T_{\mu\nu} = \frac{-2}{\sqrt{\abs{g}}}\frac{\delta}{\delta g^{\mu\nu}}\left( \sqrt{\abs{g} \mathcal{L}_M} \right),
   \label{eqn:cos:SET_fundamantal}
 \end{equation}
 is the stress energy tensor, and
@@ -45,7 +45,7 @@ is the stress energy tensor, and
 \end{equation}
 is the Einstein tensor. The symmetries of the Einstein tensor~\eqref{eqn:cos:einstein_tensor} mean that there are in fact only six independent equations in~\eqref{eqn:cos:einsteins_equations}. Further, the fact that $\nabla^\mu G_{\mu\nu}=0$ means that the stress energy tensor is conserved:
 \begin{equation}
-  \nabla_\mu T^{\mu}_{\nu} = 0
+  \nabla_\mu T^{\mu}_{\nu} = 0.
   \label{eqn:cos:SET_conservation}
 \end{equation}
 This conservation equation can provide a fast means for deriving alternative rearragements of the Einstein equations.
@@ -75,9 +75,9 @@ This conservation equation can provide a fast means for deriving alternative rea
 
 On the largest scales, the universe is observed to be {\em homogeneous\/} and {\em isotropic}. This provides a good 0\textsuperscript{th}-order approximation to our actual universe. Making these assumptions, the metric can take one of three generic forms:
 \begin{align}
-  ds^2 &= \d{t}^2 - a{(t)}^2\left( \d{\chi}^2 + S_k^2{(\chi)} \d{\Omega} \right)
+  ds^2 &= \d{t}^2 - a{(t)}^2\left( \d{\chi}^2 + S_k^2{(\chi)} \d{\Omega} \right),
   \label{eqn:cos:FRW_metric}\\
-  \d{\Omega} &= d\theta^2 + \sin^2\theta d\phi^2
+  \d{\Omega} &= d\theta^2 + \sin^2\theta d\phi^2,
   \label{eqn:cos:angle_element}\\
   S_k^2(\chi) &=
   \left\{
@@ -101,7 +101,7 @@ The definitions of these terms can be found in Table~\ref{tab:cos:metric}. The s
 \subsection{Dynamics}
 In order to obtain the equations governing $a(t)$ and thus the dynamics of the universe, we must make some assumptions about the universes contents. For a smooth universe, one may model its contents as a collection of non-interacting, comoving, uniform, perfect fluids. A perfect fluid in thermodynamic equilibrium has stress-energy tensor:
 \begin{equation}
-  T^{\mu\nu} = (P+\rho)u^{\mu}u^{\nu} - P g^{\mu\nu} + \Sigma^{\mu\nu}
+  T^{\mu\nu} = (P+\rho)u^{\mu}u^{\nu} - P g^{\mu\nu} + \Sigma^{\mu\nu},
   \label{eqn:cos:SET_perfect_fluid}
 \end{equation}
 where $\rho$ is the energy density, $P$ is the pressure, $u^\mu$ is the four velocity of the fluid, and $\Sigma^{\mu\nu}$ is a traceless, symmetric, anisotropic stress term. In accordance with the cosmological principle, we shall assume that in the comoving frame the fluid is stationary ($u^\mu = [1,\bzero]$), and uniform ($\rho=\rho(t),P=P(t)$), with no anisotropy $\Sigma=0$.  
@@ -122,7 +122,7 @@ where $H=\dot{a}/a$ is the Hubble parameter and a dot denotes differentiation wi
 \subsection{Basic solutions}
 A reasonable model for the universe we observe today is as a multi-component fluid, each with its own simple equation of state:
 \begin{equation}
-  \rho = \sum_i \rho_i, \qquad P = \sum_i P_i, \qquad P_i = w_i \rho_i
+  \rho = \sum_i \rho_i, \qquad P = \sum_i P_i, \qquad P_i = w_i \rho_i,
   \label{eqn:cos:multi_component}
 \end{equation}
 where $w_i$ is the equation of state parameter. In our universe, we observe matter $(w=0)$, radiation $(w=\frac{1}{3})$ and dark energy $(w=-1)$. We can also notationally model the curvature's scale-factor contribution of $-\frac{k}{a^2}$ as a cosmological fluid with $w=-\frac{1}{3}$. Applying these equations of states, equations~\eqref{eqn:cos:Raychaudhuri} and~\eqref{eqn:cos:Friedmann} may be re-cast as an equation purely in $a$:
@@ -132,7 +132,7 @@ where $w_i$ is the equation of state parameter. In our universe, we observe matt
   \Omega^\text{(rad)}_0 a^{-4} +
   \Omega^\text{(mat)}_0 a^{-3} + 
   \Omega^\text{(curv)}_0 a^{-2} +
-  \Omega^\text{(de)}_0  
+  \Omega^\text{(de)}_0,
   \label{eqn:cos:expansion_history}
 \end{equation}
 where quantities subscripted with $0$ indicate the present day $(t=t_0)$ value of the parameter, the present scale factor is chosen to be unity $(a(t_0)=1)$, and the density parameter $\Omega$ is defined as:
@@ -271,10 +271,10 @@ This presents a problem. The universe we see today is measured to be flat to at 
 
 However, if for some period $w<-1/3$ at some earlier time, then~\eqref{eqn:cos:instability} says that $\Omega=1$ is an attractor state. The Raychaudhuri equation shows that:
 \begin{equation}
-  \ddot{a} \propto -(1+3w)
+  \ddot{a} \propto -(1+3w).
   \label{eqn:cos:Raychaudhuri_acc}
 \end{equation}
-thus, the condition that $w<-1/3$ is equivalent to requiring that at some point early in its history the universe was {\em accelerating\/} $\ddot{a}>0$. It is also equivalent to having a form of matter which satisfies:
+Thus, the condition that $w<-1/3$ is equivalent to requiring that at some point early in its history the universe was {\em accelerating\/} $\ddot{a}>0$. It is also equivalent to having a form of matter which satisfies:
 \begin{equation}
   P < -\frac{1}{3}\rho,
   \label{eqn:cos:SEC_violation}
@@ -308,30 +308,30 @@ It turns out if we consider even the most simple particle physics models, these 
 \subsection{Basic theory}
 Consider the Lagrangian:
 \begin{equation}
-  \mathcal{L}_\phi = \frac{1}{2}\nabla^\mu\phi\nabla_\mu\phi - V(\phi) 
+  \mathcal{L}_\phi = \frac{1}{2}\nabla^\mu\phi\nabla_\mu\phi - V(\phi).
   \label{eqn:cos:scalar_field_lagrangian}
 \end{equation}
 This represents a scalar field $\phi$, minimally coupled to gravity with some unspecified potential $V$.  Inserting this into~\eqref{eqn:cos:SET_fundamantal} yields a stress energy tensor of:
 \begin{equation}
-  T^{\mu}_{\nu} = \nabla^\mu\phi\nabla_\nu\phi - \left( \frac{1}{2}\nabla^\alpha\phi \nabla_\alpha\phi - V(\phi)  \right)\delta^{\mu}_{\nu}
+  T^{\mu}_{\nu} = \nabla^\mu\phi\nabla_\nu\phi - \left( \frac{1}{2}\nabla^\alpha\phi \nabla_\alpha\phi - V(\phi)  \right)\delta^{\mu}_{\nu}.
   \label{eqn:cos:scalar_field_SET}
 \end{equation}
 If we initially assume in accordance with the cosmological principle that the field has no spatial dependence $\phi = \phi(t)$, then the stress energy tensor becomes:
 \begin{align}
-  T^{0}_{0} &=\frac{1}{2}\dot\phi^2 + V(\phi) = \rho 
+  T^{0}_{0} &=\frac{1}{2}\dot\phi^2 + V(\phi) = \rho,
   \label{eqn:cos:scalar_field_rho}\\
-  T^{i}_{j} &=-\left[ \frac{1}{2}\dot\phi^2 - V(\phi)\right]\delta^{i}_{j} = -P\delta^{i}_{j}
+  T^{i}_{j} &=-\left[ \frac{1}{2}\dot\phi^2 - V(\phi)\right]\delta^{i}_{j} = -P\delta^{i}_{j}.
   \label{eqn:cos:scalar_field_P}
 \end{align}
 Thus, a scalar field acts as a perfect fluid with pressure and density as shown above. In order to derive the equation of state, we need to generate an equation of motion for $\phi$. This can be done other by extremising $S_\phi = \int \d[4]{x} \sqrt{|g|} \mathcal{L}_\phi$, or by applying the continuity equation~\eqref{eqn:cos:SET_conservation} to the stress energy tensor~\eqref{eqn:cos:scalar_field_SET}: 
 \begin{equation}
-  0 = \ddot{\phi} + 3 H \dot{\phi} + \frac{d}{d\phi}V(\phi)
+  0 = \ddot{\phi} + 3 H \dot{\phi} + \frac{d}{d\phi}V(\phi).
   \label{eqn:cos:KG}
 \end{equation}
 The middle term involving $H$ is the term that arises as a result of including the effects of gravity (i.e.\ an expanding universe). The homogenous value of the scalar field $\phi$ satisfies the equation of a harmonic oscillator in potential $V(\phi)$ with a frictional term $H$.
 To get an equation for $H$, we use the Raychaudhuri equation~\eqref{eqn:cos:Raychaudhuri} along with our formulae~\eqref{eqn:cos:scalar_field_rho}~\&~\eqref{eqn:cos:scalar_field_P} for $\rho$ and $P$, to find
 \begin{equation}
-  \dot{H}+H^2 = -\frac{1}{3\m^2}\left(\dot{\phi}^2-V(\phi)\right)
+  \dot{H}+H^2 = -\frac{1}{3\m^2}\left(\dot{\phi}^2-V(\phi)\right).
   \label{eqn:cos:ray_scalar}
 \end{equation}
 Equation~\eqref{eqn:cos:KG} represents space telling matter how to move and equation~\eqref{eqn:cos:ray_scalar} represents matter telling space how to curve respectively. These are tightly coupled, and result in far less trivial behaviour compared with a simple perfect fluid.
@@ -348,7 +348,7 @@ One way to trigger an accelerated phase is to set the inflaton as trapped in a f
 
 In fact, one does not need a false vacuum, one merely needs the inflaton to be rolling slowly down the potential with its speed small in comparison to the potential energy:
 \begin{equation}
-  \dot{\phi}^2 \ll V(\phi)
+  \dot{\phi}^2 \ll V(\phi).
   \label{eqn:cos:slow_roll}
 \end{equation}
 In this case, one still has the Hubble parameter $H\approx H_0$ being approximately constant and therefore exponential expansion. Since the frictional term in~\eqref{eqn:cos:KG} robs the particle of energy, one finds that in fact these slowly rolling phases are generic attractors for most inflationary potentials. All one requires is that the inflaton begins a reasonable way from the potential minimum.
@@ -364,7 +364,7 @@ Inflation finishes when the inflaton reaches its true vacuum, and oscillates abo
 \section{The perturbed universe}
 The real universe is not smooth, despite how much of a good approximation that might be. Using the FRW metric as a 0\textsuperscript{th} order approximation, we may expand about these smooth solutions. In general then, we write each quantity as:
 \begin{equation}
-  X(t,\vx) = X(t) + \delta X(t,\vx)
+  X(t,\vx) = X(t) + \delta X(t,\vx).
   \label{eqn:cos:expansion}
 \end{equation}
 Since in the early universe the perturbations were small $\delta X \ll X$, we may expand all equations to linear order to very high accuracy.
@@ -425,9 +425,9 @@ The scalar field perturbation is similarly simple:
 \subsection{Fourier modes and SVT decomposition}
 In general, the Einstein equations~\eqref{eqn:cos:einstein_tensor} are non-linear, second order, partial differential equations and are therefore extremely challenging to solve. Perturbing about a background as in the previous section yields linearised versions of the Einstein~\eqref{eqn:cos:einsteins_equations} and conservation equations~\eqref{eqn:cos:SET_conservation}:
 \begin{align}
-  \delta G_{\mu\nu} &= \frac{1}{\m^2}\delta T_{\mu\nu}
+  \delta G_{\mu\nu} &= \frac{1}{\m^2}\delta T_{\mu\nu},
   \label{eqn:cos:einsteins_equations_perturb} \\
-  \nabla_\mu\delta T^{\mu}_{\nu} &=0
+  \nabla_\mu\delta T^{\mu}_{\nu} &=0,
   \label{eqn:cos:SET_conservation_perturb}
 \end{align}
 which simplifies matters.  
@@ -444,8 +444,8 @@ Formally, a general field $\varphi(t,\vx)$ can be written in Fourier modes as:
 A vector field $V_i$ and a symmetric, traceless tensor field $T_{ij}$ can be decomposed into helicity modes as:
 \begin{align}
   V_i =& \partial_i V + V_i,   \nonumber\\
-  &(\partial^k V_k=0) \\
-  T_{ij} =& (\partial_i\partial_j - \frac{\delta_{ij}}{3}\partial^k\partial_k)T + \frac{1}{2}(\partial_i T_j + \partial_j T_i) + T_{ij} \nonumber\\ 
+  &(\partial^k V_k=0), \\
+  T_{ij} =& (\partial_i\partial_j - \frac{\delta_{ij}}{3}\partial^k\partial_k)T + \frac{1}{2}(\partial_i T_j + \partial_j T_i) + T_{ij} \nonumber,\\ 
   &(\partial^k T_{ki} = \partial^k T_k = 0),
 \end{align}
 where $V$ and $T$ are helicity scalars, $V_i$ and $T_i$ are divergenceless 3-vectors and $T_{ij}$ is a divergenceless, symmetric, traceless 3-tensor\footnote{Note the overloaded notation: $V_i$ and $T_{ij}$ mean different things on either side of each equation.}.
@@ -458,10 +458,10 @@ This lack of constraint arises from the fact that the split into background and 
 
 In addition to perturbing the dynamical variables, one can also perturb the coordinate system:
 \begin{align}
-  t &\rightarrow t + \delta t  
+  t &\rightarrow t + \delta t,
   \label{eqn:cos:gauge_t}
   \\
-  x^i &\rightarrow x^i  + \delta x^i ,
+  x^i &\rightarrow x^i  + \delta x^i,
   \label{eqn:cos:gauge_x}
 \end{align}
 where in general the small perturbations $\delta t$ and $\delta x^i$ are functions of time and space.
@@ -473,31 +473,31 @@ This means that it is easy to conflate ``true'' perturbations in the variables w
 
 Careful calculation will show that in fact the transformation of the dynamical variables under~\eqref{eqn:cos:gauge_t}~\&~\eqref{eqn:cos:gauge_t} is in fact:
 \begin{align}
-  \Phi &\rightarrow \Phi - \delta \dot{t} &
-  \Psi &\rightarrow \Psi +H \delta t  \nonumber\\
-  B &\rightarrow B + \delta t/a - a\delta \dot{x} &
-  B_i &\rightarrow  B_i - a \delta\dot{x}_i  \nonumber\\
-  E &\rightarrow E - \delta x &
-  E_i & \rightarrow E_i - \delta x_i \nonumber \\
-  \delta\rho &\rightarrow \delta\rho - \dot{\rho}\delta t &
-  \delta P &\rightarrow \delta P - \dot{P}\delta t \nonumber\\
-  \delta q &\rightarrow \delta q - (\rho+P)\delta \dot{x}&
-  \delta q^i &\rightarrow \delta q^i - (\rho+P)\delta \dot{x}^i \\
-  \delta \phi &\rightarrow \delta \phi - \dot{\phi}\delta t &&\nonumber
+  \Phi &\rightarrow \Phi - \delta \dot{t}, &
+  \Psi &\rightarrow \Psi +H \delta t,  \nonumber\\
+  B &\rightarrow B + \delta t/a - a\delta \dot{x}, &
+  B_i &\rightarrow  B_i - a \delta\dot{x}_i,  \nonumber\\
+  E &\rightarrow E - \delta x, &
+  E_i & \rightarrow E_i - \delta x_i, \nonumber \\
+  \delta\rho &\rightarrow \delta\rho - \dot{\rho}\delta t, &
+  \delta P &\rightarrow \delta P - \dot{P}\delta t, \nonumber\\
+  \delta q &\rightarrow \delta q - (\rho+P)\delta \dot{x},&
+  \delta q^i &\rightarrow \delta q^i - (\rho+P)\delta \dot{x}^i, \\
+  \delta \phi &\rightarrow \delta \phi - \dot{\phi}\delta t. &&\nonumber
 \end{align}
 By choosing an appropriate coordinate transformation, one can remove the additional dynamical variables that are unconstrained by the Einstein equations. This is typically done by setting some of the perturbation variables equal to zero. This procedure is termed a {\em gauge choice}.\footnote{$\delta X$ is defined as the difference between the value $X$ has in the physical (perturbed) spacetime, and the value $X$ has in the background (unperturbed) spacetime. This can only be done if there is a prescription for identifying points between the two spacetimes, and in the language of differential geometry, this is termed a {\em gauge choice}.}
 Examples of popular gauge choices can be found in Table~\ref{tab:cos:gauge_choice}.
 
 Whilst choosing a gauge will give one a set of soluble equations, the question still remains as to whether the perturbations really are ``true'', or in some-way coordinate-dependent. A more robust approach is to avoid the issue entirely and define the gauge independent variables:
 \begin{align}
-  \Phi^{(B)} &=  \Phi - \dot{T} &
-  \Psi^{(B)} &=  \Psi + HT \nonumber \\
-  B_i^{(B)} &= B_i - a\dot{E}_i & & \nonumber\\
-  \delta\rho^{(B)} &= \delta\rho - \dot{\rho}T &
-  \delta P^{(B)} &= \delta P - \dot{P}T & \nonumber\\
-  \delta q^{(B)} &= \delta q - (\rho + P)\dot{E} &
-  \delta q_i^{(B)} &= \delta q_i - (\rho + P)\dot{E}_i \nonumber \\
-  \delta \phi^{(B)} &= \delta \phi - \dot{\phi}T & &
+  \Phi^{(B)} &=  \Phi - \dot{T}, &
+  \Psi^{(B)} &=  \Psi + HT, \nonumber \\
+  B_i^{(B)} &= B_i - a\dot{E}_i, & & \nonumber\\
+  \delta\rho^{(B)} &= \delta\rho - \dot{\rho}T, &
+  \delta P^{(B)} &= \delta P - \dot{P}T, & \nonumber\\
+  \delta q^{(B)} &= \delta q - (\rho + P)\dot{E}, &
+  \delta q_i^{(B)} &= \delta q_i - (\rho + P)\dot{E}_i, \nonumber \\
+  \delta \phi^{(B)} &= \delta \phi - \dot{\phi},T & &
 \end{align}
 where $T = a^2[\dot{E}-B/a]$. These variables remain unchanged under gauge transformations, and are independent of coordinate perturbations. Any perturbation in these variables cannot be ``gauged away''. Of course, these are not unique as any linear combination of them is also gauge invariant, but the above set results in a reasonable basis. 
 
@@ -534,7 +534,7 @@ After some effort, the Einstein equations~\eqref{eqn:cos:einsteins_equations}~\&
 \begin{equation}
   \frac{d \mathcal{R}}{d \log a} = 
   -\frac{k^2}{a^2}\frac{\dot{P}}{\dot{\rho}}\frac{\mathcal{R}}{(5\rho + 3P)}
-  -\frac{\delta P_\mathrm{en}}{\rho+P}
+  -\frac{\delta P_\mathrm{en}}{\rho+P}.
 \end{equation}
 For adiabatic perturbations $\delta P_\mathrm{en}=0$, and given that $\rho,P\sim H^2$, the above equation says that: $\frac{d\log \mathcal{R}}{d\log a} \sim \frac{k^2}{a^2H^2}$. As the universe inflates, $k\ll aH$, and $\mathcal{R}$ ``freezes out'' and becomes constant.
 
@@ -545,7 +545,7 @@ Using the Lagrangians are defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{
 \end{equation}
 If we expand this action to second order in $\mathcal{R}$, we find (after some effort):
 \begin{equation}
-  S^{(2)} = \int \d[4]{x}\: a^3 \frac{\dot{\phi}^2}{H^2}\left[ \mathcal{\dot{R}}^2 -a^{-2}{\left( \delta_i\mathcal{R} \right)}^2 \right]
+  S^{(2)} = \int \d[4]{x}\: a^3 \frac{\dot{\phi}^2}{H^2}\left[ \mathcal{\dot{R}}^2 -a^{-2}{\left( \delta_i\mathcal{R} \right)}^2 \right].
 \end{equation}
 Switching to conformal time and defining:
 \begin{equation}
@@ -564,16 +564,16 @@ To quantise, we promote the field variable $v$ to a quantum operator, and write 
   \left[ 
     \chi_k^{\phantom\ast}(\eta) a_\vk^{\phantom\dagger}e^{i\vk\cdot\vx} + 
     \chi_k^\ast(\eta) a_\vk^{\dagger}e^{-i\vk\cdot\vx}  
-  \right]
+  \right],
 \end{equation}
-of mode functions $v_\vk = \chi_k a_\vk$
+of mode functions $v_\vk = \chi_k a_\vk$.
 Requiring that the canonical commutator relation:
 \begin{equation}
   [ a_{\vk^{\phantom\prime}}^{\phantom\dagger}, a_{\vk^{\prime}}^{\dagger}] = {\left( 2\pi \right)}^3\delta^{(3)}\left( \vk^{\phantom\prime}-\vk^{\prime} \right),
 \end{equation}
 holds true, then the wavefunction $\chi_k(\eta)$ must satisfy:
 \begin{align}
-  \chi_k^{\prime\prime} + \left( k^2 - \frac{z^{\prime\prime}}{z} \right) \chi_k &=0 
+  \chi_k^{\prime\prime} + \left( k^2 - \frac{z^{\prime\prime}}{z} \right) \chi_k &=0,
   \label{eqn:cos:mode_func}
   \\
   {\chi_k^{\phantom\ast}}^{\prime} 
@@ -592,8 +592,8 @@ A perfectly inflating universe is a de-Sitter space with:
 \end{equation}
 Thus, in a pure de-Sitter space, ${z^{\prime\prime}/z = a^{\prime\prime}/a= 2{(\eta_\mathrm{end}-\eta)}^{-2}}$ and the differential equation~\eqref{eqn:cos:mode_func} has the general solution:
 \begin{align}
-  \chi_k = &A_k \frac{1}{\sqrt{2k}}\left( 1+\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{ik(\eta_\mathrm{end}-\eta)} \nonumber\\
-  + &B_k \frac{1}{\sqrt{2k}}\left( 1-\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{-ik(\eta_\mathrm{end}-\eta)}
+  \chi_k = &A_k \frac{1}{\sqrt{2k}}\left( 1+\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{ik(\eta_\mathrm{end}-\eta)}, \nonumber\\
+  + &B_k \frac{1}{\sqrt{2k}}\left( 1-\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{-ik(\eta_\mathrm{end}-\eta)},
   \label{eqn:cos:mode_func_gs}
 \end{align}
 whilst the mode normalisation condition~\eqref{eqn:cos:mode_func_normalisation} is:
@@ -606,32 +606,32 @@ The overall phase in the solution~\eqref{eqn:cos:mode_func_gs} is unimportant, s
 \subsection{Power Spectra}
 The two point correlation function of a general spatial field $\varphi(\vx)$ is defined as:
 \begin{equation}
-  \xi_\varphi(\vr) = \mean{\varphi(\vx)\varphi(\vx + \vr)}
+  \xi_\varphi(\vr) = \mean{\varphi(\vx)\varphi(\vx + \vr)}.
 \end{equation}
 Re-writing $\varphi(\vx)$ as a Fourier synthesis yields:
 \begin{align}
-  \xi_\varphi(\vr) &= \mean{\int \frac{\d[3]{\vk^{\phantom\prime}}}{{(2\pi)}^3} \varphi(\vk)e^{i\vk\cdot\vx} \int \frac{\d[3]{\vk^{\prime}}}{{(2\pi)}^3} \varphi(\vk^{\prime})e^{i\vk^{\prime}\cdot(\vx+\vr)}}\\
-  &= \int \frac{\d[3]{\vk^{\phantom\prime}}}{{(2\pi)}^3} \frac{\d[3]{\vk^{\prime}}}{{(2\pi)}^3} \mean{\varphi(\vk)\varphi(\vk^{\prime})}e^{i\vk\cdot\vx + i\vk^{\prime}\cdot(\vx+\vr)}
+  \xi_\varphi(\vr) &= \mean{\int \frac{\d[3]{\vk^{\phantom\prime}}}{{(2\pi)}^3} \varphi(\vk)e^{i\vk\cdot\vx} \int \frac{\d[3]{\vk^{\prime}}}{{(2\pi)}^3} \varphi(\vk^{\prime})e^{i\vk^{\prime}\cdot(\vx+\vr)}},\\
+  &= \int \frac{\d[3]{\vk^{\phantom\prime}}}{{(2\pi)}^3} \frac{\d[3]{\vk^{\prime}}}{{(2\pi)}^3} \mean{\varphi(\vk)\varphi(\vk^{\prime})}e^{i\vk\cdot\vx + i\vk^{\prime}\cdot(\vx+\vr)},
 \end{align}
 and taking the Fourier transform of both sides with respect to $\vx$ and $\vr$ yields:
 \begin{equation}
-  \mean{\varphi(\vk)\varphi(\vk^{\prime})} = {\left( 2\pi \right)}^3\delta^{(3)}(\vk + \vk^{\prime}) \mathcal{P}_\varphi(\vk)
+  \mean{\varphi(\vk)\varphi(\vk^{\prime})} = {\left( 2\pi \right)}^3\delta^{(3)}(\vk + \vk^{\prime}) \mathcal{P}_\varphi(\vk),
   \label{eqn:cos:power_spectrum_definition}
 \end{equation}
 where the power spectrum:
 \begin{equation}
-  \mathcal{P}_\varphi(\vk) = \int \d[3]{r}\: \xi_\varphi(\vr)e^{-i\vk\cdot\vr}
+  \mathcal{P}_\varphi(\vk) = \int \d[3]{r}\: \xi_\varphi(\vr)e^{-i\vk\cdot\vr},
 \end{equation}
 is the Fourier transform of the two-point correlation function.
 
 For an isotropic and homogeneous space, the quantities $\xi_\phi(\vr)$ and $\mathcal{P}_\varphi(\vk)$ are all simply a function of spatial distance ${\xi(\vr) = \xi(r)}$ or wavevector magnitude ${\mathcal{P}_\varphi(\vk) = \mathcal{P}_\varphi(k)}$.
 It is also conventional in this case to define a ``normalised'' power spectrum as:
 \begin{equation}
-  \Delta_\varphi^2(k) = \frac{k^3}{2\pi^2} \mathcal{P}_\varphi(k)
+  \Delta_\varphi^2(k) = \frac{k^3}{2\pi^2} \mathcal{P}_\varphi(k),
 \end{equation}
 as this has the property that:
 \begin{equation}
-  \int \d{(\log k)} \Delta_\varphi^2(k) = {\left( 2\pi \right)}^3\int\d[3]{k}\: \mathcal{P}_\varphi(k) = \mean{\varphi^2(x)} 
+  \int \d{(\log k)} \Delta_\varphi^2(k) = {\left( 2\pi \right)}^3\int\d[3]{k}\: \mathcal{P}_\varphi(k) = \mean{\varphi^2(x)},
 \end{equation}
 i.e.\ $\Delta_\phi^2(k)$ may be thought of as the logarithmic spectral density of the point-wise spatial variance of the field.
 
@@ -650,9 +650,9 @@ giving:
 \end{equation}
 For pure de-Sitter space~\eqref{eqn:cos:de-sitter}, as $\eta\to\eta_\mathrm{end}$,
 \begin{align}
-  |\chi_k|^2 &\rightarrow 2k^3 {(\eta_\mathrm{end}-\eta)}^{-2}\nonumber\\
-  a& \rightarrow H{(\eta_\mathrm{end}-\eta)}^{-1} \nonumber\\
-  \Delta_{\mathcal{R},\text{de-Sitter}}^2(k) &\rightarrow \frac{H^2}{{(2\pi)}^2}{\left( \frac{H}{\dot{\phi}} \right)}^2 
+  |\chi_k|^2 &\rightarrow 2k^3 {(\eta_\mathrm{end}-\eta)}^{-2},\nonumber\\
+  a& \rightarrow H{(\eta_\mathrm{end}-\eta)}^{-1}, \nonumber\\
+  \Delta_{\mathcal{R},\text{de-Sitter}}^2(k) &\rightarrow \frac{H^2}{{(2\pi)}^2}{\left( \frac{H}{\dot{\phi}} \right)}^2.
   \label{eqn:cos:de-sitter_power}
 \end{align}
 Given that $H=\dot{\phi}=\mathrm{const}$, a de-Sitter inflationary phase therefore predicts a scale-invariant (Harrison-Zel'dovich) power spectrum. Now, true inflationary phases are not pure de-sitter, since $H$ is not quite constant. We may extend the de-Sitter result however by noting that at the time $t_*$ of horizon crossing  $k\approx a_*H_*$ the mode functions freeze out. For a given $k$ mode, the universe is still effectively de-Sitter at this point, with $z=a_*\dot{\phi}_*/H_*$. We may therefore evaluate equation~\eqref{eqn:cos:de-sitter_power} at horizon crossing to yield:
@@ -678,12 +678,12 @@ Different inflationary models predict different values of $A_s$ and $n_s$, with 
 \section{Statistics of the CMB}
 We write a general perturbation to the temperature field of the universe as:
 \begin{equation}
-  T(t,\vx,\vp) = T(t)\left[ 1+\Theta(t,\vx,\vp) \right]
+  T(t,\vx,\vp) = T(t)\left[ 1+\Theta(t,\vx,\vp) \right].
 \end{equation}
 Note that the temperature field is anisotropic (i.e.\ has a $\vp$ dependency) on account of the relativistic nature of photons. We may separate this angular dependence by expanding $\Theta$ in spherical harmonics:
 \begin{align}
-  \Theta(t,\vx,\vp) &= \sum_{\ell=1}^{\infty}\sum_{m=-\ell}^{\ell}a_{\ell m}(t,\vx) Y_{\ell m}(\vp)\\
-  a_{\ell m}(t,\vx) &= \int \d{\Omega} Y_{\ell m}(\vp) \Theta(t,\vx,\vp)
+  \Theta(t,\vx,\vp) &= \sum_{\ell=1}^{\infty}\sum_{m=-\ell}^{\ell}a_{\ell m}(t,\vx) Y_{\ell m}(\vp),\\
+  a_{\ell m}(t,\vx) &= \int \d{\Omega} Y_{\ell m}(\vp) \Theta(t,\vx,\vp).
   \label{eqn:cos:alm_integral}
 \end{align}
 We only observe the temperature field here (at $\vx_0$) and now (at $t_0$). By taking sufficiently many measurements in different directions of $\vp$ of the temperature field $\Theta$ we can compute the integral~\eqref{eqn:cos:alm_integral}, to obtain $a_{\ell m}(t_0,\vx_0)$ up to some $\ell_{\max{}}$.\footnote{As a rough guide, if one has $N_\mathrm{pix}$ independent pixels, there are ${(\ell_{\max{}}+1)}^2$ different $a_{\ell m}$'s to measure, so $\ell_{\max{}} \sim \sqrt{N_\mathrm{pix}}$.}
@@ -691,7 +691,7 @@ We only observe the temperature field here (at $\vx_0$) and now (at $t_0$). By t
 In general, theories do not predict specific values of $a_{\ell m}$, but merely tell us about the statistical distribution on which they are drawn. At each value of $\ell$, the $(2\ell + 1)$ observations $\{a_{\ell m}:m=-\ell\cdots\ell\}$ are typically independent realisations of the same random variable. Their mean value is zero, but they will have some non-zero variance:
 \begin{equation}
   \left\langle a_{\ell m} \right\rangle = 0, \qquad
-  \left\langle a_{\ell m} a_{\ell^\prime m^\prime}\right\rangle = \delta_{\ell \ell^\prime} \delta_{m m^\prime} C_\ell
+  \left\langle a_{\ell m} a_{\ell^\prime m^\prime}\right\rangle = \delta_{\ell \ell^\prime} \delta_{m m^\prime} C_\ell.
 \end{equation}
 Note then that the error therefore in the sample variance obeys:
 \begin{equation}
