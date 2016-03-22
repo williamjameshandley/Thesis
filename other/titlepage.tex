@@ -8,9 +8,10 @@ Gonville \& Caius}
 \maketitle
 
 \begin{center}
-  \ifdefined\lightweight
+  \ifdefined\lightweight{}
   \else
-  \input{other/swirl}
+  \includegraphics[width=\textwidth]{other/swirl.tikz}
+  %\input{other/swirl}
   \fi
 
   A dissertation for the degree of Doctor of Philosophy

@@ -13,3 +13,4 @@ other/count.txt
 *.auxlock
 *.dep
 *.dpth
+*.md5
