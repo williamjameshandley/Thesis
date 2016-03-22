@@ -37,13 +37,13 @@ We may rearrange equations~\eqref{eqn:clp:Ei0} and~\eqref{eqn:clp:E00} as:
   \end{array}
   \right)
   =
-  \left(
+  \left(%
   \begin{array}{cc}
     \frac{\ddot{\phi}}{\dot{\phi}} & \frac{1}{\dot{\phi}}\left( \dot{\phi}^2 - 2\frac{k^2}{a^2} \right) \\
     \frac{1}{2}\dot{\phi} & -H 
   \end{array}
   \right)
-  \left(
+  \left(%
   \begin{array}{c}
     \delta \phi \\
     \Phi
@@ -53,3 +53,18 @@ We may rearrange equations~\eqref{eqn:clp:Ei0} and~\eqref{eqn:clp:E00} as:
 
 
 Is there an alternative variable which freezes out in the kinetically dominated phase? Yes, there must be. What is it? What is the best way to find out what it is? Is it gauge invariant?
+
+\ifdefined\lightweight
+\else
+\begin{figure}
+  \input{chapter_classical_perturbations/plots/swirl}
+  \input{chapter_classical_perturbations/plots/true}
+  \caption{Planckian initial conditions}
+\end{figure}
+
+\begin{figure}
+  \input{chapter_classical_perturbations/plots/swirl_alt}
+  \input{chapter_classical_perturbations/plots/true_alt}
+  \caption{Post-inflationary initial conditions}
+\end{figure}
+\fi

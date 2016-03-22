@@ -7,7 +7,13 @@ Gonville \& Caius}
 
 \maketitle
 
-\centerline{%
- A dissertation for the degree of Doctor of Philosophy
-in the University of Cambridge }
+\begin{center}
+  \ifdefined\lightweight
+  \else
+  \input{other/swirl}
+  \fi
+
+  A dissertation for the degree of Doctor of Philosophy
+  in the University of Cambridge 
+\end{center}
 

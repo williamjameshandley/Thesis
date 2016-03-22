@@ -1,0 +1,56 @@
+
+\begin{tikzpicture}
+  \begin{axis}[%
+      axis equal,
+      width=\textwidth,
+      hide axis
+    ]
+
+    \foreach \n  in {1,2,...,82} {%
+      \addplot[thin,forget plot] table[] {chapter_classical_perturbations/data/swirl\n.dat}; 
+    }
+
+    \filldraw [fill=black] (axis cs:0,0) circle [radius=4.5pt];
+
+
+    \fill [opacity=0.2]  
+    (axis cs: {sqrt(2)*cos(45)},{sqrt(2)*sin(45)}) 
+    arc [
+      radius=transformdirectionx(sqrt(2)),
+      start angle=45, 
+      end angle=-45
+    ] --
+    (axis cs: {sqrt(2)*cos(-225)},{sqrt(2)*sin(-225)}) 
+    arc [
+      radius=transformdirectionx(sqrt(2)),
+      start angle=-225, 
+      end angle=-135
+    ];
+
+
+
+    \fill [opacity=0.6]  
+    (axis cs: {sqrt(2)*cos(85)},{sqrt(2)*sin(85)}) 
+    arc [
+      radius=transformdirectionx(sqrt(2)),
+      start angle=85, 
+      end angle=95
+    ] --
+    (axis cs: {sqrt(2)*cos(-85)},{sqrt(2)*sin(-85)}) 
+    arc [
+      radius=transformdirectionx(sqrt(2)),
+      start angle=-85, 
+      end angle=-95
+    ];
+
+
+
+
+    \draw[dotted] (axis cs: 0,0) circle [radius=transformdirectionx(sqrt(2))];
+
+
+  \end{axis}
+
+
+
+\end{tikzpicture}
