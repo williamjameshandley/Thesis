@@ -44,8 +44,10 @@
 
 % TiKz:
 % -----
-\usepackage{tikz}     % The tikz package
-\usepackage{pgfplots} % For plotting functions
+\usepackage{tikz}                 % The tikz package
+\usepackage{pgfplots}             % For plotting functions
+\usetikzlibrary{external}         % Save figures as PDF to speed things up
+\tikzexternalize[prefix=tikz/]    
 
 % Tikz libraries:
 % ---------------

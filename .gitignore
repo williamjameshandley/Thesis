@@ -9,3 +9,7 @@
 *.toc
 *.sw[a-z]
 other/count.txt
+*.autolock
+*.auxlock
+*.dep
+*.dpth

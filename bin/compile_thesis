@@ -28,6 +28,7 @@ fi
 
 $LATEXMK $ARGS \
     -pdf \
-    -pdflatex='pdflatex --shell-escape %O %S' \
+    -pdflatex='pdflatex --shell-escape --enable-write18 %O %S' \
     -interaction=nonstopmode \
+    -bibtex \
     thesis.tex
