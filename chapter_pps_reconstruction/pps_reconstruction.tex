@@ -95,14 +95,13 @@
     \end{tikzpicture}
   }
   \caption{%
-Linear spline reconstruction. The primordial power spectrum is reconstructed using $\Nknots$ interpolation points
-${\{(k_i,\Pknotj{i}):i=1,2,\ldots {\Nknots}\}}$. The end knots are fixed in $k$ but allowed to
-vary in ${\Pknot}$, whereas the internal knots can vary subject to the constraint that ${k_1<k_2<\cdots<k_{\Nknots}}$.
-The function $\mathcal{P}_\mathcal{R}(k)$ is constructed within the range $[k_1,k_{\Nknots}]$
-by interpolating logarithmically between adjacent knots (i.e., linearly in $\log$-$\log$ space). Outside this range the function is extrapolated logarithmically.
-The function $\mathcal{P}_\mathcal{R}(k;\{k_i,\Pknotj{i}\})$ thus has $2\Nknots-2$ parameters.
-\label{fig:linear_spline_reconstruction}
-}
+    Linear spline reconstruction. The primordial power spectrum is reconstructed using $\Nknots$ interpolation points
+    ${\{(k_i,\Pknotj{i}):i=1,2,\ldots {\Nknots}\}}$. The end knots are fixed in $k$ but allowed to
+    vary in ${\Pknot}$, whereas the internal knots can vary subject to the constraint that ${k_1<k_2<\cdots<k_{\Nknots}}$.
+    The function $\mathcal{P}_\mathcal{R}(k)$ is constructed within the range $[k_1,k_{\Nknots}]$
+    by interpolating logarithmically between adjacent knots (i.e., linearly in $\log$-$\log$ space). Outside this range the function is extrapolated logarithmically.
+    The function $\mathcal{P}_\mathcal{R}(k;\{k_i,\Pknotj{i}\})$ thus has $2\Nknots-2$ parameters.\label{fig:linear_spline_reconstruction}
+  }
 \end{figure}
 
 
@@ -117,7 +116,7 @@ A family of priors
 is chosen where both the horizontal and vertical positions of the knots are allowed
 to vary. We examine the ``Bayes factor'' or ``Bayesian evidence'' as a function of
 $\Nknots$ to decide how many knots are statistically justified. 
-A similar analysis has been performed by \cite{vazquez_knots} and \cite{knottedsky1}.
+A similar analysis has been performed by~\cite{vazquez_knots} and~\cite{knottedsky1}.
 In addition, we marginalize over all possible numbers of knots to obtain 
 an averaged reconstruction weighted according to the Bayesian evidence.
 
@@ -128,98 +127,95 @@ Outside the horizontal range $[k_1,k_N]$ the function is extrapolated using the 
 
 Within this framework, base $\Lambda$CDM arises when ${\Nknots=2}$---in other words, when there are two boundary knots
 and no internal knots, and the parameters $\Pknotj{1}$ and $\Pknotj{2}$ (in place of $A_\mathrm{s}$ and $n_\mathrm{s}$) parameterize
-the simple power-law PPS. There are also, of course,
+the simple power-law PPS\@. There are also, of course,
 the four standard cosmological parameters $(\Omega_{\mathrm{b}} h^2$, $\Omega_{\mathrm{c}} h^2$, $100\theta_{\mathrm{MC}}$, and 
-$\tau$), as well the numerous foreground parameters associated with the \Planck\ high-$\ell$ likelihood, all of which are unrelated to the PPS.
+$\tau$), as well the numerous foreground parameters associated with the \Planck\ high-$\ell$ likelihood, all of which are unrelated to the PPS\@.
 This simplest model can be extended iteratively by successively inserting an additional internal knot, thus requiring with each iteration
 two more variables to parameterize the new knot position.
 
 
 \begin{table}
   \begin{tabular}{ll}
-      Parameter range &
-      Prior type
-      \\
-      \hline
-      $10^{-4}\,\mathrm{Mpc}^{-1} = k_1< k_2 < \ldots < k_{\Nknots} = 0.3\,\mathrm{Mpc}^{-1}$ &
-      log uniform (sorted)
-      \\
-      $ 2 < \ln\left(10^{10}\Pknotj{1}\right), \ldots ,\ln\left(10^{10}\Pknotj{{\Nknots}}\right) < 4 $  &
-      log uniform
-      \\
-      $2\le \Nknots \le 10 $ &
-      integer uniform
-      \\
-      \hline
-      $0.019< \Omega_\mathrm{b} h^2 <0.025$ &
-      uniform
-      \\
-      $0.095< \Omega_\mathrm{c} h^2 <0.145$ &
-      uniform
-      \\
-      $1.03< 100\theta_\mathrm{MC} <1.05$ &
-      uniform
-      \\
-      $0.01< \tau< 0.4$ &
-      uniform
-      \\
-      \hline
-    \end{tabular}
-\caption{%
-Prior for moveable knot positions.
-The $\PR$ positions are distributed in a log-uniform manner across a wide range.
-The $k$ positions are also log-uniformly distributed
-across the entire range needed by \CosmoMC and are sorted so that ${k_1<\ldots<k_{\Nknots}}$. 
-When we marginalize over the number of knots, $\Nknots$, we assume a uniform prior between 2 and 10. 
-  \label{tab:P_k_priors}  }                          % Label goes here.
+    Parameter range &
+    Prior type
+    \\
+    \toprule
+    $10^{-4}\,\mathrm{Mpc}^{-1} = k_1< k_2 < \cdots < k_{\Nknots} = 0.3\,\mathrm{Mpc}^{-1}$ &
+    log uniform (sorted)
+    \\
+    $ 2 < \ln\left(10^{10}\Pknotj{1}\right), \ldots ,\ln\left(10^{10}\Pknotj{{\Nknots}}\right) < 4 $  &
+    log uniform
+    \\
+    $2\le \Nknots \le 10 $ &
+    integer uniform
+    \\
+    \midrule
+    $0.019< \Omega_\mathrm{b} h^2 <0.025$ &
+    uniform
+    \\
+    $0.095< \Omega_\mathrm{c} h^2 <0.145$ &
+    uniform
+    \\
+    $1.03< 100\theta_\mathrm{MC} <1.05$ &
+    uniform
+    \\
+    $0.01< \tau< 0.4$ &
+    uniform
+    \\
+    \bottomrule
+  \end{tabular}
+  \caption{%
+    Prior for moveable knot positions.
+    The $\PR$ positions are distributed in a log-uniform manner across a wide range.
+    The $k$ positions are also log-uniformly distributed
+    across the entire range needed by \CosmoMC{} and are sorted so that ${k_1<\cdots<k_{\Nknots}}$. 
+    When we marginalize over the number of knots, $\Nknots$, we assume a uniform prior between 2 and 10.\label{tab:P_k_priors}  }                          % Label goes here.
 \end{table}                        % table* is a two-column table.  Drop the * for one column
 
 We run models for a variety of numbers of internal knots, $\Nint =\Nknots -2$, evaluating the evidence for $\Nint$.
 Under the assumption that the prior is justified, the most likely, or preferred, model is the one with the highest
-evidence.  Evidences are evaluated using the \PolyChord\ sampler \citep{Polycord} 
-in \CAMB\ and \CosmoMC. The use of \PolyChord\ is
+evidence.  Evidences are evaluated using the \PolyChord{} sampler \citep{Polycord} 
+in \CAMB{} and \CosmoMC{}. The use of \PolyChord{} is
 essential, as the posteriors in this parameterization are often multi-modal. Also, the ordered log-uniform priors on
 the $k_i$ are easy to implement within the \PolyChord\ framework. All runs were performed with $1000$ live points, 
 oversampling the semi-slow and fast parameters by a factor of $5$ and $100$, respectively.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{chapter_pps_reconstruction/figures/array}
-\caption{Bayesian movable knot reconstructions of the primordial power spectrum $\PR(k)$ using \Planck\ TT data.
+  \caption{Bayesian movable knot reconstructions of the primordial power spectrum $\PR(k)$ using \Planck\ TT data.
 %{\color{red}[\Planck\ TT+lowP? (JZ)]}
-The plots indicate our knowledge of the PPS $P(\PR(k)|k,N)$ for a given number of knots.
-The number of internal knots $\Nint$ increases (left to right and top to bottom) from $0$ to $8$.
-For each $k$-slice, equal colours have equal probabilities. The colour scale is chosen so that darker regions
-correspond to lower-$\sigma$ confidence intervals.
-$1\,\sigma $ and $2\,\sigma $ confidence intervals are also sketched (black curves).
-The upper horizontal axes give the approximate corresponding multipoles via $\ell \approx k/D_\mathrm{rec}$,
-where $D_\mathrm{rec}$ is the comoving distance to recombination.
-    \label{fig:Pkr0}}
+    The plots indicate our knowledge of the PPS $P(\PR(k)|k,N)$ for a given number of knots.
+    The number of internal knots $\Nint$ increases (left to right and top to bottom) from $0$ to $8$.
+    For each $k$-slice, equal colours have equal probabilities. The colour scale is chosen so that darker regions
+    correspond to lower-$\sigma$ confidence intervals.
+    $1\,\sigma $ and $2\,\sigma $ confidence intervals are also sketched (black curves).
+    The upper horizontal axes give the approximate corresponding multipoles via $\ell \approx k/D_\mathrm{rec}$,
+    where $D_\mathrm{rec}$ is the comoving distance to recombination.\label{fig:Pkr0}
+  }
 \end{figure}
 
 
 \begin{figure}
-\includegraphics[width=\textwidth]{chapter_pps_reconstruction/figures/Bayes_PR}
-  \caption{
+  \includegraphics[width=\textwidth]{chapter_pps_reconstruction/figures/Bayes_PR}
+  \caption{%
     Bayes factor (relative to the base $\Lambda$CDM model) as a function of the number of knots
-for three separate runs. Solid line: \Planck\ TT. Dashed line: \Planck\ TT,TE,EE. Dotted line:
-\Planck\ TT, with priors on the $\Pknot$ parameters reduced in width by a factor of 2 ($2.5<\ln(10^{10}\Pknot)<3.5$).
-%{\color{red}[Each +lowP? (JZ)]}
-\label{fig:Bayes_Factors}
-}
+    for three separate runs. Solid line: \Planck{} TT\@. Dashed line: \Planck{} TT,TE,EE\@. Dotted line:
+    \Planck\ TT, with priors on the $\Pknot$ parameters reduced in width by a factor of 2 ($2.5<\ln(10^{10}\Pknot)<3.5$).\label{fig:Bayes_Factors}
+  }
 \end{figure}
 
 \begin{figure}
-\begin{center}
-  \includegraphics[width=\textwidth]{chapter_pps_reconstruction/figures/single}
-\end{center}
-\caption{
-Bayesian reconstruction of the primordial power spectrum averaged over different values of $N_\mathrm{int}$
-(as shown in Fig.~\protect\ref{fig:Pkr0}), weighted according to the Bayesian evidence.
-The region ${30<\ell<2300}$ is highly constrained, but the resolution is lacking to say anything precise 
-about higher $\ell$. At lower $\ell$, cosmic variance reduces our knowledge of $\PR(k).$
-The weights assigned to the lower $\Nint$ models outweigh those of the higher models, so no oscillatory 
-features are visible here.
-\label{fig:full_bayes_knots}}
+  \begin{center}
+    \includegraphics[width=\textwidth]{chapter_pps_reconstruction/figures/single}
+  \end{center}
+  \caption{%
+    Bayesian reconstruction of the primordial power spectrum averaged over different values of $N_\mathrm{int}$
+    (as shown in Fig.~\protect\ref{fig:Pkr0}), weighted according to the Bayesian evidence.
+    The region ${30<\ell<2300}$ is highly constrained, but the resolution is lacking to say anything precise 
+    about higher $\ell$. At lower $\ell$, cosmic variance reduces our knowledge of $\PR(k)$.
+    The weights assigned to the lower $\Nint$ models outweigh those of the higher models, so no oscillatory 
+    features are visible here.\label{fig:full_bayes_knots}
+  }
 \end{figure}
 
 
@@ -239,7 +235,7 @@ width would be unphysical.
 
 After completion of an evidence calculation, \PolyChord\ generates a representative set of samples of the posterior for each model
 $P(\Theta) \equiv P(\Theta|\mathrm{data},\Nint)$. We may use this to calculate a marginalized probability distribution
-for the PPS:
+for the PPS\@:
 \begin{equation}
   P(\log\PR|k,\Nint) = \int \delta\left(\log\PR - \log\PR(k;\Theta)\right)P(\Theta)\:\d{\Theta}.
   \label{eqn:margPR}
@@ -267,7 +263,7 @@ This is a qualitative feature predicted by several inflationary models (discusse
 and a possible hint of new physics, although
 its statistical significance is not compelling.
 
-A full Bayesian analysis marginalizes over all models weighted according to the normalized evidence $Z_{\Nint},$
+A full Bayesian analysis marginalizes over all models weighted according to the normalized evidence $Z_{\Nint}$,
 so that
 \begin{equation}
   P(\log\PR|k) = \sum\limits_{\Nint} P(\log\PR|k,\Nint) Z_{\Nint},

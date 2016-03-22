@@ -3,7 +3,7 @@
   very thick, line join=round]
 
   % Draw squares
-  \foreach [evaluate={\x=0.25*\j; \y=fone(\x);}] \j in {0,...,20}{
+  \foreach [evaluate={\x=0.25*\j; \y=fone(\x);}] \j in {0,...,20}{%
     \path [fill=black!25, draw=white, line width=0.2pt] 
     (\x-0.125, 0) -- 
     (\x+0.125, 0) -- 

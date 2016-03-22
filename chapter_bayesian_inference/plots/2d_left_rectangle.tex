@@ -15,7 +15,7 @@
 
   % Draw cubes
   \foreach \i in {1,...,19}
-  \foreach \j [evaluate={\x=0.25*\i; \y=0.25*\j; \k=ftwo(\x,\y);}] in {1,...,19}{
+  \foreach \j [evaluate={\x=0.25*\i; \y=0.25*\j; \k=ftwo(\x,\y);}] in {1,...,19}{%
 
     % x-z planes (dark) -- right
     \path [fill=black!50, draw=white,line width=0.2pt] 

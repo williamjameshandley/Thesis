@@ -124,7 +124,7 @@ Note that as should be expected, the chance of obtaining this exact dataset is s
 
 If we allow for the possibility that the coin could be any probability $p$, we can encapsulate this in a second model $\model_1$.
 \begin{equation}
-  \Probc{\data}{p,\model_1}= {^{N}C_\data}\: {p}^{\data} {\left(1 - p \right)}^{N-\data} .
+  \Probc{\data}{p,\model_1}= {^{N}C_\data}\: {p}^{\data} {\left(1 - p \right)}^{N-\data}.
   \label{eqn:bay:M1}
 \end{equation}
 This second model is not ideal, since we haven't specified the parameter $p$. If we choose $p=\frac{1}{2}$ we recover $\model_0$. It is tempting to choose $p$ such that the probability of getting the data is maximised. This would be an example of a {\em maximum likelihood\/} approach. In this case, the method indicates\footnote{Proof left as exercise to the reader.} we should choose $p = \frac{\data}{N}$. 
@@ -147,7 +147,7 @@ With this distribution, we can work out what the overall probability of obtainin
   &= \frac{1}{n+1} = 4.8\times10^{-2}.
   \label{eqn:bay:marg}
 \end{align}
-This is quite telling, because our initial choice for $\Probc{p}{\model_1}$~\ref{eqn:bay:prior1}) indicates that we expect all data sets with equal probability (independent of $\data$). This is therefore a ``minimally suspicious'' choice in spread.
+This is quite telling, because our initial choice for $\Probc{p}{\model_1}$~\ref{eqn:bay:prior1} indicates that we expect all data sets with equal probability (independent of $\data$). This is therefore a ``minimally suspicious'' choice in spread.
 
 We now have two equations~\eqref{eqn:bay:M0}~\&~\eqref{eqn:bay:marg} which detail the probability of getting the dataset $\data$ given the choice of model. However, what we are really after is the probability of the model, given the dataset $\Probc{\model}{\data}$. To compute this, we use Bayes' theorem
 \begin{equation}
@@ -175,7 +175,7 @@ $\model_1$ can go further however. We may also use Bayes' theorem to compute
 This here gives us the distribution on $p$ {\em given the data}. Namely, how the data should update our ``spread bet''. We already have the ingredients for the above construction from equations~\eqref{eqn:bay:M1},~\eqref{eqn:bay:prior1},~\&~\eqref{eqn:bay:marg}, and given the uniform prior, we find our updated bet on $p$ is proportional to $p^\data{(1-p)}^{N-\data}$, a function of $p$. This is a beta distribution, and is indicated in Figure~\ref{fig:bay:beta}.
 
 \begin{figure}
-  \ifdefined\lightweight
+  \ifdefined\lightweight{}
   \else
   \centerline{%
     \input{chapter_bayesian_inference/plots/beta_function}
@@ -334,7 +334,7 @@ distributed according to the posterior $\posterior$, then we may use the samples
   \hat{E}_f = \frac{1}{n_s}\sum\limits_{i=1}^{n_s} f(\params_i).
   \label{eqn:bay:ehat}
 \end{equation}
-The central limit theorem states that $\hat{E}_f$ is normally distributed with mean $\mean{f}$ and standard deviation $\sigma_f/\sqrt{n_s}$, where $\sigma_f$ is the true standard deviation ${(\mean{f^2}-\mean{f}^2)^{1/2}}$. If $n_s\gg 1$ is large, then $\hat{E}_f$ will closely approximate the true mean. 
+The central limit theorem states that $\hat{E}_f$ is normally distributed with mean $\mean{f}$ and standard deviation $\sigma_f/\sqrt{n_s}$, where $\sigma_f$ is the true standard deviation ${(\mean{f^2}-\mean{f}^2)}^{1/2}$. If $n_s\gg 1$ is large, then $\hat{E}_f$ will closely approximate the true mean. 
 
 This approach has several advantages. If one already has the set $S$ of samples~\eqref{eqn:bay:samples}, the computation~\eqref{eqn:bay:ehat} is extremely cheap, in contrast to a full integral~\eqref{eqn:bay:quadrature_nd}. Further, it has excellent scaling with dimensionality. 
 
@@ -359,7 +359,7 @@ This integral is typically over a high-dimensional parameter space, only a small
 \end{equation}  
 This quantifies the number of nats\footnote{if ``bits'' are a measure of information in base 2, then ``nats'' is information in base $e$.} of information that have been gained on account of the data. Equivalently, the fraction of the prior which contributes non-negligibly to~\eqref{eqn:bay:ev_short} is approximately $X\sim e^{-H}$.
 
-The size and position of the region surrounding the peak(s) will not be known {\em a priori}, and in high dimensions is challenging to find.  
+The size and position of the region surrounding the peak (or peaks) will not be known {\em a priori}, and in high dimensions is challenging to find.  
 
 \subsection{The prior volume transformation $\lik(X)$}
 The first trick is to transform~\eqref{eqn:bay:ev_short} into an effectively one dimensional problem. We define an iso-likelihood contour as usual:
@@ -483,8 +483,7 @@ Nested sampling is designed to calculate the evidence, but it also produces post
   \centering
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/skilling}
   \caption{%
-  %TO DO: update this figure
-  \label{fig:bay:posterior}
+    Update this figure.\label{fig:bay:posterior}
 }
 \end{figure}
 
@@ -594,7 +593,7 @@ If the step is accepted, then $x^{(t+1)}=x$, otherwise $x^{(t+1)} = x^{(t)}$. Th
 This has the distinct advantage that it does not require one to take into account the overall normalisation of the posterior, circumnavigating any issues associated with computing the evidence $\ev$, since:
 \begin{equation}
   \frac{\posterior(x)}{\posterior(x^{(t)})} \equiv
-  \frac{\lik(x)\prior(x)}{\lik(x^{(t)})\prior(x^{(t)})} .
+  \frac{\lik(x)\prior(x)}{\lik(x^{(t)})\prior(x^{(t)})}.
 \end{equation}
 It is important to note that the chain $C_T$ will comprise $T$ samples which are {\em correlated}. If the proposal distribution amounts to a random walk with step size $\varepsilon<\sigma_{\min{}}$, and the longest lengthscale in the probably region is $\sigma_{\max{}}$  then one will expect: $\tau \sim {(L/\varepsilon)}^2$. If $\varepsilon>\sigma_{\min{}}$, then one starts to expect a very low acceptance rate, so typically for a isotropic random walk, the timescale on which one expects to generate independent samples is:
 \begin{equation}

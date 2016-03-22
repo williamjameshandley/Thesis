@@ -14,7 +14,7 @@ On the other hand, the Wentzel-Kramers-Brillouin (WKB) method is a well establis
 
 We propose that one may combine the two approaches to create a reliable general tool for the numerical solution of oscillatory differential equations, and term the result RKWKB\footnote{Readers with experience in the field will note that, as Cambridge authors, we should be insisting on an additional `J' in WKB (for Jeffreys). Given the length of our proposed acronym, we have opted to use the more efficient nomenclature.}.
 
-We note that this approach is similar to the work of \cite{Iserles02globalerror,Iserles01thinkglobally}, and explore the similarities and differences in Section~\ref{sec:iserles_comparison}.
+We note that this approach is similar to the work of~\cite{Iserles02globalerror,Iserles01thinkglobally}, and explore the similarities and differences in Section~\ref{sec:iserles_comparison}.
 
 
 \section{Background}
@@ -121,7 +121,7 @@ then the coeffients $A_\mu$ may be determined by:
 For further detail on the intricacies of WKB approaches, the reader should consult~\cite{RHB,Bender+2010}.
 
 \section{The RKWKB method}
-Our strategy is to combine the versatility of RK methods with the power of WKB in dealing with oscillating solutions. We term the combination RKWKB.
+Our strategy is to combine the versatility of RK methods with the power of WKB in dealing with oscillating solutions. We term the combination RKWKB\@.
 
 Given a function $\omega(t)$, one proposes a step in time of $h$ to be accompanied by an updating of the solution $x_j$ via:
 \begin{align}
@@ -145,11 +145,10 @@ We now assume that the desired accuracy is $\alpha$. If $\varepsilon<\alpha$ the
 \begin{equation}
   h \to h\times\left\{
   \begin{array}{lr}
-    (\alpha/\varepsilon)^{1/n} &: \varepsilon<\alpha \\
-    (\alpha/\varepsilon)^{1/(n-1)} &: \varepsilon>\alpha. \\
+    {(\alpha/\varepsilon)}^{1/n} &: \varepsilon<\alpha \\
+    {(\alpha/\varepsilon)}^{1/(n-1)} &: \varepsilon>\alpha. \\
   \end{array}
-  \right.
-  \label{eqn:h_update}
+  \right.\label{eqn:h_update}
 \end{equation}
 This allows the step size to increase in the regions where the initial step size is unnecessarily small, whilst ensuring that the step size is always small enough to keep forecasts within a given error margin.
 
@@ -201,7 +200,7 @@ In contrast to a ``pure'' RK method, the RKWKB method finds the Airy equation ma
 \label{sec:iserles_comparison}
 Iserles has written extensively on the difficulty of solving problems of the form~\eqref{eqn:lode}. His approach is to turn~\eqref{eqn:lode} into a Lie-group differential equation~\citep{Iserles00lie-groupmethods} by writing:
 \begin{align}
-  \mathbf{y} &= (x,\dot{x})^\top, 
+  \mathbf{y} &= {(x,\dot{x})}^\top, 
   \mathrm{A}(t) = 
   \left(
   \begin{array}{cc}
@@ -211,8 +210,7 @@ Iserles has written extensively on the difficulty of solving problems of the for
   \right),
   \nonumber\\
   \Rightarrow\quad 
-  \dot{\mathbf{y}} &= \mathrm{A}(t) \: \mathbf{y}.
-  \label{eqn:lie_eqn}
+  \dot{\mathbf{y}} &= \mathrm{A} (t) \: \mathbf{y}.\label{eqn:lie_eqn}
 \end{align}
 This may then be attacked with a variety of Lie group methods. For example, one may write the full solution as a Magnus expansion:
 \begin{align}
@@ -228,7 +226,7 @@ This approach is much improved by transferring to a fast rotating frame:
   \mathbf{y}(t_n+\tau) = e^{\tau \mathrm{A}(t_n+h/2)} \mathbf{x},
   \label{eqn:rotating_frame}
 \end{equation}
-the end product is then termed the {\em modified Magnus method}~\citep{Iserles01thinkglobally}.
+the end product is then termed the {\em modified Magnus method\/}~\citep{Iserles01thinkglobally}.
 
 The RKWKB method and the modified Magnus method share some key features. Indeed, the lowest order modified Magnus method is equivalent to a $1$\textsuperscript{st} order WKB approach~\citep{Iserles02globalerror}. However, our approach is distinguished in several ways. 
 
@@ -270,12 +268,12 @@ A particularly efficient example is the Runge-Kutta-Fehlberg $4(5)$ method which
       c_2    \quad & \quad a_{21}  &              &              &         &   \\
       c_3    \quad & \quad a_{31}  & \quad a_{32} &              &         &   \\
       \vdots \quad & \quad \vdots  & \quad \vdots & \quad \ddots &         &   \\
-      c_s    \quad & \quad a_{s1}  & \quad a_{s2} & \quad \cdots & \quad a_{s,s-1} & \\ \hline
+      c_s    \quad & \quad a_{s1}  & \quad a_{s2} & \quad \cdots & \quad a_{s,s-1} & \\ \midrule
       & \quad b_{1}   & \quad b_{2}  & \quad \cdots & \quad b_{s-1}  & \quad b_{s}
     \end{array}
   \end{equation*}
-  \caption{Butcher tableau for a general explicit RK method.}
-  \label{tab:RKexplicit}
+  \caption{Butcher tableau for a general explicit RK method.\label{tab:RKexplicit}
+  }
 \end{table}
 
 \begin{table}
@@ -286,13 +284,12 @@ A particularly efficient example is the Runge-Kutta-Fehlberg $4(5)$ method which
       \frac{3}{8}    & \frac{3}{32}      & \frac{9}{32}       &             &             &        &\\
       \frac{12}{13}  & \frac{1932}{2197} & -\frac{7200}{2197} & \frac{7296}{2197}   &             &        &\\
       1      & \frac{439}{216}   & -8         & \frac{3680}{513}    & -\frac{845}{4104}   &        &\\
-      \frac{1}{2}    & -\frac{8}{27}     & 2          & -\frac{3544}{2565}  & \frac{1859}{4104}   & -\frac{11}{40} &\\\hline
+      \frac{1}{2}    & -\frac{8}{27}     & 2          & -\frac{3544}{2565}  & \frac{1859}{4104}   & -\frac{11}{40} &\\\midrule
       & \frac{25}{216}    & 0          & \frac{1408}{2565}   & \frac{2197}{4104}   & -\frac{1}{5}   & 0      \\
       & \frac{16}{135}    & 0          & \frac{6656}{12825}  & \frac{28561}{56430} & -\frac{9}{50}  & \frac{2}{55}
     \end{array}
   \end{equation*}
-  \caption{Butcher tableau for the embedded Runge-Kutta-Fehlberg $4(5)$ method.}
-  \label{tab:rkf45}
+  \caption{Butcher tableau for the embedded Runge-Kutta-Fehlberg $4(5)$ method.\label{tab:rkf45}                                                             }
 \end{table}
 
 
