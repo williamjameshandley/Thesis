@@ -16,7 +16,7 @@
     ]
 
     \foreach \n  in {1,2,...,82} {%
-      \addplot[thin] table[] {chapter_classical_perturbations/data/true_alt\n.dat}; 
+      \addplot[thin,forget plot] table[] {chapter_classical_perturbations/data/true_alt\n.dat}; 
     }
 
     %\filldraw [fill=black] (axis cs:0,0) circle [radius=3.5pt];

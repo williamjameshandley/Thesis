@@ -20,3 +20,4 @@ else
 fi
 
 $LATEXMK -c $THESIS
+rm thesis.auxlock 
