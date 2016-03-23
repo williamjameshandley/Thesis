@@ -44,11 +44,11 @@
 
 % TiKz:
 % -----
-\usepackage{tikz}                 % The tikz package
-\usepackage{pgfplots}             % For plotting functions
-\usetikzlibrary{external}         % Save figures as PDF to speed things up
-\tikzexternalize[prefix=tikz/]    
-\usepackage{tikzscale}
+\usepackage{tikz}              % The tikz package
+\usepackage{pgfplots}          % For plotting functions
+\usetikzlibrary{external}      % Save figures as PDF for speed up
+\tikzexternalize[prefix=tikz/] % Set folder for keeping images
+\usepackage{tikzscale}         % treat tikzpictures as graphics
 
 % Tikz libraries:
 % ---------------
@@ -57,6 +57,7 @@
 \usetikzlibrary{shapes}        % For fancy node shapes
 \usetikzlibrary{intersections} % For intersections
 \usetikzlibrary{arrows}        % For arrows
+\usetikzlibrary{positioning}   % For correct positions of nodes
 
 
 
