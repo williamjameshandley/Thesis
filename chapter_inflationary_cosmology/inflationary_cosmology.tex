@@ -467,6 +467,8 @@ so $v$ and $T$ are helicity scalars, $v_i$ and $T_i$ are divergenceless 3-vector
 
 We may therefore decompose the all perturbations into Fourier components and scalar, vector and tensor parts, decoupling the modes into three parallel analyses without spatial derivatives.
 
+For simplicity, we shall focus on the scalar part of the analysis, since vectors generically decay under an accelerated expansion, and tensors have extremely simple dynamics.
+
 \subsection{Gauge choice}
 Observant readers will have noted that there are too many perturbation variables and not enough constraints.
 This lack of constraint arises from the fact that the split into background and perturbation $X=X+\delta X$ implied by~\eqref{eqn:cos:expansion} is more subtle than first appears. 
@@ -486,19 +488,16 @@ For a generic scalar field $\varphi = \varphi(t,x^i)$, this coordinate perturbat
 \end{equation}
 This means that it is easy to conflate ``true'' perturbations in the variables with coordinate perturbations. In the extreme limit of no dynamical perturbation, one can see that the coordinate transformation~\eqref{eqn:cos:gauge_t}~\&~\eqref{eqn:cos:gauge_t} will in in generate a ``false'' perturbation in $\varphi$ of $\delta\varphi = -\dot{\varphi}\delta t - \partial_i\varphi\delta x^i$.
 
-Careful calculation will show that in fact the transformation of the dynamical variables under~\eqref{eqn:cos:gauge_t}~\&~\eqref{eqn:cos:gauge_t} is in fact:
+Careful calculation will show that in fact the transformation of the dynamical scalar variables under~\eqref{eqn:cos:gauge_t}~\&~\eqref{eqn:cos:gauge_x} is in fact:\footnote{NB\@: we have decomposed the spatial perturbation as $\delta x^i = \partial^i \delta x + \delta x^i$.}
 \begin{align}
   \Phi &\rightarrow \Phi - \delta \dot{t}, &
   \Psi &\rightarrow \Psi +H \delta t,  \nonumber\\
   B &\rightarrow B + \delta t/a - a\delta \dot{x}, &
-  B_i &\rightarrow  B_i - a \delta\dot{x}_i,  \nonumber\\
-  E &\rightarrow E - \delta x, &
-  E_i & \rightarrow E_i - \delta x_i, \nonumber \\
+  E &\rightarrow E - \delta x, \nonumber\\
   \delta\rho &\rightarrow \delta\rho - \dot{\rho}\delta t, &
   \delta P &\rightarrow \delta P - \dot{P}\delta t, \nonumber\\
-  \delta q &\rightarrow \delta q - (\rho+P)\delta \dot{x},&
-  \delta q^i &\rightarrow \delta q^i - (\rho+P)\delta \dot{x}^i, \\
-  \delta \phi &\rightarrow \delta \phi - \dot{\phi}\delta t. &&\nonumber
+  \delta q &\rightarrow \delta q + (\rho+P)\delta t,&
+  \delta \phi &\rightarrow \delta \phi - \dot{\phi}\delta t.
 \end{align}
 By choosing an appropriate coordinate transformation, one can remove the additional dynamical variables that are unconstrained by the Einstein equations. This is typically done by setting some of the perturbation variables equal to zero. This procedure is termed a {\em gauge choice}.\footnote{$\delta X$ is defined as the difference between the value $X$ has in the physical (perturbed) spacetime, and the value $X$ has in the background (unperturbed) spacetime. This can only be done if there is a prescription for identifying points between the two spacetimes, and in the language of differential geometry, this is termed a {\em gauge choice}.}
 Examples of popular gauge choices can be found in Table~\ref{tab:cos:gauge_choice}.
@@ -507,12 +506,10 @@ Whilst choosing a gauge will give one a set of soluble equations, the question s
 \begin{align}
   \Phi^{(B)} &=  \Phi - \dot{T}, &
   \Psi^{(B)} &=  \Psi + HT, \nonumber \\
-  B_i^{(B)} &= B_i - a\dot{E}_i, & & \nonumber\\
   \delta\rho^{(B)} &= \delta\rho - \dot{\rho}T, &
   \delta P^{(B)} &= \delta P - \dot{P}T, & \nonumber\\
-  \delta q^{(B)} &= \delta q - (\rho + P)\dot{E}, &
-  \delta q_i^{(B)} &= \delta q_i - (\rho + P)\dot{E}_i, \nonumber \\
-  \delta \phi^{(B)} &= \delta \phi - \dot{\phi},T & &
+  \delta q^{(B)} &= \delta q - (\rho + P)T, &
+  \delta \phi^{(B)} &= \delta \phi - \dot{\phi}T, 
 \end{align}
 where $T = a^2[\dot{E}-B/a]$. These variables remain unchanged under gauge transformations, and are independent of coordinate perturbations. Any perturbation in these variables cannot be ``gauged away''. Of course, these are not unique as any linear combination of them is also gauge-invariant, but the above set results in a reasonable basis. 
 
@@ -580,11 +577,13 @@ To quantise, we promote the field variable $v$ to a quantum operator, and write 
     \chi_k^{\phantom\ast}(\eta) a_\vk^{\phantom\dagger}e^{i\vk\cdot\vx} + 
     \chi_k^\ast(\eta) a_\vk^{\dagger}e^{-i\vk\cdot\vx}  
   \right],
+  \label{eqn:cos:mode_func_sum}
 \end{equation}
 of mode functions $v_\vk = \chi_k a_\vk$.
 Requiring that the canonical commutator relation:
 \begin{equation}
   [ a_{\vk^{\phantom\prime}}^{\phantom\dagger}, a_{\vk^{\prime}}^{\dagger}] = {\left( 2\pi \right)}^3\delta^{(3)}\left( \vk^{\phantom\prime}-\vk^{\prime} \right),
+  \label{eqn:cos:commutator}
 \end{equation}
 holds true, then the wavefunction $\chi_k(\eta)$ must satisfy:
 \begin{align}
@@ -623,12 +622,7 @@ The two point correlation function of a general spatial field $\varphi(\vx)$ is 
 \begin{equation}
   \xi_\varphi(\vr) = \mean{\varphi(\vx)\varphi(\vx + \vr)}.
 \end{equation}
-Re-writing $\varphi(\vx)$ as a Fourier synthesis yields:
-\begin{align}
-  \xi_\varphi(\vr) &= \mean{\int \frac{\d[3]{\vk^{\phantom\prime}}}{{(2\pi)}^3} \varphi(\vk)e^{i\vk\cdot\vx} \int \frac{\d[3]{\vk^{\prime}}}{{(2\pi)}^3} \varphi(\vk^{\prime})e^{i\vk^{\prime}\cdot(\vx+\vr)}},\\
-  &= \int \frac{\d[3]{\vk^{\phantom\prime}}}{{(2\pi)}^3} \frac{\d[3]{\vk^{\prime}}}{{(2\pi)}^3} \mean{\varphi(\vk)\varphi(\vk^{\prime})}e^{i\vk\cdot\vx + i\vk^{\prime}\cdot(\vx+\vr)},
-\end{align}
-and taking the Fourier transform of both sides with respect to $\vx$ and $\vr$ yields:
+Taking the Fourier transform of both sides with respect to $\vx$ and $\vr$ yields:
 \begin{equation}
   \mean{\varphi(\vk)\varphi(\vk^{\prime})} = {\left( 2\pi \right)}^3\delta^{(3)}(\vk + \vk^{\prime}) \mathcal{P}_\varphi(\vk),
   \label{eqn:cos:power_spectrum_definition}
@@ -652,14 +646,15 @@ i.e.\ $\Delta_\phi^2(k)$ may be thought of as the logarithmic spectral density o
 
 
 \subsection{Power spectrum of comoving curvature perturbations}
-To compute the power spectrum of comoving curvature perturbations $\mathcal{R}$, one therefore needs to compute the average on the left hand side of equation~\eqref{eqn:cos:power_spectrum_definition}. Quantum mechanically this is:
+To compute the power spectrum of comoving curvature perturbations $\mathcal{R}$, one therefore needs to compute the average on the left hand side of equation~\eqref{eqn:cos:power_spectrum_definition}. The two-point spatial correlation is:
 \begin{equation}
-  \mean{\mathcal{R}_{\vk^{\phantom\prime}}\mathcal{R}_{\vk^{\prime}}} = 
-  \frac{1}{z^2}\mean{v_{\vk^{\phantom\prime}}^{\phantom\dagger}v_{\vk^{\prime}}^{\dagger}} = 
-  \frac{\chi_{k^{\phantom\prime}}^{\phantom\ast}\chi_{k^{\prime}}^\ast}{z^2}\mean{a_{\vk^{\phantom\prime}}^{\phantom\dagger}a_{\vk^{\prime}}^{\dagger}} = 
-  {(2\pi)}^3\delta^{(3)}(\vk^{\phantom\prime}+\vk^{\prime}) {\left|\frac{\chi_k}{z}\right|}^2,
+  \xi_\mathcal{R}(\eta,\vr) = \mean{\mathcal{R}(\eta,\vx+\vr)\mathcal{R}(\eta,\vx)} = z^2\mean{v(\eta,\vx+\vr)v(\eta,\vx)}
 \end{equation}
-giving:
+Decomposing $v$ into Fourier modes via equation~\eqref{eqn:cos:mode_func_sum}, identifying the average $\mean{\cdot}$ above as a quantum average $\bracket{0}{\cdot}{0}$, and applying the usual properties of creation and annihilation operators along with the commutator relation~\eqref{eqn:cos:commutator} yields:
+\begin{equation}
+  \xi_\mathcal{R}(\eta,\vr) = \int \frac{\d[3]{\vk}}{{(2\pi)}^3} {\left|\frac{\chi_k}{z}\right|}^2 e^{i\vk\cdot\vr}, 
+\end{equation}
+which allows us to read off:
 \begin{equation}
   \mathcal{P}_\mathcal{R}(k) = {\left|\frac{\chi_k}{z}\right|}^2.
 \end{equation}
@@ -670,7 +665,7 @@ For pure de-Sitter space~\eqref{eqn:cos:de-sitter}, as $\eta\to\eta_\mathrm{end}
   \Delta_{\mathcal{R},\text{de-Sitter}}^2(k) &\rightarrow \frac{H^2}{{(2\pi)}^2}{\left( \frac{H}{\dot{\phi}} \right)}^2.
   \label{eqn:cos:de-sitter_power}
 \end{align}
-Given that $H=\dot{\phi}=\mathrm{const}$, a de-Sitter inflationary phase therefore predicts a scale-invariant (Harrison-Zel'dovich) power spectrum. Now, true inflationary phases are not pure de-sitter, since $H$ is not quite constant. We may extend the de-Sitter result however by noting that at the time $t_*$ of horizon crossing  $k\approx a_*H_*$ the mode functions freeze out. For a given $k$ mode, the universe is still effectively de-Sitter at this point, with $z=a_*\dot{\phi}_*/H_*$. We may therefore evaluate equation~\eqref{eqn:cos:de-sitter_power} at horizon crossing to yield:
+Given that $H$ and $\dot{\phi}$ are constant, a de-Sitter inflationary phase predicts a scale-invariant (Harrison-Zel'dovich) power spectrum. Now, true inflationary phases are not pure de-Sitter, since $H$ is not quite constant. We may extend the de-Sitter result however by noting that at the time $t_*$ of horizon crossing  $k\approx a_*H_*$ the mode functions freeze out. For a given $k$ mode, the universe is still effectively de-Sitter at this point, with $z=a_*\dot{\phi}_*/H_*$. We may therefore evaluate equation~\eqref{eqn:cos:de-sitter_power} at horizon crossing to yield:
 \begin{equation}
   \Delta_\mathcal{R}^2(k) = \frac{H_*^2}{{(2\pi)}^2}{\left( \frac{H_*}{\dot{\phi}_*} \right)}^2.
   \label{eqn:cos:inflation_power}
@@ -723,11 +718,11 @@ where $\Delta_{X\ell}(k)$ are transfer functions and ${X\in\left\{ T,E,B \right\
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{chapter_inflationary_cosmology/plots/transfer.tikz}
-  \caption{History of the early universe.\label{fig:cos:comoving_vs_physical}}
+  \caption{History of the early universe.\label{fig:cos:transfer}}
 \end{figure}
 
 \section{Conclusions}
-We have now covered all the necessary background theory. Inflation's fundamental contribution to our model of the universe is that it predicts the primordial power spectrum $\mathcal{P}_\mathcal{R}(k)$ at some early time. The universe's accelerated expansion then freezes this to a specific value until much later, when we understand the physics in a lot more detail. We can then use these initial conditions set by inflation to make predictions about the sky that we see today.
+We have now covered all the necessary background theory. The picture is summarised in Figure~\ref{fig:cos:transfer}. Inflation's fundamental contribution to our model of the universe is that it predicts the primordial power spectrum $\mathcal{P}_\mathcal{R}(k)$ at some early time. The universe's accelerated expansion then freezes these perturbations out until much later on in cosmic history, when we understand the physics in a lot more detail. We can then use standard physics to evolve these initial conditions set by inflation to make predictions about the sky that we see today.
 
 \clearpage{}
 

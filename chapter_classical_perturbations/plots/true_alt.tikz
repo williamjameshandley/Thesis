@@ -6,8 +6,8 @@
       width=\textwidth,
       xtick={-1,1},
       ytick={-1,1},
-      xticklabels={{$-\m$}, {$\m$}},
-      yticklabels={{$-\m$}, {$\m$}},
+      xticklabels={{$-\m^2$}, {$\m^2$}},
+      yticklabels={{$-\m^2$}, {$\m^2$}},
       xmin = -1.45,
       xmax =  1.45,
       ymin = -1.45,
@@ -62,7 +62,7 @@
     \draw[dotted] (axis cs: 0,0) circle [radius=transformdirectionx(sqrt(2))];
 
     \addlegendimage{dotted}
-    \addlegendentry{$E=\m$}
+    \addlegendentry{$E=\m^4$}
 
     %\addlegendimage{red,mark=square*}
     \node[anchor=north west] at (rel axis cs:0,1) {$m=0.1\m$};

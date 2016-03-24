@@ -21,3 +21,4 @@ fi
 
 $LATEXMK -c $THESIS
 rm thesis.auxlock 
+rm tikz/*
