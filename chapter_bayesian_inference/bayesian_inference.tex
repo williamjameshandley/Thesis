@@ -55,6 +55,7 @@ This entire section may be summarised succinctly and formally as:
 
 \begin{figure}
   \centering
+  \tikzsetnextfilename{bayes_theorem}
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/bayes_theorem.tikz}
   \caption{Diagrammatic Bayes theorem. Nodes indicate the occurrence of an event. Edges indicate the probability of an event occurring, and are multiplicative in the direction of the arrows. Bayes theorem~\protect\eqref{eqn:bay:bayes} may be derived by equating the path $A\to A\cap B$ with $A\to\Omega\to B\to A\cap B$}\label{fig:bay:bayes_theorem}
 \end{figure}
@@ -177,6 +178,7 @@ This here gives us the distribution on $p$ {\em given the data}. Namely, how the
   \centering
   \ifdefined\lightweight{}
   \else
+  \tikzsetnextfilename{beta_function}
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/beta_function.tikz}
   \fi
   \caption{%
@@ -315,7 +317,9 @@ This calculation however requires $\bigO{n^d}$ function evaluations. This is an 
   \centering
   \ifdefined\lightweight{}
   \else
+    \tikzsetnextfilename{1d_left_rectangle}
     \includegraphics[width=0.4\textwidth]{chapter_bayesian_inference/plots/1d_left_rectangle.tikz}
+    \tikzsetnextfilename{2d_left_rectangle}
     \includegraphics[width=0.5\textwidth]{chapter_bayesian_inference/plots/2d_left_rectangle.tikz}
   \fi
   \caption{\label{fig:bay:quadrature}}
@@ -401,6 +405,7 @@ A new state $x$ is proposed from the proposal density $\proposal(x|x^{(t)})$, an
 If the step is accepted, then $x^{(t+1)}=x$, otherwise $x^{(t+1)} = x^{(t)}$. This procedure can be seen schematically in Figure~\ref{fig:sm:MH}.
 \begin{figure}
   \centering
+  \tikzsetnextfilename{MH}
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/MH.tikz}
   \caption{Metropolis---Hastings. Here we have some degenerate two-dimensional posterior $\posterior$, and a circular proposal distribution $\proposal$.\label{fig:sm:MH}}.
 \end{figure}

@@ -14,86 +14,8 @@
 \label{chap:rec}
 
 \begin{figure}[b!]
-  \resizebox{\columnwidth} {!} {%
-
-    \begin{tikzpicture}
-    % width of axes
-      \def\xwidth{7}
-      \def\ywidth{4}
-    % min coordinate
-      \def\xmn{0.5}
-      \def\ymn{2}
-    % start coordinate
-      \def\xstart{2}
-      \def\ystart{3}
-    % middle coordinate
-      \def\xmid{3}
-      \def\ymid{1}
-    % end coordinate
-      \def\xend{5.5}
-      \def\yend{3}
-    % max coordinate
-      \def\xmx{6.5}
-      \def\ymx{1.5}
-
-    % length of crosses
-      \def\croslen{0.4}
-
-      \newcommand{\movablecross}[1]{%
-        \draw[->](#1) -- ++(0:\croslen);
-        \draw[->](#1) -- ++(90:\croslen);
-        \draw[->](#1) -- ++(180:\croslen);
-        \draw[->](#1) -- ++(270:\croslen);
-        \fill[red!70!black] (#1) circle (2pt);
-      }
-
-      \newcommand{\movablevert}[1]{%
-        \draw[->](#1) -- ++(90:\croslen);
-        \draw[->](#1) -- ++(270:\croslen);
-        \fill[red!70!black] (#1) circle (2pt);
-      }
-
-
-
-    % Draw axes
-      \draw [<->,thick] (0,\ywidth) node (yaxis) [above] {$\log\PR(k)$}
-      |- (\xwidth,0) node (xaxis) [right] {$\log k$};
-    % Draw limits
-      %\draw [-,dashed] (\xmn,0) node[below] {$\log_{10}k_1$} -- (\xmn,\ywidth) ;
-      %\draw [-,dashed] (\xmx,0) node[below] {$\log_{10}k_N$} -- (\xmx,\ywidth) ;
-
-    % Draw the line joining start and end
-      \draw (\xmn,\ymn) coordinate (mn) -- (\xstart,\ystart) coordinate (start) -- (\xmid,\ymid) coordinate (mid) --  (\xend,\yend) coordinate(end) -- (\xmx,\ymx) coordinate(mx);
-
-    % Draw the point labels
-      \draw (mn) node[below right]    {$(k_1,\Pknotj{1})$};
-      \draw (start) node[above right] {$(k_2,\Pknotj{2})$};
-      \draw (mid) node[below right]   {$(k_3,\Pknotj{3})$};
-      \draw (end) node[above right]   {$(k_4,\Pknotj{4})$};
-      \draw (mx) node[below left]     {$(k_{\Nknots},\Pknotj{{\Nknots}})$};
-
-    % Draw a dashed line indicating the coordinate names
-      %\draw[dashed] (yaxis |- start) node[left] {$y_{1}$}
-      %-| (xaxis -| start) node[below] {$x_1$};
-      %\draw[dashed] (yaxis |- mid) node[left] {$y_{2}$}
-      %-| (xaxis -| mid) node[below] {$x_2$};
-      %\draw[dashed] (yaxis |- end) node[left] {$y_{N}$}
-      %-| (xaxis -| end) node[below] {$x_N$};
-      %\draw  (xaxis -| start) node[below] {$\log_{10}k_2$};
-      %\draw  (xaxis -| mid) node[below] {$\log_{10}k_3$};
-      %\draw  (xaxis -| end) node[below] {$\log_{10}k_4$};
-
-      % Draw the crosses
-      \movablevert{mn}
-      \movablecross{start}
-      \movablecross{mid}
-      \movablecross{end}
-      \movablevert{mx}
-
-    % put some ellipses in between the start and end point
-
-    \end{tikzpicture}
-  }
+    \tikzsetnextfilename{spline}
+    \includegraphics[width=\textwidth]{chapter_pps_reconstruction/plots/spline.tikz}
   \caption{%
     Linear spline reconstruction. The primordial power spectrum is reconstructed using $\Nknots$ interpolation points
     ${\{(k_i,\Pknotj{i}):i=1,2,\ldots {\Nknots}\}}$. The end knots are fixed in $k$ but allowed to
