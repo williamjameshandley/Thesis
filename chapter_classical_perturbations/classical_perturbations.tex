@@ -38,14 +38,9 @@ form:
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This statement is rigorously true. However, the key question is how
-physically relevant it is. The classical equations have two
-opportunities to break down:
-\begin{enumerate}
-  \item At the Planck time $\tp$.
-  \item If we move out of the linear perturbative approximation.
-\end{enumerate}
+The statements above are rigorously true. However, the key question is how physically relevant this observation is, and how this relates to more traditional inflationary set-ups and assumptions.
 
+The classical equations have two opportunities to break down. First, it may be that this kinetically dominated state occurs before the Planck time, when we know that we would need a quantum theory of gravity to describe the universe. Second, it may be that the homogeneous assumption breaks down at early times.
 
 \section{The Planck time $\tp$}
 The Planck epoch occurs at the earliest times and is defined as the
@@ -132,7 +127,7 @@ We can see this graphically in Figure~\ref{fig:cls:linde}
   \centering
   \includegraphics[width=\textwidth]{chapter_classical_perturbations/plots/swirl.tikz}
   \includegraphics[width=\textwidth]{chapter_classical_perturbations/plots/true.tikz}
-  \caption{Linde's initial conditions. These are phase-space plots of the evolution of $(\phi,\dot{\phi})$, plotted for a chaotic inflationary potential $V(\phi) = \frac{1}{2}m^2 \phi^2$. The upper plot has $m=0.5$. The outer circle is the Planck time $\tp$ when $\rho=\m^4$. One can see that each path through phase space is generically drawn to the slow roll attractor solutions in the center of the plot. The lines are plotted so that they have a uniform spacing of kinetic energy at the Planck time. As you can see, only a very small number of the solutions satisfy kinetic dominance at any point. \\
+  \caption{Phase-space plot of the evolution of $(\phi,\dot{\phi})$ for a chaotic inflationary potential $V(\phi) = \frac{1}{2}m^2 \phi^2$. The upper plot has $m=0.5\m$. The outer circle is the Planck time $\tp$ when $\rho=\m^4$. One can see that each path through phase space is generically drawn to the slow roll attractor solutions in the center of the plot. The lines are plotted so that they have a uniform spacing of kinetic energy at the Planck time.\\
   The upper plot is somewhat misleading, since it has an artificially high value of $m$. When the value of $m$ is lowered to $0.1\m$, as in the lower plot, then the slow roll phase is a much stronger attractor solution, and generates a sustained slow-roll accelerated expansion.\label{fig:cls:linde}}
 \end{figure}
 
@@ -140,14 +135,14 @@ We can see this graphically in Figure~\ref{fig:cls:linde}
   \centering
   \includegraphics[width=\textwidth]{chapter_classical_perturbations/plots/swirl_alt.tikz}
   \includegraphics[width=\textwidth]{chapter_classical_perturbations/plots/true_alt.tikz}
-  \caption{Post-inflationary initial conditions}
+  \caption{Phase space plot as in Figure~\protect\ref{fig:cls:linde}, but with initial conditions uniform in kinetic energy after the inflationary phase. The solutions which uniformly distribute their energy after inflation now predominantly begin at the Planck time in a more kinetically dominate state. As one decrease $m$ to more physical values (lower plot) almost all early-time solutions are kinetically dominated.\label{fig:cls:b4infl}}
 \end{figure}
 \fi
 
 
 
 
-\section{The linear approximation}
+\section{Breakdown of homogeneity}
 To first order, the $i$-$j$, $i$-$0$ and $0$-$0$ Einstein equations read:
 \begin{align}
   \Phi &= \Psi 
@@ -166,142 +161,23 @@ One may rearrange these to gain second order equations in $\Phi$ or $\mathcal{R}
 There is of course also a second order equation purely in $\delta\phi$, but this is particularly unappetising, and given that we have an explicit solution for it in~\eqref{eqn:clp:Ei0}, we shall not state it here.
 Technically, these equations are derived in the Newtonian gauge ($E=B=0$), but since everything here is manifestly gauge invariant one may interpret all of the above equations as the relations in the equivalent gauge invariant variables.
 
-If we apply the kinetically dominated solutions to the background variables, the perturbed variables are soluble with Bessel functions. There are two constants of integration, in the above equations. Examining the limit as $t\to 0$, one finds that all of the variables have a ``freezing mode'' and a ``growing mode'', i.e:
-\begin{equation}
-  \Phi\sim \delta\phi \sim \mathcal{R} = A + B t^{-4/3} \qquad \text{as } t\rightarrow 0,
-\end{equation}
-where $A$ and $B$ are constants of integration.
-The growing mode in $\log t$ technically violates the initial perturbative assumption. It may be the case that a more sophisticated expansion out of the big bang is required.
-
-We may rearrange equations~\eqref{eqn:clp:Ei0} and~\eqref{eqn:clp:E00} as:
+If we apply the kinetically dominated solutions to the background variables, we arrive at:
 \begin{align}
-  \frac{d}{dt}
-  \left(
-  \begin{array}{c}
-    \delta \phi \\
-    \Phi
-  \end{array}
-  \right)
-  =
-  \left(%
-  \begin{array}{cc}
-    \frac{\ddot{\phi}}{\dot{\phi}} & \frac{1}{\dot{\phi}}\left( \dot{\phi}^2 - 2\frac{k^2}{a^2} \right) \\
-    \frac{1}{2}\dot{\phi} & -H 
-  \end{array}
-  \right)
-  \left(%
-  \begin{array}{c}
-    \delta \phi \\
-    \Phi
-  \end{array}
-  \right)
+  0 &= \ddot{\Phi} + \frac{7}{3}\frac{1}{t}\dot{\Phi} + \frac{k^2}{a^2} \Phi,\\
+  0 &= \ddot{\mathcal{R}} + \frac{1}{t}\dot{\mathcal{R}} + \frac{k^2}{a^2} \mathcal{R},\\
+  a &\propto t^{1/3}
 \end{align}
 
-
-Is there an alternative variable which freezes out in the kinetically dominated phase? Yes, there must be. What is it? What is the best way to find out what it is? Is it gauge invariant?
-
-
-\section{Working}
-In the Newtonian gauge we have:
+Both equations are of the form:
 \begin{align}
-  \frac{d}{dt}
-  \left(
-  \begin{array}{c}
-    \delta \phi \\
-    \Phi
-  \end{array}
-  \right)
-  &=
-  \left(%
-  \begin{array}{cc}
-    \frac{\ddot{\phi}}{\dot{\phi}} & \frac{1}{\dot{\phi}}\left( \dot{\phi}^2 - 2\frac{k^2}{a^2} \right) \\
-    \frac{1}{2}\dot{\phi} & -H 
-  \end{array}
-  \right)
-  \left(%
-  \begin{array}{c}
-    \delta \phi \\
-    \Phi
-  \end{array}
-  \right)\label{eqn:cls:fstodr}
-  \\
-  \Psi{} &= \Phi{}
+  0 &=\ddot{x} + (1+p)\frac{1}{t}\dot{x} + \frac{k^2}{a^2} x  \\
+  \Rightarrow \qquad
+  x &= t^{-\frac{p}{2}}\left[ A J_{\frac{3}{4}p}\left( \frac{3k}{2a} t \right) + B Y_{\frac{3}{4}p}\left( \frac{3k}{2a} t \right) \right] \\
+  &\sim  t^{-\frac{p}{2}-\frac{1}{3}}, \qquad t \gg 1
 \end{align}
+So the solutions are generically oscillatory with a polynomial decay with inverse power $\frac{p}{2} + \frac{1}{3}$.
 
-Now, some gauge invariant variables are:
-\begin{align}
-  \mathcal{R} &= \Psi + \frac{H}{\dot{\phi}}\delta\phi \\
-  \mathcal{S} &= \Phi + \frac{\d{}}{\d{t}}\left(\frac{\Psi}{H}\right)
-\end{align}
-We can re-phrase the dynamical equations in terms of these, giving us a set of gauge invariant ones. Eliminating first derivatives of $\Phi$ using~\eqref{eqn:cls:fstodr}, one finds:
-\begin{equation}
-  \left(
-  \begin{array}{c}
-    \mathcal{R} \\
-    \mathcal{S}
-  \end{array}
-  \right)
-  =
-  \left(%
-  \begin{array}{cc}
-    \frac{H}{\dot{\phi}} & 1 \\
-    \frac{\dot{\phi}}{2H} & \frac{\dot{\phi}^2}{2H^2}
-  \end{array}
-  \right)
-  \left(%
-  \begin{array}{c}
-    \delta \phi \\
-    \Phi
-  \end{array}
-  \right).
-\end{equation}
+Physically that means that as we integrate further backwards in time, although the homogeneous universe is drawn toward a kinetically dominated state, spatial inhomogeneities begin to increase.
 
-This is singular\ldots
+What this means, is that if some portion of the universe at an early stage has $\dot{\phi}^2 \gg V(\phi)$, and is approximately homogeneous, then the comoving size of that portion will grow, and kinetic dominance causes patches of the universe to homogenise.
 
-\pagebreak
-
-Inverting the above relation yields:
-\begin{equation}
-  \left(%
-  \begin{array}{c}
-    \delta \phi \\
-    \Phi
-  \end{array}
-  \right)
-  =
-  \left(%
-  \begin{array}{cc}
-    -\frac{\dot{\phi}}{2H} & \frac{H}{\dot{\phi}} \\
-    \frac{1}{2} & \frac{H^2}{\dot{\phi}^2}
-  \end{array}
-  \right)
-  \left(%
-  \begin{array}{c}
-    \mathcal{R} \\
-    \mathcal{S}
-  \end{array}
-  \right).
-\end{equation}
-Substituting this into~\eqref{eqn:cls:fstodr} yields:
-\begin{align}
-  \frac{d}{dt}
-  \left(%
-  \begin{array}{c}
-    \mathcal{R} \\
-    \mathcal{S}
-  \end{array}
-  \right)
-  &=
-  \left(%
-  \begin{array}{cc}
-    & \\
-    &
-  \end{array}
-  \right)
-  \left(%
-  \begin{array}{c}
-    \mathcal{R} \\
-    \mathcal{S}
-  \end{array}
-  \right).
-\end{align}
