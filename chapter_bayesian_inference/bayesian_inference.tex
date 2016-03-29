@@ -16,7 +16,8 @@
 %      - Need for evidences
 
 
-Science is not the search for truth. Instead, scientists concern themselves with the construction of models. These models have their relative merit determined using data.\footnote{The opening statement of this chapter was in fact the first thing \rafiblumenfeld{} said to us for our part IB Physics supervisions.}
+Despite popular conception, science is not the search for truth. Instead, scientists concern themselves with the construction of models that have their relative merit determined using data.
+The natural language of ``relative merit'' is that of Bayesian probability. This chapter reviews the concepts and notation of this ``meta-science''.\footnote{The opening statement of this chapter was in fact the first thing \rafiblumenfeld{} said to us for our part IB Physics supervisions.}
 
 % Mathematics -- if then, conditional truth
 % Science -- weaker: observations -> possibilities 
@@ -24,32 +25,9 @@ Science is not the search for truth. Instead, scientists concern themselves with
 \section{Probability}
 \label{sec:bay:prob}
 
-Probability is the mathematical language of uncertainty. It is a methodology of assigning a numerical weighting to outcomes or {\em events}. An event is any subset of the sample space $\Omega$. Some examples of discrete and continuous sample spaces are:
-\begin{enumerate}
-  \item The outcome of a coin flip $\Omega_1=\{\mathrm{Heads},\mathrm{Tails}\}$.
-  \item The measured position of an electron $\Omega_2=\mathbb{R}$.
-\end{enumerate}
-For example, an event could be that the electrons position $x$ is measured to be $-1<x<0.5$. The role of probability is to assign a weighting to all subsets, which roughly corresponds to the ``chance'' that such an event would occur. Probability should therefore be additive:
-\begin{equation}
-  A,B \mathrm{\ disjoint} \Rightarrow \Prob{A \cup B} = \Prob{A} + \Prob{B}.
-  \label{eqn:bay:add}
-\end{equation}
-One also normalises the probability distribution so that $\Prob{\Omega} = 1$. The above is effectively a paraphrasing of Kolmogorov's axioms of probability.
-
-%In addition, if one has two disjoint sample spaces, for example $\Omega_1$ and $\Omega_2$ mentioned above, one may combine these into a single samples space ${\Omega=\Omega_1\otimes\Omega_2}$, then probability should be multiplicative.
-
-
-
-
-
-This entire section may be summarised succinctly and formally as:
-\begin{quote}
-  Probability is any additive mapping $\mathrm{P}$ from the power set $2^\Omega$ of the sample space $\Omega$ to $[0,1]\in \mathbb{R}$, such that $\Prob{\Omega}=1$.
-\end{quote}
-\johnskilling{} has derived probability from measurement-theoretical grounds\citep[chap. 1]{Bayesian_methods_in_cosmology}, which provides a more intuitive backing to the definition.
-
-
-
+Probability is the mathematical language of uncertainty. 
+The role of probability is to assign a weighting to all events, which roughly corresponds to the ``chance'' that such an event would occur. 
+\johnskilling{} has derived probability from measurement-theoretical grounds\citep[chap. 1]{Bayesian_methods_in_cosmology}, which provides a more intuitive backing to the standard axioms.
 
 \subsection{Bayes' theorem}
 
@@ -57,7 +35,7 @@ This entire section may be summarised succinctly and formally as:
   \centering
   \tikzsetnextfilename{bayes_theorem}
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/bayes_theorem.tikz}
-  \caption{Diagrammatic Bayes theorem. Nodes indicate the occurrence of an event. Edges indicate the probability of an event occurring, and are multiplicative in the direction of the arrows. Bayes theorem~\protect\eqref{eqn:bay:bayes} may be derived by equating the path $A\to A\cap B$ with $A\to\Omega\to B\to A\cap B$}\label{fig:bay:bayes_theorem}
+  \caption{Diagrammatic Bayes' theorem. Nodes indicate the occurrence of an event. Edges indicate the probability of an event occurring, and are multiplicative in the direction of the arrows. Bayes' theorem~\protect\eqref{eqn:bay:bayes} may be derived by equating the path $A\to A\cap B$ with $A\to\Omega\to B\to A\cap B$}\label{fig:bay:bayes_theorem}
 \end{figure}
 
 
@@ -69,7 +47,7 @@ This entire section may be summarised succinctly and formally as:
 %\end{figure}
 
 
-From this definition, it is useful to define conditional probability via:
+The conditional probability of event $B$ given event $A$ is defined via:
 \begin{equation}
   \Probc{B}{A} = \frac{\Prob{A\cap B}}{\Prob{A}}.
   \label{eqn:bay:cond}
@@ -80,17 +58,14 @@ Multiplying both sides by $\Prob{A}$, and noting the symmetrical alternative:
   \label{eqn:bay:sym}
 \end{equation}
 one may then derive Bayes' theorem:
-\begin{align}
-  \Probc{B}{A} &= \frac{\Probc{A}{B}\Prob{B}}{\Prob{A}}.\\
+\begin{equation}
+  \Probc{B}{A} = \frac{\Probc{A}{B}\Prob{B}}{\Prob{A}}.
   \label{eqn:bay:bayes}
-\end{align}
-Bayes theorem indicates how to reverse the conditionality in a probability distribution $\Probc{A}{B}$ by first deconditioning by multiplying by $\Prob{B}$ and then reconditioning via the normalising constant $\Prob{A}$. Figure~\ref{fig:bay:bayes_theorem} extends this to all possibilities for two events.
-Conditional probabilities draw attention to a particularly interesting aspect of probability from a measurement theory perspective. Probability has a closed addition and multiplication associated with it. No other measurable quantity has this property.
+\end{equation}
+Bayes' theorem indicates how to reverse the conditionality in a probability distribution $\Probc{A}{B}$: one first deconditions by multiplying by $\Prob{B}$ and then reconditions via the normalising constant $\Prob{A}$. Figure~\ref{fig:bay:bayes_theorem} extends this to all possibilities for two events.
 
 \section{Bayesian vs.\ Frequentist}
 \label{sec:bay:bayesian_frequentist}
-
-Whilst the previous section outlined the properties that probability must satisfy, it has not detailed how one should assign probability. Indeed, we have merely referred to probability as a measure of ``chance'', but declined to define what this means.
 
 There are two fundamental types of probability: {\em Aleatoric\/} and {\em Epistemological}. Aleatoric systems are genuinely random, for example: the flip of a coin, or the click on a Geiger counter. Epistemological probability governs systems where the randomness is associated with a subjective lack of knowledge. For example, before prince George was born, bookmakers took bets on whether William and Kate's baby was a boy or a girl. 
 
@@ -98,11 +73,11 @@ The Frequentist school of thought defines probability as:
 \begin{description}
   \item[Frequentist Probability:]``The limiting relative frequency of an event.''
 \end{description}
-I.e.\ if a coin has $\Prob{\mathrm{Head}}=\frac{1}{2}$, then if you were to toss it an arbitrarily large number of times, the fraction of times one would get closer and closer to $\frac{1}{2}$. This is the version of probability that most people encounter early in their mathematical education, but it has several issues.
+I.e.\ if a coin has $\Prob{\mathrm{Head}}=\frac{1}{2}$, then if you were to toss it an arbitrarily large number of times, the fraction of times one would get closer and closer to $\frac{1}{2}$. This is the version of probability that most people encounter early in their mathematical education. 
 
 This definition applies relatively well to Aleatoric systems (since an experiment can often be run a large number of times). However, for epistemological systems, it is all but useless. The frequentist solution is therefore to disregard the latter kind of probability.
 
-Most people's experiences with probability will likely involve betting scenarios, such as William and Kate's baby. Here it is obvious that the betting odds should be approximately $1:1$,\footnote{Betting odds of $a:b$ against indicates a probability of success of $\frac{b}{a+b}$.}\footnote{In fact the probability of a boy being conceived across the population is roughly 51\%, in order to biologically account for male infant mortality. An individual's probability of conceiving a boy or a girl will vary from person to person and in time.}\footnote{A good bookmaker will obviously take this into account, and give you slightly worse odds in order to ensure their profit.} but it should be also be clear that these odds most certainly do not refer to an event that can be repeated an arbitrarily large number of times.
+However, most people's experiences with probability will likely involve betting scenarios, such as William and Kate's baby. Here it is obvious that the betting odds should be approximately $1:1$,\footnote{Betting odds of $a:b$ against indicates a probability of success of $\frac{b}{a+b}$.}\footnote{In fact the probability of a boy being conceived across the population is roughly 51\%, in order to biologically account for male infant mortality. An individual's probability of conceiving a boy or a girl will vary from person to person and in time.}\footnote{A good bookmaker will obviously take this into account, and give you slightly worse odds in order to ensure their profit.} but it should be also be clear that these odds do not refer to an event that can be repeated an arbitrarily large number of times.
 
 The alternative definition of probability is {\em Bayesian\/}:
 \begin{description}
@@ -339,151 +314,11 @@ The central limit theorem states that $\hat{E}_f$ is normally distributed with m
 
 This approach has several advantages. If one already has the set $S$ of samples~\eqref{eqn:bay:samples}, the computation~\eqref{eqn:bay:ehat} is extremely cheap, in contrast to a full integral~\eqref{eqn:bay:quadrature_nd}. Further, it has excellent scaling with dimensionality. 
 
-All that remains in order to compute~\eqref{eqn:bay:ehat} is a methodology for cheaply generating samples according to a given distribution $\posterior$. In many cases, one does not even need the normalisation constant $\ev$ in order to sample from $\posterior$, merely an unnormalised posterior $\str{\posterior}= \lik\times\prior$. Suffice to say that this is a well established problem, and for readers unfamiliar with a given sampling method I refer them to Appendix~\ref{sec:app:sampling_methods}.
+All that remains in order to compute~\eqref{eqn:bay:ehat} is a methodology for cheaply generating samples according to a given distribution $\posterior$. In many cases, one does not even need the normalisation constant $\ev$ in order to sample from $\posterior$, merely an unnormalised posterior $\str{\posterior}= \lik\times\prior$. Suffice to say that this is a well established problem, and for readers unfamiliar with a given sampling method I refer them to Appendix~\ref{chap:sm}.
 
 However, even if one can generate reliably and cheaply a full set $S$ of samples, this is not a full solution to the entire Bayesian inference problem problem. Computing $\mean{f}$ with sampling is only a reasonable methodology when $\sigma_f$ is small (or even defined at all). A very important example of a case where this is not true is the computation of the evidence integral~\eqref{eqn:bay:ev_short}. For these kind of problems we must turn to a more sophisticated methodology
 
 
-
-\subsection{Inverse transform sampling}
-\label{sec:sm:inverse_transform}
-
-In the one-dimensional case, this amounts to converting a uniform random variable (which are easy to generate) into a variable sampled from a general distribution $f(\theta)$. One first finds its cumulative distribution function (CDF):
-\begin{equation}
-  F(\theta) = \int\limits_{-\infty}^\theta f(\theta^\prime) \d{\theta^\prime},
-\end{equation}
-computes the inverse of the CDF, and then applies this function to a uniform random variable  $x\sim U(0,1)$ to generate a variable $\theta = F^{-1}(x)$, which is distributed according to $f(\theta)$. 
-
-In the general $D$-dimensional case, one calculates $D$ conditional distributions $\{f_i:i=1\ldots,D\}$: by marginalising over parameters with indices greater than $i$ and conditioning on parameters with indices less than $i$:
-%
-\begin{equation}
-  f_i(\theta_i|\theta_{i-1},\ldots,\theta_1) 
-  =
-  \frac{%
-    \int f_i(\params) d\theta_{i+1}\ldots \d{\theta_{N}}
-  }{%
-    \int f_i(\params) d\theta_{i}\ldots \d{\theta_{N}}
-  },
-\end{equation}
-%
-Integrating these yields $D$ conditional CDFs:
-%
-\begin{equation}
-  x_i = F_i(\theta_i|\theta_{i-1},\ldots,\theta_1) = \int\limits_0^{\theta_i} f_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) \d{\theta_i^\prime}.
-\end{equation}
-%
-Inverting this gives $\theta_i = F^{-1}_i(x_i|\theta_{i-1},\ldots,\theta_1)$, which constitutes a set of relations sequentially transforming $D$ uniform random variables $\{x_i\}$ into $\{\theta_i\}$ distributed according to $f(\params)$.
-
-In many cases, the prior $\prior(\params)$ is separable, and the above equations are easily calculated. For sections of the parameters which are not separable, the calculation can become more involved. We include a few demonstrations of this procedure in Section~\ref{sec:bay:prior_tranformations}. 
-
-
-
-\subsection{Rejection Sampling}
-\label{sec:sm:rejection}
-
-\subsection{Importance Sampling}
-\label{sec:sm:importance}
-
-\subsection{Metropolis---Hastings}
-\label{sec:sm:mh}
-Metropolis---Hastings approaches are an extremely widely used methodology for generating a sequence of samples (or points) from some posterior $\posterior(x)$.
-
-A sequence of $T$ points is termed a {\em chain\/} $\chain_T$:
-\begin{equation}
-  \chain_T = \{ x^{(t)}: t=1\cdots T \}.
-\end{equation}
-A new point $x^{(t+1)}$ is generated from a proposal density $\proposal$ which depends on the current state $x^{(t)}$. Typically $\proposal(x|x^{(t)})$ might be a Gaussian distribution centered on the current value of $x^{(t)}$:
-\begin{equation}
-  \log \proposal(x|x^{(t)}) = \text{const} -\frac{{\left[ x-x^{(t)} \right]}^2}{2\varepsilon^2},
-\end{equation}
-but in general the proposal density can be any fixed density from which we may draw samples easily.
-
-A new state $x$ is proposed from the proposal density $\proposal(x|x^{(t)})$, and it is accepted with probability:
-\begin{equation}
-  p_\mathrm{accept}(x|x^{(t)}) = \frac{\posterior(x)}{\posterior(x^{(t)})}\frac{\proposal(x^{(t)}|x)}{\proposal(x|x^{(t)})}.
-\end{equation}
-If the step is accepted, then $x^{(t+1)}=x$, otherwise $x^{(t+1)} = x^{(t)}$. This procedure can be seen schematically in Figure~\ref{fig:sm:MH}.
-\begin{figure}
-  \centering
-  \tikzsetnextfilename{MH}
-  \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/MH.tikz}
-  \caption{Metropolis---Hastings. Here we have some degenerate two-dimensional posterior $\posterior$, and a circular proposal distribution $\proposal$.\label{fig:sm:MH}}.
-\end{figure}
-
-
-This has the distinct advantage that it does not require one to take into account the overall normalisation of the posterior, circumnavigating any issues associated with computing the evidence $\ev$, since:
-\begin{equation}
-  \frac{\posterior(x)}{\posterior(x^{(t)})} \equiv
-  \frac{\lik(x)\prior(x)}{\lik(x^{(t)})\prior(x^{(t)})}.
-\end{equation}
-It is important to note that the chain $C_T$ will comprise $T$ samples which are {\em correlated}. If the proposal distribution amounts to a random walk with step size $\varepsilon<\sigma_{\min{}}$, and the longest lengthscale in the probably region is $\sigma_{\max{}}$  then one will expect: $\tau \sim {(L/\varepsilon)}^2$. If $\varepsilon>\sigma_{\min{}}$, then one starts to expect a very low acceptance rate, so typically for a isotropic random walk, the timescale on which one expects to generate independent samples is:
-\begin{equation}
-  \tau \sim \left( \frac{\sigma_{\max{}}}{\sigma_{\min{}}} \right).
-\end{equation}
-In theory, given that the above relation has no dimensionality attached to it, Metropolis Hastings can be extremely successful in high dimensions. However, there are several issues.
-
-First, one does not initially a-priori have a good starting point. There is therefore a period of ``burn-in'' attached to MH methods. Knowing when this period is truely over, and one is starting to generate random samples can be challenging in the general case.
-
-In many cases, $\tau\gg1$ resulting in unacceptable run-times. This can be ameliorated by choosing a proposal distribution $\proposal$ that better agrees with the posterior $\posterior$. However, this amounts to adding in many effective tuning parameters. Many algorithms work by having a ``learning'' phase, whereby the algorithm deduces for itself a good correlated Gaussian proposal distribution, but given the fact that this is not strictly Markovian care must be taken.
-
-
-
-\subsection{Gibbs Sampling}
-
-
-\subsection{Slice sampling}
-\label{sec:sm:slice}
-Radford Neal initially proposed slice sampling as an effective methodology for generating samples numerically from a given posterior $\posterior(\params)$. One first chooses a `slice' (or probability level) $\posterior_0$ uniformly within $[0,\posterior_\smax]$. One then samples uniformly within the $\params$-region defined by $\posterior(\params)>\posterior_0$. The similarity with the iso-likelihood contour sampling required by nested sampling should be clear. In the one-dimensional case, he suggests the sampling procedure detailed in Figure~\ref{fig:bay:1d_slice}.
-
-\begin{figure}
-  \centerline{%
-    \includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/slice}
-  }
-
-  \caption{Slice sampling in one dimension. 
-    Given a probability level (or slice) $\posterior_0$, slice sampling samples within the horizontal region defined by $\posterior>\posterior_0$. 
-    From an initial point $x_0$ within the slice ($\posterior(x_0)>\posterior_0$), a new point $x_1$ is generated within the slice with a distribution $P(x_1|x_0)$.
-    External bounds are first set on the slice $\hat{L}<x_0<\hat{R}$ by uniformly expanding a random initial bound of width $w$ until they lie outside the slice (Neal terms this the {\em stepping out\/} procedure). 
-    $x_1$ is then sampled uniformly within these bounds.  
-    If $x_1$ is not in the slice, then $\hat{L}$ or $\hat{R}$ is replaced with $x_1$, ensuring that $x_0$ is still within the slice.
-    This procedure is guaranteed to generate a new point $x_1$, and satisfies detailed balance $P(x_0|x_1) = P(x_1|x_0)$. Thus, if $x_0$ is drawn from a uniform distribution within the slice, so is $x_1$.\label{fig:bay:1d_slice}
-  }
-\end{figure}
-
-
-
-In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. The simplest of these is implemented by sampling each of the parameter directions in turn. Since each one-dimensional slice requires $\bigO{\text{a few}}$ likelihood calculations, the number of likelihood calculations required scales linearly with dimensionality, providing the region is efficiently navigated. Multi-dimensional slice sampling has many of the benefits of a traditional MH approach, and uses a proposal distribution which is much more efficient at sampling a hard likelihood constraint.
-
-\section{Thermodynamic integration}
-The traditional method of computing the evidence from MCMC procedures is via {\em thermodynamic integration}.
-The aim is to compute:
-\begin{equation}
-  \ev = \int \lik(\Theta) \prior(\Theta) \d{\Theta}
-\end{equation}
-Inspired by thermodynamics, we define the posterior $\posterior_\beta \propto \lik^\beta\prior$ at temperature $\beta$ as:
-\begin{align}
-  \posterior_\beta(\Theta) &= \frac{\lik^{\beta}(\Theta) \prior(\Theta)}{\ev_\beta}, 
-  \label{eqn:bay:posteriorb}
-  \\
-  \ev_\beta &= \int\lik^{\beta}(\Theta) \prior(\Theta) \d{\Theta}.
-  \label{eqn:bay:evb}
-\end{align}
-If the likelihood is interpreted as a Boltzmann-like probability distribution, then:
-\begin{equation}
-{\lik(\Theta)}^\beta = \exp[-\beta E(\Theta)],
-\end{equation}
-is the Boltzmann probability of finding a system with inverse temperature $\beta = T^{-1}$ in state $\Theta$ with energy $E$, and the partition function is simply $\ev_\beta$.
-
-Inspired by thermodynamics, one can see that:
-\begin{equation}
-  \frac{\d{}}{\d{\beta}}\log\ev_\beta = \frac{\int  \lik^\beta \prior \log\lik\d{\Theta}}{\int\lik\prior \d{\Theta}} = \int \posterior_\beta \log\lik\d{\Theta} =  \mean{\log\lik}_\beta.
-  \label{eqn:bay:thermo}
-\end{equation}
-Hence, integrating the above equation yields:
-\begin{equation}
-  \log\ev_1-\log\ev_0 = \log\ev = \int_{0}^{1}\mean{\log\lik}_\beta.
-\end{equation}
-The key point is that we may compute the mean $\mean{\log\lik}_\beta$ from a set of samples from the posterior $\posterior_\beta$. If we therefore generate a set of samples for a range of temperatures $\beta$, the one-dimensional integral above may be computed easily. Thermodynamic calculation of the evidence therefore is equivalent to running multiple MCMC runs at several temperatures.
 
 \section{Nested sampling}
 \label{sec:bay:nested_sampling}
@@ -607,7 +442,7 @@ One does not wish to continue compressing the space once $X_i\ll e^{-H}$ for two
   }
 \end{figure}
 %
-As nested sampling proceeds, the likelihoods $\lik_i$ monotonically increase, but the weights $w_i$ monotonically decrease. This results in a peak in importance weights~\eqref{eqn:bay:importance_weighting} that can be seen in Figure~\ref{fig:bay:gaussian_weight}. We terminate the algorithm once the remaining posterior mass (white region) left in the live points is some small fraction of the currently calculated evidence (dark region). The posterior mass left in the live points at iteration $i$ can be estimated by:
+As nested sampling proceeds, the likelihoods $\lik_i$ monotonically increase, but the weights $w_i$ monotonically decrease. This results in a peak in importance weights~\eqref{eqn:bay:posterior_weight} that can be seen in Figure~\ref{fig:bay:gaussian_weight}. We terminate the algorithm once the remaining posterior mass (white region) left in the live points is some small fraction of the currently calculated evidence (dark region). The posterior mass left in the live points at iteration $i$ can be estimated by:
 \begin{equation}
   \ev_\slive \approx \mean{\lik}_\slive X_i,
   \label{eqn:bay:live_evidence}

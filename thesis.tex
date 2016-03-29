@@ -31,9 +31,11 @@
 %\newcommand{\lightweight}{}
 
 
-\includeonly{%
-  chapter_bayesian_inference/bayesian_inference
-}
+%\includeonly{%
+%  other/contents,
+%  chapter_bayesian_inference/bayesian_inference,
+%  appendix_sampling_methods/sampling_methods
+%}
 
 \begin{document}
 %
@@ -156,7 +158,6 @@
 %
 %\part{Appendices}
 %
-%\appendix
 %
 % The bibliography
 %
@@ -165,6 +166,8 @@
 
 % BibTex bibliography
 \bibliography{other/references}
+\appendix
+\include{appendix_sampling_methods/sampling_methods}
 %
 \end{document}
 

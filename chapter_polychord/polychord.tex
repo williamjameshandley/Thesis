@@ -12,13 +12,9 @@ Bayesian inference consists of {\em parameter estimation\/} and {\em model compa
 A contemporary methodology for computing evidences and posteriors simultaneously is provided by nested sampling~\citep{skilling2006}. This has been successfully implemented in the now widely adopted algorithm \MultiNest\,~\citep{MultiNest1,MultiNest2,MultiNest3}.  Modern cosmological likelihoods now involve a large number of parameters, with a hierarchy of speeds.  \MultiNest\ struggles with high-dimensional parameter spaces, and is unable to take advantage of this separation of speeds.  \PolyChord{} aims to address these issues, providing a means to sample high-dimensional spaces across a hierarchy of parameter speeds.
 
 The layout of the paper is as follows:
-Section~\ref{sec:pc:bayesian_inference} is a general overview of parameter estimation and model selection in the context of Bayesian Inference.
-In Section~\ref{sec:pc:nested_sampling} we describe \citepos{skilling2006} nested sampling meta-algorithm.
 We overview the historical implementations of nested sampling in Section~\ref{sec:pc:iso_likelihood_sampling} and provide an account of \citepos{NealSlice} slice sampling technique.
 We describe the \PolyChord{} algorithm in detail in Section~\ref{sec:pc:polychord_algorithm} and demonstrate its efficacy on toy and cosmological problems in Section~\ref{sec:pc:polychord_in_action}.  
 Section~\ref{sec:pc:conclusions} concludes the paper.
-Section~\ref{sec:pc:prior_tranformations} describes the procedure for implementing new prior distributions within the context of nested sampling.
-Sections~\ref{sec:pc:evidences}~\&~\ref{sec:pc:evidences_clusters} describe the mathematics of inferring evidences from the samples produced by nested sampling.
 
 This paper is an extensive overview of our algorithm, which is now in use in several cosmological applications~\citep{planck2015-a24}. A briefer introduction can be found in~\cite{polychordletter}.
 
@@ -38,7 +34,7 @@ $D$ conditional CDFs:
 %
 Inverting this gives $\theta_i = F^{-1}_i(x_i|\theta_{i-1},\ldots,\theta_1)$, which constitutes a set of relations sequentially transforming $D$ uniform random variables $\{x_i\}$ into $\{\theta_i\}$ distributed according to $f(\params)$.
 
-In many cases, the prior $\prior(\params)$ is separable, and the above equations are easily calculated. For sections of the parameters which are not separable, the calculation can become more involved. We include a few demonstrations of this procedure in Section~\ref{sec:bay:prior_tranformations}.
+In many cases, the prior $\prior(\params)$ is separable, and the above equations are easily calculated. For sections of the parameters which are not separable, the calculation can become more involved. We include a few demonstrations of this procedure in Section~\ref{sec:pc:prior_transformations}.
 
 Nested sampling can thus be performed in the unit $D$-dimensional hypercube, $\bxx\in {[0,1]}^D$, defining a new likelihood function via $\lik(\params)= \lik(\bFF^{-1}(\bxx))$. This has numerous advantages, the first being that one only needs to be able to generate uniform random variables in $[0,1]$. The second is more subtle; it is more natural to define a distance metric in the unit hypercube than in the physical space. Unit hypercube variables all have the same dimensionality: probability.
 
@@ -80,7 +76,7 @@ Diffusive nested sampling~\citep{DiffusiveNestedSampling} is an alternative and 
 \label{sec:bay:slice_sampling}
 We have found that a Markov-Chain based procedure utilising~\citepos{NealSlice} slice sampling at each step is well suited to sampling uniformly within an iso-likelihood contour.
 
-This procedure for sampling within a likelihood bound is ideal for nested sampling. It samples uniformly with minimal information: an initial bound size $w$, and a point $x_0$ that is within the contour. In general $w$ must be chosen so that it is roughly the size of the bound, but if one overestimates it then the bounds will contract exponentially. Indeed, one may consider this as being equivalent to a prior space compression~\eqref{eqn:bay:X_full} with $\nlive=\ndims=1$. As a starting point, one may use one of the live points, which is already uniformly sampled. Since the procedure above satisfies detailed balance, this will produce a point which is also uniformly sampled within the iso-likelihood contour.
+This procedure for sampling within a likelihood bound is ideal for nested sampling. It samples uniformly with minimal information: an initial bound size $w$, and a point $x_0$ that is within the contour. In general $w$ must be chosen so that it is roughly the size of the bound, but if one overestimates it then the bounds will contract exponentially. Indeed, one may consider this as being equivalent to a prior space compression~\eqref{eqn:pc:X_full} with $\nlive=\ndims=1$. As a starting point, one may use one of the live points, which is already uniformly sampled. Since the procedure above satisfies detailed balance, this will produce a point which is also uniformly sampled within the iso-likelihood contour.
 
 In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. The simplest of these is implemented by sampling each of the parameter directions in turn. Since each one-dimensional slice requires $\bigO{\text{a few}}$ likelihood calculations, the number of likelihood calculations required scales linearly with dimensionality, providing the region is efficiently navigated. Multi-dimensional slice sampling has many of the benefits of a traditional MH approach, and uses a proposal distribution which is much more efficient at sampling a hard likelihood constraint.
 
@@ -117,7 +113,7 @@ This is termed \CosmoChord, which may be downloaded from the link at the end of 
   We begin by ``whitening'' the unit hypercube by making a linear transformation which turns a degenerate contour into one with dimensions $\bigO{1}$ in all directions. 
   This is a linear skew transformation defined by the inverse of the Cholesky decomposition of the live points' covariance matrix. 
   We term this whitened space the {\em sampling space}. 
-  Starting from a randomly chosen live point $\bx{0}$, we pick a random direction and perform one-dimensional slice sampling in that direction (Figure~\protect\ref{fig:pc:1d_slice}), using $w=1$ in the sampling space. 
+  Starting from a randomly chosen live point $\bx{0}$, we pick a random direction and perform one-dimensional slice sampling in that direction (Appendix~\protect\ref{sec:sm:slice}), using $w=1$ in the sampling space. 
   This generates a new point $\bx{1}$ in $\bigO{\text{a few}}$ likelihood evaluations. 
   This process is repeated $\bigO{\ndims}$ times to generate a new uniformly sampled point $\bx{N}$ which is decorrelated from $\bx{0}$.\label{fig:pc:Nd_slice}
 }
@@ -129,7 +125,7 @@ This is termed \CosmoChord, which may be downloaded from the link at the end of 
 At each iteration $i$ of nested sampling, we generate a new randomly sampled point within the iso-likelihood contour $\lik_i$ by our variant of $D$-dimensional slice sampling.
 Slice sampling is performed in the unit hypercube with hypercube coordinates denoted in bold ($\bxx$).
 
-At each iteration $i$ of the nested sampling algorithm, one of the live points is chosen at random as a start point for a new chain with hypercube coordinate $\bx{0}$. We then make a one-dimensional slice sampling step (Figure~\ref{fig:pc:1d_slice}) with initial width $w$ in a random direction $\nhat{0}$ chosen from a probability distribution $\Prob{\nhatx}$. This generates a new point $\bx{1}$ which is uniformly sampled in the unit hypercube, but is correlated to $\bx{0}$. This process is repeated $\nrepeats$ times, with $\bx{j-1}$ forming the start point for a slice along $\nhat{j-1}$ to produce $\bx{j}$. This procedure is illustrated in the right hand half of Figure~\ref{fig:pc:Nd_slice}.
+At each iteration $i$ of the nested sampling algorithm, one of the live points is chosen at random as a start point for a new chain with hypercube coordinate $\bx{0}$. We then make a one-dimensional slice sampling step (Appendix~\protect\ref{sec:sm:slice}) with initial width $w$ in a random direction $\nhat{0}$ chosen from a probability distribution $\Prob{\nhatx}$. This generates a new point $\bx{1}$ which is uniformly sampled in the unit hypercube, but is correlated to $\bx{0}$. This process is repeated $\nrepeats$ times, with $\bx{j-1}$ forming the start point for a slice along $\nhat{j-1}$ to produce $\bx{j}$. This procedure is illustrated in the right hand half of Figure~\ref{fig:pc:Nd_slice}.
 
 Since the probability of drawing $\bx{j}$ from $\bx{j-1}$ is the same as the probability of drawing $\bx{j-1}$ from $\bx{j}$, this procedure satisfies detailed balance. Thus, the resulting chain will ergodically be uniformly distributed within the iso-likelihood contour. This also applies to multi-modal posteriors, with the chance of jumping out a mode being equal to the chance of jumping back in.
 
@@ -190,7 +186,7 @@ First, when spawning from an existing live point, the whitening procedure is now
 
 Second, by choosing a random initial live point as a seed, \PolyChord{} would naively spawn live points into a mode with a probability proportional to the number of live points in that mode. In fact, what it should be doing is to spawn in proportion to the volume fraction of that mode. In general, these will be approximately the same, but numerical experiments show that the difference between these two ratios exhibits random-walk like behaviour, leading to biases in evidence calculations, or worse, cluster death. 
 
-Instead, we keep track of an estimate of the volume in the same manner as equation~\eqref{eqn:pc:X_full}, and choose the mode to spawn into in proportion to that estimate. Further, one may track the errors in this estimate, which contribute to the overall evidence error. This methodology is documented fully in Section~\ref{sec:pc:evidences_clusters}.
+Instead, we keep track of an estimate of the volume in the same manner as equation~\eqref{eqn:pc:X_full}, and choose the mode to spawn into in proportion to that estimate. Further, one may track the errors in this estimate, which contribute to the overall evidence error. This methodology is documented fully in Section~\ref{sec:ens:evidences_clusters}.
 
 Thus, the point to be killed off is still the global lowest-likelihood point, but we control the spawning of the new live point into clusters by using our estimates of the volumes of each cluster. We call this `semi-independent', because it retains global information, whilst still treating the clusters as separate entities. 
 
@@ -224,7 +220,7 @@ The algorithm parallelises nearly linearly, providing that $\nprocs<\nlive$. For
 %
 \subsection{Posterior bulking}
 \label{sec:pc:posterior_bulking}
-In addition to lending information on the scale and shape of a contour, phantom points can also be used as posterior samples. Correlations between samples are unimportant for the purposes of parameter estimation, providing one has enough to be well mixed. We may thus use the importance weighting detailed in~\eqref{eqn:pc:importance_weighting} with $w_i$ being set to the volume of the live-point shell which they occupy.
+In addition to lending information on the scale and shape of a contour, phantom points can also be used as posterior samples. Correlations between samples are unimportant for the purposes of parameter estimation, providing one has enough to be well mixed. We may thus use the importance weighting detailed in~\eqref{eqn:bay:posterior_weight} with $w_i$ being set to the volume of the live-point shell which they occupy.
 
 For high-dimensional cosmological applications, this results in a very large number ($\gg$GB) of posterior samples being produced, so \PolyChord{} thins these samples. From a user's perspective, one supplies a parameter which determines the fraction of phantom points to keep.
 
@@ -441,129 +437,6 @@ We have introduced \PolyChord{}, a novel nested sampling algorithm tailored for 
 
 
 
-
-\section{Prior transformations}
-\label{sec:pc:prior_tranformations}
-Here we give examples of the procedure for calculating the transformation from the unit hypercube to the physical space. We demonstrate it for a simple separable case, and a more complicated dependent case
-
-To recap, we aim to compute the inverse of the functions $F_i$: 
-\begin{equation}
-  F_i(\theta_i|\theta_{i-1},\ldots,\theta_0) = \int\limits_0^{\theta_i} \pi_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) d\theta_i^\prime,
-  \label{eqn:pc:appFi}
-\end{equation}
-%
-where:
-%
-\begin{equation}
-  \pi_i(\theta_i|\theta_{i-1},\ldots,\theta_0) 
-  =
-  \frac{%
-    \int \pi_i(\params) d\theta_{i+1}\ldots d\theta_{N}
-  }{%
-    \int \pi_i(\params) d\theta_{i}\ldots d\theta_{N}
-  }.
-  \label{eqn:pc:apppii}
-\end{equation}
-$\bFF$ maps from $\params$ in the physical space onto the unit hypercube injectively. 
-
-
-
-\subsection{Separable priors}
-\label{sec:pc:separable_priors}
-A separable prior satisfies:
-\begin{equation}
-  \pi(\params) = \prod_i\pi_i(\theta_i).
-  \label{eqn:pc:separability}
-\end{equation}
-This has the fortunate side effect that the functions $F_i$ only depend on $\theta_i$:
-\begin{equation}
-  F_i(\theta_i|\theta_{i-1},\ldots,\theta_0) = F_i(\theta_i).
-\end{equation}
-
-Solving a separable prior thus amounts to solving a one-dimensional inverse-transform sampling problem. We demonstrate this procedure for two cases, a rectangular uniform prior, and a Gaussian prior.
-
-\subsubsection{Uniform prior}
-\label{sec:pc:uniform_prior}
-%------------ commands for this section --------------
-\newcommand{\thetamin}{\theta_\smin} % Minimum uniform prior
-\newcommand{\thetamax}{\theta_\smax} % Maximum uniform prior
-%-----------------------------------------------------
-A rectangular uniform prior is defined by two parameters, ${\thetamin,\thetamax}$:
-\begin{equation}
-  \pi(\theta) = 
-  \left\{
-    \begin{array}{rl}
-      {(\thetamax - \thetamin)}^{-1} 
-      &
-      \text{for }\thetamax<\theta_i<\thetamin \\
-      0 & \text{otherwise.}
-    \end{array}
-  \right.
-\label{eqn:pc:uniform_prior}
-\end{equation}
-
-Computing $F(\theta)$ we find:
-\begin{align}
-  F(\theta) &= \int_{-\infty}^\theta \pi(\theta')d\theta', \nonumber\\
-  &= \frac{\theta-\thetamin}{\thetamax-\thetamin},
-  \label{eqn:pc:calc_uniform_trans}
-\end{align}
-with $F=0$ or $1$ either side of $\thetamin$ and $\thetamax$ respectively. Inverting the equation $F(\theta)=x$ we find:
-\begin{equation}
-  \theta = \thetamin+(\thetamax-\thetamin)x,
-  \label{eqn:pc:uniform_trans}                           
-\end{equation}
-is the transformation from $x$ in the unit hypercube to $\theta$ in the physical space.
-
-\subsubsection{Gaussian prior}
-\label{sec:pc:gaussian_prior}
-Defining a Gaussian prior with mean $\mu$ and standard deviation $\sigma$:
-\begin{equation}
-  \pi(\theta) = \frac{1}{\sqrt{2\pi}\sigma}\exp{\left[-\frac{{(x-\mu)}^2}{2\sigma^2}\right]},
-  \label{eqn:pc:gaussian_prior}
-\end{equation}
-We find that the procedure above yields:
-\begin{equation}
-  \theta = \mu + \sqrt{2}\sigma\text{erfinv}(2x-1),
-  \label{eqn:pc:gaussian_trans}                           
-\end{equation}
-where $\text{erfinv}$ is the conventional inverse error function.
-
-
-
-
-\subsection{Forced identifiability priors}
-\label{sec:pc:forced_identifiablility}
-
-As an example of a prior that is not separable in the parameters, we consider a forced identifiability prior. Here, $n$ parameters are distributed uniformly between $\thetamin$ and $\thetamax$, but subject to the constraint that they are ordered numerically. This is a particularly useful prior in the reconstruction of functions using a spline with movable knots~\citep{vazquez_knots,knottedsky1,knottedsky2,planck2015-a24}. In this case, the  horizontal locations of the knots must be ordered.
-
-The required prior is uniform in the hyper-triangle defined by $\thetamin<\theta_1<\cdots<\theta_n<\thetamax$, and zero everywhere else:
-%
-\begin{equation}
-  \pi(\params) = 
-  \left\{
-    \begin{array}{rl}
-      \frac{1}{n!{(\thetamax - \thetamin)}^{n}} 
-      &
-      \text{for }\thetamin<\theta_1<\cdots<\theta_n<\thetamax \\
-      0 &\text{otherwise.}
-    \end{array}
-    \right.
-\label{eqn:pc:sorted_uniform_prior}
-\end{equation}
-
-To calculate equations~\eqref{eqn:pc:appFi} \&~\ref{eqn:pc:apppii} we simply integrate over the constant distribution, taking care with the limits. We find:
-\begin{align}
-  \pi_i(\theta_i|\theta_{i-1},\ldots,\theta_0) &= \frac{(n-i+1){(\theta_i-\theta_{i-1})}^{n-i}}{{(\thetamax-\thetamin)}^{n-i+1}},\\
-  F_i(\theta_i|\theta_{i-1},\ldots,\theta_0) &= {\left(\frac{\theta_i-\theta_{i-1}}{\thetamax-\theta_{i-1}}\right)}^{n-i+1},
-  \label{eqn:pc:sorted_uniform_calc}
-\end{align}
-where for consistency we define $\theta_0 = \thetamin$. Hence solving $x_i=F(\theta_i|\theta_{i-1},\ldots,\theta_0)$ for $\theta_i$ we find:
-\begin{equation}
-  \theta_i = \theta_{i-1}+ (\thetamax-\theta_{i-1})x_i^{1/(n-i+1)}.
-  \label{eqn:pc:sorted_uniform_trans}
-\end{equation}
-This enables $\{\theta_i\}$ to be calculated sequentially from $\{x_i\}$. We may interpret this transformation as $\theta_i$ being distributed as the smallest of $n-i+1$ uniformly distributed variables in the range $[\theta_{i-1},\thetamax]$.
 
 
 
