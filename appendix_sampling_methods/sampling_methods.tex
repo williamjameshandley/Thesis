@@ -160,8 +160,12 @@ This enables $\{\theta_i\}$ to be calculated sequentially from $\{x_i\}$. We may
 \section{Rejection Sampling}
 \label{sec:sm:rejection}
 
-\section{Importance Sampling}
-\label{sec:sm:importance}
+\begin{figure}
+  \tikzsetnextfilename{rejection}
+  \centering
+  \includegraphics[width=\textwidth]{appendix_sampling_methods/plots/rejection.tikz}
+  \caption{Rejection sampling. One may produce samples from some complicated distribution $f(x)$ using a simpler distribution $g(x)$ providing that $g(x)>f(x)$ within the domain of interest. One simply samples from $g$, and accepts only those samples that lie under the $f$ curve.\label{fig:sm:rej}}
+\end{figure}
 
 \section{Metropolis---Hastings}
 \label{sec:sm:mh}
@@ -185,8 +189,8 @@ If the step is accepted, then $x^{(t+1)}=x$, otherwise $x^{(t+1)} = x^{(t)}$. Th
 \begin{figure}
   \centering
   \tikzsetnextfilename{MH}
-  \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/MH.tikz}
-  \caption{Metropolis---Hastings. Here we have some degenerate two-dimensional posterior $\posterior$, and a circular proposal distribution $\proposal$.\label{fig:sm:MH}}.
+  \includegraphics[width=\textwidth]{appendix_sampling_methods/plots/MH.tikz}
+  \caption{Metropolis-Hastings. Here we have some degenerate two-dimensional posterior $\posterior$, and a circular proposal distribution $\proposal$.\label{fig:sm:MH}}.
 \end{figure}
 
 
@@ -207,16 +211,13 @@ In many cases, $\tau\gg1$ resulting in unacceptable run-times. This can be ameli
 
 
 
-\section{Gibbs Sampling}
-
-
 \section{Slice sampling}
 \label{sec:sm:slice}
 Radford Neal initially proposed slice sampling as an effective methodology for generating samples numerically from a given posterior $\posterior(\params)$. One first chooses a `slice' (or probability level) $\posterior_0$ uniformly within $[0,\posterior_\smax]$. One then samples uniformly within the $\params$-region defined by $\posterior(\params)>\posterior_0$. The similarity with the iso-likelihood contour sampling required by nested sampling should be clear. In the one-dimensional case, he suggests the sampling procedure detailed in Figure~\ref{fig:bay:1d_slice}.
 
 \begin{figure}
   \centerline{%
-    \includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/slice}
+    \includegraphics[width=\textwidth]{appendix_sampling_methods/figures/slice}
   }
 
   \caption{Slice sampling in one dimension. 

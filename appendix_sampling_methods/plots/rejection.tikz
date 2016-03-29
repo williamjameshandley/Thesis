@@ -1,0 +1,34 @@
+\begin{tikzpicture}
+  \pgfplotsset{%
+    mark layer=axis tick labels% defines the layer of the marks
+  }
+
+  \begin{axis}[%
+      ymin=0,
+      ymax=1.6,
+      xmin=-3.5,
+      xmax=3.5,
+      axis y line=left,
+      axis x line=bottom,
+      xtick=\empty,
+      ytick=\empty,
+      xlabel=$x$,
+      ylabel=$P(x)$,
+    ]
+    \addplot[thick, name path = gg, samples=200,color=blue, domain ={-3.2:3.2}] (x,{0.4*exp(-(x-1)*(x-1)/0.5)+0.5*exp(-(x+1)*(x+1)/0.5)+exp(-x*x/0.1)});
+    \addlegendentry{$f(x)$}
+    \addplot[thick, name path = ff, samples=200,color=red, domain ={-3.2:3.2}] (x,{1.5/(1+x*x)});
+    \addlegendentry{$g(x)$}
+    \addplot[name path = hh,color=white, domain ={-3.2:3.2}] (x,1.6);
+
+    \pgfplotsset{%
+      mark layer=axis tick labels% defines the layer of the marks
+    }
+    \addplot[samples = 500, only marks, mark=x, on layer=axis foreground] ({rand*3},{(rand+1)/2.0*1.5});
+
+      %\addplot[color=white] fill between[of=ff and gg, soft clip={domain=-2:2}];
+    \addplot[color=white] fill between[of=ff and hh,on layer=main];
+      %\addplot[color=white] fill between[of=gg and axis,on layer=main];
+
+  \end{axis}
+\end{tikzpicture}

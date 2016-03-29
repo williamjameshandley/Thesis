@@ -21,45 +21,29 @@ This paper is an extensive overview of our algorithm, which is now in use in sev
 \PolyChord{} is available for download from the link at the end of the paper.
 
 
-\subsection{The unit hypercube}
-\label{sec:bay:unit_hypercube}
-Each iteration of nested sampling requires one to sample from the prior (subject to a hard likelihood constraint). 
-Typically, priors are defined in terms of simple analytic functions such as uniform or Gaussian distributions, and may be sampled using  inverse transform sampling. 
-
-$D$ conditional CDFs:
-%
-\begin{equation}
-  x_i = F_i(\theta_i|\theta_{i-1},\ldots,\theta_1) = \int\limits_0^{\theta_i} f_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) d\theta_i^\prime.
-\end{equation}
-%
-Inverting this gives $\theta_i = F^{-1}_i(x_i|\theta_{i-1},\ldots,\theta_1)$, which constitutes a set of relations sequentially transforming $D$ uniform random variables $\{x_i\}$ into $\{\theta_i\}$ distributed according to $f(\params)$.
-
-In many cases, the prior $\prior(\params)$ is separable, and the above equations are easily calculated. For sections of the parameters which are not separable, the calculation can become more involved. We include a few demonstrations of this procedure in Section~\ref{sec:pc:prior_transformations}.
-
-Nested sampling can thus be performed in the unit $D$-dimensional hypercube, $\bxx\in {[0,1]}^D$, defining a new likelihood function via $\lik(\params)= \lik(\bFF^{-1}(\bxx))$. This has numerous advantages, the first being that one only needs to be able to generate uniform random variables in $[0,1]$. The second is more subtle; it is more natural to define a distance metric in the unit hypercube than in the physical space. Unit hypercube variables all have the same dimensionality: probability.
-
-
-
-
-
-
-
 
 
 
 
 
 \section{Sampling within an iso-likelihood contour}
-\label{sec:pc:iso_likelihood_sampling}
-Now that the nested sampling meta-algorithm has been described, we briefly review the various instantiations that exist, and introduce \PolyChord{} as an algorithm utilising slice sampling at each iteration to generate new live points.
 
-The most challenging aspect of nested sampling is drawing a new point from the prior subject to the hard likelihood constraint $\lik>\lik_i$. This may be done in a variety of ways, and distinguishes the various historical implementations.
+\subsection{The unit hypercube}
+\label{sec:bay:unit_hypercube}
+Each iteration of nested sampling requires one to sample from the prior (subject to a hard likelihood constraint). 
+Typically, priors are defined in terms of simple analytic functions such as uniform or Gaussian distributions, and may be sampled using  inverse transform sampling (Appendix~\ref{sec:sm:inverse_transform}). 
+
+Nested sampling can thus be performed in the unit $D$-dimensional hypercube. This has numerous advantages, the first being that one only needs to be able to generate uniform random variables in $[0,1]$. The second is more subtle; it is more natural to define a distance metric in the unit hypercube than in the physical space. Unit hypercube variables all have the same dimensionality: probability.
+
+
 
 \subsection{Previous Methods}
 \label{sec:pc:previous_methods}
+The most challenging aspect of nested sampling is drawing a new point from the prior subject to the hard likelihood constraint $\lik>\lik_i$. This may be done in a variety of ways, and distinguishes the various historical implementations.
+
 For some problems, the iso-likelihood contour is known analytically, allowing one to construct a sampling procedure specific to that problem. This is demonstrated by~\cite{Keeton}, and can be useful for testing nested sampling's theoretical behaviour. In most cases, however, the likelihood contour is unknown a-priori, so a more numerical approach must be taken.
 
-\cite{Mukherjee} implemented a rejection sampling method, which was later incorporated into the widely-used~\MultiNest{} algorithm~\citep{MultiNest1,MultiNest2,MultiNest3}.
+\cite{Mukherjee} implemented a rejection sampling (Appendix~\ref{sec:sm:rejection}) method, which was later incorporated into the widely-used~\MultiNest{} algorithm~\citep{MultiNest1,MultiNest2,MultiNest3}.
 These algorithms sample by using the live points to construct a set of intersecting ellipsoids which together aim to enclose the likelihood contour, and then performs rejection sampling within the ellipsoids.
  Whilst being an excellent algorithm for modest numbers of parameters, any rejection sampling algorithm has an exponential scaling with dimensionality that eventually emerges.
 

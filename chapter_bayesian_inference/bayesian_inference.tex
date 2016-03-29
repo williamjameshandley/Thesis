@@ -26,8 +26,8 @@ The natural language of ``relative merit'' is that of Bayesian probability. This
 \label{sec:bay:prob}
 
 Probability is the mathematical language of uncertainty. 
-The role of probability is to assign a weighting to all events, which roughly corresponds to the ``chance'' that such an event would occur. 
-\johnskilling{} has derived probability from measurement-theoretical grounds\citep[chap. 1]{Bayesian_methods_in_cosmology}, which provides a more intuitive backing to the standard axioms.
+A numerical weighting is assigned to all events, which roughly corresponds to the ``chance'' that such an event would occur. 
+\johnskilling{} has derived probability from measurement-theoretical grounds~\citep[chap. 1]{Bayesian_methods_in_cosmology}, which provides a more intuitive backing to the standard Kolmogorov axioms.
 
 \subsection{Bayes' theorem}
 
@@ -457,9 +457,10 @@ Nested sampling is designed to calculate the evidence, but it also produces post
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/skilling}
+  \tikzsetnextfilename{posterior_plot}
+  \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/posterior.tikz}
   \caption{%
-    Update this figure.\label{fig:bay:posterior}
+    Posterior samples.\label{fig:bay:posterior}
 }
 \end{figure}
 

@@ -6,11 +6,11 @@
 
   \begin{axis}[
       axis lines=left,           % Don't draw box axes
-      enlargelimits=upper,       % Extend arrows a little way
-      ymax=5,                    % to ensure number 5 is included
+      ymax=5.05,                    % to ensure number 5 is included
       samples=100,               % any fewer and it looks weird
       domain=0:1,                % x range
-      xlabel=$p$                 % x label
+      xlabel=$p$,                % x label
+      xmax=1.05,
       legend cell align=left,    % align legend text left
       legend pos= north west,    % put legend in top left
     ]
@@ -24,7 +24,7 @@
     \addlegendentry{prior: $\Probc{p}{\model_1}$}
 
     % Draw the posterior
-    \addplot [very thick,orange] {beta(x,\pdata,\pnumber)}; 
+    \addplot [samples=200,very thick,orange] {beta(x,\pdata,\pnumber)}; 
     % Add the posterior legend
     \addlegendentry{posterior: $\Probc{p}{\data,\model_1}$}
 
