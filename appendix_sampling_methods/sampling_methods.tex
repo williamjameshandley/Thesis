@@ -160,12 +160,16 @@ This enables $\{\theta_i\}$ to be calculated sequentially from $\{x_i\}$. We may
 \section{Rejection Sampling}
 \label{sec:sm:rejection}
 
+The principle behind rejection sampling is simple, and best demonstrated graphically as in Figure~\ref{fig:sm:rej}. If one requires some samples from a complicated distribution $f(x)$, but has the knowledge that it satisfies $f(x)<g(x)$ for some simpler distribution $g(x)$, then one may sample from $g$, and accept only those samples with probability less than $f$. 
+
 \begin{figure}
   \tikzsetnextfilename{rejection}
   \centering
   \includegraphics[width=\textwidth]{appendix_sampling_methods/plots/rejection.tikz}
   \caption{Rejection sampling. One may produce samples from some complicated distribution $f(x)$ using a simpler distribution $g(x)$ providing that $g(x)>f(x)$ within the domain of interest. One simply samples from $g$, and accepts only those samples that lie under the $f$ curve.\label{fig:sm:rej}}
 \end{figure}
+
+Obviously this will be very inefficient unless $g(x)$ happens to be rather close to $f(x)$. One finds that in general this inefficiency is exaggerated by the curse of dimensionality.
 
 \section{Metropolis---Hastings}
 \label{sec:sm:mh}
@@ -238,7 +242,7 @@ In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. 
 The traditional method of computing the evidence from MCMC procedures is via {\em thermodynamic integration}.
 The aim is to compute:
 \begin{equation}
-  \ev = \int \lik(\Theta) \prior(\Theta) \d{\Theta}
+  \ev = \int \lik(\Theta) \prior(\Theta) \d{\Theta}.
 \end{equation}
 Inspired by thermodynamics, we define the posterior $\posterior_\beta \propto \lik^\beta\prior$ at temperature $\beta$ as:
 \begin{align}
@@ -262,6 +266,8 @@ Inspired by thermodynamics, one can see that:
 Hence, integrating the above equation yields:
 \begin{equation}
   \log\ev_1-\log\ev_0 = \log\ev = \int_{0}^{1}\mean{\log\lik}_\beta.
+  \label{eqn:sm:thermo}
 \end{equation}
 The key point is that we may compute the mean $\mean{\log\lik}_\beta$ from a set of samples from the posterior $\posterior_\beta$. If we therefore generate a set of samples for a range of temperatures $\beta$, the one-dimensional integral above may be computed easily. Thermodynamic calculation of the evidence therefore is equivalent to running multiple MCMC runs at several temperatures.
+This however suffers from the disadvantage that it is difficult to produce an estimate of the error in computing~\eqref{eqn:sm:thermo}. 
 
