@@ -34,7 +34,7 @@ Equation~\eqref{eqn:lode} is ubiquitous in physics, particularly in quantum mech
 
 Over the next two subsections we will review the traditional techniques available for solving equations such as~\eqref{eqn:lode}.
 
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapter_RKWKB/figures/airy}
   \caption{The real and imaginary parts of the function $\mathrm{Ai}(-t) + \mathrm{Bi(-t)} i$, where $\mathrm{Ai}$ and $\mathrm{Bi}$ are the Airy functions of the first and second kind. This is a solution to the equation ${\ddot{x}(t) + t x(t) = 0}$ (equation~\ref{eqn:airy_equation}).\label{fig:airy}}
@@ -181,13 +181,13 @@ In contrast to a ``pure'' RK method, the RKWKB method finds the Airy equation ma
 
 
 
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapter_RKWKB/figures/data}
   \caption{The RKWKB method compared with the analytical solution. The algorithm starts at $t=0$ in the RK regime, since $\omega$ is varying quickly relative to the oscillation period. At $t=5$ it becomes more efficient to use the WKB regime, and the points start to increase in separation. By $t=15$ the algorithm is skipping multiple periods, and the step size $h$ increases exponentially.\label{fig:data}}
 \end{figure}
 
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapter_RKWKB/figures/error}
   \caption{Fractional difference between the analytical solution and RKWKB solution from Figure~\protect\ref{fig:data}. The algorithm's fractional error begins at $t=0$ with an error of $\sim10^{-4}$, but rises in the RK phase. This is to be expected as RK methods accumulate errors (particularly for oscillatory solutions). Upon entering the WKB region, the fractional error levels off. Note the rapidly increasing step size, and accuracy at extremely late times $t$. To the authors' knowledge, no numerical scheme to date has demonstrated the ability to solve the Airy equation~\protect\eqref{eqn:airy_equation} to times as late as this.\label{fig:error}}

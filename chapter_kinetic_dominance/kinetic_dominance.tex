@@ -252,7 +252,7 @@ where a prime denotes differentiation with respect to $\tau$.  Equation~\eqref{e
 \end{align}
 %
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/hyperbola}
   \caption{The constraint provided by the definition of $\Nflat$ in Halliwell time. The dynamical variables $\Nflatp$ and $\prm \phi$ lie on a hyperbola according to~\protect\eqref{eqn:Friedmann_tau}. A natural parametrization uses a hyperbolic angle $u$ detailed in~\protect\eqref{eqn:Ntrans} and~\protect\eqref{eqn:phitrans}. Note that only the upper half is parametrized, as the lower half of the hyperbola suggests a collapsing universe $(\Nflatp\propto H\propto\dot{a}<0)$. The points corresponding to $u\in\{-2,-1,0,1,2\}$ have been labeled to guide the eye.}\label{fig:figure_hyperbola}
 \end{figure}
@@ -497,7 +497,7 @@ This is a monotonically decreasing function of $f$, and hence attains its minimu
 The difference between $h$ and $f$ is therefore monotonically increasing at a rate greater than some positive number. Since $f$ is positive, it is bounded below and as $\psi_1$ is made arbitrarily large, $h$ grows without bound.
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/uschem}
   \caption{In general there is at most a single solution $f(\psi)$ to the master equation~\protect\eqref{eqn:master_eq} that is positive and finite $0<f(\psi)<\fm$. Any solution $h(\psi)$ that begins higher than $f(\psi)$ must diverge. Consequently, any solution $l(\psi)$ that begins lower than $f(\psi)$ cannot remain above $0$. If it were able to, then $l(\psi)$ would also be another finite solution lying between $0$ and some $l_\smax$. By the previous argument, this would mean $f$ could not be finite, contradicting our initial assumption.\label{fig:figure_uschem}}
 \end{figure}
@@ -1147,14 +1147,14 @@ We begin by analyzing examples of polynomial potentials of the form:
 To obtain results we integrate the evolution equations~\eqref{eqn:Friedmann_eq}~\&~\eqref{eqn:Motion_eq_Scalar} numerically.  Our kinetic initial conditions are chosen using equation~\eqref{eqn:phi_ic}--\eqref{eqn:H_ic} with an initial time $\ti$ small enough such that the inflaton is in the kinetic regime $V(\phii)\ll\dot{\phii}^2$. For the purposes of numerics the scaling parameter $\mu$ can be removed by rescaling the time coordinate (setting $\sigma=\mu^{-1}$). $\phip$ is set by requiring that there be $55$ $e$-folds during inflation.
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/Hpol}
   \caption{The evolution of the Hubble parameter for three polynomial potentials of the form in~\eqref{eqn:polpot}. The axes have been rescaled in terms of the parameter $\mu$ in the potential, so that this graph describes the evolution for any choice of $\mu$. The initial conditions for inflation were set using the flat-universe kinetic conditions, and the parameter $\phip$ was chosen so as to give $55$ $e$-folds of inflation. All three universes emerge in a kinetically dominated phase with $H=1/(3t)$, before entering a slow-roll inflationary phase with $H\sim\mathrm{constant}$. The universe then exits inflation, after which small `wiggles' in $H$ can be seen. These are due to the field $\phi$ executing oscillations about the base of the potential.\label{fig:figure_Hpol}}
 \end{figure}
 %
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/Kpol} 
   \caption{The evolution of $\Kfrac = \frac{1}{2}\dot{\phi}^2/\rho$ for the quadratic inflaton potential $V(\phi) = \mu^2 \phi^2$.  The Universe can be seen to begin in a kinetically dominated state (KD).  It enters inflation at $t_\mathrm{start}$. There is a brief fast-roll (FR) phase of inflation, before the Universe enters a protracted slow-roll (SR) phase. The Universe exits inflation at time $t_\mathrm{finish}$ after $55$ $e$-folds. After the end of inflation the field $\phi$ executes oscillations about the base of the potential. This causes $\Kfrac$ to oscillate rapidly between $0$ and $1$. For clarity, the value of $\Kfrac(t)$ with $t>t_\mathrm{finish}$ has not been plotted. The above behavior is common to all of the  polynomial potentials shown in Figure~\protect\ref{fig:figure_Hpol}.\label{fig:figure_Kpol}  }
 \end{figure}
@@ -1271,14 +1271,14 @@ Consequently, the master equation has the constant, finite solution:
 However, from the proof in Section~\ref{sec:The_generic_nature_of_kinetic_dominance}, we know that this finite solution is unique. Any solution which is greater than this diverges as $|\phi|\to\infty$, and any solution less than this becomes negative.  Indeed, this is already evident from the fact that the power-law solutions are attractors as the Universe evolves forwards in time. By the same token, these solutions are unstable in the limit $t \to 0$, i.e.\ traveling backwards in time one diverges away from these solutions and generically arrives at kinetic dominance or a turn-around.  We note that the proof that the power-law solutions are attractors is due to \citet{halliwell_scalar_1987}, and our work in Section~\ref{sec:The_generic_nature_of_kinetic_dominance} demonstrates that Halliwell's methodology is applicable more generally.
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/Hlam}
   \caption{As in Figure~\protect\ref{fig:figure_Hpol}, but for the hyperbolic cosine potential~\protect\eqref{eqn:coshpot}, which tends to an exponential potential for $\phi \to \pm\infty$. The scaling constant is now $\sqrt{V_0}$, and three values of $\sqrt{\epsilon}$ are considered. One can see clearly that the Universe emerges in a kinetically dominated state with $H=1/(3t)$. The Universe then enters a protracted power-law phase where $H = 1/(\epsilon t)$. The field $\phi$ oscillates about the base of the potential after the exit of the inflationary phase, causing wiggles in the later sections of the above plot.\label{fig:figure_Hlam}}
 \end{figure}
 %
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/Klam}
   \caption{As in Figure~\protect\ref{fig:figure_Kpol}, but for the hyperbolic cosine inflaton potential with $\sqrt{\epsilon}=0.5$. The Universe emerges in a kinetically dominated (KD) phase before going through transitory fast-roll (FR). Instead of a slow-roll inflation, the Universe then settles into a power-law inflation (PL), characterized by $\Kfrac=\epsilon/3$. The Universe exits inflation at $t_\mathrm{finish}$, after which $\phi$ executes oscillations about the base of the potential. $\Kfrac$ therefore oscillates rapidly between $0$ and $1$, and the later $t>t_\mathrm{finish}$ section of this plot has been suppressed for clarity.\label{fig:figure_Klam}}
 \end{figure}
@@ -1351,7 +1351,7 @@ Thus one finds that $f(\psi)$ is the only finite positive solution.  All other s
 
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/uf}
   \caption{An oscillating finite solution to the master equation~\protect\eqref{eqn:master_eq} with $V(\psi)$ defined as in equation~\protect\eqref{eqn:Vphi_uf_example} and demonstrated in Figure~\protect\ref{fig:figure_ospot}. If $a$ and $b$ are chosen such that $a>b>0$, $0<a+b<1$, $0<a-b<1$, then this represents a finite, positive solution.  From equation~\protect\eqref{eqn:uf_example} it is easy to see that $\fmn = \log\left(\frac{1}{\sqrt{1-{(a+b)}^2}}\right)$, $\fm=\log\left(\frac{1}{\sqrt{1-{(a-b)}^2}}\right)$.\label{fig:figure_uf}}
@@ -1359,7 +1359,7 @@ Thus one finds that $f(\psi)$ is the only finite positive solution.  All other s
 %
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/ospot}
   \caption{The master equation may be solved for the potential $V(\psi)$ if a form of $f(\psi)$ is chosen. For the choice of $f(\phi)$ detailed in equation (\protect\ref{eqn:uf_example}), the potential is solvable in closed form [equation \protect\ref{eqn:Vphi_uf_example}].\label{fig:figure_ospot}}
@@ -1427,7 +1427,7 @@ We demonstrate the suppression on large angular scales of the CMB and late-time 
 Using the best-fit parameters from {\em Planck\/}+WP+highL+BAO \citep{planck_collaboration_planck_2013} yields the standard matter CMB power spectra (dashed lines), whereas the alternative power spectra (solid line) were generated using $\mathcal{P}_\mathcal{R}(k)$ from Figure~\ref{fig:figure_CSpol} (for $n=2$), for which the axes were rescaled to agree with the values of $A_s$ and $n_\mathrm{s}$ during the slow-roll phase. The resulting matter and CMB power spectra are seen to exhibit a suppression of power at low $k$ and $\ell$ values, with the rest of the spectra perfectly intact, as required by cosmological observations.  Further investigation is clearly required, but this analysis already demonstrates the utility of kinetic dominance.
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/powerspec}
   \caption{Figure taken from \protect\citet{hlozek_atacama_2012} showing the current status of the observed late-time matter perturbation power spectrum. As one can see, the currently probed $k$ range is $10^{-3}<k<2\:\mathrm{Mpc}^{-1}$.\label{fig:experimental_power_spectrum}}
@@ -1435,21 +1435,21 @@ Using the best-fit parameters from {\em Planck\/}+WP+highL+BAO \citep{planck_col
 %
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/CSpol}
   \caption{The approximate power spectrum of the primordial curvature perturbations for polynomial potentials, calculated using equation~\protect\eqref{eqn:curvature_power_spectrum}. The units of the $k$ axis are determined by the requirement that there are $N_*=55$ $e$-folds remaining when the pivot scale $k_*=0.05\:\mathrm{Mpc}^{-1}$ exits the horizon $k=aH$. The magnitude of the power spectrum is determined by the scaling $\mu$ in the potential. The grey area indicates the angular scales that have been experimentally probed; see Figure~\protect\ref{fig:experimental_power_spectrum}.\label{fig:figure_CSpol}}
 \end{figure}
 %
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/CSlam}
   \caption{As in Figure~\protect\ref{fig:figure_CSpol}, but for exponential potentials. The magnitude of the power spectrum now scales with $V_0$ rather than $\mu^2$.\label{fig:figure_CSlam}}
 \end{figure}
 %
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \centerline{\includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/Cl}}
   \centerline{\includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/matter}}
   \caption{The CMB scalar power spectra (top) and the late-time matter power spectra (bottom), resulting from the curvature perturbation power spectra in the inset of the top figure. The solid line corresponds to a free inflaton with potential $V=\frac{1}{2}m^2\phi^2$ assuming kinetic initial conditions with $m=0.81\times10^{-5}\m$, $\phip = 21.8$, $N_*=42.5$. The dashed line corresponds to the best-fit standard $\Lambda$CDM model.  The presence of the cutoff in the curvature power spectrum for kinetic initial conditions causes a suppression of power on large angular scales in both the CMB and matter power spectra.\label{fig:figure_Cl}}
@@ -1479,7 +1479,7 @@ To address these issues further, we consider in more detail the main inflationar
 The initial conditions are set by choosing $\phi(\teq)=\phieq=0$ with an equipartition of kinetic and potential energies so that $\dot{\phi}(\teq)=\phideq=\sqrt{2V_0}$.  Figure~\ref{fig:figure_BVS_initial_conditions} illustrates this diagrammatically.  The values of $V_0$ and $\mu$ are tuned so that the power spectrum has an appropriate index $n_s$ and the correct number of $e$-folds are generated.
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/newpot}
   \caption{An illustration of the ``equipartition'' initial conditions imposed by \protect\citet{boyanovsky_cmb_2006}, for the new inflation potential $V_0{\left(1-\mu^2\phi^2\right)}^2$. The initial conditions are set at some time $\teq$ with values denoted by a subscript ``eq''. The field is set with $\phieq=0$ and a velocity $\phideq= \sqrt{2V_0}$ so that the energy is partitioned equally between kinetic and potential energy: $V(\phieq) = \frac{1}{2}\phideq$.\label{fig:figure_BVS_initial_conditions}}
 \end{figure}
@@ -1597,7 +1597,7 @@ We thus find ${d\Hh}/{d\phi}\ne0$ at $\phi=\phiz$, and thus does not represent a
 Figure~\ref{fig:figure_edS} reveals an interesting second eternal de Sitter solution. The right-hand half of the dashed line indicates the previously discussed phase: a universe which emerges at $t=-\infty$ in an inflating state with the inflaton slowly rolling off an extremum in the potential, exiting the inflationary phase when the inflaton oscillates about the bottom of the potential.  The left-hand half of the dashed line indicates a universe which emerges at $t=0$ in a kinetically dominated phase before the inflaton rests on top of the extremum, settling into an eternal de Sitter phase as $t\to\infty$.
 
 %
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapter_kinetic_dominance/figures/edS}
   \caption{Schematic of the Hubble parameter against $\phi$ in the Hamilton-Jacobi representation. The potential $V(\phi)$ is the same potential as in Figure~\protect\ref{fig:figure_BVS_initial_conditions}. The solid curves represent the portions of the solutions to~\protect\eqref{eqn:Hamilton_Jacobi_H} with $\dot{\phi}\ge0$. The shaded region is defined by $H<\sqrt{V/3\m^2}$. Solutions meet the shaded region with zero gradient. Solutions within the white region are unique: they do not cross over. The right-hand side of the dashed curve represents a universe entering at  $\phi=\phiz$, ($t=-\infty$) in an eternal de Sitter phase. The left-hand side of the dashed curve indicates a universe entering in a kinetically dominated phase before settling into a de Sitter phase at $t=+\infty$.\label{fig:figure_edS}}
 \end{figure}

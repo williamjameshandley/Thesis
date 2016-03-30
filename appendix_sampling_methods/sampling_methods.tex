@@ -162,7 +162,7 @@ This enables $\{\theta_i\}$ to be calculated sequentially from $\{x_i\}$. We may
 
 The principle behind rejection sampling is simple, and best demonstrated graphically as in Figure~\ref{fig:sm:rej}. If one requires some samples from a complicated distribution $f(x)$, but has the knowledge that it satisfies $f(x)<g(x)$ for some simpler distribution $g(x)$, then one may sample from $g$, and accept only those samples with probability less than $f$. 
 
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \tikzsetnextfilename{rejection}
   \centering
   \includegraphics[width=\textwidth]{appendix_sampling_methods/plots/rejection.tikz}
@@ -190,7 +190,7 @@ A new state $x$ is proposed from the proposal density $\proposal(x|x^{(t)})$, an
   p_\mathrm{accept}(x|x^{(t)}) = \frac{\posterior(x)}{\posterior(x^{(t)})}\frac{\proposal(x^{(t)}|x)}{\proposal(x|x^{(t)})}.
 \end{equation}
 If the step is accepted, then $x^{(t+1)}=x$, otherwise $x^{(t+1)} = x^{(t)}$. This procedure can be seen schematically in Figure~\ref{fig:sm:MH}.
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \centering
   \tikzsetnextfilename{MH}
   \includegraphics[width=\textwidth]{appendix_sampling_methods/plots/MH.tikz}
@@ -219,7 +219,7 @@ In many cases, $\tau\gg1$ resulting in unacceptable run-times. This can be ameli
 \label{sec:sm:slice}
 Radford Neal initially proposed slice sampling as an effective methodology for generating samples numerically from a given posterior $\posterior(\params)$. One first chooses a `slice' (or probability level) $\posterior_0$ uniformly within $[0,\posterior_\smax]$. One then samples uniformly within the $\params$-region defined by $\posterior(\params)>\posterior_0$. The similarity with the iso-likelihood contour sampling required by nested sampling should be clear. In the one-dimensional case, he suggests the sampling procedure detailed in Figure~\ref{fig:bay:1d_slice}.
 
-\begin{figure}[tbp]
+\begin{figure}[tp]
   \centerline{%
     \includegraphics[width=\textwidth]{appendix_sampling_methods/figures/slice}
   }
