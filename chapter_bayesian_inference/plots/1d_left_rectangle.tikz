@@ -2,6 +2,7 @@
     declare function={fone(\x)=5*exp(-(\x-2.5)^2);}, 
   very thick, line join=round]
 
+
   % Draw squares
   \foreach [evaluate={\x=0.25*\j; \y=fone(\x);}] \j in {0,...,20}{%
     \path [fill=black!25, draw=white, line width=0.2pt] 
@@ -12,9 +13,6 @@
     cycle;
   }
 
-  % Draw functions
-%  \draw [black, domain=0.25:4.75, samples=100, variable=\t] 
-%  plot (\t, {fone(\t)});
 
   % x-axis
   \draw [-stealth, black!75] (0,0) -- (5,0) node [below right] {$x$};
@@ -22,5 +20,8 @@
   % y-axis
   \draw [-stealth, black!75] (0,0) -- (0,5) node [above right] {$y$};
 
+  % Draw functions
+  \draw [black, thin, domain=0.25:4.75, samples=100, variable=\t] 
+  plot (\t, {fone(\t)});
 
 \end{tikzpicture}

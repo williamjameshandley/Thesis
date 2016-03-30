@@ -65,7 +65,7 @@ Given the value of a solution $\mathbf{y}_j$ at some time $t_j$, one may advance
   t_{j+1} &=  t_{j} + h.
   \label{eqn:t_step}
 \end{align}
-This is termed {\em Euler's method}, and for arbitrarily small $h$ will recover the solution to any desired accuracy. It is termed {\em first order\/} since each step is accurate to $\sim \mathcal{O}(h)$.
+This is termed {\em Euler's method}, and for arbitrarily small $h$ will recover the solution to any desired accuracy. It is termed {\em first order\/} since each step is accurate to $\bigO{h}$.
 
 Euler's method is normally impractical for real numerical work. Runge-Kutta schemes work by generalising~\eqref{eqn:euler}~\&~\eqref{eqn:y_step} by including additional intermediate function evaluations that integrate~\eqref{eqn:ode} with greater accuracy.
 
@@ -175,7 +175,7 @@ whose solution is depicted in Figure~\ref{fig:airy}. This is often quoted as bei
 
 We set the desired relative error to be $10^{-4}$. The algorithm remains in the RK regime until $t\sim5$. When the WKB solver is activated, instead of following every oscillation of the solution, it rapidly speeds up, skipping many oscillations. This is detailed in Figure~\ref{fig:data}.
 
-The error compared to the true solution is detailed in Figure~\ref{fig:error}. Here we find that initially the error is small, but grows$\sim\mathcal{O}(h^{2s} t^{s+5/4})$ where $s=4$ is the order of the RK method~\citep{Iserles02globalerror}. After the WKB regime is entered, it begins to make huge strides, and the error levels off.
+The error compared to the true solution is detailed in Figure~\ref{fig:error}. Here we find that initially the error is small, but grows$\bigO{h^{2s} t^{s+5/4}}$ where $s=4$ is the order of the RK method~\citep{Iserles02globalerror}. After the WKB regime is entered, it begins to make huge strides, and the error levels off.
 
 In contrast to a ``pure'' RK method, the RKWKB method finds the Airy equation maximally {\em easy}.
 

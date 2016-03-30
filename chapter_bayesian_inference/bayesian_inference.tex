@@ -277,7 +277,7 @@ where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the qua
   \int_0^1\cdots\int_0^1 g(x_1,\ldots,x_d) \d{x_1}\cdots \: \d{x_d} \approx \sum\limits_{i_1,\ldots,i_d=0}^{n} g(x_{i_1},\ldots,x_{i_d}) w_{i_1,\ldots,i_d},
   \label{eqn:bay:quadrature_nd}
 \end{equation}
-This calculation however requires $\bigO{n^d}$ function evaluations. This is an exponential scaling with $d$, and is an example of the {\em curse of dimensionality}. Even for modest number of parameters $\left[ d\bigO{4} \right]$ these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which $\lik$ is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the good data will update the prior information by some significant amount in each dimension.}. The grid size $n$ must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
+This calculation however requires $\bigO{n^d}$ function evaluations. This is an exponential scaling with $d$, and is an example of the {\em curse of dimensionality}. Even for modest number of parameters $\left[ d\bigO{6} \right]$ these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which $\lik$ is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the good data will update the prior information by some significant amount in each dimension.}. The number of grid points in each dimension $n$ must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
 
 \begin{figure}[tp]
   \centering
@@ -288,7 +288,7 @@ This calculation however requires $\bigO{n^d}$ function evaluations. This is an 
     \tikzsetnextfilename{2d_left_rectangle}
     \includegraphics[width=0.5\textwidth]{chapter_bayesian_inference/plots/2d_left_rectangle.tikz}
   \fi
-  \caption{\label{fig:bay:quadrature}}
+  \caption{Approximating an integral using a quadrature rule. In moving a one-dimensional integral (left) to a two-dimensional integral (right), the number of quadrature points becomes exponentially larger. This is an example of the curse of dimensionality.\label{fig:bay:quadrature}}
 \end{figure}
 
 Fortunately there is a better way. If one has a set of $n_s$ samples:
@@ -321,7 +321,7 @@ Nested sampling is a methodology devised by \citet{skilling2006} to effectively 
 \end{equation}
 This integral is typically over a high-dimensional parameter space, only a small fraction of which contributes to $\ev$. We may quantify the size of this region by considering the {\em relative entropy\/}\footnote{aka: Kullback-Leibler divergence, information divergence, information gain, KLIC, KL divergence.} of the prior from the posterior distribution:
 \begin{equation}
-  H = \int \log\left( \frac{\posterior(\params)}{\prior(\params)}\right) \posterior(\params)\: \d{\params}.
+  H = -\int \log\left( \frac{\posterior(\params)}{\prior(\params)}\right) \posterior(\params)\: \d{\params}.
   \label{eqn:bay:rel_ent}
 \end{equation}  
 This quantifies the number of nats\footnote{if ``bits'' are a measure of information in base 2, then ``nats'' is information in base $e$.} of information that have been gained on account of the data. Equivalently, the fraction of the prior which contributes non-negligibly to~\eqref{eqn:bay:ev_short} is approximately $X\sim e^{-H}$.
@@ -329,7 +329,7 @@ This quantifies the number of nats\footnote{if ``bits'' are a measure of informa
 The size and position of the region surrounding the peak (or peaks) will not be known {\em a priori}, and in high dimensions is challenging to find.  
 
 \subsection{The prior volume transformation $\lik(X)$}
-The first trick is to transform~\eqref{eqn:bay:ev_short} into an effectively one dimensional problem. We define an iso-likelihood contour as usual:
+The first trick is to transform~\eqref{eqn:bay:ev_short} into an effectively one dimensional problem. We define an iso-likelihood contour as:
 \begin{equation}
   C(\liks) = \{\params : \lik(\params)=\liks \}.
   \label{eqn:bay:contour_def}
@@ -415,11 +415,34 @@ Instead of working with a single sample, one could initially generate a set of $
 If this point is deleted, and replaced with a new point drawn from the contour defined by $\lik_1$, then one will still have $\nlive$ points, now uniformly distributed uniformly in $[0,X_1]$. Proceeding onward, one finds that the volume becomes log-normally distributed:
 \begin{align}
   \log X_i  &\approx -\frac{i}{\nlive} \pm \sqrt{\frac{i}{\nlive}}.
-  \label{eqn:bay:log_normal_1_n}
+  \label{eqn:pc:X_full}
 \end{align}
 The prior space compression is slower than single point nested sampling, but with a correspondingly lower error. This therefore produces a more accurate inference on the evidence.
 
 The deleted point is then added to a list of ``dead points'' which can then be used to make inferences on the evidence using equation~\eqref{eqn:bay:ev_sum}.
+
+
+\subsection{Posterior inference}
+Nested sampling is designed to calculate the evidence, but it also produces posterior samples as a by-product of the calculation. Samples can be obtained by sampling randomly under the posterior curve.% (Figure~\ref{fig:bay:posterior}). 
+Since we have partitioned the area into regions of size $\lik_i w_i$, we can use this as an importance weighting.
+
+%\begin{figure}[tp]
+%  \centering
+%  \tikzsetnextfilename{posterior_plot}
+%  \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/posterior.tikz}
+%  \caption{%
+%    Posterior samples.\label{fig:bay:posterior}
+%}
+%\end{figure}
+
+Thus, dead points may be used as posterior samples with importance weighting:
+\begin{equation}
+  p_i = \frac{\lik_i w_i}{\ev},
+  \label{eqn:bay:posterior_weight}
+\end{equation}
+where the additional factor of $\ev$ merely ensures that they sum to $1$ for consistency.
+
+
 
 \subsection{Terminating the algorithm}
 One does not wish to continue compressing the space once $X_i\ll e^{-H}$ for two reasons. The first reason is that this will not give any further accuracy on the evidence calculation. The second is more important. The region beneath $X_i\ll e^{-H}$ is not statistically relevant. Scientists used to maximum likelihood methods find this difficult to swallow, and often desire algorithms that will maximise the function to find the highest peak. In high dimensions, the absolute peak occupies such a vanishingly small percentage of the prior mass that it is totally irrelevant for the purposes of inference. In the case of a Gaussian likelihood, the peak value is a useful {\em summary statistic\/} but nothing more than that. Otherwise, one should not concern oneself with maximum likelihood, only in an accurate description of the peak provided by a set of samples.
@@ -439,28 +462,6 @@ As nested sampling proceeds, the likelihoods $\lik_i$ monotonically increase, bu
   \label{eqn:bay:live_evidence}
 \end{equation}
 where the average is taken over the live points. Since this is typically an underestimate at early times, this will not cause premature termination.
-
-
-
-
-\subsection{Posterior inference}
-Nested sampling is designed to calculate the evidence, but it also produces posterior samples as a by-product of the calculation. Samples can be obtained by sampling randomly under the posterior curve (Figure~\ref{fig:bay:posterior}). Since we have partitioned the area into regions of size $\lik_i w_i$, we can use this as an importance weighting.
-
-\begin{figure}[tp]
-  \centering
-  \tikzsetnextfilename{posterior_plot}
-  \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/posterior.tikz}
-  \caption{%
-    Posterior samples.\label{fig:bay:posterior}
-}
-\end{figure}
-
-Thus, dead points may be used as posterior samples with importance weighting:
-\begin{equation}
-  p_i = \frac{\lik_i w_i}{Z},
-  \label{eqn:bay:posterior_weight}
-\end{equation}
-where the additional factor of $Z$ merely ensures that they sum to $1$ for consistency.
 
 
 
@@ -487,11 +488,9 @@ where the additional factor of $Z$ merely ensures that they sum to $1$ for consi
 
 \end{itemize}
 
-\begin{equation}
-  \log X_i = -\frac{i}{n} \pm \sqrt{\frac{i}{n}}
-  \label{eqn:pc:X_full}
-\end{equation}<++>
 
+\section{Conclusion}
+The following two chapters are concerned with describing my contributions to nested sampling theory and implementation in the algorithm \PolyChord{}. After that I describe a novel numerical approach to solving differential equations which is relevant for my work in the field of quantum cosmology.
 
 
 
