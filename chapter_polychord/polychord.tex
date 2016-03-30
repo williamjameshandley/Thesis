@@ -89,7 +89,7 @@ This is termed \CosmoChord, which may be downloaded from the link at the end of 
  The algorithm is written in \FORTRAN{} and parallelised using \openMPI{}.  It is optimised for the case where the dominant cost is the generation of a new live point.  This is frequently the case in astrophysical applications, either due to high dimensionality, or to costly likelihood evaluation.  
 
 %
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centerline{%
     \includegraphics[width=\textwidth]{chapter_polychord/figures/contour}
 }
@@ -195,7 +195,7 @@ and is illustrated in Figure~\ref{fig:pc:parallel}.
 As a rule, \PolyChord{} parallelises well for $\nprocs<\nlive$, but from exhibits a law of diminishing returns. In practice, $\nprocs = \nlive/5$ yields $\sim90\%$ parallelisation efficiency, and
 since the number of live points is typically $\sim500$, this is more than sufficient for currently available \openMPI{} architectures, and certainly superior to the parallelisation of the standard Metropolis-Hastings algorithm.
 %
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_polychord/figures/parallel}
   \caption{%
@@ -257,7 +257,7 @@ Figure~\ref{fig:pc:gaussian} shows the number of likelihood evaluations $\nlike$
 Even on a simple likelihood such as this, \PolyChord{} shows a significant improvement over \MultiNest{} in scaling with dimensionality.  \PolyChord{} at worst scales as ${\nlike\bigO{D^3}}$, whereas \MultiNest{} has an exponential scaling which emerges in higher dimensions.
 However, we must point out that a good rejection algorithm like \MultiNest{} will always win in low dimensions. We therefore recommend using \MultiNest{} for low dimensional problems, although it should be noted that \MultiNest{}'s clustering is ineffective in modest dimensionalities.
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_polychord/figures/gaussian_evidences}
   \caption{%
@@ -265,7 +265,7 @@ However, we must point out that a good rejection algorithm like \MultiNest{} wil
 }
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_polychord/figures/gaussian}
   \caption{Comparing \PolyChord{} with \MultiNest{} using a
@@ -288,13 +288,13 @@ The results for a twin peaks likelihood are of an identical character to Figures
 \subsubsection{Rastrigin function}
 \label{sec:pc:rastrigin}
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_polychord/figures/rastrigin}
   \caption{The two-dimensional Rastrigin $\log$-likelihood in the range ${[-1.5,1.5]}^2$. Within this region there are $8$ local maxima, and one global maximum at $(0,0)$. The clustered samples produced by \PolyChord{} are plotted on the $\log$-likelihood surface, with colours that indicating the separate clusters identified.\label{fig:pc:rastrigin}}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_polychord/figures/rastrigin_data}
   \caption{\PolyChord{} cluster identification for the Rastrigin function. \PolyChord{} identifies posterior modes and computes their local evidences, expressed here as a logarithmic fraction of  the total evidence in the mode. Dashed lines indicate the analytic results computed by a saddle point approximation at each of the peaks. As can be seen, \PolyChord{} reliably identifies the inner $21$ modes with increasing accuracy.\label{fig:pc:rastrigin_data}}
@@ -319,13 +319,13 @@ We ran \PolyChord{} on a two-dimensional Rastrigin log-likelihood  with $\nlive=
 \subsection{Rosenbrock function}
 \label{sec:pc:rosenbrock}
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_polychord/figures/rosenbrock_analytic}
   \caption{Density plot of the two-dimensional Rosenbrock function. The function exhibits a long, thin curving degeneracy, with a global maximum at $(1,1)$.\label{fig:pc:rosenbrock_2d}}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_polychord/figures/rosenbrock}
   \caption{The four-dimensional Rosenbrock posterior, with $x_3$ and $x_4$ marginalised out. \PolyChord{} correctly identifies both the local (red) and global (blue) maxima.\label{fig:pc:rosenbrock}}
@@ -364,13 +364,13 @@ Given that this problem is quoted as being ``optimally difficult'' \citep{MultiN
 This may mean that the Gaussian shell is not a good proxy for a high-dimensional curving degeneracy. However, it could equally suggest that curving degeneracies become easier to navigate in higher dimensions. We can certainly conclude that a particle physics model with a proliferation of phases would be easier to navigate than one with a smaller number of phases.
 
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_polychord/figures/gaussian_shell}
   \caption{The two-dimensional Gaussian shell likelihood.\label{fig:pc:gaussian_shell}}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_polychord/figures/gaussian_shell_posterior}
   \caption{Posteriors produced by \PolyChord{} for a $n=100$-dimensional Gaussian shell, with width $w=0.1$, radius $r=2$, and center $\bmew=\bzero$. 
@@ -394,7 +394,7 @@ We choose $r=2$, $w=0.1$, and $\mu_1$ and $\mu_2$ are separated by $7$ units. Wi
 \subsection{\CosmoChord}
 \label{sec:pc:cosmochord}
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\textwidth]{chapter_polychord/figures/cosmochord}
   \caption{\CosmoChord{} (red) vs.\ \CosmoMC{} (black). We use the 2013 {\texttt CAMSPEC}+{\texttt commander} likelihoods with a standard six-parameter $\Lambda$CDM cosmology, varying all 14 nuisance parameters.  We compare the $1$ and $2$-dimensional marginalised posteriors of the $6$ $\Lambda$CDM parameters. \CosmoChord{} is in close agreement with the posteriors produced by \CosmoMC{}, recovering the correct mean values of and degeneracies between the parameters. The slight deviations between the red and black curves are sampling noise.\label{fig:pc:cosmochord}}

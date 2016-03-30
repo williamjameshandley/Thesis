@@ -19,7 +19,7 @@ A numerical weighting is assigned to all events, which roughly corresponds to th
 
 \subsection{Bayes' theorem}
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \tikzsetnextfilename{bayes_theorem}
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/bayes_theorem.tikz}
@@ -27,7 +27,7 @@ A numerical weighting is assigned to all events, which roughly corresponds to th
 \end{figure}
 
 
-%\begin{figure}[ht]
+%\begin{figure}[tbp]
 %  \centerline{%
 %    \input{chapter_bayesian_inference/plots/probability}
 %  }
@@ -140,7 +140,7 @@ $\model_1$ can go further however. We may also use Bayes' theorem to compute:
 \end{equation}
 This here gives us the distribution on $p$ {\em given the data}. Namely, how the data should update our ``spread bet''. We already have the ingredients for the above construction from equations~\eqref{eqn:bay:M1},~\eqref{eqn:bay:prior1},~\&~\eqref{eqn:bay:marg}, and given the uniform prior, we find our updated bet on $p$ is proportional to $p^\data{(1-p)}^{N-\data}$, a function of $p$. This is a beta distribution, and is indicated in Figure~\ref{fig:bay:beta}.
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \ifdefined\lightweight{}
   \else
@@ -279,7 +279,7 @@ where ${x_i\in[0,1]}$ are the quadrature points ${w_i\in\mathbb{R}}$ are the qua
 \end{equation}
 This calculation however requires $\bigO{n^d}$ function evaluations. This is an exponential scaling with $d$, and is an example of the {\em curse of dimensionality}. Even for modest number of parameters $\left[ d\bigO{4} \right]$ these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which $\lik$ is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the good data will update the prior information by some significant amount in each dimension.}. The grid size $n$ must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \ifdefined\lightweight{}
   \else
@@ -346,7 +346,7 @@ which is termed the {\em prior volume\/} by physicists and {\em prior mass\/} by
 \end{equation}
 This process is graphically depicted in Figure~\ref{fig:bay:prior_volume} for a two dimensional likelihood. Note the limits are from $0$ to $1$ since $X$ denotes the {\em fraction\/} of the prior enclosed by the likelihood contour\footnote{or alternatively because $X$ is a form of cumulative distribution function}.
 %
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/contour_nested}
   \caption{%
@@ -425,7 +425,7 @@ The deleted point is then added to a list of ``dead points'' which can then be u
 One does not wish to continue compressing the space once $X_i\ll e^{-H}$ for two reasons. The first reason is that this will not give any further accuracy on the evidence calculation. The second is more important. The region beneath $X_i\ll e^{-H}$ is not statistically relevant. Scientists used to maximum likelihood methods find this difficult to swallow, and often desire algorithms that will maximise the function to find the highest peak. In high dimensions, the absolute peak occupies such a vanishingly small percentage of the prior mass that it is totally irrelevant for the purposes of inference. In the case of a Gaussian likelihood, the peak value is a useful {\em summary statistic\/} but nothing more than that. Otherwise, one should not concern oneself with maximum likelihood, only in an accurate description of the peak provided by a set of samples.
 
 %
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=\columnwidth]{chapter_bayesian_inference/figures/gaussian_weight}
   \caption{%
@@ -446,7 +446,7 @@ where the average is taken over the live points. Since this is typically an unde
 \subsection{Posterior inference}
 Nested sampling is designed to calculate the evidence, but it also produces posterior samples as a by-product of the calculation. Samples can be obtained by sampling randomly under the posterior curve (Figure~\ref{fig:bay:posterior}). Since we have partitioned the area into regions of size $\lik_i w_i$, we can use this as an importance weighting.
 
-\begin{figure}[ht]
+\begin{figure}[tbp]
   \centering
   \tikzsetnextfilename{posterior_plot}
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/posterior.tikz}
