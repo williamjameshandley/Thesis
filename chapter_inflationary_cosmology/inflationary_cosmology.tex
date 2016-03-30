@@ -105,7 +105,7 @@ The form of the metric~\eqref{eqn:cos:FRW_metric} is close to Minkowski. Spatial
 
 
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \tikzsetnextfilename{comoving}
   \includegraphics[width=\textwidth]{chapter_inflationary_cosmology/plots/comoving.tikz}
@@ -167,7 +167,7 @@ which measures the fraction of the critical density $\rho_c$ taken up by a given
 \end{equation}
 We can see immediately that in a universe dominated by dark energy $(w=-1)$ the expansion is exponential, and in one dominated by radiation $(w=1/3)$, that $a\propto t^{1/2}$, which is a slower expansion than one dominated by matter $a\propto t^{2/3}$. In our universe, where we observe that it is approximately flat, $\Omega_0^{\text{(curv)}}\approx0$, matter now vastly outweighs radiation, and is of the same order of magnitude as dark energy, ${\Omega_0^{\text{(de)}} \approx \Omega_0^{\text{(mat)}} \gg \Omega_0^{\text{(rad)}}}$, we expect an expansion history of the form shown in Figure~\ref{fig:cos:expansion_history}.
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{chapter_inflationary_cosmology/figures/expansion_history}
   \caption{The approximate expansion history of our universe. Initially, the universe is dominated by radiation $a\sim t^{1/2}$. As the universe expands, the photon lose energy as their wavelengths are stretched.  Thus, the universe transitions to a matter dominated $a\sim t^{2/3}$ regime. Finally, the dark energy of the universe overtakes the matter content, and it settles into an exponential expansion $a\sim e^{H_0 t}$\label{fig:cos:expansion_history}}
@@ -243,7 +243,7 @@ This is often analytically useful, but physically conformal time corresponds to 
 and the metric is conformally equivalent to two-dimensional Minkowski space\footnote{Hence the name ``conformal time''.}. We have thus removed all the complexities of curvature and comoving coordinates. Since photons have a null trajectory, $ds^2=0\Rightarrow \d{\eta} = \pm \d{\chi}$, and therefore  travel in straight lines on spacetime diagrams with $\eta$ and $\chi$ as axes. This considerably simplifies most pictures. It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial coordinates.\footnote{Alternatively, conformal time is the time measured by a small light clock that expands comovingly with the universe.}
 
 \section{The cosmic microwave background}
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{chapter_inflationary_cosmology/figures/satellites}
   \caption{Microwave satellite pictures.\protect\footnote{Image credit:NASA/JPL-Caltech/ESA}}\label{fig:cos:satellites}
@@ -296,7 +296,7 @@ Thus, the condition that $w<-1/3$ is equivalent to requiring that at some point 
 which can be recognised as a violation of the {\em strong energy condition}.
 
 \subsection{Horizon problem}
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \tikzsetnextfilename{horizon_problem}
   \includegraphics[width=\textwidth]{chapter_inflationary_cosmology/plots/horizon_problem.tikz}
@@ -307,7 +307,7 @@ The near-perfect isotropy of the CMB also presents a problem. Our image of the C
 Note that we may resolve this problem with an accelerated phase as well (Figure~\ref{fig:cos:horizon_problem_resolved}). An accelerated phase pushes any singularity far back into the conformal past. This means that there is more than enough time for the universe to dynamically come to equilibrium. In fact, a detailed analysis shows that this accelerated epoch acts as a ``smoothing'' effect on a given causal patch, yielding a homogeneous universe from any generic initial conditions.
 
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \tikzsetnextfilename{horizon_problem_resolved}
   \includegraphics[width=\textwidth]{chapter_inflationary_cosmology/plots/horizon_problem_resolved.tikz}
@@ -356,7 +356,7 @@ Equation~\eqref{eqn:cos:KG} represents space telling matter how to move and equa
 \subsection{Phenomenology}
 One way to trigger an accelerated phase is to set the inflaton as trapped in a false vacuum (Figure~\ref{fig:cos:potential}). This sets $\dot{\phi}=0$, $V(\phi)=V_0$ and therefore $H=H_0=V_0/3\m^2$ and $a\sim e^{H_0t}$, which is an exponential and therefore accelerated expansion. However, to end this accelerated phase, the inflaton would have to tunnel quantum mechanically out of its false vacuum. It turns out that the false vacuum is too stable, and results in unphysical predictions.
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{chapter_inflationary_cosmology/figures/potential}
   \caption{An example inflationary potential.}\label{fig:cos:potential}
@@ -718,7 +718,7 @@ Computing the theoretical predictions of these $C_\ell$'s from a given cosmology
 \end{equation}
 where $\Delta_{X\ell}(k)$ are transfer functions and ${X\in\left\{ T,E,B \right\}}$ represents the polarisation of the photon field. These transfer functions are computed from line of sight integrals, requiring one to evolve the contents of the universe from the $k$-mode's horizon re-entry point through the hot big bang era, past the surface of last scattering at recombination and all the way to the current epoch before projecting the photon field onto the sky we see today. Treating this calculation fully is beyond the scope of this thesis, but it suffices to say that this is now extremely well understood physics, and a full set of $C_\ell$'s can be computed for a given cosmology using Boltzmann codes such as \CAMB{} in a matter of seconds.
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \tikzsetnextfilename{transfer}
   \includegraphics[width=\textwidth]{chapter_inflationary_cosmology/plots/transfer.tikz}

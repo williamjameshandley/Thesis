@@ -25,8 +25,9 @@ form:
   = \phip \pm \sqrt{\frac 2 3}\m \log\left( \frac t \tp \right)
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}
-  \includegraphics[width=\textwidth]{chapter_classical_perturbations/plots/w.eps}
+\begin{figure}[ht]
+  \tikzsetnextfilename{wevolution}
+  \includegraphics[width=\textwidth]{chapter_classical_perturbations/plots/w.tikz}
   \caption{%
     Schematic of the equation of state parameter $w$ against cosmic
     evolution. The generic scenario entails beginning in a kinetically
@@ -42,7 +43,7 @@ The statements above are rigorously true. However, the key question is how physi
 
 The classical equations have two opportunities to break down. First, it may be that this kinetically dominated state occurs before the Planck time, when we know that we would need a quantum theory of gravity to describe the universe. Second, it may be that the homogeneity assumption breaks down at early times.
 
-\section{The Planck time $\tp$}
+\section{The Planck time}
 The Planck epoch occurs at the earliest times and is defined as the
 regime in which we are certain we would need a quantum theory of
 gravity. Effectively this occurs when:
@@ -123,7 +124,7 @@ We can see this graphically in Figure~\ref{fig:cls:linde}
 
 \ifdefined\lightweight{}
 \else
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \tikzsetnextfilename{swirl}
   \includegraphics[width=\textwidth]{chapter_classical_perturbations/plots/swirl.tikz}
@@ -133,7 +134,7 @@ We can see this graphically in Figure~\ref{fig:cls:linde}
   The upper plot is somewhat misleading, since it has an artificially high value of $m$. When the value of $m$ is lowered to $0.1\m$, as in the lower plot, then the slow roll phase is a much stronger attractor solution, and generates a sustained slow-roll accelerated expansion.\label{fig:cls:linde}}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
   \tikzsetnextfilename{swirl_alt}
   \includegraphics[width=\textwidth]{chapter_classical_perturbations/plots/swirl_alt.tikz}

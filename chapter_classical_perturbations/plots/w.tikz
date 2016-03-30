@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+  \draw[dashed] (0,1) 
+  node[above right] {Kinetic Dominance} 
+  node[left] {$w=+1$} 
+  -- (5,1);
+  \draw[dashed] (0,0) 
+  node[above right] {Slow roll} 
+  node[left] {$w=-1$} 
+  -- (5,0);
+
+  \draw[smooth,domain=-1:1] plot(\x+1,  {0.5*(1-tanh(4*\x))});
+  \draw[smooth,domain=-1:1] plot(\x+1.5,{0.5*(1-tanh(4*\x))});
+  \draw[smooth,domain=-1:1] plot(\x+2,  {0.5*(1-tanh(4*\x))});
+  \draw[smooth,domain=-1:1] plot(\x+2.5,{0.5*(1-tanh(4*\x))});
+  \draw[smooth,domain=-1:1] plot(\x+3,  {0.5*(1-tanh(4*\x))});
+
+  \draw (0,1) -- (2,1);
+  \draw[->] (2,0) -- (5,0) node [below left] {Cosmic evolution};
+
+  \node[left] at (5,0.5) {$\displaystyle w = \frac{P}{\rho} = \frac{\frac{1}{2}\dot{\phi}^2-V(\phi)}{\frac{1}{2}\dot{\phi}^2+V(\phi)}$} ;
+
+\end{tikzpicture}
