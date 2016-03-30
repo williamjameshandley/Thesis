@@ -16,8 +16,8 @@
 %      - Need for evidences
 
 
-Despite popular conception, science is not the search for truth. Instead, scientists concern themselves with the construction of models that have their relative merit determined using data.
-The natural language of ``relative merit'' is that of Bayesian probability. This chapter reviews the concepts and notation of this ``meta-science''.\footnote{The opening statement of this chapter was in fact the first thing \rafiblumenfeld{} said to us for our part IB Physics supervisions.}
+Despite popular conception, science is not the search for truth. Scientists instead concern themselves with the construction descriptive and predictive models that have their relative merit determined using data.
+The natural language to encapsulate these ideas is that of Bayesian probability. This chapter reviews the concepts and notation of this ``meta-science''.\footnote{The opening statement of this chapter was in fact the first thing \rafiblumenfeld{} said to us for our part IB Physics supervisions.}
 
 % Mathematics -- if then, conditional truth
 % Science -- weaker: observations -> possibilities 
@@ -67,7 +67,7 @@ Bayes' theorem indicates how to reverse the conditionality in a probability dist
 \section{Bayesian vs.\ Frequentist}
 \label{sec:bay:bayesian_frequentist}
 
-There are two fundamental types of probability: {\em Aleatoric\/} and {\em Epistemological}. Aleatoric systems are genuinely random, for example: the flip of a coin, or the click on a Geiger counter. Epistemological probability governs systems where the randomness is associated with a subjective lack of knowledge. For example, before prince George was born, bookmakers took bets on whether William and Kate's baby was a boy or a girl. 
+There are two fundamental types of probability: {\em Aleatoric\/} and {\em Epistemological}. Aleatoric systems are genuinely random, for example: the flip of a coin, or the click on a Geiger counter. Epistemological probability governs systems where the randomness is associated with a subjective lack of knowledge. 
 
 The Frequentist school of thought defines probability as:
 \begin{description}
@@ -77,7 +77,7 @@ I.e.\ if a coin has $\Prob{\mathrm{Head}}=\frac{1}{2}$, then if you were to toss
 
 This definition applies relatively well to Aleatoric systems (since an experiment can often be run a large number of times). However, for epistemological systems, it is all but useless. The frequentist solution is therefore to disregard the latter kind of probability.
 
-However, most people's experiences with probability will likely involve betting scenarios, such as William and Kate's baby. Here it is obvious that the betting odds should be approximately $1:1$,\footnote{Betting odds of $a:b$ against indicates a probability of success of $\frac{b}{a+b}$.}\footnote{In fact the probability of a boy being conceived across the population is roughly 51\%, in order to biologically account for male infant mortality. An individual's probability of conceiving a boy or a girl will vary from person to person and in time.}\footnote{A good bookmaker will obviously take this into account, and give you slightly worse odds in order to ensure their profit.} but it should be also be clear that these odds do not refer to an event that can be repeated an arbitrarily large number of times.
+However, most people's experiences with probability will likely involve betting scenarios. For example, before prince George was born, bookmakers took bets on whether William and Kate's baby was a boy or a girl. Here it is obvious that the betting odds should be approximately $50:50$,\footnote{Betting odds of $a:b$ against indicates a probability of success of $\frac{b}{a+b}$.}\footnote{In fact the probability of a boy being conceived across the population is roughly 51\%, in order to biologically account for male infant mortality. An individual's probability of conceiving a boy or a girl will vary from person to person and in time.}\footnote{A good bookmaker will obviously take this into account, and give you slightly worse odds in order to ensure their profit.} but it should be also be clear that these odds do not refer to an event that can be repeated an arbitrarily large number of times.
 
 The alternative definition of probability is {\em Bayesian\/}:
 \begin{description}
@@ -214,7 +214,7 @@ In order to utilise this however, we must specify our prior degree of belief in 
 \begin{equation}
   \Prob{\model_i} = \priorM_i.
 \end{equation}
-These may have been obtained from previous analyses, but a simple choice would be too choose the models to be equally weighted. The denominator of~\eqref{eqn:bay:bayM} is then simply a normalising constant, and the posterior degree of belief in each model may be obtained via:
+These may have been obtained from previous analyses, but a simple choice would be too choose the models to be equally weighted. The denominator of~\eqref{eqn:bay:bayM} is then a normalising constant, and the posterior degree of belief in each model may be obtained via:
 \begin{equation}
   \Probc{\model_i}{\data} 
   \equiv
@@ -353,7 +353,7 @@ which is termed the {\em prior volume\/} by physicists and {\em prior mass\/} by
   \ev = \int_0^1 \lik(X)\:\d{X}.
   \label{eqn:bay:ev_X}
 \end{equation}
-This process is graphically depicted in Figure~\ref{fig:bay:prior_volume} for a two dimensional likelihood. Note the limits are from $0$ to $1$ since $X$ denotes the {\em fraction\/} of the prior enclosed by the likelihood contour\footnote{or alternatively because $X$ is simply a form of cumulative distribution function}.
+This process is graphically depicted in Figure~\ref{fig:bay:prior_volume} for a two dimensional likelihood. Note the limits are from $0$ to $1$ since $X$ denotes the {\em fraction\/} of the prior enclosed by the likelihood contour\footnote{or alternatively because $X$ is a form of cumulative distribution function}.
 %
 \begin{figure}
   \centering
@@ -431,7 +431,7 @@ The prior space compression is slower than single point nested sampling, but wit
 The deleted point is then added to a list of ``dead points'' which can then be used to make inferences on the evidence using equation~\eqref{eqn:bay:ev_sum}.
 
 \subsection{Terminating the algorithm}
-One does not wish to continue compressing the space once $X_i\ll e^{-H}$ for two reasons. The first reason is simply that this will not give any further accuracy on the evidence calculation. The second is more important. The region beneath $X_i\ll e^{-H}$ is not statistically relevant. Scientists used to maximum likelihood methods find this difficult to swallow, and often desire algorithms that will maximise the function to find the highest peak. In high dimensions, the absolute peak occupies such a vanishingly small percentage of the prior mass that it is totally irrelevant for the purposes of inference. In the case of a Gaussian likelihood, the peak value is a useful {\em summary statistic\/} but nothing more than that. Otherwise, one should not concern oneself with maximum likelihood, only in an accurate description of the peak provided by a set of samples.
+One does not wish to continue compressing the space once $X_i\ll e^{-H}$ for two reasons. The first reason is that this will not give any further accuracy on the evidence calculation. The second is more important. The region beneath $X_i\ll e^{-H}$ is not statistically relevant. Scientists used to maximum likelihood methods find this difficult to swallow, and often desire algorithms that will maximise the function to find the highest peak. In high dimensions, the absolute peak occupies such a vanishingly small percentage of the prior mass that it is totally irrelevant for the purposes of inference. In the case of a Gaussian likelihood, the peak value is a useful {\em summary statistic\/} but nothing more than that. Otherwise, one should not concern oneself with maximum likelihood, only in an accurate description of the peak provided by a set of samples.
 
 %
 \begin{figure}
@@ -496,6 +496,10 @@ where the additional factor of $Z$ merely ensures that they sum to $1$ for consi
 
 \end{itemize}
 
+\begin{equation}
+  \log X_i = -\frac{i}{n} \pm \sqrt{\frac{i}{n}}
+  \label{eqn:pc:X_full}
+\end{equation}<++>
 
 
 
