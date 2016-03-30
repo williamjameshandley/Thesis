@@ -47,7 +47,7 @@ where
   g_{ab} = \ve_a\cdot\ve_b
   \label{eqn:dg:metric_def}
 \end{equation}
-is the {\em metric}, and is simply the dot product at a given point, expressed in a specific coordinate system.
+is the {\em metric}, and is the dot product at a given point, expressed in a specific coordinate system.
 
 Once a dot product is defined, it is convenient to define a set of {\em covariant\/} basis vectors $\{\ve^a\}$ via:
 \begin{equation}
@@ -56,7 +56,7 @@ Once a dot product is defined, it is convenient to define a set of {\em covarian
   \ve^a = g^{ab} \ve_b,
   \label{eqn:dg:covariant_basis}
 \end{equation}
-where $g^{ab}$ is the upstairs version of \eqref{eqn:dg:metric_def}, and by simple linear algebra is the matrix inverse of $g_{ab}$. Now that a dot product is defined, the covariant basis vector $\ve^a$ can be thought of as orthogonal to the coordinate surface $x^a=\mathrm{const}$. Materials scientists should recognise the covariant basis as simply the reciprocal basis. 
+where $g^{ab}$ is the upstairs version of \eqref{eqn:dg:metric_def}, and by linear algebra is the matrix inverse of $g_{ab}$. Now that a dot product is defined, the covariant basis vector $\ve^a$ can be thought of as orthogonal to the coordinate surface $x^a=\mathrm{const}$. Materials scientists should recognise the covariant basis as the reciprocal basis. 
 
 We can choose to write vectors in either the covariant or contravariant basis:
 \begin{equation}
@@ -103,7 +103,7 @@ A Tensor $T$ is a multi-linear mapping of vectors onto a scalar at a given point
 \end{align}
 Upstairs components of a vector are defined similarly. It is interesting (although not surprising) that the metric is also a tensor, albeit a very special one which defines the geometry. The mapping is coordinate independent, but components are produced when a specific coordinate basis is chosen for each ``slot'' (each of which may be covariant or contravariant).
 
-A mapping of a rank $m$ tensor onto a rank $n$ tensor may be produced from a rank $m+n$ tensor by simply leaving $n$ of the slots blank. In this sense, a vector can be considered as a rank $1$ tensor, its linear action defined by the dot product.
+A mapping of a rank $m$ tensor onto a rank $n$ tensor may be produced from a rank $m+n$ tensor by leaving $n$ of the slots blank. In this sense, a vector can be considered as a rank $1$ tensor, its linear action defined by the dot product.
 
 \section{Calculus}
 So far, all we have discussed is a way of dealing with vectors whose bases are defined by an arbitrary coordinate system. The maths becomes interesting when we start to ask questions about how these vectors change from point to point on the manifold.

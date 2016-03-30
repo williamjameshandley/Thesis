@@ -34,7 +34,7 @@ In many cases, the prior $\prior(\params)$ is separable, and the above equations
 
 \section{Prior transformations}
 \label{sec:pc:prior_transformations}
-Here we give examples of the procedure for calculating the transformation from the unit hypercube to the physical space. We demonstrate it for a simple separable case, and a more complicated dependent case
+Here we give examples of the procedure for calculating the transformation from the unit hypercube to the physical space. We demonstrate it for a separable case, and a more complicated dependent case
 
 To recap, we aim to compute the inverse of the functions $F_i$: 
 \begin{equation}
@@ -142,7 +142,7 @@ The required prior is uniform in the hyper-triangle defined by $\thetamin<\theta
 \label{eqn:pc:sorted_uniform_prior}
 \end{equation}
 
-To calculate equations~\eqref{eqn:pc:appFi} \&~\ref{eqn:pc:apppii} we simply integrate over the constant distribution, taking care with the limits. We find:
+To calculate equations~\eqref{eqn:pc:appFi} \&~\ref{eqn:pc:apppii} we integrate over the constant distribution, taking care with the limits. We find:
 \begin{align}
   \pi_i(\theta_i|\theta_{i-1},\ldots,\theta_0) &= \frac{(n-i+1){(\theta_i-\theta_{i-1})}^{n-i}}{{(\thetamax-\thetamin)}^{n-i+1}},\\
   F_i(\theta_i|\theta_{i-1},\ldots,\theta_0) &= {\left(\frac{\theta_i-\theta_{i-1}}{\thetamax-\theta_{i-1}}\right)}^{n-i+1},
@@ -166,7 +166,7 @@ The principle behind rejection sampling is simple, and best demonstrated graphic
   \tikzsetnextfilename{rejection}
   \centering
   \includegraphics[width=\textwidth]{appendix_sampling_methods/plots/rejection.tikz}
-  \caption{Rejection sampling. One may produce samples from some complicated distribution $f(x)$ using a simpler distribution $g(x)$ providing that $g(x)>f(x)$ within the domain of interest. One simply samples from $g$, and accepts only those samples that lie under the $f$ curve.\label{fig:sm:rej}}
+  \caption{Rejection sampling. One may produce samples from some complicated distribution $f(x)$ using a simpler distribution $g(x)$ providing that $g(x)>f(x)$ within the domain of interest. One samples from $g$, and accepts only those samples that lie under the $f$ curve.\label{fig:sm:rej}}
 \end{figure}
 
 Obviously this will be very inefficient unless $g(x)$ happens to be rather close to $f(x)$. One finds that in general this inefficiency is exaggerated by the curse of dimensionality.
@@ -256,7 +256,7 @@ If the likelihood is interpreted as a Boltzmann-like probability distribution, t
 \begin{equation}
 {\lik(\Theta)}^\beta = \exp[-\beta E(\Theta)],
 \end{equation}
-is the Boltzmann probability of finding a system with inverse temperature $\beta = T^{-1}$ in state $\Theta$ with energy $E$, and the partition function is simply $\ev_\beta$.
+is the Boltzmann probability of finding a system with inverse temperature $\beta = T^{-1}$ in state $\Theta$ with energy $E$, and the partition function is $\ev_\beta$.
 
 Inspired by thermodynamics, one can see that:
 \begin{equation}

@@ -4,30 +4,18 @@
 
 \epigraph{We anticipate the sun will rise tomorrow, not just because it has always done so far, but because this is predicted by {\em models}, which accord with {\em data}. Any perceived failure of the sun to rise would more likely be a hallucination.}{\davidmackay{}}
 
-%  * BRIEF intro to difference between bayesian and frequentist, and the nature of probability
-%      - Continuous vs. Discrete
-%      - Aleatoric vs. Epistemological \davidspiegelhalter
-%
-%  * Parameter estimation and model comparison
-%       -Example? (e.g.\ coin flipping, --- anything better?)
-%
-%  * Sampling as method for describing high-dimensional probability distributions.
-%      - MH as good technique
-%      - Need for evidences
-
-
 Despite popular conception, science is not the search for truth. Scientists instead concern themselves with the construction descriptive and predictive models that have their relative merit determined using data.
-The natural language to encapsulate these ideas is that of Bayesian probability. This chapter reviews the concepts and notation of this ``meta-science''.\footnote{The opening statement of this chapter was in fact the first thing \rafiblumenfeld{} said to us for our part IB Physics supervisions.}
-
-% Mathematics -- if then, conditional truth
-% Science -- weaker: observations -> possibilities 
+The natural language to encapsulate these ideas is that of Bayesian probability. This chapter reviews the concepts and notation of this ``meta-science''.
 
 \section{Probability}
 \label{sec:bay:prob}
 
 Probability is the mathematical language of uncertainty. 
-A numerical weighting is assigned to all events, which roughly corresponds to the ``chance'' that such an event would occur. 
-\johnskilling{} has derived probability from measurement-theoretical grounds~\citep[chap. 1]{Bayesian_methods_in_cosmology}, which provides a more intuitive backing to the standard Kolmogorov axioms.
+A numerical weighting is assigned to all events, which roughly corresponds to the ``chance'' that such an event would occur. An event $E\subset \Omega$ is defined as a subset of all possible outcomes $\Omega$. Probability is defined as being additive over the set of all possible events, such that:
+\begin{equation}
+  A\cap B = \phi \Leftrightarrow \text{$A$, $B$ disjoint} \Leftrightarrow \Prob{A} + \Prob{B} = \Prob{A\cup B}.
+\end{equation}
+\johnskilling{} has derived these properties of probability from measurement-theoretical grounds~\citep[chap. 1]{Bayesian_methods_in_cosmology}, which provides a more intuitive backing to the standard Kolmogorov axioms.
 
 \subsection{Bayes' theorem}
 
@@ -63,21 +51,23 @@ one may then derive Bayes' theorem:
   \label{eqn:bay:bayes}
 \end{equation}
 Bayes' theorem indicates how to reverse the conditionality in a probability distribution $\Probc{A}{B}$: one first deconditions by multiplying by $\Prob{B}$ and then reconditions via the normalising constant $\Prob{A}$. Figure~\ref{fig:bay:bayes_theorem} extends this to all possibilities for two events.
+With the algebra of conditionals, probability is the only measurable quantity with both a closed multiplication and addition.
 
 \section{Bayesian vs.\ Frequentist}
 \label{sec:bay:bayesian_frequentist}
 
 There are two fundamental types of probability: {\em Aleatoric\/} and {\em Epistemological}. Aleatoric systems are genuinely random, for example: the flip of a coin, or the click on a Geiger counter. Epistemological probability governs systems where the randomness is associated with a subjective lack of knowledge. 
 
+Along with this, there are two interpretations of probability and the meaning of chance; {\em Bayesian\/} and {\em Frequentist}.\footnote{Personally, I disapprove of this terminology. I prefer the terms ``correct'' and ``unhelpfully restrictive''.}
 The Frequentist school of thought defines probability as:
 \begin{description}
   \item[Frequentist Probability:]``The limiting relative frequency of an event.''
 \end{description}
-I.e.\ if a coin has $\Prob{\mathrm{Head}}=\frac{1}{2}$, then if you were to toss it an arbitrarily large number of times, the fraction of times one would get closer and closer to $\frac{1}{2}$. This is the version of probability that most people encounter early in their mathematical education. 
+If a coin has $\Prob{\mathrm{Head}}=\frac{1}{2}$, then if you were to toss it an arbitrarily large number of times, the fraction of events that are heads would get closer and closer to $\frac{1}{2}$. This is the version of probability that most people encounter early in their mathematical education. 
 
 This definition applies relatively well to Aleatoric systems (since an experiment can often be run a large number of times). However, for epistemological systems, it is all but useless. The frequentist solution is therefore to disregard the latter kind of probability.
 
-However, most people's experiences with probability will likely involve betting scenarios. For example, before prince George was born, bookmakers took bets on whether William and Kate's baby was a boy or a girl. Here it is obvious that the betting odds should be approximately $50:50$,\footnote{Betting odds of $a:b$ against indicates a probability of success of $\frac{b}{a+b}$.}\footnote{In fact the probability of a boy being conceived across the population is roughly 51\%, in order to biologically account for male infant mortality. An individual's probability of conceiving a boy or a girl will vary from person to person and in time.}\footnote{A good bookmaker will obviously take this into account, and give you slightly worse odds in order to ensure their profit.} but it should be also be clear that these odds do not refer to an event that can be repeated an arbitrarily large number of times.
+For example, most people's experiences with probability will likely involve betting scenarios. For example, before prince George was born, bookmakers took bets on whether William and Kate's baby was a boy or a girl. Here it is obvious that the betting odds should be approximately $50:50$,\footnote{Betting odds of $a:b$ against indicates a probability of success of $\frac{b}{a+b}$.}\footnote{In fact the probability of a boy being conceived across the population is roughly 51\%, in order to biologically account for male infant mortality. An individual's probability of conceiving a boy or a girl will vary from person to person and in time.}\footnote{A good bookmaker will obviously take this into account, and give you slightly worse odds in order to ensure their profit.} but it should be also be clear that these odds do not refer to an event that can be repeated an arbitrarily large number of times.
 
 The alternative definition of probability is {\em Bayesian\/}:
 \begin{description}
@@ -88,6 +78,7 @@ Note that Bayesian probability is {\em subjective}, it matters who's degree of b
 Pure mathematics deals in relative truth or falsity, i.e.\ given initial assumptions, all statements are assigned to the set $\{F,T\}\equiv\{0,1\}$. Bayesian probability can be thought of as a blurring of this process, namely from initial assumptions, various conclusions are assigned a number from the continuum between $[0,1]$.
 
 \section{An example: biased coins}
+As an concrete introduction to the terminology, we will consider the case of determining whether a coin is biased.
 For example, assume that you toss a coin $N=20$ times, and observe a dataset of $\data = 16$ heads. Is this enough to cause us to doubt the fairness of the coin?
 
 The standard model $\model_0$ is that a coin toss consists of a binomial trial with probability $\frac{1}{2}$. Elementary probability tells us that the chance of getting this data is:
@@ -104,7 +95,7 @@ If we allow for the possibility that the coin could be any probability $p$, we c
 \end{equation}
 This second model is not ideal, since we haven't specified the parameter $p$. If we choose $p=\frac{1}{2}$ we recover $\model_0$. It is tempting to choose $p$ such that the probability of getting the data is maximised. This would be an example of a {\em maximum likelihood\/} approach. In this case, the method indicates\footnote{Proof left as exercise to the reader.} we should choose $p = \frac{\data}{N}$. 
 
-Maximum likelihood has its drawbacks, particularly in the case of a low volume of data. After $N=1$ toss, it seems a little premature to choose either $p=1$ or $p=0$ depending on whether we see a head or a tail. Instead picking a specific value of $p$, one could instead ``spread your bets'' and consider several different values of $p$. The full generalisation of this is to consider a continuum of models, and define an initial probability distribution $\Probc{p}{\model_1}$. These can be interpreted as our initial assumptions on the value of $p$, or our initial degree of belief in its value
+Maximum likelihood has its drawbacks, particularly in the case of a low volume of data. After $N=1$ toss, it seems a little premature to choose either $p=1$ or $p=0$ depending on whether we see a head or a tail. Instead picking a specific value of $p$, one could instead ``spread your bets'' and consider several different values of $p$. The full generalisation of this is to consider a continuum of models, and define an initial probability distribution on $p$, $\Probc{p}{\model_1}$. This can be interpreted as our initial assumptions on the value of $p$, or our initial degree of belief in its value
 A natural assumption is to try and be as unbiased as possible and assume that $p$ is equally likely to take any value in between $0$ and $1$. We therefore have:
 \begin{equation}
   \Probc{p}{\model_1}=\left\{
@@ -124,7 +115,7 @@ With this distribution, we can work out what the overall probability of obtainin
 \end{align}
 This is quite telling, because our initial choice for $\Probc{p}{\model_1}$~\ref{eqn:bay:prior1} indicates that we expect all data sets with equal probability (independent of $\data$). This is therefore a ``minimally suspicious'' choice in spread.
 
-We now have two equations~\eqref{eqn:bay:M0}~\&~\eqref{eqn:bay:marg} which detail the probability of getting the dataset $\data$ given the choice of model. However, what we are really after is the probability of the model, given the dataset $\Probc{\model}{\data}$. To compute this, we use Bayes' theorem
+We now have two equations~\eqref{eqn:bay:M0}~\&~\eqref{eqn:bay:marg} which detail the probability of getting the dataset $\data$ given the choice of model. However, what we are really after is the probability of the model, given the dataset $\Probc{\model}{\data}$. To compute this, we use Bayes' theorem:
 \begin{equation}
   \Probc{\model}{\data} = \frac{\Probc{\data}{\model}\Prob{\model}}{\Prob{\data}}.
   \label{eqn:bay:bay_md}
@@ -134,7 +125,7 @@ In order to complete the calculation, we must assign a probability to each model
   \Prob{\data} = \sum_i \Probc{\data}{\model_i}\Prob{\model_i}, 
   \label{eqn:bay:norm}
 \end{equation}
-so we may finally compute
+so we may finally compute:
 \begin{equation}
   \Probc{\model_0}{\data} = 0.088, \qquad
   \Probc{\model_1}{\data} = 0.922.
@@ -142,7 +133,7 @@ so we may finally compute
 \end{equation}
 In other words, a betting man would put money on $\model_1$ with odds of $10:1$ for. Another way of thinking of this is that $\model_1$ is ten times better at describing the data than $\model_0$.
 
-$\model_1$ can go further however. We may also use Bayes' theorem to compute 
+$\model_1$ can go further however. We may also use Bayes' theorem to compute:
 \begin{equation}
   \Probc{p}{\data,\model_1} = \frac{\Probc{\data}{p,\model_1}\Probc{p}{\model_1}}{\Probc{\data}{\model_1}}.
   \label{eqn:bay:bay_p}
@@ -210,7 +201,7 @@ This quantity is termed the {\em evidence\/} $\ev$, or {\em marginalised likelih
   \Probc{\model_i}{\data} = \frac{\Probc{\data}{\model_i}\Prob{\model_i}}{\Prob{\data}}.
   \label{eqn:bay:bayM}
 \end{equation}
-In order to utilise this however, we must specify our prior degree of belief in each model
+In order to utilise this however, we must specify our prior degree of belief in each model:
 \begin{equation}
   \Prob{\model_i} = \priorM_i.
 \end{equation}
@@ -269,7 +260,7 @@ Typically, in inference calculation we wish to compute quantities that are margi
   \label{eqn:bay:mean}\\
   &= \int f(\params)\frac{\lik(\params)\prior(\params)}{\ev}\:\d{\params}.
 \end{align}
-Given a likelihood $\lik$ and a prior $\prior$, a naive approach would be to first compute the evidence
+Given a likelihood $\lik$ and a prior $\prior$, a naive approach would be to first compute the evidence:
 \begin{equation}
   \ev = \int \lik(\params) \prior(\params) \: \d{\params},
   \label{eqn:bay:ev_short}
@@ -300,7 +291,7 @@ This calculation however requires $\bigO{n^d}$ function evaluations. This is an 
   \caption{\label{fig:bay:quadrature}}
 \end{figure}
 
-Fortunately there is a better way. If one has a set of $n_s$ samples 
+Fortunately there is a better way. If one has a set of $n_s$ samples:
 \begin{equation}
   S = \left\{ \params_i\sim\posterior:i=1,\ldots,n_s \right\},
   \label{eqn:bay:samples}
@@ -485,7 +476,7 @@ where the additional factor of $Z$ merely ensures that they sum to $1$ for consi
       w_i &= X_{i-1}-X_{i},  & 
       t_j &\sim U[0,1].\nonumber 
     \end{align}
-  \item The algorithm terminates when 
+  \item The algorithm terminates when:
     \begin{equation}
       X_i \times \mean{\lik}_\slive \ll \ev.
     \end{equation}
