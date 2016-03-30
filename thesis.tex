@@ -31,12 +31,13 @@
 %\newcommand{\lightweight}{}
 
 
-%\includeonly{%
+\includeonly{%
+  other/thanks,
 %  other/contents,
 %  other/cosmology_conclusion,
 %  other/methods_conclusion,
 %  other/conclusion
-%}
+}
 
 \begin{document}
 %
@@ -77,8 +78,8 @@
 %
 %
 %
-% Statistics
-% ==========
+% Cosmology
+% =========
 %
 \part{Cosmology}
 \label{part:cosmology}
@@ -94,7 +95,7 @@
 \include{chapter_kinetic_dominance/kinetic_dominance}
 %
 % Kinetic thoughts
-% ---------------------------------------
+% ----------------
 %
 \include{chapter_kinetic_thoughts/kinetic_thoughts}
 %
@@ -117,8 +118,8 @@
 %
 %
 %
-% Appendices
-% ==========
+% Methods
+% =======
 %
 \part{Methods}
 \label{part:statistics}
@@ -126,8 +127,6 @@
 % Bayesian inference
 % ------------------
 %
-
-
 \include{chapter_bayesian_inference/bayesian_inference}
 %
 % Extending nested sampling
@@ -136,37 +135,42 @@
 \include{chapter_extending_nested_sampling/extending_nested_sampling}
 %
 % PolyChord
-% ------------------
+% ---------
 %
 \include{chapter_polychord/polychord}
 %
-% Function fitting
-% ------------------
-%
-%\include{chapter_function_fitting/function_fitting}
+% RKWKB
+% -----
 %
 \include{chapter_RKWKB/RKWKB}
 %
+% Methods conclusion
+% ------------------
 %
 \include{other/methods_conclusion}
 %
 %
+%
+%
+%
+%
+% Final conclusion
+% ----------------
+%
 \include{other/conclusion}
 %
 %
-% Cosmology
-% ==========
-%
-%\part{Appendices}
 %
 %
-% The bibliography
+% Bibliography
+% ------------
 %
-% Basic bibliography style
-\bibliographystyle{plainnat}
-
-% BibTex bibliography
-\bibliography{other/references}
+\include{other/bibliography}
+%
+%
+%
+% Appendix
+% --------
 \appendix
 \include{appendix_sampling_methods/sampling_methods}
 %
