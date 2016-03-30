@@ -95,7 +95,7 @@ If we allow for the possibility that the coin could be any probability $p$, we c
 \end{equation}
 This second model is not ideal, since we haven't specified the parameter $p$. If we choose $p=\frac{1}{2}$ we recover $\model_0$. It is tempting to choose $p$ such that the probability of getting the data is maximised. This would be an example of a {\em maximum likelihood\/} approach. In this case, the method indicates\footnote{Proof left as exercise to the reader.} we should choose $p = \frac{\data}{N}$. 
 
-Maximum likelihood has its drawbacks, particularly in the case of a low volume of data. After $N=1$ toss, it seems a little premature to choose either $p=1$ or $p=0$ depending on whether we see a head or a tail. Instead picking a specific value of $p$, one could instead ``spread your bets'' and consider several different values of $p$. The full generalisation of this is to consider a continuum of models, and define an initial probability distribution on $p$, $\Probc{p}{\model_1}$. This can be interpreted as our initial assumptions on the value of $p$, or our initial degree of belief in its value
+Maximum likelihood has its drawbacks, particularly in the case of a low volume of data. After $N=1$ toss, it seems a little premature to choose either $p=1$ or $p=0$ depending on whether we see a head or a tail. Instead picking a specific value of $p$, one could instead ``spread your bets'' and consider several different values of $p$. The full generalisation of this is to consider a continuum of models, and define an initial probability distribution on $p$, $\Probc{p}{\model_1}$. This can be interpreted as our initial assumptions on the value of $p$, or our initial degree of belief in its value.
 A natural assumption is to try and be as unbiased as possible and assume that $p$ is equally likely to take any value in between $0$ and $1$. We therefore have:
 \begin{equation}
   \Probc{p}{\model_1}=\left\{
@@ -113,7 +113,7 @@ With this distribution, we can work out what the overall probability of obtainin
   &= \frac{1}{n+1} = 4.8\times10^{-2}.
   \label{eqn:bay:marg}
 \end{align}
-This is quite telling, because our initial choice for $\Probc{p}{\model_1}$~\ref{eqn:bay:prior1} indicates that we expect all data sets with equal probability (independent of $\data$). This is therefore a ``minimally suspicious'' choice in spread.
+This is quite telling, because our initial choice~\eqref{eqn:bay:prior1} for $\Probc{p}{\model_1}$ indicates that we expect all data sets with equal probability (independent of $\data$). This is therefore a ``minimally suspicious'' choice in spread.
 
 We now have two equations~\eqref{eqn:bay:M0}~\&~\eqref{eqn:bay:marg} which detail the probability of getting the dataset $\data$ given the choice of model. However, what we are really after is the probability of the model, given the dataset $\Probc{\model}{\data}$. To compute this, we use Bayes' theorem:
 \begin{equation}
@@ -131,7 +131,7 @@ so we may finally compute:
   \Probc{\model_1}{\data} = 0.922.
   \label{eqn:bay:comp}
 \end{equation}
-In other words, a betting man would put money on $\model_1$ with odds of $10:1$ for. Another way of thinking of this is that $\model_1$ is ten times better at describing the data than $\model_0$.
+In other words, a betting man would give the odds of the coin being unbiased $\model_0$ as approximately $10:1$. Another way of thinking of this is that $\model_1$ is ten times better at describing the data than $\model_0$.
 
 $\model_1$ can go further however. We may also use Bayes' theorem to compute:
 \begin{equation}
@@ -148,15 +148,15 @@ This here gives us the distribution on $p$ {\em given the data}. Namely, how the
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/beta_function.tikz}
   \fi
   \caption{%
-  Beta function.\label{fig:bay:beta}
+  Our beta-function posterior degree of belief in the bias of the coin $p$, after observing a dataset of $(\data,n)=(16,20)$, and assuming a uniform prior on $p$.\label{fig:bay:beta}
 }
 \end{figure}
 
-\section{Parameter Estimation \& Model Comparison}
+\section{Parameter estimation \& model comparison}
 \label{sec:bay:model_comp}
 We shall now take the concepts of the previous section, and put them in a general setting. 
 
-The typical problem of science is the construction of a model $\model$ in order to explain some dataset $\data$. Typically, scientific models have a set of continuous parameters $\params_\model$, where $\params_\model$ is normally multi-dimensional, and may contain a variety of parameter types such as integers, vectors, tensors and more exotic components.
+The typical problem of science is the construction of a model $\model$ in order to explain some dataset $\data$. In general, scientific models have a set of continuous parameters $\params_\model$, where $\params_\model$ is normally multi-dimensional, and may contain a variety of parameter types such as integers, vectors, tensors and more exotic components.
 
 Elementary probability theory then enables us to calculate the probability of the data, given the choice of model along with a specific parameter choice.
 \begin{equation}
@@ -184,10 +184,10 @@ In order to perform Bayesian inference, another requirement of the model $\model
 \end{equation}
 Since no model occurs in isolation, it is generally not difficult to theoretically produce upper and lower bounds on parameter values. The normal strategy is to choose fairly conservative uniform or Gaussian priors on parameter values. In general, the prior should encapsulate the scale and spread of our current expectation of the parameter value.
 
-Once a prior has been specified, the model $\model$ is complete. The scientific aspect of the problem is complete, and the rest mere statistics. Statistical analysis may be neatly partitioned into two problems: {\em model comparison\/} and {\em parameter estimation}.
+Once a prior has been specified, the model $\model$ is complete. The science of the problem is finished, and the rest of the analysis mere statistics. Statistical analysis may be neatly partitioned into two problems: {\em model comparison\/} and {\em parameter estimation}.
 
 \subsection{Model comparison}
-It is usually the case in science that there is not a single model available to explain the data. Typically one will have a set of models ${\{\model_1,\model_2,\ldots\}}$, which we wish to scientifically determine the relative merits of given the data $\data$.
+It is usually the case in science that there is more than one model available to explain the data. Typically one will have a set of models ${\{\model_1,\model_2,\ldots\}}$, which we wish to scientifically determine the relative merits of given the data $\data$.
 
 We may use the prior to marginalise out all parameter dependence of the each model:
 \begin{equation}
@@ -215,7 +215,7 @@ These may have been obtained from previous analyses, but a simple choice would b
 \end{equation}
 These model weights $\Wmodel$ may then be used to determine the ``most probable model''. In some cases there is a clear winner, and the other models may be safely discarded, but the more usual scenario is that there are several competing alternatives. It is for this reason that we prefer the term ``model comparison'' to the more oft-quoted {\em model selection}. Additional datasets may determine a clear winner, but in the mean-time the weights $\Wmodel$ can be used to perform proper inference. 
 
-For example, model often predict a distribution for a common derived parameter $\Probc{y}{\model,\data}$.\footnote{E.g.\ in cosmology, various models of the universe will predict an age or curvature of the cosmos} If the data are not strong enough to distinguish a given model, the correct inference on $y$ is to use a posterior which marginalises over all models:
+For example, models often predict a distribution for a common derived parameter $\Probc{y}{\model,\data}$.\footnote{e.g.\ in cosmology, different models of the universe will predict an age distribution.} If the data are not strong enough to distinguish a given model, the correct inference on $y$ is to use a posterior which marginalises over all models:
 \begin{equation}
   \Probc{y}{\data} 
   = \sum_i\Probc{y}{\data,\model_i}\Probc{\model_i}{\data}
@@ -249,7 +249,7 @@ This describes how our initial knowledge $\prior$ of the parameters updates to $
 
 
 
-\section{Numerical statistics: Sampling}
+\section{Numerical statistics: sampling}
 \label{sec:bay:samp}
 Having discussed the theory of Bayesian statistics, we now turn to the more tricky aspect of actually computing these various inferences. The likelihood~\eqref{eqn:bay:lik_def} $\lik(\params)$ is a routine, if often challenging, quantity to compute. It is the job of observational scientists to provide this function, and for the purposes of inference we may consider it a ``black box''. In general, $\lik$ will be not be analytical, but instead is a numerical and computationally expensive quantity. Any calculation we perform must aim to minimise the number of times we attempt to evaluate $\lik$. The prior $\prior$ is typically much less expensive to compute and is normally expressed using analytic functions such as a uniform or Gaussian distribution.
 
@@ -464,7 +464,7 @@ where the additional factor of $Z$ merely ensures that they sum to $1$ for consi
 
 
 
-\subsection{Nested Sampling: summary}
+\subsection{Nested sampling: summary}
 \label{sec:bay:comp_space}
 \begin{itemize}
   \item The algorithm initialises by sampling $\nlive$ points from the prior distribution $\prior(\params)$. 
