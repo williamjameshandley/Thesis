@@ -1,8 +1,8 @@
 \chapter{Further thoughts on kinetic dominance}
 \label{chap:kt}
 
-\section{Recap}
-The classical equations of motion for single field inflation are
+This is a brief chapter whose content is based on discussions since the release of the material in Chapter~\ref{chap:kd} as the publication by~\cite{Handley+2014}.
+To recap, the classical equations of motion for single field inflation are
 governed by:
 %
 \begin{align}
@@ -67,8 +67,7 @@ kinetic dominance to be true at the Planck time we require that:
 \begin{equation}
   V(\phip) \ll \m^4
 \end{equation}
-For $\m^2\phi^2$ inflation, this amounts to requiring that $\phip^2\ll
-\frac{\m^4}{m^2}$. In order to agree with CMB observations, we require
+For $V(\phi) = \frac{1}{2}m^2\phi^2$ inflation, this amounts to requiring that $m^2\phip^2\ll \m^4$. In order to agree with CMB observations, we require
 that $m\sim10^{-5}\m$, which amounts to requiring that:
 \begin{equation}
  \phip^2 \ll 10^{10}\m^2 \nonumber.
@@ -102,8 +101,9 @@ spectrum (for example in ``just enough inflation''). There are
 theoretical limits, but these typically tend to be much, much larger
 than this.
 
-The typical argument (Linde) goes something like this:
-
+\section{Eternal inflation}
+Theorists typically assume an effectively eternal inflationary phase all the way back to the Planck time.  
+The typical argument by Linde goes something like this:
 \begin{enumerate}
   \item We should set initial conditions at the Planck time, when
     $\rho\sim\m^4$.
@@ -120,10 +120,14 @@ From Linde's argument, the kinetically dominated regime is only present
 after the Planck time for $V(\phip)$ at the very bottom end of the
 prior range.
 
-We can see this graphically in Figure~\ref{fig:kt:linde}
+We can see this graphically in Figure~\ref{fig:kt:linde}. Solutions are plotted so that they are equally spaced in kinetic energy at the Planck time. Whilst graphs similar to the upper half of the figure is typically shown in lectures and textbooks, this is for an artificially high value of $m$. As $m$ is decreased, the phase space look more like the lower half of Figure~\ref{fig:kt:linde}, and the ``Planck circle'' becomes an elongated ellipse. 
 
-\ifdefined\lightweight{}
-\else
+If $m$ is set to the more physically reasonable $m\sim10^5\m$, then it becomes slightly less reasonable to suggest that the universe could emerge uniformly within five orders of magnitude. It might be just as reasonable to suspect a logarithmic prior.
+
+Additionally, if one sets the equipartition between kinetic and potential energy after inflation, then a very different picture is painted, as in Figure~\ref{fig:kt:b4infl}. Here almost all solutions begin in a kinetically dominated phase. 
+
+The problem is that all of these arguments tend to the more philosophical end of physics: ``What is the natural prior to assume on initial conditions''. It is far better to try and answer these questions observationally. If the kinetically dominated phase is observable, then all of this is moot.
+
 \begin{figure}[tp]
   \centering
   \tikzsetnextfilename{swirl}
@@ -142,12 +146,13 @@ We can see this graphically in Figure~\ref{fig:kt:linde}
   \includegraphics[width=\textwidth]{chapter_kinetic_thoughts/plots/true_alt.tikz}
   \caption{Phase space plot as in Figure~\protect\ref{fig:kt:linde}, but with initial conditions uniform in kinetic energy after the inflationary phase. The solutions which uniformly distribute their energy after inflation now predominantly begin at the Planck time in a more kinetically dominate state. As one decrease $m$ to more physical values (lower plot) almost all early-time solutions are kinetically dominated.\label{fig:kt:b4infl}}
 \end{figure}
-\fi
 
 
 
 
 \section{Breakdown of homogeneity}
+We have shown that all homogeneous universes classically begin in a kinetically dominated phase. It is profitable to examine the form of the perturbed equations~\eqref{eqn:cos:einsteins_equations_perturb}, to take into account the evolution of any spatial variation in the solutions.
+
 To first order, the $i$-$j$, $i$-$0$ and $0$-$0$ Einstein equations read:
 \begin{align}
   \Phi &= \Psi 
@@ -172,18 +177,19 @@ If we apply the kinetically dominated solutions to the background variables, we 
   0 &= \ddot{\mathcal{R}} + \frac{1}{t}\dot{\mathcal{R}} + \frac{k^2}{a^2} \mathcal{R},\\
   a &\propto t^{1/3}
 \end{align}
-
-Both equations are of the form:
+Both equations are solvable with Bessel functions as:
 \begin{align}
-  0 &=\ddot{x} + (1+p)\frac{1}{t}\dot{x} + \frac{k^2}{a^2} x  \\
+  0 &=\ddot{x} + (1+p)\frac{1}{t}\dot{x} + \frac{k^2}{a^2} x,  \\
   \Rightarrow \qquad
-  x &= t^{-\frac{p}{2}}\left[ A J_{\frac{3}{4}p}\left( \frac{3k}{2a} t \right) + B Y_{\frac{3}{4}p}\left( \frac{3k}{2a} t \right) \right] \\
-  &\sim  t^{-\frac{p}{2}-\frac{1}{3}}, \qquad t \gg 1
+  x &= t^{-\frac{p}{2}}\left[ A J_{\frac{3}{4}p}\left( \frac{3k}{2a} t \right) + B Y_{\frac{3}{4}p}\left( \frac{3k}{2a} t \right) \right], \\
+  &\sim  t^{-\frac{p}{2}-\frac{1}{3}}, \qquad t \gg 1,
 \end{align}
-So the solutions are generically oscillatory with a polynomial decay with inverse power $\frac{p}{2} + \frac{1}{3}$.
+where $A$ and $B$ are integration constants. The solutions are generically oscillatory with a polynomial decay with power $-\frac{p}{2} - \frac{1}{3}$.
 
 Physically that means that as we integrate further backwards in time, although the homogeneous universe is drawn toward a kinetically dominated state, spatial inhomogeneities begin to increase.
 
-What this means, is that if some portion of the universe at an early stage has $\dot{\phi}^2 \gg V(\phi)$, and is approximately homogeneous, then the comoving size of that portion will grow, and kinetic dominance causes patches of the universe to homogenise.
+Thus, if some portion of the universe at an early stage has $\dot{\phi}^2 \gg V(\phi)$, and is approximately homogeneous, then evolving forwards in time the comoving size of that portion will grow, and kinetic dominance causes patches of the universe to homogenise.
+
+Equally, this means that there will be a breakdown in the homogeneity assumption at early times. It remains to be determined at what moment this breakdown occurs for physically observable scales in the early universe. More analytical investigation is required, and is a subject of my current research.
 
 %\cleardoublepage{}

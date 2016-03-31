@@ -142,11 +142,8 @@ This here gives us the distribution on $p$ {\em given the data}. Namely, how the
 
 \begin{figure}[tp]
   \centering
-  \ifdefined\lightweight{}
-  \else
   \tikzsetnextfilename{beta_function}
   \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/beta_function.tikz}
-  \fi
   \caption{%
   Our beta-function posterior degree of belief in the bias of the coin $p$, after observing a dataset of $(\data,n)=(16,20)$, and assuming a uniform prior on $p$.\label{fig:bay:beta}
 }
@@ -281,13 +278,10 @@ This calculation however requires $\bigO{n^d}$ function evaluations. This is an 
 
 \begin{figure}[tp]
   \centering
-  \ifdefined\lightweight{}
-  \else
     \tikzsetnextfilename{1d_left_rectangle}
     \includegraphics[width=0.4\textwidth]{chapter_bayesian_inference/plots/1d_left_rectangle.tikz}
     \tikzsetnextfilename{2d_left_rectangle}
     \includegraphics[width=0.5\textwidth]{chapter_bayesian_inference/plots/2d_left_rectangle.tikz}
-  \fi
   \caption{Approximating an integral using a quadrature rule. In moving a one-dimensional integral (left) to a two-dimensional integral (right), the number of quadrature points becomes exponentially larger. This is an example of the curse of dimensionality.\label{fig:bay:quadrature}}
 \end{figure}
 
