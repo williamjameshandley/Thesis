@@ -247,48 +247,8 @@ We have presented a novel method for numerically solving linear differential equ
 The authors thank Arieh Iserles for a very profitable discussion which formed the inspiration for this paper. WJH thanks STFC for their continuing support.
 
 
-\section{Runge-Kutta-Fehlberg}
-\label{sec:rkf}
 
-A general explicit RK method can be written as:
-\begin{align}
-  y_{n+1} &= y_n + h\sum\limits_{i=1}^{s} b_i k_i, \label{eqn:rk_step} \\
-  k_s &= f(t_n + c_s h, y_n + h \sum\limits_{i=1}^{s-1}a_{si} k_i),
-\end{align}
-where the coefficients $\{c_i,a_{si}\}$ are determined by the choice of method and are typically written in a Butcher tableau (Table~\ref{tab:RKexplicit}). 
-
-A particularly efficient example is the Runge-Kutta-Fehlberg $4(5)$ method which uses an embedded approach. It performs a fourth order step and a fifth order step, and uses the difference between these as an estimate of the error. Impressively, both steps are calculated using the same values of $\{k_i\}$ (but different values of $\{b_i\}$), and hence the method only requires five function evaluations of $f$ per step. Its Butcher tableau is detailed in Table~\ref{tab:rkf45}.
-
-\begin{table}[h]
-  \begin{equation*}
-    \begin{array}{l | c c c c c}
-      0      \quad &               &              &              &         &   \\
-      c_2    \quad & \quad a_{21}  &              &              &         &   \\
-      c_3    \quad & \quad a_{31}  & \quad a_{32} &              &         &   \\
-      \vdots \quad & \quad \vdots  & \quad \vdots & \quad \ddots &         &   \\
-      c_s    \quad & \quad a_{s1}  & \quad a_{s2} & \quad \cdots & \quad a_{s,s-1} & \\ \midrule
-      & \quad b_{1}   & \quad b_{2}  & \quad \cdots & \quad b_{s-1}  & \quad b_{s}
-    \end{array}
-  \end{equation*}
-  \caption{Butcher tableau for a general explicit RK method.\label{tab:RKexplicit}
-  }
-\end{table}
-
-\begin{table}
-  \begin{equation*}
-    \begin{array}{l | c c c c c c}
-      0      &           &            &             &             &        &\\
-      \frac{1}{4}    & \frac{1}{4}       &            &             &             &        &\\
-      \frac{3}{8}    & \frac{3}{32}      & \frac{9}{32}       &             &             &        &\\
-      \frac{12}{13}  & \frac{1932}{2197} & -\frac{7200}{2197} & \frac{7296}{2197}   &             &        &\\
-      1      & \frac{439}{216}   & -8         & \frac{3680}{513}    & -\frac{845}{4104}   &        &\\
-      \frac{1}{2}    & -\frac{8}{27}     & 2          & -\frac{3544}{2565}  & \frac{1859}{4104}   & -\frac{11}{40} &\\\midrule
-      & \frac{25}{216}    & 0          & \frac{1408}{2565}   & \frac{2197}{4104}   & -\frac{1}{5}   & 0      \\
-      & \frac{16}{135}    & 0          & \frac{6656}{12825}  & \frac{28561}{56430} & -\frac{9}{50}  & \frac{2}{55}
-    \end{array}
-  \end{equation*}
-  \caption{Butcher tableau for the embedded Runge-Kutta-Fehlberg $4(5)$ method.\label{tab:rkf45}                                                             }
-\end{table}
-
-
+\begin{subappendices}
+  \input{appendices/RKF/RKF}
+\end{subappendices}
 
