@@ -108,9 +108,9 @@ This is termed \CosmoChord, which may be downloaded from the link at the end of 
 \subsection{Multi-dimensional slice sampling}
 \label{sec:pc:multi_slice}
 At each iteration $i$ of nested sampling, we generate a new randomly sampled point within the iso-likelihood contour $\lik_i$ by our variant of $D$-dimensional slice sampling.
-Slice sampling is performed in the unit hypercube with hypercube co\"{o}rdinates denoted in bold ($\bxx$).
+Slice sampling is performed in the unit hypercube with hypercube coordinates denoted in bold ($\bxx$).
 
-At each iteration $i$ of the nested sampling algorithm, one of the live points is chosen at random as a start point for a new chain with hypercube co\"{o}rdinate $\bx{0}$. We then make a one-dimensional slice sampling step (Appendix~\protect\ref{sec:sm:slice}) with initial width $w$ in a random direction $\nhat{0}$ chosen from a probability distribution $\Prob{\nhatx}$. This generates a new point $\bx{1}$ which is uniformly sampled in the unit hypercube, but is correlated to $\bx{0}$. This process is repeated $\nrepeats$ times, with $\bx{j-1}$ forming the start point for a slice along $\nhat{j-1}$ to produce $\bx{j}$. This procedure is illustrated in the right hand half of Figure~\ref{fig:pc:Nd_slice}.
+At each iteration $i$ of the nested sampling algorithm, one of the live points is chosen at random as a start point for a new chain with hypercube coordinate $\bx{0}$. We then make a one-dimensional slice sampling step (Appendix~\protect\ref{sec:sm:slice}) with initial width $w$ in a random direction $\nhat{0}$ chosen from a probability distribution $\Prob{\nhatx}$. This generates a new point $\bx{1}$ which is uniformly sampled in the unit hypercube, but is correlated to $\bx{0}$. This process is repeated $\nrepeats$ times, with $\bx{j-1}$ forming the start point for a slice along $\nhat{j-1}$ to produce $\bx{j}$. This procedure is illustrated in the right hand half of Figure~\ref{fig:pc:Nd_slice}.
 
 Since the probability of drawing $\bx{j}$ from $\bx{j-1}$ is the same as the probability of drawing $\bx{j-1}$ from $\bx{j}$, this procedure satisfies detailed balance. Thus, the resulting chain will ergodically be uniformly distributed within the iso-likelihood contour. This also applies to multi-modal posteriors, with the chance of jumping out a mode being equal to the chance of jumping back in.
 
@@ -374,9 +374,9 @@ This may mean that the Gaussian shell is not a good proxy for a high-dimensional
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian_shell_posterior}
   \caption{Posteriors produced by \PolyChord{} for a $n=100$-dimensional Gaussian shell, with width $w=0.1$, radius $r=2$, and center $\bmew=\bzero$. 
-  Plotting the marginalised posteriors for the Cartesian sampling parameters ${\{x_1,\ldots,x_n\}}$ yields Gaussian distributions centered on the origin. To see the effectiveness of the sampler it is better to plot the sampling parameters in terms of $n$-dimensional spherical polar co\"{o}rdinates ${\{r,\phi_1,\ldots,\phi_{n-1}\}}$. Note that the polar co\"{o}rdinates are {\em derived parameters}, and that the sampling space still has the strong Gaussian shell degeneracy.
-  In this case we can see that the radial co\"{o}rdinate has a Gaussian profile centered on $r_0 = r\times\frac{1}{2} {\left(1 + \sqrt{1 +  4 (n-1) {\left({w}/{r}\right)}^2}\right) }$ with width $w_0 = w{(1+(n-1){(w/r_0)}^2)}^{-1/2}$. 
-  The azimuthal co\"{o}rdinate $\phi_{n-1}$ has a uniform posterior, and the other angular co\"{o}rdinates $\{\phi_i\}$ have posteriors defined by $\Prob{\phi_i } \propto {{\left(\sin\phi_i\right)}^{n-i-1}}$.
+  Plotting the marginalised posteriors for the Cartesian sampling parameters ${\{x_1,\ldots,x_n\}}$ yields Gaussian distributions centered on the origin. To see the effectiveness of the sampler it is better to plot the sampling parameters in terms of $n$-dimensional spherical polar coordinates ${\{r,\phi_1,\ldots,\phi_{n-1}\}}$. Note that the polar co\"{o}rdinates are {\em derived parameters}, and that the sampling space still has the strong Gaussian shell degeneracy.
+  In this case we can see that the radial coordinate has a Gaussian profile centered on $r_0 = r\times\frac{1}{2} {\left(1 + \sqrt{1 +  4 (n-1) {\left({w}/{r}\right)}^2}\right) }$ with width $w_0 = w{(1+(n-1){(w/r_0)}^2)}^{-1/2}$. 
+  The azimuthal coordinate $\phi_{n-1}$ has a uniform posterior, and the other angular co\"{o}rdinates $\{\phi_i\}$ have posteriors defined by $\Prob{\phi_i } \propto {{\left(\sin\phi_i\right)}^{n-i-1}}$.
 \label{fig:pc:gaussian_shell_posterior}
 }
 \end{figure}

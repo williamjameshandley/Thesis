@@ -93,7 +93,7 @@ The form of the metric~\eqref{eqn:cos:FRW_metric} is close to Minkowski. Spatial
   \centering
   \tikzsetnextfilename{comoving}
   \includegraphics[width=\textwidth]{chapters/inflationary_cosmology/plots/comoving.tikz}
-  \caption{The expansion of the universe. As the universe evolves with time, the scale factor $a(t)$ changes. The scale factor $a(t)$ connects {\em comoving co\"{o}rdinates}, $X$ with {\em physical co\"{o}rdinates}, $x=a(t)X$. Comoving variables can be thought of as a time-independent grid, which expands with the universe.\label{fig:cos:comoving_vs_physical}, physical variables are what observers would measure as distances. Hence, in an expanding universe, the physical distance between observers (dots in the diagram above) appears to increase over time, whilst their comoving distance remains the same.}
+  \caption{The expansion of the universe. As the universe evolves with time, the scale factor $a(t)$ changes. The scale factor $a(t)$ connects {\em comoving coordinates}, $X$ with {\em physical co\"{o}rdinates}, $x=a(t)X$. Comoving variables can be thought of as a time-independent grid, which expands with the universe.\label{fig:cos:comoving_vs_physical}, physical variables are what observers would measure as distances. Hence, in an expanding universe, the physical distance between observers (dots in the diagram above) appears to increase over time, whilst their comoving distance remains the same.}
 \end{figure}
 
 
@@ -192,12 +192,12 @@ so that the line element becomes:
   ds^2 = a(\eta)\left( \d{\eta}^2 - d{X}^2 \right).
   \label{eqn:cos:flat_FRW}
 \end{equation}
-This is often analytically useful, but physically conformal time corresponds to a time co\"{o}rdinate in which photons appear as if they were in flt space: If we consider (without loss of generality) radially travelling photons $\d{\Omega}=0$ the line element is:
+This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons appear as if they were in flt space: If we consider (without loss of generality) radially travelling photons $\d{\Omega}=0$ the line element is:
 \begin{equation}          
   ds^2 = a(\eta)\left( \d{\eta}^2 - \d{\chi}^2 \right).
   \label{eqn:cos:flat_FRW_radial}
 \end{equation}
-and the metric is conformally equivalent to two-dimensional Minkowski space\footnote{Hence the name ``conformal time''.}. We have thus removed all the complexities of curvature and comoving co\"{o}rdinates. Since photons have a null trajectory, $ds^2=0\Rightarrow \d{\eta} = \pm \d{\chi}$, and therefore  travel in straight lines on spacetime diagrams with $\eta$ and $\chi$ as axes. This considerably simplifies most pictures. It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial co\"{o}rdinates.\footnote{Alternatively, conformal time is the time measured by a small light clock that expands comovingly with the universe.}
+and the metric is conformally equivalent to two-dimensional Minkowski space\footnote{Hence the name ``conformal time''.}. We have thus removed all the complexities of curvature and comoving coordinates. Since photons have a null trajectory, $ds^2=0\Rightarrow \d{\eta} = \pm \d{\chi}$, and therefore  travel in straight lines on spacetime diagrams with $\eta$ and $\chi$ as axes. This considerably simplifies most pictures. It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial co\"{o}rdinates.\footnote{Alternatively, conformal time is the time measured by a small light clock that expands comovingly with the universe.}
 
 \section{The cosmic microwave background}
 \begin{figure}[tp]
@@ -423,7 +423,7 @@ For simplicity, we shall focus on the scalar part of the analysis, since vectors
 Observant readers will have noted that there are too many perturbation variables and not enough constraints.
 This lack of constraint arises from the fact that the split into background and perturbation $X=X+\delta X$ implied by~\eqref{eqn:cos:expansion} is more subtle than first appears. 
 
-In addition to perturbing the dynamical variables, one can also perturb the co\"{o}rdinate system:
+In addition to perturbing the dynamical variables, one can also perturb the coordinate system:
 \begin{align}
   t &\rightarrow t + \delta t,
   \label{eqn:cos:gauge_t}
@@ -432,11 +432,11 @@ In addition to perturbing the dynamical variables, one can also perturb the co\"
   \label{eqn:cos:gauge_x}
 \end{align}
 where in general the small perturbations $\delta t$ and $\delta x^i$ are functions of time and space.
-For a generic scalar field $\varphi = \varphi(t,x^i)$, this co\"{o}rdinate perturbation will cause an alteration of the field value:
+For a generic scalar field $\varphi = \varphi(t,x^i)$, this coordinate perturbation will cause an alteration of the field value:
 \begin{equation}
   \varphi \rightarrow \varphi - \dot{\varphi}\delta t - \partial_i\varphi\delta x^i.
 \end{equation}
-This means that it is easy to conflate ``true'' perturbations in the variables with co\"{o}rdinate perturbations. In the extreme limit of no dynamical perturbation, one can see that the co\"{o}rdinate transformation~\eqref{eqn:cos:gauge_t}~\&~\eqref{eqn:cos:gauge_t} will in in generate a ``false'' perturbation in $\varphi$ of $\delta\varphi = -\dot{\varphi}\delta t - \partial_i\varphi\delta x^i$.
+This means that it is easy to conflate ``true'' perturbations in the variables with coordinate perturbations. In the extreme limit of no dynamical perturbation, one can see that the co\"{o}rdinate transformation~\eqref{eqn:cos:gauge_t}~\&~\eqref{eqn:cos:gauge_t} will in in generate a ``false'' perturbation in $\varphi$ of $\delta\varphi = -\dot{\varphi}\delta t - \partial_i\varphi\delta x^i$.
 
 Careful calculation will show that in fact the transformation of the dynamical scalar variables under~\eqref{eqn:cos:gauge_t}~\&~\eqref{eqn:cos:gauge_x} is in fact:\footnote{NB\@: we have decomposed the spatial perturbation as $\delta x^i = \partial^i \delta x + \delta x^i$.}
 \begin{align}
@@ -449,10 +449,10 @@ Careful calculation will show that in fact the transformation of the dynamical s
   \delta q &\rightarrow \delta q + (\rho+P)\delta t,&
   \delta \phi &\rightarrow \delta \phi - \dot{\phi}\delta t.
 \end{align}
-By choosing an appropriate co\"{o}rdinate transformation, one can remove the additional dynamical variables that are unconstrained by the Einstein equations. This is typically done by setting some of the perturbation variables equal to zero. This procedure is termed a {\em gauge choice}.\footnote{$\delta X$ is defined as the difference between the value $X$ has in the physical (perturbed) spacetime, and the value $X$ has in the background (unperturbed) spacetime. This can only be done if there is a prescription for identifying points between the two spacetimes, and in the language of differential geometry, this is termed a {\em gauge choice}.}
+By choosing an appropriate coordinate transformation, one can remove the additional dynamical variables that are unconstrained by the Einstein equations. This is typically done by setting some of the perturbation variables equal to zero. This procedure is termed a {\em gauge choice}.\footnote{$\delta X$ is defined as the difference between the value $X$ has in the physical (perturbed) spacetime, and the value $X$ has in the background (unperturbed) spacetime. This can only be done if there is a prescription for identifying points between the two spacetimes, and in the language of differential geometry, this is termed a {\em gauge choice}.}
 Examples of popular gauge choices can be found in Table~\ref{tab:cos:gauge_choice}.
 
-Whilst choosing a gauge will give one a set of soluble equations, the question still remains whether the perturbations really are ``true'', or in some-way co\"{o}rdinate-dependent. A more robust approach is to avoid the issue entirely and define the gauge independent variables:
+Whilst choosing a gauge will give one a set of soluble equations, the question still remains whether the perturbations really are ``true'', or in some-way coordinate-dependent. A more robust approach is to avoid the issue entirely and define the gauge independent variables:
 \begin{align}
   \Phi^{(B)} &=  \Phi - \dot{T}, &
   \Psi^{(B)} &=  \Psi + HT, \nonumber \\
@@ -461,7 +461,7 @@ Whilst choosing a gauge will give one a set of soluble equations, the question s
   \delta q^{(B)} &= \delta q - (\rho + P)T, &
   \delta \phi^{(B)} &= \delta \phi - \dot{\phi}T, 
 \end{align}
-where $T = a^2[\dot{E}-B/a]$. These variables remain unchanged under gauge transformations, and are independent of co\"{o}rdinate perturbations. Any perturbation in these variables cannot be ``gauged away''. Of course, these are not unique as any linear combination of them is also gauge-invariant, but the above set results in a reasonable basis. 
+where $T = a^2[\dot{E}-B/a]$. These variables remain unchanged under gauge transformations, and are independent of coordinate perturbations. Any perturbation in these variables cannot be ``gauged away''. Of course, these are not unique as any linear combination of them is also gauge-invariant, but the above set results in a reasonable basis. 
 
 Procedurally, one of  the most powerful approaches is to choose the Newtonian gauge ${B=E=B_i=0}$. In this gauge, $X^{(B)}=X^{(\text{Newt.})}$. At the end of the computation, we may note that any equations in $X^{(\text{Newt.})}$ will be manifestly gauge-invariant, so we may re-promote all variables $X^{(\text{Newt.})}$ to the gauge-invariant ones $X^{(B)}$.
 
