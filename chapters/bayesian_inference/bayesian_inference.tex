@@ -1,6 +1,6 @@
 \chapter{Bayesian Inference}
 \label{chap:bay}
-%\includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/bayesian_evol}
+%\includegraphics[width=\textwidth]{chapters/bayesian_inference/figures/bayesian_evol}
 
 \epigraph{We anticipate the sun will rise tomorrow, not just because it has always done so far, but because this is predicted by {\em models}, which accord with {\em data}. Any perceived failure of the sun to rise would more likely be a hallucination.}{\davidmackay{}}
 
@@ -22,14 +22,14 @@ A numerical weighting is assigned to all events, which roughly corresponds to th
 \begin{figure}[tp]
   \centering
   \tikzsetnextfilename{bayes_theorem}
-  \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/bayes_theorem.tikz}
+  \includegraphics[width=\textwidth]{chapters/bayesian_inference/plots/bayes_theorem.tikz}
   \caption{Diagrammatic Bayes' theorem. Nodes indicate the occurrence of an event. Edges indicate the probability of an event occurring, and are multiplicative in the direction of the arrows. Bayes' theorem~\protect\eqref{eqn:bay:bayes} may be derived by equating the path $A\to A\cap B$ with $A\to\Omega\to B\to A\cap B$}\label{fig:bay:bayes_theorem}
 \end{figure}
 
 
 %\begin{figure}[tp]
 %  \centerline{%
-%    \input{chapter_bayesian_inference/plots/probability}
+%    \input{chapters/bayesian_inference/plots/probability}
 %  }
 %  \caption{Beer-mat mathematics. This diagram is how \edjaynes{} explained Bayes' theorem to a young \stevegull{}. Out of the entire sample space $\Omega$, if we observe $A$ to be true (blue region), then the probability of $B$ given that we know $A$ is simply $\Prob{A\cap B}/\Prob{A}$. Bayes' theorem then follows by rearrangement and symmetry.}
 %\end{figure}
@@ -143,7 +143,7 @@ This here gives us the distribution on $p$ {\em given the data}. Namely, how the
 \begin{figure}[tp]
   \centering
   \tikzsetnextfilename{beta_function}
-  \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/beta_function.tikz}
+  \includegraphics[width=\textwidth]{chapters/bayesian_inference/plots/beta_function.tikz}
   \caption{%
   Our beta-function posterior degree of belief in the bias of the coin $p$, after observing a dataset of $(\data,n)=(16,20)$, and assuming a uniform prior on $p$.\label{fig:bay:beta}
 }
@@ -279,9 +279,9 @@ This calculation however requires $\bigO{n^d}$ function evaluations. This is an 
 \begin{figure}[tp]
   \centering
     \tikzsetnextfilename{1d_left_rectangle}
-    \includegraphics[width=0.4\textwidth]{chapter_bayesian_inference/plots/1d_left_rectangle.tikz}
+    \includegraphics[width=0.4\textwidth]{chapters/bayesian_inference/plots/1d_left_rectangle.tikz}
     \tikzsetnextfilename{2d_left_rectangle}
-    \includegraphics[width=0.5\textwidth]{chapter_bayesian_inference/plots/2d_left_rectangle.tikz}
+    \includegraphics[width=0.5\textwidth]{chapters/bayesian_inference/plots/2d_left_rectangle.tikz}
   \caption{Approximating an integral using a quadrature rule. In moving a one-dimensional integral (left) to a two-dimensional integral (right), the number of quadrature points becomes exponentially larger. This is an example of the curse of dimensionality.\label{fig:bay:quadrature}}
 \end{figure}
 
@@ -342,7 +342,7 @@ This process is graphically depicted in Figure~\ref{fig:bay:prior_volume} for a 
 %
 \begin{figure}[tp]
   \centering
-  \includegraphics[width=\textwidth]{chapter_bayesian_inference/figures/contour_nested}
+  \includegraphics[width=\textwidth]{chapters/bayesian_inference/figures/contour_nested}
   \caption{%
     The nested sampling volume transformation.
     Left: five iso-likelihood contours of a two-dimensional multi-modal likelihood function $\lik(\params)$. Each contour encloses some fraction of the prior $X$, indicated by colour.
@@ -423,7 +423,7 @@ Since we have partitioned the area into regions of size $\lik_i w_i$, we can use
 %\begin{figure}[tp]
 %  \centering
 %  \tikzsetnextfilename{posterior_plot}
-%  \includegraphics[width=\textwidth]{chapter_bayesian_inference/plots/posterior.tikz}
+%  \includegraphics[width=\textwidth]{chapters/bayesian_inference/plots/posterior.tikz}
 %  \caption{%
 %    Posterior samples.\label{fig:bay:posterior}
 %}
@@ -444,7 +444,7 @@ One does not wish to continue compressing the space once $X_i\ll e^{-H}$ for two
 %
 \begin{figure}[tp]
   \centering
-  \includegraphics[width=\columnwidth]{chapter_bayesian_inference/figures/gaussian_weight}
+  \includegraphics[width=\columnwidth]{chapters/bayesian_inference/figures/gaussian_weight}
   \caption{%
     Plot of a generic likelihood as a function of the prior volume $\lik(X)$. In high dimensions, the likelihood is only visible if plotted against $\log X$ (dashed curve). However, the evidence is better visualised by plotting $X\log(X)$ (solid curve). The area under the solid curve corresponds to the evidence. The magnitude of the solid curve is proportional to the importance weighting. Nested sampling proceeds from high to low volumes. After some time, the live points no longer contribute significantly to the evidence, and the algorithm terminates at this point.\label{fig:bay:gaussian_weight}
   }
