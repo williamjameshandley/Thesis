@@ -17,19 +17,19 @@
 
   \node[component] (KD) at (0,0) {Kinetic dominance\\(Chapter~\protect\ref{chap:kd})};
 
-  \node[above right = of KD, component] (TO)  {Theoretical observations\\(Chapter~\protect\ref{chap:cls})};
+  \node[below right = of KD, component] (TO)  {Theoretical observations\\(Chapter~\protect\ref{chap:kt})};
 
-  \node[below right = of KD, component] (PS) {Power spectrum reconstruction\\(Chapter~\protect\ref{chap:rec})};
+  \node[below left = of KD, component] (PS) {Power spectrum reconstruction\\(Chapter~\protect\ref{chap:rec})};
 
   \node[below left = of PS, component] (NS) {Nested sampling\\(Chapter~\protect\ref{chap:ens})};
 
-  \node[below = of PS, component] (PC) {\PolyChord{}\\(Chapter~\protect\ref{chap:pc})};
+  \node[below = of NS, component] (PC) {\PolyChord{}\\(Chapter~\protect\ref{chap:pc})};
 
-  \node[right = of TO, component] (RE) {Quantum\\ kinetic dominance\\(Chapter~\protect\ref{chap:qv})};
+  \node[below = of TO, component] (RE) {Quantum\\ kinetic dominance\\(Chapter~\protect\ref{chap:qv})};
 
-  \node[below right = of RE, component] (RK) {RKWKB\\(Chapter~\protect\ref{chap:RK})};
+  \node[below = of RE, component] (RK) {RKWKB\\(Chapter~\protect\ref{chap:RK})};
 
-  \node[below left = of RK, component] (FUT) {Future research: constraining the kinetically dominated universe\\(Chapter~$N$)};
+  \node[left = of RK, component] (FUT) {Constraining the kinetically dominated universe\\(Future research)};
 
     \draw[connection,->] (KD) -- (PS);
     \draw[connection,->] (KD) -- (TO);
