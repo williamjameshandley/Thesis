@@ -117,7 +117,7 @@ Applying the metric~\eqref{eqn:cos:FRW_metric} to the Einstein equations~\eqref{
   \label{eqn:cos:Friedmann}
 \end{align}
 %
-where $H=\dot{a}/a$ is the Hubble parameter and a dot denotes differentiation with respect to cosmic time, $\dot{f}\equiv df/\d{t}$. These are termed the {\em Raychaudhuri\/} and {\em Friedmann\/} equations respectively, and implicitly govern the dynamics of the scale factor $a(t)$. It should be noted that these equations are not complete, as additionally one requires an equation of state linking $\rho$ and $P$.
+where $H=\dot{a}/a$ is the Hubble parameter and a dot denotes differentiation with respect to cosmic time, $\dot{f}\equiv df/\d{t}$. These are termed the {\em acceleration\/} and {\em Friedmann\/} equations respectively, and implicitly govern the dynamics of the scale factor $a(t)$. It should be noted that these equations are not complete, as additionally one requires an equation of state linking $\rho$ and $P$.
 
 \subsection{Basic solutions}
 A reasonable model for the universe we observe today is to treat the matter as a multi-component fluid, with each component with its own equation of state:
@@ -155,7 +155,7 @@ We can see immediately that in a universe dominated by dark energy $(w=-1)$ the 
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/inflationary_cosmology/figures/expansion_history}
-  \caption{The approximate expansion history of our universe. Initially, the universe is dominated by radiation $a\sim t^{1/2}$. As the universe expands, the photon lose energy as their wavelengths are stretched.  Thus, the universe transitions to a matter dominated $a\sim t^{2/3}$ regime. Finally, the dark energy of the universe overtakes the matter content, and it settles into an exponential expansion $a\sim e^{H_0 t}$\label{fig:cos:expansion_history}}
+  \caption{The approximate expansion history of our universe. Initially, the universe is dominated by radiation $a\sim t^{1/2}$. As the universe expands, the photons lose energy as their wavelengths are stretched.  Thus, the universe transitions to a matter dominated $a\sim t^{2/3}$ regime. Finally, the dark energy of the universe overtakes the matter content, and it settles into an exponential expansion $a\sim e^{H_0 t}$\label{fig:cos:expansion_history}}
 \end{figure}
 
 
@@ -226,7 +226,7 @@ The degree to which the universe is not flat can be measured by re-writing the F
   1-\Omega = -\frac{k}{{(aH)}^2} \equiv \Omega_k.
   \label{eqn:cos:friedmann_omega}
 \end{equation}
-In terms of these kind of variables, the Raychaudhuri equation~\eqref{eqn:cos:Raychaudhuri} is:
+In terms of these kind of variables, the acceleration equation~\eqref{eqn:cos:Raychaudhuri} is:
 \begin{equation}
   \frac{\d{\log aH}}{\d{\log a} } = -\frac{1}{2}\Omega(1+3w),
   \label{eqn:cos:raychaudhuri_omega}
@@ -241,7 +241,7 @@ One can see from this that a flat universe $(\Omega=1)$ is an unstable point of 
 
 This presents a problem. The universe we see today is measured to be flat to at least one part in $10^{-2}$, which means that at earlier times it would have been even flatter still. Given that within the context of cosmology there is no a-priori reason to believe the universe should be exactly flat, this requires a unreasonable quantity of fine tuning. It would be more satisfactory if we had a dynamical reason to explain why the universe is as flat as it is.
 
-As well as revealing the problem, equation~\eqref{eqn:cos:instability} also provides a solution. If for some period $w<-1/3$ at some earlier time, then~\eqref{eqn:cos:instability} says that $\Omega=1$ is an attractor state. The Raychaudhuri equation shows that:
+As well as revealing the problem, equation~\eqref{eqn:cos:instability} also provides a solution. If for some period $w<-1/3$ at some earlier time, then~\eqref{eqn:cos:instability} says that $\Omega=1$ is an attractor state. The acceleration equation shows that:
 \begin{equation}
   \ddot{a} \propto -(1+3w).
   \label{eqn:cos:Raychaudhuri_acc}
@@ -303,7 +303,7 @@ Thus, a homogeneous scalar field acts as a perfect fluid with pressure and densi
   \label{eqn:cos:KG}
 \end{equation}
 The middle term involving $H$ is the term that arises as a result of including the effects of gravity (i.e.\ an expanding universe). The homogeneous value of the scalar field $\phi$ satisfies the equation of a harmonic oscillator in potential $V(\phi)$ with a frictional term $H$.
-To get an equation for $H$, we use the Raychaudhuri equation~\eqref{eqn:cos:Raychaudhuri} along with our formulae~\eqref{eqn:cos:scalar_field_rho}~\&~\eqref{eqn:cos:scalar_field_P} for $\rho$ and $P$, to find:
+To get an equation for $H$, we use the acceleration equation~\eqref{eqn:cos:Raychaudhuri} along with our formulae~\eqref{eqn:cos:scalar_field_rho}~\&~\eqref{eqn:cos:scalar_field_P} for $\rho$ and $P$, to find:
 \begin{equation}
   \dot{H}+H^2 = -\frac{1}{3\m^2}\left(\dot{\phi}^2-V(\phi)\right).
   \label{eqn:cos:ray_scalar}

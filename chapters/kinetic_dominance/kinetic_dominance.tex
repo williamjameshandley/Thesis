@@ -34,7 +34,7 @@ $\{\rho_i\}$ and pressures $\{P_i\}$ has the evolution equations:
   \label{eqn:conservation}
 \end{align}
 %
-where $H=\dot{a}/a$ is the Hubble parameter, $a$ is the normalized scale factor and a dot denotes differentiation with respect to cosmic time, $\dot{f}\equiv df/dt$. The first equation is the {\em Raychaudhuri\/} equation, and is derived from the trace of the Einstein equations. The second is the {\em Friedmann\/} equation and represents the conservation of energy. The third is the {\em continuity\/} equation for the fluid $\rho_i$. It should be noted that these equations are not independent, and that the Raychaudhuri equation may be straightforwardly derived from the Friedmann and continuity equations.  For convenience, we use Planck units ($G=c=\hbar=1$) throughout, but for clarity retain the reduced Planck mass: 
+where $H=\dot{a}/a$ is the Hubble parameter, $a$ is the normalized scale factor and a dot denotes differentiation with respect to cosmic time, $\dot{f}\equiv df/dt$. The first equation is the {\em acceleration\/} equation, and is derived from the trace of the Einstein equations. The second is the {\em Friedmann\/} equation and represents the conservation of energy. The third is the {\em continuity\/} equation for the fluid $\rho_i$. It should be noted that these equations are not independent, and that the acceleration equation may be straightforwardly derived from the Friedmann and continuity equations.  For convenience, we use Planck units ($G=c=\hbar=1$) throughout, but for clarity retain the reduced Planck mass: 
 %
 \[\m = \sqrt{\frac{\hbar c}{8\pi G}} = {(8\pi)}^{-1/2}.\]  
 %
@@ -88,7 +88,7 @@ Using the notation in~\eqref{eqn:equation_of_state} and defining the present-day
 \end{align}
 %                                                          
 
-Inflation is defined as $\ddot{a}>0$, or equivalently as $\dot{H}+H^2>0$. In the case when only an inflaton is present, this condition can be recast in terms of the scalar field using the Raychaudhuri equation~\eqref{eqn:Raychaudhuri_mod} as:
+Inflation is defined as $\ddot{a}>0$, or equivalently as $\dot{H}+H^2>0$. In the case when only an inflaton is present, this condition can be recast in terms of the scalar field using the acceleration equation~\eqref{eqn:Raychaudhuri_mod} as:
 %
 \begin{equation}
   \dot{\phi}^2<V(\phi).
@@ -513,7 +513,7 @@ The condition $\dot\phi^2\gg V(\phi)$ for kinetic dominance allows one to derive
 
 \subsection{Dominance of $\dot{\phi}^2$ over other fluids}
 \label{sec:dominance_fluids}
-In the limit that $a\to 0$, the auxiliary fluid with the largest value of $w$ dominates over all of the others. Along with kinetic dominance, we can therefore assume that the Raychaudhuri~\eqref{eqn:Raychaudhuri_mod} and Friedmann~\eqref{eqn:Friedmann_mod} equations take the form:
+In the limit that $a\to 0$, the auxiliary fluid with the largest value of $w$ dominates over all of the others. Along with kinetic dominance, we can therefore assume that the acceleration~\eqref{eqn:Raychaudhuri_mod} and Friedmann~\eqref{eqn:Friedmann_mod} equations take the form:
 %
 \begin{align}
   \dot{H}+H^2 
@@ -574,7 +574,7 @@ Since $H = \dot{a}/a$, we can express the coordinate time $t$ as an integral:
 From equation~\eqref{eqn:H_of_a_1}, one can see that ${(aH)}^{-1}$ is finite as $a\to0$. By the above integral, this shows that the universe emerges at a finite time in the past, which can be taken as $t=0$.  Moreover, from~\eqref{eqn:dotphidom}, the (dominant) energy density of the universe scales as $a^{-6}$ as $a \to 0$, showing that $t=0$ is a singularity.
 
 \subsection{Analytic solutions for the kinetically dominated universe} 
-If one considers the solutions of the Raychaudhuri and Friedmann equations~\eqref{eqn:Raychaudhuri_mod} and~\eqref{eqn:Friedmann_mod} in the limit that $a\to0$, then one can neglect the potential term $V(\phi)$ as it is suppressed by $\dot{\phi}^2$. In addition, the other fluid terms are negligible in comparison to the term with the largest $w$.  When these considerations are taken into account, the evolution equations take the form shown in~\eqref{eqn:Ray_KD_eq_rho} and~\eqref{eqn:Friedmann_KD_eq_rho}. One can find solutions for $\phi(a),H(a)$ and $\rho_w(a)$ parametrically in terms of $a$.  In addition, one can find coordinate time $t(a)$ in terms of $a$ using the relation:
+If one considers the solutions of the acceleration and Friedmann equations~\eqref{eqn:Raychaudhuri_mod} and~\eqref{eqn:Friedmann_mod} in the limit that $a\to0$, then one can neglect the potential term $V(\phi)$ as it is suppressed by $\dot{\phi}^2$. In addition, the other fluid terms are negligible in comparison to the term with the largest $w$.  When these considerations are taken into account, the evolution equations take the form shown in~\eqref{eqn:Ray_KD_eq_rho} and~\eqref{eqn:Friedmann_KD_eq_rho}. One can find solutions for $\phi(a),H(a)$ and $\rho_w(a)$ parametrically in terms of $a$.  In addition, one can find coordinate time $t(a)$ in terms of $a$ using the relation:
 %
 \begin{equation}
   t = \int \frac{\d{a}}{aH(a)}.
