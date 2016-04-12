@@ -71,7 +71,7 @@ In addition to the scalar field, we shall allow the possibility of including a c
 %
 where ${w_i}$ are a set of constants determining the type of each fluid. Some commonly assumed cosmological fluids are listed in Table~\ref{tab:type_of_fluid} along with their $w$-values. Note that we are accommodating the possibility of spatially curved universes implicitly by including the case $w_i=-1/3$. We shall term all of these {\em auxiliary fluids}.
 %
-\begin{table}
+\begin{table}[htbp]
   \centering
   \input{chapters/kinetic_dominance/tables/type_of_fluid}
   \caption{Commonly assumed cosmological fluids and their equation-of-state parameters $w$, defined by equation equation (\protect\ref{eqn:equation_of_state}).  For more information on ``missing matter'', see \protect\citet{vazquez_2012}\label{tab:type_of_fluid}.  }
@@ -1273,6 +1273,22 @@ However, from the proof in Section~\ref{sec:The_generic_nature_of_kinetic_domina
 We show the evolution of the Universe governed by the hyperbolic cosine inflaton potential~\eqref{eqn:coshpot} in Figures~\ref{fig:figure_Hlam}~\&~\ref{fig:figure_Klam}. The analysis is the same as that presented in Section~\ref{sec:section_polynomial_potentials}.  As in our previous example, the Universe emerges from the initial singularity in kinetic dominance, which then transitions through a brief period of fast-roll inflation into a generically long-lasting power-law inflation state until the exit is reached as $\phi\rightarrow0$, which corresponds to the minimum of the potential.  
 
 \subsection{Another example of a finite solution $f(\psi)$}
+%
+\begin{figure}[tp]
+  \centering
+  \includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/uf}
+  \caption{An oscillating finite solution to the master equation~\protect\eqref{eqn:master_eq} with $V(\psi)$ defined as in equation~\protect\eqref{eqn:Vphi_uf_example} and demonstrated in Figure~\protect\ref{fig:figure_ospot}. If $a$ and $b$ are chosen such that $a>b>0$, $0<a+b<1$, $0<a-b<1$, then this represents a finite, positive solution.  From equation~\protect\eqref{eqn:uf_example} it is easy to see that $\fmn = \log\left(\frac{1}{\sqrt{1-{(a+b)}^2}}\right)$, $\fm=\log\left(\frac{1}{\sqrt{1-{(a-b)}^2}}\right)$.\label{fig:figure_uf}}
+\end{figure}
+
+%
+\begin{figure}[tp]
+  \centering
+  \includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/ospot}
+  \caption{The master equation may be solved for the potential $V(\psi)$ if a form of $f(\psi)$ is chosen. For the choice of $f(\phi)$ detailed in equation (\protect\ref{eqn:uf_example}), the potential is solvable in closed form [equation \protect\ref{eqn:Vphi_uf_example}].\label{fig:figure_ospot}}
+\end{figure}
+%
+
+%
 The $f(\psi)$ described above in equation~\eqref{eqn:uf_power_law} is one of the simplest examples of a finite solution. As shown earlier, there is at most one such finite solution for any given potential. For concreteness we demonstrate another less trivial example in this section.
 
 By reverse-engineering the master equation~\eqref{eqn:master_eq_f}, one can find a potential $V(\psi)$ for any specified $f(\psi)$. For example, if one chooses the oscillating solution (shown in Figure~\ref{fig:figure_uf}):
@@ -1335,29 +1351,15 @@ Thus one finds that $f(\psi)$ is the only finite positive solution.  All other s
 
 
 
-
-%
-\begin{figure}[tp]
-  \centering
-  \includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/uf}
-  \caption{An oscillating finite solution to the master equation~\protect\eqref{eqn:master_eq} with $V(\psi)$ defined as in equation~\protect\eqref{eqn:Vphi_uf_example} and demonstrated in Figure~\protect\ref{fig:figure_ospot}. If $a$ and $b$ are chosen such that $a>b>0$, $0<a+b<1$, $0<a-b<1$, then this represents a finite, positive solution.  From equation~\protect\eqref{eqn:uf_example} it is easy to see that $\fmn = \log\left(\frac{1}{\sqrt{1-{(a+b)}^2}}\right)$, $\fm=\log\left(\frac{1}{\sqrt{1-{(a-b)}^2}}\right)$.\label{fig:figure_uf}}
-\end{figure}
-%
-
-%
-\begin{figure}[tp]
-  \centering
-  \includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/ospot}
-  \caption{The master equation may be solved for the potential $V(\psi)$ if a form of $f(\psi)$ is chosen. For the choice of $f(\phi)$ detailed in equation (\protect\ref{eqn:uf_example}), the potential is solvable in closed form [equation \protect\ref{eqn:Vphi_uf_example}].\label{fig:figure_ospot}}
-\end{figure}
-%
-
-
-
-
-
 \subsection{Power spectrum of the curvature perturbation}
 \label{sec:powspec}
+%
+\begin{figure}[tp]
+  \centering
+  \includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/powerspec}
+  \caption{Figure taken from \protect\citet{hlozek_atacama_2012} showing the current status of the observed late-time matter perturbation power spectrum. As one can see, the currently probed $k$ range is $10^{-3}<k<2\:\mathrm{Mpc}^{-1}$.\label{fig:experimental_power_spectrum}}
+\end{figure}
+%
 
 The most interesting aspect of kinetic dominance is seen when the power spectrum of scalar curvature perturbations is examined. Recent observations of CMB power spectra \citep{hinshaw_nine-year_2012,planck_collaboration_planck_2013} show an unexpected suppression at low multipoles. While these deviations are not large enough to cause us to discard the standard $\Lambda$ cold dark matter ($\Lambda$CDM) cosmology \citep{1998PhRvD..57.2207B,2000PhRvD..62l3513B,2004PhRvD..69f3516D}, there is still enough tension to be worthy of investigation.  As we show below, kinetic dominance predicts a generic cutoff in the curvature power spectrum at large spatial scales. This is precisely what is needed to suppress low multipole moments of the CMB power spectrum while retaining the quality of the fit at higher $\ell$ values.
 
@@ -1396,30 +1398,6 @@ Once a value for $N_*$ is chosen, one can determine numerically the time $t_*$ a
 Calibrated plots of $\mathcal{P}_\mathcal{R}(k)$ are found in Figures~\ref{fig:figure_CSpol} and \nolinebreak\ref{fig:figure_CSlam}. 
 
 
-
-The shape of the primordial power spectra obtained corresponds to that found in \citep{lasenby_closed_2003}. We see that, in general, $\mathcal{P}_\mathcal{R}(k)$ has less power at low and high $k$ values than would be expected from a canonical power-law primordial spectrum.  The low-$k$ cutoff is entirely generic and occurs as a result of the brief period of fast-roll prior to slow-roll or power-law inflation.  This effect has been discussed previously by Boyanovsky, de Vega and Sanchez (BVS) in \citep{boyanovsky_cmb_2006}. The fast-roll regime behaves like an attractor potential in the wave equations for the mode functions of curvature and tensor perturbations. This potential leads then to the suppression of the primordial power spectra at low $k$.  Hence, it might be able to account for the suppression of the quadrupole of the CMB in agreement with observational data, as discussed in \citep{boyanovsky_cmb_2006-1}.  The exact position of the low-$k$ cutoff is determined by the value of $\phip$, as it controls the total number of $e$-folds of inflation. This effect has also been discussed in the context of ``Open Inflation'' \citep{Yamauchi_strings_2011,Linde_open_1999,Linde_toy_1999}, and examined using WMAP data in \citet{Contaldi_suppress_2003}.
-
-Further inspection shows $\mathcal{P}_\mathcal{R} \sim \log k$ after the low-$k$ cutoff. This is identical to the result found by \citet{lasenby_closed_2003} and in contrast with the standard power-spectrum parametrization which assumes a near-flat power-law scaling: $\log\mathcal{P}_\mathcal{R}\sim \log k$. 
-
- 
-It should be observed that we are using the approximation~\eqref{eqn:curvature_power_spectrum} outside the slow-roll regime for which it is valid; nonetheless we have performed full calculations that do not use the above approximation and which indicate that the resulting power spectrum is, in fact, a good representation of the true spectrum. These approximate spectra demonstrate the key generic aspects of the accurate calculation: both exhibit a low-$k$ cut off and that $\mathcal{P}_\mathcal{R}(k) \sim \log(k)$.  We shall follow this work with a second publication containing the full details and discussion of the accurate calculation. An alternative but related accurate calculation has been performed by \citep{Lello_tensor_2013}, which uses kinetic initial conditions to show that the suppression at low-$\ell$ is entirely generic. It should also be noted that methods which reconstruct the primordial power spectrum $\mathcal{P}_\mathcal{R}(k)$ \citep{vazquez_reconstruction,Hazra_reconstruction_2013} using data also show a dip at low $k$ values.
-
-We demonstrate the suppression on large angular scales of the CMB and late-time matter power spectra qualitatively in Figure~\ref{fig:figure_Cl}.  In the standard six-parameter $\Lambda$CDM cosmology, the primordial power spectrum has a power-law form, parametrized by two variables $A_s$ and $n_\mathrm{s}$, such that:
-%
-\begin{equation}
-  P_\mathcal{R}(k) = A_s{\left(\frac{k}{k_*}\right)}^{n_\mathrm{s}-1}
-\end{equation}
-%
-Using the best-fit parameters from {\em Planck\/}+WP+highL+BAO \citep{planck_collaboration_planck_2013} yields the standard matter CMB power spectra (dashed lines), whereas the alternative power spectra (solid line) were generated using $\mathcal{P}_\mathcal{R}(k)$ from Figure~\ref{fig:figure_CSpol} (for $n=2$), for which the axes were rescaled to agree with the values of $A_s$ and $n_\mathrm{s}$ during the slow-roll phase. The resulting matter and CMB power spectra are seen to exhibit a suppression of power at low $k$ and $\ell$ values, with the rest of the spectra perfectly intact, as required by cosmological observations.  Further investigation is clearly required, but this analysis already demonstrates the utility of kinetic dominance.
-
-%
-\begin{figure}[tp]
-  \centering
-  \includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/powerspec}
-  \caption{Figure taken from \protect\citet{hlozek_atacama_2012} showing the current status of the observed late-time matter perturbation power spectrum. As one can see, the currently probed $k$ range is $10^{-3}<k<2\:\mathrm{Mpc}^{-1}$.\label{fig:experimental_power_spectrum}}
-\end{figure}
-%
-
 %
 \begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/CSpol}
@@ -1434,6 +1412,15 @@ Using the best-fit parameters from {\em Planck\/}+WP+highL+BAO \citep{planck_col
 \end{figure}
 %
 
+
+
+The shape of the primordial power spectra obtained corresponds to that found in \citep{lasenby_closed_2003}. We see that, in general, $\mathcal{P}_\mathcal{R}(k)$ has less power at low and high $k$ values than would be expected from a canonical power-law primordial spectrum.  The low-$k$ cutoff is entirely generic and occurs as a result of the brief period of fast-roll prior to slow-roll or power-law inflation.  This effect has been discussed previously by Boyanovsky, de Vega and Sanchez (BVS) in \citep{boyanovsky_cmb_2006}. The fast-roll regime behaves like an attractor potential in the wave equations for the mode functions of curvature and tensor perturbations. This potential leads then to the suppression of the primordial power spectra at low $k$.  Hence, it might be able to account for the suppression of the quadrupole of the CMB in agreement with observational data, as discussed in \citep{boyanovsky_cmb_2006-1}.  The exact position of the low-$k$ cutoff is determined by the value of $\phip$, as it controls the total number of $e$-folds of inflation. This effect has also been discussed in the context of ``Open Inflation'' \citep{Yamauchi_strings_2011,Linde_open_1999,Linde_toy_1999}, and examined using WMAP data in \citet{Contaldi_suppress_2003}.
+
+Further inspection shows $\mathcal{P}_\mathcal{R} \sim \log k$ after the low-$k$ cutoff. This is identical to the result found by \citet{lasenby_closed_2003} and in contrast with the standard power-spectrum parametrization which assumes a near-flat power-law scaling: $\log\mathcal{P}_\mathcal{R}\sim \log k$. 
+
+ 
+It should be observed that we are using the approximation~\eqref{eqn:curvature_power_spectrum} outside the slow-roll regime for which it is valid; nonetheless we have performed full calculations that do not use the above approximation and which indicate that the resulting power spectrum is, in fact, a good representation of the true spectrum. These approximate spectra demonstrate the key generic aspects of the accurate calculation: both exhibit a low-$k$ cut off and that $\mathcal{P}_\mathcal{R}(k) \sim \log(k)$.  We shall follow this work with a second publication containing the full details and discussion of the accurate calculation. An alternative but related accurate calculation has been performed by \citep{Lello_tensor_2013}, which uses kinetic initial conditions to show that the suppression at low-$\ell$ is entirely generic. It should also be noted that methods which reconstruct the primordial power spectrum $\mathcal{P}_\mathcal{R}(k)$ \citep{vazquez_reconstruction,Hazra_reconstruction_2013} using data also show a dip at low $k$ values.
+
 %
 \begin{figure}[tp]
   \centerline{\includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/Cl}}
@@ -1441,6 +1428,15 @@ Using the best-fit parameters from {\em Planck\/}+WP+highL+BAO \citep{planck_col
   \caption{The CMB scalar power spectra (top) and the late-time matter power spectra (bottom), resulting from the curvature perturbation power spectra in the inset of the top figure. The solid line corresponds to a free inflaton with potential $V=\frac{1}{2}m^2\phi^2$ assuming kinetic initial conditions with $m=0.81\times10^{-5}\m$, $\phip = 21.8$, $N_*=42.5$. The dashed line corresponds to the best-fit standard $\Lambda$CDM model.  The presence of the cutoff in the curvature power spectrum for kinetic initial conditions causes a suppression of power on large angular scales in both the CMB and matter power spectra.\label{fig:figure_Cl}}
 \end{figure}
 %
+
+We demonstrate the suppression on large angular scales of the CMB and late-time matter power spectra qualitatively in Figure~\ref{fig:figure_Cl}.  In the standard six-parameter $\Lambda$CDM cosmology, the primordial power spectrum has a power-law form, parametrized by two variables $A_s$ and $n_\mathrm{s}$, such that:
+%
+\begin{equation}
+  P_\mathcal{R}(k) = A_s{\left(\frac{k}{k_*}\right)}^{n_\mathrm{s}-1}
+\end{equation}
+%
+Using the best-fit parameters from {\em Planck\/}+WP+highL+BAO \citep{planck_collaboration_planck_2013} yields the standard matter CMB power spectra (dashed lines), whereas the alternative power spectra (solid line) were generated using $\mathcal{P}_\mathcal{R}(k)$ from Figure~\ref{fig:figure_CSpol} (for $n=2$), for which the axes were rescaled to agree with the values of $A_s$ and $n_\mathrm{s}$ during the slow-roll phase. The resulting matter and CMB power spectra are seen to exhibit a suppression of power at low $k$ and $\ell$ values, with the rest of the spectra perfectly intact, as required by cosmological observations.  Further investigation is clearly required, but this analysis already demonstrates the utility of kinetic dominance.
+
 The results of this section agree with the ``just enough inflation'' scenario introduced by \citet{Ramirez_excluded_2009,Ramirez_predictions_2012,Ramirez_low_2012}.  In their work they assume that there is some physical mechanism which would limit the potential from above such that $V(\phi)<M_\mathrm{GUT}^4$, and thus find that $V(\phi)\ll\dot{\phi}^2$ at early times. Our results therefore place their observations in a more generic setting.
 
 

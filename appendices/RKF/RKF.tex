@@ -10,14 +10,14 @@ where the coefficients $\{c_i,a_{si}\}$ are determined by the choice of method a
 
 A particularly efficient example is the Runge-Kutta-Fehlberg $4(5)$ method which uses an embedded approach. It performs a fourth order step and a fifth order step, and uses the difference between these as an estimate of the error. Impressively, both steps are calculated using the same values of $\{k_i\}$ (but different values of $\{b_i\}$), and hence the method only requires five function evaluations of $f$ per step. Its Butcher tableau is detailed in Table~\ref{tab:rkf45}.
 
-\begin{table}[h]
+\begin{table}[htbp]
   \centering
   \input{appendices/RKF/tables/RKexplicit}
   \caption{Butcher tableau for a general explicit RK method.\label{tab:RKexplicit}
 }
 \end{table}
 
-\begin{table}
+\begin{table}[htbp]
   \centering
   \input{appendices/RKF/tables/rkf45}
   \caption{Butcher tableau for the embedded Runge-Kutta-Fehlberg $4(5)$ method.\label{tab:rkf45}                                                             }
