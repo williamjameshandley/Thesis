@@ -3,7 +3,7 @@
 \begin{tikzpicture}[%
     node distance = 5mm,
     writing/.style={%
-      text width=25mm,  % default text width
+      text width=30mm,  % default text width
       align=center      % align in center
     },
     component/.style={%
@@ -17,11 +17,11 @@
 
   \node[component] (KD) at (0,0) {Kinetic dominance\\(Chapter~\protect\ref{chap:kd})};
 
-  \node[below right = of KD, component] (TO)  {Theoretical observations\\(Chapter~\protect\ref{chap:kt})};
+  \node[below left = of KD, component] (TO)  {Theoretical observations\\(Chapter~\protect\ref{chap:kt})};
 
-  \node[below left = of KD, component] (PS) {Power spectrum reconstruction\\(Chapter~\protect\ref{chap:rec})};
+  \node[below = of KD, component] (PS) {Power spectrum reconstruction\\(Chapter~\protect\ref{chap:rec})};
 
-  \node[below left = of PS, component] (NS) {Nested sampling\\(Chapter~\protect\ref{chap:ens})};
+  \node[right = of PS, component] (NS) {Nested sampling\\(Chapter~\protect\ref{chap:ens})};
 
   \node[below = of NS, component] (PC) {\PolyChord{}\\(Chapter~\protect\ref{chap:pc})};
 
@@ -29,11 +29,10 @@
 
   \node[below = of RE, component] (RK) {RKWKB\\(Chapter~\protect\ref{chap:RK})};
 
-  \node[left = of RK, component] (FUT) {Constraining the kinetically dominated universe\\(Future research)};
+  \node[right = of RK, component] (FUT) {Constraining the kinetically dominated universe\\(Future research)};
 
     \draw[connection,->] (KD) -- (PS);
     \draw[connection,->] (KD) -- (TO);
-    \draw[connection,->] (PS) -- (NS);
     \draw[connection,->] (NS) -- (PC);
     \draw[connection,->] (PC) -- (PS);
     \draw[connection,->] (TO) -- (RE);
