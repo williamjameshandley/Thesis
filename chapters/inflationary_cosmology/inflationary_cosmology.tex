@@ -140,7 +140,7 @@ where the present-day $(t=t_0)$ scale factor is chosen to be unity $(a(t_0)=1)$,
   \Omega = \frac{\rho}{\rho_\mathrm{c}}, \qquad \rho_\mathrm{c} = {3\m^2H^2},
   \label{eqn:cos:omega_def}
 \end{equation}
-which measures the fraction of the critical density $\rho_c$ taken up by a given component. Equation~\eqref{eqn:cos:expansion_history} cannot be analytically solved, but if one assumes that one component is dominant, and the rest negligible, then one recovers the solution:
+which measures the fraction of the critical density $\rho_c$ taken up by a given component. Equation~\eqref{eqn:cos:expansion_history} cannot be analytically solved in general, but if one assumes that one component is dominant, and the rest negligible, then one recovers the solution:
 \begin{equation}
   a  \propto
   \left\{
@@ -150,12 +150,12 @@ which measures the fraction of the critical density $\rho_c$ taken up by a given
   \end{array}
   \right.
 \end{equation}
-We can see immediately that in a universe dominated by dark energy $(w=-1)$ the expansion is exponential, and in one dominated by radiation $(w=1/3)$, that $a\propto t^{1/2}$, which is a slower expansion than one dominated by matter $a\propto t^{2/3}$. In our universe, where we observe that it is approximately flat, $\Omega_0^{\text{(curv)}}\approx0$, matter now vastly outweighs radiation, and is of the same order of magnitude as dark energy, ${\Omega_0^{\text{(de)}} \approx \Omega_0^{\text{(mat)}} \gg \Omega_0^{\text{(rad)}}}$, we expect an expansion history of the form shown in Figure~\ref{fig:cos:expansion_history}.
+We can see immediately that in a universe dominated by dark energy ${(w\approx-1)}$ the expansion is exponential, and in one dominated by radiation ${(w=1/3)}$, that ${a\propto t^{1/2}}$, which is a slower expansion than one dominated by matter ${a\propto t^{2/3}}$. For our universe, we observe that it is approximately flat ${\Omega_0^{\text{(curv)}}\approx0}$, and that matter today is of the same order of magnitude as dark energy but vastly outweighs radiation ${\Omega_0^{\text{(de)}} \approx \Omega_0^{\text{(mat)}} \gg \Omega_0^{\text{(rad)}}}$. We thus expect an expansion history of the form shown in Figure~\ref{fig:cos:expansion_history}.
 
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/inflationary_cosmology/figures/expansion_history}
-  \caption{The approximate expansion history of our universe. Initially, the universe is dominated by radiation $a\sim t^{1/2}$. As the universe expands, the photons lose energy as their wavelengths are stretched.  Thus, the universe transitions to a matter dominated $a\sim t^{2/3}$ regime. Finally, the dark energy of the universe overtakes the matter content, and it settles into an exponential expansion $a\sim e^{H_0 t}$\label{fig:cos:expansion_history}}
+  \caption{The approximate expansion history of our universe. Initially, the universe is dominated by radiation $a\sim t^{1/2}$. As the universe expands, the photons lose energy as their wavelengths are stretched.  Thus, the universe transitions to a matter dominated $a\sim t^{2/3}$ regime. Finally, the dark energy of the universe overtakes the matter content, causing an exponential expansion $a\sim e^{H_0 t}$\label{fig:cos:expansion_history}}
 \end{figure}
 
 
@@ -190,10 +190,10 @@ It convenient to define conformal time as:
 \end{equation}
 so that the line element becomes:
 \begin{equation}          
-  ds^2 = a(\eta)\left( \d{\eta}^2 - d{X}^2 \right).
+  ds^2 = {a(\eta)}^2\left( \d{\eta}^2 - d{X}^2 \right).
   \label{eqn:cos:flat_FRW}
 \end{equation}
-This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons appear as if they were in flt space: If we consider (without loss of generality) radially travelling photons $\d{\Omega}=0$ the line element is:
+This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons appear as if they were in flat space: If we consider (without loss of generality) radially travelling photons $\d{\Omega}=0$ the line element is:
 \begin{equation}          
   ds^2 = a(\eta)\left( \d{\eta}^2 - \d{\chi}^2 \right).
   \label{eqn:cos:flat_FRW_radial}
@@ -204,12 +204,18 @@ and the metric is conformally equivalent to two-dimensional Minkowski space\foot
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/inflationary_cosmology/figures/satellites}
-  \caption{Microwave satellite pictures.\protect\footnote{Image credit:NASA/JPL-Caltech/ESA}}\label{fig:cos:satellites}
+  \caption{Microwave satellite pictures.}\label{fig:cos:satellites}
 \end{figure}
 
 As we turn telescopes on objects further away from earth, we begin to look appreciably back in time. The radiation from these objects has taken so long to reach us that we can observe the universe in a much younger state than it is now. The furthest galaxies imaged by the Hubble space telescope are more than 13 billion years old. Many of these objects are so far away that they have redshifted out of the visible spectrum and into the infra-red. If we look beyond, we enter the dark ages of the universe, before the first stars had turned on. This would appear to be the end of the observational story.
 
 However, from behind the dark ages, there is a background of microwaves. These would originally have been emitted as X-rays, but have redshifted all the way down to the microwave end of the spectrum.\footnote{Incidentally, this means that at around redshift $3<z<7$, the universe would have been bathed in optical light. However, it would have been at too low an intensity to be visible to the naked eye. Assuming a threshold of the human eye of $10^{-6}\mathrm{cd}\;\mathrm{m}^{-2}$, the CMB would stop being visible at $z\sim200$, at which point it would have been white.}. This uniform backdrop of radiation is our direct image of the universe as it was at redshift $z\sim1000$, when the universe was a mere $300,000$ years old.
+
+\begin{figure}[tp]
+  \centering
+  \includegraphics[width=\textwidth]{chapters/inflationary_cosmology/figures/cmb_colour}
+  \caption{The colour and illuminance of the radiation background, as a function of cosmic history. As the universe ages, the initially optical background gradually redshifts all the way down to the microwave background that is observed today. This plot shows the colour and the perceived irradiance (illuminance) that the CMB would appear to be in the first few million years after the surface of last scattering. For example, for an observer (un)fortunate enough to be born $500,000$ years after the big bang, the universe would still be bathed in orange ``sunlight'' from all directions.}\label{fig:cos:cmb_colour}
+\end{figure}
 
 Since its first (accidental) detection in 1964 by~\cite{PenziasWilson}, a succession of hundreds of microwave telescopes, both on the ground and in space, have sharpened our image of this (Figure~\ref{fig:cos:satellites}).
 The cosmic microwave background (CMB) is found to be:
