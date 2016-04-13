@@ -1,1 +1,0 @@
-Transpose[Flatten[$Failed, {2, 3}]]
