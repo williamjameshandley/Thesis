@@ -10,7 +10,9 @@ then
     exit 1
 fi
 
-pdflatex -shell-escape thesis
+PDFLATEX='pdflatex --shell-escape --enable-write18'
+
+$PDFLATEX thesis
 bibtex thesis
-pdflatex -shell-escape thesis
-pdflatex -shell-escape thesis
+$PDFLATEX thesis
+$PDFLATEX thesis
