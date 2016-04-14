@@ -6,9 +6,9 @@ A general explicit RK method can be written as:
   y_{n+1} &= y_n + h\sum\limits_{i=1}^{s} b_i k_i, \label{eqn:rk_step} \\
   k_s &= f(t_n + c_s h, y_n + h \sum\limits_{i=1}^{s-1}a_{si} k_i),
 \end{align}
-where the coefficients $\{c_i,a_{si}\}$ are determined by the choice of method and are typically written in a Butcher tableau (Table~\ref{tab:RKexplicit}). 
+where the coefficients \(\{c_i,a_{si}\}\) are determined by the choice of method and are typically written in a Butcher tableau (Table~\ref{tab:RKexplicit}). 
 
-A particularly efficient example is the Runge-Kutta-Fehlberg $4(5)$ method which uses an embedded approach. It performs a fourth order step and a fifth order step, and uses the difference between these as an estimate of the error. Impressively, both steps are calculated using the same values of $\{k_i\}$ (but different values of $\{b_i\}$), and hence the method only requires five function evaluations of $f$ per step. Its Butcher tableau is detailed in Table~\ref{tab:rkf45}.
+A particularly efficient example is the Runge-Kutta-Fehlberg \(4(5)\) method which uses an embedded approach. It performs a fourth order step and a fifth order step, and uses the difference between these as an estimate of the error. Impressively, both steps are calculated using the same values of \(\{k_i\}\) (but different values of \(\{b_i\}\)), and hence the method only requires five function evaluations of \(f\) per step. Its Butcher tableau is detailed in Table~\ref{tab:rkf45}.
 
 \begin{table}[tp]
   \centering
@@ -20,5 +20,5 @@ A particularly efficient example is the Runge-Kutta-Fehlberg $4(5)$ method which
 \begin{table}[tp]
   \centering
   \input{appendices/RKF/tables/rkf45}
-  \caption{Butcher tableau for the embedded Runge-Kutta-Fehlberg $4(5)$ method.\label{tab:rkf45}                                                             }
+  \caption{Butcher tableau for the embedded Runge-Kutta-Fehlberg \(4(5)\) method.\label{tab:rkf45}                                                             }
 \end{table}

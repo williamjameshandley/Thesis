@@ -1,6 +1,6 @@
 \begin{tikzpicture}
-  \draw [<->,thick] (0,7) node (yaxis) [left] {$\eta$}
-  |- (11,-3) node (xaxis) [below] {$\chi$};
+  \draw [<->,thick] (0,7) node (yaxis) [left] {\(\eta\)}
+  |- (11,-3) node (xaxis) [below] {\(\chi\)};
 
   % CMB
 

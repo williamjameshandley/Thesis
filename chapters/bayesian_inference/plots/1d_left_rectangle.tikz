@@ -15,10 +15,10 @@
 
 
   % x-axis
-  \draw [-stealth, black!75] (0,0) -- (5,0) node [below right] {$x$};
+  \draw [-stealth, black!75] (0,0) -- (5,0) node [below right] {\(x\)};
 
   % y-axis
-  \draw [-stealth, black!75] (0,0) -- (0,5) node [above right] {$y$};
+  \draw [-stealth, black!75] (0,0) -- (0,5) node [above right] {\(y\)};
 
   % Draw functions
   \draw [black, thin, domain=0.25:4.75, samples=100, variable=\t] 

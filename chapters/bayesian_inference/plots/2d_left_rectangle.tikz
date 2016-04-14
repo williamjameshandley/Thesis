@@ -4,13 +4,13 @@
   very thick, line join=round]
 
   % x-axis
-  \draw [-stealth, black!75] (0,0,0) -- (5,0,0) node [below left] {$x$};
+  \draw [-stealth, black!75] (0,0,0) -- (5,0,0) node [below left] {\(x\)};
 
   % y-axis
-  \draw [-stealth, black!75] (0,0,0) -- (0,5,0) node [below right] {$y$};
+  \draw [-stealth, black!75] (0,0,0) -- (0,5,0) node [below right] {\(y\)};
 
   % z-axis
-  \draw [-stealth, black!75] (0,0,0) -- (0,0,5) node [right] {$z$};
+  \draw [-stealth, black!75] (0,0,0) -- (0,0,5) node [right] {\(z\)};
 
 
   % Draw cubes

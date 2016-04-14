@@ -16,10 +16,10 @@
     \fill[blue!60!white] \secondcircle;
   \end{scope}
 
-  \draw[above left] node at (-1,0) {$A$};
-  \draw[above right] node at (1,0) {$B$};
-  \draw[below ] node at (0,0) {$A\cap B$};
-  \draw[below left] node at (3,2) {$\Omega$};
+  \draw[above left] node at (-1,0) {\(A\)};
+  \draw[above right] node at (1,0) {\(B\)};
+  \draw[below ] node at (0,0) {\(A\cap B\)};
+  \draw[below left] node at (3,2) {\(\Omega\)};
 
 
 \end{tikzpicture}

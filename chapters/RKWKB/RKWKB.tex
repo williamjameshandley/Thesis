@@ -22,9 +22,9 @@ We seek to create a numerical method which efficiently solves linear differentia
   \ddot{x}(t) + {\omega(t)}^2x(t) = 0,\qquad \omega(t)\in\mathbb{R}.
   \label{eqn:lode}
 \end{equation}
-If $\omega(t)=\omega = \mathrm{constant}$, then the solutions are sinusoidal: $x\propto \exp{(\pm i \omega t)}$. If $\omega(t)$ changes slowly with $t$, then the solutions are approximately sinusoidal with a slowly varying frequency and amplitude (these ideas will be made more concrete in Section~\ref{sec:wkb}). An example of such a solution can be seen in Figure~\ref{fig:airy}.
+If \(\omega(t)=\omega = \mathrm{constant}\), then the solutions are sinusoidal: \(x\propto \exp{(\pm i \omega t)}\). If \(\omega(t)\) changes slowly with \(t\), then the solutions are approximately sinusoidal with a slowly varying frequency and amplitude (these ideas will be made more concrete in Section~\ref{sec:wkb}). An example of such a solution can be seen in Figure~\ref{fig:airy}.
 
-In general, any second order linear differential equation may be transformed into the form of~\eqref{eqn:lode} by either changing the independent variable $t$ or dependent variable $x$. The method we shall describe can easily be adapted to other linear differential equations, but we shall work with~\eqref{eqn:lode} for its simplicity of exposition.
+In general, any second order linear differential equation may be transformed into the form of~\eqref{eqn:lode} by either changing the independent variable \(t\) or dependent variable \(x\). The method we shall describe can easily be adapted to other linear differential equations, but we shall work with~\eqref{eqn:lode} for its simplicity of exposition.
 
 Equation~\eqref{eqn:lode} is ubiquitous in physics, particularly in quantum mechanics. The authors' particular interest in its efficient solution comes from work in quantum fields in curved spacetime.
 
@@ -35,7 +35,7 @@ Over the next two subsections we will review the traditional techniques availabl
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/RKWKB/figures/airy}
-  \caption{The real and imaginary parts of the function $\mathrm{Ai}(-t) + \mathrm{Bi(-t)} i$, where $\mathrm{Ai}$ and $\mathrm{Bi}$ are the Airy functions of the first and second kind. This is a solution to the equation ${\ddot{x}(t) + t x(t) = 0}$ (equation~\ref{eqn:airy_equation}).\label{fig:airy}}
+  \caption{The real and imaginary parts of the function \(\mathrm{Ai}(-t) + \mathrm{Bi(-t)} i\), where \(\mathrm{Ai}\) and \(\mathrm{Bi}\) are the Airy functions of the first and second kind. This is a solution to the equation \({\ddot{x}(t) + t x(t) = 0}\) (equation~\ref{eqn:airy_equation}).\label{fig:airy}}
 \end{figure}
 
 
@@ -44,7 +44,7 @@ Over the next two subsections we will review the traditional techniques availabl
 We briefly review the theory of numerically solving ordinary differential equations, before discussing why Runge Kutta techniques are an inefficient tool for solving equations such as~\eqref{eqn:lode}.
 For a more detailed introduction to the numerical solution of ordinary differential equations we recommend~\cite{Press+2007}.
 
-A general non-linear differential equation in $n$ variables can be written in terms of vectors as:
+A general non-linear differential equation in \(n\) variables can be written in terms of vectors as:
 \begin{equation}
   \dot{\mathbf{y}}(t) = \mathbf{f}(\mathbf{y}(t),t).
   \label{eqn:ode}
@@ -56,36 +56,36 @@ Runge-Kutta methods work effectively by generalising the Taylor expansion:
   \mathbf{y}(t+h)  = \mathbf{y}(t) + h\:\mathbf{f}(\mathbf{y}(t),t) + \mathcal{O}(h^2).
   \label{eqn:euler}
 \end{equation}
-Given the value of a solution $\mathbf{y}_j$ at some time $t_j$, one may advance to the value of the solution $\mathbf{y}_{j+1}$ at some finite time later $t_{j+1} = t_j + h$ by using the recursion relation:
+Given the value of a solution \(\mathbf{y}_j\) at some time \(t_j\), one may advance to the value of the solution \(\mathbf{y}_{j+1}\) at some finite time later \(t_{j+1} = t_j + h\) by using the recursion relation:
 \begin{align}
   \mathbf{y}_{j+1} &=  \mathbf{y}_{j} + h\:\mathbf{f}(\mathbf{y}_j,t_j),
   \label{eqn:y_step}\\
   t_{j+1} &=  t_{j} + h.
   \label{eqn:t_step}
 \end{align}
-This is termed {\em Euler's method}, and for arbitrarily small $h$ will recover the solution to any desired accuracy. It is termed {\em first order\/} since each step is accurate to $\bigO{h}$.
+This is termed {\em Euler's method}, and for arbitrarily small \(h\) will recover the solution to any desired accuracy. It is termed {\em first order\/} since each step is accurate to \(\bigO{h}\).
 
 Euler's method is normally impractical for real numerical work. Runge-Kutta schemes work by generalising~\eqref{eqn:euler}~\&~\eqref{eqn:y_step} by including additional intermediate function evaluations that integrate~\eqref{eqn:ode} with greater accuracy.
 
-A possibly more important adjustment is to equip the algorithm with the ability to choose the step size $h$ according to the accuracy required. A popular stratagem is to run two steps, one of order $p$, and another of order $p-1$, and use the difference between the two as an estimate of the error. Particularly smart algorithms use the same function evaluations for both orders. An example of this is the Runge-Kutta-Fehlberg $4(5)$ method detailed in Section~\ref{sec:rkf}.
+A possibly more important adjustment is to equip the algorithm with the ability to choose the step size \(h\) according to the accuracy required. A popular stratagem is to run two steps, one of order \(p\), and another of order \(p-1\), and use the difference between the two as an estimate of the error. Particularly smart algorithms use the same function evaluations for both orders. An example of this is the Runge-Kutta-Fehlberg \(4(5)\) method detailed in Section~\ref{sec:rkf}.
 
-All methods based on this principle struggle to solve equations such as~\eqref{eqn:lode} when the algorithm must scale a very large number of peaks and troughs. Errors accumulate rapidly in these approaches, even if the variation of $\omega(t)$ in $t$ is very simple. Given the regularity of the solution from Figure~\ref{fig:airy}, one would imagine that there should be a more efficient method.
+All methods based on this principle struggle to solve equations such as~\eqref{eqn:lode} when the algorithm must scale a very large number of peaks and troughs. Errors accumulate rapidly in these approaches, even if the variation of \(\omega(t)\) in \(t\) is very simple. Given the regularity of the solution from Figure~\ref{fig:airy}, one would imagine that there should be a more efficient method.
 
 
 \subsection{WKB theory}
 \label{sec:wkb}
-WKB approaches are designed to solve linear ordinary differential equations like~\eqref{eqn:lode} in the limit of a ``slowly varying'' $\omega(t)$: i.e.\ the fractional change in frequency $\frac{\Delta\omega}{\omega}$ over several time periods $\Delta t \sim \frac{2\pi}{\omega}$ is relatively small.
-A systematic way of phrasing this is to rescale the independent variable of~\eqref{eqn:lode} so $t\rightarrow T t$:
+WKB approaches are designed to solve linear ordinary differential equations like~\eqref{eqn:lode} in the limit of a ``slowly varying'' \(\omega(t)\): i.e.\ the fractional change in frequency \(\frac{\Delta\omega}{\omega}\) over several time periods \(\Delta t \sim \frac{2\pi}{\omega}\) is relatively small.
+A systematic way of phrasing this is to rescale the independent variable of~\eqref{eqn:lode} so \(t\rightarrow T t\):
 \begin{equation}
   \ddot{x}(t) + T^2{\omega(t)}^2x(t) = 0,\qquad \omega(t)\in\mathbb{R}.
   \label{eqn:lode_T}
 \end{equation}
-If $T\gg1$ then $\omega$ is slowly varying, or equivalently the solutions have very rapid oscillations (large $\omega$). Given this, one can expand the solutions in terms of complex exponential functions:
+If \(T\gg1\) then \(\omega\) is slowly varying, or equivalently the solutions have very rapid oscillations (large \(\omega\)). Given this, one can expand the solutions in terms of complex exponential functions:
 \begin{equation}
   x(t)\sim \exp\left( \frac{1}{T}\sum\limits_{n=0}^{\infty} S_n(t)\: T^n \right).
   \label{eqn:asymp}
 \end{equation}
-Substituting this into~\eqref{eqn:lode_T} and setting each coefficient of $T$ equal to zero yields a sequence of solvable equations. One finds the first four solutions are:
+Substituting this into~\eqref{eqn:lode_T} and setting each coefficient of \(T\) equal to zero yields a sequence of solvable equations. One finds the first four solutions are:
 \begin{align}
   S_0(t) &= \pm i \int^t \omega(\tau)\: \d{\tau},
   \label{eqn:S0}\\
@@ -93,10 +93,10 @@ Substituting this into~\eqref{eqn:lode_T} and setting each coefficient of $T$ eq
   S_2(t) &=  i \int^t \frac{1}{4}\frac{\ddot{\omega}(\tau)}{\omega^{2}(\tau)} - \frac{3}{8}\frac{\dot{\omega}^2(\tau)}{\omega^{3}(\tau)}\: \d{\tau}, \\
   S_3(t) &=  \frac{1}{8}\frac{\ddot{\omega}(t)}{\omega^{3}(t)} - \frac{3}{16} \frac{\dot{\omega}^{2}(t)}{\omega^{4}(t)}.
 \end{align}
-Note that at $0$\textsuperscript{th} order, the solution is $x\propto\exp\left( \int \omega \d{t} \right)$, which should be compared with the traditional sinusoidal solution.
-Typically $T$ is considered a power counting parameter, and set equal to $1$ at the end of the analysis.
+Note that at \(0\)\textsuperscript{th} order, the solution is \(x\propto\exp\left( \int \omega \d{t} \right)\), which should be compared with the traditional sinusoidal solution.
+Typically \(T\) is considered a power counting parameter, and set equal to \(1\) at the end of the analysis.
 
-There are two integration constants associated with the either sign of equation~\eqref{eqn:S0}. The other integration constants from the remaining equations may be absorbed into the first two. The $n$\textsuperscript{th} order solution thus takes the form:
+There are two integration constants associated with the either sign of equation~\eqref{eqn:S0}. The other integration constants from the remaining equations may be absorbed into the first two. The \(n\)\textsuperscript{th} order solution thus takes the form:
 \begin{align}
   x_\mathrm{WKB}^{(n)}[A_{\pm}](t) =&
   \left( A_{+} e^{S_0(t)} + A_{-} e^{-S_0(t)} \right)
@@ -104,12 +104,12 @@ There are two integration constants associated with the either sign of equation~
   &\times \exp\left( \sum_{i=1}^n S_i(t) \right).
   \label{eqn:solution}
 \end{align}
-If one has initial conditions at time $t_0$:
+If one has initial conditions at time \(t_0\):
 \begin{equation}
   x(t_0) = x_0, \qquad \dot{x}(t_0)=\dot{x}_0,
   \label{eqn:i_c}
 \end{equation}
-then the coeffients $A_\mu$ may be determined by:
+then the coeffients \(A_\mu\) may be determined by:
 \begin{align}
   A_\pm^{(n)}(x_0,\dot{x}_0,t_0) =& \frac{1}{2}\exp{\left( \mp S_0(t_0) - \sum_{i=1}^n S_i(t_0) \right)}
   \nonumber\\
@@ -121,25 +121,25 @@ For further detail on the intricacies of WKB approaches, the reader should consu
 \section{The RKWKB method}
 Our strategy is to combine the versatility of RK methods with the power of WKB in dealing with oscillating solutions. We term the combination RKWKB\@.
 
-Given a function $\omega(t)$, one proposes a step in time of $h$ to be accompanied by an updating of the solution $x_j$ via:
+Given a function \(\omega(t)\), one proposes a step in time of \(h\) to be accompanied by an updating of the solution \(x_j\) via:
 \begin{align}
   x_{j+1} &= x_\mathrm{WKB}^{(n)}[A_\pm(x_j,\dot{x}_j,t_j)](t_j+h),
   \label{eqn:WKB_x_step} \\
   t_j &= t_j+h,
   \label{eqn:WKB_t_step}
 \end{align}
-where $x_\mathrm{WKB}^{(n)}[A_{\pm}]$ is given by~\eqref{eqn:solution} and $A_{\pm}$ is given by~\eqref{eqn:i_c_Apm}.
-To paraphrase the above, one matches the $n$\textsuperscript{th} order WKB solution onto the current values of $x_j$ and $\dot{x}_j$, and uses this to extrapolate the solution by a time step of $h$. Since WKB naturally encodes the oscillatory nature of the solution, this will allow step sizes $h$ to be far larger than a single period of oscillation. 
+where \(x_\mathrm{WKB}^{(n)}[A_{\pm}]\) is given by~\eqref{eqn:solution} and \(A_{\pm}\) is given by~\eqref{eqn:i_c_Apm}.
+To paraphrase the above, one matches the \(n\)\textsuperscript{th} order WKB solution onto the current values of \(x_j\) and \(\dot{x}_j\), and uses this to extrapolate the solution by a time step of \(h\). Since WKB naturally encodes the oscillatory nature of the solution, this will allow step sizes \(h\) to be far larger than a single period of oscillation. 
 
 \subsection{Step size adjustment}
-To tune the step size $h$, we use the same strategy as adaptive Runge-Kutta schemes. We compute both the order $n$ and order $n-1$ WKB solutions, and use the fractional difference between the two:
+To tune the step size \(h\), we use the same strategy as adaptive Runge-Kutta schemes. We compute both the order \(n\) and order \(n-1\) WKB solutions, and use the fractional difference between the two:
 \begin{equation}
   \varepsilon = \left|\frac{x^{(n)}-x^{(n-1)}}{x^{(n)}}\right|,
   \nonumber
 \end{equation}
 as an estimate of the truncation error. 
 
-We now assume that the desired accuracy is $\alpha$. If $\varepsilon<\alpha$ then the solution is within the desired tolerance, and the algorithm makes a step of size $h$. $h$ is then increased for the next iteration. If $\varepsilon>\alpha$ then the step is unsuccessful, and the step size is reduced. $h$ may therefore be efficiently updated between attempts via:
+We now assume that the desired accuracy is \(\alpha\). If \(\varepsilon<\alpha\) then the solution is within the desired tolerance, and the algorithm makes a step of size \(h\). \(h\) is then increased for the next iteration. If \(\varepsilon>\alpha\) then the step is unsuccessful, and the step size is reduced. \(h\) may therefore be efficiently updated between attempts via:
 \begin{equation}
   h \to h\times\left\{
   \begin{array}{lr}
@@ -151,9 +151,9 @@ We now assume that the desired accuracy is $\alpha$. If $\varepsilon<\alpha$ the
 This allows the step size to increase in the regions where the initial step size is unnecessarily small, whilst ensuring that the step size is always small enough to keep forecasts within a given error margin.
 
 \subsection{Dynamic switching}
-In general, one cannot expect the WKB expansion to be efficient throughout the solution region. If $\omega$ is too small, or too quickly varying, then the step size $h$ will decrease to an inefficiently small size. This problem can be countered by simultaneously attempting a step using a standard adaptive RK method. One chooses between RK and WKB by selecting the method with the smallest error. This provides a natural switching mechanism, without having to delve into the details of whether WKB is valid or not.
+In general, one cannot expect the WKB expansion to be efficient throughout the solution region. If \(\omega\) is too small, or too quickly varying, then the step size \(h\) will decrease to an inefficiently small size. This problem can be countered by simultaneously attempting a step using a standard adaptive RK method. One chooses between RK and WKB by selecting the method with the smallest error. This provides a natural switching mechanism, without having to delve into the details of whether WKB is valid or not.
 
-We choose the Runge-Kutta-Fehlberg $4(5)$ method for our alternative solver, which is detailed in Section~\ref{sec:rkf}. However, this may be substituted with any ODE solver according to the users preference.
+We choose the Runge-Kutta-Fehlberg \(4(5)\) method for our alternative solver, which is detailed in Section~\ref{sec:rkf}. However, this may be substituted with any ODE solver according to the users preference.
 
 \section{Example: The Airy equation}
 
@@ -171,9 +171,9 @@ As an example of the RKWKB approach, we apply it to the Airy equation:
 \end{align}
 whose solution is depicted in Figure~\ref{fig:airy}. This is often quoted as being a ``maximally hard'' problem for RK machinery to solve, since the frequency steadily increases, causing the step size to get smaller as the algorithm goes deeper into the solution.
 
-We set the desired relative error to be $10^{-4}$. The algorithm remains in the RK regime until $t\sim5$. When the WKB solver is activated, instead of following every oscillation of the solution, it rapidly speeds up, skipping many oscillations. This is detailed in Figure~\ref{fig:data}.
+We set the desired relative error to be \(10^{-4}\). The algorithm remains in the RK regime until \(t\sim5\). When the WKB solver is activated, instead of following every oscillation of the solution, it rapidly speeds up, skipping many oscillations. This is detailed in Figure~\ref{fig:data}.
 
-The error compared to the true solution is detailed in Figure~\ref{fig:error}. Here we find that initially the error is small, but grows$\bigO{h^{2s} t^{s+5/4}}$ where $s=4$ is the order of the RK method~\citep{Iserles02globalerror}. After the WKB regime is entered, it begins to make huge strides, and the error levels off.
+The error compared to the true solution is detailed in Figure~\ref{fig:error}. Here we find that initially the error is small, but grows\(\bigO{h^{2s} t^{s+5/4}}\) where \(s=4\) is the order of the RK method~\citep{Iserles02globalerror}. After the WKB regime is entered, it begins to make huge strides, and the error levels off.
 
 In contrast to a ``pure'' RK method, the RKWKB method finds the Airy equation maximally {\em easy}.
 
@@ -182,13 +182,13 @@ In contrast to a ``pure'' RK method, the RKWKB method finds the Airy equation ma
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/RKWKB/figures/data}
-  \caption{The RKWKB method compared with the analytical solution. The algorithm starts at $t=0$ in the RK regime, since $\omega$ is varying quickly relative to the oscillation period. At $t=5$ it becomes more efficient to use the WKB regime, and the points start to increase in separation. By $t=15$ the algorithm is skipping multiple periods, and the step size $h$ increases exponentially.\label{fig:data}}
+  \caption{The RKWKB method compared with the analytical solution. The algorithm starts at \(t=0\) in the RK regime, since \(\omega\) is varying quickly relative to the oscillation period. At \(t=5\) it becomes more efficient to use the WKB regime, and the points start to increase in separation. By \(t=15\) the algorithm is skipping multiple periods, and the step size \(h\) increases exponentially.\label{fig:data}}
 \end{figure}
 
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/RKWKB/figures/error}
-  \caption{Fractional difference between the analytical solution and RKWKB solution from Figure~\protect\ref{fig:data}. The algorithm's fractional error begins at $t=0$ with an error of $\sim10^{-4}$, but rises in the RK phase. This is to be expected as RK methods accumulate errors (particularly for oscillatory solutions). Upon entering the WKB region, the fractional error levels off. Note the rapidly increasing step size, and accuracy at extremely late times $t$. To the authors' knowledge, no numerical scheme to date has demonstrated the ability to solve the Airy equation~\protect\eqref{eqn:airy_equation} to times as late as this.\label{fig:error}}
+  \caption{Fractional difference between the analytical solution and RKWKB solution from Figure~\protect\ref{fig:data}. The algorithm's fractional error begins at \(t=0\) with an error of \(\sim10^{-4}\), but rises in the RK phase. This is to be expected as RK methods accumulate errors (particularly for oscillatory solutions). Upon entering the WKB region, the fractional error levels off. Note the rapidly increasing step size, and accuracy at extremely late times \(t\). To the authors' knowledge, no numerical scheme to date has demonstrated the ability to solve the Airy equation~\protect\eqref{eqn:airy_equation} to times as late as this.\label{fig:error}}
 \end{figure}
 
 
@@ -226,9 +226,9 @@ This approach is much improved by transferring to a fast rotating frame:
 \end{equation}
 the end product is then termed the {\em modified Magnus method\/}~\citep{Iserles01thinkglobally}.
 
-The RKWKB method and the modified Magnus method share some key features. Indeed, the lowest order modified Magnus method is equivalent to a $1$\textsuperscript{st} order WKB approach~\citep{Iserles02globalerror}. However, our approach is distinguished in several ways. 
+The RKWKB method and the modified Magnus method share some key features. Indeed, the lowest order modified Magnus method is equivalent to a \(1\)\textsuperscript{st} order WKB approach~\citep{Iserles02globalerror}. However, our approach is distinguished in several ways. 
 
-First, the Magnus expansion~\eqref{eqn:magnus} requires multiple integrals for higher order terms. These integrals are tricky to implement, and can introduce considerable computational overhead. The WKB expansion~\eqref{eqn:WKB_x_step} on the other hand requires at most single integrals, replacing the double integrals with additional derivative terms of $\omega$, which are typically easier to compute.
+First, the Magnus expansion~\eqref{eqn:magnus} requires multiple integrals for higher order terms. These integrals are tricky to implement, and can introduce considerable computational overhead. The WKB expansion~\eqref{eqn:WKB_x_step} on the other hand requires at most single integrals, replacing the double integrals with additional derivative terms of \(\omega\), which are typically easier to compute.
 
 Second, our approach uses adaptive step-size control, which is very easy to implement in the WKB framework and crucial for real-world numerical work.
 

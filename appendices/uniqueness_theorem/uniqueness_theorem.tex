@@ -14,10 +14,10 @@ We shall now prove that the solutions to the initial value problem of the master
   \label{eqn:IVP2},
 \end{align}
 %
-are unique within any finite interval $\psi\in[\psiz,\psi_1]$; i.e, if two positive solutions intersect at a point, then they intersect
+are unique within any finite interval \(\psi\in[\psiz,\psi_1]\); i.e, if two positive solutions intersect at a point, then they intersect
 everywhere.
 
-We begin by putting a lower bound on $y$ in the interval $[\psiz,\psi_1]$: From assumption~\eqref{eqn:conditions}, we know $\dot{\phi}^2>\vellim^2>0$. If we unpack the definition of $y$ using equations~\eqref{eqn:y_def},~\eqref{eqn:Ntrans},~\eqref{eqn:tau_def} and~\eqref{eqn:Friedmann_c}, one finds:
+We begin by putting a lower bound on \(y\) in the interval \([\psiz,\psi_1]\): From assumption~\eqref{eqn:conditions}, we know \(\dot{\phi}^2>\vellim^2>0\). If we unpack the definition of \(y\) using equations~\eqref{eqn:y_def},~\eqref{eqn:Ntrans},~\eqref{eqn:tau_def} and~\eqref{eqn:Friedmann_c}, one finds:
 %
 \begin{equation}
   y 
@@ -28,10 +28,10 @@ We begin by putting a lower bound on $y$ in the interval $[\psiz,\psi_1]$: From 
   \frac{\vellim^2}{4\Vm},
 \end{equation}
 %
-where $\Vm$ is the maximal value of $V(\psi)$ in the interval $[\psiz,\psi_1]$. With this in hand we may prove the uniqueness of solutions of the initial value problem~\eqref{eqn:IVP1},~\eqref{eqn:IVP2} using standard techniques. For a good reference of such techniques the reader should consult the text by \citet{agarwal_1993}. In this case, we shall prove it using {\em Peano iteration}.
+where \(\Vm\) is the maximal value of \(V(\psi)\) in the interval \([\psiz,\psi_1]\). With this in hand we may prove the uniqueness of solutions of the initial value problem~\eqref{eqn:IVP1},~\eqref{eqn:IVP2} using standard techniques. For a good reference of such techniques the reader should consult the text by \citet{agarwal_1993}. In this case, we shall prove it using {\em Peano iteration}.
 
 
-If one assumes that $y(\psi)$ and $z(\psi)$ are two distinct solutions, then their difference satisfies:
+If one assumes that \(y(\psi)\) and \(z(\psi)\) are two distinct solutions, then their difference satisfies:
 %
 \begin{equation}
   \frac{\d{}}{\d{\psi}}(y-z)
@@ -40,7 +40,7 @@ If one assumes that $y(\psi)$ and $z(\psi)$ are two distinct solutions, then the
   \label{eqn:master_diff}
 \end{equation}
 %
-If in addition one assumes they meet at a common point $\psi_0$, so that $y(\psi_0)=z(\psi_0)$, then integrating away from this position yields:
+If in addition one assumes they meet at a common point \(\psi_0\), so that \(y(\psi_0)=z(\psi_0)\), then integrating away from this position yields:
 %
 \begin{align}
   \abs{y(\psi)-z(\psi)}
@@ -54,14 +54,14 @@ If in addition one assumes they meet at a common point $\psi_0$, so that $y(\psi
   \label{eqn:ineq_1}
 \end{align}
 %
-A generic property of the function $f(y)=\sqrt{1-e^{-2y}}$ is that in the interval $\left[\phantom(\frac{\vellim^2}{4\Vm},\infty\right)\phantom]$ it is {\em Lipschitz continuous\/}:
+A generic property of the function \(f(y)=\sqrt{1-e^{-2y}}\) is that in the interval \(\left[\phantom(\frac{\vellim^2}{4\Vm},\infty\right)\phantom]\) it is {\em Lipschitz continuous\/}:
 %
 \begin{equation}
   \abs{\sqrt{1-e^{-2y}} - \sqrt{1-e^{-2z}}} \le L\abs{y-z},
   \label{eqn:Lipschitz}
 \end{equation}
 %
-where $L$ is the {\em Lipschitz constant}, taking the value:
+where \(L\) is the {\em Lipschitz constant}, taking the value:
 %
 \begin{equation}
   L
@@ -80,7 +80,7 @@ Applying Lipschitz continuity~\eqref{eqn:Lipschitz} to the inequality in~\eqref{
   \label{eqn:ineq_2}
 \end{equation}
 %
-Further, if the maximum value of the difference of $|y-z|$ between $\psi_0$ and $\psi$ is $\Delta$, then the above implies:
+Further, if the maximum value of the difference of \(|y-z|\) between \(\psi_0\) and \(\psi\) is \(\Delta\), then the above implies:
 %
 \begin{equation}
   \abs{y(\psi)-z(\psi)} 
@@ -106,7 +106,7 @@ Applying this back into~\eqref{eqn:ineq_2} yields:
   L^3\Delta\frac{\abs{\psi-\psi_0}^3}{3!},
 \end{equation}
 %
-and by induction on $n\in\mathbb{N}$ we find that:
+and by induction on \(n\in\mathbb{N}\) we find that:
 %
 \begin{equation}
   \abs{y(\psi)-z(\psi)} 
@@ -114,6 +114,6 @@ and by induction on $n\in\mathbb{N}$ we find that:
   L^n\Delta\frac{\abs{\psi-\psi_0}^n}{n!}.
 \end{equation}
 %
-As $n\to\infty$ the term on the right-hand side drops to $0$, and therefore $|y(\psi)-z(\psi)|=0$. Thus, if $y$ and $z$ are equal at some point $\psi_0$, then they are equal at all points $\psi$ within any finite interval $[\psiz,\psi_1]$. Two separate solutions cannot ``cross over'', and if one positive solution $f$ is initially less than a second solution $h$ at $\psiz$, $f(\psiz)<h(\psiz)$, then $f(\psi_1)<h(\psi_1)$ for any finite $\psi_1$.  
+As \(n\to\infty\) the term on the right-hand side drops to \(0\), and therefore \(|y(\psi)-z(\psi)|=0\). Thus, if \(y\) and \(z\) are equal at some point \(\psi_0\), then they are equal at all points \(\psi\) within any finite interval \([\psiz,\psi_1]\). Two separate solutions cannot ``cross over'', and if one positive solution \(f\) is initially less than a second solution \(h\) at \(\psiz\), \(f(\psiz)<h(\psiz)\), then \(f(\psi_1)<h(\psi_1)\) for any finite \(\psi_1\).  
 
 

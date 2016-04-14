@@ -10,13 +10,13 @@
       xmax=3.5,
       xtick=\empty,
       ytick=\empty,
-      xlabel=$x$,
-      ylabel=$P(x)$,
+      xlabel=\(x\),
+      ylabel=\(P(x)\),
     ]
     \addplot[very thick, name path = gg, samples=200,color=blue, domain ={-3.2:3.2}] (x,{0.4*exp(-(x-1)*(x-1)/0.5)+0.5*exp(-(x+1)*(x+1)/0.5)+exp(-x*x/0.1)});
-    \addlegendentry{$f(x)$}
+    \addlegendentry{\(f(x)\)}
     \addplot[very thick, name path = ff, samples=200,color=red, domain ={-3.2:3.2}] (x,{1.5/(1+x*x)});
-    \addlegendentry{$g(x)$}
+    \addlegendentry{\(g(x)\)}
     \addplot[name path = hh,color=white, domain ={-3.2:3.2}] (x,1.55);
 
     \pgfplotsset{%

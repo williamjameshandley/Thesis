@@ -5,17 +5,17 @@
 \begin{itemize}
   \item I make full use of symbolic overloading; using the same symbol in different contexts where their mathematical meaning is distinct, but their physical meaning is related. For example:
     \begin{itemize}
-      \item $f=f(x)$, where $f$ on the right hand side refers to a function ${f:X\to Y}$, but on the left hand side $f\in Y$ refers to the image of $x\in X$ under the function $f$.
-      \item $\rho = \rho + \delta\rho$, where on the right hand side $\rho$ refers to the unperturbed solution, whilst on the left $\rho$ refers to the perturbed solution.
-      \item $v_i = \partial_i v + v_i$, where on the left $v_i$ refers to a generic vector field, but on the right $v$ refers to the helicity scalar part of the field and $v_i$ refers to the helicity vector part.
+      \item \(f=f(x)\), where \(f\) on the right hand side refers to a function \({f:X\to Y}\), but on the left hand side \(f\in Y\) refers to the image of \(x\in X\) under the function \(f\).
+      \item \(\rho = \rho + \delta\rho\), where on the right hand side \(\rho\) refers to the unperturbed solution, whilst on the left \(\rho\) refers to the perturbed solution.
+      \item \(v_i = \partial_i v + v_i\), where on the left \(v_i\) refers to a generic vector field, but on the right \(v\) refers to the helicity scalar part of the field and \(v_i\) refers to the helicity vector part.
     \end{itemize}
-  \item I work using a metric with a positive signature $(+,-,-,-)$.
-  \item Fourier transforms are defined so that Fourier synthesis carries the factors of $2\pi$:
+  \item I work using a metric with a positive signature \((+,-,-,-)\).
+  \item Fourier transforms are defined so that Fourier synthesis carries the factors of \(2\pi\):
     \begin{equation}
       f(\vk) = \int_{-\infty}^{\infty} d^3\vx\: e^{-i \vk\cdot\vx} f(\vx) \qquad f(\vx) = \int_{-\infty}^{\infty} \frac{d^3\vk}{{(2\pi)}^3}\: e^{i \vx\cdot\vk} f(\vk).
       \label{eqn:cos:fourier_transform}
     \end{equation}
-  \item Tensorial spacetime indices are denoted with Greek letters $\mu,\nu,\ldots$. The $0$ index indicates the time component, and Latin letters $i,j,\ldots$ indicate spatial indices.
+  \item Tensorial spacetime indices are denoted with Greek letters \(\mu,\nu,\ldots\). The \(0\) index indicates the time component, and Latin letters \(i,j,\ldots\) indicate spatial indices.
   \item Quantum mechanical operators are written without hats, unless their presence increases clarity.
   \item I work in natural units so that:
     \begin{equation}

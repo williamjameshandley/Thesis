@@ -12,8 +12,8 @@
       axis x line=bottom,
       xtick=\empty,
       ytick=\empty,
-      xlabel=$X$,
-      ylabel=$\lik(X)$,
+      xlabel=\(X\),
+      ylabel=\(\lik(X)\),
     ]
     \addplot[thick, name path = gg, samples=200, domain ={0:1}] (x,{exp(-x*x/0.5)});
     \addplot[name path = hh,color=white, domain ={0:1}] (x,1.05);

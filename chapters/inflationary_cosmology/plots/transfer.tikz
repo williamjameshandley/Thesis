@@ -10,7 +10,7 @@
   \draw [<->,thick] 
   (0,6) node  (yaxis) [right] {Perturbation scale}
   |-
-  (11,0) node (xaxis) [below] {$\eta$};
+  (11,0) node (xaxis) [below] {\(\eta\)};
 
   \coordinate (H1) at (0.5,\yt);
   \coordinate (H2) at (4,\yb);
@@ -21,7 +21,7 @@
 
   \draw[name path=todayslice,dotted] (\xtoday,\yb) -- (\xtoday,\yt) node [right]  {Today};
 
-  \draw[name path=kmode,dashed] (0.5,\yk)  -- (10.5,\yk) node [right] {$k$-mode};
+  \draw[name path=kmode,dashed] (0.5,\yk)  -- (10.5,\yk) node [right] {\(k\)-mode};
 
   % Horizon motion
   \draw[name path=horizondecr,thick] (H1) -- (H2) node [midway, below, sloped]{Inflation}; 
@@ -37,12 +37,12 @@
   \draw[fill=black] (horizonentry) circle (2pt) node[above left] {Horizon re-entry};
 
   \draw[] (H2) node[below] {Reheating};
-  \draw[] (H1) node[above right] {Comoving horizon $1/(aH)$};
+  \draw[] (H1) node[above right] {Comoving horizon \(1/(aH)\)};
 
-  \draw[] (horizonexit) node[below left] {$\mathcal{P}_\mathcal{R}(k)$};
+  \draw[] (horizonexit) node[below left] {\(\mathcal{P}_\mathcal{R}(k)\)};
 
-  \draw[] (today) node[below right] {$C_\ell$};
-  \draw[-latex] (horizonentry) [out=-30, in=-150] to node[below left]{$\Delta_{X\ell}(k)$}  (today); 
+  \draw[] (today) node[below right] {\(C_\ell\)};
+  \draw[-latex] (horizonentry) [out=-30, in=-150] to node[below left]{\(\Delta_{X\ell}(k)\)}  (today); 
 
 
 \end{tikzpicture}

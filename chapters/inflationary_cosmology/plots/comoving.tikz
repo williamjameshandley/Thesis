@@ -16,9 +16,9 @@
   (8,-1);
 
   % Time Labels
-  \node[below] at (0.5,0) {$t_1$};
-  \node[below] at (3,0) {$t_2$};
-  \node[below] at (6.5,0) {$t_3$};
+  \node[below] at (0.5,0) {\(t_1\)};
+  \node[below] at (3,0) {\(t_2\)};
+  \node[below] at (6.5,0) {\(t_3\)};
 
   \def\xa{0.2} \def\ya{0.2}
   \def\xb{0.8} \def\yb{0.4}

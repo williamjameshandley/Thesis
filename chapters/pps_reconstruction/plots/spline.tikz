@@ -38,32 +38,32 @@
 
 
 % Draw axes
-  \draw [<->,thick] (0,\ywidth) node (yaxis) [above] {$\log\PR(k)$}
-  |- (\xwidth,0) node (xaxis) [right] {$\log k$};
+  \draw [<->,thick] (0,\ywidth) node (yaxis) [above] {\(\log\PR(k)\)}
+  |- (\xwidth,0) node (xaxis) [right] {\(\log k\)};
 % Draw limits
-%\draw [-,dashed] (\xmn,0) node[below] {$\log_{10}k_1$} -- (\xmn,\ywidth) ;
-%\draw [-,dashed] (\xmx,0) node[below] {$\log_{10}k_N$} -- (\xmx,\ywidth) ;
+%\draw [-,dashed] (\xmn,0) node[below] {\(\log_{10}k_1\)} -- (\xmn,\ywidth) ;
+%\draw [-,dashed] (\xmx,0) node[below] {\(\log_{10}k_N\)} -- (\xmx,\ywidth) ;
 
 % Draw the line joining start and end
   \draw (\xmn,\ymn) coordinate (mn) -- (\xstart,\ystart) coordinate (start) -- (\xmid,\ymid) coordinate (mid) --  (\xend,\yend) coordinate(end) -- (\xmx,\ymx) coordinate(mx);
 
 % Draw the point labels
-  \draw (mn) node[below right]    {$(k_1,\Pknotj{1})$};
-  \draw (start) node[above right] {$(k_2,\Pknotj{2})$};
-  \draw (mid) node[below right]   {$(k_3,\Pknotj{3})$};
-  \draw (end) node[above right]   {$(k_4,\Pknotj{4})$};
-  \draw (mx) node[below left]     {$(k_{\Nknots},\Pknotj{{\Nknots}})$};
+  \draw (mn) node[below right]    {\((k_1,\Pknotj{1})\)};
+  \draw (start) node[above right] {\((k_2,\Pknotj{2})\)};
+  \draw (mid) node[below right]   {\((k_3,\Pknotj{3})\)};
+  \draw (end) node[above right]   {\((k_4,\Pknotj{4})\)};
+  \draw (mx) node[below left]     {\((k_{\Nknots},\Pknotj{{\Nknots}})\)};
 
 % Draw a dashed line indicating the coordinate names
-%\draw[dashed] (yaxis |- start) node[left] {$y_{1}$}
-%-| (xaxis -| start) node[below] {$x_1$};
-%\draw[dashed] (yaxis |- mid) node[left] {$y_{2}$}
-%-| (xaxis -| mid) node[below] {$x_2$};
-%\draw[dashed] (yaxis |- end) node[left] {$y_{N}$}
-%-| (xaxis -| end) node[below] {$x_N$};
-%\draw  (xaxis -| start) node[below] {$\log_{10}k_2$};
-%\draw  (xaxis -| mid) node[below] {$\log_{10}k_3$};
-%\draw  (xaxis -| end) node[below] {$\log_{10}k_4$};
+%\draw[dashed] (yaxis |- start) node[left] {\(y_{1}\)}
+%-| (xaxis -| start) node[below] {\(x_1\)};
+%\draw[dashed] (yaxis |- mid) node[left] {\(y_{2}\)}
+%-| (xaxis -| mid) node[below] {\(x_2\)};
+%\draw[dashed] (yaxis |- end) node[left] {\(y_{N}\)}
+%-| (xaxis -| end) node[below] {\(x_N\)};
+%\draw  (xaxis -| start) node[below] {\(\log_{10}k_2\)};
+%\draw  (xaxis -| mid) node[below] {\(\log_{10}k_3\)};
+%\draw  (xaxis -| end) node[below] {\(\log_{10}k_4\)};
 
 % Draw the crosses
   \movablevert{mn}
