@@ -345,7 +345,7 @@ Inflation finishes when the inflaton reaches its true vacuum, and oscillates abo
 Observationally, the real universe is not perfectly smooth.\footnote{For example, the fact that you are reading this thesis indicates that there must be some departure from homogeneity.}
 We may treat the smooth FRW metric as a 0\textsuperscript{th} order approximation, to the universe, and expand about this solution using perturbation theory. In general then, we write each quantity as:
 \begin{equation}
-  X(t,\vx) = X(t) + \delta X(t,\vx).
+  X(t,\vx) \rightarrow X(t) + \delta X(t,\vx).
   \label{eqn:cos:expansion}
 \end{equation}
 Since in the early universe the perturbations were small \(\delta X \ll X\), we may expand all equations to linear order with very high accuracy. One cannot hope to cover the full subtlety of cosmological perturbation theory in a short introductory chapter. For more detail, I highly recommend the expositions by~\cite{mukhanov_theory_1992} and~\cite{Baumann+2009}. We shall work with the perturbations to the flat FRW metric, but the analysis can be extended to the open and closed cases as well.
@@ -365,14 +365,14 @@ where the various terms in the above expression are defined in Table~\ref{tab:co
   \caption{Definitions of terms in the perturbed FRW metric.}\label{tab:cos:perturbed_metric}
 \end{table}
 
-In order to arrive at~\eqref{eqn:cos:FRW_perturb}, begin by considering a perturbation to the FRW metric tensor~\eqref{eqn:cos:FRW_metric}: \({g_{\mu\nu} = g_{\mu\nu} + \delta g_{\mu\nu}}\). Since the background form is split into spatial and temporal parts, one may split the perturbed metric into \(\d{t}^2\), \(\d{t}\d{x^i}\) and \(\d{x^i}\d{x^j}\) terms. We may choose to define \({\delta g_{00} = 2\Phi}\), \({\delta g_{0i} = \delta g_{i0} = -a B_i}\), \({\delta g_{ij} = -2a^2F_{ij}}\). The factors of two and \(a\) are introduced for later notational convenience, and \({F_{ij} = F_{ji}}\) is symmetric. Finally, we split \({F_{ij} = -\Psi\delta_{ij} + E_{ij}}\) into a symmetric, traceless tensor \(E_{ij}\) and a scalar \(\Psi\). Putting this all together, one arrives at~\eqref{eqn:cos:FRW_perturb} above.
+In order to arrive at~\eqref{eqn:cos:FRW_perturb}, begin by considering a perturbation to the FRW metric tensor~\eqref{eqn:cos:FRW_metric}: \({g_{\mu\nu} \rightarrow g_{\mu\nu} + \delta g_{\mu\nu}}\). Since the background form is split into spatial and temporal parts, one may split the perturbed metric into \(\d{t}^2\), \(\d{t}\d{x^i}\) and \(\d{x^i}\d{x^j}\) terms. We may choose to define \({\delta g_{00} = 2\Phi}\), \({\delta g_{0i} = \delta g_{i0} = -a B_i}\), \({\delta g_{ij} = -2a^2F_{ij}}\). The factors of two and \(a\) are introduced for later notational convenience, and \({F_{ij} = F_{ji}}\) is symmetric. Finally, we split \({F_{ij} = -\Psi\delta_{ij} + E_{ij}}\) into a symmetric, traceless tensor \(E_{ij}\) and a scalar \(\Psi\). Putting this all together, one arrives at~\eqref{eqn:cos:FRW_perturb} above.
 
 \subsection{Matter perturbation}
 Perturbations of the matter content will take the form:
 \begin{equation}
-  \rho = \rho + \delta \rho, \qquad 
-  P = P + \delta P, \qquad
-  u^\mu = \left[ 1-\Phi, a^{-2} \delta q^i/(\rho+P)\right].
+  \rho \rightarrow \rho + \delta \rho, \qquad 
+  P \rightarrow P + \delta P, \qquad
+  u^\mu \rightarrow \left[ 1-\Phi, a^{-2} \delta q^i/(\rho+P)\right].
   \label{eqn:cos:matter_perturb}
 \end{equation}
 The density and pressure perturbations are self-explanatory. The perturbation to the fluid velocity is first chosen so that \(u^\mu u_\mu=1\) to first order, and \(\delta q^i\) is the perturbation to the momentum density. The advantage of this is that for non-interacting fluids, \(\delta\rho\), \(\delta P\) and \(\delta q^i\) are all additive, as in equation~\eqref{eqn:cos:multi_component}. We have neglected a perturbation to the anisotropic stress. Anisotropic stress may be included if desired (for example in the case of neutrinos) but will add complexity unnecessary for this exposition. 
@@ -393,7 +393,7 @@ This is not particularly restrictive, and is naturally satisfied by the equation
 
 The scalar field perturbation is similarly simple:
 \begin{equation}
-  \phi = \phi + \delta\phi.
+  \phi \rightarrow \phi + \delta\phi.
 \end{equation}
 
 \subsection{Fourier modes and scalar-vector-tensor decomposition}
@@ -417,9 +417,9 @@ It is worth remarking that the above decomposition is specifically for a flat un
 
 Second, a general spatial vector field \(v_i\) and a symmetric tensor field \(T_{ij}\) can be decomposed into helicity modes as:
 \begin{align}
-  v_i =& \partial_i v + v_i,   \nonumber\\
+  v_i \rightsquigarrow& \partial_i v + v_i,   \nonumber\\
   &(\partial^k v_k=0), \\
-  T_{ij} =& (\partial_i\partial_j - \frac{\delta_{ij}}{3}\partial^k\partial_k)T + \frac{1}{2}(\partial_i T_j + \partial_j T_i) + T_{ij} \nonumber,\\ 
+  T_{ij} \rightsquigarrow& (\partial_i\partial_j - \frac{\delta_{ij}}{3}\partial^k\partial_k)T + \frac{1}{2}(\partial_i T_j + \partial_j T_i) + T_{ij} \nonumber,\\ 
   &(\partial^k T_{ki} = \partial^k T_k = 0),
 \end{align}
 so \(v\) and \(T\) are helicity scalars, \(v_i\) and \(T_i\) are divergenceless 3-vectors and \(T_{ij}\) is a divergenceless, symmetric, traceless 3-tensor\footnote{Note the overloading: \(v\) and \(T\) have different meanings on either side of each equation.}.
