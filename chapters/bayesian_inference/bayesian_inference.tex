@@ -269,12 +269,12 @@ To see this issue, consider the quadrature integration of a function \(g\) along
   \int_0^1 g(x) \d{x} \approx \sum\limits_{i=0}^{n} g(x_i) w_i,
   \label{eqn:bay:quadrature_1d}
 \end{equation}
-where \({x_i\in[0,1]}\) are the quadrature points \({w_i\in\mathbb{R}}\) are the quadrature weights. For example, if \(x_i = \frac{i}{n}\) and \(w_i=\frac{1}{n+1}\) then one obtains the left rectangle rule (Figure~\ref{fig:bay:quadrature}). This calculation therefore requires \(\bigO{n}\) calculations of the function. In the \(d\)-dimensional case the generalisation is:
+where \({x_i\in[0,1]}\) are the quadrature points \({w_i\in\mathbb{R}}\) are the quadrature weights. For example, if \(x_i = \frac{i}{n}\) and \(w_i=\frac{1}{n+1}\) then one obtains the left rectangle rule (Figure~\ref{fig:bay:quadrature}). This calculation therefore requires \(\bigO{n}\) calculations of the function. In the \(D\)-dimensional case the generalisation is:
 \begin{equation}
-  \int_0^1\cdots\int_0^1 g(x_1,\ldots,x_d) \d{x_1}\cdots \: \d{x_d} \approx \sum\limits_{i_1,\ldots,i_d=0}^{n} g(x_{i_1},\ldots,x_{i_d}) w_{i_1,\ldots,i_d},
+  \int_0^1\cdots\int_0^1 g(x_1,\ldots,x_D) \d{x_1}\cdots \: \d{x_D} \approx \sum\limits_{i_1,\ldots,i_D=0}^{n} g(x_{i_1},\ldots,x_{i_D}) w_{i_1,\ldots,i_D},
   \label{eqn:bay:quadrature_nd}
 \end{equation}
-This calculation however requires \(\bigO{n^d}\) function evaluations. This is an exponential scaling with \(d\), and is an example of the {\em curse of dimensionality}. Even for modest number of parameters \(\left[ d\bigO{6} \right]\) these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which \(\lik\) is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the good data will update the prior information by some significant amount in each dimension.}. The number of grid points in each dimension \(n\) must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
+This calculation however requires \(\bigO{n^D}\) function evaluations. This is an exponential scaling with \(D\), and is an example of the {\em curse of dimensionality}. Even for modest number of parameters \(\left[ D\bigO{6} \right]\) these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which \(\lik\) is significantly non-zero is much larger than the prior range\footnote{This should be expected, since the good data will update the prior information by some significant amount in each dimension.}. The number of grid points in each dimension \(n\) must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
 
 \begin{figure}[tp]
   \centering
@@ -350,7 +350,7 @@ This process is graphically depicted in Figure~\ref{fig:bay:prior_volume} for a 
   }
 \end{figure}
 
-An inverse derivation is to examine~\eqref{eqn:bay:ev_short}, and define a new integration variable \(dX = \prior(\params)\:d\params\). From this definition, the notion of prior volume~\eqref{eqn:bay:prior_volume} follows, which may be inverted to give \(\lik(X)\). Mathematically inclined readers may like to consider how this procedure is related to Lesbesque integration.
+An inverse derivation is to examine~\eqref{eqn:bay:ev_short}, and define a new integration variable \(\d{X} = \prior(\params)\:\d{\params}\). From this definition, the notion of prior volume~\eqref{eqn:bay:prior_volume} follows, which may be inverted to give \(\lik(X)\). Mathematically inclined readers may like to consider how this procedure is related to Lesbesque integration.
 
 The beauty of this process is that it completely removes all complications such as geometry, topology and dimensionality, reducing~\eqref{eqn:bay:ev_X} to a one dimensional integral.  We may now evaluate the evidence using standard quadrature techniques:
 \begin{equation}

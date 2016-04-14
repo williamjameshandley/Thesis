@@ -37,7 +37,7 @@ Here we give examples of the procedure for calculating the transformation from t
 
 To recap, we aim to compute the inverse of the functions \(F_i\): 
 \begin{equation}
-  F_i(\theta_i|\theta_{i-1},\ldots,\theta_0) = \int\limits_0^{\theta_i} \pi_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) d\theta_i^\prime,
+  F_i(\theta_i|\theta_{i-1},\ldots,\theta_0) = \int\limits_0^{\theta_i} \pi_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) \d{\theta_i^\prime},
   \label{eqn:pc:appFi}
 \end{equation}
 %
@@ -93,7 +93,7 @@ A rectangular uniform prior is defined by two parameters, \({\thetamin,\thetamax
 
 Computing \(F(\theta)\) we find:
 \begin{align}
-  F(\theta) &= \int_{-\infty}^\theta \pi(\theta')d\theta', \nonumber\\
+  F(\theta) &= \int_{-\infty}^\theta \pi(\theta^\prime)\d{\theta^\prime}, \nonumber\\
   &= \frac{\theta-\thetamin}{\thetamax-\thetamin},
   \label{eqn:pc:calc_uniform_trans}
 \end{align}

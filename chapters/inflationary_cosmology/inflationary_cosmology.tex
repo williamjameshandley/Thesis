@@ -117,7 +117,7 @@ Applying the metric~\eqref{eqn:cos:FRW_metric} to the Einstein equations~\eqref{
   \label{eqn:cos:Friedmann}
 \end{align}
 %
-where \(H=\dot{a}/a\) is the Hubble parameter and a dot denotes differentiation with respect to cosmic time, \(\dot{f}\equiv df/\d{t}\). These are termed the {\em acceleration\/} and {\em Friedmann\/} equations respectively, and implicitly govern the dynamics of the scale factor \(a(t)\). It should be noted that these equations are not complete, as additionally one requires an equation of state linking \(\rho\) and \(P\).
+where \(H=\dot{a}/a\) is the Hubble parameter and a dot denotes differentiation with respect to cosmic time, \(\dot{f}\equiv \d{f}/\d{t}\). These are termed the {\em acceleration\/} and {\em Friedmann\/} equations respectively, and implicitly govern the dynamics of the scale factor \(a(t)\). It should be noted that these equations are not complete, as additionally one requires an equation of state linking \(\rho\) and \(P\).
 
 \subsection{Basic solutions}
 A reasonable model for the universe we observe today is to treat the matter as a multi-component fluid, with each component with its own equation of state:
@@ -190,7 +190,7 @@ It convenient to define conformal time as:
 \end{equation}
 so that the line element becomes:
 \begin{equation}          
-  \d{s}^2 = {a(\eta)}^2\left( \d{\eta}^2 - d{X}^2 \right).
+  \d{s}^2 = {a(\eta)}^2\left( \d{\eta}^2 - \d{X}^2 \right).
   \label{eqn:cos:flat_FRW}
 \end{equation}
 This is often analytically useful, as it demonstrates the metric is conformally equivalent to Minkowski space\footnote{Hence the name ``conformal time''.}. Physically conformal time corresponds to a temporal coordinate in which photons appear as if they were in flat space: If we consider (without loss of generality) radially travelling photons \(\d{\Omega}=0\) the line element is:
@@ -305,7 +305,7 @@ If we initially assume in accordance with the cosmological principle that the fi
 \end{align}
 Thus, a homogeneous scalar field acts as a perfect fluid with pressure and density as shown above. In order to derive the non-trivial and time dependent equation of state, we need to generate an equation of motion for \(\phi\). This can be done either by extremising \(S_\phi = \int \d[4]{x} \sqrt{|g|} \mathcal{L}_\phi\), or by applying the continuity equation~\eqref{eqn:cos:SET_conservation} to the stress energy tensor~\eqref{eqn:cos:scalar_field_SET}: 
 \begin{equation}
-  0 = \ddot{\phi} + 3 H \dot{\phi} + \frac{d}{d\phi}V(\phi).
+  0 = \ddot{\phi} + 3 H \dot{\phi} + \frac{\d{}}{\d{\phi}}V(\phi).
   \label{eqn:cos:KG}
 \end{equation}
 The middle term involving \(H\) is the term that arises as a result of including the effects of gravity (i.e.\ an expanding universe). The homogeneous value of the scalar field \(\phi\) satisfies the equation of a harmonic oscillator in a potential \(V(\phi)\) with a frictional term proportional to \(H\).
@@ -490,11 +490,11 @@ It is convenient to examine the gauge-invariant variable:
 This is termed the {\em comoving curvature perturbation}, since in the comoving gauge (\(\delta q=0\)) \(\mathcal{R}=\Psi\).
 After some effort, the Einstein equations~\eqref{eqn:cos:einsteins_equations}~\&~\eqref{eqn:cos:einsteins_equations_perturb} and conservation equations~\eqref{eqn:cos:SET_conservation}~\&~\eqref{eqn:cos:SET_conservation_perturb} evaluated using the perturbed metric~\eqref{eqn:cos:FRW_perturb} and the perturbed stress energy tensor~\eqref{eqn:cos:SET_perfect_fluid}~\&~\eqref{eqn:cos:matter_perturb} yield:
 \begin{equation}
-  \frac{d \mathcal{R}}{d \log a} = 
+  \frac{\d{\mathcal{R}}}{\d{\log a}} = 
   -\frac{k^2}{a^2}\frac{\dot{P}}{\dot{\rho}}\frac{\mathcal{R}}{(5\rho + 3P)}
   -\frac{\delta P_\mathrm{en}}{\rho+P}.
 \end{equation}
-For adiabatic perturbations \(\delta P_\mathrm{en}=0\), and given that \(\rho,P\sim H^2\), the above equation says that: \(\frac{d\log \mathcal{R}}{d\log a} \sim \frac{k^2}{a^2H^2}\). As the universe inflates, \(k\ll aH\), and \(\mathcal{R}\) ``freezes out'' and becomes constant.
+For adiabatic perturbations \(\delta P_\mathrm{en}=0\), and given that \(\rho,P\sim H^2\), the above equation says that: \(\frac{\d{\log \mathcal{R}}}{\d{\log a}} \sim \frac{k^2}{a^2H^2}\). As the universe inflates, \(k\ll aH\), and \(\mathcal{R}\) ``freezes out'' and becomes constant.
 
 \subsection{Quantum behaviour}
 Using the Lagrangians are defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{eqn:cos:scalar_field_lagrangian}, we may define the action:
@@ -544,13 +544,13 @@ holds true, then the wavefunction \(\chi_k(\eta)\) must satisfy:
   &= -i.
   \label{eqn:cos:mode_func_normalisation}
 \end{align}
-\subsection{de-Sitter limit}
-A perfectly inflating universe is a de-Sitter space with:
+\subsection{de Sitter limit}
+A perfectly inflating universe is a de Sitter space with:
 \begin{equation}
   H=\text{const}\Rightarrow \quad a = \frac{1}{H(\eta_\mathrm{end}-\eta)} \propto e^{Ht}, \quad -\infty<\eta<\eta_\mathrm{end}.
-  \label{eqn:cos:de-sitter}
+  \label{eqn:cos:de_sitter}
 \end{equation}
-Thus, in a pure de-Sitter space, \({z^{\prime\prime}/z = a^{\prime\prime}/a= 2{(\eta_\mathrm{end}-\eta)}^{-2}}\) and the differential equation~\eqref{eqn:cos:mode_func} has the general solution:
+Thus, in a pure de Sitter space, \({z^{\prime\prime}/z = a^{\prime\prime}/a= 2{(\eta_\mathrm{end}-\eta)}^{-2}}\) and the differential equation~\eqref{eqn:cos:mode_func} has the general solution:
 \begin{align}
   \chi_k = &A_k \frac{1}{\sqrt{2k}}\left( 1+\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{ik(\eta_\mathrm{end}-\eta)}, \nonumber\\
   + &B_k \frac{1}{\sqrt{2k}}\left( 1-\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{-ik(\eta_\mathrm{end}-\eta)},
@@ -561,7 +561,7 @@ whilst the mode normalisation condition~\eqref{eqn:cos:mode_func_normalisation} 
   |A_k|^2 - |B_k|^2 = 1.
   \label{eqn:cos:mode_func_norm_AB}
 \end{equation}
-The overall phase in the solution~\eqref{eqn:cos:mode_func_gs} is unimportant, so along with~\eqref{eqn:cos:mode_func_norm_AB}, there are two degrees of freedom remaining. Fixing these degrees of freedom amounts to choosing the vacuum, which is easy in de-Sitter space: As \(\eta\rightarrow -\infty\), the mode equations become those of Minkowski spacetime (\(\chi_k^{\prime\prime} +k^2 \chi_k\)=0), and one should therefore select \(B_k=0\), \(A_k=1\) as the remaining condition. These are termed Bunch-Davies initial conditions.
+The overall phase in the solution~\eqref{eqn:cos:mode_func_gs} is unimportant, so along with~\eqref{eqn:cos:mode_func_norm_AB}, there are two degrees of freedom remaining. Fixing these degrees of freedom amounts to choosing the vacuum, which is easy in de Sitter space: As \(\eta\rightarrow -\infty\), the mode equations become those of Minkowski spacetime (\(\chi_k^{\prime\prime} +k^2 \chi_k\)=0), and one should therefore select \(B_k=0\), \(A_k=1\) as the remaining condition. These are termed Bunch-Davies initial conditions.
 
 \subsection{Power spectra}
 The two point correlation function of a general spatial field \(\varphi(\vx)\) is defined as:
@@ -604,14 +604,14 @@ which allows us to read off:
 \begin{equation}
   \mathcal{P}_\mathcal{R}(k) = {\left|\frac{\chi_k}{z}\right|}^2.
 \end{equation}
-For pure de-Sitter space~\eqref{eqn:cos:de-sitter}, as \(\eta\to\eta_\mathrm{end}\),
+For pure de Sitter space~\eqref{eqn:cos:de_sitter}, as \(\eta\to\eta_\mathrm{end}\),
 \begin{align}
   |\chi_k|^2 &\rightarrow 2k^3 {(\eta_\mathrm{end}-\eta)}^{-2},\nonumber\\
   a& \rightarrow H{(\eta_\mathrm{end}-\eta)}^{-1}, \nonumber\\
-  \Delta_{\mathcal{R},\text{de-Sitter}}^2(k) &\rightarrow \frac{H^2}{{(2\pi)}^2}{\left( \frac{H}{\dot{\phi}} \right)}^2.
-  \label{eqn:cos:de-sitter_power}
+  \Delta_{\mathcal{R},\text{de Sitter}}^2(k) &\rightarrow \frac{H^2}{{(2\pi)}^2}{\left( \frac{H}{\dot{\phi}} \right)}^2.
+  \label{eqn:cos:de_sitter_power}
 \end{align}
-Given that \(H\) and \(\dot{\phi}\) are constant, a de-Sitter inflationary phase predicts a scale-invariant (Harrison-Zel'dovich) power spectrum. Now, true inflationary phases are not pure de-Sitter, since \(H\) is not quite constant. We may extend the de-Sitter result however by noting that at the time \(t_*\) of horizon crossing  \(k\approx a_*H_*\) the mode functions freeze out. For a given \(k\) mode, the universe is still effectively de-Sitter at this point, with \(z=a_*\dot{\phi}_*/H_*\). We may therefore evaluate equation~\eqref{eqn:cos:de-sitter_power} at horizon crossing to yield:
+Given that \(H\) and \(\dot{\phi}\) are constant, a de Sitter inflationary phase predicts a scale-invariant (Harrison-Zel'dovich) power spectrum. Now, true inflationary phases are not pure de Sitter, since \(H\) is not quite constant. We may extend the de Sitter result however by noting that at the time \(t_*\) of horizon crossing  \(k\approx a_*H_*\) the mode functions freeze out. For a given \(k\) mode, the universe is still effectively de Sitter at this point, with \(z=a_*\dot{\phi}_*/H_*\). We may therefore evaluate equation~\eqref{eqn:cos:de_sitter_power} at horizon crossing to yield:
 \begin{equation}
   \Delta_\mathcal{R}^2(k) = \frac{H_*^2}{{(2\pi)}^2}{\left( \frac{H_*}{\dot{\phi}_*} \right)}^2.
   \label{eqn:cos:inflation_power}
