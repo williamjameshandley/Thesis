@@ -387,7 +387,7 @@ where:
   \frac{\delta P_\mathrm{ad}}{\dot{P}} = \frac{\delta\rho}{\dot{\rho}}.
   \label{eqn:cos:adiabatic}
 \end{equation} 
-For more detail, see page 48 of~\cite{Baumann+2009}. 
+For more detail, see~\cite[p.~48]{Baumann+2009}. 
 In most cases, we limit ourselves to adiabatic matter \(\delta P_\mathrm{en}=0\).
 This is not particularly restrictive, and is naturally satisfied by the equations of state~\eqref{eqn:cos:multi_component}.
 
@@ -499,10 +499,10 @@ After some effort, the Einstein equations~\eqref{eqn:cos:einsteins_equations}~\&
   -\frac{k^2}{a^2}\frac{\dot{P}}{\dot{\rho}}\frac{\mathcal{R}}{(5\rho + 3P)}
   -\frac{\delta P_\mathrm{en}}{\rho+P}.
 \end{equation}
-For adiabatic perturbations \(\delta P_\mathrm{en}=0\), and given that \(\rho,P\sim H^2\), the above equation says that: \(\frac{\d{\log \mathcal{R}}}{\d{\log a}} \sim \frac{k^2}{a^2H^2}\). As the universe inflates, \(k\ll aH\), and \(\mathcal{R}\) ``freezes out'' and becomes constant.
+For adiabatic perturbations \(\delta P_\mathrm{en}=0\), and given that \(\rho,P\sim H^2, \dot{\rho}\sim\dot{P}\), the above equation says that: \(\frac{\d{\log \mathcal{R}}}{\d{\log a}} \sim \frac{k^2}{a^2H^2}\). As the universe inflates, \(k\ll aH\), and \(\mathcal{R}\) ``freezes out'' and becomes constant.
 
 \subsection{Quantum behaviour}
-Using the Lagrangians are defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{eqn:cos:scalar_field_lagrangian}, we may define the action:
+Using the Lagrangians as defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{eqn:cos:scalar_field_lagrangian}, we may construct the action:
 \begin{equation}
   S = \int \d[4]{x}\sqrt{|g|}\mathcal{L}_G + \mathcal{L}_\phi.
 \end{equation}
@@ -515,7 +515,7 @@ Switching to conformal time and defining:
   v = z \mathcal{R}, \qquad
   z = \frac{a \dot{\phi}}{H},
 \end{equation}
-the action becomes:
+the action becomes~\citep[App B]{Baumann+2009}:
 \begin{equation}
   S^{(2)} = \int \d[4]{x}\: \left[ {\left( v^{\prime} \right)}^2 - {\left( \partial_i v \right)}^2 + \frac{z^{\prime\prime}}{z}v^2\right],
 \end{equation}
@@ -566,7 +566,7 @@ whilst the mode normalisation condition~\eqref{eqn:cos:mode_func_normalisation} 
   |A_k|^2 - |B_k|^2 = 1.
   \label{eqn:cos:mode_func_norm_AB}
 \end{equation}
-The overall phase in the solution~\eqref{eqn:cos:mode_func_gs} is unimportant, so along with~\eqref{eqn:cos:mode_func_norm_AB}, there are two degrees of freedom remaining. Fixing these degrees of freedom amounts to choosing the vacuum, which is easy in de Sitter space: As \(\eta\rightarrow -\infty\), the mode equations become those of Minkowski spacetime (\(\chi_k^{\prime\prime} +k^2 \chi_k\)=0), and one should therefore select \(B_k=0\), \(A_k=1\) as the remaining condition. These are termed Bunch-Davies initial conditions.
+The overall phase in the solution~\eqref{eqn:cos:mode_func_gs} is unimportant, so along with~\eqref{eqn:cos:mode_func_norm_AB}, there are two degrees of freedom remaining. Fixing these degrees of freedom amounts to choosing the vacuum, which is easy in de Sitter space: As \(\eta\rightarrow -\infty\), the mode equations become those of Minkowski spacetime (\(\chi_k^{\prime\prime} +k^2 \chi_k=0\)). In this case, there is a well-defined choice: \(B_k=0\), \(A_k=1\), termed Bunch-Davies initial conditions. These conditions diagonalise the Hamiltonian and select the lowest energy vacuum state,\footnote{In the general case, these statements are not equivalent.} and will be discussed in greater detail in Chapter~\ref{chap:qv}.
 
 \subsection{Power spectra}
 The two point correlation function of a general spatial field \(\varphi(\vx)\) is defined as:
@@ -649,12 +649,12 @@ Note that the temperature field is anisotropic (i.e.\ has a \(\vp\) dependency) 
 \end{align}
 We only observe the temperature field here (at \(\vx_0\)) and now (at \(t_0\)). By taking sufficiently many measurements in different directions of \(\vp\) of the temperature field \(\Theta\) we can compute the integral~\eqref{eqn:cos:alm_integral}, to obtain \(a_{\ell m}(t_0,\vx_0)\) up to some \(\ell_{\max{}}\).\footnote{As a rough guide, if one has \(N_\mathrm{pix}\) independent pixels, there are \({(\ell_{\max{}}+1)}^2\) different \(a_{\ell m}\)'s to measure, so \(\ell_{\max{}} \sim \sqrt{N_\mathrm{pix}}\).}
 
-In general, theories do not predict specific values of \(a_{\ell m}\), but merely tell us about the statistical distribution on which they are drawn. At each value of \(\ell\), the \((2\ell + 1)\) observations \(\{a_{\ell m}:m=-\ell\cdots\ell\}\) are typically independent realisations of the same random variable. Their mean value is zero, but they will have some non-zero variance:
+In general, theories do not predict specific values of \(a_{\ell m}\), but merely tell us about the statistical distribution from which they are drawn. At each value of \(\ell\), the \((2\ell + 1)\) observations \(\{a_{\ell m}:m=-\ell\cdots\ell\}\) are typically independent realisations of the same random variable. Their mean value is zero, but they will have some non-zero variance:
 \begin{equation}
   \left\langle a_{\ell m} \right\rangle = 0, \qquad
   \left\langle a_{\ell m} a_{\ell^\prime m^\prime}\right\rangle = \delta_{\ell \ell^\prime} \delta_{m m^\prime} C_\ell.
 \end{equation}
-Note then that the error therefore in the sample variance obeys:
+Note that the error in the sample variance obeys:
 \begin{equation}
   \left( \frac{\Delta C_\ell}{C_\ell} \right) = \sqrt{\frac{2}{2\ell+1}}.
 \end{equation}
@@ -664,7 +664,7 @@ Computing the theoretical predictions of these \(C_\ell\)'s from a given cosmolo
 \begin{equation}
   C_\ell^{XY} = \frac{2}{\pi}\int k^2 \d{k} \: \mathcal{P}_\mathcal{R}(k) \Delta_{X\ell}(k)\Delta_{Y\ell}(k),
 \end{equation}
-where \(\Delta_{X\ell}(k)\) are transfer functions and \({X\in\left\{ T,E,B \right\}}\) represents the polarisation of the photon field. These transfer functions are computed from line of sight integrals, requiring one to evolve the contents of the universe from the \(k\)-mode's horizon re-entry point through the hot big bang era, past the surface of last scattering at recombination and all the way to the current epoch before projecting the photon field onto the sky we see today. Treating this calculation fully is beyond the scope of this thesis, but it suffices to say that this is now extremely well understood physics, and a full set of \(C_\ell\)'s can be computed for a given cosmology using Boltzmann codes such as \CAMB{} in a matter of seconds.
+where \(\Delta_{X\ell}(k)\) are transfer functions and \({X\in\left\{ T,E,B \right\}}\) component of the transfer function corresponding to the temperature anisotropy and the $E$ and $B$-mode polarisation respectively. These transfer functions are computed from line of sight integrals, requiring one to evolve the contents of the universe from the \(k\)-mode's horizon re-entry point through the hot big bang era, past the surface of last scattering at recombination and all the way to the current epoch before projecting the photon field onto the sky we see today. Treating this calculation fully is beyond the scope of this thesis, but it suffices to say that this is now extremely well understood physics, and a full set of \(C_\ell\)'s can be computed for a given cosmology using Boltzmann codes such as \CAMB{}~\citep{CAMB} in a matter of seconds.
 
 \begin{figure}[tp]
   \centering
