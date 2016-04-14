@@ -190,40 +190,40 @@ It convenient to define conformal time as:
 \end{equation}
 so that the line element becomes:
 \begin{equation}          
-  ds^2 = {a(\eta)}^2\left( \d{\eta}^2 - d{X}^2 \right).
+  \d{s}^2 = {a(\eta)}^2\left( \d{\eta}^2 - d{X}^2 \right).
   \label{eqn:cos:flat_FRW}
 \end{equation}
-This is often analytically useful, but physically conformal time corresponds to a time coordinate in which photons appear as if they were in flat space: If we consider (without loss of generality) radially travelling photons $\d{\Omega}=0$ the line element is:
+This is often analytically useful, as it demonstrates the metric is conformally equivalent to Minkowski space\footnote{Hence the name ``conformal time''.}. Physically conformal time corresponds to a temporal coordinate in which photons appear as if they were in flat space: If we consider (without loss of generality) radially travelling photons $\d{\Omega}=0$ the line element is:
 \begin{equation}          
-  ds^2 = a(\eta)\left( \d{\eta}^2 - \d{\chi}^2 \right).
+  \d{s}^2 = a(\eta)\left( \d{\eta}^2 - \d{\chi}^2 \right).
   \label{eqn:cos:flat_FRW_radial}
 \end{equation}
-and the metric is conformally equivalent to two-dimensional Minkowski space\footnote{Hence the name ``conformal time''.}. We have thus removed all the complexities of curvature and comoving coordinates. Since photons have a null trajectory, $ds^2=0\Rightarrow \d{\eta} = \pm \d{\chi}$, and therefore  travel in straight lines on spacetime diagrams with $\eta$ and $\chi$ as axes. This considerably simplifies most pictures. It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial coordinates.\footnote{Alternatively, conformal time is the time measured by a small light clock that expands comovingly with the universe.}
+We have thus removed all the complexities of curvature and comoving coordinates. Since photons have a null trajectory, $ds^2=0\Rightarrow \d{\eta} = \pm \d{\chi}$, and therefore  travel in straight lines on spacetime diagrams with $\eta$ and $\chi$ as axes. This considerably simplifies most pictures.\footnote{For example, later in the chapter Figures~\protect\ref{fig:cos:horizon_problem}\&~\protect\ref{fig:cos:horizon_problem_resolved} both use this construction.}  It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial coordinates.\footnote{Alternatively, conformal time is the time measured by a small light clock that expands comovingly with the universe.}
 
 \section{The cosmic microwave background}
-\begin{figure}[tp]
-  \centering
-  \includegraphics[width=\textwidth]{chapters/inflationary_cosmology/figures/satellites}
-  \caption{Microwave satellite pictures.}\label{fig:cos:satellites}
-\end{figure}
-
-As we turn telescopes on objects further away from earth, we begin to look appreciably back in time. The radiation from these objects has taken so long to reach us that we can observe the universe in a much younger state than it is now. The furthest galaxies imaged by the Hubble space telescope are more than 13 billion years old. Many of these objects are so far away that they have redshifted out of the visible spectrum and into the infra-red. If we look beyond, we enter the dark ages of the universe, before the first stars had turned on. This would appear to be the end of the observational story.
-
-However, from behind the dark ages, there is a background of microwaves. These would originally have been emitted as X-rays, but have redshifted all the way down to the microwave end of the spectrum.\footnote{Incidentally, this means that at around redshift $3<z<7$, the universe would have been bathed in optical light. However, it would have been at too low an intensity to be visible to the naked eye. Assuming a threshold of the human eye of $10^{-6}\mathrm{cd}\;\mathrm{m}^{-2}$, the CMB would stop being visible at $z\sim200$, at which point it would have been white.}. This uniform backdrop of radiation is our direct image of the universe as it was at redshift $z\sim1000$, when the universe was a mere $300,000$ years old.
 
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/inflationary_cosmology/figures/cmb_colour}
-  \caption{The colour and illuminance of the radiation background, as a function of cosmic history. As the universe ages, the initially optical background gradually redshifts all the way down to the microwave background that is observed today. This plot shows the colour and the perceived irradiance (illuminance) that the CMB would appear to be in the first few million years after the surface of last scattering. For example, for an observer (un)fortunate enough to be born $500,000$ years after the big bang, the universe would still be bathed in orange ``sunlight'' from all directions.}\label{fig:cos:cmb_colour}
+  \caption{The colour and illuminance of the radiation background, as a function of cosmic history. As the universe ages, the initially optical background gradually redshifts all the way down to the microwaves that are observed today. This plot shows the colour and the perceived irradiance (illuminance) that the CMB would appear to be in the first few million years after the surface of last scattering. For example, for an observer (un)fortunate enough to be born $500,000$ years after the big bang, the universe would still be bathed in orange ``sunlight'' from all directions.}\label{fig:cos:cmb_colour}
 \end{figure}
 
-Since its first (accidental) detection in 1964 by~\cite{PenziasWilson}, a succession of hundreds of microwave telescopes, both on the ground and in space, have sharpened our image of this (Figure~\ref{fig:cos:satellites}).
+As we turn telescopes on objects further away from earth, we begin to look appreciably back in time. The radiation from these objects has taken so long to reach us that we can observe the universe in a much younger state than it is now. The furthest galaxies imaged by the Hubble space telescope are more than 13 billion years old. Many of these objects are so far away that they have redshifted out of the visible spectrum and into the infra-red. If we look beyond, we enter the dark ages of the universe, before the first stars had turned on. This would appear to be the end of the observational story.
+
+However, from behind the dark ages, there is a background of microwaves. These would originally have been emitted as optical light, but have redshifted all the way down to the microwave end of the spectrum (Figure~\ref{fig:cos:cmb_colour}). This uniform backdrop of radiation is our direct image of the universe as it was at redshift $z\sim1000$, when the universe was a mere $380,000$ years old.
+
+Since its first (accidental) detection in 1964 by~\cite{PenziasWilson}, a succession of microwave telescopes, both on the ground and in space, have sharpened our image of this (Figure~\ref{fig:cos:satellites}).
 The cosmic microwave background (CMB) is found to be:
 \begin{enumerate}
-  \item Isotropic to one part in $10^{5}$.
   \item A near-perfect blackbody spectrum, with $T_0=2.7254(5)$.
-  \item Anisotropic with non-trivial power spectrum.
+  \item Isotropic to one part in $10^{5}$. The minute anisotropies have non-trivial power spectrum, and contain a wealth of cosmological information.
 \end{enumerate}
+
+\begin{figure}[tp]
+  \centering
+  \includegraphics[width=\textwidth]{chapters/inflationary_cosmology/figures/satellites}
+  \caption{Microwave satellite images of the minute CMB anisotropies. COBE ran from 1989--1993, WMAP from 2001--2010 and Planck from 2009--2013.}\label{fig:cos:satellites}
+\end{figure}
 
 \section{Problems in the CMB}
 \subsection{Flatness problem}
@@ -360,7 +360,7 @@ Since in the early universe the perturbations were small $\delta X \ll X$, we ma
 \subsection{Metric perturbation}
 A general perturbation of the FRW metric will take the form:
 \begin{equation}
-  ds^2 = (1+2\Phi)\d{t}^2 -2a B_i \d{x}^i \d{t}  -a^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + 2E_{ij} \right] \d{x}^i \d{x}^j,
+  \d{s}^2 = (1+2\Phi)\d{t}^2 -2a B_i \d{x}^i \d{t}  -a^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + 2E_{ij} \right] \d{x}^i \d{x}^j,
   \label{eqn:cos:FRW_perturb}
 \end{equation}
 where the various terms in the above expression are defined in Table~\ref{tab:cos:perturbed_metric}, and ${\Phi,B_i,\Psi,E_{ij}\ll1}$ are small. 
