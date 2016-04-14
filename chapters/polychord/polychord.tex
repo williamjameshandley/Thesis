@@ -268,9 +268,7 @@ However, we must point out that a good rejection algorithm like \MultiNest{} wil
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian}
-  \caption{Comparing \PolyChord{} with \MultiNest{} using a
-  Gaussian likelihood for different dimensionalities. \PolyChord{} has at worst \(\nlike\bigO{D^3}\), whereas \MultiNest{} has an exponential scaling that emerges at high dimensions.\label{fig:pc:gaussian}
-}
+  \caption{Comparing \PolyChord{} with \MultiNest{} using a Gaussian likelihood for different dimensionalities. \PolyChord{} has at worst \(\nlike\bigO{D^3}\), whereas \MultiNest{} has an exponential scaling that emerges at high dimensions.}\label{fig:pc:gaussian}
 \end{figure}
 
 \subsection{Clustering and local evidences}
@@ -291,13 +289,13 @@ The results for a twin peaks likelihood are of an identical character to Figures
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/rastrigin}
-  \caption{The two-dimensional Rastrigin \(\log\)-likelihood in the range \({[-1.5,1.5]}^2\). Within this region there are \(8\) local maxima, and one global maximum at \((0,0)\). The clustered samples produced by \PolyChord{} are plotted on the \(\log\)-likelihood surface, with colours that indicating the separate clusters identified.\label{fig:pc:rastrigin}}
+  \caption{The two-dimensional Rastrigin \(\log\)-likelihood in the range \({[-1.5,1.5]}^2\). Within this region there are \(8\) local maxima, and one global maximum at \((0,0)\). The clustered samples produced by \PolyChord{} are plotted on the \(\log\)-likelihood surface, with colours that indicating the separate clusters identified.}\label{fig:pc:rastrigin}
 \end{figure}
 
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/rastrigin_data}
-  \caption{\PolyChord{} cluster identification for the Rastrigin function. \PolyChord{} identifies posterior modes and computes their local evidences, expressed here as a logarithmic fraction of  the total evidence in the mode. Dashed lines indicate the analytic results computed by a saddle point approximation at each of the peaks. As can be seen, \PolyChord{} reliably identifies the inner \(21\) modes with increasing accuracy.\label{fig:pc:rastrigin_data}}
+  \caption{\PolyChord{} cluster identification for the Rastrigin function. \PolyChord{} identifies posterior modes and computes their local evidences, expressed here as a logarithmic fraction of  the total evidence in the mode. Dashed lines indicate the analytic results computed by a saddle point approximation at each of the peaks. As can be seen, \PolyChord{} reliably identifies the inner \(21\) modes with increasing accuracy.}\label{fig:pc:rastrigin_data}
 \end{figure}
 
 \PolyChord{}'s clustering capacity is very effective on complicated clustering problems as well. The \(n\)-dimensional Rastrigin test function is defined by:
@@ -322,13 +320,13 @@ We ran \PolyChord{} on a two-dimensional Rastrigin log-likelihood  with \(\nlive
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/rosenbrock_analytic}
-  \caption{Density plot of the two-dimensional Rosenbrock function. The function exhibits a long, thin curving degeneracy, with a global maximum at \((1,1)\).\label{fig:pc:rosenbrock_2d}}
+  \caption{Density plot of the two-dimensional Rosenbrock function. The function exhibits a long, thin curving degeneracy, with a global maximum at \((1,1)\).}\label{fig:pc:rosenbrock_2d}
 \end{figure}
 
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/rosenbrock}
-  \caption{The four-dimensional Rosenbrock posterior, with \(x_3\) and \(x_4\) marginalised out. \PolyChord{} correctly identifies both the local (red) and global (blue) maxima.\label{fig:pc:rosenbrock}}
+  \caption{The four-dimensional Rosenbrock posterior, with \(x_3\) and \(x_4\) marginalised out. \PolyChord{} correctly identifies both the local (red) and global (blue) maxima.}\label{fig:pc:rosenbrock}
 \end{figure}
 
 \PolyChord{} is also capable of navigating moderate curving degeneracies. 
@@ -367,18 +365,13 @@ This may mean that the Gaussian shell is not a good proxy for a high-dimensional
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian_shell}
-  \caption{The two-dimensional Gaussian shell likelihood.\label{fig:pc:gaussian_shell}}
+  \caption{The two-dimensional Gaussian shell likelihood.}\label{fig:pc:gaussian_shell}
 \end{figure}
 
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian_shell_posterior}
-  \caption{Posteriors produced by \PolyChord{} for a \(n=100\)-dimensional Gaussian shell, with width \(w=0.1\), radius \(r=2\), and center \(\bmew=\bzero\). 
-  Plotting the marginalised posteriors for the Cartesian sampling parameters \({\{x_1,\ldots,x_n\}}\) yields Gaussian distributions centered on the origin. To see the effectiveness of the sampler it is better to plot the sampling parameters in terms of \(n\)-dimensional spherical polar coordinates \({\{r,\phi_1,\ldots,\phi_{n-1}\}}\). Note that the polar coordinates are {\em derived parameters}, and that the sampling space still has the strong Gaussian shell degeneracy.
-  In this case we can see that the radial coordinate has a Gaussian profile centered on \(r_0 = r\times\frac{1}{2} {\left(1 + \sqrt{1 +  4 (n-1) {\left({w}/{r}\right)}^2}\right) }\) with width \(w_0 = w{(1+(n-1){(w/r_0)}^2)}^{-1/2}\). 
-  The azimuthal coordinate \(\phi_{n-1}\) has a uniform posterior, and the other angular coordinates \(\{\phi_i\}\) have posteriors defined by \(\Prob{\phi_i } \propto {{\left(\sin\phi_i\right)}^{n-i-1}}\).
-\label{fig:pc:gaussian_shell_posterior}
-}
+  \caption{Posteriors produced by \PolyChord{} for a \(n=100\)-dimensional Gaussian shell, with width \(w=0.1\), radius \(r=2\), and center \(\bmew=\bzero\).  Plotting the marginalised posteriors for the Cartesian sampling parameters \({\{x_1,\ldots,x_n\}}\) yields Gaussian distributions centered on the origin. To see the effectiveness of the sampler it is better to plot the sampling parameters in terms of \(n\)-dimensional spherical polar coordinates \({\{r,\phi_1,\ldots,\phi_{n-1}\}}\). Note that the polar coordinates are {\em derived parameters}, and that the sampling space still has the strong Gaussian shell degeneracy.  In this case we can see that the radial coordinate has a Gaussian profile centered on \(r_0 = r\times\frac{1}{2} {\left(1 + \sqrt{1 +  4 (n-1) {\left({w}/{r}\right)}^2}\right) }\) with width \(w_0 = w{(1+(n-1){(w/r_0)}^2)}^{-1/2}\).  The azimuthal coordinate \(\phi_{n-1}\) has a uniform posterior, and the other angular coordinates \(\{\phi_i\}\) have posteriors defined by \(\Prob{\phi_i } \propto {{\left(\sin\phi_i\right)}^{n-i-1}}\).}\label{fig:pc:gaussian_shell_posterior} 
 \end{figure}
 
 
@@ -397,7 +390,7 @@ We choose \(r=2\), \(w=0.1\), and \(\mu_1\) and \(\mu_2\) are separated by \(7\)
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/polychord/figures/cosmochord}
-  \caption{\CosmoChord{} (red) vs.\ \CosmoMC{} (black). We use the 2013 {\texttt CAMSPEC}+{\texttt commander} likelihoods with a standard six-parameter \(\Lambda\)CDM cosmology, varying all 14 nuisance parameters.  We compare the \(1\) and \(2\)-dimensional marginalised posteriors of the \(6\) \(\Lambda\)CDM parameters. \CosmoChord{} is in close agreement with the posteriors produced by \CosmoMC{}, recovering the correct mean values of and degeneracies between the parameters. The slight deviations between the red and black curves are sampling noise.\label{fig:pc:cosmochord}}
+  \caption{\CosmoChord{} (red) vs.\ \CosmoMC{} (black). We use the 2013 {\texttt CAMSPEC}+{\texttt commander} likelihoods with a standard six-parameter \(\Lambda\)CDM cosmology, varying all 14 nuisance parameters.  We compare the \(1\) and \(2\)-dimensional marginalised posteriors of the \(6\) \(\Lambda\)CDM parameters. \CosmoChord{} is in close agreement with the posteriors produced by \CosmoMC{}, recovering the correct mean values of and degeneracies between the parameters. The slight deviations between the red and black curves are sampling noise.}\label{fig:pc:cosmochord}
 \end{figure}
 
 An additional strength of \PolyChord{} lies in its ability to exploit a fast-slow hierarchy common in many cosmological applications. 

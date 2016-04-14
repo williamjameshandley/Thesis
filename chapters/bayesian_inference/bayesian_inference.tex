@@ -23,16 +23,8 @@ A numerical weighting is assigned to all events, which roughly corresponds to th
   \centering
   \tikzsetnextfilename{bayes_theorem}
   \includegraphics[width=\textwidth]{chapters/bayesian_inference/plots/bayes_theorem.tikz}
-  \caption{Diagrammatic Bayes' theorem. Nodes indicate the occurrence of an event. Edges indicate the probability of an event occurring, and are multiplicative in the direction of the arrows. Bayes' theorem~\protect\eqref{eqn:bay:bayes} may be derived by equating the path \(A\to A\cap B\) with \(A\to\Omega\to B\to A\cap B\)}\label{fig:bay:bayes_theorem}
+  \caption{Diagrammatic Bayes' theorem. Nodes indicate the occurrence of an event. Edges indicate the probability of an event occurring, and are multiplicative in the direction of the arrows. Bayes' theorem~\protect\eqref{eqn:bay:bayes} may be derived by equating the path \(A\to A\cap B\) with \(A\to\Omega\to B\to A\cap B\).}\label{fig:bay:bayes_theorem}
 \end{figure}
-
-
-%\begin{figure}[tp]
-%  \centerline{%
-%    \input{chapters/bayesian_inference/plots/probability}
-%  }
-%  \caption{Beer-mat mathematics. This diagram is how \edjaynes{} explained Bayes' theorem to a young \stevegull{}. Out of the entire sample space \(\Omega\), if we observe \(A\) to be true (blue region), then the probability of \(B\) given that we know \(A\) is simply \(\Prob{A\cap B}/\Prob{A}\). Bayes' theorem then follows by rearrangement and symmetry.}
-%\end{figure}
 
 
 The conditional probability of event \(B\) given event \(A\) is defined via:
@@ -282,7 +274,7 @@ This calculation however requires \(\bigO{n^D}\) function evaluations. This is a
     \includegraphics[width=0.4\textwidth]{chapters/bayesian_inference/plots/1d_left_rectangle.tikz}
     \tikzsetnextfilename{2d_left_rectangle}
     \includegraphics[width=0.5\textwidth]{chapters/bayesian_inference/plots/2d_left_rectangle.tikz}
-  \caption{Approximating an integral using a quadrature rule. In moving a one-dimensional integral (left) to a two-dimensional integral (right), the number of quadrature points becomes exponentially larger. This is an example of the curse of dimensionality.\label{fig:bay:quadrature}}
+  \caption{Approximating an integral using a quadrature rule. In moving a one-dimensional integral (left) to a two-dimensional integral (right), the number of quadrature points becomes exponentially larger. This is an example of the curse of dimensionality.}\label{fig:bay:quadrature}
 \end{figure}
 
 Fortunately there is a better way. If one has a set of \(n_s\) samples:
