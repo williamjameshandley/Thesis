@@ -1,5 +1,5 @@
 \chapter{Bayesian Inference}
-\label{chap:bay}
+\label{chp:bay}
 %\includegraphics[width=\textwidth]{chapters/bayesian_inference/figures/bayesian_evol}
 
 \epigraph{We anticipate the sun will rise tomorrow, not just because it has always done so far, but because this is predicted by {\em models}, which accord with {\em data}. Any perceived failure of the sun to rise would more likely be a hallucination.}{\davidmackay{}}
@@ -291,7 +291,7 @@ The central limit theorem states that \(\hat{E}_f\) is normally distributed with
 
 This approach has several advantages. If one already has the set \(S\) of samples~\eqref{eqn:bay:samples}, the computation~\eqref{eqn:bay:ehat} is extremely cheap, in contrast to a full integral~\eqref{eqn:bay:quadrature_nd}. Further, it has excellent scaling with dimensionality. 
 
-All that remains in order to compute~\eqref{eqn:bay:ehat} is a methodology for cheaply generating samples according to a given distribution \(\posterior\). In many cases, one does not even need the normalisation constant \(\ev\) in order to sample from \(\posterior\), merely an unnormalised posterior \(\str{\posterior}= \lik\times\prior\). Suffice to say that this is a well established problem, and for readers unfamiliar with a given sampling method I refer them to Appendix~\ref{chap:sm}.
+All that remains in order to compute~\eqref{eqn:bay:ehat} is a methodology for cheaply generating samples according to a given distribution \(\posterior\). In many cases, one does not even need the normalisation constant \(\ev\) in order to sample from \(\posterior\), merely an unnormalised posterior \(\str{\posterior}= \lik\times\prior\). Suffice to say that this is a well established problem, and for readers unfamiliar with a given sampling method I refer them to Appendix~\ref{chp:sm}.
 
 However, even if one can generate reliably and cheaply a full set \(S\) of samples, this is not a full solution to the entire Bayesian inference problem problem. Computing \(\mean{f}\) with sampling is only a reasonable methodology when \(\sigma_f\) is small (or even defined at all). A very important example of a case where this is not true is the computation of the evidence integral~\eqref{eqn:bay:ev_short}. For these kind of problems we must turn to a more sophisticated methodology
 

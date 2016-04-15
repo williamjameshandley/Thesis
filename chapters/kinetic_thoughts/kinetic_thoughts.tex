@@ -1,7 +1,7 @@
 \chapter{Further thoughts on kinetic dominance}
-\label{chap:kt}
+\label{chp:kt}
 
-This is a brief chapter whose content is based on discussions since the release of the material in Chapter~\ref{chap:kd} as the publication by~\cite{Handley+2014}.
+This is a brief chapter whose content is based on discussions since the release of the material in Chapter~\ref{chp:kd} as the publication by~\cite{Handley+2014}.
 To recap, the classical equations of motion for single field inflation are
 governed by:
 %
@@ -14,11 +14,7 @@ governed by:
   \label{eqn:kt:kleingordon}
 \end{align}
 %
-We have proved that if these equations are integrated backward in time
-they always begin on a solution in which \(\dot\phi^2\gg V(\phi)\)
-(independent of the potential). This is demonstrated in
-Figure~\ref{fig:kt:w}. In this regime, the solutions take the analytical
-form:
+We have proved that if these equations are integrated backward in time they almost always begin on a solution in which \(\dot\phi^2\gg V(\phi)\) (independent of the potential). This is demonstrated in Figure~\ref{fig:kt:w}. In this kinetically dominated regime, the solutions take the analytical form:
 \begin{equation}
   H = \frac{1}{3t},
   \qquad 
@@ -26,7 +22,6 @@ form:
   \qquad 
   \phi = \phip \pm \sqrt{\frac 2 3}\m \log\left( \frac t \tp \right).
 \end{equation}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[tp]
   \tikzsetnextfilename{wevolution}
   \includegraphics[width=\textwidth]{chapters/kinetic_thoughts/plots/w.tikz}
@@ -39,9 +34,8 @@ form:
     intermediate stage ``Fast roll''.\label{fig:kt:w}
   }
 \end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The statements above are rigorously true. However, the key question is how physically relevant this observation is, and how this relates to more traditional inflationary set-ups and assumptions.
+The key question is how physically relevant these observations are, and how they relate to more traditional inflationary set-ups and assumptions.
 
 The classical equations have two opportunities to break down. First, it may be that this kinetically dominated state occurs before the Planck time, when we know that we would need a quantum theory of gravity to describe the universe. Second, it may be that the homogeneity assumption breaks down at early times.
 
@@ -61,7 +55,7 @@ number of \(e\)-folds of inflation.
 If we are in the kinetically dominated phase with \(\dot{\phi}^2\gg
 V(\phi)\) then:
 \begin{equation}
-  \rho \approx \frac{1}{2}\dot\phi^2= \frac{1\m^2}{3t^2} ,
+  \rho \approx \frac{1}{2}\dot\phi^2= \frac{1}{3t^2}\m^2 ,
   \label{eqn:kt:rhop}
 \end{equation}
 so \(\rho\sim\m^4\) implies that \(t\sim\tp=\m^{-1}\). Thus, in order for
@@ -72,10 +66,9 @@ kinetic dominance to be true at the Planck time we require that:
 For \(V(\phi) = \frac{1}{2}m^2\phi^2\) inflation, this amounts to requiring that \(m^2\phip^2\ll \m^4\). In order to agree with CMB observations, we require
 that \(m\sim10^{-5}\m\), which amounts to requiring that:
 \begin{equation}
- \phip^2 \ll 10^{10}\m^2 \nonumber.
+ \phip^2 \ll 10^{10}\m^2.
  \label{eqn:kt:phipbound}
 \end{equation}
-
 We may phrase this in terms of the total number of \(e\)-folds:
 \begin{align}
   N_\mathrm{tot} 
@@ -88,24 +81,25 @@ We may phrase this in terms of the total number of \(e\)-folds:
 \end{align}
 For \(V\sim\phi^n\), this gives:
 \begin{equation}
-  N = \frac{\Delta (\phi^2) }{n\:\m^2}.
+  N_\mathrm{tot} = \frac{\Delta (\phi^2) }{n\:\m^2}.
 \end{equation}
-If we take our upper bound (\ref{eqn:kt:phipbound}), and assume that the
-end of inflation is somewhere near the base of the potential, we find
-that: 
+If we constrain \(\phi_\mathrm{begin}\) by (\ref{eqn:kt:phipbound}), and assume that the end of inflation  is somewhere near the base of the potential \(\phi_\mathrm{end}\sim0\), one finds: 
 \begin{equation}
-  N_\mathrm{tot}\ll 10^{10}.
+  N_\mathrm{tot}\ll 10^{10},
 \end{equation}
+in order for there to be a pre-inflationary phase after the Planck time.
+There is therefore ample room in $\phi^n$ inflation for a kinetically dominated phase in between the required number of \(e\)-folds of \(N_*\sim50-60\) and the upper limit somewhere much less than $10^{10}$. This upper limit agrees with the work of~\cite{how_many_e_folds}, who derive the expected number of \(e\)-folds from a phase-space distribution approach.
+
 It is difficult to imagine how one could possibly constrain the total
 number of \(e\)-folds observationally, unless the number was
 sufficiently small so as to be observable directly in the CMB power
-spectrum (for example in ``just enough inflation''). There are
+spectrum, for example in ``just-enough'' inflation by~\cite{Ramirez_excluded_2009,Ramirez_predictions_2012}. There are
 theoretical limits, but these typically tend to be much, much larger
 than this.
 
 \section{Eternal inflation}
 Theorists typically assume an effectively eternal inflationary phase all the way back to the Planck time.  
-The typical argument by Linde goes something like this:
+The typical argument by~\cite{Linde_review} goes something like this:
 \begin{enumerate}
   \item We should set initial conditions at the Planck time, when
     \(\rho\sim\m^4\).
@@ -118,33 +112,24 @@ The typical argument by Linde goes something like this:
     and potential energy at the Planck time
 \end{enumerate}
 
-From Linde's argument, the kinetically dominated regime is only present
+From Linde's arguments, the kinetically dominated regime is only present
 after the Planck time for \(V(\phip)\) at the very bottom end of the
 prior range.
 
-We can see this graphically in Figure~\ref{fig:kt:linde}. Solutions are plotted so that they are equally spaced in kinetic energy at the Planck time. Whilst graphs similar to the upper half of the figure is typically shown in lectures and textbooks, this is for an artificially high value of \(m\). As \(m\) is decreased, the phase space look more like the lower half of Figure~\ref{fig:kt:linde}, and the ``Planck circle'' becomes an elongated ellipse when plotted in \((\phi, \dot{\phi})\) phase space. 
+We can see this graphically in Figure~\ref{fig:kt:linde}. Solutions are plotted so that they are equally spaced in kinetic energy at the Planck time. Whilst graphs similar to the upper half of the figure are typically shown in lectures and textbooks, this is for an artificially high value of \(m\). As \(m\) is decreased, the phase space look more like the lower half of Figure~\ref{fig:kt:linde}, and the ``Planck circle'' becomes an elongated ellipse when plotted in \((\phi, \dot{\phi})\) phase space. 
 
-If \(m\) is set to the more physically reasonable \(m\sim10^{-5}\m\), then  a prior that is uniform in potential energy puts a lot of weight on extremely large values of \(\phi\). It might be more reasonable to suggest some kind of logarithmic prior on the value of \(\phi\) at the Planck time, as shown in Figure~\ref{fig:kt:b4infl}.
+A more modern and concrete encapsulation of Linde's arguments can be seen in~\cite{how_many_e_folds}, where they arrive from phase-space arguments at a prior on the Planck surface of:
+\begin{equation}
+  P(\theta) = \frac{3}{4} \left|\cos^2\theta\sin\theta\right|,
+\end{equation}
+which puts even less weight on the kinetically dominated solutions.
+
+If \(m\) is set to the more physically reasonable \(m\sim10^{-5}\m\), then a prior that is uniform in potential energy puts a lot of weight on extremely large values of \(\phi\). It might be equally reasonable therefore to suggest some kind of logarithmic prior on the value of \(\phi\) at the Planck time, as shown in Figure~\ref{fig:kt:alternate}. In this case, almost by definition, most solutions begin in a kinetically dominated phase.
 
 The problem is that all of these arguments tend to the more philosophical end of physics: ``What is the natural prior to assume on initial conditions?''. It is far better to try and answer these questions observationally. If the kinetically dominated phase is observable, then all of this is moot.
 
-\begin{figure}[tp]
-  \centering
-  \tikzsetnextfilename{swirl}
-  \includegraphics[width=\textwidth]{chapters/kinetic_thoughts/plots/swirl.tikz}
-  \tikzsetnextfilename{true}
-  \includegraphics[width=\textwidth]{chapters/kinetic_thoughts/plots/true.tikz}
-  \caption{Phase-space plot of the evolution of \((\phi,\dot{\phi})\) for a chaotic inflationary potential \(V(\phi) = \frac{1}{2}m^2 \phi^2\). The upper plot has \(m=0.5\m\). The outer circle is the Planck time \(\tp\) when \(\rho=\m^4\). One can see that each path through phase space is generically drawn to the slow roll attractor solutions in the center of the plot. The lines are plotted so that they have a uniform spacing of kinetic energy at the Planck time.  The upper plot is somewhat misleading, since it has an artificially high value of \(m\). When the value of \(m\) is lowered to \(0.1\m\), as in the lower plot, then the slow roll phase is a much stronger attractor solution, and generates a sustained slow-roll accelerated expansion.}\label{fig:kt:linde}
-\end{figure}
+In regards to theory, what we can say with some certainty is that {\em if\/} there is a pre-inflationary phase (significantly after the Planck time) where the physics is still encapsulated by equations~\eqref{eqn:kt:raychaudhuri}~\&~\eqref{eqn:kt:kleingordon}, then that phase must be kinetically dominated. For example, in just-enough inflation~\citep{Ramirez_excluded_2009,Ramirez_predictions_2012}, to give consideration to initial conditions one must work in a kinetically dominated phase.
 
-\begin{figure}[tp]
-  \centering
-  \tikzsetnextfilename{swirl_alt}
-  \includegraphics[width=\textwidth]{chapters/kinetic_thoughts/plots/swirl_alt.tikz}
-  \tikzsetnextfilename{true_alt}
-  \includegraphics[width=\textwidth]{chapters/kinetic_thoughts/plots/true_alt.tikz}
-  \caption{Phase space plot as in Figure~\protect\ref{fig:kt:linde}, but with initial conditions that are log-uniformly spaced in \(\phi\) at the Planck time. Here, most solutions begin in a kinetically dominated state, whilst still maintaining a sustained inflationary phase.}\label{fig:kt:alternate}
-\end{figure}
 
 
 
@@ -192,3 +177,20 @@ Thus, if some portion of the universe at an early stage has \(\dot{\phi}^2 \gg V
 Equally, this means that there will be a breakdown in the homogeneity assumption at early times. It remains to be determined at what moment this breakdown occurs for physically observable scales in the early universe. More analytical investigation is required, and is a subject of my current research.
 
 
+\begin{figure}[tp]
+  \centering
+  \tikzsetnextfilename{swirl}
+  \includegraphics[width=\textwidth]{chapters/kinetic_thoughts/plots/swirl.tikz}
+  \tikzsetnextfilename{true}
+  \includegraphics[width=\textwidth]{chapters/kinetic_thoughts/plots/true.tikz}
+  \caption{Phase-space plot of the evolution of \((\phi,\dot{\phi})\) for a chaotic inflationary potential \(V(\phi) = \frac{1}{2}m^2 \phi^2\). The upper plot has \(m=0.5\m\). The outer circle is the Planck time \(\tp\) when \(\rho=\m^4\). One can see that each path through phase space is generically drawn to the slow roll attractor solutions in the center of the plot. The lines are plotted so that they have a uniform spacing of kinetic energy at the Planck time.  The upper plot is somewhat misleading, since it has an artificially high value of \(m\). When the value of \(m\) is lowered to \(0.1\m\), as in the lower plot, then the slow roll phase is a much stronger attractor solution, and generates a sustained slow-roll accelerated expansion.}\label{fig:kt:linde}
+\end{figure}
+
+\begin{figure}[tp]
+  \centering
+  \tikzsetnextfilename{swirl_alt}
+  \includegraphics[width=\textwidth]{chapters/kinetic_thoughts/plots/swirl_alt.tikz}
+  \tikzsetnextfilename{true_alt}
+  \includegraphics[width=\textwidth]{chapters/kinetic_thoughts/plots/true_alt.tikz}
+  \caption{Phase space plot as in Figure~\protect\ref{fig:kt:linde}, but with initial conditions that are log-uniformly spaced in \(\phi\) at the Planck time. Here, most solutions begin in a kinetically dominated state, whilst still maintaining a sustained inflationary phase.}\label{fig:kt:alternate}
+\end{figure}

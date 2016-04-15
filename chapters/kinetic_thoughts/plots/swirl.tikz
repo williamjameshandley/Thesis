@@ -15,8 +15,8 @@
       legend cell align=right,
     ]
 
-    \foreach \n  in {1,2,...,102} {%
-      \addplot[thin,forget plot] table[] {chapters/kinetic_thoughts/data/swirl_alt\n.dat}; 
+    \foreach \n  in {1,2,...,82} {%
+      \addplot[thin,forget plot] table[] {chapters/kinetic_thoughts/data/swirl\n.dat}; 
     }
 
     \filldraw [fill=black] (axis cs:0,0) circle [radius=0.052];
