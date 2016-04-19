@@ -233,9 +233,11 @@ Radford Neal initially proposed slice sampling as an effective methodology for g
   }
 \end{figure}
 
+In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. The simplest of these is implemented by sampling each of the parameter directions in turn. Since each one-dimensional slice requires \(\bigO{\text{a few}}\) likelihood calculations, the number of likelihood calculations required scales linearly with dimensionality, providing the region is efficiently navigated. 
+
+Multi-dimensional slice sampling has many of the benefits of a traditional MH approach, and uses a proposal distribution which is much more efficient at sampling a hard likelihood constraint. This makes is a very suitable candidate for use within a nested sampling algorithm~\citep{skilling2006}.
 
 
-In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. The simplest of these is implemented by sampling each of the parameter directions in turn. Since each one-dimensional slice requires \(\bigO{\text{a few}}\) likelihood calculations, the number of likelihood calculations required scales linearly with dimensionality, providing the region is efficiently navigated. Multi-dimensional slice sampling has many of the benefits of a traditional MH approach, and uses a proposal distribution which is much more efficient at sampling a hard likelihood constraint.
 
 \subsection{Thermodynamic integration}
 The traditional method of computing the evidence from MCMC procedures is via {\em thermodynamic integration}.
