@@ -4,22 +4,22 @@
 \epigraph{Exploring a hard-edged likelihood-constrained domain should prove to be neither more nor less demanding than exploring a likelihood-weighted space.}{John~\cite{skilling2006}}
 
 \noindent 
-\PolyChord{} is a novel nested sampling algorithm tailored for high-dimensional parameter spaces. This chapter provides an extensive account of the algorithm. \PolyChord{} utilises slice sampling at each iteration to sample within the hard likelihood constraint of nested sampling. It can identify and evolve separate modes of a posterior semi-independently, and is parallelised using openMPI\@. It is capable of exploiting a hierarchy of parameter speeds such as those present in \CosmoMC{}~\citep{cosmomc} and \CAMB{}~\citep{CAMB}, and is now in use in the \CosmoChord{} and \ModeChord{}~\citep{ModeChord1,ModeChord2,ModeChord3} codes. 
+\PolyChord{} is a novel nested sampling algorithm tailored for high-dimensional parameter spaces. This chapter provides an extensive account of the algorithm. \PolyChord{} utilises slice sampling at each iteration to sample within the hard likelihood constraint of nested sampling. It can identify and evolve separate modes of a posterior semi-independently, and is parallelised using openMPI\@. It is capable of exploiting a hierarchy of parameter speeds such as those present in \CosmoMC{} \citep{cosmomc} and \CAMB{} \citep{CAMB}, and is now in use in the \CosmoChord{} and \ModeChord{} \citep{ModeChord1,ModeChord2,ModeChord3} codes. 
 
 \section{Introduction}
 
 Over the past two decades, Bayesian methods have been increasingly adopted as the standard inference procedure for the rapidly increasing volume of astrophysical data.
 
-Bayesian inference consists of {\em parameter estimation\/} and {\em model comparison}.  Parameter estimation is generally performed using Markov-Chain Monte-Carlo (MCMC) methods, such as the Metropolis-Hastings (MH) algorithm and its variants~\citep{MacKay}.  In order to perform model comparison, one must calculate the {\em evidence\/}: a high-dimensional integration of the likelihood over the prior density~\citep{Sivia}.  MH methods cannot compute this on a usable timescale, hindering the use of Bayesian model comparison in cosmology and astroparticle physics.
+Bayesian inference consists of {\em parameter estimation\/} and {\em model comparison}.  Parameter estimation is generally performed using Markov-Chain Monte-Carlo (MCMC) methods, such as the Metropolis-Hastings (MH) algorithm and its variants \citep{MacKay}.  In order to perform model comparison, one must calculate the {\em evidence\/}: a high-dimensional integration of the likelihood over the prior density \citep{Sivia}.  MH methods cannot compute this on a usable timescale, hindering the use of Bayesian model comparison in cosmology and astroparticle physics.
 
-A contemporary methodology for computing evidences and posteriors simultaneously is provided by nested sampling~\citep{skilling2006}. This has been successfully implemented in the now widely adopted algorithm \MultiNest\,~\citep{MultiNest1,MultiNest2,MultiNest3}.  Modern cosmological likelihoods now involve a large number of parameters, with a hierarchy of speeds.  \MultiNest\ struggles with high-dimensional parameter spaces, and is unable to take advantage of this separation of speeds.  \PolyChord{} aims to address these issues, providing a means to sample high-dimensional spaces across a hierarchy of parameter speeds.
+A contemporary methodology for computing evidences and posteriors simultaneously is provided by nested sampling \citep{skilling2006}. This has been successfully implemented in the now widely adopted algorithm \MultiNest\, \citep{MultiNest1,MultiNest2,MultiNest3}.  Modern cosmological likelihoods now involve a large number of parameters, with a hierarchy of speeds.  \MultiNest\ struggles with high-dimensional parameter spaces, and is unable to take advantage of this separation of speeds.  \PolyChord{} aims to address these issues, providing a means to sample high-dimensional spaces across a hierarchy of parameter speeds.
 
 The layout of the chapter is as follows:
 We overview the historical implementations of nested sampling in Section~\ref{sec:pc:iso_likelihood_sampling} and provide an account of the slice sampling technique of~\cite{NealSlice}.
 We describe the \PolyChord{} algorithm in detail in Section~\ref{sec:pc:polychord_algorithm} and demonstrate its efficacy on toy and cosmological problems in Section~\ref{sec:pc:polychord_in_action}.  
 Section~\ref{sec:pc:conclusions} concludes the chapter.
 
-This chapter is an extensive overview of our algorithm, which is now in use in several cosmological applications~\citep{planck2015-a24}. It was published as~\cite{polychordpaper}. A briefer introduction can be found in~\cite{polychordletter}.
+This chapter is an extensive overview of our algorithm, which is now in use in several cosmological applications \citep{planck2015-a24}. It was published as~\cite{polychordpaper}. A briefer introduction can be found in~\cite{polychordletter}.
 
 \PolyChord{} is available for download from the link at the end of the chapter.
 
@@ -47,7 +47,7 @@ The most challenging aspect of nested sampling is drawing a new point from the p
 
 For some problems, the iso-likelihood contour is known analytically, allowing one to construct a sampling procedure specific to that problem. This is demonstrated by~\cite{Keeton}, and can be useful for testing nested sampling's theoretical behaviour. In most cases, however, the likelihood contour is unknown a-priori, so a more numerical approach must be taken.
 
-\cite{Mukherjee} implemented a rejection sampling (Appendix~\ref{sec:sm:rejection}) method, which was extended by~\cite{Shaw_et_al} and later incorporated into the widely-used~\MultiNest{} algorithm~\citep{MultiNest1,MultiNest2,MultiNest3}.
+\cite{Mukherjee} implemented a rejection sampling (Appendix~\ref{sec:sm:rejection}) method, which was extended by~\cite{Shaw_et_al} and later incorporated into the widely-used~\MultiNest{} algorithm \citep{MultiNest1,MultiNest2,MultiNest3}.
 These algorithms sample by using the live points to construct a set of intersecting ellipsoids which together aim to enclose the likelihood contour, and then performs rejection sampling within the ellipsoids.
  Whilst being an excellent algorithm for modest numbers of parameters, any rejection sampling algorithm has an exponential scaling with dimensionality that eventually emerges.
 
@@ -55,9 +55,9 @@ An alternative approach (the one initially envisaged by Skilling) is to sample w
 
 A traditional Metropolis-Hastings (MH) or Gibbs sampling approach may be utilised, but in general such algorithms are ill-suited to sampling from a hard likelihood constraint without a significant amount of tuning of a proposal matrix. This is examined in section 6 of~\cite{MultiNest1}.
 
-Galilean (Hamiltonian) sampling~\citep{GalileanNestedSampling,Betancourt2011} improves upon the traditional MH sampler by using proposal points generated by reflecting off iso-likelihood contours. This however requires gradients to be calculated, and can become inefficient if the step size is chosen incorrectly, or if the contour has a shape which is difficult to `step back into'
+Galilean (Hamiltonian) sampling \citep{GalileanNestedSampling,Betancourt2011} improves upon the traditional MH sampler by using proposal points generated by reflecting off iso-likelihood contours. This however requires gradients to be calculated, and can become inefficient if the step size is chosen incorrectly, or if the contour has a shape which is difficult to `step back into'
 
-Diffusive nested sampling~\citep{DiffusiveNestedSampling} is an alternative and promising variation on Skilling's traditional nested sampling algorithm. Diffusive nested sampling utilises MCMC to explore a mixture of nested probability distributions. Since it is MCMC based, it scales well with dimensionality. In addition, it can deal with multimodal and degenerate posteriors, unlike traditional MCMC\@. It does however have multiple tuning parameters.
+Diffusive nested sampling \citep{DiffusiveNestedSampling} is an alternative and promising variation on Skilling's traditional nested sampling algorithm. Diffusive nested sampling utilises MCMC to explore a mixture of nested probability distributions. Since it is MCMC based, it scales well with dimensionality. In addition, it can deal with multimodal and degenerate posteriors, unlike traditional MCMC\@. It does however have multiple tuning parameters.
 
 
 \subsection{Slice sampling}
@@ -86,7 +86,7 @@ In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. 
 \PolyChord{} implements several novel features in comparison with the slice-based nested sampling of~\cite{SystemsBio}.  
 It utilises slice sampling in a manner that uses the information present in the live and phantom points to deal with correlated posteriors. 
 \PolyChord{} also uses a general clustering algorithm that identifies and evolves separate modes of the posterior semi-independently, and infers local evidence values.  
-In addition, it has the option of implementing fast-slow parameters, which is extremely effective in its combination with \CosmoMC{}~\citep{cosmomc}. 
+In addition, it has the option of implementing fast-slow parameters, which is extremely effective in its combination with \CosmoMC{} \citep{cosmomc}. 
 This is termed \CosmoChord, which may be downloaded from the link at the end of the chapter.
 
  The algorithm is written in \FORTRAN{} and parallelised using \openMPI{}.  It is optimised for the case where the dominant cost is the generation of a new live point.  This is frequently the case in astrophysical applications, either due to high dimensionality, or to costly likelihood evaluation.  
@@ -138,7 +138,7 @@ To transform from \(\bxx\) in the unit hypercube to \(\byy\) in the sampling spa
 where \(\mathrm{L}\) is the Cholesky decomposition of the covariance matrix \(\Sigma = \mathrm{L} \mathrm{L}^{T}\).
 This is illustrated further in Figure~\ref{fig:pc:Nd_slice}.
 
-Working in the sampling space our choice of \(\Prob{\nhatx}\) is inspired by the default choice of \CosmoMC{}~\citep{LewisFastSlow}. Here, a randomly oriented orthonormal basis is chosen, and these directions are chosen in a random order. Once a basis is exhausted, a new basis is chosen. This approach satisfies detailed balance, and mixes rapidly.
+Working in the sampling space our choice of \(\Prob{\nhatx}\) is inspired by the default choice of \CosmoMC{} \citep{LewisFastSlow}. Here, a randomly oriented orthonormal basis is chosen, and these directions are chosen in a random order. Once a basis is exhausted, a new basis is chosen. This approach satisfies detailed balance, and mixes rapidly.
 
 The choice of \(\nrepeats\) is slightly harder to justify. We find that for distributions with roughly convex contours \(\nrepeats\bigO{\ndims}\) is sufficient, with the constant of proportionality being \(2\)---\(6\). For more complicated contour shapes, one may require much larger values of \(\nrepeats\). 
 
@@ -215,7 +215,7 @@ For high-dimensional cosmological applications, this results in a very large num
 \subsection{Fast-slow parameters and \CosmoChord}
 \label{sec:pc:fast_slow}
 
-In cosmological applications, likelihoods can exhibit a hierarchy of parameters in terms of calculation speed~\citep{LewisFastSlow}. Consequently, a likelihood may be quickly recalculated if one changes only a certain subset of the parameters. For \PolyChord{} it is very easy to exploit such a hierarchy. Our transformation to the sampling space is laid out so that if parameters are ordered from slow to fast, then this hierarchy is automatically exploited: a Cholesky decomposition, being a upper-triangular skew transformation, mixes each parameter only with faster parameters.
+In cosmological applications, likelihoods can exhibit a hierarchy of parameters in terms of calculation speed \citep{LewisFastSlow}. Consequently, a likelihood may be quickly recalculated if one changes only a certain subset of the parameters. For \PolyChord{} it is very easy to exploit such a hierarchy. Our transformation to the sampling space is laid out so that if parameters are ordered from slow to fast, then this hierarchy is automatically exploited: a Cholesky decomposition, being a upper-triangular skew transformation, mixes each parameter only with faster parameters.
 
 From a user's perspective, \PolyChord{} does this re-ordering in the hypercube automatically when provided with details of the hierarchy.
 
@@ -398,7 +398,7 @@ We choose \(r=2\), \(w=0.1\), and \(\mu_1\) and \(\mu_2\) are separated by \(7\)
 
 An additional strength of \PolyChord{} lies in its ability to exploit a fast-slow hierarchy common in many cosmological applications. 
 
-As an example, we consider the likelihoods provided by \CAMB{}~\citep{CAMB} and \CosmoMC{}~\citep{cosmomc}. In Boltzmann codes such as \CAMB{}, parameters controlling the primordial power spectrum (such as \(n_s\) and \(A_s\)) do not require recalculation of transfer functions. These parameters are termed ``semi-slow''. In addition, modern Planck likelihoods~\citep{Planck2013Like} have nuisance parameters associated with the foregrounds. These may be varied without recalculation of the cosmological background. These parameters are hence termed ``fast''. \CosmoMC{}~\citep{cosmomc} implements this hierarchy of speeds in its likelihood calculation.
+As an example, we consider the likelihoods provided by \CAMB{} \citep{CAMB} and \CosmoMC{} \citep{cosmomc}. In Boltzmann codes such as \CAMB{}, parameters controlling the primordial power spectrum (such as \(n_s\) and \(A_s\)) do not require recalculation of transfer functions. These parameters are termed ``semi-slow''. In addition, modern Planck likelihoods \citep{Planck2013Like} have nuisance parameters associated with the foregrounds. These may be varied without recalculation of the cosmological background. These parameters are hence termed ``fast''. \CosmoMC{} \citep{cosmomc} implements this hierarchy of speeds in its likelihood calculation.
 
 We have successfully implemented \PolyChord{} within \CosmoMC{}, and term the result \CosmoChord{}.  The traditional Metropolis-Hastings algorithm is replaced with nested sampling. This implementation is available to download from the link at the end of the chapter.
 
@@ -407,8 +407,8 @@ The exploitation of fast-slow parameters means that \CosmoChord{} vastly outperf
 \CosmoMC{} by default uses a Metropolis-Hastings sampler. If this has a well-tuned proposal distribution (e.g.\ if one is performing importance sampling from an already well-characterised likelihood), then \PolyChord{} is \(2\)--\(4\) times slower than the traditional \CosmoMC{}. If proposal matrices are unavailable (e.g.\ in the case that one is examining an entirely new model) then \CosmoChord{}'s run time is competitive with the native \CosmoMC{} sampler. This is a good example of the self-tuning capacity of \PolyChord{}, since it only requires two tuning parameters, as opposed to \(\bigO{D^2}\).
 
 \CosmoChord{} produces parameter estimations consistent with \CosmoMC{} (Figure~\ref{fig:pc:cosmochord}).
-It has been implemented effectively in multiple cosmological applications in the latest Planck paper describing constraints on inflation~\citep{planck2015-a24}, including application to a \(37\)-parameter reconstruction problem (\(4\) slow, \(19\) semi-slow, \(14\) fast). 
-In addition, \PolyChord{} is an integral component of the \ModeChord{} code, a combination of \CosmoChord{} and \ModeCode{}~\citep{ModeChord1,ModeChord2,ModeChord3}, which is available at \url{http://modecode.org/}.
+It has been implemented effectively in multiple cosmological applications in the latest Planck paper describing constraints on inflation \citep{planck2015-a24}, including application to a \(37\)-parameter reconstruction problem (\(4\) slow, \(19\) semi-slow, \(14\) fast). 
+In addition, \PolyChord{} is an integral component of the \ModeChord{} code, a combination of \CosmoChord{} and \ModeCode{} \citep{ModeChord1,ModeChord2,ModeChord3}, which is available at \url{http://modecode.org/}.
 
 \section{Conclusions}
 \label{sec:pc:conclusions}

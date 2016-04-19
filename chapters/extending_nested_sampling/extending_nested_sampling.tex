@@ -47,7 +47,7 @@ It is worth noting that the procedure described below will generate the mean and
 \subsection{Computing the mean evidence}
 \label{sec:ens:basic_mean}
 
-While it is possible to take equations~\eqref{eqn:ens:app_ev},~\eqref{eqn:ens:rr_x} \&~\eqref{eqn:ens:Pt} and compute the mean as a general formula~\citep{Keeton}, in the case of clustering this is uninformative. 
+While it is possible to take equations~\eqref{eqn:ens:app_ev},~\eqref{eqn:ens:rr_x} \&~\eqref{eqn:ens:Pt} and compute the mean as a general formula \citep{Keeton}, in the case of clustering this is uninformative. 
 In fact, for large-dimensional spaces using the full formula would require storage of a prohibitively large amount of data. The calculation is better accomplished by a set of recursion relations, which update the mean evidence and its error at each step. 
 
 For now, assume that we have \(n\) live points currently enclosed by some likelihood contour \(\lik\) of volume \(X\), and \(\ev\) is the last value of the evidence calculated from all of the points that have died so far. By considering~\eqref{eqn:ens:app_ev},~\eqref{eqn:ens:rr_x} \&~\eqref{eqn:ens:Pt}, when we kill off the outermost point, we may adjust the values of \(\ev\) and \(X\) using:

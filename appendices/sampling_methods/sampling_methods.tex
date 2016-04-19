@@ -124,7 +124,7 @@ where \(\text{erfinv}\) is the conventional inverse error function.
 \subsubsection{Forced identifiability priors}
 \label{sec:pc:forced_identifiablility}
 
-As an example of a prior that is not separable in the parameters, we consider a forced identifiability prior. Here, \(n\) parameters are distributed uniformly between \(\thetamin\) and \(\thetamax\), but subject to the constraint that they are ordered numerically. This is a particularly useful prior in the reconstruction of functions using a spline with movable knots~\citep{vazquez_knots,knottedsky1,knottedsky2,planck2015-a24}. In this case, the  horizontal locations of the knots must be ordered.
+As an example of a prior that is not separable in the parameters, we consider a forced identifiability prior. Here, \(n\) parameters are distributed uniformly between \(\thetamin\) and \(\thetamax\), but subject to the constraint that they are ordered numerically. This is a particularly useful prior in the reconstruction of functions using a spline with movable knots \citep{vazquez_knots,knottedsky1,knottedsky2,planck2015-a24}. In this case, the  horizontal locations of the knots must be ordered.
 
 The required prior is uniform in the hyper-triangle defined by \(\thetamin<\theta_1<\cdots<\theta_n<\thetamax\), and zero everywhere else:
 %
@@ -235,7 +235,7 @@ Radford Neal initially proposed slice sampling as an effective methodology for g
 
 In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. The simplest of these is implemented by sampling each of the parameter directions in turn. Since each one-dimensional slice requires \(\bigO{\text{a few}}\) likelihood calculations, the number of likelihood calculations required scales linearly with dimensionality, providing the region is efficiently navigated. 
 
-Multi-dimensional slice sampling has many of the benefits of a traditional MH approach, and uses a proposal distribution which is much more efficient at sampling a hard likelihood constraint. This makes is a very suitable candidate for use within a nested sampling algorithm~\citep{skilling2006}.
+Multi-dimensional slice sampling has many of the benefits of a traditional MH approach, and uses a proposal distribution which is much more efficient at sampling a hard likelihood constraint. This makes is a very suitable candidate for use within a nested sampling algorithm \citep{skilling2006}.
 
 
 

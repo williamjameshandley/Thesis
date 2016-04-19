@@ -5,10 +5,10 @@
 \label{sec:introduction}
 The numerical solution of linear, ordinary differential equations is of critical importance throughout science and mathematics. In this chapter we suggest an efficient approach for navigating highly oscillatory numerical solutions.
 
-Most traditional numerical solvers of differential equations use a generalisation of Runge-Kutta (RK) techniques~\citep{Press+2007}. These apply Taylor's theorem to create a stepping scheme whereby the value of the solution is updated using derivative information. Good solvers will also incorporate adaptive step-size control.
+Most traditional numerical solvers of differential equations use a generalisation of Runge-Kutta (RK) techniques \citep{Press+2007}. These apply Taylor's theorem to create a stepping scheme whereby the value of the solution is updated using derivative information. Good solvers will also incorporate adaptive step-size control.
 Whilst RK techniques are an excellent workhorse for solving a wide variety of problems, they are known to struggle to solve equations with highly oscillatory solutions.
 
-On the other hand, the Wentzel-Kramers-Brillouin (WKB) method is a well established analytical approach for approximately describing oscillatory solutions~\citep{RHB,Bender+2010}. Historically this has been used to approximate the global shape and characteristics of an oscillating solution with a ``slowly changing'' frequency.
+On the other hand, the Wentzel-Kramers-Brillouin (WKB) method is a well established analytical approach for approximately describing oscillatory solutions \citep{RHB,Bender+2010}. Historically this has been used to approximate the global shape and characteristics of an oscillating solution with a ``slowly changing'' frequency.
 
 We propose that one may combine the two approaches to create a reliable general tool for the numerical solution of oscillatory differential equations, and term the result RKWKB\footnote{Readers with experience in the field will note that, as Cambridge authors, we should be insisting on an additional `J' in WKB (for Jeffreys). Given the length of our proposed acronym, we have opted to use the more efficient nomenclature.}.
 
@@ -201,7 +201,7 @@ whose solution is depicted in Figure~\ref{fig:airy}. This is often quoted as bei
 
 We set the desired relative error to be \(10^{-4}\). The algorithm remains in the RK regime until \(t\sim5\). When the WKB solver is activated, instead of following every oscillation of the solution, it rapidly speeds up, skipping many oscillations. This is detailed in Figure~\ref{fig:data}.
 
-The error compared to the true solution is detailed in Figure~\ref{fig:error}. Here we find that initially the error is small, but grows\(\bigO{h^{2s} t^{s+5/4}}\) where \(s=4\) is the order of the RK method~\citep{Iserles02globalerror}. After the WKB regime is entered, it begins to make huge strides, and the error levels off.
+The error compared to the true solution is detailed in Figure~\ref{fig:error}. Here we find that initially the error is small, but grows\(\bigO{h^{2s} t^{s+5/4}}\) where \(s=4\) is the order of the RK method \citep{Iserles02globalerror}. After the WKB regime is entered, it begins to make huge strides, and the error levels off.
 
 In contrast to a ``pure'' RK method, the RKWKB method finds the Airy equation maximally {\em easy}.
 
@@ -224,7 +224,7 @@ In contrast to a ``pure'' RK method, the RKWKB method finds the Airy equation ma
 
 \section{Comparison with the Iserles approach}
 \label{sec:iserles_comparison}
-Iserles has written extensively on the difficulty of solving problems of the form~\eqref{eqn:lode}. His approach is to turn~\eqref{eqn:lode} into a Lie-group differential equation~\citep{Iserles00lie-groupmethods} by writing:
+Iserles has written extensively on the difficulty of solving problems of the form~\eqref{eqn:lode}. His approach is to turn~\eqref{eqn:lode} into a Lie-group differential equation \citep{Iserles00lie-groupmethods} by writing:
 \begin{align}
   \mathbf{y} &= {(x,\dot{x})}^\top, 
   \mathrm{A}(t) = 
@@ -252,9 +252,9 @@ This approach is much improved by transferring to a fast rotating frame:
   \mathbf{y}(t_n+\tau) = e^{\tau \mathrm{A}(t_n+h/2)} \mathbf{x},
   \label{eqn:rotating_frame}
 \end{equation}
-the end product is then termed the {\em modified Magnus method\/}~\citep{Iserles01thinkglobally}.
+the end product is then termed the {\em modified Magnus method\/} \citep{Iserles01thinkglobally}.
 
-The RKWKB method and the modified Magnus method share some key features. Indeed, the lowest order modified Magnus method is equivalent to a \(1\)\textsuperscript{st} order WKB approach~\citep{Iserles02globalerror}. However, our approach is distinguished in several ways. 
+The RKWKB method and the modified Magnus method share some key features. Indeed, the lowest order modified Magnus method is equivalent to a \(1\)\textsuperscript{st} order WKB approach \citep{Iserles02globalerror}. However, our approach is distinguished in several ways. 
 
 First, the Magnus expansion~\eqref{eqn:magnus} requires multiple integrals for higher order terms. These integrals are tricky to implement, and can introduce considerable computational overhead. The WKB expansion~\eqref{eqn:WKB_x_step} on the other hand requires at most single integrals, replacing the double integrals with additional derivative terms of \(\omega\), which are typically easier to compute.
 
