@@ -8,9 +8,7 @@ Some of this work was published in an appendix in~\cite{polychordpaper}.
 \label{sec:ens:evidences}
 
 \cite{skilling2006} initially advocated using Monte-Carlo methods to estimate the evidence error, although this requires the storage of the entire chain of dead points, rather than just the subset usually stored for posterior inferences. For high-dimensional problems, the number of dead points is prohibitively large, and cannot be stored.
-
 \cite{MultiNest2} use an alternative method based on the relative entropy \citep[also suggested by][]{skilling2006}. 
-
 \cite{Keeton} suggests a more intuitive methodology of estimating the error, and it is this which we use, although it must be heavily adapted for the case of variable numbers of live points and clustering.
 
 \subsection{Basic theory}
@@ -151,7 +149,7 @@ We must also keep track of the local and global evidence errors. Taking the squa
   \ev_p^2 &\to \ev_p^2 + 2 (1-t) \ev_p X_p \lik +  {(1-t)}^2 X_p^2 \lik^2.
 \end{align}
 %
-We can see that we're going to need to keep track of \(\{\overline{\ev X_p}, \overline{\ev_p X_p}, \overline{X_p^2}\}\) in addition to \(\{ \overline{\ev^2}, \overline{\ev_p^2} \}\). Taking various multiplications of equations~\eqref{eqn:ens:rr_ev},~\eqref{eqn:ens:rr_evi} \&~\eqref{eqn:ens:rr_Xi} finds:
+We can see that we are going to need to keep track of \(\{\overline{\ev X_p}, \overline{\ev_p X_p}, \overline{X_p^2}\}\) in addition to \(\{ \overline{\ev^2}, \overline{\ev_p^2} \}\). Taking various multiplications of equations~\eqref{eqn:ens:rr_ev},~\eqref{eqn:ens:rr_evi} \&~\eqref{eqn:ens:rr_Xi} finds:
 %
 \begin{align}
   \ev X_p   &\to t \ev X_p + (1-t)t X_p^2 \lik, \\
@@ -228,7 +226,7 @@ First, if one desires a higher order of accuracy, one may update the rather simp
   \label{eqn:ens:app_trap_ev}
 \end{equation}
 In this case, the approach is identical to the method described above, one merely replaces the likelihood value with that of the average value of the last two likelihoods \((\lik_i + \lik_{i-1})/2\).
-It is better to phrase the trapezoidal rule as in equation~\eqref{eqn:ens:app_trap_ev} as oppose to the more traditionally cited:
+It is better to phrase the trapezoidal rule as in equation~\eqref{eqn:ens:app_trap_ev} as opposed to the more traditionally cited:
 \begin{equation}
   \ev = \sum\limits_{i} \frac{1}{2}(X_{i-1}-X_{i+1}) \lik_i.
   \label{eqn:ens:app_trap_normal_ev}
