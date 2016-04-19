@@ -1,9 +1,9 @@
-\chapter[RKWKB]{The Runge-Kutta-Wentzel-Kramers-Brillioun method}
+\chapter[The RKWKB method]{The Runge-Kutta-Wentzel-Kramers-Brillioun~method}
 \label{chp:RK}
 
 \section{Introduction}
 \label{sec:introduction}
-The numerical solution of linear, ordinary differential equations is of critical importance throughout science and mathematics. In this letter we suggest an efficient approach for navigating highly oscillatory numerical solutions.
+The numerical solution of linear, ordinary differential equations is of critical importance throughout science and mathematics. In this chapter we suggest an efficient approach for navigating highly oscillatory numerical solutions.
 
 Most traditional numerical solvers of differential equations use a generalisation of Runge-Kutta (RK) techniques~\citep{Press+2007}. These apply Taylor's theorem to create a stepping scheme whereby the value of the solution is updated using derivative information. Good solvers will also incorporate adaptive step-size control.
 Whilst RK techniques are an excellent workhorse for solving a wide variety of problems, they are known to struggle to solve equations with highly oscillatory solutions.
@@ -97,25 +97,46 @@ Note that at \(0\)\textsuperscript{th} order, the solution is \(x\propto\exp\lef
 Typically \(T\) is considered a power counting parameter, and set equal to \(1\) at the end of the analysis.
 
 There are two integration constants associated with the either sign of equation~\eqref{eqn:S0}. The other integration constants from the remaining equations may be absorbed into the first two. The \(n\)\textsuperscript{th} order solution thus takes the form:
-\begin{align}
-  x_\mathrm{WKB}^{(n)}[A_{\pm}](t) =&
-  \left( A_{+} e^{S_0(t)} + A_{-} e^{-S_0(t)} \right)
-  \nonumber\\
-  &\times \exp\left( \sum_{i=1}^n S_i(t) \right).
-  \label{eqn:solution}
+\begin{align}       
+  x_\mathrm{WKB}^{(n)}[A_{\pm}](t) &=
+  A_{+} e^{\phi_+(t)} + A_{-} e^{\phi_-(t)},
+  \label{eqn:solution} \\
+  \phi_\pm(t) &= \pm S_0(t) + S_i(t).
+  \label{eqn:phidef} 
 \end{align}
 If one has initial conditions at time \(t_0\):
 \begin{equation}
   x(t_0) = x_0, \qquad \dot{x}(t_0)=\dot{x}_0,
   \label{eqn:i_c}
 \end{equation}
-then the coeffients \(A_\mu\) may be determined by:
-\begin{align}
-  A_\pm^{(n)}(x_0,\dot{x}_0,t_0) =& \frac{1}{2}\exp{\left( \mp S_0(t_0) - \sum_{i=1}^n S_i(t_0) \right)}
-  \nonumber\\
-  &\times\left( x_0 \pm  \frac{\dot{x}_0-x_0\sum_{i=1}^n \dot{S}_i(t_0)}{\dot{S}_0(t_0)}\right).
+then the coefficients \(A_\pm\) may be determined by:
+\begin{equation}
+  A_\pm^{(n)}(x_0,\dot{x}_0,t_0) = \pm\frac{\dot{x}_0 - x_0 \phi_\mp(t_0)}{2\dot{S}_0(t_0)} e^{-\phi_\pm(t_0)}.
   \label{eqn:i_c_Apm}
-\end{align}
+\end{equation}
+We can perform the same analysis with the derivative of~\eqref{eqn:asymp}:
+\begin{equation}       
+  \dot{x}_\mathrm{WKB}^{(n)}[B_{\pm}](t) =
+  B_{+} \dot{\phi}_+(t)e^{\phi_+(t)} + B_{-} \dot{\phi}_-(t)e^{\phi_-(t)}.
+  \label{eqn:solution_xdot}
+\end{equation}
+If one has initial conditions at time \(t_0\):
+\begin{equation}
+  \dot{x}(t_0) = \dot{x}_0, \qquad \ddot{x}(t_0)=\ddot{x}_0,
+  \label{eqn:i_c_xdot}
+\end{equation}
+then the coefficients \(B_\pm\) may be determined by:
+\begin{equation}
+  B_\pm^{(n)}(\dot{x}_0,\ddot{x}_0,t_0) = 
+  \pm\frac{%
+    \dot{x}_0(\ddot{\phi}_\mp- \dot{\phi}_\mp^2)-\ddot{x}_0 \dot{\phi}_\mp
+  }{%
+    \dot{\phi}_+ \ddot{\phi}_- -\ddot{\phi}_+ \dot{\phi}_- +\dot{\phi}_+ \dot{\phi}_-^2-\dot{\phi}_+^2 \dot{\phi}_-} e^{-\dot{\phi}_\pm},
+  \label{eqn:i_c_Bpm}
+\end{equation}
+where all \(\phi\) variables are evaluated at \(t_0\).
+
+
 For further detail on the intricacies of WKB approaches, the reader should consult~\cite{RHB,Bender+2010}.
 
 \section{The RKWKB method}
@@ -125,11 +146,18 @@ Given a function \(\omega(t)\), one proposes a step in time of \(h\) to be accom
 \begin{align}
   x_{j+1} &= x_\mathrm{WKB}^{(n)}[A_\pm(x_j,\dot{x}_j,t_j)](t_j+h),
   \label{eqn:WKB_x_step} \\
+  \dot{x}_{j+1} &= \dot{x}_\mathrm{WKB}^{(n)}[B_\pm(\dot{x}_j,\ddot{x}_j,t_j)](t_j+h),
+  \label{eqn:WKB_xdot_step} \\
   t_j &= t_j+h,
-  \label{eqn:WKB_t_step}
+  \label{eqn:WKB_t_step} \\
+  \ddot{x}_{j+1} &= -\omega^2(t_{j+1})x_{j+1}
+  \label{eqn:WKB_xddot} 
 \end{align}
-where \(x_\mathrm{WKB}^{(n)}[A_{\pm}]\) is given by~\eqref{eqn:solution} and \(A_{\pm}\) is given by~\eqref{eqn:i_c_Apm}.
-To paraphrase the above, one matches the \(n\)\textsuperscript{th} order WKB solution onto the current values of \(x_j\) and \(\dot{x}_j\), and uses this to extrapolate the solution by a time step of \(h\). Since WKB naturally encodes the oscillatory nature of the solution, this will allow step sizes \(h\) to be far larger than a single period of oscillation. 
+where \(x_\mathrm{WKB}^{(n)}[A_{\pm}]\) and \(\dot{x}_\mathrm{WKB}^{(n)}[B_{\pm}]\) are given by~\eqref{eqn:solution} and~\eqref{eqn:solution_xdot},  and \(A_{\pm}\) and \(B_{\pm}\)  are given by~\eqref{eqn:i_c_Apm} and~\eqref{eqn:i_c_Bpm}.
+
+To paraphrase the above; one matches the \(n\)\textsuperscript{th} order WKB solution onto the current values of \(x_j\) and \(\dot{x}_j\), and uses this to extrapolate the solution by a time step of \(h\). We repeat the same process for the derivative \(\dot{x}_j\), using its own WKB expansion. Finally, we self-consistently fix \(\ddot{x}_j\) so that it satisfies equation~\eqref{eqn:lode}. Since WKB naturally encodes the oscillatory nature of the solution, this will allow step sizes \(h\) to be far larger than a single period of oscillation. 
+
+Note the importance of using two WKB expansions with coefficients \(A_\pm\) and \(B_\pm\) to step \(x_j\) and \(\dot{x}_j\) separately. If we used the same coefficients to step both, then one would simply be following the same WKB solution.
 
 \subsection{Step size adjustment}
 To tune the step size \(h\), we use the same strategy as adaptive Runge-Kutta schemes. We compute both the order \(n\) and order \(n-1\) WKB solutions, and use the fractional difference between the two:
@@ -241,7 +269,7 @@ However, Iserles' approach has been the inspiration for this work, and we believ
 
 
 
-We have presented a novel method for numerically solving linear differential equations with highly oscillatory solutions. We use a Wentzel-Kramers-Brillioun expansion to create an adaptively stepping algorithm in the same manner as a Runge-Kutta scheme. Further, the algorithm will switch back to a normal RK approach when the frequency of oscillation is varying too quickly for WKB to approximate accurately. The method is compared to Iserles existing approaches, and found to be a reasonable alternative without requiring the use of heavy Lie-group machinery. This letter is not intended to be a complete exposition, but more a proof-of-principle to create a springboard for further investigation.
+We have presented a novel method for numerically solving linear differential equations with highly oscillatory solutions. We use a Wentzel-Kramers-Brillioun expansion to create an adaptively stepping algorithm in the same manner as a Runge-Kutta scheme. Further, the algorithm will switch back to a normal RK approach when the frequency of oscillation is varying too quickly for WKB to approximate accurately. The method is compared to Iserles existing approaches, and found to be a reasonable alternative without requiring the use of heavy Lie-group machinery. This chapter is not intended to be a complete exposition, but more a proof-of-principle to create a springboard for further investigation.
 
 
 

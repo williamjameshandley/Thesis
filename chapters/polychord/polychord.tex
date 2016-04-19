@@ -1,13 +1,16 @@
 \chapter{PolyChord}
 \label{chp:pc}
 
-\epigraph{\ldots note that exploring a hard-edged likelihood-constrained domain should prove to be neither more nor less demanding than exploring a likelihood-weighted space }{\johnskilling{}}
+\epigraph{Exploring a hard-edged likelihood-constrained domain should prove to be neither more nor less demanding than exploring a likelihood-weighted space.}{John~\cite{skilling2006}}
+
+\noindent 
+\PolyChord{} is a novel nested sampling algorithm tailored for high-dimensional parameter spaces. This chapter provides an extensive account of the algorithm. \PolyChord{} utilises slice sampling at each iteration to sample within the hard likelihood constraint of nested sampling. It can identify and evolve separate modes of a posterior semi-independently, and is parallelised using openMPI\@. It is capable of exploiting a hierarchy of parameter speeds such as those present in \CosmoMC{}~\citep{cosmomc} and \CAMB{}~\citep{CAMB}, and is now in use in the \CosmoChord{} and \ModeChord{}~\citep{ModeChord1,ModeChord2,ModeChord3} codes. 
 
 \section{Introduction}
-\label{sec:pc:introduction}
+
 Over the past two decades, Bayesian methods have been increasingly adopted as the standard inference procedure for the rapidly increasing volume of astrophysical data.
 
-Bayesian inference consists of {\em parameter estimation\/} and {\em model comparison}.  Parameter estimation is generally performed using Markov-Chain Monte-Carlo (MCMC) methods, such as the Metropolis-Hastings (MH) algorithm and its variants~\citep{Mackay}.  In order to perform model comparison, one must calculate the {\em evidence\/}: a high-dimensional integration of the likelihood over the prior density~\citep{Sivia}.  MH methods cannot compute this on a usable timescale, hindering the use of Bayesian model comparison in cosmology and astroparticle physics.
+Bayesian inference consists of {\em parameter estimation\/} and {\em model comparison}.  Parameter estimation is generally performed using Markov-Chain Monte-Carlo (MCMC) methods, such as the Metropolis-Hastings (MH) algorithm and its variants~\citep{MacKay}.  In order to perform model comparison, one must calculate the {\em evidence\/}: a high-dimensional integration of the likelihood over the prior density~\citep{Sivia}.  MH methods cannot compute this on a usable timescale, hindering the use of Bayesian model comparison in cosmology and astroparticle physics.
 
 A contemporary methodology for computing evidences and posteriors simultaneously is provided by nested sampling~\citep{skilling2006}. This has been successfully implemented in the now widely adopted algorithm \MultiNest\,~\citep{MultiNest1,MultiNest2,MultiNest3}.  Modern cosmological likelihoods now involve a large number of parameters, with a hierarchy of speeds.  \MultiNest\ struggles with high-dimensional parameter spaces, and is unable to take advantage of this separation of speeds.  \PolyChord{} aims to address these issues, providing a means to sample high-dimensional spaces across a hierarchy of parameter speeds.
 
@@ -44,7 +47,7 @@ The most challenging aspect of nested sampling is drawing a new point from the p
 
 For some problems, the iso-likelihood contour is known analytically, allowing one to construct a sampling procedure specific to that problem. This is demonstrated by~\cite{Keeton}, and can be useful for testing nested sampling's theoretical behaviour. In most cases, however, the likelihood contour is unknown a-priori, so a more numerical approach must be taken.
 
-\cite{Mukherjee} implemented a rejection sampling (Appendix~\ref{sec:sm:rejection}) method, which was later incorporated into the widely-used~\MultiNest{} algorithm~\citep{MultiNest1,MultiNest2,MultiNest3}.
+\cite{Mukherjee} implemented a rejection sampling (Appendix~\ref{sec:sm:rejection}) method, which was extended by~\cite{Shaw_et_al} and later incorporated into the widely-used~\MultiNest{} algorithm~\citep{MultiNest1,MultiNest2,MultiNest3}.
 These algorithms sample by using the live points to construct a set of intersecting ellipsoids which together aim to enclose the likelihood contour, and then performs rejection sampling within the ellipsoids.
  Whilst being an excellent algorithm for modest numbers of parameters, any rejection sampling algorithm has an exponential scaling with dimensionality that eventually emerges.
 
@@ -248,15 +251,6 @@ We aim to showcase \PolyChord{} as both a high-dimensional evidence calculator, 
 \subsection{High-dimensional evidences}
 \label{sec:pc:hi_ev}
 
-As an example of the strength of \PolyChord{} as a high-dimensional evidence estimator, we compare it to \MultiNest{} on a Gaussian likelihood in \(D\) dimensions.  In both cases, convergence is defined as when the posterior mass contained in the live points is \(10^{-2}\) of the total calculated evidence.  We set \(\nlive=25D\), so that the evidence error remains constant with \(D\). \MultiNest{} was run in its default mode with importance nested sampling and expansion factor \(e=0.1\).  Whilst constant efficiency mode has the potential to reduce the number of \MultiNest{} evaluations, the low efficiencies required in order to generate accurate evidences negate this effect.                                       
-
-
-With these settings, \PolyChord{} produces consistent evidence and error estimates with an error \(\sim0.4\) log units (Figure~\ref{fig:pc:gaussian_evidences}). Using importance nested sampling, \MultiNest{} produces estimates that are within this accuracy.
-
-Figure~\ref{fig:pc:gaussian} shows the number of likelihood evaluations \(\nlike\) required to achieve convergence as a function of dimensionality \(D\). 
-Even on a simple likelihood such as this, \PolyChord{} shows a significant improvement over \MultiNest{} in scaling with dimensionality.  \PolyChord{} at worst scales as \({\nlike\bigO{D^3}}\), whereas \MultiNest{} has an exponential scaling which emerges in higher dimensions.
-However, we must point out that a good rejection algorithm like \MultiNest{} will always win in low dimensions. We therefore recommend using \MultiNest{} for low dimensional problems, although it should be noted that \MultiNest{}'s clustering is ineffective in modest dimensionalities.
-
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian_evidences}
@@ -265,11 +259,20 @@ However, we must point out that a good rejection algorithm like \MultiNest{} wil
 }
 \end{figure}
 
+As an example of the strength of \PolyChord{} as a high-dimensional evidence estimator, we compare it to \MultiNest{} on a Gaussian likelihood in \(D\) dimensions.  In both cases, convergence is defined as when the posterior mass contained in the live points is \(10^{-2}\) of the total calculated evidence.  We set \(\nlive=25D\), so that the evidence error remains constant with \(D\). \MultiNest{} was run in its default mode with importance nested sampling and expansion factor \(e=0.1\).  Whilst constant efficiency mode has the potential to reduce the number of \MultiNest{} evaluations, the low efficiencies required in order to generate accurate evidences negate this effect.                                       
+
+
+With these settings, \PolyChord{} produces consistent evidence and error estimates with an error \(\sim0.4\) log units (Figure~\ref{fig:pc:gaussian_evidences}). Using importance nested sampling, \MultiNest{} produces estimates that are within this accuracy.
+
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian}
   \caption{Comparing \PolyChord{} with \MultiNest{} using a Gaussian likelihood for different dimensionalities. \PolyChord{} has at worst \(\nlike\bigO{D^3}\), whereas \MultiNest{} has an exponential scaling that emerges at high dimensions.}\label{fig:pc:gaussian}
 \end{figure}
+
+Figure~\ref{fig:pc:gaussian} shows the number of likelihood evaluations \(\nlike\) required to achieve convergence as a function of dimensionality \(D\). 
+Even on a simple likelihood such as this, \PolyChord{} shows a significant improvement over \MultiNest{} in scaling with dimensionality.  \PolyChord{} at worst scales as \({\nlike\bigO{D^3}}\), whereas \MultiNest{} has an exponential scaling which emerges in higher dimensions.
+However, we must point out that a good rejection algorithm like \MultiNest{} will always win in low dimensions. We therefore recommend using \MultiNest{} for low dimensional problems, although it should be noted that \MultiNest{}'s clustering is ineffective in modest dimensionalities.
 
 \subsection{Clustering and local evidences}
 \label{sec:pc:loc_ev}
@@ -345,6 +348,19 @@ In higher dimensions, \PolyChord{} reliably finds the local and global maxima. T
 \subsection{Gaussian shells}
 \label{sec:pc:gaussian_shells}
 
+
+\begin{figure}[tp]
+  \centering
+  \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian_shell}
+  \caption{The two-dimensional Gaussian shell likelihood.}\label{fig:pc:gaussian_shell}
+\end{figure}
+
+\begin{figure}[tp]
+  \centering
+  \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian_shell_posterior}
+  \caption{Posteriors produced by \PolyChord{} for a \(n=100\)-dimensional Gaussian shell, with width \(w=0.1\), radius \(r=2\), and center \(\bmew=\bzero\).  Plotting the marginalised posteriors for the Cartesian sampling parameters \({\{x_1,\ldots,x_n\}}\) yields Gaussian distributions centered on the origin. To see the effectiveness of the sampler it is better to plot the sampling parameters in terms of \(n\)-dimensional spherical polar coordinates \({\{r,\phi_1,\ldots,\phi_{n-1}\}}\). Note that the polar coordinates are {\em derived parameters}, and that the sampling space still has the strong Gaussian shell degeneracy.  In this case we can see that the radial coordinate has a Gaussian profile centered on \(r_0 = r\times\frac{1}{2} {\left(1 + \sqrt{1 +  4 (n-1) {\left({w}/{r}\right)}^2}\right) }\) with width \(w_0 = w{(1+(n-1){(w/r_0)}^2)}^{-1/2}\).  The azimuthal coordinate \(\phi_{n-1}\) has a uniform posterior, and the other angular coordinates \(\{\phi_i\}\) have posteriors defined by \(\Prob{\phi_i } \propto {{\left(\sin\phi_i\right)}^{n-i-1}}\).}\label{fig:pc:gaussian_shell_posterior} 
+\end{figure}
+
 A ``Gaussian shell'' with mean \(\bmew\), radius \(r\) and width \(w\) is defined as:
 \begin{equation}
   \log\lik_\sshell(\bxx|\bmew,r,w) = A - \frac{{\left(\left|\bxx - \bmew\right|- r\right)}^2}{2w^2},
@@ -360,19 +376,6 @@ Running \PolyChord{} on a \(100\)-dimensional Gaussian shell with \(\nlive=1000\
 Given that this problem is quoted as being ``optimally difficult'' \citep{MultiNest2}, the ease with which \PolyChord{} tackles this problem in high dimensions is worth explanation. In the two-dimensional case, it is clear that the posterior mass is concentrated in a very thin, curving region of the parameter space. However, as the dimensionality is increased, more and more of the \(n\)-sphere's volume is concentrated at the edge, and the thin characteristic of the degeneracy is lost. 
 
 This may mean that the Gaussian shell is not a good proxy for a high-dimensional curving degeneracy. However, it could equally suggest that curving degeneracies become easier to navigate in higher dimensions. We can certainly conclude that a particle physics model with a proliferation of phases would be easier to navigate than one with a smaller number of phases.
-
-
-\begin{figure}[tp]
-  \centering
-  \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian_shell}
-  \caption{The two-dimensional Gaussian shell likelihood.}\label{fig:pc:gaussian_shell}
-\end{figure}
-
-\begin{figure}[tp]
-  \centering
-  \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian_shell_posterior}
-  \caption{Posteriors produced by \PolyChord{} for a \(n=100\)-dimensional Gaussian shell, with width \(w=0.1\), radius \(r=2\), and center \(\bmew=\bzero\).  Plotting the marginalised posteriors for the Cartesian sampling parameters \({\{x_1,\ldots,x_n\}}\) yields Gaussian distributions centered on the origin. To see the effectiveness of the sampler it is better to plot the sampling parameters in terms of \(n\)-dimensional spherical polar coordinates \({\{r,\phi_1,\ldots,\phi_{n-1}\}}\). Note that the polar coordinates are {\em derived parameters}, and that the sampling space still has the strong Gaussian shell degeneracy.  In this case we can see that the radial coordinate has a Gaussian profile centered on \(r_0 = r\times\frac{1}{2} {\left(1 + \sqrt{1 +  4 (n-1) {\left({w}/{r}\right)}^2}\right) }\) with width \(w_0 = w{(1+(n-1){(w/r_0)}^2)}^{-1/2}\).  The azimuthal coordinate \(\phi_{n-1}\) has a uniform posterior, and the other angular coordinates \(\{\phi_i\}\) have posteriors defined by \(\Prob{\phi_i } \propto {{\left(\sin\phi_i\right)}^{n-i-1}}\).}\label{fig:pc:gaussian_shell_posterior} 
-\end{figure}
 
 
 \subsubsection{Twin Gaussian shells}
@@ -405,7 +408,7 @@ The exploitation of fast-slow parameters means that \CosmoChord{} vastly outperf
 
 \CosmoChord{} produces parameter estimations consistent with \CosmoMC{} (Figure~\ref{fig:pc:cosmochord}).
 It has been implemented effectively in multiple cosmological applications in the latest Planck paper describing constraints on inflation~\citep{planck2015-a24}, including application to a \(37\)-parameter reconstruction problem (\(4\) slow, \(19\) semi-slow, \(14\) fast). 
-In addition, \PolyChord{} is an integral component of the \ModeChord{} code, a combination of \CosmoChord{} and \ModeCode{} \citep{ModeChord1,ModeChord2,ModeChord3}, which is available at \url{http://modecode.org/}.
+In addition, \PolyChord{} is an integral component of the \ModeChord{} code, a combination of \CosmoChord{} and \ModeCode{}~\citep{ModeChord1,ModeChord2,ModeChord3}, which is available at \url{http://modecode.org/}.
 
 \section{Conclusions}
 \label{sec:pc:conclusions}
