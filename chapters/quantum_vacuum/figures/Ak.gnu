@@ -3,7 +3,7 @@ set log xy
 set format xy "$10^{%T}$"
 
 set xlabel '$k\eta_0$'
-set ylabel '$A_k$'
+set ylabel ''
 
 set yrange [1e-3:1e2]
 

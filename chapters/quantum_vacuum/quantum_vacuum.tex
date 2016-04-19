@@ -1,4 +1,3 @@
-
 \chapter{Defining the Quantum Vacuum}
 \label{chp:qv}
 
@@ -7,11 +6,11 @@
 \label{sec:qv:introduction}
 Traditionally, quantum initial conditions for inflation are set using the Bunch-Davies vacuum. This approach is valid in de Sitter space and other asymptotically static spacetimes. Rapidly evolving spacetimes, however, do not admit such an easy quantisation. 
 
-In a recent work~\cite{Handley+2014}, we showed that the classical equations of motion suggest that the universe in fact emerged a rapidly evolving state, with the kinetic energy of the inflaton dominating the potential in a pre-inflationary phase. 
+In Chapter~\ref{chp:kd}, we showed that the classical equations of motion suggest that the universe in fact emerged from the initial singularity in a rapidly evolving state, with the kinetic energy of the inflaton dominating the potential in a pre-inflationary phase. 
 This can be used to set initial conditions on the background variables such as the inflaton value and Hubble parameter. 
 In order to make contact with real observations, the effect that this phase has on the primordial power spectrum requires a semi-classical quantum mechanical treatment of the comoving curvature perturbation.
 
-Hamiltonian diagonalisation is the simplest approach for setting quantum initial conditions in a general spacetime, and derives the vacuum from the minimisation of the Hamiltonian density. This approach has been criticised in the past as it does not admit a consistent interpretation in terms of particles~\cite{Fulling+1989,Fulling_HD}. Other approaches such as the adiabatic vacuum go some way to rescuing the particle concept, but have additional theoretical issues. 
+Hamiltonian diagonalisation is the simplest approach for setting quantum initial conditions in a general spacetime, and derives the vacuum from the minimisation of the Hamiltonian density. This approach has been criticised in the past as it does not admit a consistent interpretation in terms of particles~\citep{Fulling+1989,Fulling_HD}. Other approaches such as the adiabatic vacuum go some way to rescuing the particle concept, but have additional theoretical issues. 
 
 The issue of the particle interpretation stems from an attempt to apply a Minkowski spacetime concept outside the region of its validity.  
 We postulate that the minimisation of an energy density is still an appropriate way to define a vacuum. In order to avoid the issues raised against Hamiltonian diagonalisation, we motivate our initial conditions from the minimisation of the {\em renormalised\/} stress-energy density. 
@@ -38,7 +37,7 @@ We begin by briefly summarising the classical theory of cosmological perturbatio
 
 \subsection{The classical action}
 \label{sec:inflation}
-Consider~\cite{Baumann+2009} a canonical scalar field \(\phi\) minimally coupled to gravity \(S= S_G + S_\phi\) with:
+Consider~\citep{Baumann+2009} a canonical scalar field \(\phi\) minimally coupled to gravity \(S= S_G + S_\phi\) with:
 \begin{equation}
   \mathcal{L}_G = \frac{1}{2}R, 
   \qquad
@@ -101,14 +100,14 @@ This is the canonically normalised action for a scalar field with time-dependent
 
 \section{Quantisation via Hamiltonian diagonalisation}                                
 \label{sec:mukhanov}
-We now consider the traditional quantisation of the action~\eqref{eqn:v_action} via Hamiltonian diagonalisation. This is a standard method in the inflationary literature, but has several theoretical issues which will be discussed. To begin, one writes;
+We now consider the traditional quantisation of the action~\eqref{eqn:v_action} in spatially flat spacetimes via Hamiltonian diagonalisation. This is a standard method in the inflationary literature, but has several theoretical issues which will be discussed. To begin, one writes;
 \begin{equation}
   v = \int \frac{\d[3]{k}}{{(2\pi)}^3} \left[ a_\vk \chi_\vk(\eta)e^{i\vk\cdot\vx} + a_{\vk}^{\dagger} \str{\chi_\vk}(\eta)e^{-i\vk\cdot\vx} \right], 
   \label{eqn:v_quant}
 \end{equation}
-which expresses the operator \(v\) as a superposition of creation and annihilation operators \(\{a_\vk,a_\vk^\dagger\}\)~\cite{Mukhanov+2007}, with the mode functions written in separated form \({u_\vk = \chi_\vk(\eta) e^{i\vk\cdot\vx}}\). If one requires that the scalar field satisfies the equations of motion, and that canonical commutator relation:
+which expresses the operator \(v\) as a superposition of creation and annihilation operators \(\{a_\vk,a_\vk^\dagger\}\)~\citep{Mukhanov+2007}, with the mode functions written in separated form \({u_\vk = \chi_\vk(\eta) e^{i\vk\cdot\vx}}\). If one requires that the scalar field satisfies the equations of motion, and that canonical commutator relation:
 \begin{equation}
-  [ a_\vk^{\phantom\dagger} a_{\prm{\vk}}^{\dagger} ] = {(2\pi)}^3\delta^{(3)}(\vk-\prm{\vk}),
+  [ a_\vk^{\phantom\dagger}, a_{\prm{\vk}}^{\dagger} ] = {(2\pi)}^3\delta^{(3)}(\vk-\prm{\vk}),
   \label{eqn:commutator}
 \end{equation}
 holds true, then the temporal part \(\chi_\vk(\eta)\) of the mode functions \(u_\vk\) must satisfy:
@@ -175,12 +174,12 @@ Thus, if one sets these conditions at a time \(\eta_0\), one is effectively sett
 Astute readers will have spotted that the expected energy~\eqref{eqn:hamil} is divergent. Whilst the implicit \(\delta^{(3)}(0)\) in the proportionality constant of~\eqref{eqn:hamil} is harmless, and merely accounts for the contribution from the infinite volume of space, there is a second divergence which requires closer attention. For large \(k\), \(E_\vk\sim \omega_k \sim k\), and hence the integral~\eqref{eqn:hamil}, which represents the energy density, is ultraviolet divergent as \(k^4\). 
 
 In traditional quantum field theory, this divergence is subtracted as one only measures energy differences. This is also applicable to spacetimes that are asymptotically static (such as de Sitter space).
-However, in changing spacetimes, where the vacuum is time dependent, this subtraction can only be performed at a single instant. If one then advances in time by some finite amount, the space-time generates an infinite particle density~\cite{Fulling_HD,Fulling+1989}. 
+However, in changing spacetimes, where the vacuum is time dependent, this subtraction can only be performed at a single instant. If one then advances in time by some finite amount, the space-time generates an infinite particle density~\citep{Fulling_HD,Fulling+1989}. 
 
-This is clearly unphysical, causing some authors~\cite{Fulling_HD} to discard Hamiltonian diagonalisation as an inappropriate methodology for choosing a vacuum state.
+This is clearly unphysical, causing some authors~\citep{Fulling_HD} to discard Hamiltonian diagonalisation as an inappropriate methodology for choosing a vacuum state.
 
 \section{Alternative quantisations}
-The particle concept can be somewhat rescued by considering the adiabatic vacuum. This is well defined when the spacetime is changing slowly, as one can then perform an adiabatic expansion. The \(n\)\textsuperscript{th} order adiabatic vacuum at time \(\eta_0\) is defined by matching the general solution onto the \(n\)\textsuperscript{th} order adiabatic expansion at time \(\eta_0\). This has the satisfying property of more closely corresponding to what a freely falling particle detector would measure, and is generally agreed to be superior to Hamiltonian diagonalisation.
+The particle concept can be somewhat rescued by considering the adiabatic vacuum. This is well defined when the spacetime is changing slowly, as one can then perform an adiabatic expansion. The \(n\)\textsuperscript{th} order adiabatic vacuum at time \(\eta_0\) is defined by matching the general solution of the mode equation~\eqref{eqn:mode_mukhanov} onto the \(n\)\textsuperscript{th} order adiabatic expansion at time \(\eta_0\). This has the satisfying property of more closely corresponding to what a freely falling particle detector would measure, and is generally agreed to be superior to Hamiltonian diagonalisation.
 
 However, there are still some issues with this vacuum. First, it is only usable in slowly changing spacetimes, so only goes halfway to solving the general problem. Second, it introduces a further ambiguity in vacuum choice, namely that of which value of \(n\) to choose. Since the adiabatic expansion is asymptotic, it does not in general converge for large \(n\). One must pick a specific term of the series to truncate at, and there is little theoretical guidance as to what value \(n\) to choose.
 
@@ -194,7 +193,7 @@ In order to ameliorate this difficulty, we must adopt a more sophisticated appro
 \label{sec:QFTCST}
 This is the semi-rigorous theory of fields in which gravity is strong enough to generate curvature, but the quantum mechanics only affects spacetime to low order. It can therefore be thought of as a one-loop approximation to quantum gravity.
 
-Traditionally~\cite{Birrell+1984,Parker+2009}, one considers a scalar field Lagrangian with mass \(m\), with action:
+Traditionally~\citep{Birrell+1984,Parker+2009}, one considers a scalar field Lagrangian with mass \(m\), with action:
 \begin{equation}
   S = \int \d[4]{x} \sqrt{|g|}\left( \frac{1}{2}g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi - \frac{1}{2}m^2\phi^2 \right),
   \label{eqn:scalar_field}
@@ -231,7 +230,7 @@ where \(A\) and \(B\) are constants of integration.
 
 Considering the special case of the inflating universe; during inflation \(H\propto\dot{\phi}\sim\mathrm{const}\), so \(z\propto a\). Thus, quantising the Mukhanov variable during inflation is equivalent to quantising a massless, minimally coupled scalar field on the same background spacetime. Note however, that in a more general scenario, the two spacetimes will not be the same.
 
-\section{Minimising the renormalised stress-energy tensor}
+\section[Minimising the renormalised SET]{Minimising the renormalised stress-energy tensor}
 Within the theory of quantum fields in curved spacetime, one is able to compute a {\em renormalised\/} stress-energy tensor \(\bracket{0}{T_{\mu\nu}}{0}_\mathrm{ren}\). There are a variety of methods of doing this, but if carried out carefully they yield the same result.
 
 \subsection{Hadamard point splitting}
@@ -299,18 +298,20 @@ The second of these equations may be re-written in a more illuminating form:
 \end{equation}
 which suggests that the co-moving curvature \(\mathcal{R}=v/z\) is set with a ``positive frequency mode'' independent from any spacetime variation.
 
-It is important to recognise setting these conditions at \(\eta_0\) is equivalent to forcing the universe into a vacuum state at that moment, but there is no theoretical guidance as to when this should be. Indeed, there is little reason to imagine that the universe should be in a vacuum state at any given moment. However, these conditions could also be used to build a formalism of excited states.
+  It is important to recognise setting these conditions at \(\eta_0\) is equivalent to forcing the universe into a vacuum state at that moment, but there is minimal theoretical guidance as to when this should be\footnote{Although Lasenby (unpublished) has suggested using successive adiabatic approximations to pick the vacuum epoch as the moment when the field is most ``particle-like''.}. Indeed, there is little reason to imagine that the universe should be in a vacuum state at any given moment. However, these conditions could also be used to build a formalism of excited states.
 
 It is also important to realise that this vacuum does not claim to be interpretable in terms of particles. It is merely the mode function that minimises the renormalised stress tensor. In the language of Hamiltonian diagonalisation, or adiabatic vacuums, it would be a superposition of ``particle states''.
 
-\section{Renormalising the kinetically dominated universe}
+\cite{vacuum_choice} provides a review (particularly in the appendix) of various choices of initial conditions analogous to~\eqref{eqn:hd_condition} and~\eqref{eqn:rn_condition}. It is interesting to note that the~\cite{Danielsson} vacuum  is identical to the renormalisation initial conditions~\eqref{eqn:rn_condition} we have derived. The~\cite{Danielsson} vacuum \citep[also discussed by][]{Danielsson2} is instead derived from phenomenological grounds by imposing initial conditions around a high energy cutoff.
+
+\section{Renormalising the KD universe}
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/quantum_vacuum/figures/Ak.pdf}
   \caption{The modulus of the \(A_k\) and \(B_k\) coefficients in a kinetically dominated universe for the Hamiltonian diagonalising vacuum~(HD) and the vacuum from the renormalised stress tensor~(RST). Under these conditions, the universe will be in a vacuum state at conformal time \(\eta_0\). Note that at large \(k\), the mode functions tend to \(A_k=0\), \(B_k=1\).}\label{fig:Ak}
 \end{figure}
 We now consider these observations in the context of the kinetically dominated universe. 
-It was recently observed~\cite{Handley+2014} that the classical solutions to the evolution equations~\eqref{eqn:klein_gordon}~\&~\eqref{eqn:Raychaudhuri} emerge almost always from a kinetically dominated phase with \(\dot{\phi}^2\gg V(\phi)\). 
+It was recently observed~\citep{Handley+2014} that the classical solutions to the evolution equations~\eqref{eqn:klein_gordon}~\&~\eqref{eqn:Raychaudhuri} emerge almost always from a kinetically dominated phase with \(\dot{\phi}^2\gg V(\phi)\). 
 In this regime, there is a significant period of cosmic time in which the theory of Section~\ref{sec:QFTCST} is valid. 
 In this semi-classical pre-inflationary context, one finds that \(\dot{\phi}\propto H\) and hence \({z\propto a}\). 
 In the same manner as a de Sitter universe, quantising the co-moving curvature perturbation is equivalent to quantising a massless scalar field on the same background spacetime. 
