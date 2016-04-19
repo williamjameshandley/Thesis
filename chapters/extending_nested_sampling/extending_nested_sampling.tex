@@ -1,12 +1,15 @@
 \chapter{Extending Nested Sampling}
 \label{chp:ens}
 
+In this chapter, I describe some of my analytical contributions to the theory of nested sampling (detailed in Chapter~\ref{chp:bay}). In particular, the \PolyChord{} algorithm (Chapter~\ref{chp:pc}) requires the ability to handle a variable number of live points, and the capacity to evolve separate posterior modes semi-independently. These analytics detail how one can keep track of inferences on evolving prior volumes and evidences. 
+Some of this work was published in an appendix in~\cite{polychordpaper}.
+
 \section{Evidence estimates and errors}                            
 \label{sec:ens:evidences}
 
 \cite{skilling2006} initially advocated using Monte-Carlo methods to estimate the evidence error, although this requires the storage of the entire chain of dead points, rather than just the subset usually stored for posterior inferences. For high-dimensional problems, the number of dead points is prohibitively large, and cannot be stored.
 
-\cite{MultiNest2} use an alternative method based on the relative entropy (also suggested by~\cite{skilling2006}). 
+\cite{MultiNest2} use an alternative method based on the relative entropy \citep[also suggested by][]{skilling2006}. 
 
 \cite{Keeton} suggests a more intuitive methodology of estimating the error, and it is this which we use, although it must be heavily adapted for the case of variable numbers of live points and clustering.
 
@@ -46,10 +49,10 @@ It is worth noting that the procedure described below will generate the mean and
 \subsection{Computing the mean evidence}
 \label{sec:ens:basic_mean}
 
-While it is possible to take equations~\eqref{eqn:ens:app_ev},\ref{eqn:ens:rr_x} \&~\ref{eqn:ens:Pt} and compute the mean as a general formula~\citep{Keeton}, in the case of clustering this is uninformative. 
+While it is possible to take equations~\eqref{eqn:ens:app_ev},~\eqref{eqn:ens:rr_x} \&~\eqref{eqn:ens:Pt} and compute the mean as a general formula~\citep{Keeton}, in the case of clustering this is uninformative. 
 In fact, for large-dimensional spaces using the full formula would require storage of a prohibitively large amount of data. The calculation is better accomplished by a set of recursion relations, which update the mean evidence and its error at each step. 
 
-For now, assume that we have \(n\) live points currently enclosed by some likelihood contour \(\lik\) of volume \(X\), and \(\ev\) is the last value of the evidence calculated from all of the points that have died so far. By considering~\eqref{eqn:ens:app_ev},\ref{eqn:ens:rr_x}\&\ref{eqn:ens:Pt}, when we kill off the outermost point, we may adjust the values of \(\ev\) and \(X\) using:
+For now, assume that we have \(n\) live points currently enclosed by some likelihood contour \(\lik\) of volume \(X\), and \(\ev\) is the last value of the evidence calculated from all of the points that have died so far. By considering~\eqref{eqn:ens:app_ev},~\eqref{eqn:ens:rr_x} \&~\eqref{eqn:ens:Pt}, when we kill off the outermost point, we may adjust the values of \(\ev\) and \(X\) using:
 %
 \begin{align}                                                         
 \ev &\to \ev + (1-t)X\lik,
@@ -99,7 +102,7 @@ Taking the averages of the above yields:
 
 There are therefore five quantities to keep track of: 
 \[ \overline{\ev},\quad\overline{\ev^2},\quad\overline{\ev X},\quad \overline{X},\quad\overline{X^2}.\]
-These should be initialised at \(\{0,0,0,1,1\}\) respectively, and updated using equations~\eqref{eqn:ens:rr_Zb},\ref{eqn:ens:rr_Z2b},\ref{eqn:ens:rr_ZXb},\ref{eqn:ens:rr_Xb},\ref{eqn:ens:rr_X2b} in that order. In fact, we keep track of the logarithm of these quantities, in order to avoid machine precision errors.
+These should be initialised at \(\{0,0,0,1,1\}\) respectively, and updated using equations~\eqref{eqn:ens:rr_Zb},~\eqref{eqn:ens:rr_Z2b},~\eqref{eqn:ens:rr_ZXb},~\eqref{eqn:ens:rr_Xb} \&~\eqref{eqn:ens:rr_X2b} in that order. In fact, we keep track of the logarithm of these quantities, in order to avoid machine precision errors.
 
 
 
@@ -107,8 +110,7 @@ These should be initialised at \(\{0,0,0,1,1\}\) respectively, and updated using
 
 \section{Evidence estimates and errors in clusters}
 \label{sec:ens:evidences_clusters}
-This analysis follows that of Section~\ref{sec:ens:evidences}. We recommend that you have understood the methods described there before continuing.
-
+This analysis follows that of Section~\ref{sec:ens:evidences}.
 
 Throughout the algorithm, there will in general be \(m\) identified clusters. In doing so, we wish to keep track of the volume of each cluster \(\{X_1,\ldots,X_m\}\), the global evidence and its error \(\ev,\ev^2\) and the local evidences and their errors \(\{\ev_1,\ev_1^2\ldots,\ev_m,\ev_m^2\}\). At each iteration, the point with the lowest likelihood \(\lik\) will be killed from cluster \(p\), \({(1\le p\le m)}\). 
 
@@ -142,14 +144,14 @@ Keeping track of \(\{\overline{\ev},\overline{\ev_p},\overline{X_p},p=1\ldots m\
 \subsection{Evidence errors}
 \label{sec:ens:cluster_err}
 
-We must also keep track of the local and global evidence errors. Taking the square of equations~\eqref{eqn:ens:rr_ev} \&~\ref{eqn:ens:rr_evi} yields:
+We must also keep track of the local and global evidence errors. Taking the square of equations~\eqref{eqn:ens:rr_ev} \&~\eqref{eqn:ens:rr_evi} yields:
 %
 \begin{align}
   \ev^2 &\to \ev^2 + 2 (1-t) \ev X_p \lik +  {(1-t)}^2 X_p^2 \lik^2, \\
   \ev_p^2 &\to \ev_p^2 + 2 (1-t) \ev_p X_p \lik +  {(1-t)}^2 X_p^2 \lik^2.
 \end{align}
 %
-We can see that we're going to need to keep track of \(\{\overline{\ev X_p}, \overline{\ev_p X_p}, \overline{X_p^2}\}\) in addition to \(\{ \overline{\ev^2}, \overline{\ev_p^2} \}\). Taking various multiplications of equations~\eqref{eqn:ens:rr_ev},~\ref{eqn:ens:rr_evi} \&~\ref{eqn:ens:rr_Xi} finds:
+We can see that we're going to need to keep track of \(\{\overline{\ev X_p}, \overline{\ev_p X_p}, \overline{X_p^2}\}\) in addition to \(\{ \overline{\ev^2}, \overline{\ev_p^2} \}\). Taking various multiplications of equations~\eqref{eqn:ens:rr_ev},~\eqref{eqn:ens:rr_evi} \&~\eqref{eqn:ens:rr_Xi} finds:
 %
 \begin{align}
   \ev X_p   &\to t \ev X_p + (1-t)t X_p^2 \lik, \\
@@ -218,7 +220,7 @@ This completes the mechanism for keeping track of the local and global evidences
 
 \section{Further generalisations}
 
-It's worth noting that the procedures in the previous sections are amenable to a great many generalisations. We give a few examples in order to demonstrate this
+It is worth noting that the procedures in the previous sections are amenable to a great many generalisations. We give a few examples in order to demonstrate this
 
 First, if one desires a higher order of accuracy, one may update the rather simple quadrature in equation~\eqref{eqn:ens:app_ev} to:
 \begin{equation}
@@ -241,21 +243,17 @@ then the trapezoidal quadrature must be modified:
 \begin{equation}
   \ev = \sum\limits_{i} (\log X_{i-1}-\log X_{i}) \times \frac{1}{2}(\lik_i X_i+\lik_{i-1} X_{i-1}).
 \end{equation}
-This therefore amount to an update of:
+This therefore amounts to an update of:
 \begin{align}
-  \ev &\to \ev + X \times \frac{1}{2}\left(t\log\frac{1}{t}\lik_i + \log\frac{1}{t}\lik_{i-1} \right)
+  \ev &\to \ev + X \times \frac{1}{2}\left(t\log\frac{1}{t}\lik_i + \log\frac{1}{t}\lik_{i-1} \right),
   \\
   X &\to t X.
 \end{align}
 The analysis then proceeds exactly as before. 
-
 In general, when playing with various formulations, it suffices to know the averages:
 \begin{equation}
-\left\langle t^a{(1-t)}^b \right\rangle = n\frac{b!(a+n-1)!}{(a+b+n)!},
-\end{equation}
-and:
-\begin{equation}
-  \left\langle t^a{\left( \log1/t \right)}^b \right\rangle 
+  \mean{t^a{(1-t)}^b} = n\frac{b!(a+n-1)!}{(a+b+n)!},\qquad
+  \mean{t^a{\left( \log1/t \right)}^b}
   = 
   \frac{n\: b!}{{(n+a)}^{b+1}}.
 \end{equation}
