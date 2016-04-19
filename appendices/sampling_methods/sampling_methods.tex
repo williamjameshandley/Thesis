@@ -235,7 +235,9 @@ Radford Neal initially proposed slice sampling as an effective methodology for g
 
 In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. The simplest of these is implemented by sampling each of the parameter directions in turn. Since each one-dimensional slice requires \(\bigO{\text{a few}}\) likelihood calculations, the number of likelihood calculations required scales linearly with dimensionality, providing the region is efficiently navigated. 
 
-Multi-dimensional slice sampling has many of the benefits of a traditional MH approach, and uses a proposal distribution which is much more efficient at sampling a hard likelihood constraint. This makes is a very suitable candidate for use within a nested sampling algorithm \citep{skilling2006}.
+Multi-dimensional slice sampling has many of the benefits of a traditional MH approach, and uses a proposal distribution which is much more efficient at sampling a hard likelihood constraint. This makes is a very suitable candidate for use within a nested sampling algorithm \citep{skilling2006}. 
+
+Problems may occur with slice sampling if the peaks in Figure~\ref{fig:bay:1d_slice} are separated by a large distance. In this case it is still theoretically true that procedure satisfies detailed balance, and thus the algorithm will eventually jump one from one peak to the other. Practically however, this could take many Hubble times, and to all intents and purposes the distribution is not explored correctly. It is worth noting that \PolyChord{} (Chapter~\ref{chp:pc}) circumvents this difficulty by explicitly evolving posterior modes separately.
 
 
 
