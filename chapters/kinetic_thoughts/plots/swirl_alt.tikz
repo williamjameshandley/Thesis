@@ -19,7 +19,7 @@
       \addplot[thin,forget plot] table[] {chapters/kinetic_thoughts/data/swirl_alt\n.dat}; 
     }
 
-    \filldraw [fill=black] (axis cs:0,0) circle [radius=0.052];
+    \filldraw [fill=black] (axis cs:0,0) circle [radius=0.055];
 
 
     \fill [opacity=0.2]  
