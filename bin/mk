@@ -16,3 +16,4 @@ $PDFLATEX thesis
 bibtex thesis
 $PDFLATEX thesis
 $PDFLATEX thesis
+$PDFLATEX thesis

@@ -2,4 +2,4 @@
 
 cd $(dirname $0)/..  # change to the correct directory
 
-texcount -inc -incbib -sum=1,1,1,1,1,1,1 -0 -template={SUM} thesis.tex 2> /dev/null | sed '/^$/d'
+texcount -inc -sum=1,1,0,1,0,1,1 -0 -template={SUM} thesis.tex 2> /dev/null | sed '/^$/d'

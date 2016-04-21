@@ -6,6 +6,7 @@
   final,       % useful markings -- change to final when done
                %                    (or ms for a laugh)
 ]{memoir}
+%TC:ignore 
 
 %
 % any packages we may need to load
@@ -39,6 +40,7 @@
 %  other/conclusion
 %}
  
+%TC:endignore 
 \begin{document}
 \frontmatter{}
 %
@@ -52,7 +54,9 @@
 %
 % contents ...
 %
+%TC:ignore 
 \include{frontmatter/contents}
+%TC:endignore 
 %
 % declaration ...
 %
@@ -168,8 +172,10 @@
 % ------------
 %
 \backmatter{}
+%TC:ignore 
 \bibliographystyle{plainnat}
 \bibliography{other/references}
+%TC:endignore 
 
 
 %

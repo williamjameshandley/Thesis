@@ -1,0 +1,464 @@
+
+[1;31m!!! Could not identify document class. !!![0m
+File: thesis.tex
+Encoding: ascii
+Sum count: 4
+Words in text: 0
+Words in headers: 2
+Words outside text (captions, etc.): 0
+Number of headers: 2
+Number of floats/tables/figures: 0
+Number of math inlines: 0
+Number of math displayed: 0
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  0+0+0 (0/0/0/0) _top_
+  0+1+0 (1/0/0/0) Part: Cosmology
+  0+1+0 (1/0/0/0) Part: Methods
+
+Included file: ./frontmatter/titlepage.tex
+Encoding: ascii
+Sum count: 27
+Words in text: 17
+Words in headers: 9
+Words outside text (captions, etc.): 0
+Number of headers: 1
+Number of floats/tables/figures: 0
+Number of math inlines: 0
+Number of math displayed: 0
+
+Included file: ./frontmatter/abstract.tex
+Encoding: ascii
+Sum count: 364
+Words in text: 361
+Words in headers: 1
+Words outside text (captions, etc.): 0
+Number of headers: 1
+Number of floats/tables/figures: 0
+Number of math inlines: 1
+Number of math displayed: 0
+
+Included file: ./frontmatter/declaration.tex
+Encoding: ascii
+Sum count: 145
+Words in text: 143
+Words in headers: 1
+Words outside text (captions, etc.): 0
+Number of headers: 1
+Number of floats/tables/figures: 0
+Number of math inlines: 0
+Number of math displayed: 0
+
+Included file: ./frontmatter/thanks.tex
+Encoding: ascii
+Sum count: 309
+Words in text: 307
+Words in headers: 1
+Words outside text (captions, etc.): 0
+Number of headers: 1
+Number of floats/tables/figures: 0
+Number of math inlines: 0
+Number of math displayed: 0
+
+Included file: ./frontmatter/conventions.tex
+Encoding: ascii
+Sum count: 193
+Words in text: 170
+Words in headers: 1
+Words outside text (captions, etc.): 0
+Number of headers: 1
+Number of floats/tables/figures: 0
+Number of math inlines: 18
+Number of math displayed: 3
+
+Included file: ./chapters/outline/outline.tex
+Encoding: ascii
+Sum count: 923
+Words in text: 898
+Words in headers: 17
+Words outside text (captions, etc.): 19
+Number of headers: 6
+Number of floats/tables/figures: 3
+Number of math inlines: 2
+Number of math displayed: 0
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  0+1+0 (1/0/0/0) Chapter: Outline
+  256+3+7 (1/1/2/0) Section: The big picture
+  153+3+0 (1/0/0/0) Section: Kinetic initial conditions
+  219+4+7 (1/1/0/0) Section: Observations in high dimensions
+  174+3+0 (1/0/0/0) Section: Quantum initial conditions
+  96+3+5 (1/1/0/0) Section: Thesis versus research
+
+Included file: ./chapters/inflationary_cosmology/inflationary_cosmology.tex
+Encoding: ascii
+Sum count: 4662
+Words in text: 4251
+Words in headers: 77
+Words outside text (captions, etc.): 571
+Number of headers: 32
+Number of floats/tables/figures: 12
+Number of math inlines: 230
+Number of math displayed: 72
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  0+2+0 (1/0/0/0) Chapter: Inflationary Cosmology
+  24+1+0 (1/0/0/0) Section: Introduction
+  232+2+0 (1/0/9/6) Section: Einstein's gravity
+  64+4+0 (1/0/0/0) Section: The smooth, expanding universe
+  110+1+82 (1/2/8/2) Subsection: Metric
+  162+1+0 (1/0/13/2) Subsection: Dynamics
+  213+2+51 (1/1/21/4) Subsection: Basic solutions
+  0+4+0 (1/0/0/0) Section: Conformal time and redshift
+  129+1+20 (1/1/11/3) Subsection: Redshift \(z\)
+  114+2+34 (1/0/5/3) Subsection: Conformal time \(\eta\)
+  234+4+111 (1/2/5/0) Section: The cosmic microwave background
+  0+4+0 (1/0/0/0) Section: Problems in the CMB
+  264+2+0 (1/0/11/5) Subsection: Flatness problem
+  166+2+135 (1/2/1/0) Subsection: Horizon problem
+  94+3+0 (1/0/4/0) Subsection: An accelerating universe
+  68+1+0 (1/0/0/0) Section: Inflation
+  184+2+0 (1/0/12/5) Subsection: Basic theory
+  188+1+4 (1/1/6/1) Subsection: Phenomenology
+  67+1+0 (1/0/0/0) Subsection: Reheating
+  124+3+19 (1/0/2/1) Section: The perturbed universe
+  107+2+8 (1/1/14/1) Subsection: Metric perturbation
+  156+2+0 (1/0/8/4) Subsection: Matter perturbation
+  242+5+13 (1/0/11/3) Subsection: Fourier modes and scalar-vector-tensor decomposition
+  361+2+64 (1/1/19/4) Subsection: Gauge choice
+  0+3+0 (1/0/0/0) Section: Comoving curvature perturbation
+  62+2+0 (1/0/7/2) Subsection: Classical behaviour
+  80+2+0 (1/0/4/7) Subsection: Quantum behaviour
+  108+3+9 (1/0/5/3) Subsection: de Sitter limit
+  95+2+0 (1/0/8/5) Subsection: Power spectra
+  194+6+0 (1/0/21/6) Subsection: Power spectrum of comoving curvature perturbations
+  323+4+21 (1/1/24/5) Section: Statistics of the CMB
+  86+1+0 (1/0/1/0) Section: Conclusions
+
+Included file: ./chapters/kinetic_dominance/kinetic_dominance.tex
+Encoding: ascii
+Sum count: 8478
+Words in text: 7580
+Words in headers: 107
+Words outside text (captions, etc.): 913
+Number of headers: 31
+Number of floats/tables/figures: 15
+Number of math inlines: 648
+Number of math displayed: 112
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  0+6+0 (1/0/0/0) Chapter: Kinetic dominance in the early universe
+  571+1+0 (1/0/19/0) Section: Introduction
+  412+4+19 (1/1/31/8) Section: Scalar field inflation models
+  367+5+0 (1/0/26/2) Section: Generic nature of kinetic dominance
+  160+2+0 (1/0/18/3) Subsection: Effective \(e\)-folds
+  149+2+60 (1/1/14/4) Subsection: Halliwell time
+  170+2+0 (1/0/13/8) Subsection: Hamilton-Jacobi representation
+  531+4+76 (1/1/89/17) Subsection: Interpreting the master equation
+  93+4+0 (1/0/3/0) Section: Consequences of kinetic dominance
+  174+5+0 (1/0/12/3) Subsection: Dominance of \(\dot{\phi}^2\) over other fluids
+  58+3+0 (1/0/8/1) Subsection: Finite time singularity
+  665+16+0 (6/0/80/26) Subsection: Analytic solutions for the kinetically dominated universe
+  352+4+0 (1/0/31/3) Subsection: The constants of integration
+  196+4+0 (1/0/10/0) Section: Kinetic dominance in action
+  292+4+0 (1/0/22/5) Subsection: Initial conditions and scaling
+  215+2+203 (1/2/33/3) Subsection: Polynomial potentials
+  380+2+150 (1/2/25/6) Subsection: Exponential potentials
+  218+6+68 (1/2/27/5) Subsection: Another example of a finite solution \(f(\psi)\)
+  858+6+190 (1/4/77/4) Subsection: Power spectrum of the curvature perturbation
+  343+5+49 (1/1/22/2) Subsection: Comparison with equipartition initial conditions
+  78+7+0 (1/0/2/0) Section: When is kinetic dominance not the case?
+  672+10+98 (3/1/59/11) Subsection: Resting inflaton: \(\dot{\phi}\to 0\)
+  159+2+0 (1/0/9/1) Subsection: Pathological oscillations: \(\dot{\phi}=0\)
+  467+1+0 (1/0/18/0) Section: Conclusions
+
+Included file: ./chapters/kinetic_thoughts/kinetic_thoughts.tex
+Encoding: ascii
+Sum count: 1207
+Words in text: 1117
+Words in headers: 13
+Words outside text (captions, etc.): 184
+Number of headers: 4
+Number of floats/tables/figures: 3
+Number of math inlines: 59
+Number of math displayed: 14
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  151+5+40 (1/1/6/2) Chapter: Further thoughts on kinetic dominance
+  285+3+0 (1/0/19/7) Section: The Planck time
+  395+2+0 (1/0/10/1) Section: Eternal inflation
+  286+3+144 (1/2/24/4) Section: Breakdown of homogeneity
+
+Included file: ./chapters/pps_reconstruction/pps_reconstruction.tex
+Encoding: ascii
+Sum count: 1089
+Words in text: 993
+Words in headers: 8
+Words outside text (captions, etc.): 313
+Number of headers: 4
+Number of floats/tables/figures: 5
+Number of math inlines: 82
+Number of math displayed: 2
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  130+5+64 (1/1/11/0) Chapter: Reconstructing the Primordial Power Spectrum
+  541+1+249 (1/4/61/1) Section: Strategy
+  211+1+0 (1/0/7/1) Section: Results
+  111+1+0 (1/0/3/0) Section: Conclusion
+
+Included file: ./chapters/quantum_vacuum/quantum_vacuum.tex
+Encoding: ascii
+Sum count: 2594
+Words in text: 2385
+Words in headers: 50
+Words outside text (captions, etc.): 73
+Number of headers: 16
+Number of floats/tables/figures: 1
+Number of math inlines: 110
+Number of math displayed: 33
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  0+4+0 (1/0/0/0) Chapter: Defining the Quantum Vacuum
+  363+1+0 (1/0/0/0) Section: Introduction
+  63+1+0 (1/0/5/1) Section: Background
+  60+3+0 (1/0/7/4) Subsection: The classical action
+  100+2+0 (1/0/11/5) Subsection: Inflationary perturbations
+  107+4+0 (1/0/5/3) Section: Quantisation via Hamiltonian diagonalisation
+  307+3+0 (1/0/21/6) Subsection: Choosing a vacuum
+  144+4+0 (1/0/4/0) Subsection: Criticism of Hamiltonian diagonalisation
+  299+2+0 (1/0/13/0) Section: Alternative quantisations
+  119+5+0 (1/0/6/3) Section: Quantum fields in curved spacetime
+  93+3+0 (1/0/5/2) Subsection: Application to inflation
+  37+5+0 (1/0/1/0) Section: Minimising the renormalised stress-energy tensor
+  229+3+0 (1/0/12/6) Subsection: Hadamard point splitting
+  250+5+24 (1/0/7/2) Subsection: Application to the Mukhanov variable.
+  147+4+49 (1/1/13/1) Section: Renormalising the KD universe
+  67+1+0 (1/0/0/0) Section: Conclusions
+
+Included file: ./chapters/conclusion_cosmology/conclusion_cosmology.tex
+Encoding: ascii
+Sum count: 678
+Words in text: 642
+Words in headers: 17
+Words outside text (captions, etc.): 0
+Number of headers: 5
+Number of floats/tables/figures: 0
+Number of math inlines: 14
+Number of math displayed: 0
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  215+2+0 (1/0/7/0) Chapter: Conclusion: Cosmology
+  0+2+0 (1/0/0/0) Section: Future work
+  114+4+0 (1/0/3/0) Subsection: Theoretically investigating kinetically dominance
+  197+5+0 (1/0/1/0) Subsection: Constraining the kinetically dominated universe
+  116+4+0 (1/0/3/0) Subsection: Further constraints on inflation
+
+Included file: ./chapters/bayesian_inference/bayesian_inference.tex
+Encoding: ascii
+Sum count: 4068
+Words in text: 3754
+Words in headers: 48
+Words outside text (captions, etc.): 373
+Number of headers: 18
+Number of floats/tables/figures: 5
+Number of math inlines: 204
+Number of math displayed: 44
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  94+2+0 (1/0/0/0) Chapter: Bayesian Inference
+  75+1+0 (1/0/2/1) Section: Probability
+  77+2+37 (1/1/8/3) Subsection: Bayes' theorem
+  456+3+57 (1/0/10/0) Section: Bayesian vs.\ Frequentist
+  514+4+23 (1/1/42/8) Section: An example: biased coins
+  258+4+11 (1/0/8/3) Section: Parameter estimation \& model comparison
+  232+2+0 (1/0/9/4) Subsection: Model comparison
+  162+2+13 (1/0/8/3) Subsection: Parameter estimation
+  565+3+55 (1/1/37/6) Section: Numerical statistics: sampling
+  104+2+28 (1/0/3/2) Section: Nested sampling
+  189+4+64 (1/1/18/4) Subsection: The prior volume transformation \(\lik(X)\)
+  142+4+0 (1/0/9/0) Subsection: Computing the prior volumes
+  323+3+0 (1/0/25/3) Subsection: Single-point nested sampling
+  134+3+0 (1/0/9/2) Subsection: Multi-point nested sampling
+  74+2+0 (1/0/3/1) Subsection: Posterior inference
+  240+3+85 (1/1/8/1) Subsection: Terminating the algorithm
+  72+3+0 (1/0/5/3) Subsection: Nested sampling: summary
+  43+1+0 (1/0/0/0) Section: Conclusion
+
+Included file: ./chapters/extending_nested_sampling/extending_nested_sampling.tex
+Encoding: ascii
+Sum count: 1310
+Words in text: 1185
+Words in headers: 33
+Words outside text (captions, etc.): 0
+Number of headers: 11
+Number of floats/tables/figures: 0
+Number of math inlines: 56
+Number of math displayed: 25
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  70+3+0 (1/0/0/0) Chapter: Extending Nested Sampling
+  92+4+0 (1/0/0/0) Section: Evidence estimates and errors
+  129+2+0 (1/0/13/4) Subsection: Basic theory
+  140+4+0 (1/0/9/2) Subsection: Computing the mean evidence
+  35+4+0 (1/0/2/2) Subsection: Computing the evidence error
+  40+3+0 (1/0/1/1) Subsection: The full calculation
+  57+6+0 (1/0/7/0) Section: Evidence estimates and errors in clusters
+  57+1+0 (1/0/5/2) Subsection: Evidence
+  76+2+0 (1/0/2/4) Subsection: Evidence errors
+  317+2+0 (1/0/15/4) Subsection: Cluster initialisation
+  172+2+0 (1/0/2/6) Section: Further generalisations
+
+Included file: ./chapters/polychord/polychord.tex
+Encoding: ascii
+Sum count: 4992
+Words in text: 4725
+Words in headers: 58
+Words outside text (captions, etc.): 501
+Number of headers: 29
+Number of floats/tables/figures: 11
+Number of math inlines: 174
+Number of math displayed: 6
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  97+1+0 (1/0/0/0) Chapter: PolyChord
+  261+1+0 (1/0/0/0) Section: Introduction
+  0+5+0 (1/0/0/0) Section: Sampling within an iso-likelihood contour
+  106+3+0 (1/0/2/0) Subsection: The unit hypercube
+  437+2+0 (1/0/1/0) Subsection: Previous methods
+  243+2+0 (1/0/5/0) Subsection: Slice sampling
+  135+2+106 (1/1/9/0) Section: The \PolyChord{} algorithm
+  288+3+0 (1/0/23/0) Subsection: Multi-dimensional slice sampling
+  276+2+0 (1/0/14/1) Subsection: Contour whitening
+  749+5+0 (3/0/7/0) Subsection: Clustering
+  236+1+18 (1/1/8/1) Subsection: Parallelisation
+  101+2+0 (1/0/2/0) Subsection: Posterior bulking
+  160+3+0 (1/0/0/0) Subsection: Fast-slow parameters and \CosmoChord
+  358+4+23 (3/0/20/0) Subsection: Tuning parameters
+  52+2+0 (1/0/0/0) Section: \PolyChord{} in action
+  204+2+46 (1/2/10/0) Subsection: High-dimensional evidences
+  247+8+94 (3/2/17/1) Subsection: Clustering and local evidences
+  101+2+38 (1/2/9/1) Subsection: Rosenbrock function
+  329+5+110 (2/2/33/2) Subsection: Gaussian shells
+  271+0+66 (1/1/14/0) Subsection: \CosmoChord
+  63+1+0 (1/0/0/0) Section: Conclusions
+  11+2+0 (1/0/0/0) Section: Download Link
+
+Included file: ./chapters/RKWKB/RKWKB.tex
+Encoding: ascii
+Sum count: 1938
+Words in text: 1791
+Words in headers: 29
+Words outside text (captions, etc.): 211
+Number of headers: 12
+Number of floats/tables/figures: 3
+Number of math inlines: 86
+Number of math displayed: 20
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  0+3+0 (1/0/0/0) Chapter: The Runge-Kutta-Wentzel-Kramers-Brillouin~method
+  185+1+40 (1/0/0/0) Section: Introduction
+  0+1+0 (1/0/0/0) Section: Background
+  149+2+28 (1/1/10/1) Subsection: Oscillating solutions
+  302+2+0 (1/0/13/3) Subsection: Runge-Kutta theory
+  222+2+0 (1/0/19/9) Subsection: WKB theory
+  167+3+0 (1/0/18/1) Section: The RKWKB method
+  126+3+0 (1/0/9/2) Subsection: Step size adjustment
+  112+2+0 (1/0/3/0) Subsection: Dynamic switching
+  160+4+143 (1/2/12/1) Section: Example: The Airy equation
+  264+5+0 (1/0/2/3) Section: Comparison with the Iserles approach
+  104+1+0 (1/0/0/0) Section: Conclusions
+
+Included file: ./chapters/conclusion_methods/conclusion_methods.tex
+Encoding: ascii
+Sum count: 539
+Words in text: 527
+Words in headers: 8
+Words outside text (captions, etc.): 0
+Number of headers: 4
+Number of floats/tables/figures: 0
+Number of math inlines: 0
+Number of math displayed: 0
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  53+2+0 (1/0/0/0) Chapter: Conclusion: Methods
+  0+1+0 (1/0/0/0) Section: Future
+  256+4+0 (1/0/0/0) Subsection: Bayesian methods \& nested sampling
+  218+1+0 (1/0/0/0) Subsection: RKWKB
+
+Included file: ./appendices/uniqueness_theorem/uniqueness_theorem.tex
+Encoding: ascii
+Sum count: 312
+Words in text: 264
+Words in headers: 2
+Words outside text (captions, etc.): 0
+Number of headers: 1
+Number of floats/tables/figures: 0
+Number of math inlines: 34
+Number of math displayed: 11
+
+Included file: ./appendices/sampling_methods/sampling_methods.tex
+Encoding: ascii
+Sum count: 1428
+Words in text: 1250
+Words in headers: 25
+Words outside text (captions, etc.): 166
+Number of headers: 11
+Number of floats/tables/figures: 3
+Number of math inlines: 117
+Number of math displayed: 25
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  0+3+0 (1/0/0/0) Section: Traditional sampling methods
+  169+3+0 (1/0/19/3) Subsection: Inverse transform sampling
+  289+11+0 (5/0/29/12) Subsection: Prior transformations
+  75+2+34 (1/1/12/0) Subsection: Rejection sampling
+  338+2+13 (1/1/24/5) Subsection: Metropolis---Hastings
+  232+2+119 (1/1/24/0) Subsection: Slice sampling
+  147+2+0 (1/0/9/5) Subsection: Thermodynamic integration
+
+Included file: ./appendices/RKF/RKF.tex
+Encoding: ascii
+Sum count: 106
+Words in text: 97
+Words in headers: 1
+Words outside text (captions, etc.): 15
+Number of headers: 1
+Number of floats/tables/figures: 2
+Number of math inlines: 6
+Number of math displayed: 1
+
+File(s) total: thesis.tex
+Sum count: 35366
+Words in text: 32457
+Words in headers: 508
+Words outside text (captions, etc.): 3339
+Number of headers: 192
+Number of floats/tables/figures: 63
+Number of math inlines: 1841
+Number of math displayed: 368
+Files: 21
+Subcounts:
+  text+headers+captions (#headers/#floats/#inlines/#displayed)
+  0+2+0 (2/0/0/0) File: thesis.tex
+  17+9+0 (1/0/0/0) Included file: ./frontmatter/titlepage.tex
+  361+1+0 (1/0/1/0) Included file: ./frontmatter/abstract.tex
+  143+1+0 (1/0/0/0) Included file: ./frontmatter/declaration.tex
+  307+1+0 (1/0/0/0) Included file: ./frontmatter/thanks.tex
+  170+1+0 (1/0/18/3) Included file: ./frontmatter/conventions.tex
+  898+17+19 (6/3/2/0) Included file: ./chapters/outline/outline.tex
+  4251+77+571 (32/12/230/72) Included file: ./chapters/inflationary_cosmology/inflationary_cosmology.tex
+  7580+107+913 (31/15/648/112) Included file: ./chapters/kinetic_dominance/kinetic_dominance.tex
+  1117+13+184 (4/3/59/14) Included file: ./chapters/kinetic_thoughts/kinetic_thoughts.tex
+  993+8+313 (4/5/82/2) Included file: ./chapters/pps_reconstruction/pps_reconstruction.tex
+  2385+50+73 (16/1/110/33) Included file: ./chapters/quantum_vacuum/quantum_vacuum.tex
+  642+17+0 (5/0/14/0) Included file: ./chapters/conclusion_cosmology/conclusion_cosmology.tex
+  3754+48+373 (18/5/204/44) Included file: ./chapters/bayesian_inference/bayesian_inference.tex
+  1185+33+0 (11/0/56/25) Included file: ./chapters/extending_nested_sampling/extending_nested_sampling.tex
+  4725+58+501 (29/11/174/6) Included file: ./chapters/polychord/polychord.tex
+  1791+29+211 (12/3/86/20) Included file: ./chapters/RKWKB/RKWKB.tex
+  527+8+0 (4/0/0/0) Included file: ./chapters/conclusion_methods/conclusion_methods.tex
+  264+2+0 (1/0/34/11) Included file: ./appendices/uniqueness_theorem/uniqueness_theorem.tex
+  1250+25+166 (11/3/117/25) Included file: ./appendices/sampling_methods/sampling_methods.tex
+  97+1+15 (1/2/6/1) Included file: ./appendices/RKF/RKF.tex
+
+(errors:1)
