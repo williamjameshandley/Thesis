@@ -5,15 +5,20 @@ Cavendish Astrophysics Group \\
 Gonville \& Caius College}
 \date{29\textsuperscript{th} April 2016}
 
-\begin{titlingpage}
-\maketitle
-\begin{center}
-  \tikzsetnextfilename{swirl_front}
-  \includegraphics[width=\textwidth]{frontmatter/swirl.tikz}
+\calccentering{\unitlength}                         % Calculate center length and stores in unitlength
+\begin{adjustwidth*}{\unitlength}{-\unitlength}     % Adjust center
 
-  A dissertation submitted for the degree of Doctor of Philosophy
-  at the University of Cambridge 
-\end{center}
+  \begin{titlingpage}
+    \maketitle
+    \begin{center}
+      \tikzsetnextfilename{swirl_front}
+      \includegraphics[width=\textwidth]{frontmatter/swirl.tikz}
 
-\end{titlingpage}
+      A dissertation submitted for the degree of Doctor of Philosophy
+      at the University of Cambridge 
+    \end{center}
+
+  \end{titlingpage}
+
+\end{adjustwidth*}
 
