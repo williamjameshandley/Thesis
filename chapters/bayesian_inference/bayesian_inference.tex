@@ -60,7 +60,7 @@ This definition applies relatively well to aleatoric systems (since an experimen
 
 For example, most people's experiences with probability will likely involve betting scenarios. For example, when given \(7:1\) odds\footnote{Betting odds \(a:b\) indicates a probability of success of \(\frac{b}{a+b}\).} on a horse's victory in the Grand National, it should be clear that these numbers do not refer to an event that can be repeated an arbitrarily large number of times.
 
-As another example, before Prince George was born, bookmakers took bets on whether William and Kate's baby was a boy or a girl. Here it is obvious that the betting odds should be approximately \(50:50\).\footnote{In fact the probability of a boy being conceived across the population is roughly 51\%, in order to biologically account for the higher rate of male infant mortality.}\footnote{A good bookmaker will obviously take this into account, and give you slightly worse odds in order to ensure their profit.} This is a classic example of epistemological probability. At the time of betting, the unborn infant is almost certainly is either a boy or a girl. Any ``chance'' is down to the betting population's lack of knowledge. Interestingly, for a given couple, the aleatoric likelihood of male or female conception is not \(50:50\). Factors that affect the sex at conception include maternal age, environmental factors, menstrual phase and individual genetics. As such, a sufficiently well informed bookmaker could make significant profit by tailoring bets to individuals, despite the fact that the population odds are~\(50:50\). 
+As another example, before Prince George was born, bookmakers took bets on whether William and Kate's baby was a boy or a girl. Here it is obvious that the betting odds should be approximately \(50:50\).\footnote{In fact the probability of a boy being conceived across the population is roughly 51\%, in order to biologically account for the higher rate of male infant mortality.}\footnote{A good bookmaker will obviously take this into account, and give you slightly worse odds in order to ensure their profit.} This is a classic example of epistemological probability. At the time of betting, the unborn infant is almost certainly either a boy or a girl. Any ``chance'' is down to the betting population's lack of knowledge. Interestingly, for a given couple, the aleatoric likelihood of male or female conception is not \(50:50\). Factors that affect the sex at conception include maternal age, environmental factors, menstrual phase and individual genetics. As such, a sufficiently well informed bookmaker could make significant profit by tailoring bets to individuals, despite the fact that the population odds are~\(50:50\). 
 
 The above two examples suggest that a definition of probability that confines itself to aleatoric circumstances is too narrow.
 The alternative definition of probability is {\em Bayesian\/}:
@@ -203,17 +203,9 @@ These may have been obtained from previous analyses, but a simple choice would b
   \Wmodel_i
   =
   \frac{\ev_i\priorM_i}{\sum_j \ev_j\priorM_j}.
+  \label{eqn:bay:model_weights}
 \end{equation}
 These model weights \(\Wmodel\) may then be used to determine the ``most probable model''. In some cases there is a clear winner, and the other models may be safely discarded, but the more usual scenario is that there are several competing alternatives. It is for this reason that we prefer the term ``model comparison'' to the more oft-quoted {\em model selection}. Additional datasets may determine a clear winner, but in the mean-time the weights \(\Wmodel\) can be used to perform proper inference. 
-
-For example, models often predict a distribution for a common derived parameter \(\Probc{y}{\model,\data}\).\footnote{E.g.\ in cosmology, different models of the universe will predict an age distribution.} If the data are not strong enough to distinguish a given model, the correct inference on \(y\) is to use a posterior which marginalises over all models:
-\begin{equation}
-  \Probc{y}{\data} 
-  = \sum_i\Probc{y}{\data,\model_i}\Probc{\model_i}{\data}
-  = \sum_i\Probc{y}{\data,\model_i}\Wmodel_i.
-\end{equation}
-This fully Bayesian approach has been historically under-utilised due to the difficulties in numerically computing the evidence.
-
 
 
 \subsection{Parameter estimation}
@@ -234,7 +226,15 @@ which is schematically written as:
 \end{align}
 This describes how our initial knowledge \(\prior\) of the parameters updates to \(\posterior\) in light of the data \(\data\). Note that the evidence \(\ev\) features in both model selection and parameter estimation, and its computation is therefore of great significance.
 
-
+Evidences also enter into parameter estimation when performing a combined inference on several models.
+For example, models often predict a distribution for a common derived parameter \(\Probc{y}{\model,\data}\).\footnote{E.g.\ in cosmology, different models of the universe will predict an age distribution.} If the data are not strong enough to distinguish a given model, the correct inference on \(y\) is to use a posterior which marginalises over all models:
+\begin{equation}
+  \Probc{y}{\data} 
+  = \sum_i\Probc{y}{\data,\model_i}\Probc{\model_i}{\data}
+  = \sum_i\Probc{y}{\data,\model_i}\Wmodel_i.
+\end{equation}
+where the \(\Wmodel_i\) are defined in equation~\eqref{eqn:bay:model_weights}, and depend on the evidence of each model.
+This fully Bayesian approach has been historically under-utilised due to the difficulties in numerically computing the evidence.
 
 
 
@@ -424,7 +424,7 @@ where the additional factor of \(\ev\) merely ensures that they sum to \(1\) for
 
 
 \subsection{Terminating the algorithm}
-One does not wish to continue compressing the space once \(X_i\ll e^{-H}\) for two reasons. The first reason is that this will not give any further accuracy on the evidence calculation. The second is more important. The region beneath \(X_i\ll e^{-H}\) is not statistically relevant. Scientists used to maximum likelihood methods find this difficult to swallow, and often desire algorithms that will maximise the function to find the highest peak. In high dimensions, the absolute peak occupies such a vanishingly small percentage of the prior mass that it is totally irrelevant for the purposes of inference. In the case of a Gaussian likelihood, the peak value is a useful {\em summary statistic\/} but nothing more than that. Otherwise, one should not concern oneself with maximum likelihood, only in an accurate description of the peak provided by a set of samples. To paraphrase with a thermodynamic analogy: Frequentists like  like temperature, but Bayesians prefer heat.
+One does not wish to continue compressing the space once \(X_i\ll e^{-H}\) for two reasons. The first reason is that this will not give any further accuracy on the evidence calculation. The second is more important. The region beneath \(X_i\ll e^{-H}\) is not statistically relevant. Scientists used to maximum likelihood methods find this difficult to swallow, and often desire algorithms that will maximise the function to find the highest peak. In high dimensions, the absolute peak occupies such a vanishingly small percentage of the prior mass that it is totally irrelevant for the purposes of inference. In the case of a Gaussian likelihood, the peak value is a useful {\em summary statistic\/} but nothing more than that. Otherwise, one should not concern oneself with maximum likelihood, only in an accurate description of the peak provided by a set of samples. To paraphrase with a thermodynamic analogy: Frequentists like temperature, but Bayesians prefer heat.
 
 %
 \begin{figure}[tp]

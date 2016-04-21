@@ -125,7 +125,8 @@ A reasonable model for the universe we observe today is to treat the matter as a
   \rho = \sum_i \rho_i, \qquad P = \sum_i P_i, \qquad P_i = w_i \rho_i,
   \label{eqn:cos:multi_component}
 \end{equation}
-where \(w_i\) is the equation of state parameter. In our universe, we observe matter \((w=0)\), radiation \((w=\frac{1}{3})\) and dark energy \((w=-1)\). We can also notationally model the curvature's scale-factor contribution of \(-\frac{k}{a^2}\) as a cosmological fluid with \(w=-\frac{1}{3}\). Applying these equations of states, equations~\eqref{eqn:cos:Raychaudhuri} and~\eqref{eqn:cos:Friedmann} may be re-cast as an equation purely in \(a\):
+where \(w_i\) is the equation of state parameter. In our universe, we observe matter \((w=0)\), radiation \((w=\frac{1}{3})\) and dark energy \((w\approx
+-1)\). We can also notationally model the curvature's scale-factor contribution of \(-\frac{k}{a^2}\) as a cosmological fluid with \(w=-\frac{1}{3}\). Applying these equations of states, equations~\eqref{eqn:cos:Raychaudhuri} and~\eqref{eqn:cos:Friedmann} may be re-cast as an equation purely in \(a\):
 \begin{equation}
   {\left( \frac{H}{H_0} \right)}^2 \equiv 
   \frac{1}{H_0^2}{\left( \frac{\dot{a}}{a} \right)}^2 =
@@ -178,7 +179,7 @@ Since redshift is a physically observable quantity, it provides a cosmology-inde
 \begin{table}[tp]
   \centering
   \input{chapters/inflationary_cosmology/tables/universe_timeline}
-\caption{Recent history of the universe. As redshifts are observable quantities, they should not depend on the specific contents of the universe, and provide a robust measure of cosmic epoch.}\label{tab:cos:universe_timeline}
+\caption{Recent history of the universe. As redshift is a directly observable quantity, it provides a natural measure of cosmic epoch.}\label{tab:cos:universe_timeline}
 \end{table}
 
 \subsection{Conformal time \(\eta\)}
@@ -198,14 +199,14 @@ This is often analytically useful, as it demonstrates the metric is conformally 
   \d{s}^2 = a(\eta)\left( \d{\eta}^2 - \d{\chi}^2 \right).
   \label{eqn:cos:flat_FRW_radial}
 \end{equation}
-We have thus removed all the complexities of curvature and comoving coordinates. Since photons have a null trajectory, \(ds^2=0\Rightarrow \d{\eta} = \pm \d{\chi}\), and therefore  travel in straight lines on spacetime diagrams with \(\eta\) and \(\chi\) as axes. This considerably simplifies most pictures.\footnote{For example, later in the chapter Figures~\protect\ref{fig:cos:horizon_problem}\&~\protect\ref{fig:cos:horizon_problem_resolved} both use this construction.}  It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial coordinates.\footnote{Alternatively, conformal time is the time measured by a small light clock that expands comovingly with the universe.}
+We have thus removed all the complexities of curvature and comoving coordinates. Since photons have a null trajectory, \(ds^2=0\Rightarrow \d{\eta} = \pm \d{\chi}\), and therefore  travel in straight lines on spacetime diagrams with \(\eta\) and \(\chi\) as axes. This considerably simplifies most pictures.\footnote{For example, later in the chapter Figures~\protect\ref{fig:cos:horizon_problem} \&~\protect\ref{fig:cos:horizon_problem_resolved} both use this construction.}  It can therefore be thought of as a ``comoving'' time, in analogy with comoving spatial coordinates.\footnote{Alternatively, conformal time is the time measured by a small light clock that expands comovingly with the universe.}
 
 \section{The cosmic microwave background}
 
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/inflationary_cosmology/figures/cmb_colour}
-  \caption{The colour and illuminance of the radiation background, as a function of cosmic history. As the universe ages, the initially optical background gradually redshifts all the way down to the microwaves that are observed today. This plot shows the colour and the perceived irradiance (illuminance) that the CMB would appear to be in the first few million years after the surface of last scattering. For example, for an observer (un)fortunate enough to be born \(500,000\) years after the big bang, the universe would still be bathed in orange ``sunlight'' from all directions.}\label{fig:cos:cmb_colour}
+  \caption{The colour and illuminance of the radiation background, as a function of cosmic history. As the universe ages, the initially optical background gradually redshifts all the way down to the microwaves that are observed today. This plot shows the colour and the perceived irradiance (illuminance) that the CMB would appear to be in the first few million years after last scattering. For example, for an observer (un)fortunate enough to be born \(500,000\) years after the big bang, the universe would still be bathed in orange light from all directions.}\label{fig:cos:cmb_colour}
 \end{figure}
 
 As we turn telescopes on objects further away from earth, we begin to look appreciably back in time. The radiation from these objects has taken so long to reach us that we can observe the universe in a much younger state than it is now. The furthest galaxies imaged by the Hubble space telescope are more than 13 billion years old. Many of these objects are so far away that they have redshifted out of the visible spectrum and into the infra-red. If we look beyond, we enter the dark ages of the universe, before the first stars had turned on. This would appear to be the end of the observational story.
@@ -345,9 +346,10 @@ Inflation finishes when the inflaton reaches its true vacuum, and oscillates abo
 Observationally, the real universe is not perfectly smooth.\footnote{For example, the fact that you are reading this thesis indicates that there must be some departure from homogeneity.}
 We may treat the smooth FRW metric as a 0\textsuperscript{th} order approximation, to the universe, and expand about this solution using perturbation theory. In general then, we write each quantity as:
 \begin{equation}
-  X(t,\vx) \rightarrow X(t) + \delta X(t,\vx).
+  X(t,\vx) \rightarrow X(t) + \delta X(t,\vx),
   \label{eqn:cos:expansion}
 \end{equation}
+where \(\rightarrow\) in this context should be read as ``is perturbed as''.
 Since in the early universe the perturbations were small \(\delta X \ll X\), we may expand all equations to linear order with very high accuracy. One cannot hope to cover the full subtlety of cosmological perturbation theory in a short introductory chapter. For more detail, I highly recommend the expositions by~\cite{mukhanov_theory_1992} and~\cite{Baumann+2009}. We shall work with the perturbations to the flat FRW metric, but the analysis can be extended to the open and closed cases as well.
 
 
@@ -422,7 +424,8 @@ Second, a general spatial vector field \(v_i\) and a symmetric tensor field \(T_
   T_{ij} \rightsquigarrow& (\partial_i\partial_j - \frac{\delta_{ij}}{3}\partial^k\partial_k)T + \frac{1}{2}(\partial_i T_j + \partial_j T_i) + T_{ij} \nonumber,\\ 
   &(\partial^k T_{ki} = \partial^k T_k = 0),
 \end{align}
-so \(v\) and \(T\) are helicity scalars, \(v_i\) and \(T_i\) are divergenceless 3-vectors and \(T_{ij}\) is a divergenceless, symmetric, traceless 3-tensor\footnote{Note the overloading: \(v\) and \(T\) have different meanings on either side of each equation.}.
+where \(\rightsquigarrow\) in this context should be read as ``is decomposed as''.
+Thus \(v\) and \(T\) are helicity scalars, \(v_i\) and \(T_i\) are divergenceless 3-vectors and \(T_{ij}\) is a divergenceless, symmetric, traceless 3-tensor\footnote{Note the overloading: \(v\) and \(T\) have different meanings on either side of each equation.}.
   The rotational invariance of the unperturbed universe means that the spatial vector and 3-tensor perturbations also decouple.
 
 We may therefore decompose all the perturbations into Fourier components and scalar, vector and tensor parts, decoupling the modes into three parallel analyses without spatial derivatives.
