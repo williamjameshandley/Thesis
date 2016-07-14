@@ -327,7 +327,7 @@ under which the master equation takes the form:
 
 We now prove kinetic dominance by considering the asymptotics of the master equation~\eqref{eqn:master_eq} in the limit \(a\rightarrow0\). We prove that there is at most a single solution \(f(\psi)\) which is finite, with all of the rest diverging as \(a\rightarrow0\). We finish by showing that a diverging solution \(y(\psi)\) of the master equation is equivalent to kinetic dominance.
 
-We begin by showing that \(\psi\) diverges as \(a\rightarrow0\). Through elementary derivative transformations with the chain rule and the definitions of various variables, we find:
+We begin by examining the behaviour of \(\psi\) as \(a\rightarrow0\). Through elementary derivative transformations with the chain rule and the definitions of various variables, we find:
 %
 \begin{align}
   \frac{\prm\phi}{\Nflatp} 
@@ -352,19 +352,8 @@ We begin by showing that \(\psi\) diverges as \(a\rightarrow0\). Through element
   \label{eqn:div_psi}
 \end{align}
 %
-From Figure~\ref{fig:figure_hyperbola} it is easy to see that:
-%
-\begin{equation}
-  \left|\frac{\prm\phi}{\Nflatp}\right| > \sqrt{6}\m, 
-\end{equation}
-%
-so combining this with equation~\eqref{eqn:div_psi} yields:
-%
-\begin{equation}
-  \left|\frac{\d{\psi}}{\d{\log a}}\right| > 3. 
-\end{equation}
-%
-From this is it easy to see that as \(a\to0\), \(\log a\to-\infty\) and so \(|\psi|\to\infty\). The sign of the divergence of \(\psi\) can be found by considering the monotonic transformations we have made: %
+Given the definition of Halliwell time~\eqref{eqn:tau_def}, on the left hand side of the above expression, we have \(\prm\phi = \dot\phi/\sqrt{V}\). Since \(\Nflatp>0\), and by assumption~\eqref{eqn:conditions} \({|\dot\phi|>\xi>0}\) we thus find that \(\psi\) is monotonic in \(a\).
+The direction of the monotonicity of \(\psi\) can be found by considering the transformations we have made: %
 \begin{equation}
   t
   \xrightarrow{\protect\eqref{eqn:tau_def}}
@@ -375,10 +364,7 @@ From this is it easy to see that as \(a\to0\), \(\log a\to-\infty\) and so \(|\p
   \psi.
 \end{equation}
 %
-By considering the equations denoted above, one can see that \(\frac{\d{\tau}}{\d{t}}>0\), \(\frac{\d{\psi}}{\d{\phi}}>0\), and \(\frac{\d{\phi}}{\d{\tau}} = -\sqrt{2}\sinh u\). Thus as \(a\) and \(t\) decrease, one finds that if \(u>0\), then \(y>0\) by~\eqref{eqn:y_def} and thus \(\psi\to\infty\).\footnote{This explains the choice of sign in the parametrization~\protect\eqref{eqn:phitrans}.}
-
-
-
+By considering the equations denoted above, one can see that \(\frac{\d{\tau}}{\d{t}}>0\), \(\frac{\d{\psi}}{\d{\phi}}>0\), and \(\frac{\d{\phi}}{\d{\tau}} = -\sqrt{2}\sinh u\). Thus as \(a\) and \(t\) decrease, one finds that if \(u>0\), then \(y>0\) by~\eqref{eqn:y_def} and thus \(\psi\) is monotonically {\em increasing}.\footnote{This explains the choice of sign in the parametrization~\protect\eqref{eqn:phitrans}.}
 As we are considering universes where \(\dot{\phi}\ne 0\), this places the constraint that:
 %
 \begin{equation}
@@ -394,11 +380,41 @@ As we are considering universes where \(\dot{\phi}\ne 0\), this places the const
 and by~\eqref{eqn:y_def}, we find that \(y\ne0\) also.  The problem therefore breaks down into two cases: 
 %
 \begin{enumerate}
-  \item \(y>0\) and \(\psi\rightarrow\infty\)
-  \item \(y<0\) and \(\psi\rightarrow -\infty\).
+  \item \(y>0\) and \(\psi\) increasing
+  \item \(y<0\) and \(\psi\) decreasing.
 \end{enumerate}
 %
-We will consider the first case; the second may be treated in exactly the same way, with a couple of sign changes.  We now show that there is at most one {\em finite\/} solution \(u\) satisfying the master equation~\eqref{eqn:master_eq} while remaining positive (\(u>0\)).
+We will consider the first case; the second may be treated in exactly the same way, with a couple of sign changes.  
+
+
+
+Now, if the gradient of \(\psi\) with respect to \(\log a\) is strictly positive, then \(\psi\) diverges as \(a\to0\):
+\begin{equation}
+  \left| \frac{\d\psi}{\d\log a}\right|  > \varepsilon_\psi > 0 \qquad \Rightarrow \qquad |\psi| \to  \infty \quad\text{as}\quad a \to 0.
+  \label{eqn:diverging_psi}
+\end{equation}
+From equations~\eqref{eqn:div_psi} and~\eqref{eqn:Friedmann_tau}, we can see the antecedent above may be equivalently stated as: 
+\begin{equation}
+  \frac{\dot\phi}{\sqrt{V}} > \varepsilon_\phi > 0 \qquad \Rightarrow \qquad |\psi| \to  \infty \quad\text{as}\quad a \to 0.
+  \label{eqn:diverging_phi}
+\end{equation}
+Moreover, if \(\psi\) does not diverge, then since \({|\dot\phi|>\xi>0}\), then \(V\) must diverge. So we have two cases:
+\begin{enumerate}
+  \item \(\psi \to \psi_\smax\) and \(V\to\infty\)\label{itm:psimax}
+  \item \(\psi \to \infty\)\label{itm:psidiv}
+\end{enumerate}
+We now show that in case~\ref{itm:psidiv} there is at most one {\em finite\/} solution \(y\) satisfying the master equation~\eqref{eqn:master_eq} while remaining positive (\(y>0\)), and that in case~\ref{itm:psimax}, there is no solution which remains positive.
+
+\subsubsection{Case~\protect\ref{itm:psimax}}
+We first show that if \(\psi\) does not diverge, but instead tends to some maximum value \(\psi_\smax\), then solutions to the master equation~\eqref{eqn:master_eq} cannot remain positive. Integrating the master equation~\eqref{eqn:master_eq} from some start point up to \(\psi_\smax\):
+\begin{equation}
+  y(\psi) = \int^{\psi_\smax} \sqrt{1-e^{-2y}} \d{\psi} - \log\sqrt{V} + c.
+\end{equation}
+Considering the right hand side, Given that the integrand is bounded, and that the integral is over a finite range, the first term remains finite. However, we know that in this case \(V\) and hence \(\log\sqrt V\) must diverge, hence the solution \(y\) must become negative as \(\psi\to\psi_\smax\). This behaviour is further examined in Section~\ref{sec:pathological_oscillations}. We may thus discount case~\protect\ref{itm:psimax}, since it is counter to our initial assumption~\eqref{eqn:conditions} of a steadily moving inflaton.
+
+
+\subsubsection{Case~\protect\ref{itm:psidiv}}
+We now show that there is at most one {\em finite\/} solution \(y\) satisfying the master equation~\eqref{eqn:master_eq} while remaining positive (\(y>0\)).
 
 Let us assume that there exists a solution \(f(\psi)\) of~\eqref{eqn:master_eq} that is positive and finite (\(0<f<\fm\) for some finite \(\fm\)):
 %
@@ -1632,6 +1648,7 @@ This constitutes a solution which is present for any potential with auxiliary fl
 
 
 \subsection{Pathological oscillations: \(\dot{\phi}=0\)}
+\label{sec:pathological_oscillations}
 We now turn to the case where there is no epoch prior to which \(\phi\) is monotonic. The inflaton continues to oscillate endlessly as \(a\to0\). 
 
 It is easy to engineer potentials that lead to this behavior. In the case with no auxiliary fields, the limiting forms of \(\dot{\phi}(t)\) and \(\phi(t)\) are given by equations~\eqref{eqn:dotphi_of_t_flat} and~\eqref{eqn:phi_of_t_flat}. We may solve these to find the relationship between \(\dot{\phi}\) and \(\phi\):
