@@ -49,12 +49,12 @@ is the Einstein tensor. The symmetries of the Einstein tensor~\eqref{eqn:cos:ein
   \nabla_\mu {T^{\mu}}_{\nu} = 0.
   \label{eqn:cos:SET_conservation}
 \end{equation}
-This conservation equation can provide a fast means for deriving alternative rearrangements of the Einstein equations.
+This conservation equation can provide a fast means for deriving alternative rearrangements of the Einstein equations.\footnote{Historical note: Einstein in fact derived this argument in reverse. He defined the Einstein tensor~\protect\eqref{eqn:cos:einstein_tensor} by adjusting the Ricci tensor so that the stress energy tensor is conserved by construction. In the more modern approach presented here, the definition of the Einstein tensor arises naturally from variational principles.}
 
 \section{The smooth, expanding universe}
 On the largest scales, we observe the universe to be spatially {\em homogeneous\/} and {\em isotropic}. This justifies the philosophical {\em cosmological principle}, that the universe should look the same wherever you are, and that no place in the universe is special. 
 
-In this section, we examine the consequences that these observations have within the context of general relativity, by considering the solutions to the Einstein equations~\ref{eqn:cos:einsteins_equations}.
+In this section, we examine the consequences that these observations have within the context of general relativity, by considering the solutions to the Einstein equations~\eqref{eqn:cos:einsteins_equations}.
 
 \subsection{Metric}
 \begin{table}[tp]
@@ -78,9 +78,9 @@ where:
   S_k^2(\chi) &=
   \left\{
   \begin{array}{rl}
-    \sin^2\chi &: k=+1 \\
+    \sin^2\chi &: k>0 \\
     \chi^2 &: k=0 \\
-    \sinh^2\chi &: k=-1. \\
+    \sinh^2\chi &: k<0. \\
   \end{array}
   \right.\label{eqn:cos:S_def}
 \end{align}
@@ -162,7 +162,7 @@ We can see immediately that in a universe dominated by dark energy \({(w\approx-
 
 \section{Conformal time and redshift}
 \subsection{Redshift \(z\)}
-The expansion of the universe causes the wavelengths of photons to increase: Photons have a four-momentum proportional to their wavevector \(p^\mu \propto k^\mu\). Since the FRW metric has no explicit \(\chi\)-dependence for radially travelling photons, \(p_\chi\) is conserved: \(p_\chi(t_1) = p_\chi(t_2)\). Using the metric to raise the indices, one finds that \(p^\chi(t_2)/a(t_2)=p^\chi(t_1)/a(t_1)\). Identifying \({p^\chi \propto k^r \propto \lambda^{-1}}\) where \(\lambda\) is the wavelength of the photon, one finds:
+The expansion of the universe causes the wavelengths of photons to increase: Photons have a four-momentum proportional to their wavevector \(p^\mu \propto k^\mu\). Since the FRW metric has no explicit \(\chi\)-dependence for radially travelling photons, \(p_\chi\) is conserved: \(p_\chi(t_1) = p_\chi(t_2)\). Using the metric to raise the indices, one finds that \(p^\chi(t_2){a(t_2)}^2=p^\chi(t_1){a(t_1)}^2\). Identifying the physical momentum \({a p^\chi \propto k^r \propto \lambda^{-1}}\) where \(\lambda\) is the wavelength of the photon, one finds:
 \begin{equation}
   \frac{\lambda_2}{\lambda_1} = \frac{a_2}{a_1},
 \end{equation}
@@ -184,7 +184,7 @@ Since redshift is a physically observable quantity, it provides a cosmology-inde
 
 \subsection{Conformal time \(\eta\)}
 
-It convenient to define conformal time as:
+It is convenient to define conformal time as:
 \begin{equation}
   \eta = \int \frac{\d{t}}{a},
   \label{eqn:cos:conformal_time}
@@ -244,13 +244,13 @@ Taking absolute logarithms of~\eqref{eqn:cos:friedmann_omega}, differentiating a
   \frac{\d{\log |\Omega-1|}}{\d{\log a} } = \Omega(1+3w).
   \label{eqn:cos:instability}
 \end{equation}
-One can see from this that a flat universe \((\Omega=1)\) is an unstable point of equilibrium of these equations, provided that \(1+3w>0\). For both matter (\({w=0}\)) and radiation (\({w=\frac{1}{3}}\)), the universe is rapidly driven away from flatness as the universe expands. This is natural, as the effect of traditional mass-energy is to increase the curvature of space with time
+One can see from this that a flat universe \((\Omega=1)\) is an unstable point of equilibrium of these equations, provided that \(1+3w>0\). For both matter (\({w=0}\)) and radiation (\({w=\frac{1}{3}}\)), the universe is rapidly driven away from flatness as the universe expands. This is natural, as the effect of spatial curvature on the energy and dynamics of the universe has a slower decay rate in comparison with ordinary matter (equation~\ref{eqn:cos:expansion_history}).
 
 This presents a problem. The universe we see today is measured to be flat to at least one part in \(10^{-2}\), which means that at earlier times it would have been even flatter still. Given that within the context of cosmology there is no a-priori reason to believe the universe should be exactly flat, this requires a unreasonable quantity of fine tuning. It would be more satisfactory if we had a dynamical reason to explain why the universe is as flat as it is.
 
 As well as revealing the problem, equation~\eqref{eqn:cos:instability} also provides a solution. If for some period \(w<-1/3\) at some earlier time, then~\eqref{eqn:cos:instability} says that \(\Omega=1\) is an attractor state. The acceleration equation shows that:
 \begin{equation}
-  \ddot{a} \propto -(1+3w).
+  \frac{\ddot{a}}{a} = -(1+3w)\rho.
   \label{eqn:cos:Raychaudhuri_acc}
 \end{equation}
 Thus, the condition that \(w<-1/3\) is equivalent to requiring that at some point early in its history the universe was {\em accelerating\/} \(\ddot{a}>0\). It is also equivalent to having a form of matter which satisfies:
@@ -309,7 +309,7 @@ Thus, a homogeneous scalar field acts as a perfect fluid with pressure and densi
   0 = \ddot{\phi} + 3 H \dot{\phi} + \frac{\d{}}{\d{\phi}}V(\phi).
   \label{eqn:cos:KG}
 \end{equation}
-The middle term involving \(H\) is the term that arises as a result of including the effects of gravity (i.e.\ an expanding universe). The homogeneous value of the scalar field \(\phi\) satisfies the equation of a harmonic oscillator in a potential \(V(\phi)\) with a frictional term proportional to \(H\).
+The middle term involving \(H\) is the term that arises as a result of including the effects of gravity (i.e.\ an expanding universe). The homogeneous value of the scalar field \(\phi\) satisfies the equation of a particle in a potential \(V(\phi)\) with a frictional term proportional to \(H\).
 To get an equation for \(H\), we use the acceleration equation~\eqref{eqn:cos:Raychaudhuri} along with our formulae~\eqref{eqn:cos:scalar_field_rho}~\&~\eqref{eqn:cos:scalar_field_P} for \(\rho\) and \(P\), to find:
 \begin{equation}
   \dot{H}+H^2 = -\frac{1}{3\m^2}\left(\dot{\phi}^2-V(\phi)\right).
@@ -319,6 +319,7 @@ Equations~\eqref{eqn:cos:KG}~\&~\eqref{eqn:cos:ray_scalar} are tightly coupled, 
 
 
 \subsection{Phenomenology}
+\label{sec:cos:phenomonology}
 One way to trigger an accelerated phase is to set the particle of the field as trapped in a false vacuum (Figure~\ref{fig:cos:potential}). This sets \(\dot{\phi}=0\), \(V(\phi)=V_0\) and therefore \(H=H_0=V_0/3\m^2\) and \(a\sim e^{H_0t}\), which is an exponential and therefore accelerated expansion. However, to end this accelerated phase, the particle would have to tunnel quantum mechanically out of its false vacuum. It turns out that the false vacuum is too stable, and results in unphysical predictions.
 
 \begin{figure}[tp]
@@ -360,7 +361,7 @@ A general perturbation of the flat FRW metric will take the form:
   \d{s}^2 = (1+2\Phi)\d{t}^2 -2a B_i \d{x}^i \d{t}  -a^2 \left[ \left( 1 - 2 \Psi \right)\delta_{ij} + 2E_{ij} \right] \d{x}^i \d{x}^j,
   \label{eqn:cos:FRW_perturb}
 \end{equation}
-where the various terms in the above expression are defined in Table~\ref{tab:cos:perturbed_metric}, and \({\Phi,B_i,\Psi,E_{ij}\ll1}\) are small, and the tensor $E_{ij}$ is symmetric and traceless
+where the various terms in the above expression are defined in Table~\ref{tab:cos:perturbed_metric}, and \({\Phi,B_i,\Psi,E_{ij}\ll1}\) are small, and the tensor \(E_{ij}\) is symmetric and traceless
 \begin{table}[tp]
   \centering
   \input{chapters/inflationary_cosmology/tables/perturbed_metric}
@@ -389,9 +390,9 @@ where:
   \frac{\delta P_\mathrm{ad}}{\dot{P}} = \frac{\delta\rho}{\dot{\rho}}.
   \label{eqn:cos:adiabatic}
 \end{equation} 
-For more detail, see~\cite[p.~48]{Baumann+2009}. 
+For more detail, see~\citet[p.~48]{Baumann+2009}. 
 In most cases, we limit ourselves to adiabatic matter \(\delta P_\mathrm{en}=0\).
-This is not particularly restrictive, and is naturally satisfied by the equations of state~\eqref{eqn:cos:multi_component}.
+This is not particularly restrictive, and is naturally satisfied by the equations of state~\eqref{eqn:cos:multi_component}, although it is not in general satisfied by the pressure perturbations generated by scalar fields.
 
 The scalar field perturbation is similarly simple:
 \begin{equation}
@@ -403,7 +404,7 @@ In general, the Einstein equations~\eqref{eqn:cos:einstein_tensor} are non-linea
 \begin{align}
   \delta G_{\mu\nu} &= \frac{1}{\m^2}\delta T_{\mu\nu},
   \label{eqn:cos:einsteins_equations_perturb} \\
-  \nabla_\mu\delta T^{\mu}_{\nu} &=0,
+  \delta (\nabla_\mu T^{\mu}_{\nu}) &=0,
   \label{eqn:cos:SET_conservation_perturb}
 \end{align}
 which greatly simplifies the analysis.  
@@ -412,7 +413,7 @@ We may go further and exploit the symmetries of the background unperturbed unive
 First, a general field \(\varphi(t,\vx)\) can be written in Fourier modes as:
 \begin{align}
   \varphi(t,\vk) &= \int \d[3]{\vx}\: \varphi(t,\vx) e^{-i\vk \cdot \vx},\\
-  \varphi(t,\vx) &= \int \frac{\d[3]{\vk}}{{(2\pi)}^3}\: \varphi(t,\vx) e^{i\vk \cdot \vx}.
+  \varphi(t,\vx) &= \int \frac{\d[3]{\vk}}{{(2\pi)}^3}\: \varphi(t,\vk) e^{i\vk \cdot \vx}.
 \end{align}
 The translational invariance of the unperturbed universe means that the Fourier modes of the perturbations decouple, turning spatial derivatives into multiples of wavevectors. 
 It is worth remarking that the above decomposition is specifically for a flat universe. There are analogous approaches for the open and closed cases, but for simplicity we shall keep to the flat case. 
@@ -462,7 +463,7 @@ Careful calculation will show that the transformation of the dynamical scalar va
   \delta q &\rightarrow \delta q + (\rho+P)\delta t,&
   \delta \phi &\rightarrow \delta \phi - \dot{\phi}\delta t,
 \end{align}
-where \(E\) and \(B\) are the helicity scalar parts of the shear and shift, and $\delta x$ is the scalar part of the spatial coordinate perturbation~\eqref{eqn:cos:gauge_x}.
+where \(E\) and \(B\) are the helicity scalar parts of the shear and shift, and \(\delta x\) is the scalar part of the spatial coordinate perturbation~\eqref{eqn:cos:gauge_x}.
 By choosing an appropriate coordinate transformation, one can remove the additional dynamical variables that are unconstrained by the Einstein equations. This is typically done by setting some of the perturbation variables equal to zero. This procedure is termed a {\em gauge choice}.\footnote{\(\delta X\) is defined as the difference between the value \(X\) has in the physical (perturbed) spacetime, and the value \(X\) has in the background (unperturbed) spacetime. This can only be done if there is a prescription for identifying points between the two spacetimes, and in the language of differential geometry, this is termed a {\em gauge choice}.}
 Examples of popular gauge choices can be found in Table~\ref{tab:cos:gauge_choice}.
 
@@ -500,10 +501,10 @@ This is termed the {\em comoving curvature perturbation}, since in the comoving 
 After some effort, the Einstein equations~\eqref{eqn:cos:einsteins_equations}~\&~\eqref{eqn:cos:einsteins_equations_perturb} and conservation equations~\eqref{eqn:cos:SET_conservation}~\&~\eqref{eqn:cos:SET_conservation_perturb} evaluated using the perturbed metric~\eqref{eqn:cos:FRW_perturb} and the perturbed stress energy tensor~\eqref{eqn:cos:SET_perfect_fluid}~\&~\eqref{eqn:cos:matter_perturb} yield:
 \begin{equation}
   \frac{\d{\mathcal{R}}}{\d{\log a}} = 
-  -\frac{k^2}{a^2}\frac{\dot{P}}{\dot{\rho}}\frac{\mathcal{R}}{(5\rho + 3P)}
-  -\frac{\delta P_\mathrm{en}}{\rho+P}.
+  -\frac{k^2}{a^2}\frac{\dot{P}}{\dot{\rho}}\frac{\m^2\mathcal{R}}{(5\rho + 3P)}
+  -\frac{\delta P_\mathrm{en}}{\rho+P},
 \end{equation}
-For adiabatic perturbations \(\delta P_\mathrm{en}=0\), and given that \(\rho,P\sim H^2, \dot{\rho}\sim\dot{P}\), the above equation says that: \(\frac{\d{\log \mathcal{R}}}{\d{\log a}} \sim \frac{k^2}{a^2H^2}\). As the universe inflates, \(k\ll aH\), and \(\mathcal{R}\) ``freezes out'' and becomes constant.
+where for simplicity we have assumed there is no anisotropic stress. For adiabatic perturbations \(\delta P_\mathrm{en}=0\), and given that \(\rho,P\sim \m^2 H^2\), \(\dot{\rho}\sim\dot{P}\), the above equation says that: \(\frac{\d{\log \mathcal{R}}}{\d{\log a}} \sim \frac{k^2}{a^2H^2}\). As the universe inflates, \(k\ll aH\), and \(\mathcal{R}\) ``freezes out'' and becomes constant.
 
 \subsection{Quantum behaviour}
 Using the Lagrangians as defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{eqn:cos:scalar_field_lagrangian}, we may construct the action:
@@ -512,7 +513,7 @@ Using the Lagrangians as defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{e
 \end{equation}
 If we expand this action to second order in \(\mathcal{R}\), we find (after some effort):
 \begin{equation}
-  S^{(2)} = \int \d[4]{x}\: a^3 \frac{\dot{\phi}^2}{H^2}\left[ \mathcal{\dot{R}}^2 -a^{-2}{\left( \delta_i\mathcal{R} \right)}^2 \right].
+  S^{(2)} = \int \d[4]{x}\: a^3 \frac{\dot{\phi}^2}{H^2}\left[ \mathcal{\dot{R}}^2 -a^{-2}{\left( \partial_i\mathcal{R} \right)}^2 \right].
 \end{equation}
 Switching to conformal time and defining:
 \begin{equation}
@@ -559,7 +560,8 @@ A perfectly inflating universe is a de Sitter space with:
   H=\text{const}\Rightarrow \quad a = \frac{1}{H(\eta_\mathrm{end}-\eta)} \propto e^{Ht}, \quad -\infty<\eta<\eta_\mathrm{end}.
   \label{eqn:cos:de_sitter}
 \end{equation}
-Thus, in a pure de Sitter space, \({z^{\prime\prime}/z = a^{\prime\prime}/a= 2{(\eta_\mathrm{end}-\eta)}^{-2}}\) and the differential equation~\eqref{eqn:cos:mode_func} has the general solution:
+As discussed in Section~\ref{sec:cos:phenomonology}, pure de Sitter space may be achieved in an inflationary scenario if \(H,\phi=\mathrm{const}\), and is approximated under the conditions of slow roll~\eqref{eqn:cos:slow_roll}. 
+Thus, in a space where \(H\) and \(\dot\phi\) are both constant, \({z^{\prime\prime}/z = a^{\prime\prime}/a = 2{(\eta_\mathrm{end}-\eta)}^{-2}}\). Taking the limit as \(\dot{\phi}\to0\) creates a pure de Sitter scenario, and the differential equation~\eqref{eqn:cos:mode_func} has the general solution:
 \begin{align}
   \chi_k = &A_k \frac{1}{\sqrt{2k}}\left( 1+\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{ik(\eta_\mathrm{end}-\eta)}, \nonumber\\
   + &B_k \frac{1}{\sqrt{2k}}\left( 1-\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{-ik(\eta_\mathrm{end}-\eta)},
@@ -603,7 +605,7 @@ i.e.\ \(\Delta_\phi^2(k)\) may be thought of as the logarithmic spectral density
 \subsection{Power spectrum of comoving curvature perturbations}
 To compute the power spectrum of comoving curvature perturbations \(\mathcal{R}\), one therefore needs to compute the average on the left hand side of equation~\eqref{eqn:cos:power_spectrum_definition}. The two-point spatial correlation is:
 \begin{equation}
-  \xi_\mathcal{R}(\eta,\vr) = \mean{\mathcal{R}(\eta,\vx+\vr)\mathcal{R}(\eta,\vx)} = z^2\mean{v(\eta,\vx+\vr)v(\eta,\vx)}
+  \xi_\mathcal{R}(\eta,\vr) = \mean{\mathcal{R}(\eta,\vx+\vr)\mathcal{R}(\eta,\vx)} = z^2\mean{v(\eta,\vx+\vr)v(\eta,\vx)}.
 \end{equation}
 Decomposing \(v\) into Fourier modes via equation~\eqref{eqn:cos:mode_func_sum}, identifying the average \(\mean{\cdot}\) above as a quantum average \(\bracket{0}{\cdot}{0}\), and applying the usual properties of creation and annihilation operators along with the commutator relation~\eqref{eqn:cos:commutator} yields:
 \begin{equation}
@@ -649,7 +651,7 @@ We write a general perturbation to the temperature field of the universe as:
 Note that the temperature field is anisotropic (i.e.\ has a \(\vp\) dependency) on account of the relativistic nature of photons. We may separate this angular dependence by expanding \(\Theta\) in spherical harmonics:
 \begin{align}
   \Theta(t,\vx,\vp) &= \sum_{\ell=1}^{\infty}\sum_{m=-\ell}^{\ell}a_{\ell m}(t,\vx) Y_{\ell m}(\vp),\\
-  a_{\ell m}(t,\vx) &= \int \d{\Omega} Y_{\ell m}(\vp) \Theta(t,\vx,\vp).
+  a_{\ell m}(t,\vx) &= \int \d{\Omega} Y_{\ell m}^\ast(\vp) \Theta(t,\vx,\vp).
   \label{eqn:cos:alm_integral}
 \end{align}
 We only observe the temperature field here (at \(\vx_0\)) and now (at \(t_0\)). By taking sufficiently many measurements in different directions of \(\vp\) of the temperature field \(\Theta\) we can compute the integral~\eqref{eqn:cos:alm_integral}, to obtain \(a_{\ell m}(t_0,\vx_0)\) up to some \(\ell_{\max{}}\).\footnote{As a rough guide, if one has \(N_\mathrm{pix}\) independent pixels, there are \({(\ell_{\max{}}+1)}^2\) different \(a_{\ell m}\)'s to measure, so \(\ell_{\max{}} \sim \sqrt{N_\mathrm{pix}}\).}
@@ -657,7 +659,7 @@ We only observe the temperature field here (at \(\vx_0\)) and now (at \(t_0\)). 
 In general, theories do not predict specific values of \(a_{\ell m}\), but merely tell us about the statistical distribution from which they are drawn. At each value of \(\ell\), the \((2\ell + 1)\) observations \(\{a_{\ell m}:m=-\ell\cdots\ell\}\) are typically independent realisations of the same random variable. Their mean value is zero, but they will have some non-zero variance:
 \begin{equation}
   \left\langle a_{\ell m} \right\rangle = 0, \qquad
-  \left\langle a_{\ell m} a_{\ell^\prime m^\prime}\right\rangle = \delta_{\ell \ell^\prime} \delta_{m m^\prime} C_\ell.
+  \left\langle a_{\ell m} a_{\ell^\prime m^\prime}^\ast\right\rangle = \delta_{\ell \ell^\prime} \delta_{m m^\prime} C_\ell.
 \end{equation}
 Note that the error in the sample variance obeys:
 \begin{equation}
@@ -669,7 +671,10 @@ Computing the theoretical predictions of these \(C_\ell\)'s from a given cosmolo
 \begin{equation}
   C_\ell^{XY} = \frac{2}{\pi}\int k^2 \d{k} \: \mathcal{P}_\mathcal{R}(k) \Delta_{X\ell}(k)\Delta_{Y\ell}(k),
 \end{equation}
-where \(\Delta_{X\ell}(k)\) are transfer functions and \({X\in\left\{ T,E,B \right\}}\) component of the transfer function corresponding to the temperature anisotropy and the $E$ and $B$-mode polarisation respectively. These transfer functions are computed from line of sight integrals, requiring one to evolve the contents of the universe from the \(k\)-mode's horizon re-entry point through the hot big bang era, past the surface of last scattering at recombination and all the way to the current epoch before projecting the photon field onto the sky we see today. Treating this calculation fully is beyond the scope of this thesis, but it suffices to say that this is now extremely well understood physics, and a full set of \(C_\ell\)'s can be computed for a given cosmology using Boltzmann codes such as \CAMB{} \citep{CAMB} in a matter of seconds.
+where \(\Delta_{X\ell}(k)\) are transfer functions. These transfer functions are computed from line of sight integrals, requiring one to evolve the contents of the universe from the \(k\)-mode's horizon re-entry point through the hot big bang era, past the surface of last scattering at recombination and all the way to the current epoch before projecting the photon field onto the sky we see today. 
+ \({X\in\left\{ T,E,B \right\}}\) labels the components of the photon field corresponding to the temperature anisotropy, and the \(E\) and \(B\) polarisation modes respectively.
+Treating this calculation fully is beyond the scope of this thesis, but it suffices to say that this is now extremely well understood physics, and a full set of \(C_\ell\)'s can be computed for a given cosmology using Boltzmann codes such as \CAMB{} \citep{CAMB} in a matter of seconds.
+
 
 \begin{figure}[tp]
   \centering
