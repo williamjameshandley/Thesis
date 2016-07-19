@@ -461,7 +461,7 @@ Taking the difference of~\eqref{eqn:master_eq_f} and~\eqref{eqn:master_eq_h} giv
 By a uniqueness theorem, discussed in Section~\ref{sec:uniqueness_theorem}, if \(h(\psiz)>f(\psiz)\), then \(h(\psi_1)>f(\psi_1)\) (for \(\psi_1\ne\psi_0\)). Therefore one can see from~\eqref{eqn:master_eq_diff} that the difference between \(h\) and \(f\) is monotonically increasing in any finite interval \([\psiz,\psi_1]\).  One can thus conclude that:
 %
 \begin{equation}
-  h-f>\hz-\fz=\Delta_0>0
+  h-f>\hz-\fz=\Delta_0>0.
   \label{eqn:cosh_rel}
 \end{equation}
 %
@@ -549,12 +549,12 @@ along with \(H=\frac{\d{}}{\d{t}}\log a\) that these equations solve to give:
 \begin{align}
   H^2 
   &= 
-  \frac{1}{3\m^2}\left(\frac{\beta^2}{a^6} + \rho_w\right) 
+  \frac{1}{3\m^2}\left(\frac{\beta^2}{a^6} + \rho_w\right)
   \label{eqn:H_of_a_1}
   \\
   \dot{\phi}^2 
   &= 
-  2\frac{\beta^2}{a^6} 
+  2\frac{\beta^2}{a^6},
   \label{eqn:dotphi_of_a_1}
 \end{align}
 %
@@ -622,7 +622,7 @@ The solutions are:
   \\
   \phi(a)
   &=
-  c + \pm
+  c  \pm
   \sqrt{\frac{2}{3}}\frac{\m}{1-w} \ln \left[ 
   \frac 
   {{a}^{3(1-w)}}
@@ -634,24 +634,24 @@ The solutions are:
   &=
   a^3 \frac{\m\sqrt{3}}{3\beta} 
   \:\: 
-  {_2F_1}(
+  {_2F_1}\left(
   \frac{1}{2},
   \frac{1}{1-w};
   \frac{2-w}{1-w},
   -\frac{a^6\rho_w}{\beta^2}
-  ) 
+  \right) 
   \label{eqn:t_of_a}
   \\
   \eta(a) 
   &= 
   a^2 \frac{\m\sqrt{3}}{2\beta}
   \:\: 
-  {_2F_1}(
+  {_2F_1}\left(
   \frac{1}{2},
   \frac{2}{3(1-w)};
   \frac{5-3w}{3(1-w)},
   -\frac{a^6\rho_w}{\beta^2}
-  ),
+  \right),
   \label{eqn:eta_of_a}
 \end{align}
 %
@@ -971,7 +971,7 @@ For radiation one has \(w=1/3\), and so:
 where \(\rhorp\) is an integration constant, labeling the energy density of matter at the epoch \(\Rp\).  For \(w=1/3\), equation~\eqref{eqn:eta_of_a} is expressible as an algebraic function, and may be rearranged to express the scale factor \(a\) in terms of coordinate time. Once \(a(\eta)\) is obtained, the remaining equations~\eqref{eqn:H_of_a},~\eqref{eqn:dotphi_of_a} and~\eqref{eqn:phi_of_a} can be used to express the rest of the variables in terms of \(\eta\). Using our definition of \(\beta\)~\eqref{eqn:beta_def}, and \(\etap\)~\eqref{eqn:etap_eq}, and defining the new time scale,
 %
 \begin{equation}
-  \etar = \frac{3\m^2}{\Rp^2\etap\rhomp}.
+  \etar = \frac{3\m^2}{\Rp^2\etap\rhomp},
   \label{eqn:etar}
 \end{equation}
 %
@@ -1001,7 +1001,7 @@ the solutions are:
   \left[
   \left(\frac{\eta}{\etap}\right)
   \frac {1}{\left(1+ \frac{\eta}{\etar}\right)} 
-  \right] 
+  \right].
 \end{align}
 %
 
@@ -1031,7 +1031,7 @@ provided that \(\rho_i\) and the potential transform as:
 \begin{equation}
   \rho_i \mapsto \alpha^{3(1+w_i)}\sigma^2\rho_i, 
   \qquad
-  V(\phi) \mapsto \sigma^2 V(\phi)
+  V(\phi) \mapsto \sigma^2 V(\phi).
 \end{equation}
 %
 This symmetry can be used effectively to remove some of the remaining integration constants. In practice this means that one may set \(\tp=1\) to be the Planck time and the scale factor \(a(\tp)=\Rp=1\). Usually one takes the scale factor to be unity at the present epoch \(a_0\equiv a(t_0)=1\), but this requirement is complicated by the uncertainties of reheating, so we do not follow that convention here. One may ``physically'' interpret \(\phip\) as the value of the field at \(t=t_p\).  This requires extrapolating the classical equations far beyond their validity, so it is more of a mnemonic aid than a physical interpretation.  As we will see below, \(\phip\) controls the total number of \(e\)-folds of inflation.
@@ -1063,7 +1063,7 @@ For \(\rho_w=0\) the universe is spatially flat and contains only the inflaton f
   H^2 
   &= 
   \frac{1}{3\m^2}
-  \left(\frac{1}{2}\dot{\phi}^2 + V(\phi) + \sum_i\rho_i\right),
+  \left(\frac{1}{2}\dot{\phi}^2 + V(\phi)),
   \label{eqn:Friedmann_eq} 
   \\
   0
@@ -1094,7 +1094,7 @@ The general solution to the evolution equations has the asymptotic form given in
   \frac{1}{3\ti}. 
   \label{eqn:H_ic}
 \end{align}
-There is a single constant of integration \(\phip\), which directly controls the number of \(e\)-folds during inflation. The number of \(e\)-folds \(N_*\) between the pivot scale \(k_*\) and the end of inflation is typically \(50\)--\(60\) \citep{planck_collaboration_planck_2013-1}. For the rest of this chapter \(\phip\) will be chosen so that the total number of \(e\)-folds \(N_\mathrm{tot}=55\). This will be discussed in greater detail in Section~\ref{sec:powspec}.
+There is a single constant of integration \(\phip\), which directly controls the number of \(e\)-folds during inflation. The number of \(e\)-folds \(N_*\) between the pivot scale \(k_*\) exiting the Hubble radius and the end of inflation is typically \(50\)--\(60\) \citep{planck_collaboration_planck_2013-1}. For the rest of this chapter \(\phip\) will be chosen so that the total number of \(e\)-folds \(N_\mathrm{tot}=65\). This will be discussed in greater detail in Section~\ref{sec:powspec}.
 
 Throughout this chapter we work in the classical regime. In order for the conditions above to be valid, the initial conditions must be set at a time greater than the Planck time, \(\ti >\tp=1\), but within the kinetic dominated regime, for which \(V(\phii) \ll \phidi^2\). Setting \(\ti=\tp=1\) in the above, one sees that kinetic dominance will endure beyond the Planck time provided:
 %
@@ -1109,15 +1109,15 @@ We note that the evolution equations~\eqref{eqn:Friedmann_eq}~\&~\eqref{eqn:Moti
 %
 \begin{align}
   t 
-  &\longmapsto 
+  &\mapsto 
   \sigma^{-1}t,
   \\
   H 
-  &\longmapsto 
+  &\mapsto 
   \sigma H,
   \\
   V(\phi) 
-  &\longmapsto
+  &\mapsto
   \sigma^2 V(\phi).
 \end{align}
 %
@@ -1287,7 +1287,7 @@ We show the evolution of the universe governed by the hyperbolic cosine inflaton
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/ospot}
-  \caption{The master equation may be solved for the potential \(V(\psi)\) if a form of \(f(\psi)\) is chosen. For the choice of \(f(\phi)\) detailed in equation (\protect\ref{eqn:uf_example}), the potential is solvable in closed form (equation \protect\ref{eqn:Vphi_uf_example}).}\label{fig:figure_ospot}
+  \caption{The master equation may be solved for the potential \(V(\psi)\) if a form of \(f(\psi)\) is chosen. For the choice of \(f(\psi)\) detailed in equation (\protect\ref{eqn:uf_example}), the potential is solvable in closed form (equation \protect\ref{eqn:Vphi_uf_example}).}\label{fig:figure_ospot}
 \end{figure}
 %
 
@@ -1316,19 +1316,20 @@ whose shape is detailed in Figure~\ref{fig:figure_ospot}.
 To show explicitly that this is the only finite solution in this case, we consider a perturbed solution \(y(\psi) = f(\psi)+\delta(\psi)\).  From the uniqueness theorem (Section~\ref{sec:uniqueness_theorem}) if \(\delta\) is initially positive (negative), then it is positive (negative) for all \(\psi\). From the master equation~\eqref{eqn:master_eq} one may show that the perturbed solution satisfies:
 %
 \begin{align}
-  \frac{\d{}}{\d{\phi}}\delta 
+  \frac{\d{}}{\d{\psi}}\delta 
   =& 
   \sqrt{1-e^{-2(f+\delta)}} -\sqrt{1-e^{-2f}}, 
-  \label{eqn:perturb}
+  \nonumber
   \\
   &>
   \sqrt{1-e^{-2(\fm+\delta)}} -\sqrt{1-e^{-2\fm}}
+  \label{eqn:perturb}
 \end{align}
 %
 where \(\fm = \log(1/\sqrt{1-{(a-b)}^2})\). Substituting this in, one finds:
 %
 \begin{align}
-  \frac{\d{}}{\d{\phi}}\delta 
+  \frac{\d{}}{\d{\psi}}\delta 
   > 
   \sqrt{1-e^{-\delta}({1-{(a-b)}^2})} - \sqrt{1-({1-{(a-b)}^2})}
 \end{align}
@@ -1338,13 +1339,13 @@ One can see that if \(\delta>0\), then the right-hand side is strictly greater t
 Working from equation~\eqref{eqn:perturb}, one also finds:
 %
 \begin{align}
-  \frac{\d{}}{\d{\phi}}\delta 
+  \frac{\d{}}{\d{\psi}}\delta 
   <&
   \sqrt{1-e^{-2(\fmn+\delta)}} -\sqrt{1-e^{-2\fmn}} 
   \nonumber
   \\
   &<
-  \sqrt{1-e^{-\delta}({1-{(a+b)}^2})} - \sqrt{1-({1-{(a+b)}^2})}
+  \sqrt{1-e^{-\delta}({1-{(a+b)}^2})} - \sqrt{1-({1-{(a+b)}^2})}.
 \end{align}
 %
 One can see that if \(\delta<0\), then the right-hand side is strictly less than some number less than zero, hence \(\delta\) falls without bound, and any solution less than \(f\) eventually becomes negative. 
@@ -1404,7 +1405,7 @@ Calibrated plots of \(\mathcal{P}_\mathcal{R}(k)\) are found in Figures~\ref{fig
 %
 \begin{figure}[tp]
   \includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/CSpol}
-  \caption{The approximate power spectrum of the primordial curvature perturbations for polynomial potentials, calculated using equation~\protect\eqref{eqn:curvature_power_spectrum}. The units of the \(k\) axis are determined by the requirement that there are \(N_*=55\) \(e\)-folds remaining when the pivot scale \(k_*=0.05\:\mathrm{Mpc}^{-1}\) exits the horizon \(k=aH\). The magnitude of the power spectrum is determined by the scaling \(\mu\) in the potential. The grey area indicates the angular scales that have been experimentally probed; see Figure~\protect\ref{fig:experimental_power_spectrum}.}\label{fig:figure_CSpol}
+  \caption{The approximate power spectrum of the primordial curvature perturbations for polynomial potentials, calculated using equation~\protect\eqref{eqn:curvature_power_spectrum}. The units of the \(k\) axis are determined by the requirement that there are \(N_*=55\) \(e\)-folds remaining when the pivot scale \(k_*=0.05\:\mathrm{Mpc}^{-1}\) exits the horizon \(k=aH\). The magnitude of the power spectrum is determined by the scaling \(\mu\) in the potential, and the low-\(k\) cutoff is determined by a choice of \(\phip\) such that there are \(N_\mathrm{tot}=65\) \(e\)-folds of total inflation. The grey area indicates the angular scales that have been experimentally probed; see Figure~\protect\ref{fig:experimental_power_spectrum}.}\label{fig:figure_CSpol}
 \end{figure}
 %
 
@@ -1422,7 +1423,8 @@ The shape of the primordial power spectra obtained corresponds to that found in~
 Further inspection shows \(\mathcal{P}_\mathcal{R} \sim \log k\) after the low-\(k\) cutoff. This is identical to the result found by~\cite{lasenby_closed_2003} and in contrast with the standard power-spectrum parametrization which assumes a near-flat power-law scaling: \(\log\mathcal{P}_\mathcal{R}\sim \log k\). 
 
  
-It should be observed that we are using the approximation~\eqref{eqn:curvature_power_spectrum} outside the slow-roll regime for which it is valid; nonetheless we have performed full calculations that do not use the above approximation and which indicate that the resulting power spectrum is, in fact, a good representation of the true spectrum. These approximate spectra demonstrate the key generic aspects of the accurate calculation: both exhibit a low-\(k\) cut off and that \(\mathcal{P}_\mathcal{R}(k) \sim \log(k)\).  We shall follow this work with a second publication containing the full details and discussion of the accurate calculation. An alternative but related accurate calculation has been performed by~\cite{Lello_tensor_2013}, which uses kinetic initial conditions to show that the suppression at low-\(\ell\) is entirely generic. It should also be noted that methods which reconstruct the primordial power spectrum \(\mathcal{P}_\mathcal{R}(k)\) \citep{vazquez_reconstruction,Hazra_reconstruction_2013} using data also show a dip at low \(k\) values.
+It should be observed that we are using the approximation~\eqref{eqn:curvature_power_spectrum} outside the slow-roll regime for which it is valid; nonetheless we have performed full calculations that do not use the above approximation and which indicate that the resulting power spectrum is, in fact, a good representation of the true spectrum. These approximate spectra demonstrate the key generic aspects of the accurate calculation: both exhibit a low-\(k\) cut off and that \(\mathcal{P}_\mathcal{R}(k) \sim \log(k)\).  We shall follow this work with a second publication containing the full details and discussion of the accurate calculation. An alternative but related accurate calculation has been performed by~\cite{Lello_tensor_2013}, which uses kinetic initial conditions to show that the suppression at low-\(\ell\) is entirely generic. It should also be noted that methods which reconstruct the primordial power spectrum \(\mathcal{P}_\mathcal{R}(k)\) \citep{vazquez_reconstruction,Hazra_reconstruction_2013} using data also show a dip at low \(k\) values, updated results for which are reported in Chapter~\ref{chp:rec}.
+
 
 %
 \begin{figure}[tp]
@@ -1435,10 +1437,10 @@ It should be observed that we are using the approximation~\eqref{eqn:curvature_p
 We demonstrate the suppression on large angular scales of the CMB and late-time matter power spectra qualitatively in Figure~\ref{fig:figure_Cl}.  In the standard six-parameter \(\Lambda\)CDM cosmology, the primordial power spectrum has a power-law form, parametrized by two variables \(A_s\) and \(n_\mathrm{s}\), such that:
 %
 \begin{equation}
-  P_\mathcal{R}(k) = A_s{\left(\frac{k}{k_*}\right)}^{n_\mathrm{s}-1}
+  \mathcal{P}_\mathcal{R}(k) = A_s{\left(\frac{k}{k_*}\right)}^{n_\mathrm{s}-1}.
 \end{equation}
 %
-Using the best-fit parameters from {\em Planck\/}+WP+highL+BAO \citep{planck_collaboration_planck_2013} yields the standard matter CMB power spectra (dashed lines), whereas the alternative power spectra (solid line) were generated using \(\mathcal{P}_\mathcal{R}(k)\) from Figure~\ref{fig:figure_CSpol} (for \(n=2\)), for which the axes were rescaled to agree with the values of \(A_s\) and \(n_\mathrm{s}\) during the slow-roll phase. The resulting matter and CMB power spectra are seen to exhibit a suppression of power at low \(k\) and \(\ell\) values, with the rest of the spectra perfectly intact, as required by cosmological observations.  Further investigation is clearly required, but this analysis already demonstrates the utility of kinetic dominance.
+Using the best-fit parameters from {\em Planck\/}+WP+highL+BAO \citep{planck_collaboration_planck_2013} yields the standard matter and CMB power spectra (dashed lines), whereas the alternative power spectra (solid line) were generated using \(\mathcal{P}_\mathcal{R}(k)\) from Figure~\ref{fig:figure_CSpol} (for \(n=2\)), for which the axes were rescaled to agree with the values of \(A_s\) and \(n_\mathrm{s}\) during the slow-roll phase. The resulting matter and CMB power spectra are seen to exhibit a suppression of power at low \(k\) and \(\ell\) values, with the rest of the spectra perfectly intact, as required by cosmological observations.  Further investigation is clearly required, but this analysis already demonstrates the utility of kinetic dominance.
 
 The results of this section agree with the ``just enough inflation'' scenario introduced by~\cite{Ramirez_excluded_2009,Ramirez_predictions_2012,Ramirez_low_2012}.  In their work they assume that there is some physical mechanism which would limit the potential from above such that \(V(\phi)<M_\mathrm{GUT}^4\), and thus find that \(V(\phi)\ll\dot{\phi}^2\) at early times. Our results therefore place their observations in a more generic setting.
 
@@ -1449,13 +1451,13 @@ The results of this section agree with the ``just enough inflation'' scenario in
 An alternative method for setting the initial conditions for inflation models has been proposed by~\cite{boyanovsky_cmb_2006}. Their work also shows that the low-multipole suppression of the scalar power spectrum is the result of a brief period of fast-roll inflation prior to the standard slow-roll regime. They arrange for such a fast-roll period by assuming ``equipartition initial conditions''. In this approach, the initial conditions are set at a time \(t=\teq\), when there is approximate equipartition between the kinetic and potential energy of the inflaton:
 %
 \begin{equation}
-  \frac{1}{2}\phideq \sim V(\phieq).
+  \frac{1}{2}\phideq^2 \sim V(\phieq).
   \label{eqn:bvsbc}
 \end{equation}
 %
-Almost by definition, the subsequent evolution will generically exhibit a (brief) period of fast-roll inflation, before entering a slow-roll phase (which is an attractor solution). BVS verified this generic behavior for a wide range of chaotic and new inflation potentials.
+Almost by definition, the subsequent evolution will generically exhibit a (brief) period of fast-roll inflation, before entering a slow-roll phase (which is an attractor solution).~\cite{boyanoovsky_cmb_2006} verified this generic behavior for a wide range of chaotic and new inflation potentials.
 
-To address these issues further, we consider in more detail the main inflationary model used by BVS to illustrate their generic findings.  The model is spatially flat, and uses a ``new inflation'' potential:
+To address these issues further, we consider in more detail the main inflationary model used by~\cite{boyanoovsky_cmb_2006} to illustrate their generic findings.  The model is spatially flat, and uses a ``new inflation'' potential:
 %
 \begin{equation}
   V(\phi) =V_0{\left(1-\mu\phi^2\right)}^2.
@@ -1574,7 +1576,7 @@ Consider the eternal de Sitter solution \(\HedS(\phi)\), plotted as the right-ha
   \sqrt{\frac{3\Hh^2}{2\m^2} - 
   \frac{V(\phi)}{2\m^4}}-\sqrt{\frac{3\HedS^2}{2\m^2} - 
   \frac{V(\phi)}{2\m^4}}\:d\phi \nonumber \\
-  &>\Hh(\phi_1)-\HedS(\phi_1)>0 \nonumber
+  &>\Hh(\phi_1)-\HedS(\phi_1)>0.
 \end{align}
 %
 We thus find \({\d{\Hh}}/{\d{\phi}}\ne0\) at \(\phi=\phiz\), and thus does not represent an eternal de Sitter phase. A similar argument holds for solutions \(\Hl(\phi)\) which start out less than \(\HedS\), only these must collide with the dark region. Upon this collision, \(\dot{\phi}\) changes sign, causing the diagram to reflect about the \(\phi=0\) axis.
@@ -1674,11 +1676,11 @@ These solutions are therefore somewhat pathological, though for the cases where 
 
 We have shown that, if quantum gravitational effects are ignored, the coupled evolution equations for the inflaton field \(\phi(t)\) and the Hubble parameter \(H(t)\) in generic homogeneous and isotropic single-field inflation models imply that a universe beginning with a steadily moving inflaton (\(|\dot{\phi}| > \vellim > 0\) as \(a\to 0\), for some positive constant \(\vellim\)) generically emerges from an initial singularity in a noninflating, kinetically dominated state (\(\dot{\phi}^2 \gg V(\phi)\)).  In this kinetic-dominated regime, one obtains simple analytical solutions for \(\phi(t)\) and \(H(t)\), which are independent of the form of the inflaton potential \(V(\phi)\) and of the presence of auxiliary fluids such as matter, radiation, dark energy or spatial curvature. These solutions provide a simple means of setting the initial conditions for such inflation models, from which numerical integration of the evolution equations may proceed.
 
-For illustration, we applied this ``kinetic'' procedure for setting initial conditions to a spatially flat polynomial and exponential inflation models.  By making an appropriate choice of the time \(\ti\) at which the initial conditions are set, and the single free parameter \(\phip\) in the analytic kinetic-dominated solution, all models produce an amount of inflation compatible with observations.  The background evolution in each case displays a generic behavior.  Following a noninflating period of kinetic dominance, \(H(t)\), \(\phi(t)\) and their time derivatives continue to decrease until one obtains approximate equipartition \(\dot{\phi}^2 \sim V(\phi)\) between the kinetic and potential energies of the inflaton. This marks the onset of a (typically brief) period of fast-roll inflation, which turns into a slow-roll [\(\dot{\phi}^2 \ll V(\phi)\)] or power-law inflation phase.  At the end of the slow-roll phase, the inflation quickly moves towards a minimum of the potential, about which it executes a decaying oscillation.
+For illustration, we applied this ``kinetic'' procedure for setting initial conditions to spatially flat polynomial and exponential inflation models.  By making an appropriate choice of the time \(\ti\) at which the initial conditions are set, and the single free parameter \(\phip\) in the analytic kinetic-dominated solution, all models produce an amount of inflation compatible with observations.  The background evolution in each case displays a generic behavior.  Following a noninflating period of kinetic dominance, \(H(t)\), \(\phi(t)\) and their time derivatives continue to decrease until one obtains approximate equipartition \(\dot{\phi}^2 \sim V(\phi)\) between the kinetic and potential energies of the inflaton. This marks the onset of a (typically brief) period of fast-roll inflation, which turns into a slow-roll [\(\dot{\phi}^2 \ll V(\phi)\)] or power-law inflation phase.  At the end of the slow-roll phase, the inflation quickly moves towards a minimum of the potential, about which it executes a decaying oscillation.
 
 We calculated the approximate spectrum of scalar perturbations for the polynomial and exponential models and find, in both cases, that it contains less power at low- and high-\(k\) values than would be expected from a power-law behaviour. The low-\(k\) effect is a generic consequence of the kinetic initial conditions, for any consistent inflaton potential or spatial curvature, resulting in particular from the brief period of fast-roll inflation that they imply.  The damping of power on large scales may provide an explanation for the low-\(\ell\) falloff in the matter and CMB power spectra seen in recent cosmological observations.
 
-We also compared our kinetic initial conditions with an alternative proposal by~\cite{boyanovsky_cmb_2006} that inflationary initial conditions should be set by assuming approximate equipartition between the kinetic and potential energy of the inflaton.  In the context of kinetic initial conditions, approximate equipartition is not a fundamental physical principle, but merely an inevitable consequence.  Moreover, by considering a particular model used by BVS, we demonstrate that assigning equipartition initial conditions with an arbitrary initial value for the inflaton field can lead to inconsistency with kinetic initial conditions.
+We also compared our kinetic initial conditions with an alternative proposal by~\cite{boyanovsky_cmb_2006} that inflationary initial conditions should be set by assuming approximate equipartition between the kinetic and potential energy of the inflaton.  In the context of kinetic initial conditions, approximate equipartition is not a fundamental physical principle, but merely an inevitable consequence.  Moreover, by considering a particular model used by~\cite{boyanoovsky_cmb_2006}, we demonstrate that assigning equipartition initial conditions with an arbitrary initial value for the inflaton field can lead to inconsistency with kinetic initial conditions.
 
 Finally we enumerated the universes which do not have a steadily moving inflaton, and have shown that these are special cases, distinct from the generic kinetically dominated case.
 
