@@ -104,7 +104,7 @@ With this distribution, we can work out what the overall probability of obtainin
   \Probc{\data}{\model_1} 
   &= \int \Probc{\data}{p,\model_1}\Probc{p}{\model_1}\: \d{p}, \\
   &= \int_0^1 {^{N}C_\data}\: {p}^{\data} {\left(1 - p \right)}^{N-\data}\: \d{p}, \\
-  &= \frac{1}{n+1} = 4.8\times10^{-2}.
+  &= \frac{1}{N+1} = 4.8\times10^{-2}.
   \label{eqn:bay:marg}
 \end{align}
 This is quite telling, because our initial choice~\eqref{eqn:bay:prior1} for \(\Probc{p}{\model_1}\) indicates that we expect all data sets with equal probability (independent of \(\data\)). This is therefore a ``minimally suspicious'' choice in spread.
@@ -231,7 +231,7 @@ For example, models often predict a distribution for a common derived parameter 
 \begin{equation}
   \Probc{y}{\data} 
   = \sum_i\Probc{y}{\data,\model_i}\Probc{\model_i}{\data}
-  = \sum_i\Probc{y}{\data,\model_i}\Wmodel_i.
+  = \sum_i\Probc{y}{\data,\model_i}\Wmodel_i,
 \end{equation}
 where the \(\Wmodel_i\) are defined in equation~\eqref{eqn:bay:model_weights}, and depend on the evidence of each model.
 This fully Bayesian approach has been historically under-utilised due to the difficulties in numerically computing the evidence.
@@ -265,7 +265,7 @@ To see this issue, consider the quadrature integration of a function \(g\) along
 \end{equation}
 where \({x_i\in[0,1]}\) are the quadrature points \({w_i\in\mathbb{R}}\) are the quadrature weights. For example, if \(x_i = \frac{i}{n}\) and \(w_i=\frac{1}{n+1}\) then one obtains the left rectangle rule (Figure~\ref{fig:bay:quadrature}). This calculation therefore requires \(\bigO{n}\) calculations of the function. In the \(D\)-dimensional case the generalisation is:
 \begin{equation}
-  \int_0^1\cdots\int_0^1 g(x_1,\ldots,x_D) \d{x_1}\cdots \: \d{x_D} \approx \sum\limits_{i_1,\ldots,i_D=0}^{n} g(x_{i_1},\ldots,x_{i_D}) w_{i_1,\ldots,i_D},
+  \int_0^1\cdots\int_0^1 g(x_1,\ldots,x_D) \d{x_1}\cdots \: \d{x_D} \approx \sum\limits_{i_1,\ldots,i_D=0}^{n} g(x_{i_1},\ldots,x_{i_D}) w_{i_1,\ldots,i_D}.
   \label{eqn:bay:quadrature_nd}
 \end{equation}
 This calculation however requires \(\bigO{n^D}\) function evaluations. This is an exponential scaling with \(D\), and is an example of the {\em curse of dimensionality}. Even for modest number of parameters \(\left[ D\bigO{6} \right]\) these kind of integrations require unfeasible amounts of computational time. Worse still, for most likelihoods, the region about which \(\lik\) is significantly non-zero is much smaller than the prior range\footnote{This should be expected, since the good data will update the prior information by some significant amount in each dimension.}. The number of grid points in each dimension \(n\) must therefore be taken as reasonably large in order to ensure that enough function evaluations occur at the peak.
@@ -379,7 +379,7 @@ where each \(t_j\) is an independent random variable drawn uniformly from \([0,1
   \log X_i  &\approx -i \pm \sqrt{i},
   \label{eqn:bay:log_normal_1_1}
   \\
-  P(X_i) &= \frac{1}{\sqrt{2\pi i} X}\exp\left[ -\frac{{\left( \log X_i - i \right)}^2}{2 i}  \right],
+  P(X_i) &= \frac{1}{\sqrt{2\pi i} X}\exp\left[ -\frac{{\left( \log X_i - i \right)}^2}{2 i}  \right].
   \label{eqn:bay:log_normal_1_2}
 \end{align}
 This follows by taking logarithms of~\eqref{eqn:bay:X_i} and applying the central limit theorem. This is particularly impressive, since one finds that the samples compress the prior space {\em exponentially}. In general, the logarithmic compression from the prior to the posterior \(H\) tends to be linear in dimensionality \(d\), so single point nested sampling scales linearly with dimensionality.

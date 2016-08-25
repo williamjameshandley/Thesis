@@ -9,31 +9,32 @@ In the one-dimensional case, this amounts to converting a uniform random variabl
 \end{equation}
 computes the inverse of the CDF, and then applies this function to a uniform random variable  \(x\sim U(0,1)\) to generate a variable \(\theta = F^{-1}(x)\), which is distributed according to \(f(\theta)\). 
 
-In the general \(D\)-dimensional case, one calculates \(D\) conditional distributions \(\{f_i:i=1\ldots,D\}\): by marginalising over parameters with indices greater than \(i\) and conditioning on parameters with indices less than \(i\):
+In the general \(D\)-dimensional case \(f=f(\theta)=f(\theta_1,\ldots,\theta_D)\) one calculates \(D\) conditional distributions \(\{f_i:i=1,\ldots,D\}\), by marginalising over parameters with indices greater than \(i\) and conditioning on parameters with indices less than \(i\):
 %
 \begin{equation}
   f_i(\theta_i|\theta_{i-1},\ldots,\theta_1) 
   =
   \frac{%
-    \int f_i(\params) d\theta_{i+1}\ldots \d{\theta_{N}}
+    \int f_i(\theta) d\theta_{i+1}\ldots \d{\theta_{D}}
   }{%
-    \int f_i(\params) d\theta_{i}\ldots \d{\theta_{N}}
+    \int f_i(\theta) d\theta_{i}\ldots \d{\theta_{D}}
   },
 \end{equation}
 %
 Integrating these yields \(D\) conditional CDFs:
 %
 \begin{equation}
-  x_i = F_i(\theta_i|\theta_{i-1},\ldots,\theta_1) = \int\limits_0^{\theta_i} f_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) \d{\theta_i^\prime}.
+  x_i = F_i(\theta_i|\theta_{i-1},\ldots,\theta_1) = \int\limits_{-\infty}^{\theta_i} f_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) \d{\theta_i^\prime}.
 \end{equation}
 %
-Inverting this gives \(\theta_i = F^{-1}_i(x_i|\theta_{i-1},\ldots,\theta_1)\), which constitutes a set of relations sequentially transforming \(D\) uniform random variables \(\{x_i\}\) into \(\{\theta_i\}\) distributed according to \(f(\params)\).
+Inverting this gives \(\theta_i = F^{-1}_i(x_i|\theta_{i-1},\ldots,\theta_1)\), which constitutes a set of relations sequentially transforming \(D\) uniform random variables \(\{x_i\}\) into \(\{\theta_i\}\) distributed according to \(f(\theta)\).
 
-In many cases, the prior \(\prior(\params)\) is separable, and the above equations are easily calculated. For sections of the parameters which are not separable, the calculation can become more involved. We include a few demonstrations of this procedure in Section~\ref{sec:pc:prior_transformations}. In the language of nested sampling the \(D\) uniform random variables \(x_i\) are termed elements of the ``unit hypercube'' and \(\theta_i\) are elements of the ``physical space''.
 
 \subsection{Prior transformations}
 \label{sec:pc:prior_transformations}
-Here we give examples of the procedure for calculating the transformation from the unit hypercube to the physical space. We demonstrate it for a separable case, and a more complicated dependent case
+Here we give some concrete examples of inverse transform sampling. In the language of nested sampling, the \(D\) uniform random variables \(x_i\) are termed elements of the ``unit hypercube'', \(\theta_i\) are elements of the ``physical space'', and the function $f$ is the prior \(\prior\) on the physical parameters \(\theta\).
+
+In many cases, the prior \(\prior(\theta)\) is separable, and the above equations are easily calculated. For sections of the parameters which are not separable, the calculation can become more involved.  We demonstrate it for a separable case, and a more complicated dependent case
 
 To recap, we aim to compute the inverse of the functions \(F_i\): 
 \begin{equation}
@@ -47,13 +48,13 @@ where:
   \pi_i(\theta_i|\theta_{i-1},\ldots,\theta_0) 
   =
   \frac{%
-    \int \pi_i(\params) d\theta_{i+1}\ldots d\theta_{N}
+    \int \pi_i(\theta) d\theta_{i+1}\ldots d\theta_{N}
   }{%
-    \int \pi_i(\params) d\theta_{i}\ldots d\theta_{N}
+    \int \pi_i(\theta) d\theta_{i}\ldots d\theta_{N}
   }.
   \label{eqn:pc:apppii}
 \end{equation}
-\(\bFF\) maps from \(\params\) in the physical space onto the unit hypercube injectively. 
+\(\bFF\) maps from \(\theta\) in the physical space onto the unit hypercube injectively. 
 
 
 
@@ -111,7 +112,7 @@ Defining a Gaussian prior with mean \(\mu\) and standard deviation \(\sigma\):
   \pi(\theta) = \frac{1}{\sqrt{2\pi}\sigma}\exp{\left[-\frac{{(x-\mu)}^2}{2\sigma^2}\right]},
   \label{eqn:pc:gaussian_prior}
 \end{equation}
-We find that the procedure above yields:
+we find that the procedure above yields:
 \begin{equation}
   \theta = \mu + \sqrt{2}\sigma\text{erfinv}(2x-1),
   \label{eqn:pc:gaussian_trans}                           
@@ -180,7 +181,7 @@ A sequence of \(T\) points is termed a {\em chain\/} \(\chain_T\):
 \end{equation}
 A new point \(x^{(t+1)}\) is generated from a proposal density \(\proposal\) which depends on the current state \(x^{(t)}\). Typically \(\proposal(x|x^{(t)})\) might be a Gaussian distribution centered on the current value of \(x^{(t)}\):
 \begin{equation}
-  \log \proposal(x|x^{(t)}) = \text{const} -\frac{{\left[ x-x^{(t)} \right]}^2}{2\varepsilon^2},
+  \log \proposal(x|x^{(t)}) = \text{const.} -\frac{{\left[ x-x^{(t)} \right]}^2}{2\varepsilon^2},
 \end{equation}
 but in general the proposal density can be any fixed density from which we may draw samples easily.
 
@@ -202,11 +203,14 @@ This has the distinct advantage that it does not require one to take into accoun
   \frac{\posterior(x)}{\posterior(x^{(t)})} \equiv
   \frac{\lik(x)\prior(x)}{\lik(x^{(t)})\prior(x^{(t)})}.
 \end{equation}
-It is important to note that the chain \(C_T\) will comprise \(T\) samples which are {\em correlated}. If the proposal distribution amounts to a random walk with step size \(\varepsilon<\sigma_{\min{}}\), and the longest lengthscale in the probably region is \(\sigma_{\max{}}\)  then one will expect: \(\tau \sim {(L/\varepsilon)}^2\). If \(\varepsilon>\sigma_{\min{}}\), then one starts to expect a very low acceptance rate, so typically for a isotropic random walk, the timescale on which one expects to generate independent samples is:
+It is important to note that the chain \(C_T\) will comprise \(T\) samples which are {\em correlated}. Consider Figure~\ref{fig:sm:MH} once more, where the shortest and longest lengthscales of the probability region are \(\sigma_{\min{}}\) and \(\sigma_{\max{}}\) respectively. If the proposal distribution amounts to a random walk with step size of order the shortest lengthscale \(\varepsilon\sim\sigma_{\min{}}\), then the diffusive Brownian nature of a random walk leads one to expect the timescale to fully traverse the region will be:
 \begin{equation}
-  \tau \sim \left( \frac{\sigma_{\max{}}}{\sigma_{\min{}}} \right).
+    \tau \sim {\left( \frac{\sigma_{\max{}}}{\sigma_{\min{}}} \right)}^2.
+    \label{eqn:sm:MH_timescale}
 \end{equation}
-In theory, given that the above relation has no dimensionality attached to it, Metropolis Hastings can be extremely successful in high dimensions. However, there are several issues.
+It is this timescale which determines the degree of correlation between samples within a chain \(C_T\).
+
+In theory, given that the relation~\eqref{eqn:sm:MH_timescale} has no dimensionality attached to it, Metropolis Hastings can be extremely successful in high dimensions. However, there are several issues.
 
 First, one does not initially a-priori have a good starting point. There is therefore a period of ``burn-in'' attached to MH methods. Knowing when this period is truely over, and one is starting to generate random samples can be challenging in the general case.
 
@@ -263,12 +267,12 @@ is the Boltzmann probability of finding a system with inverse temperature \(\bet
 
 Inspired by thermodynamics, one can see that:
 \begin{equation}
-  \frac{\d{}}{\d{\beta}}\log\ev_\beta = \frac{\int  \lik^\beta \prior \log\lik\d{\Theta}}{\int\lik\prior \d{\Theta}} = \int \posterior_\beta \log\lik\d{\Theta} =  \mean{\log\lik}_\beta.
+  \frac{\d{}}{\d{\beta}}\log\ev_\beta = \frac{\int  \lik^\beta \prior \log\lik\d{\Theta}}{\int\lik^\beta\prior \d{\Theta}} = \int \posterior_\beta \log\lik\d{\Theta} =  \mean{\log\lik}_\beta.
   \label{eqn:bay:thermo}
 \end{equation}
 Hence, integrating the above equation yields:
 \begin{equation}
-  \log\ev_1-\log\ev_0 = \log\ev = \int_{0}^{1}\mean{\log\lik}_\beta.
+  \log\ev_1-\log\ev_0 = \log\ev = \int_{0}^{1}\mean{\log\lik}_\beta\d{\beta}.
   \label{eqn:sm:thermo}
 \end{equation}
 The key point is that we may compute the mean \(\mean{\log\lik}_\beta\) from a set of samples from the posterior \(\posterior_\beta\). If we therefore generate a set of samples for a range of temperatures \(\beta\), the one-dimensional integral above may be computed easily. Thermodynamic calculation of the evidence therefore is equivalent to running multiple MCMC runs at several temperatures.
