@@ -140,7 +140,7 @@ This is illustrated further in Figure~\ref{fig:pc:Nd_slice}.
 
 Working in the sampling space our choice of \(\Prob{\nhatx}\) is inspired by the default choice of \CosmoMC{} \citep{LewisFastSlow}. Here, a randomly oriented orthonormal basis is chosen, and these directions are chosen in a random order. Once a basis is exhausted, a new basis is chosen. This approach satisfies detailed balance, and mixes rapidly.
 
-The choice of \(\nrepeats\) is slightly harder to justify. We find that for distributions with roughly convex contours \(\nrepeats\bigO{\ndims}\) is sufficient, with the constant of proportionality being \(2\)---\(6\). For more complicated contour shapes, one may require much larger values of \(\nrepeats\). 
+The choice of \(\nrepeats\) is slightly harder to justify. We find that for distributions with roughly convex contours \(\nrepeats\bigO{\ndims}\) is sufficient, with the constant of proportionality being \(2\)--\(6\). For more complicated contour shapes, one may require much larger values of \(\nrepeats\). 
 
 This procedure has the advantage of being dynamically adaptive, and requires no tuning parameters. However, this ``whitening'' process is ineffective for pronounced curving degeneracies. This will be discussed in detail in Section~\ref{sec:pc:gaussian_shells}.
 
@@ -195,7 +195,7 @@ A point generated from an iso-likelihood contour \(\lik_i\) is usable as a new l
   \label{eqn:pc:parallel}
 \end{equation}
 and is illustrated in Figure~\ref{fig:pc:parallel}. 
-As a rule, \PolyChord{} parallelises well for \(\nprocs<\nlive\), but from exhibits a law of diminishing returns. In practice, \(\nprocs = \nlive/5\) yields \(\sim90\%\) parallelisation efficiency, and
+As a rule, \PolyChord{} parallelises well for \(\nprocs<\nlive\), but from then on exhibits a law of diminishing returns. In practice, \(\nprocs = \nlive/5\) yields \(\sim90\%\) parallelisation efficiency, and
 since the number of live points is typically \(\sim500\), this is more than sufficient for currently available \openMPI{} architectures, and certainly superior to the parallelisation of the standard Metropolis-Hastings algorithm.
 %
 \begin{figure}[tp]
@@ -314,7 +314,7 @@ This is a stereotypically hard problem to solve, as many algorithms get stuck in
 
 
 
-We ran \PolyChord{} on a two-dimensional Rastrigin log-likelihood  with \(\nlive=1000\) and \(\nrepeats=6\). With these settings, \PolyChord{} calculates accurate evidence and posterior samples (Figure~\ref{fig:pc:rastrigin}), and in addition correctly isolates and computes local evidences for the inner \(21\) modes. Additional outer modes are also found, but these are combinations of lower modes due to their very low posterior fraction. Increasing the resolution parameter \(\nlive\) further increases the number of modes identified.  Examples of clustered posterior samples are indicated in Figure~\ref{fig:pc:rastrigin_data}, coloured using cubehelix \citep{cubehelix}.
+We ran \PolyChord{} on a two-dimensional Rastrigin log-likelihood  with \(\nlive=1000\) and \(\nrepeats=6\). With these settings, \PolyChord{} calculates accurate evidence and posterior samples (Figures~\ref{fig:pc:rastrigin}~\&~\ref{fig:pc:rastrigin_data}), and in addition correctly isolates and computes local evidences for the inner \(21\) modes. Additional outer modes are also found, but these are combinations of lower modes due to their very low posterior fraction. Increasing the resolution parameter \(\nlive\) further increases the number of modes identified.  Examples of clustered posterior samples are indicated in Figure~\ref{fig:pc:rastrigin}, coloured using cubehelix \citep{cubehelix}.
 
 
 \subsection{Rosenbrock function}
@@ -393,7 +393,7 @@ We choose \(r=2\), \(w=0.1\), and \(\mu_1\) and \(\mu_2\) are separated by \(7\)
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/polychord/figures/cosmochord}
-  \caption{\CosmoChord{} (red) vs.\ \CosmoMC{} (black). We use the 2013 {\texttt CAMSPEC}+{\texttt commander} likelihoods with a standard six-parameter \(\Lambda\)CDM cosmology, varying all 14 nuisance parameters.  We compare the \(1\) and \(2\)-dimensional marginalised posteriors of the \(6\) \(\Lambda\)CDM parameters. \CosmoChord{} is in close agreement with the posteriors produced by \CosmoMC{}, recovering the correct mean values of and degeneracies between the parameters. The slight deviations between the red and black curves are sampling noise.}\label{fig:pc:cosmochord}
+  \caption{\CosmoChord{} (red) vs.\ \CosmoMC{} (black). We use the 2013 \texttt{CAMSPEC}+\texttt{commander} likelihoods with a standard six-parameter \(\Lambda\)CDM cosmology, varying all 14 nuisance parameters.  We compare the \(1\) and \(2\)-dimensional marginalised posteriors of the \(6\) \(\Lambda\)CDM parameters. \CosmoChord{} is in close agreement with the posteriors produced by \CosmoMC{}, recovering the correct mean values of and degeneracies between the parameters. The slight deviations between the red and black curves are sampling noise.}\label{fig:pc:cosmochord}
 \end{figure}
 
 An additional strength of \PolyChord{} lies in its ability to exploit a fast-slow hierarchy common in many cosmological applications. 
