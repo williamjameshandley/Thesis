@@ -325,7 +325,7 @@ under which the master equation takes the form:
 \subsection{Interpreting the master equation}
 \label{sec:interpreting_the_master_equation}
 
-We now prove kinetic dominance by considering the asymptotics of the master equation~\eqref{eqn:master_eq} in the limit \(a\rightarrow0\). We prove that there is at most a single solution \(f(\psi)\) which is finite, with all of the rest diverging as \(a\rightarrow0\). We finish by showing that a diverging solution \(y(\psi)\) of the master equation is equivalent to kinetic dominance.
+We now prove kinetic dominance by considering the asymptotics of the master equation~\eqref{eqn:master_eq} in the limit \(a\rightarrow0\). We prove that we may assume wlog that \(|\psi|\to\infty\) as \(a\to 0\). Given this, we prove that there is at most a single solution \(f(\psi)\) which is finite, with all of the rest diverging as \(a\rightarrow0\). We finish by showing that a diverging solution \(y(\psi)\) of the master equation is equivalent to kinetic dominance.
 
 We begin by examining the behaviour of \(\psi\) as \(a\rightarrow0\). Through elementary derivative transformations with the chain rule and the definitions of various variables, we find:
 %
@@ -364,8 +364,8 @@ The direction of the monotonicity of \(\psi\) can be found by considering the tr
   \psi.
 \end{equation}
 %
-By considering the equations denoted above, one can see that \(\frac{\d{\tau}}{\d{t}}>0\), \(\frac{\d{\psi}}{\d{\phi}}>0\), and \(\frac{\d{\phi}}{\d{\tau}} = -\sqrt{2}\sinh u\). Thus as \(a\) and \(t\) decrease, one finds that if \(u>0\), then \(y>0\) by~\eqref{eqn:y_def} and thus \(\psi\) is monotonically {\em increasing}.\footnote{This explains the choice of sign in the parametrization~\protect\eqref{eqn:phitrans}.}
-As we are considering universes where \(\dot{\phi}\ne 0\), this places the constraint that:
+By considering the equations denoted above, one can see that \(\frac{\d{\tau}}{\d{t}}>0\), \(\frac{\d{\psi}}{\d{\phi}}>0\), and \(\frac{\d{\phi}}{\d{\tau}} = -\sqrt{2}\sinh u\). Thus as \(a\) and \(t\) decrease, one finds that if \(u>0\), then \(\psi\) is monotonically {\em increasing}.\footnote{This explains the choice of sign in the parametrization~\protect\eqref{eqn:phitrans}.}
+As we are considering universes where \(\dot{\phi}\ne 0\), and wlog \(V(\phi)>0\), this places the constraint that:
 %
 \begin{equation}
   u 
@@ -377,49 +377,30 @@ As we are considering universes where \(\dot{\phi}\ne 0\), this places the const
   0,
 \end{equation}
 %
-and by~\eqref{eqn:y_def}, we find that \(y\ne0\) also.  The problem therefore breaks down into two cases: 
-%
-\begin{enumerate}
-  \item \(y>0\) and \(\psi\) increasing
-  \item \(y<0\) and \(\psi\) decreasing.
-\end{enumerate}
-%
-We will consider the first case; the second may be treated in exactly the same way, with a couple of sign changes.  
+The problem therefore breaks down into two possibilities: \(u>0\) and \(\psi\) increasing, or \(u<0\) and \(\psi\) decreasing.
+We will consider the first possibility; the second may be treated in exactly the same way, with a couple of sign changes.  
 
-
-
-Now, if the gradient of \(\psi\) with respect to \(\log a\) is strictly positive, then \(\psi\) diverges as \(a\to0\):
+If \(\psi\) is monotonically increasing, then as \(a\to0\), either \(\psi\to\psi_{\max{}}\) or it diverges \(\psi\to\infty\). In the first of these possibilities, it follows that:
 \begin{equation}
-  \left| \frac{\d\psi}{\d\log a}\right|  > \varepsilon_\psi > 0 \qquad \Rightarrow \qquad |\psi| \to  \infty \quad\text{as}\quad a \to 0.
-  \label{eqn:diverging_psi}
+    \psi \to \psi_{\max{}}\quad \text{as}\quad a\to 0 \qquad \Rightarrow \qquad \frac{\d\psi}{\d\log a} \to 0.
 \end{equation}
-From equations~\eqref{eqn:div_psi} and~\eqref{eqn:Friedmann_tau}, we can see the antecedent above may be equivalently stated as: 
+Now, since:
 \begin{equation}
-  \frac{\dot\phi}{\sqrt{V}} > \varepsilon_\phi > 0 \qquad \Rightarrow \qquad |\psi| \to  \infty \quad\text{as}\quad a \to 0.
-  \label{eqn:diverging_phi}
+    \frac{\d\psi}{\d\log a} \propto \frac{\prm{\phi}}{\Nflatp} \propto \frac{\dot{\phi}}{\sqrt{\frac{1}{2}\dot{\phi}^2 + V(\phi)}},
 \end{equation}
-Moreover, if \(\psi\) does not diverge, then since \({|\dot\phi|>\xi>0}\), then \(V\) must diverge. So we have two cases:
-\begin{enumerate}
-  \item \(\psi \to \psi_\smax\) and \(V\to\infty\)\label{itm:psimax}
-  \item \(\psi \to \infty\)\label{itm:psidiv}
-\end{enumerate}
-We now show that in case~\ref{itm:psidiv} there is at most one {\em finite\/} solution \(y\) satisfying the master equation~\eqref{eqn:master_eq} while remaining positive (\(y>0\)), and that in case~\ref{itm:psimax}, there is no solution which remains positive.
-
-\subsubsection{Case~\protect\ref{itm:psimax}}
-We first show that if \(\psi\) does not diverge, but instead tends to some maximum value \(\psi_\smax\), then solutions to the master equation~\eqref{eqn:master_eq} cannot remain positive. Integrating the master equation~\eqref{eqn:master_eq} from some start point up to \(\psi_\smax\):
+the assumption of a steadily moving inflaton~\eqref{eqn:conditions} (i.e. \(|\dot\phi| > \xi > 0\) as \(a\to0\)) means that if  the left hand side of the above tends to zero, then \(V(\phi)\) must diverge. We now show that this set of statements contradict our initial assumptions.
+Integrating the master equation~\eqref{eqn:master_eq} from some start point up to \(\psi_\smax\) yields:
 \begin{equation}
   y(\psi) = \int^{\psi_\smax} \sqrt{1-e^{-2y}} \d{\psi} - \log\sqrt{V} + c.
 \end{equation}
-Considering the right hand side, Given that the integrand is bounded, and that the integral is over a finite range, the first term remains finite. However, we know that in this case \(V\) and hence \(\log\sqrt V\) must diverge, hence the solution \(y\) must become negative as \(\psi\to\psi_\smax\). This behaviour is further examined in Section~\ref{sec:pathological_oscillations}. We may thus discount case~\protect\ref{itm:psimax}, since it is counter to our initial assumption~\eqref{eqn:conditions} of a steadily moving inflaton.
+Given that the integrand on the right hand side is bounded, and that the integral is over a finite range, the first term remains finite. However, we know that when \(\psi\to\psi_{\max{}}\), the potential \(V\) and hence \(\log\sqrt V\) must diverge. Thus, the solution \(y\) in the above equation must become negative as \(\psi\to\psi_\smax\), which contradicts the definition of \(y\) from~\eqref{eqn:y_def}.
+Thus,  since \(\psi\not\to\psi_\smax\), we may assume that  \(\psi\to\infty\) as \(a\to0\).
 
-
-\subsubsection{Case~\protect\ref{itm:psidiv}}
-We now show that there is at most one {\em finite\/} solution \(y\) satisfying the master equation~\eqref{eqn:master_eq} while remaining positive (\(y>0\)).
-
+We now show that as \(\psi\to\infty\) there is at most one {\em finite\/} solution \(y\) satisfying the master equation~\eqref{eqn:master_eq} while remaining non-zero.
 Let us assume that there exists a solution \(f(\psi)\) of~\eqref{eqn:master_eq} that is positive and finite (\(0<f<\fm\) for some finite \(\fm\)):
 %
 \begin{equation}
-  \difrac{f}{\psi} = \sqrt{1-e^{-2f}} -\frac{\d{}}{\d{\psi}}\log \sqrt V.
+  \difrac{f}{\psi} = \sqrt{1-e^{-2f}} -\frac{\d{}}{\d{\psi}}\log \sqrt V,
   \label{eqn:master_eq_f}
 \end{equation}
 %
@@ -458,7 +439,7 @@ Taking the difference of~\eqref{eqn:master_eq_f} and~\eqref{eqn:master_eq_h} giv
   \label{eqn:master_eq_diff}
 \end{equation}
 %
-By a uniqueness theorem, discussed in Section~\ref{sec:uniqueness_theorem}, if \(h(\psiz)>f(\psiz)\), then \(h(\psi_1)>f(\psi_1)\) (for \(\psi_1\ne\psi_0\)). Therefore one can see from~\eqref{eqn:master_eq_diff} that the difference between \(h\) and \(f\) is monotonically increasing in any finite interval \([\psiz,\psi_1]\).  One can thus conclude that:
+By a uniqueness theorem, discussed in Appendix~\ref{sec:uniqueness_theorem}, if \(h(\psiz)>f(\psiz)\), then \(h(\psi_1)>f(\psi_1)\) (for \(\psi_1\ne\psi_0\)). Therefore one can see from~\eqref{eqn:master_eq_diff} that the difference between \(h\) and \(f\) is monotonically increasing in any finite interval \([\psiz,\psi_1]\).  One can thus conclude that:
 %
 \begin{equation}
   h-f>\hz-\fz=\Delta_0>0.
@@ -1423,7 +1404,14 @@ The shape of the primordial power spectra obtained corresponds to that found in~
 Further inspection shows \(\mathcal{P}_\mathcal{R} \sim \log k\) after the low-\(k\) cutoff. This is identical to the result found by~\cite{lasenby_closed_2003} and in contrast with the standard power-spectrum parametrization which assumes a near-flat power-law scaling: \(\log\mathcal{P}_\mathcal{R}\sim \log k\). 
 
  
-It should be observed that we are using the approximation~\eqref{eqn:curvature_power_spectrum} outside the slow-roll regime for which it is valid; nonetheless we have performed full calculations that do not use the above approximation and which indicate that the resulting power spectrum is, in fact, a good representation of the true spectrum. These approximate spectra demonstrate the key generic aspects of the accurate calculation: both exhibit a low-\(k\) cut off and that \(\mathcal{P}_\mathcal{R}(k) \sim \log(k)\).  We shall follow this work with a second publication containing the full details and discussion of the accurate calculation. An alternative but related accurate calculation has been performed by~\cite{Lello_tensor_2013}, which uses kinetic initial conditions to show that the suppression at low-\(\ell\) is entirely generic. It should also be noted that methods which reconstruct the primordial power spectrum \(\mathcal{P}_\mathcal{R}(k)\) \citep{vazquez_reconstruction,Hazra_reconstruction_2013} using data also show a dip at low \(k\) values, updated results for which are reported in Chapter~\ref{chp:rec}.
+It should be observed that we are using the approximation~\eqref{eqn:curvature_power_spectrum} outside the slow-roll regime for which it is valid; nonetheless we have performed full calculations that do not use the above approximation and which indicate that the resulting power spectrum is, in fact, a good representation of the true spectrum. These approximate spectra demonstrate the key generic aspects of the accurate calculation: both exhibit a low-\(k\) cut off and that \(\mathcal{P}_\mathcal{R}(k) \sim \log(k)\).  We shall follow this work with a second publication containing the full details and discussion of the accurate calculation, but a representative example is shown in Figure~\ref{fig:new_CSpol}. It should be noted that such accurate calculations depend strongly on how one chooses initial conditions in the kinetically dominated phase for the comoving curvature perturbation. This is discussed further in Chapter~\ref{chp:qv}. An alternative but related accurate calculation has been performed by~\cite{Lello_tensor_2013}, which uses kinetic initial conditions to show that the suppression at low-\(\ell\) is entirely generic. It should also be noted that methods which reconstruct the primordial power spectrum \(\mathcal{P}_\mathcal{R}(k)\) \citep{vazquez_reconstruction,Hazra_reconstruction_2013} using data also show a dip at low \(k\) values, updated results for which are reported in Chapter~\ref{chp:rec}.
+
+%
+\begin{figure}[tp]
+  \centerline{\includegraphics[width=\textwidth]{chapters/kinetic_dominance/figures/new_CSpol}}
+  \caption{As in Figure~\protect\ref{fig:figure_CSpol}, but now comparing of the approximate and exact calculations of the primordial power spectrum for an \(n=2\) polynomial potential. The key features of a low \(k\) suppression remains, with an additional ringing effect. The details of this ringing effect depend strongly on how one chooses initial conditions for the comoving curvature perturbation in the kinetically dominated phase. For this calculation, we chose ``na\"{\i}ve'' Bunch Davies initial conditions. For further detail, see Chapter~\protect\ref{chp:qv}.}\label{fig:new_CSpol}
+\end{figure}
+%
 
 
 %

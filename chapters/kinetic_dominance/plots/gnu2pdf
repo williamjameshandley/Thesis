@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# strip the extension from the filename (if it exists)
+base_name=`echo $1 | sed 's/\(.*\)\..*/\1/'`
+
+# make a temporary gnuplot file
+cp $base_name".gnu" $base_name"_temp.gnu"
+
+# strip out any terminal settings
+sed -i 's/set terminal.*$//' $base_name"_temp.gnu"
+# also any output settings
+sed -i 's/set output*$//' $base_name"_temp.gnu"
+
+# put in epslatex terminal
+sed -i "1iset output \"$base_name""_tmp.tex\"" $base_name"_temp.gnu"
+sed -i "1iset terminal epslatex"  $base_name"_temp.gnu" 
+
+# make the gnuplot
+gnuplot $base_name"_temp.gnu"
+
+# create the tex file
+tex_name=$base_name"_temp.tex"
+dvi_name=$base_name"_temp.dvi"
+
+echo "\\documentclass{standalone}
+\\usepackage{amsmath}
+\\usepackage{bm}
+\\usepackage{graphicx}
+\\begin{document}
+\\input{"$base_name"_tmp.tex}
+\\end{document}" > $tex_name
+
+# run latex
+latex $tex_name
+dvipdf $dvi_name
+
+# move temporary pdf to actual pdf
+mv $base_name"_temp.pdf" $base_name".pdf"
+
+# remove temporary files
+#rm $base_name"_tmp"* $base_name"_temp"*
+
+
+
+
+
+
+
