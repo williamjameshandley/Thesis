@@ -93,7 +93,7 @@ Substituting this into~\eqref{eqn:lode_T} and setting each coefficient of \(T\) 
   S_2(t) &=  i \int^t \frac{1}{4}\frac{\ddot{\omega}(\tau)}{\omega^{2}(\tau)} - \frac{3}{8}\frac{\dot{\omega}^2(\tau)}{\omega^{3}(\tau)}\: \d{\tau}, \\
   S_3(t) &=  \frac{1}{8}\frac{\ddot{\omega}(t)}{\omega^{3}(t)} - \frac{3}{16} \frac{\dot{\omega}^{2}(t)}{\omega^{4}(t)}.
 \end{align}
-Note that at \(0\)\textsuperscript{th} order, the solution is \(x\propto\exp\left( \int \omega \d{t} \right)\), which should be compared with the traditional sinusoidal solution.
+Note that at \(0\)\textsuperscript{th} order, the solution is \(x\propto\exp\left(\pm i \int \omega \d{t} \right)\), which should be compared with the traditional sinusoidal solution.
 Typically \(T\) is considered a power counting parameter, and set equal to \(1\) at the end of the analysis.
 
 There are two integration constants associated with the either sign of equation~\eqref{eqn:S0}. The other integration constants from the remaining equations may be absorbed into the first two. The \(n\)\textsuperscript{th} order solution thus takes the form:
@@ -101,7 +101,7 @@ There are two integration constants associated with the either sign of equation~
   x_\mathrm{WKB}^{(n)}[A_{\pm}](t) &=
   A_{+} e^{\phi_+(t)} + A_{-} e^{\phi_-(t)},
   \label{eqn:solution} \\
-  \phi_\pm(t) &= \pm S_0(t) + S_i(t).
+  \phi_\pm(t) &= \pm S_0(t) + \sum_{i=1}^{n} S_i(t).
   \label{eqn:phidef} 
 \end{align}
 If one has initial conditions at time \(t_0\):
@@ -150,7 +150,7 @@ Given a function \(\omega(t)\), one proposes a step in time of \(h\) to be accom
   \label{eqn:WKB_xdot_step} \\
   t_j &= t_j+h,
   \label{eqn:WKB_t_step} \\
-  \ddot{x}_{j+1} &= -\omega^2(t_{j+1})x_{j+1}
+  \ddot{x}_{j+1} &= -\omega^2(t_{j+1})x_{j+1},
   \label{eqn:WKB_xddot} 
 \end{align}
 where \(x_\mathrm{WKB}^{(n)}[A_{\pm}]\) and \(\dot{x}_\mathrm{WKB}^{(n)}[B_{\pm}]\) are given by~\eqref{eqn:solution} and~\eqref{eqn:solution_xdot},  and \(A_{\pm}\) and \(B_{\pm}\)  are given by~\eqref{eqn:i_c_Apm} and~\eqref{eqn:i_c_Bpm}.
@@ -181,7 +181,7 @@ This allows the step size to increase in the regions where the initial step size
 \subsection{Dynamic switching}
 In general, one cannot expect the WKB expansion to be efficient throughout the solution region. If \(\omega\) is too small, or too quickly varying, then the step size \(h\) will decrease to an inefficiently small size. This problem can be countered by simultaneously attempting a step using a standard adaptive RK method. One chooses between RK and WKB by selecting the method with the smallest error. This provides a natural switching mechanism, without having to delve into the details of whether WKB is valid or not.
 
-We choose the Runge-Kutta-Fehlberg \(4(5)\) method for our alternative solver, which is detailed in Section~\ref{sec:rkf}. However, this may be substituted with any ODE solver according to the users preference.
+We choose the Runge-Kutta-Fehlberg \(4(5)\) method for our alternative solver, which is detailed in Section~\ref{sec:rkf}. However, this may be substituted with any ODE solver according to the user's preference.
 
 \section{Example: The Airy equation}
 
