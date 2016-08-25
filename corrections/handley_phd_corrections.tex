@@ -575,11 +575,26 @@ observation and methods''}}}
 \begin{enumerate}
 \item Page 118, Eqs. (8.6) and (8.7). Explain that these only hold for
   a log-normally distributed $\mathcal{Z}$.
+  \begin{itemize}
+      \item appended the sentence: ``where the above relations are true for any log-normally distributed variable \(\mathcal{Z}\).''
+  \end{itemize}
 \item Page 119, Section 8.2. Improve the interfacing with Chapter 9 so
   that ``clusters'' do not appear out of the blue at this point.
+  \begin{itemize}
+      \item Added two paragraphs and a footnote:
+      \item Within the context of nested sampling there are many examples where the live points naturally partition into distinct {\em clusters}. The most obvious example is when the posterior has multiple spatial modes\footnote{The ability that the live points have to distinguish posterior modes is indeed one of the strengths of nested sampling, and is one of the primary reasons for the successful adoption of the \MultiNest{} algorithm~ng (Feroz and Hobson, 2008, Feroz et al., 2009, 2013) by the scientific community.}. Other examples include clustering live points into sub-models of a multi-model sampler or clustering into groups that allow for easier posterior exploration.
+
+          In all of these cases, it is useful to keep track of the evidence and volume of each of these clusters. This is helpful both for the purposes of posterior analysis, and for maintaining the stability and accuracy of evidence calculation. In this section, we build the analytics that allow one to do compute these quantities. The analysis follows that of Section~8.1.
+  \end{itemize}
 \item Page 120, before Eq. (8.26).  \ldots (8.20) \textbf{one} finds:.
+    \begin{itemize}
+        \item Done
+    \end{itemize}
 \item Page 121, Eq. (8.47). Spurious equation number. Also, need
   full-stop at end of last equation in this grouping.
+  \begin{itemize}
+      \item Corrected
+  \end{itemize}
 \end{enumerate}
 
 \paragraph{Chapter 9}

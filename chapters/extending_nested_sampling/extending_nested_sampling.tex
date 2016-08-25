@@ -40,8 +40,9 @@ where the \(t\) and \(X_{i-1}\) are independent.
 It is worth noting that the procedure described below will generate the mean and variance of the distribution, but in fact this is not quite what we want. The evidence is in practice approximately log-normally distributed. Thus, it is better to report the mean and variance of \(\log\ev\), defined by:
 \begin{align}
   \text{mean}(\log\ev) &= 2\log\overline{\ev} - \frac{1}{2}\log\overline{\ev^2},\\
-  \text{var}(\log\ev) &= \log\overline{\ev^2}-2\log\overline{\ev}.
+  \text{var}(\log\ev) &= \log\overline{\ev^2}-2\log\overline{\ev},
 \end{align}
+where the above relations are true for any log-normally distributed variable \(\ev\).
 
 
 \subsection{Computing the mean evidence}
@@ -108,7 +109,9 @@ These should be initialised at \(\{0,0,0,1,1\}\) respectively, and updated using
 
 \section{Evidence estimates and errors in clusters}
 \label{sec:ens:evidences_clusters}
-This analysis follows that of Section~\ref{sec:ens:evidences}.
+Within the context of nested sampling there are many examples where the live points naturally partition into distinct {\em clusters}. The most obvious example is when the posterior has multiple spatial modes\footnote{The ability that the live points have to distinguish posterior modes is indeed one of the strengths of nested sampling, and is one of the primary reasons for the successful adoption of the \MultiNest{} algorithm~\protect\citep{MultiNest1,MultiNest2,MultiNest3} by the scientific community.}. Other examples include clustering live points into sub-models of a multi-model sampler or clustering into groups that allow for easier posterior exploration.
+
+In all of these cases, it is useful to keep track of the evidence and volume of each of these clusters. This is helpful both for the purposes of posterior analysis, and for maintaining the stability and accuracy of evidence calculation. In this section, we build the analytics that allow one to do compute these quantities. The analysis follows that of Section~\ref{sec:ens:evidences}.
 
 Throughout the algorithm, there will in general be \(m\) identified clusters. In doing so, we wish to keep track of the volume of each cluster \(\{X_1,\ldots,X_m\}\), the global evidence and its error \(\ev,\ev^2\) and the local evidences and their errors \(\{\ev_1,\ev_1^2\ldots,\ev_m,\ev_m^2\}\). At each iteration, the point with the lowest likelihood \(\lik\) will be killed from cluster \(p\), \({(1\le p\le m)}\). 
 
@@ -149,7 +152,7 @@ We must also keep track of the local and global evidence errors. Taking the squa
   \ev_p^2 &\to \ev_p^2 + 2 (1-t) \ev_p X_p \lik +  {(1-t)}^2 X_p^2 \lik^2.
 \end{align}
 %
-We can see that we are going to need to keep track of \(\{\overline{\ev X_p}, \overline{\ev_p X_p}, \overline{X_p^2}\}\) in addition to \(\{ \overline{\ev^2}, \overline{\ev_p^2} \}\). Taking various multiplications of equations~\eqref{eqn:ens:rr_ev},~\eqref{eqn:ens:rr_evi} \&~\eqref{eqn:ens:rr_Xi} finds:
+We can see that we are going to need to keep track of \(\{\overline{\ev X_p}, \overline{\ev_p X_p}, \overline{X_p^2}\}\) in addition to \(\{ \overline{\ev^2}, \overline{\ev_p^2} \}\). Taking various multiplications of equations~\eqref{eqn:ens:rr_ev},~\eqref{eqn:ens:rr_evi} \&~\eqref{eqn:ens:rr_Xi} one finds:
 %
 \begin{align}
   \ev X_p   &\to t \ev X_p + (1-t)t X_p^2 \lik, \\
@@ -208,9 +211,8 @@ We also need to initialise the local evidences and their errors. A consistent ap
 \begin{align}
   \overline{Z_i}&=  \frac{n_i}{n} \overline Z_p \\
   \overline{Z_i X_i}&= \frac{n_i(n_i+1)}{n(n+1)} \overline{Z_p X_p} \\
-  \overline{Z_i^2}  &= \frac{n_i(n_i+1)}{n(n+1)} \overline{Z_p^2} \\
+  \overline{Z_i^2}  &= \frac{n_i(n_i+1)}{n(n+1)} \overline{Z_p^2}.
 \end{align}
-
 Thus, at cluster splitting, all of the new local evidences, volumes and cross correlations are initialised according to the above.
 
 This completes the mechanism for keeping track of the local and global evidences, their errors, and the local cluster volumes.
