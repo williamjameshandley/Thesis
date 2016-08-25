@@ -18,7 +18,7 @@ Indeed, if one takes care to minimise the correct quantity (using the theory of 
 
 After the relevant background material is reviewed, we develop a generic mechanism for setting initial conditions. These reduce to the Bunch-Davies case in asymptotically static spacetimes (such as de Sitter space), but yield different results otherwise. The aim is that these should be more theoretically robust. Additionally, these conditions are potentially distinguishable using observational data.
 
-We then apply this procedure to the kinetically dominated universe, but delay the observational analysis to a later work.
+We then apply this procedure to the kinetically dominated universe, but defer the observational analysis to a later work.
 
 
 
@@ -41,10 +41,10 @@ Consider \citep{Baumann+2009} a canonical scalar field \(\phi\) minimally couple
 \begin{equation}
   \mathcal{L}_G = \frac{1}{2}R, 
   \qquad
-  \mathcal{L}_\phi = \frac{1}{2}g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi - V(\phi),
+  \mathcal{L}_\phi = \frac{1}{2}g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi - V(\phi).
   \label{eqn:action}
 \end{equation}
-Extremising this action with respect to the fields \(\phi\) and \(g_{\mu\nu}\) recovers the Klein-Gordan and Einstein equations respectively:
+Extremising this action with respect to the fields \(\phi\) and \(g_{\mu\nu}\) recovers the Klein-Gordon and Einstein equations respectively:
 \begin{align}
   \left( g^{\mu\nu}\nabla_\mu\nabla_\nu + \frac{\d{V}}{\d{\phi}} \right) \phi &= 0,
   \label{eqn:klein_gordon}\\
@@ -65,16 +65,13 @@ In cosmology, we assume that at zeroth order both the metric \(g_{\mu\nu}\) and 
 \end{align}
 where the Hubble parameter \(H = \dot{a}/a\).
 \subsection{Inflationary perturbations}
-One then considers perturbations about these background solutions 
+One then considers scalar perturbations about these background solutions:
 \begin{align}
   \phi=&\phi(t) + \delta\phi(t,x),
   \label{eqn:phi_perturbation} \\
-  \d{s}^2 =& (1+2\Phi)dt^2 + 2a\left( \partial_i B-S_i \right)\d{x_i} \d{t} \nonumber\\
-  &+a^2(1-2\Psi)\delta_{ij} \d{x_i} \d{x_j} \nonumber\\
-  &+\left( 2\partial_i\partial_j E + 2\partial_{(i\phantom)}F_{\phantom(j)} + h_{ij} \right) \d{x_i}\d{x_j},
+  \d{s}^2 =& (1+2\Phi)dt^2 - 2a\partial_i B\d{x_i} \d{t} \nonumber\\
+  &-a^2\left( (1-2\Psi)\delta_{ij} + 2\partial_i\partial_j E  \right)\d{x_i} \d{x_j}.
 \end{align}
-where without loss of generality, the vector fields \(S_i,F_i\) are divergenceless, and the tensor field \(h_{ij}\) is symmetric, divergenceless and traceless.
-
 We are interested in the gauge-invariant co-moving curvature perturbation:
 \begin{equation}
   \mathcal{R}\equiv \Psi - \frac{H}{\dot{\phi}}\delta\phi,
@@ -82,7 +79,7 @@ We are interested in the gauge-invariant co-moving curvature perturbation:
 \end{equation}
 since it is this quantity which defines the primordial power spectrum for seeding cosmological perturbations. Working in the co-moving gauge \(\delta\phi=0\), and expanding the action \(S\) to second order in \(\mathcal{R}\), gives:
 \begin{equation}
-  S_{(2)} =  \int \d[4]{x} a^3\frac{\dot{\phi}^2}{H^2}{\left[ \dot{\mathcal{R}}^2 - a^{-2} {\left( \partial_i\mathcal{R} \right)}^2 \right]}.
+  S^{(2)} =  \int \d[4]{x} a^3\frac{\dot{\phi}^2}{H^2}{\left[ \dot{\mathcal{R}}^2 - a^{-2} {\left( \partial_i\mathcal{R} \right)}^2 \right]}.
   \label{eqn:S2_action}
 \end{equation}
 Note that the dependence on \(V(\phi)\) is implicit in the variables \(H,\dot{\phi},a\) and \(\mathcal{R}\).
@@ -93,7 +90,7 @@ Defining the Mukhanov variable,
 \end{equation}
 and transforming \(t\) into conformal time \(\eta = \int^t \d{\tau}/a(\tau) \) yields:
 \begin{equation}                                 
-  S_{(2)} =  \int \d{\eta} \d[3]{x} {\left[ {\left( \prm{v} \right)}^2 - {\left( \partial_i v \right)}^2 + \frac{\dprm{z}}{z} v^2 \right]}.
+  S^{(2)} =  \int \d{\eta} \d[3]{x} {\left[ {\left( \prm{v} \right)}^2 - {\left( \partial_i v \right)}^2 + \frac{\dprm{z}}{z} v^2 \right]}.
   \label{eqn:v_action}
 \end{equation}
 This is the canonically normalised action for a scalar field with time-dependent ``effective'' mass \(\meffs = -\dprm{z}/z\).
@@ -105,7 +102,7 @@ We now consider the traditional quantisation of the action~\eqref{eqn:v_action} 
   v = \int \frac{\d[3]{k}}{{(2\pi)}^3} \left[ a_\vk \chi_\vk(\eta)e^{i\vk\cdot\vx} + a_{\vk}^{\dagger} \str{\chi_\vk}(\eta)e^{-i\vk\cdot\vx} \right], 
   \label{eqn:v_quant}
 \end{equation}
-which expresses the operator \(v\) as a superposition of creation and annihilation operators \(\{a_\vk,a_\vk^\dagger\}\) \citep{Mukhanov+2007}, with the mode functions written in separated form \({u_\vk = \chi_\vk(\eta) e^{i\vk\cdot\vx}}\). If one requires that the scalar field satisfies the equations of motion, and that canonical commutator relation:
+which expresses the operator \(v\) as a superposition of creation and annihilation operators \(\{a_\vk,a_\vk^\dagger\}\) \citep{Mukhanov+2007}, with the mode functions written in separated form \({u_\vk = \chi_\vk(\eta) e^{i\vk\cdot\vx}}\). If one requires that the scalar field satisfies the equations of motion, along with the canonical commutator relation:
 \begin{equation}
   [ a_\vk^{\phantom\dagger}, a_{\prm{\vk}}^{\dagger} ] = {(2\pi)}^3\delta^{(3)}(\vk-\prm{\vk}),
   \label{eqn:commutator}
@@ -149,7 +146,7 @@ or (ii) that the vacuum minimises the expected energy:
 \end{equation}
 As can be shown with standard linear algebra, these two conditions are equivalent, and result in the requirement that:
 \begin{equation}
-  |\chi_\vk|^2 = \frac{1}{2\omega_k}, \qquad \prm{\chi_\vk} = -i \omega_k \chi_\vk.
+  |\chi_\vk|^2 = \frac{1}{2\omega_k}, \qquad \prm{\chi_\vk} = -i \omega_k \chi_\vk,
   \label{eqn:hd_condition}
 \end{equation}
 which provides enough information to set unambiguous initial conditions for the mode equation~\eqref{eqn:mode_mukhanov}.
@@ -210,7 +207,7 @@ one finds that the mode functions \(\chi_\vk\) must satisfy:
 \begin{align}
   \dprm{\chi}_\vk + \left[ k^2 + a^2 m^2 - \frac{\dprm{a}}{a}  \right] \chi_\vk &= 0,
   \label{eqn:chi_equation}\\
-  \prm{\chi_\vk} \str{\chi_\vk} - \prm{\str{\chi_\vk}} \chi_\vk &= -i
+  \prm{\chi_\vk} \str{\chi_\vk} - \prm{\str{\chi_\vk}} \chi_\vk &= -i.
   \label{eqn:normalisation_1}
 \end{align}
 
@@ -248,8 +245,9 @@ To form the stress-energy tensor from the Green function, one operates with a bi
   \label{eqn:point_splitting}
   \\
   \mathcal{D}_{\mu\nu}(x,\prm{x})=& \frac{1}{2}\left( \nabla_{\mu}\nabla_{\prm{\nu}} + \nabla_{\prm{\mu}}\nabla_{\nu} \right) -\frac{1}{2} g_{\mu\nu} \nabla_\alpha \nabla^{\prm{\alpha}} \nonumber\\
-  &+ g_{\mu\nu} \frac{1}{2}m^2.  \nonumber
+  &+ g_{\mu\nu} \frac{1}{2}m^2,  \nonumber
 \end{align}
+where, as we are taking the coincidence limit, the metric \(g_{\mu\nu}\) may be evaluated at either \(x\) or \(\prm{x}\).
 The Hadamard Green function~\eqref{eqn:green_function} using the mode expansion~\eqref{eqn:mode_expansion} becomes:
 \begin{align}
   G^{(1)}(x,\prm{x}) = 
@@ -270,9 +268,9 @@ Inserting this expression into~\eqref{eqn:point_splitting} will yield an express
 \end{equation}
 and aim to minimise this with respect to the functions. Since \(G^{(1)}_{\mathrm{DS}}\) does not depend on these variables, this term can be ignored for the purposes of extremisation. Further, the functional derivatives such as \(\frac{\delta}{\delta \chi_\vk}\) commute with the limit expression, so in fact minimising the renormalised tensor with respect to the mode functions is equivalent to na\"{\i}vely minimising the traditional stress-energy tensor~\eqref{eqn:SET}. Inserting the mode function~\eqref{eqn:mode_expansion} into~\eqref{eqn:point_splitting} and taking the coincidence limit, one finds:
 \begin{align}
-  \bracket{0}{T_{00}(x)}{0}_\mathrm{ren} = &\frac{1}{2}\int \frac{\d[3]{k}}{{(2\pi)}^3 a^2} (\prm{\chi_\vk}-\frac{\prm{a}}{a}\chi_\vk)(\prm{\str{\chi_\vk}}-\frac{\prm{a}}{a}\str{\chi_\vk})
+  \bracket{0}{T_{00}(x)}{0}_\mathrm{ren} = &\frac{1}{2}\int \frac{\d[3]{k}}{{(2\pi)}^3 a^2} \Big[ (\prm{\chi_\vk}-\frac{\prm{a}}{a}\chi_\vk)(\prm{\str{\chi_\vk}}-\frac{\prm{a}}{a}\str{\chi_\vk})
   \nonumber \\
-  &+\left( k^2 + m^2a^2 \right)\chi_\vk {\chi_\vk}^\ast + \tilde{T},
+  &+\left( k^2 + m^2a^2 \right)\chi_\vk {\chi_\vk}^\ast + \tilde{T} \Big],
 \end{align}
 where \(\tilde{T}\) signifies the plethora of additional terms arising from the renormalisation process that have no dependence on the variables \(\mathcal{X}\).
 Minimising this with respect to \(\mathcal{X}\) subject to the constraint~\eqref{eqn:normalisation_1} yields the relations:
@@ -285,7 +283,7 @@ Minimising this with respect to \(\mathcal{X}\) subject to the constraint~\eqref
 
 
 \subsection{Application to the Mukhanov variable.}
-Recalling Section~\ref{sec:bridge}, to apply this formalism to the Mukhanov variable, one should take set \(m=0\) and replace \(a\) with \(z\):
+Recalling Section~\ref{sec:bridge}, to apply this formalism to the Mukhanov variable, one should set \(m=0\) and replace \(a\) with \(z\):
 \begin{equation}        
   |\chi_\vk|^2 = \frac{1}{2k},\qquad
   \prm{\chi_\vk} = \left( -i k + \frac{\prm{z}}{z} \right) \chi_\vk.
@@ -311,7 +309,7 @@ It is also important to realise that this vacuum does not claim to be interpreta
   \caption{The modulus of the \(A_k\) and \(B_k\) coefficients in a kinetically dominated universe for the Hamiltonian diagonalising vacuum~(HD) and the vacuum from the renormalised stress tensor~(RST). Under these conditions, the universe will be in a vacuum state at conformal time \(\eta_0\). Note that at large \(k\), the mode functions tend to \(A_k=0\), \(B_k=1\).}\label{fig:Ak}
 \end{figure}
 We now consider these observations in the context of the kinetically dominated universe. 
-It was recently observed \citep{Handley+2014} that the classical solutions to the evolution equations~\eqref{eqn:klein_gordon}~\&~\eqref{eqn:Raychaudhuri} emerge almost always from a kinetically dominated phase with \(\dot{\phi}^2\gg V(\phi)\). 
+As is detailed in Chapter~\ref{chp:kd} \citep[and in][]{Handley+2014}, the classical solutions to the evolution equations~\eqref{eqn:klein_gordon}~\&~\eqref{eqn:Raychaudhuri} emerge almost always from a kinetically dominated phase with \(\dot{\phi}^2\gg V(\phi)\). 
 In this regime, there is a significant period of cosmic time in which the theory of Section~\ref{sec:QFTCST} is valid. 
 In this semi-classical pre-inflationary context, one finds that \(\dot{\phi}\propto H\) and hence \({z\propto a}\). 
 In the same manner as a de Sitter universe, quantising the co-moving curvature perturbation is equivalent to quantising a massless scalar field on the same background spacetime. 
