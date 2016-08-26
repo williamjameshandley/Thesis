@@ -361,7 +361,7 @@ Different inflationary models predict alternative values of \(A_s\) and \(n_s\),
   approximate result to that from integrating the mode equations directly.
   \begin{itemize}
       \item Adjusted the paragraph:
-      \item It should be observed that we are using the approximation~\eqref{eqn:curvature_power_spectrum} outside the slow-roll regime for which it is valid; nonetheless we have performed full calculations that do not use the above approximation and which indicate that the resulting power spectrum is, in fact, a good representation of the true spectrum. These approximate spectra demonstrate the key generic aspects of the accurate calculation: both exhibit a low-\(k\) cut off and that \(\PR(k) \sim \log(k)\).  We shall follow this work with a second publication containing the full details and discussion of the accurate calculation, but a representative example is shown in Figure~\ref{fig:new_CSpol}. It should be noted that such accurate calculations depend strongly on how one chooses initial conditions in the kinetically dominated phase for the comoving curvature perturbation. This is discussed further in Chapter~\ref{chp:qv}. An alternative but related accurate calculation has been performed by~\cite{Lello_tensor_2013}, which uses kinetic initial conditions to show that the suppression at low-\(\ell\) is entirely generic. It should also be noted that methods which reconstruct the primordial power spectrum \(\PR(k)\) (citations) using data also show a dip at low \(k\) values, updated results for which are reported in Chapter~6.
+      \item It should be observed that we are using the approximation~\eqref{eqn:curvature_power_spectrum} outside the slow-roll regime for which it is valid; nonetheless we have performed full calculations that do not use the above approximation and which indicate that the resulting power spectrum is, in fact, a good representation of the true spectrum. These approximate spectra demonstrate the key generic aspects of the accurate calculation: both exhibit a low-\(k\) cut off and that \(\mathcal{P}_\mathcal{R}(k) \sim \log(k)\).  We shall follow this work with a second publication containing the full details and discussion of the accurate calculation, but a representative example is shown in Figure~\ref{fig:new_CSpol}. It should be noted that such accurate calculations depend strongly on how one chooses initial conditions in the kinetically dominated phase for the comoving curvature perturbation. This is discussed further in Chapter~\ref{chp:qv}. An alternative but related accurate calculation has been performed by~\cite{Lello_tensor_2013}, which uses kinetic initial conditions to show that the suppression at low-\(\ell\) is entirely generic. It should also be noted that methods which reconstruct the primordial power spectrum \(\mathcal{P}_\mathcal{R}(k)\) (citations) using data also show a dip at low \(k\) values, updated results for which are reported in Chapter~6.
       \item Added Figure 3.12 as requested
   \end{itemize}
 \item Page 55, Fig. 3.10. State in the caption the \emph{total} number
@@ -433,10 +433,12 @@ Different inflationary models predict alternative values of \(A_s\) and \(n_s\),
   \begin{itemize}
     \item Done. Introduced new constants $C$ and $D$ to absorb additional complexity, and had to split the equation onto two lines.
   \end{itemize}
-\todo{
 \item Page 71, penultimate paragraph. Reword this to make the argument
   more precise.
-}
+  \begin{itemize}
+      \item Removed statements about comoving size, as this is more my intuition, rather than anything I've proved. Possible work for a future Part III Project. Paragraph now reads:
+      \item Thus, if some portion of the universe at an early stage has \(\dot{\phi}^2 \gg V(\phi)\), and is approximately homogeneous, then evolving forwards in time its homogeneity will tend to increase. Kinetic dominance thus causes patches of the universe to homogenise. This somewhat strengthens the assumption of homogeneity used in the proof of Chapter~\ref{chp:kd}.
+  \end{itemize}
 \end{enumerate}
 
 \paragraph{Chapter 5}
@@ -524,7 +526,7 @@ Different inflationary models predict alternative values of \(A_s\) and \(n_s\),
   the limit so no need to distinguish argument of metric.
   \begin{itemize}
       \item Added a clause after the equation:
-        \item ``where, as we are taking the coincidence limit, the metric \(g_{\mu\nu}\) may be evaluated at either \(x\) or \(\prm{x}\).''
+        \item ``where, as we are taking the coincidence limit, the metric \(g_{\mu\nu}\) may be evaluated at either \(x\) or \(x^\prime\).''
   \end{itemize}
 \item Page 88, Eq. (6.34). Add some (square) brackets to clarify what
   is the integrand.
@@ -638,7 +640,7 @@ Different inflationary models predict alternative values of \(A_s\) and \(n_s\),
   that ``clusters'' do not appear out of the blue at this point.
   \begin{itemize}
       \item Added two paragraphs and a footnote:
-      \item Within the context of nested sampling there are many examples where the live points naturally partition into distinct {\em clusters}. The most obvious example is when the posterior has multiple spatial modes\footnote{The ability that the live points have to distinguish posterior modes is indeed one of the strengths of nested sampling, and is one of the primary reasons for the successful adoption of the \MultiNest{} algorithm~ng (Feroz and Hobson, 2008, Feroz et al., 2009, 2013) by the scientific community.}. Other examples include clustering live points into sub-models of a multi-model sampler or clustering into groups that allow for easier posterior exploration.
+      \item Within the context of nested sampling there are many examples where the live points naturally partition into distinct {\em clusters}. The most obvious example is when the posterior has multiple spatial modes\footnote{The ability that the live points have to distinguish posterior modes is indeed one of the strengths of nested sampling, and is one of the primary reasons for the successful adoption of the MultiNest algorithm~ng (Feroz and Hobson, 2008, Feroz et al., 2009, 2013) by the scientific community.}. Other examples include clustering live points into sub-models of a multi-model sampler or clustering into groups that allow for easier posterior exploration.
 
           In all of these cases, it is useful to keep track of the evidence and volume of each of these clusters. This is helpful both for the purposes of posterior analysis, and for maintaining the stability and accuracy of evidence calculation. In this section, we build the analytics that allow one to do compute these quantities. The analysis follows that of Section~8.1.
   \end{itemize}
