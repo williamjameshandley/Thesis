@@ -372,13 +372,13 @@ In order to arrive at~\eqref{eqn:cos:FRW_perturb}, begin by considering a pertur
 
 \subsection{Matter perturbation}
 Perturbations of the matter content will take the form:
-\begin{equation}
+\begin{align}
   \rho \rightarrow \rho + \delta \rho, \qquad 
   P \rightarrow P + \delta P, \qquad
-  u^\mu \rightarrow \left[ 1-\Phi, a^{-2} \delta q^i/(\rho+P)\right].
+  u_\mu \rightarrow \left[ 1+\Phi, \delta q_i/(\rho+P)\right].
   \label{eqn:cos:matter_perturb}
-\end{equation}
-The density and pressure perturbations are self-explanatory. The perturbation to the fluid velocity is first chosen so that \(u^\mu u_\mu=1\) to first order, and \(\delta q^i\) is the perturbation to the momentum density. The advantage of this is that for non-interacting fluids, \(\delta\rho\), \(\delta P\) and \(\delta q^i\) are all additive, as in equation~\eqref{eqn:cos:multi_component}. We have neglected a perturbation to the anisotropic stress. Anisotropic stress may be included if desired (for example in the case of neutrinos) but will add complexity unnecessary for this exposition. 
+\end{align}
+The density and pressure perturbations are self-explanatory. The perturbation to the fluid velocity is first chosen so that \(u^\mu u_\mu=1\) to first order, and \(\delta q_i\) is the perturbation to the momentum density. The advantage of this is that for non-interacting fluids, \(\delta\rho\), \(\delta P\) and \(\delta q_i\) are all additive, as in equation~\eqref{eqn:cos:multi_component}. We have neglected a perturbation to the anisotropic stress. Anisotropic stress may be included if desired (for example in the case of neutrinos) but will add complexity unnecessary for this exposition. 
 
 At some point one must also assume an equation of state for the fluid which provides equations to constrain \(P\) and \(\rho\). One can remain general by splitting the pressure perturbation into adiabatic and entropic parts:
 \begin{equation}
@@ -423,7 +423,7 @@ Second, a general spatial vector field \(v_i\) and a symmetric tensor field \(T_
   v_i \rightsquigarrow& \partial_i v + v_i,   \nonumber\\
   &(\partial^k v_k=0), \\
   T_{ij} \rightsquigarrow& (\partial_i\partial_j - \frac{\delta_{ij}}{3}\partial^k\partial_k)T + \frac{1}{2}(\partial_i T_j + \partial_j T_i) + T_{ij} \nonumber,\\ 
-  &(\partial^k T_{ki} = \partial^k T_k = 0),
+  &(\partial^k T_k = \partial^k T_{ki} = T^k_k = 0),
 \end{align}
 where ``\(\rightsquigarrow\)'' in this context should be read as ``is decomposed as''.
 Thus \(v\) and \(T\) are helicity scalars, \(v_i\) and \(T_i\) are divergenceless 3-vectors and \(T_{ij}\) is a divergenceless, symmetric, traceless 3-tensor\footnote{Note the overloading: \(v\) and \(T\) have different meanings on either side of each relation.}.
@@ -431,7 +431,7 @@ Thus \(v\) and \(T\) are helicity scalars, \(v_i\) and \(T_i\) are divergenceles
 
 We may therefore decompose all the perturbations into Fourier components and scalar, vector and tensor parts, decoupling the modes into three parallel analyses without spatial derivatives.
 
-For simplicity, we shall focus on the scalar part of the analysis, since vectors generically decay under an accelerated expansion, and tensors have extremely simple dynamics.
+For simplicity, we shall focus on the scalar part of the analysis, since vectors generically decay under an accelerated expansion, and tensors have extremely simple dynamics. Finally, one can absorb the Laplacian term of the shear tensor \(\delta_{ij}\partial^k\partial_k E\) into the definition of the curvature perturbation \(\Psi\), and henceforth we assume that \(\nabla^2 E = 0\).
 
 \subsection{Gauge choice}
 Observant readers will have noted that there are too many perturbation variables and not enough constraints.

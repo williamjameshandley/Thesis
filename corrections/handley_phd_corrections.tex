@@ -163,7 +163,6 @@ observation and methods''}}}
   \begin{itemize}
     \item Corrected
   \end{itemize}
-  \todo{
 \item Page 22, Eq. (2.52). The conventions here seem inconsistent with
   your earlier Eq. (2.39), which would give $T^i{}_0 \propto \delta
   q^i$, whereas your Eq. (2.52) assumes $T^0{}_i \propto \delta
@@ -171,7 +170,17 @@ observation and methods''}}}
   to Eq. (2.54). You also need to check whether you are consistently
   assuming that $E_{ij}$ is trace-free, since on expects a Laplacian
   of $E$ in Eq. (2.54) if $E_{ij}$ is indeed trace-free.
-}
+\begin{itemize}
+    \item Fixed inconsistiency by defining the matter perturbations via:
+\begin{align}
+  \rho \rightarrow \rho + \delta \rho, \qquad 
+  P \rightarrow P + \delta P, \qquad
+  u_\mu \rightarrow \left[ 1+\Phi, \delta q_i/(\rho+P)\right].
+  \label{eqn:cos:matter_perturb}
+\end{align}
+    \item Regarding the laplacian term, I have added the statement: ``Finally, one can absorb the Laplacian term of the shear tensor \(\delta_{ij}\partial^k\partial_k E\) into the definition of the curvature perturbation \(\Psi\), and henceforth we assume that \(\nabla^2 E = 0\).'' to the end of section 2.8.3.
+\end{itemize}
+
 \item Page 23, Table 2.4. The comoving orthogonal gauge has $\delta q
   = 0$ and $B=0$, not $E=0$. Is this what you intend here?
   \begin{itemize}
