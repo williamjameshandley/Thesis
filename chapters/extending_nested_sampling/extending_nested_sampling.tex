@@ -32,7 +32,7 @@ Thus \(X_i\) satisfies the recursion relation:
 %
 \begin{align}
   X_i &= t X_{i-1}, \qquad X_0=1, \label{eqn:ens:rr_x} \\
-  P(t) &= \nlive t^{\nlive - 1}, \label{eqn:ens:Pt}
+  \Prob{t} &= \nlive t^{\nlive - 1}, \label{eqn:ens:Pt}
 \end{align}
 %
 where the \(t\) and \(X_{i-1}\) are independent.
@@ -61,7 +61,7 @@ X &\to tX.
 \label{eqn:ens:rr_X}
 \end{align}
 %
-Taking the mean of these relations, we may use the facts that \(t\) and \(X\) are independent random variables and that \(P(t) = n t^{n-1}\), to find the recursion relations:
+Taking the mean of these relations, we may use the facts that \(t\) and \(X\) are independent random variables and that \(\Prob{t} = n t^{n-1}\), to find the recursion relations:
 \begin{align}
   \overline{\ev} &\to \overline{\ev} + \frac{1}{n+1}\overline{X}\lik,
   \label{eqn:ens:rr_Zb}
@@ -130,7 +130,7 @@ We thus need to update the global evidence, the local evidence of cluster \(p\),
   \label{eqn:ens:rr_Xi}
 \end{align}
 %
-Since \(t\) will be distributed with \(P(t) = n_p t^{n_p-1}\),
+Since \(t\) will be distributed with \(\Prob{t} = n_p t^{n_p-1}\),
 taking the mean of these yields:
 %
 \begin{align}
@@ -187,16 +187,16 @@ The starting initialisation of the evidence and volume is reasonable, there will
 At the point of splitting a cluster into sub-clusters, we partition the \(n\) live points into a \(N\) new clusters, with \(\{n_1,\ldots,n_N\}\) live points in each. If the volume of the splitting cluster is \(X_p\) initially, we need to know how to partition this volume into \(\{X_1,\ldots,X_N\}\). If the points are drawn uniformly from the volume, then the \(n_i\) will depend on the volumes via a multinomial probability distribution:
 %
 \begin{equation}
-  P(\{n_i\}|X_p,\{X_i\}) \propto {X_1}^{n_1} \ldots X_N^{n_N}.
+    \Probc{\{n_i\}}{X_p,\{X_i\}} \propto {X_1}^{n_1} \ldots X_N^{n_N}.
 \end{equation}
 %
 We however want to know the probability distributions of the \(\{X_i\}\), given the \(\{n_i\}\). We can invert the above with Bayes' theorem, using an (improper) logarithmic prior on the volumes subject to the constraint that they sum to \(X_p\):
 %
 \begin{equation}
-  P(\{X_i\}|X_p) \propto \frac{\delta(X_1+\cdots+X_N-X_p)}{X_1\cdots X_N}.
+    \Probc{\{X_i\}}{X_p} \propto \frac{\delta(X_1+\cdots+X_N-X_p)}{X_1\cdots X_N}.
 \end{equation}
 %
-Doing this shows the posterior \(P(\{X_i\}|X_p,\{n_i\})\) is a Dirichlet distribution with parameters \(\{n_i\}\). More importantly, we can use this to compute the means and correlations for the volumes \(\{X_i\}\):
+Doing this shows the posterior \(\Probc{\{X_i\}}{X_p,\{n_i\}}\) is a Dirichlet distribution with parameters \(\{n_i\}\). More importantly, we can use this to compute the means and correlations for the volumes \(\{X_i\}\):
 %
 \begin{align}
   \overline{X_i}&=  \frac{n_i}{n} \overline X_p, \\

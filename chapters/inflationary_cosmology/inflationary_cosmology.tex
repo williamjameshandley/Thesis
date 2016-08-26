@@ -581,25 +581,25 @@ The two point correlation function of a general spatial field \(\varphi(\vx)\) i
 \end{equation}
 Taking the Fourier transform of both sides with respect to \(\vx\) and \(\vr\) yields:
 \begin{equation}
-  \mean{\varphi(\vk)\varphi(\vk^{\prime})} = {\left( 2\pi \right)}^3\delta^{(3)}(\vk + \vk^{\prime}) \mathcal{P}_\varphi(\vk),
+  \mean{\varphi(\vk)\varphi(\vk^{\prime})} = {\left( 2\pi \right)}^3\delta^{(3)}(\vk + \vk^{\prime}) \Punnorm_\varphi(\vk),
   \label{eqn:cos:power_spectrum_definition}
 \end{equation}
 where the power spectrum:
 \begin{equation}
-  \mathcal{P}_\varphi(\vk) = \int \d[3]{r}\: \xi_\varphi(\vr)e^{-i\vk\cdot\vr},
+  \Punnorm_{\varphi}(\vk) = \int \d[3]{r}\: \xi_\varphi(\vr)e^{-i\vk\cdot\vr},
 \end{equation}
 is the Fourier transform of the two-point correlation function.
 
-For an isotropic and homogeneous space, the quantities \(\xi_\phi(\vr)\) and \(\mathcal{P}_\varphi(\vk)\) are all a function of spatial distance \({\xi(\vr) = \xi(r)}\) or wavevector magnitude \({\mathcal{P}_\varphi(\vk) = \mathcal{P}_\varphi(k)}\).
+For an isotropic and homogeneous space, the quantities \(\xi_\varphi(\vr)\) and \(\Punnorm_\varphi(\vk)\) are all a function of spatial distance \({\xi(\vr) = \xi(r)}\) or wavevector magnitude \({\Punnorm_\varphi(\vk) = \Punnorm_\varphi(k)}\).
 It is also conventional in this case to define a ``normalised'' power spectrum as:
 \begin{equation}
-  \Delta_\varphi^2(k) = \frac{k^3}{2\pi^2} \mathcal{P}_\varphi(k),
+  \Pnorm_\varphi(k) = \frac{k^3}{2\pi^2} \Punnorm_\varphi(k),
 \end{equation}
 as this has the property that:
 \begin{equation}
-  \int \d{(\log k)} \Delta_\varphi^2(k) = {\left( 2\pi \right)}^3\int\d[3]{k}\: \mathcal{P}_\varphi(k) = \mean{\varphi^2(x)},
+    \int \d{(\log k)} \Pnorm_\varphi(k) = \int\frac{\d[3]{k}}{{\left( 2\pi \right)}^3}\: \Punnorm_\varphi(k) = \mean{\varphi^2(x)},
 \end{equation}
-i.e.\ \(\Delta_\phi^2(k)\) may be thought of as the logarithmic spectral density of the point-wise spatial variance of the field.
+i.e.\ \(\Pnorm_\varphi(k)\) may be thought of as the logarithmic spectral density of the point-wise spatial variance of the field.
 
 
 \subsection{Power spectrum of comoving curvature perturbations}
@@ -613,23 +613,23 @@ Decomposing \(v\) into Fourier modes via equation~\eqref{eqn:cos:mode_func_sum},
 \end{equation}
 which allows us to read off:
 \begin{equation}
-  \mathcal{P}_\mathcal{R}(k) = {\left|\frac{\chi_k}{z}\right|}^2.
+  \Punnorm_\mathcal{R}(k) = {\left|\frac{\chi_k}{z}\right|}^2.
 \end{equation}
 For pure de Sitter space~\eqref{eqn:cos:de_sitter}, as \(\eta\to\eta_\mathrm{end}\),
 \begin{align}
   |\chi_k|^2 &\rightarrow 2k^3 {(\eta_\mathrm{end}-\eta)}^{-2},\nonumber\\
   a& \rightarrow H{(\eta_\mathrm{end}-\eta)}^{-1}, \nonumber\\
-  \Delta_{\mathcal{R},\text{de Sitter}}^2(k) &\rightarrow \frac{H^2}{{(2\pi)}^2}{\left( \frac{H}{\dot{\phi}} \right)}^2.
+  \Pnorm_{\mathcal{R},\text{de Sitter}}(k) &\rightarrow \frac{H^2}{{(2\pi)}^2}{\left( \frac{H}{\dot{\phi}} \right)}^2.
   \label{eqn:cos:de_sitter_power}
 \end{align}
 Given that \(H\) and \(\dot{\phi}\) are constant, a de Sitter inflationary phase predicts a scale-invariant (Harrison-Zel'dovich) power spectrum. Now, true inflationary phases are not pure de Sitter, since \(H\) is not quite constant. We may extend the de Sitter result however by noting that at the time \(t_*\) of horizon crossing  \(k\approx a_*H_*\) the mode functions freeze out. For a given \(k\) mode, the universe is still effectively de Sitter at this point, with \(z=a_*\dot{\phi}_*/H_*\). We may therefore evaluate equation~\eqref{eqn:cos:de_sitter_power} at horizon crossing to yield:
 \begin{equation}
-  \Delta_\mathcal{R}^2(k) = \frac{H_*^2}{{(2\pi)}^2}{\left( \frac{H_*}{\dot{\phi}_*} \right)}^2.
+  \PR(k) = \frac{H_*^2}{{(2\pi)}^2}{\left( \frac{H_*}{\dot{\phi}_*} \right)}^2.
   \label{eqn:cos:inflation_power}
 \end{equation}
 This therefore predicts a slowly varying power spectrum, since different \(k\) modes exit at different times, \(H_*\) and \(\dot{\phi}_*\) are \(k\)-dependent. This is normally parameterised as:
 \begin{equation}
-  \Delta_\mathcal{R}^2(k) = A_s {\left( \frac{k}{k_s} \right)}^{n_s-1},
+  \PR(k) = A_s {\left( \frac{k}{k_s} \right)}^{n_s-1},
   \label{eqn:cos:lcdm_power}
 \end{equation}
 where \(k_s\) is some pre-defined pivot scale.
@@ -669,7 +669,7 @@ This means that on larger angular scales, we have fewer \(a_{\ell m}\)'s to use 
 
 Computing the theoretical predictions of these \(C_\ell\)'s from a given cosmology is complicated, but amounts to an integral:
 \begin{equation}
-  C_\ell^{XY} = \frac{2}{\pi}\int k^2 \d{k} \: \mathcal{P}_\mathcal{R}(k) \Delta_{X\ell}(k)\Delta_{Y\ell}(k),
+    C_\ell^{XY} = \frac{2}{\pi}\int k^2 \d{k} \: \Punnorm_\mathcal{R}(k) \Delta_{X\ell}(k)\Delta_{Y\ell}(k),
 \end{equation}
 where \(\Delta_{X\ell}(k)\) are transfer functions. These transfer functions are computed from line of sight integrals, requiring one to evolve the contents of the universe from the \(k\)-mode's horizon re-entry point through the hot big bang era, past the surface of last scattering at recombination and all the way to the current epoch before projecting the photon field onto the sky we see today. 
  \({X\in\left\{ T,E,B \right\}}\) labels the components of the photon field corresponding to the temperature anisotropy, and the \(E\) and \(B\) polarisation modes respectively.
@@ -684,6 +684,6 @@ Treating this calculation fully is beyond the scope of this thesis, but it suffi
 \end{figure}
 
 \section{Conclusions}
-We have now covered all the necessary background theory. The picture is summarised in Figure~\ref{fig:cos:transfer}. Inflation's fundamental contribution to our model of the universe is that it predicts the primordial power spectrum \(\mathcal{P}_\mathcal{R}(k)\) at some early time. The universe's accelerated expansion then freezes these perturbations out until much later on in cosmic history, when we understand the physics in a lot more detail. We can then use standard physics to evolve these initial conditions set by inflation to make predictions about the sky that we see today.
+We have now covered all the necessary background theory. The picture is summarised in Figure~\ref{fig:cos:transfer}. Inflation's fundamental contribution to our model of the universe is that it predicts the primordial power spectrum \(\Punnorm_\mathcal{R}(k)\) at some early time. The universe's accelerated expansion then freezes these perturbations out until much later on in cosmic history, when we understand the physics in a lot more detail. We can then use standard physics to evolve these initial conditions set by inflation to make predictions about the sky that we see today.
 
 

@@ -379,7 +379,7 @@ where each \(t_j\) is an independent random variable drawn uniformly from \([0,1
   \log X_i  &\approx -i \pm \sqrt{i},
   \label{eqn:bay:log_normal_1_1}
   \\
-  P(X_i) &= \frac{1}{\sqrt{2\pi i} X}\exp\left[ -\frac{{\left( \log X_i - i \right)}^2}{2 i}  \right].
+  \Prob{X_i} &= \frac{1}{\sqrt{2\pi i} X}\exp\left[ -\frac{{\left( \log X_i - i \right)}^2}{2 i}  \right].
   \label{eqn:bay:log_normal_1_2}
 \end{align}
 This follows by taking logarithms of~\eqref{eqn:bay:X_i} and applying the central limit theorem. This is particularly impressive, since one finds that the samples compress the prior space {\em exponentially}. In general, the logarithmic compression from the prior to the posterior \(H\) tends to be linear in dimensionality \(d\), so single point nested sampling scales linearly with dimensionality.
@@ -397,7 +397,7 @@ In general, single point nested sampling will not produce a particularly accurat
 \subsection{Multi-point nested sampling}
 Instead of working with a single sample, one could initially generate a set of \(\nlive\) ``live points'' distributed across the prior. The lowest likelihood point will have likelihood \(\lik_1\) and a volume \(X_1 = t\) where \(t\) is distributed as the largest of \(\nlive\) uniform samples in \([0,1]\). Elementary probability shows that:
 \begin{equation}
-  P(t) = \nlive t^{\nlive-1}.
+  \Prob{t} = \nlive t^{\nlive-1}.
   \label{eqn:bay:t_prob}
 \end{equation}
 If this point is deleted, and replaced with a new point drawn from the contour defined by \(\lik_1\), then one will still have \(\nlive\) points, now uniformly distributed uniformly in \([0,X_1]\). Proceeding onward, one finds that the volume becomes log-normally distributed:

@@ -62,7 +62,7 @@ where:
 \label{sec:pc:separable_priors}
 A separable prior satisfies:
 \begin{equation}
-  \pi(\params) = \prod_i\pi_i(\theta_i).
+  \pi(\theta) = \prod_i\pi_i(\theta_i).
   \label{eqn:pc:separability}
 \end{equation}
 This has the fortunate side effect that the functions \(F_i\) only depend on \(\theta_i\):
@@ -130,7 +130,7 @@ As an example of a prior that is not separable in the parameters, we consider a 
 The required prior is uniform in the hyper-triangle defined by \(\thetamin<\theta_1<\cdots<\theta_n<\thetamax\), and zero everywhere else:
 %
 \begin{equation}
-  \pi(\params) = 
+  \pi(\theta) = 
   \left\{
     \begin{array}{rl}
       \frac{1}{n!{(\thetamax - \thetamin)}^{n}} 
@@ -187,7 +187,7 @@ but in general the proposal density can be any fixed density from which we may d
 
 A new state \(x\) is proposed from the proposal density \(\proposal(x|x^{(t)})\), and it is accepted with probability:
 \begin{equation}
-  p_\mathrm{accept}(x|x^{(t)}) = \frac{\posterior(x)}{\posterior(x^{(t)})}\frac{\proposal(x^{(t)}|x)}{\proposal(x|x^{(t)})}.
+  P_\mathrm{accept}(x|x^{(t)}) = \frac{\posterior(x)}{\posterior(x^{(t)})}\frac{\proposal(x^{(t)}|x)}{\proposal(x|x^{(t)})}.
 \end{equation}
 If the step is accepted, then \(x^{(t+1)}=x\), otherwise \(x^{(t+1)} = x^{(t)}\). This procedure can be seen schematically in Figure~\ref{fig:sm:MH}.
 \begin{figure}[tp]
@@ -229,11 +229,11 @@ Radford Neal initially proposed slice sampling as an effective methodology for g
 
   \caption{Slice sampling in one dimension. 
     Given a probability level (or slice) \(\posterior_0\), slice sampling samples within the horizontal region defined by \(\posterior>\posterior_0\). 
-    From an initial point \(x_0\) within the slice (\(\posterior(x_0)>\posterior_0\)), a new point \(x_1\) is generated within the slice with a distribution \(P(x_1|x_0)\).
+    From an initial point \(x_0\) within the slice (\(\posterior(x_0)>\posterior_0\)), a new point \(x_1\) is generated within the slice with a distribution \(\Probc{x_1}{x_0}\).
     External bounds are first set on the slice \(\hat{L}<x_0<\hat{R}\) by uniformly expanding a random initial bound of width \(w\) until they lie outside the slice (Neal terms this the {\em stepping out\/} procedure). 
     \(x_1\) is then sampled uniformly within these bounds.  
     If \(x_1\) is not in the slice, then \(\hat{L}\) or \(\hat{R}\) is replaced with \(x_1\), ensuring that \(x_0\) is still within the slice.
-    This procedure is guaranteed to generate a new point \(x_1\), and satisfies detailed balance \(P(x_0|x_1) = P(x_1|x_0)\). Thus, if \(x_0\) is drawn from a uniform distribution within the slice, so is \(x_1\).\label{fig:bay:1d_slice}
+    This procedure is guaranteed to generate a new point \(x_1\), and satisfies detailed balance \(\Probc{x_0}{x_1} = \Probc{x_1}{x_0}\). Thus, if \(x_0\) is drawn from a uniform distribution within the slice, so is \(x_1\).\label{fig:bay:1d_slice}
   }
 \end{figure}
 

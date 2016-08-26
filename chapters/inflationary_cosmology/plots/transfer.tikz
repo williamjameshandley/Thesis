@@ -39,7 +39,7 @@
   \draw[] (H2) node[below] {Reheating};
   \draw[] (H1) node[above right] {Comoving horizon \(1/(aH)\)};
 
-  \draw[] (horizonexit) node[below left] {\(\mathcal{P}_\mathcal{R}(k)\)};
+  \draw[] (horizonexit) node[below left] {\(\Punnorm_\mathcal{R}(k)\)};
 
   \draw[] (today) node[below right] {\(C_\ell\)};
   \draw[-latex] (horizonentry) [out=-30, in=-150] to node[below left]{\(\Delta_{X\ell}(k)\)}  (today); 

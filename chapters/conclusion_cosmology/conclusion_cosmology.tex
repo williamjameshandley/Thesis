@@ -2,9 +2,9 @@
 \addcontentsline{toc}{chapter}{Conclusion: Cosmology}
 
 This part began by showing in Chapter~\ref{chp:kd} that almost all classical inflationary solutions begin in a generic kinetically dominated phase. The generality of this statement was discussed in Chapter~\ref{chp:kt}. 
-Whether or not this phase occurs in reality can only be established by observation. If inflation was sufficiently short, then this pre-inflationary epoch may be observable as a suppression in power at low-\(\ell\) in the \(C_\ell\) spectrum, or at low-\(k\) in the \(\mathcal{P}_\mathcal{R}(k)\) spectrum. 
+Whether or not this phase occurs in reality can only be established by observation. If inflation was sufficiently short, then this pre-inflationary epoch may be observable as a suppression in power at low-\(\ell\) in the \(C_\ell\) spectrum, or at low-\(k\) in the \(\PR(k)\) spectrum. 
 
-In Chapter~\ref{chp:rec}, I showed that if one reconstructs the primordial power spectrum \(\mathcal{P}_\mathcal{R}(k)\) from a Bayesian perspective there is some weak evidence for a suppression of power at low-\(k\), as well as an anomaly at \(\ell\sim30\). Whilst this by no means provides evidence for an observable kinetically dominated epoch, it does suggest the possibility that with better data there could be.
+In Chapter~\ref{chp:rec}, I showed that if one reconstructs the primordial power spectrum \(\PR(k)\) from a Bayesian perspective there is some weak evidence for a suppression of power at low-\(k\), as well as an anomaly at \(\ell\sim30\). Whilst this by no means provides evidence for an observable kinetically dominated epoch, it does suggest the possibility that with better data there could be.
 
 In order to gain more theoretical guidance on the precise predictions which the kinetically dominated universe makes about the primordial power spectrum, we have to gain a greater understanding of the quantum mechanics of this epoch. The details of this are non-trivial, since as soon as one migrates away from a de Sitter limit, the theory as to how to set initial conditions becomes far more murky. Chapter~\ref{chp:qv} has enumerated some of these issues, and provided an alternative possibility for quantising a kinetically dominated universe.
 
@@ -26,13 +26,13 @@ If one of these vacua is the ``correct'' one, it still remains to be determined 
 \subsection*{Further constraints on inflation}
 In addition, as a member of Planck core team II, I intend to continue more traditional observational reconstructions of inflationary and cosmological functions.
 
-In general, inflationary analysis begins with the definition of the potential \(V(\phi)\). This then predicts a primordial power spectrum \(\mathcal{P}_\mathcal{R}(k)\) via a numerical integration of the Mukhanov-Sazaki (MS) equations. The primordial power spectrum is then converted via cosmological transfer functions (\(\Delta\)) into a set of multipole moments:
+In general, inflationary analysis begins with the definition of the potential \(V(\phi)\). This then predicts a primordial power spectrum \(\Punnorm_\mathcal{R}(k)\) via a numerical integration of the Mukhanov-Sazaki (MS) equations. The primordial power spectrum is then converted via cosmological transfer functions (\(\Delta\)) into a set of multipole moments:
 
 \tikzsetnextfilename{inflation_procedure}
 \begin{center}
   \begin{tikzpicture}[decoration=snake]
     \draw[] (3,0) node (Cl) {\(C_\ell\)};
-    \draw[] (0,0) node (Pr) {\(\mathcal{P}_\mathcal{R}(k)\)};
+    \draw[] (0,0) node (Pr) {\(\Punnorm_\mathcal{R}(k)\)};
     \draw[] (-3,0) node (Vphi) {\(V(\phi)\)};
     \draw[->,decorate] (Pr) -- (Cl) node[midway,above]{\(\Delta\)};
     \draw[->] (Vphi) -- (Pr) node[midway,above]{MS};
