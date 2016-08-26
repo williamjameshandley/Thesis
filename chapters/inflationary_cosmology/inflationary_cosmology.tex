@@ -489,9 +489,10 @@ Procedurally, one of  the most powerful approaches is to choose the Newtonian ga
 \end{table}
 
 \section{Comoving curvature perturbation}
-\label{cos:sec:comoving_curvature_perturbation}
+\label{sec:cos:comoving_curvature_perturbation}
 
 \subsection{Classical behaviour}
+\label{sec:cos:freeze_out}
 It is convenient to examine the gauge-invariant variable:
 \begin{equation}
   \mathcal{R} = \Psi - \frac{H}{\rho+P}\delta q.
@@ -587,6 +588,7 @@ Taking the Fourier transform of both sides with respect to \(\vx\) and \(\vr\) y
 where the power spectrum:
 \begin{equation}
   \Punnorm_{\varphi}(\vk) = \int \d[3]{r}\: \xi_\varphi(\vr)e^{-i\vk\cdot\vr},
+  \label{eqn:cos:dimensionless_power_spectrum}
 \end{equation}
 is the Fourier transform of the two-point correlation function.
 
@@ -614,20 +616,19 @@ Decomposing \(v\) into Fourier modes via equation~\eqref{eqn:cos:mode_func_sum},
 which allows us to read off:
 \begin{equation}
   \Punnorm_\mathcal{R}(k) = {\left|\frac{\chi_k}{z}\right|}^2.
+  \label{eqn:cos:power_spectrum_evaluation}
 \end{equation}
-For pure de Sitter space~\eqref{eqn:cos:de_sitter}, as \(\eta\to\eta_\mathrm{end}\),
-\begin{align}
-  |\chi_k|^2 &\rightarrow 2k^3 {(\eta_\mathrm{end}-\eta)}^{-2},\nonumber\\
-  a& \rightarrow H{(\eta_\mathrm{end}-\eta)}^{-1}, \nonumber\\
-  \Pnorm_{\mathcal{R},\text{de Sitter}}(k) &\rightarrow \frac{H^2}{{(2\pi)}^2}{\left( \frac{H}{\dot{\phi}} \right)}^2.
-  \label{eqn:cos:de_sitter_power}
-\end{align}
-Given that \(H\) and \(\dot{\phi}\) are constant, a de Sitter inflationary phase predicts a scale-invariant (Harrison-Zel'dovich) power spectrum. Now, true inflationary phases are not pure de Sitter, since \(H\) is not quite constant. We may extend the de Sitter result however by noting that at the time \(t_*\) of horizon crossing  \(k\approx a_*H_*\) the mode functions freeze out. For a given \(k\) mode, the universe is still effectively de Sitter at this point, with \(z=a_*\dot{\phi}_*/H_*\). We may therefore evaluate equation~\eqref{eqn:cos:de_sitter_power} at horizon crossing to yield:
+As show in Section~\ref{sec:cos:freeze_out}, the value of \(\mathcal{R}_k = \chi_k/z\) freezes out at the horizon crossing time \(t_*\) when \(k\approx a_*H_*\). Under the assumption of slow-roll inflation, one can assume that the universe was effectively de Sitter from the moment of setting the Bunch-Davies initial conditions up until horizon crossing. For pure de Sitter space~\eqref{eqn:cos:de_sitter}, as \(\eta\to\eta_\mathrm{end}\),
+\begin{equation}
+  |\chi_k|^2 \rightarrow 2k^3 {(\eta_\mathrm{end}-\eta)}^{-2},\qquad
+  a \rightarrow H_*{(\eta_\mathrm{end}-\eta)}^{-1}.
+\end{equation}
+Evaluating \(z = a \dot{\phi} / H\) at horizon crossing under the above approximation and computing the dimensionless form~\eqref{eqn:cos:dimensionless_power_spectrum} of the power spectrum~\eqref{eqn:cos:power_spectrum_evaluation} yields:
 \begin{equation}
   \PR(k) = \frac{H_*^2}{{(2\pi)}^2}{\left( \frac{H_*}{\dot{\phi}_*} \right)}^2.
   \label{eqn:cos:inflation_power}
 \end{equation}
-This therefore predicts a slowly varying power spectrum, since different \(k\) modes exit at different times, \(H_*\) and \(\dot{\phi}_*\) are \(k\)-dependent. This is normally parameterised as:
+This therefore predicts a slowly varying power spectrum, since different \(k\) modes exit at different times, \(H_*\) and \(\dot{\phi}_*\) are \(k\)-dependent. The power spectrum is normally parameterised as:
 \begin{equation}
   \PR(k) = A_s {\left( \frac{k}{k_s} \right)}^{n_s-1},
   \label{eqn:cos:lcdm_power}

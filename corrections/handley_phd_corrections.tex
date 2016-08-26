@@ -216,10 +216,38 @@ observation and methods''}}}
   \begin{itemize}
     \item Corrected
   \end{itemize}
-  \todo{
 \item Page 25, after Eq. (2.75). In exact de Sitter, $\dot{\phi} = 0$,
   so have to be careful here.
-}
+  \begin{itemize}
+      \item Altered the argument thus:
+      \item \ldots 
+which allows us to read off:
+\begin{equation}
+  P_\mathcal{R}(k) = {\left|\frac{\chi_k}{z}\right|}^2.
+  \label{eqn:cos:power_spectrum_evaluation}
+  \tag{2.74}
+\end{equation}
+As show in Section~2.9.1, for a given \(k\)-mode, the value of \(\mathcal{R}_k = \chi_k/z\) freezes out at the horizon crossing time \(t_*\), when \(k\approx a_*H_*\). Under the assumption of slow-roll inflation, one can assume that the universe was effectively de Sitter from the moment of setting the Bunch-Davies initial conditions up until horizon crossing. For pure de Sitter space~(2.64), as \(\eta\to\eta_\mathrm{end}\),
+\begin{equation}
+  |\chi_k|^2 \rightarrow 2k^3 {(\eta_\mathrm{end}-\eta)}^{-2},\qquad
+  a \rightarrow H_*{(\eta_\mathrm{end}-\eta)}^{-1}.
+  \tag{2.75}
+\end{equation}
+Evaluating \(z = a \dot{\phi} / H\) at horizon crossing under the above approximation and computing the dimensionless form~of the power spectrum~\eqref{eqn:cos:power_spectrum_evaluation} yields:
+\begin{equation}
+    \mathcal{P}_\mathcal{R}(k) = \frac{H_*^2}{{(2\pi)}^2}{\left( \frac{H_*}{\dot{\phi}_*} \right)}^2.
+  \label{eqn:cos:inflation_power}
+  \tag{2.76}
+\end{equation}
+This therefore predicts a slowly varying power spectrum, since different \(k\) modes exit at different times, \(H_*\) and \(\dot{\phi}_*\) are \(k\)-dependent. The power spectrum is normally parameterised as:
+\begin{equation}
+    \mathcal{P}_\mathcal{R}(k) = A_s {\left( \frac{k}{k_s} \right)}^{n_s-1},
+  \label{eqn:cos:lcdm_power}
+  \tag{2.77}
+\end{equation}
+where \(k_s\) is some pre-defined pivot scale.
+Different inflationary models predict alternative values of \(A_s\) and \(n_s\), with \(n_s\) typically less than \(1\), in contrast to the Harrison-Zel'dovich spectrum.
+  \end{itemize}
 \todo{
 \item Page 26, Eq. (2.78). Define $\mathbf{p}$. Also, what is meant by
   ``the temperature field is anisotropic on account of the
@@ -466,10 +494,12 @@ observation and methods''}}}
     \begin{itemize}
         \item Done
     \end{itemize}
-    \todo{%
 \item Page 87, after Eq. (6.30). Tighten up the argument why $z$ is
   approximately proportional to $a$ during inflation.
-  }
+  \begin{itemize}
+      \item changed text to
+      \item Considering the special case of the inflating universe; during inflation \(H\) and \(\dot{\phi}\) are approximately constant, so \(z\propto a\), as in the exact de Sitter case.
+  \end{itemize}
 \item Page 87, Eq. (6.32). Clarify that the bi-tensor is only used in
   the limit so no need to distinguish argument of metric.
   \begin{itemize}
