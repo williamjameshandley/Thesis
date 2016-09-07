@@ -75,9 +75,9 @@ All methods based on this principle struggle to solve equations such as~\eqref{e
 \subsection{WKB theory}
 \label{sec:wkb}
 WKB approaches are designed to solve linear ordinary differential equations like~\eqref{eqn:lode} in the limit of a ``slowly varying'' \(\omega(t)\): i.e.\ the fractional change in frequency \(\frac{\Delta\omega}{\omega}\) over several time periods \(\Delta t \sim \frac{2\pi}{\omega}\) is relatively small.
-A systematic way of phrasing this is to rescale the independent variable of~\eqref{eqn:lode} so \(t\rightarrow T t\):
+A systematic way of phrasing this is to rescale the independent variable of~\eqref{eqn:lode} so \(t\rightarrow t/T\):
 \begin{equation}
-  \ddot{x}(t) + T^2{\omega(t)}^2x(t) = 0,\qquad \omega(t)\in\mathbb{R}.
+  \ddot{x}(t) + T^{-2}{\omega(t)}^2x(t) = 0,\qquad \omega(t)\in\mathbb{R}.
   \label{eqn:lode_T}
 \end{equation}
 If \(T\gg1\) then \(\omega\) is slowly varying, or equivalently the solutions have very rapid oscillations (large \(\omega\)). Given this, one can expand the solutions in terms of complex exponential functions:
@@ -90,9 +90,13 @@ Substituting this into~\eqref{eqn:lode_T} and setting each coefficient of \(T\) 
   S_0(t) &= \pm i \int^t \omega(\tau)\: \d{\tau},
   \label{eqn:S0}\\
   S_1(t) &= -\frac{1}{2}\log \omega(t),\\
-  S_2(t) &=  i \int^t \frac{1}{4}\frac{\ddot{\omega}(\tau)}{\omega^{2}(\tau)} - \frac{3}{8}\frac{\dot{\omega}^2(\tau)}{\omega^{3}(\tau)}\: \d{\tau}, \\
+  S_2(t) &=  \mp i \int^t \frac{1}{4}\frac{\ddot{\omega}(\tau)}{\omega^{2}(\tau)} - \frac{3}{8}\frac{\dot{\omega}^2(\tau)}{\omega^{3}(\tau)}\: \d{\tau}, \\
   S_3(t) &=  \frac{1}{8}\frac{\ddot{\omega}(t)}{\omega^{3}(t)} - \frac{3}{16} \frac{\dot{\omega}^{2}(t)}{\omega^{4}(t)}.
 \end{align}
+and in general:
+\begin{equation}
+    \dot{S}_0(t) = \pm i \omega, \qquad \dot{S}_n = -\frac{1}{\dot{S}_0} \left( \ddot{S}_{n-1}+ \sum_{j=1}^{n-1}\dot{S}_j\dot{S}_{n-j}  \right)
+\end{equation}
 Note that at \(0\)\textsuperscript{th} order, the solution is \(x\propto\exp\left(\pm i \int \omega \d{t} \right)\), which should be compared with the traditional sinusoidal solution.
 Typically \(T\) is considered a power counting parameter, and set equal to \(1\) at the end of the analysis.
 
@@ -101,7 +105,7 @@ There are two integration constants associated with the either sign of equation~
   x_\mathrm{WKB}^{(n)}[A_{\pm}](t) &=
   A_{+} e^{\phi_+(t)} + A_{-} e^{\phi_-(t)},
   \label{eqn:solution} \\
-  \phi_\pm(t) &= \pm S_0(t) + \sum_{i=1}^{n} S_i(t).
+  \phi_\pm(t) &= \sum_{i=0}^{n} S_i(t).
   \label{eqn:phidef} 
 \end{align}
 If one has initial conditions at time \(t_0\):
@@ -111,9 +115,10 @@ If one has initial conditions at time \(t_0\):
 \end{equation}
 then the coefficients \(A_\pm\) may be determined by:
 \begin{equation}
-  A_\pm^{(n)}(x_0,\dot{x}_0,t_0) = \pm\frac{\dot{x}_0 - x_0 \phi_\mp(t_0)}{2\dot{S}_0(t_0)} e^{-\phi_\pm(t_0)}.
+    A_\pm(x_0,\dot{x}_0,t_0) = \frac{x_0 \dot{\phi}_\mp- \dot{x}_0 }{\dot{\phi}_\mp - \dot{\phi}_\pm} e^{-\phi_\pm},
   \label{eqn:i_c_Apm}
 \end{equation}
+where all \(\phi\) variables are evaluated at \(t_0\).
 We can perform the same analysis with the derivative of~\eqref{eqn:asymp}:
 \begin{equation}       
   \dot{x}_\mathrm{WKB}^{(n)}[B_{\pm}](t) =
@@ -127,16 +132,10 @@ If one has initial conditions at time \(t_0\):
 \end{equation}
 then the coefficients \(B_\pm\) may be determined by:
 \begin{equation}
-  B_\pm^{(n)}(\dot{x}_0,\ddot{x}_0,t_0) = 
-  \pm\frac{%
-    \dot{x}_0(\ddot{\phi}_\mp- \dot{\phi}_\mp^2)-\ddot{x}_0 \dot{\phi}_\mp
-  }{%
-    \dot{\phi}_+ \ddot{\phi}_- -\ddot{\phi}_+ \dot{\phi}_- +\dot{\phi}_+ \dot{\phi}_-^2-\dot{\phi}_+^2 \dot{\phi}_-} e^{-\dot{\phi}_\pm},
+    B_\pm(\dot{x}_0,\ddot{x}_0,t_0) = \frac{\dot{x}_0(\ddot{\phi}_\mp+\dot{\phi}_\mp^{2})-\ddot{x}_0\dot{\phi}_\mp}{\dot{\phi}_\mp^{2}\dot{\phi}_\pm-\dot{\phi}_\pm^{2}\dot{\phi}_\mp+\ddot{\phi}_\mp\dot{\phi}_\pm-\ddot{\phi}_\pm\dot{\phi}_\mp} {{e}^{-{\phi}_\pm}},
   \label{eqn:i_c_Bpm}
 \end{equation}
 where all \(\phi\) variables are evaluated at \(t_0\).
-
-
 For further detail on the intricacies of WKB approaches, the reader should consult~\cite{RHB,Bender+2010}.
 
 \section{The RKWKB method}
@@ -272,7 +271,19 @@ However, Iserles' approach has been the inspiration for this work, and we believ
 We have presented a novel method for numerically solving linear differential equations with highly oscillatory solutions. We use a Wentzel-Kramers-Brillouin expansion to create an adaptively stepping algorithm in the same manner as a Runge-Kutta scheme. Further, the algorithm will switch back to a normal RK approach when the frequency of oscillation is varying too quickly for WKB to approximate accurately. The method is compared to Iserles existing approaches, and found to be a reasonable alternative without requiring the use of heavy Lie-group machinery. This chapter is not intended to be a complete exposition, but more a proof-of-principle to create a springboard for further investigation.
 
 
-
+\section{Further work}
+As an example, we work with the \(N=2\) case, whereby:
+\begin{equation}
+    x(t) = A_+ \frac{1}{\sqrt{\omega(t)}}\exp\left( i\int^t \omega \d{t} \right)  + A_- \frac{1}{\sqrt{\omega(t)}}\exp\left( -i\int^t \omega \d{t} \right) 
+\end{equation}
+In order to apply our initial conditions \(x(t_0) = x_0\), \(\dot{x}(t_0) = \dot{x}_0\), it makes a lot more sense to re-write in terms of cosines and sines:
+\begin{equation}
+    x(t) = x_0 \sqrt{\frac{\omega(t_0)}{\omega(t)}} \cos\left( \int_{t_0}^{t}\omega(t)\d{t} \right) + \sqrt{\frac{\omega(t_0)}{\omega(t)}} \left( x_0 \frac{\dot{\omega}(t_0)}{2{\omega(t_0)}^2} + \dot{x}_0 \frac{1}{\omega(t_0)}  \right)\sin\left( \int_{t_0}^{t}\omega(t)\d{t} \right)
+\end{equation}
+for the \(N=1\) case, we have more simply
+\begin{equation}
+    x(t) = x_0 \cos\left( \int_{t_0}^{t}\omega(t)\d{t} \right) + \dot{x}_0 \frac{1}{\omega(t_0)} \sin\left( \int_{t_0}^{t}\omega(t)\d{t} \right)
+\end{equation}
 
 \begin{subappendices}
   \input{appendices/RKF/RKF}
