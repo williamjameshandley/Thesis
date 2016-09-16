@@ -134,7 +134,7 @@ A na\"{\i}ve approach would be to use the approximate matched solution~\eqref{eq
   \dot{x}_{j+1} &= A_+ \dot{f}_+(t_j + h) + A_- \dot{f}_-(t_j + h) ,\label{eqn:x_dot_step_wrong}\\
   t_{j+1} &= t_j+h\label{eqn:t_step_wrong}.
 \end{align}
-Alas, such a method is doomed to failure\footnote{Credit here is due to Prof.\ Anthony Challinor for spotting our error.}. Since the approximate solution \(A_+ f_+ + A_- f_-\) is defined entirely by the value of \(x\) and \(\dot{x}\) at any given point, using the values \(x_j\) and \(\dot{x}_{j}\) to forecast onto \(x_{j+1}\) and \(\dot{x}_{j+1}\) merely continues the solution of the previous step. The coefficients \(A_\pm\) do not change, and such a method merely follows a single curve ad infinitum.
+Alas, such a method is doomed to failure\footnote{Credit here is due to Prof.\ Anthony Challinor for spotting this error in an earlier version of our approach.}. Since the approximate solution \(A_+ f_+ + A_- f_-\) is defined entirely by the value of \(x\) and \(\dot{x}\) at any given point, using the values \(x_j\) and \(\dot{x}_{j}\) to forecast onto \(x_{j+1}\) and \(\dot{x}_{j+1}\) merely continues the solution of the previous step. The coefficients \(A_\pm\) do not change, and such a method merely follows a single curve ad infinitum.
 
 One can see this more concretely by observing that this method should replicate a simple Runge-Kutta approach in the limit of vanishing step size \(h\) (which this method does not). In the limit of small \(h\), one has:
 \begin{align}
