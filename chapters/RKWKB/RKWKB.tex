@@ -91,7 +91,7 @@ Substituting this into~\eqref{eqn:lode_T} and setting each coefficient of \(T\) 
   \label{eqn:S0}\\
   S_1(t) &= -\frac{1}{2}\log \omega(t),\\
   S_2(t) &=  \mp i \int^t \frac{1}{4}\frac{\ddot{\omega}(\tau)}{\omega^{2}(\tau)} - \frac{3}{8}\frac{\dot{\omega}^2(\tau)}{\omega^{3}(\tau)}\: \d{\tau}, \\
-  S_3(t) &=  \frac{1}{8}\frac{\ddot{\omega}(t)}{\omega^{3}(t)} - \frac{3}{16} \frac{\dot{\omega}^{2}(t)}{\omega^{4}(t)}.
+  S_3(t) &=  \frac{1}{8}\frac{\ddot{\omega}(t)}{\omega^{3}(t)} - \frac{3}{16} \frac{\dot{\omega}^{2}(t)}{\omega^{4}(t)},
 \end{align}
 and in general:
 \begin{equation}
@@ -189,7 +189,6 @@ As can be seen in Figure~\ref{fig:matching}, choosing these as \(f_\pm\) means t
 To tune the step size \(h\), we use the same strategy as adaptive Runge-Kutta schemes. We compute both the order \(n\) and order \(n-1\) WKB solutions, and use the fractional difference between the two:
 \begin{equation}
   \varepsilon = \left|\frac{x^{(n)}-x^{(n-1)}}{x^{(n)}}\right|,
-  \nonumber
 \end{equation}
 as an estimate of the truncation error. 
 
@@ -219,7 +218,7 @@ As an example of the RKWKB approach, we apply it to the Airy equation:
   x(0)=\frac{3^{-2/3}+3^{-1/6}i}{\Gamma(2/3)},
   &\qquad
   \dot{x}(0) = \frac{3^{-1/3}-3^{1/6}i}{\Gamma(1/3)},
-  \nonumber\\
+  \\
   \Rightarrow x(t) = \mathrm{Ai}(-t) &+ \mathrm{Bi}(-t)\:i,
   \label{eqn:airy_solution}
 \end{align}
@@ -260,7 +259,7 @@ Iserles has written extensively on the difficulty of solving problems of the for
     -\omega^2(t) & 0
   \end{array}
   \right),
-  \nonumber\\
+  \\
   \Rightarrow\quad 
   \dot{\mathbf{y}} &= \mathrm{A} (t) \: \mathbf{y}.\label{eqn:lie_eqn}
 \end{align}
@@ -269,8 +268,7 @@ This may then be attacked with a variety of Lie group methods. For example, one 
   \mathbf{x}(t) &= e^{\Omega(t,t_0)} \mathbf{x}_0,
   \label{eqn:magnus}\\
   \Omega(t,t_0) &= \int_{t_0}^t \mathrm{A}(x) \d{x} \nonumber \\
-  &- \frac{1}{2}\int_{t_0}^t\int_{t_0}^{x_1} \left[\mathrm{A}(x_2),\mathrm{A}(x_1)\right] \d{x_2} \d{x_1} + \ldots
-  \nonumber
+  &- \frac{1}{2}\int_{t_0}^t\int_{t_0}^{x_1} \left[\mathrm{A}(x_2),\mathrm{A}(x_1)\right] \d{x_2} \d{x_1} + \ldots,
 \end{align}
 and then use a truncated series to create a stepping algorithm.
 This approach is much improved by transferring to a fast rotating frame:

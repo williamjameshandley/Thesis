@@ -180,7 +180,7 @@ The particle concept can be somewhat rescued by considering the adiabatic vacuum
 
 However, there are still some issues with this vacuum. First, it is only usable in slowly changing spacetimes, so only goes halfway to solving the general problem. Second, it introduces a further ambiguity in vacuum choice, namely that of which value of \(n\) to choose. Since the adiabatic expansion is asymptotic, it does not in general converge for large \(n\). One must pick a specific term of the series to truncate at, and there is little theoretical guidance as to what value \(n\) to choose.
 
-We believe that the adiabatic vacuum is in fact trying to rescue the particle concept unnecessarily. A particle interpretation is doomed to failure in general curved spacetime because of the global nature of their definition. Particles are defined in terms of field modes over a large patch of the manifold. Whilst for higher \(\vk\) modes the environment looks effectively Minkowksi, low \(\vk\) modes are sensitive to the large scale structure of spacetime.
+We believe that the adiabatic vacuum is in fact trying to rescue the particle concept unnecessarily. A particle interpretation is doomed to failure in general curved spacetime because of the global nature of their definition. Particles are defined in terms of field modes over a large patch of the manifold. Whilst for higher \(\vk\) modes the environment looks effectively Minkowski, low \(\vk\) modes are sensitive to the large scale structure of spacetime.
 
 It would be more sensible to base the notion of a vacuum not in terms of a ``particle-less'' state, but in terms of the minimisation of a {\em local energy density}, such as the \(0\)-\(0\) component of the stress-energy tensor. Unfortunately being quadratic in the field \(\phi\), like the Hamiltonian, \(\bracket{0}{T_{00}}{0}\) is also divergent.
 
@@ -245,7 +245,7 @@ To form the stress-energy tensor from the Green function, one operates with a bi
   \label{eqn:point_splitting}
   \\
   \mathcal{D}_{\mu\nu}(x,\prm{x})=& \frac{1}{2}\left( \nabla_{\mu}\nabla_{\prm{\nu}} + \nabla_{\prm{\mu}}\nabla_{\nu} \right) -\frac{1}{2} g_{\mu\nu} \nabla_\alpha \nabla^{\prm{\alpha}} \nonumber\\
-  &+ g_{\mu\nu} \frac{1}{2}m^2,  \nonumber
+  &+ g_{\mu\nu} \frac{1}{2}m^2  \nonumber,
 \end{align}
 where, as we are taking the coincidence limit, the metric \(g_{\mu\nu}\) may be evaluated at either \(x\) or \(\prm{x}\).
 The Hadamard Green function~\eqref{eqn:green_function} using the mode expansion~\eqref{eqn:mode_expansion} becomes:
@@ -258,8 +258,8 @@ The Hadamard Green function~\eqref{eqn:green_function} using the mode expansion~
   &
   \str{\chi_\vk}(\eta)
   \chi_{\vk}(\prm{\eta})e^{-i\vk\cdot(\vx-\prm{\vx})}
-  \Big).
-  \nonumber
+  \Big)
+  \nonumber.
 \end{align}
 Inserting this expression into~\eqref{eqn:point_splitting} will yield an expression which depends on the specific choice of mode function \(\chi_\vk\). We now regard this expression as a {\em functional\/} of the independent variables:
 \begin{equation}
@@ -279,7 +279,6 @@ Minimising this with respect to \(\mathcal{X}\) subject to the constraint~\eqref
   \prm{\chi_\vk} &= \left( -i \sqrt{k^2+m^2a^2} + \frac{\prm{a}}{a} \right) \chi_\vk.
   \label{eqn:rn_condition_m}
 \end{align}
-%We note that since these conditions are derived from the unrenormalised stress-energy tensor, the result would be achieved for any renormalisation procedure.
 
 
 \subsection{Application to the Mukhanov variable.}
@@ -315,7 +314,7 @@ In this semi-classical pre-inflationary context, one finds that \(\dot{\phi}\pro
 In the same manner as a de Sitter universe, quantising the co-moving curvature perturbation is equivalent to quantising a massless scalar field on the same background spacetime. 
 In this case though, the scale factor \({a \propto \eta^{1/2}}\), so the mode equations have the general solution:
 \begin{align}
-  \chi_\vk(\eta) &= \frac{1}{2}\sqrt{\pi\eta}\left( A_k H_{0}^{(1)}(k\eta) + B_k H_{0}^{(2)}(k\eta) \right), \nonumber \\
+  \chi_\vk(\eta) &= \frac{1}{2}\sqrt{\pi\eta}\left( A_k H_{0}^{(1)}(k\eta) + B_k H_{0}^{(2)}(k\eta) \right) \nonumber, \\
   1&=|B_k|^2 - |A_k|^2, \label{eqn:kd_modes} 
 \end{align}
 where without loss of generality we assume \(A_k\) is real.

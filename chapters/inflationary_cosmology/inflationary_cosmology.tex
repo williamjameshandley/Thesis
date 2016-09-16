@@ -18,7 +18,7 @@ Einstein's theory of general relativity accounts for gravity by removing it as a
 
 The formalism of Einstein's gravity can be effectively summarised using the Einstein-Hilbert action. An action \(S\) is written as a general relativistic integral over a Lagrangian density \(\mathcal{L}\):
 \begin{equation}
-  S = \int\d[4]{x} \sqrt{|g|} \mathcal{L}.
+  S = \int\d[4]{x} \sqrt{|g|} \mathcal{L},
   \label{eqn:cos:generic_lagrangian}
 \end{equation}
 where the factor of \(\sqrt{g}\), \(g=\left|\det\left( g_{\mu\nu} \right)\right|\) ensures a relativistic volume element for integration.
@@ -71,7 +71,7 @@ Under the assumption of the cosmological principle, the metric may always be wri
 \end{equation}
 where:
 \begin{align}
-  \d{X}^2 &= \d{\chi}^2 + S_k^2{(\chi)} \d{\Omega}
+  \d{X}^2 &= \d{\chi}^2 + S_k^2{(\chi)} \d{\Omega},
   \label{eqn:cos:space_element}\\
   \d{\Omega} &= \d{\theta}^2 + \sin^2\theta \d{\phi}^2,
   \label{eqn:cos:angle_element}\\
@@ -116,7 +116,6 @@ Applying the metric~\eqref{eqn:cos:FRW_metric} to the Einstein equations~\eqref{
   \frac{1}{3\m^2}\rho - \frac{k}{a^2}, 
   \label{eqn:cos:Friedmann}
 \end{align}
-%
 where \(H=\dot{a}/a\) is the Hubble parameter and a dot denotes differentiation with respect to cosmic time, \(\dot{f}\equiv \d{f}/\d{t}\). These are termed the {\em acceleration\/} and {\em Friedmann\/} equations respectively, and implicitly govern the dynamics of the scale factor \(a(t)\). It should be noted that these equations are not complete, as additionally one requires an equation of state linking \(\rho\) and \(P\).
 
 \subsection{Basic solutions}
@@ -417,7 +416,7 @@ It is worth remarking that the above decomposition is specifically for a flat un
 
 Second, a general spatial vector field \(v_i\) and a symmetric tensor field \(T_{ij}\) can be decomposed into helicity modes as:
 \begin{align}
-  v_i \rightsquigarrow& \partial_i v + v_i,   \nonumber\\
+  v_i \rightsquigarrow& \partial_i v + v_i   \nonumber,\\
   &(\partial^k v_k=0), \\
   T_{ij} \rightsquigarrow& (\partial_i\partial_j - \frac{\delta_{ij}}{3}\partial^k\partial_k)T + \frac{1}{2}(\partial_i T_j + \partial_j T_i) + T_{ij} \nonumber,\\ 
   &(\partial^k T_k = \partial^k T_{ki} = T^k_k = 0),
@@ -452,11 +451,11 @@ This means that it is easy to conflate ``true'' perturbations in the variables w
 Careful calculation will show that the transformation of the dynamical scalar variables under~\eqref{eqn:cos:gauge_t}~\&~\eqref{eqn:cos:gauge_x} is in fact:
 \begin{align}
   \Phi &\rightarrow \Phi - \delta \dot{t}, &
-  \Psi &\rightarrow \Psi +H \delta t,  \nonumber\\
+  \Psi &\rightarrow \Psi +H \delta t  \nonumber,\\
   B &\rightarrow B + \delta t/a - a\delta \dot{x}, &
-  E &\rightarrow E - \delta x, \nonumber\\
+  E &\rightarrow E - \delta x \nonumber,\\
   \delta\rho &\rightarrow \delta\rho - \dot{\rho}\delta t, &
-  \delta P &\rightarrow \delta P - \dot{P}\delta t, \nonumber\\
+  \delta P &\rightarrow \delta P - \dot{P}\delta t \nonumber,\\
   \delta q &\rightarrow \delta q + (\rho+P)\delta t,&
   \delta \phi &\rightarrow \delta \phi - \dot{\phi}\delta t,
 \end{align}
@@ -467,9 +466,9 @@ Examples of popular gauge choices can be found in Table~\ref{tab:cos:gauge_choic
 Whilst choosing a gauge will give one a set of soluble equations, the question still remains whether the perturbations really are ``true'', or in some-way coordinate-dependent. A more robust approach proposed by~\cite{Bardeen_GI} is to avoid the issue entirely and define the gauge independent variables:
 \begin{align}
   \Phi^{(B)} &=  \Phi - \dot{T}, &
-  \Psi^{(B)} &=  \Psi + HT, \nonumber \\
+  \Psi^{(B)} &=  \Psi + HT \nonumber, \\
   \delta\rho^{(B)} &= \delta\rho - \dot{\rho}T, &
-  \delta P^{(B)} &= \delta P - \dot{P}T, & \nonumber\\
+  \delta P^{(B)} &= \delta P - \dot{P}T  \nonumber,\\
   \delta q^{(B)} &= \delta q - (\rho + P)T, &
   \delta \phi^{(B)} &= \delta \phi - \dot{\phi}T, 
   \label{eqn:cos:bardeen}
@@ -561,7 +560,7 @@ A perfectly inflating universe is a de Sitter space with:
 As discussed in Section~\ref{sec:cos:phenomonology}, pure de Sitter space may be achieved in an inflationary scenario if \(H,\phi=\mathrm{const.}\), and is approximated under the conditions of slow roll~\eqref{eqn:cos:slow_roll}. 
 Thus, in a space where \(H\) and \(\dot\phi\) are both constant, \({z^{\prime\prime}/z = a^{\prime\prime}/a = 2{(\eta_\mathrm{end}-\eta)}^{-2}}\). Taking the limit as \(\dot{\phi}\to0\) creates a pure de Sitter scenario, and the differential equation~\eqref{eqn:cos:mode_func} has the general solution:
 \begin{align}
-  \chi_k = &A_k \frac{1}{\sqrt{2k}}\left( 1-\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{-ik(\eta_\mathrm{end}-\eta)}, \nonumber\\
+  \chi_k = &A_k \frac{1}{\sqrt{2k}}\left( 1-\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{-ik(\eta_\mathrm{end}-\eta)} \nonumber,\\
   + &B_k \frac{1}{\sqrt{2k}}\left( 1+\frac{i}{k(\eta_\mathrm{end}-\eta)} \right)e^{ik(\eta_\mathrm{end}-\eta)},
   \label{eqn:cos:mode_func_gs}
 \end{align}

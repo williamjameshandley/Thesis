@@ -154,7 +154,7 @@ Elementary probability theory then enables us to calculate the probability of th
   \lik\equiv\Probc{\data}{\params_\model,\model}.
   \label{eqn:bay:lik_def}
 \end{equation}
-This distribution is called the {\em likelihood}, which is denoted with a calligraphic~\(\lik\) to differentiate between rapidly proliferating conditional probabilities.\footnote{This should not be confused with a Lagrangian, also denoted with \(\mathcal{L}\).} It is also clearer in many situations to supress explicit data, model and/or parameter-dependence of the likelihood, and instead write:
+This distribution is called the {\em likelihood}, which is denoted with a calligraphic~\(\lik\) to differentiate between rapidly proliferating conditional probabilities.\footnote{This should not be confused with a Lagrangian, also denoted with \(\mathcal{L}\).} It is also clearer in many situations to suppress explicit data, model and/or parameter-dependence of the likelihood, and instead write:
 \begin{equation}
   \Probc{\data}{\params_\model,\model}
   \equiv
@@ -456,7 +456,7 @@ where the average is taken over the live points. Since this is typically an unde
     \end{align}
   \item The algorithm terminates when:
     \begin{equation}
-      X_i \times \mean{\lik}_\slive \ll \ev.
+      X_i \times \mean{\lik}_\slive \ll \ev.\nonumber
     \end{equation}
   \item A set of posterior samples may be produced using the dead points with importance weighting:
     \begin{equation}

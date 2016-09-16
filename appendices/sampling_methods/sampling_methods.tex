@@ -10,7 +10,6 @@ In the one-dimensional case, this amounts to converting a uniform random variabl
 computes the inverse of the CDF, and then applies this function to a uniform random variable  \(x\sim U(0,1)\) to generate a variable \(\theta = F^{-1}(x)\), which is distributed according to \(f(\theta)\). 
 
 In the general \(D\)-dimensional case \(f=f(\theta)=f(\theta_1,\ldots,\theta_D)\) one calculates \(D\) conditional distributions \(\{f_i:i=1,\ldots,D\}\), by marginalising over parameters with indices greater than \(i\) and conditioning on parameters with indices less than \(i\):
-%
 \begin{equation}
   f_i(\theta_i|\theta_{i-1},\ldots,\theta_1) 
   =
@@ -18,15 +17,12 @@ In the general \(D\)-dimensional case \(f=f(\theta)=f(\theta_1,\ldots,\theta_D)\
     \int f_i(\theta) d\theta_{i+1}\ldots \d{\theta_{D}}
   }{%
     \int f_i(\theta) d\theta_{i}\ldots \d{\theta_{D}}
-  },
+  }.
 \end{equation}
-%
 Integrating these yields \(D\) conditional CDFs:
-%
 \begin{equation}
   x_i = F_i(\theta_i|\theta_{i-1},\ldots,\theta_1) = \int\limits_{-\infty}^{\theta_i} f_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) \d{\theta_i^\prime}.
 \end{equation}
-%
 Inverting this gives \(\theta_i = F^{-1}_i(x_i|\theta_{i-1},\ldots,\theta_1)\), which constitutes a set of relations sequentially transforming \(D\) uniform random variables \(\{x_i\}\) into \(\{\theta_i\}\) distributed according to \(f(\theta)\).
 
 
@@ -41,9 +37,7 @@ To recap, we aim to compute the inverse of the functions \(F_i\):
   F_i(\theta_i|\theta_{i-1},\ldots,\theta_0) = \int\limits_0^{\theta_i} \pi_i(\theta_i^\prime|\theta_{i-1},\ldots,\theta_1) \d{\theta_i^\prime},
   \label{eqn:pc:appFi}
 \end{equation}
-%
 where:
-%
 \begin{equation}
   \pi_i(\theta_i|\theta_{i-1},\ldots,\theta_0) 
   =
@@ -51,10 +45,10 @@ where:
     \int \pi_i(\theta) d\theta_{i+1}\ldots d\theta_{N}
   }{%
     \int \pi_i(\theta) d\theta_{i}\ldots d\theta_{N}
-  }.
+  },
   \label{eqn:pc:apppii}
 \end{equation}
-\(\bFF\) maps from \(\theta\) in the physical space onto the unit hypercube injectively. 
+and \(\bFF\) maps from \(\theta\) in the physical space onto the unit hypercube injectively. 
 
 
 
@@ -91,10 +85,9 @@ A rectangular uniform prior is defined by two parameters, \({\thetamin,\thetamax
   \right.
 \label{eqn:pc:uniform_prior}
 \end{equation}
-
 Computing \(F(\theta)\) we find:
 \begin{align}
-  F(\theta) &= \int_{-\infty}^\theta \pi(\theta^\prime)\d{\theta^\prime}, \nonumber\\
+  F(\theta) &= \int_{-\infty}^\theta \pi(\theta^\prime)\d{\theta^\prime},\\
   &= \frac{\theta-\thetamin}{\thetamax-\thetamin},
   \label{eqn:pc:calc_uniform_trans}
 \end{align}
@@ -128,7 +121,6 @@ where \(\text{erfinv}\) is the conventional inverse error function.
 As an example of a prior that is not separable in the parameters, we consider a forced identifiability prior. Here, \(n\) parameters are distributed uniformly between \(\thetamin\) and \(\thetamax\), but subject to the constraint that they are ordered numerically. This is a particularly useful prior in the reconstruction of functions using a spline with movable knots \citep{vazquez_knots,knottedsky1,knottedsky2,planck2015-a24}. In this case, the  horizontal locations of the knots must be ordered.
 
 The required prior is uniform in the hyper-triangle defined by \(\thetamin<\theta_1<\cdots<\theta_n<\thetamax\), and zero everywhere else:
-%
 \begin{equation}
   \pi(\theta) = 
   \left\{
@@ -141,7 +133,6 @@ The required prior is uniform in the hyper-triangle defined by \(\thetamin<\thet
     \right.
 \label{eqn:pc:sorted_uniform_prior}
 \end{equation}
-
 To calculate equations~\eqref{eqn:pc:appFi} \&~\eqref{eqn:pc:apppii} we integrate over the constant distribution, taking care with the limits. We find:
 \begin{align}
   \pi_i(\theta_i|\theta_{i-1},\ldots,\theta_0) &= \frac{(n-i+1){(\theta_i-\theta_{i-1})}^{n-i}}{{(\thetamax-\thetamin)}^{n-i+1}},\\
@@ -179,7 +170,7 @@ A sequence of \(T\) points is termed a {\em chain\/} \(\chain_T\):
 \begin{equation}
   \chain_T = \{ x^{(t)}: t=1\cdots T \}.
 \end{equation}
-A new point \(x^{(t+1)}\) is generated from a proposal density \(\proposal\) which depends on the current state \(x^{(t)}\). Typically \(\proposal(x|x^{(t)})\) might be a Gaussian distribution centered on the current value of \(x^{(t)}\):
+A new point \(x^{(t+1)}\) is generated from a proposal density \(\proposal\) which depends on the current state \(x^{(t)}\). Typically \(\proposal(x|x^{(t)})\) might be a Gaussian distribution centred on the current value of \(x^{(t)}\):
 \begin{equation}
   \log \proposal(x|x^{(t)}) = \text{const.} -\frac{{\left[ x-x^{(t)} \right]}^2}{2\varepsilon^2},
 \end{equation}
@@ -212,7 +203,7 @@ It is this timescale which determines the degree of correlation between samples 
 
 In theory, given that the relation~\eqref{eqn:sm:MH_timescale} has no dimensionality attached to it, Metropolis Hastings can be extremely successful in high dimensions. However, there are several issues.
 
-First, one does not initially a-priori have a good starting point. There is therefore a period of ``burn-in'' attached to MH methods. Knowing when this period is truely over, and one is starting to generate random samples can be challenging in the general case.
+First, one does not initially a-priori have a good starting point. There is therefore a period of ``burn-in'' attached to MH methods. Knowing when this period is truly over, and one is starting to generate random samples can be challenging in the general case.
 
 In many cases, \(\tau\gg1\) resulting in unacceptable run-times. This can be ameliorated by choosing a proposal distribution \(\proposal\) that better agrees with the posterior \(\posterior\). However, this amounts to adding in many effective tuning parameters. Many algorithms work by having a ``learning'' phase, whereby the algorithm deduces for itself a good correlated Gaussian proposal distribution, but given the fact that this is not strictly Markovian care must be taken.
 

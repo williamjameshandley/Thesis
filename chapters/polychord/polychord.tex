@@ -74,7 +74,6 @@ In higher dimensions,~\cite{NealSlice} suggests a variety of MCMC-like methods. 
 
 
 
-%Calculation of the posterior \(\posterior(\theta)\) is the domain of {\em parameter estimation}, and in high dimensions is best performed by sampling the space with a Markov-Chain Monte-Carlo approach (MCMC). Examples include Metropolis-Hastings, Gibbs sampling and Slice sampling. For the most part, the evidence \(\ev\) is ignored during such calculations, and one works with an unnormalised posterior \({\posterior\propto\lik\times\prior}\).
 
 
 
@@ -224,7 +223,7 @@ Further to this, one may use the fast directions to extend the chain length by m
 \subsection{Tuning parameters}
 \label{sec:pc:tuning_params}
 
-From a user's perspective, the \PolyChord{} algorithm has two tuning paramaters: \(\nlive\) and \(\nrepeats\), which are detailed below.
+From a user's perspective, the \PolyChord{} algorithm has two tuning parameters: \(\nlive\) and \(\nrepeats\), which are detailed below.
 
 The authors believe that these tuning parameters are fairly straightforward to set in comparison to existing algorithms. More importantly, the number of tuning parameters does not scale with the dimensionality of the problem. This is in contrast to Metropolis-Hastings and Gibbs sampling, which require a proposal matrix to be supplied\footnote{Proposal matrices may be learnt during run-time. However, this learning step can take some time and may reduce the efficacy of these approaches.}.
 
@@ -303,10 +302,10 @@ The results for a twin peaks likelihood are of an identical character to Figures
 
 \PolyChord{}'s clustering capacity is very effective on complicated clustering problems as well. The \(n\)-dimensional Rastrigin test function is defined by:
 \begin{align}
-  f(\theta) &= A n + \sum\limits_{i=1}^n \left[\theta_i^2 - A\cos(2 \pi \theta_i) \right],
-  \label{eqn:pc:rastrigin_function}
+  f(\theta) &= A n + \sum\limits_{i=1}^n \left[\theta_i^2 - A\cos(2 \pi \theta_i) \right] \nonumber,
   \\
-  A&=10, \qquad \theta_i \in [-5.12,5.12]. \nonumber
+  A&=10, \qquad \theta_i \in [-5.12,5.12].
+  \label{eqn:pc:rastrigin_function}
 \end{align}
 This is the industry standard ``bunch of grapes'', the two-dimensional version of which is illustrated in Figure~\ref{fig:pc:rastrigin}.
 For our purposes, we will treat~\eqref{eqn:pc:rastrigin_function} as the negative log-likelihood so that \(\lik(\theta) \propto \exp[-f(\theta)]\).
@@ -358,7 +357,7 @@ In higher dimensions, \PolyChord{} reliably finds the local and global maxima. T
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\columnwidth]{chapters/polychord/figures/gaussian_shell_posterior}
-  \caption{Posteriors produced by \PolyChord{} for a \(n=100\)-dimensional Gaussian shell, with width \(w=0.1\), radius \(r=2\), and center \(\bmew=\bzero\).  Plotting the marginalised posteriors for the Cartesian sampling parameters \({\{x_1,\ldots,x_n\}}\) yields Gaussian distributions centered on the origin. To see the effectiveness of the sampler it is better to plot the sampling parameters in terms of \(n\)-dimensional spherical polar coordinates \({\{r,\phi_1,\ldots,\phi_{n-1}\}}\). Note that the polar coordinates are {\em derived parameters}, and that the sampling space still has the strong Gaussian shell degeneracy.  In this case we can see that the radial coordinate has a Gaussian profile centered on \(r_0 = r\times\frac{1}{2} {\left(1 + \sqrt{1 +  4 (n-1) {\left({w}/{r}\right)}^2}\right) }\) with width \(w_0 = w{(1+(n-1){(w/r_0)}^2)}^{-1/2}\).  The azimuthal coordinate \(\phi_{n-1}\) has a uniform posterior, and the other angular coordinates \(\{\phi_i\}\) have posteriors defined by \(\Prob{\phi_i } \propto {{\left(\sin\phi_i\right)}^{n-i-1}}\).}\label{fig:pc:gaussian_shell_posterior} 
+  \caption{Posteriors produced by \PolyChord{} for a \(n=100\)-dimensional Gaussian shell, with width \(w=0.1\), radius \(r=2\), and centre \(\bmew=\bzero\).  Plotting the marginalised posteriors for the Cartesian sampling parameters \({\{x_1,\ldots,x_n\}}\) yields Gaussian distributions centred on the origin. To see the effectiveness of the sampler it is better to plot the sampling parameters in terms of \(n\)-dimensional spherical polar coordinates \({\{r,\phi_1,\ldots,\phi_{n-1}\}}\). Note that the polar coordinates are {\em derived parameters}, and that the sampling space still has the strong Gaussian shell degeneracy.  In this case we can see that the radial coordinate has a Gaussian profile centred on \(r_0 = r\times\frac{1}{2} {\left(1 + \sqrt{1 +  4 (n-1) {\left({w}/{r}\right)}^2}\right) }\) with width \(w_0 = w{(1+(n-1){(w/r_0)}^2)}^{-1/2}\).  The azimuthal coordinate \(\phi_{n-1}\) has a uniform posterior, and the other angular coordinates \(\{\phi_i\}\) have posteriors defined by \(\Prob{\phi_i } \propto {{\left(\sin\phi_i\right)}^{n-i-1}}\).}\label{fig:pc:gaussian_shell_posterior} 
 \end{figure}
 
 A ``Gaussian shell'' with mean \(\bmew\), radius \(r\) and width \(w\) is defined as:
@@ -367,7 +366,7 @@ A ``Gaussian shell'' with mean \(\bmew\), radius \(r\) and width \(w\) is define
   \label{eqn:pc:gaussian_shell}
 \end{equation}
 where \(A\) is a normalisation constant that may be calculated using a saddle point approximation.
-This likelihood is centered on some mean vector \(\bmew\), and has a radial Gaussian profile with width \(w\) at distance \(r\) from this centre. This radial profile is then revolved around \(\bmew\) to create a spherical shell-like likelihood. A two-dimensional version of this likelihood is indicated in Figure~\ref{fig:pc:gaussian_shell}.
+This likelihood is centred on some mean vector \(\bmew\), and has a radial Gaussian profile with width \(w\) at distance \(r\) from this centre. This radial profile is then revolved around \(\bmew\) to create a spherical shell-like likelihood. A two-dimensional version of this likelihood is indicated in Figure~\ref{fig:pc:gaussian_shell}.
 
 This distribution may be representative of likelihoods that one may encounter in beyond-the-Standard-Model paradigms in particle physics. In such models, the majority of the posterior mass lies in thin sheets or hypersurfaces through the parameter space.
 
