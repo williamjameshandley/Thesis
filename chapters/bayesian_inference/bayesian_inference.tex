@@ -164,7 +164,7 @@ This distribution is called the {\em likelihood}, which is denoted with a callig
   \equiv
   \lik_\model
   \equiv
-  \lik.\nonumber
+  \lik.
 \end{equation}
 This is a generic overloading technique which I utilise throughout this thesis.
 
@@ -211,13 +211,11 @@ These model weights \(\Wmodel\) may then be used to determine the ``most probabl
 \subsection{Parameter estimation}
 Of equal interest to scientists is to ask what the data tells us about the various parameters.  
 Bayes' theorem allows us to invert the conditioning in equation~\eqref{eqn:bay:lik_def} and find the {\em posterior\/} \(\posterior\) by combining the likelihood~\eqref{eqn:bay:lik_def}, prior~\eqref{eqn:bay:prior_def} and evidence~\eqref{eqn:bay:ev_def}:
-%
 \begin{equation}
   \posterior\equiv
   \Probc{\params_\model}{\data,\model} = \frac{\Probc{\data}{\params_\model,\model} \Probc{\params_\model}{\model}}{\Probc{\data}{\model}},
   \label{eqn:bay:bayes_theorem}
 \end{equation}
-%
 which is schematically written as:
 \begin{align}
   \posterior &= \frac{\lik \times \prior }{\ev },
