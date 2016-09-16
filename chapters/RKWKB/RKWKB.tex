@@ -95,121 +95,94 @@ Substituting this into~\eqref{eqn:lode_T} and setting each coefficient of \(T\) 
 \end{align}
 and in general:
 \begin{equation}
-    \dot{S}_0(t) = \pm i \omega, \qquad \dot{S}_n = -\frac{1}{\dot{S}_0} \left( \ddot{S}_{n-1}+ \sum_{j=1}^{n-1}\dot{S}_j\dot{S}_{n-j}  \right)
+    \dot{S}_0(t) = \pm i \omega, \qquad \dot{S}_n = -\frac{1}{\dot{S}_0} \left( \ddot{S}_{n-1}+ \sum_{j=1}^{n-1}\dot{S}_j\dot{S}_{n-j}  \right).
 \end{equation}
 Note that at \(0\)\textsuperscript{th} order, the solution is \(x\propto\exp\left(\pm i \int \omega \d{t} \right)\), which should be compared with the traditional sinusoidal solution.
 Typically \(T\) is considered a power counting parameter, and set equal to \(1\) at the end of the analysis.
+For further detail on the intricacies of WKB approaches, the reader should consult~\cite{RHB,Bender+2010}.
 
-There are two integration constants associated with the either sign of equation~\eqref{eqn:S0}. The other integration constants from the remaining equations may be absorbed into the first two. The \(n\)\textsuperscript{th} order solution thus takes the form:
-\begin{align}       
-  x_\mathrm{WKB}^{(n)}[A_{\pm}](t) &=
-  A_{+} e^{\phi_+(t)} + A_{-} e^{\phi_-(t)},
-  \label{eqn:solution} \\
-  \phi_\pm(t) &= \sum_{i=0}^{n} S_i(t).
-  \label{eqn:phidef} 
-\end{align}
-If one has initial conditions at time \(t_0\):
-\begin{equation}
-  x(t_0) = x_0, \qquad \dot{x}(t_0)=\dot{x}_0,
-  \label{eqn:i_c}
-\end{equation}
-then the coefficients \(A_\pm\) may be determined by:
-\begin{equation}
-    A_\pm(x_0,\dot{x}_0,t_0) = \frac{x_0 \dot{\phi}_\mp- \dot{x}_0 }{\dot{\phi}_\mp - \dot{\phi}_\pm} e^{-\phi_\pm},
-  \label{eqn:i_c_Apm}
-\end{equation}
-where all \(\phi\) variables are evaluated at \(t_0\).
-We can perform the same analysis with the derivative of~\eqref{eqn:asymp}:
-\begin{equation}       
-  \dot{x}_\mathrm{WKB}^{(n)}[B_{\pm}](t) =
-  B_{+} \dot{\phi}_+(t)e^{\phi_+(t)} + B_{-} \dot{\phi}_-(t)e^{\phi_-(t)}.
-  \label{eqn:solution_xdot}
-\end{equation}
-If one has initial conditions at time \(t_0\):
-\begin{equation}
-  \dot{x}(t_0) = \dot{x}_0, \qquad \ddot{x}(t_0)=\ddot{x}_0,
-  \label{eqn:i_c_xdot}
-\end{equation}
-then the coefficients \(B_\pm\) may be determined by:
-\begin{equation}
-    B_\pm(\dot{x}_0,\ddot{x}_0,t_0) = \frac{\dot{x}_0(\ddot{\phi}_\mp+\dot{\phi}_\mp^{2})-\ddot{x}_0\dot{\phi}_\mp}{\dot{\phi}_\mp^{2}\dot{\phi}_\pm-\dot{\phi}_\pm^{2}\dot{\phi}_\mp+\ddot{\phi}_\mp\dot{\phi}_\pm-\ddot{\phi}_\pm\dot{\phi}_\mp} {{e}^{-{\phi}_\pm}},
-  \label{eqn:i_c_Bpm}
-\end{equation}
-where all \(\phi\) variables are evaluated at \(t_0\).
-For further detail on the intricacies of WKB approaches, the reader should 
 
-\section{The RKWKB method}
-Our strategy is to combine the versatility of RK methods with the power of WKB in dealing with oscillating solutions. We term the combination RKWKB\@.
+\section{Generalised stepping methods}
+\label{sec:stepping_methods}
+In Section~\ref{sec:rkwkb} we shall combine the power of WKB approaches with RK to form a method specialised to navigating oscillatory solutions. However, to avoid confusion of the details of WKB with the generic nature of our approach, we shall work in a more general case for this section.
 
-Given a function \(\omega(t)\), one proposes a step in time of \(h\) to be accompanied by an updating of the solution \(x_j\) via:
+In the general case, one aims to solve numerically a linear, homogeneous, second order differential equation with non constant coefficients:
+\begin{equation}
+    \alpha(t) \frac{\d{}^2}{\d{t}^2}x(t) + \beta(t) \frac{\d{}}{\d{t}}x(t) + \gamma(t) x(t) = 0.
+    \label{eqn:general_second_order}
+\end{equation}
+In addition, we shall assume that we have two analytical linearly independent approximate solutions \(f_\pm(t)\), as well as access to their derivatives \(\dot{f}_\pm\) and \(\ddot{f}_\pm\). The aim is to then construct an approach which uses these approximate solutions to create a numerical stepping procedure, analogous to a Runge-Kutta approach. Examples of such functions $f$ could be the WKB solutions (which is described in Section~\ref{sec:rkwkb}), or perhaps carefully chosen polynomials.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{chapters/RKWKB/figures/matching}
+  \caption{Approximating an Airy function with two sinusoids of varying frequency. The lower figure shows the Airy function of the first kind \(\mathrm{Ai}(-t)\) (solid line) being approximated in the region around \(t_j=4\) (dashed line). This is done by matching sinusoids of varying frequency onto the Airy function's value and derivative at \(t_j\). The top part of the figure details the sinusoids, which turn out to be equivalent to 0\textsuperscript{th} order WKB solutions.}\label{fig:matching}
+\end{figure}
+
+At a given time \(t_j\) with values of the true solution \(x_j\) and its derivative \(\dot{x}_j\), one may match the approximate solutions onto the correct solution:
 \begin{align}
-  x_{j+1} &= x_\mathrm{WKB}^{(n)}[A_\pm(x_j,\dot{x}_j,t_j)](t_j+h),
-  \label{eqn:WKB_x_step} \\
-  \dot{x}_{j+1} &= \dot{x}_\mathrm{WKB}^{(n)}[B_\pm(\dot{x}_j,\ddot{x}_j,t_j)](t_j+h),
-  \label{eqn:WKB_xdot_step} \\
-  t_{j+1} &= t_j+h,
-  \label{eqn:WKB_t_step} \\
-  \ddot{x}_{j+1} &= -\omega^2(t_{j+1})x_{j+1},
-  \label{eqn:WKB_xddot} 
-\end{align}
-where \(x_\mathrm{WKB}^{(n)}[A_{\pm}]\) and \(\dot{x}_\mathrm{WKB}^{(n)}[B_{\pm}]\) are given by~\eqref{eqn:solution} and~\eqref{eqn:solution_xdot},  and \(A_{\pm}\) and \(B_{\pm}\)  are given by~\eqref{eqn:i_c_Apm} and~\eqref{eqn:i_c_Bpm}.
-
-To paraphrase the above; one matches the \(n\)\textsuperscript{th} order WKB solution onto the current values of \(x_j\) and \(\dot{x}_j\), and uses this to extrapolate the solution by a time step of \(h\). We repeat the same process for the derivative \(\dot{x}_j\), using its own WKB expansion. Finally, we self-consistently fix \(\ddot{x}_j\) so that it satisfies equation~\eqref{eqn:lode}. Since WKB naturally encodes the oscillatory nature of the solution, this will allow step sizes \(h\) to be far larger than a single period of oscillation. 
-
-%Note the importance of using two WKB expansions with coefficients \(A_\pm\) and \(B_\pm\) to step \(x_j\) and \(\dot{x}_j\) separately. If we used the same coefficients to step both, then one would simply be following the same WKB solution.
-
-\subsection{To be moved: General expansion methods}
-In the general case, one aims to solve a linear, second order differential equation in \(x(t)\) whereby one has two analytical linearly independent approximate solutions \(f_\pm(t)\), as well as access to their derivatives \(\dot{f}_\pm\) and \(\ddot{f}_\pm\). At a given time \(t_j\) with values of the true solution \(x_j\) and its derivative \(\dot{x}_j\), one may match the approximate solutions onto the correct solution:
-\begin{align}
-    x(t) &\approx  A_+ f_+(t) + A_- f_-(t) \\
+    x(t) &\approx  A_+ f_+(t) + A_- f_-(t) ,
+    \label{eqn:x_approxf}\\
     A_\pm &= \frac{\dot{x}_j f_\mp(t_j) - x_j \dot{f}_\mp(t_j) }{\dot{f}_\pm(t_j) f_\mp(t_j) - \dot{f}_\mp(t_j) f_\pm(t_j)}.
+    \label{eqn:Apm}
 \end{align}
-This has the property of providing an excellent approximation to the true solution in the region \(t=t_j + h\) where \(h\) is small. The degree of its failure is then determined by how well the solutions \(f_\pm\) trace the true solutions. 
-One may perform the same operation above for its derivative
+This provides an approximation to the true solution in the region \(t=t_j + h\) where \(h\) is small. The degree of its failure is then determined by how well the solutions \(f_\pm\) trace the true solutions. This can be seen graphically in Figure~\ref{fig:matching}.
+
+A na\"{\i}ve approach would be to use the approximate matched solution~\eqref{eqn:x_approxf} to create a stepping procedure analogous to the RK method~\eqref{eqn:y_step}~\&~\eqref{eqn:t_step}:
 \begin{align}
-    \dot{x}(t) &\approx  B_+ \dot{f}_+(t) + B_- \dot{f}_-(t) \\
-    B_\pm &= \frac{\ddot{x}_j \dot{f}_\mp(t_j) - \dot{x}_j \ddot{f}_\mp(t_j) }{\ddot{f}_\pm(t_j) \dot{f}_\mp(t_j) - \ddot{f}_\mp(t_j) \ddot{f}_\pm(t_j)}, 
+  x_{j+1} &= A_+ f_+(t_j + h) + A_- f_-(t_j + h) ,\label{eqn:x_step_wrong}\\
+  \dot{x}_{j+1} &= A_+ \dot{f}_+(t_j + h) + A_- \dot{f}_-(t_j + h) ,\label{eqn:x_dot_step_wrong}\\
+  t_{j+1} &= t_j+h\label{eqn:t_step_wrong}.
 \end{align}
-noting that in the second order case, one may determine \(\ddot{x}\) from \(\dot{x}\) and \(x\) via the original second order linear differential equation.
+Alas, such a method is doomed to failure\footnote{Credit here is due to Prof.\ Anthony Challinor for spotting our error.}. Since the approximate solution \(A_+ f_+ + A_- f_-\) is defined entirely by the value of \(x\) and \(\dot{x}\) at any given point, using the values \(x_j\) and \(\dot{x}_{j}\) to forecast onto \(x_{j+1}\) and \(\dot{x}_{j+1}\) merely continues the solution of the previous step. The coefficients \(A_\pm\) do not change, and such a method merely follows a single curve ad infinitum.
+
+One can see this more concretely by observing that this method should replicate a simple Runge-Kutta approach in the limit of vanishing step size \(h\) (which this method does not). In the limit of small \(h\), one has:
+\begin{align}
+    f(t_{j+1}) &\approx f(t_j) + \dot{f}(t_j) \: h +\mathcal{O}(h^2), \\
+    \dot{f}(t_{j+1}) &\approx f(t_j) + \ddot{f}(t_j) \: h +\mathcal{O}(h^2). 
+\end{align}
+Substituting these into equations~\eqref{eqn:x_step_wrong}~\&~\eqref{eqn:x_dot_step_wrong} yields:
+\begin{align}
+    \Rightarrow x_{j+1} &= x_j + \dot{x}_j \: h , \\
+    \Rightarrow \dot{x}_{j+1} &= \dot{x}_j + 
+    \frac{(\ddot{f}_+ f_- - \ddot{f}_- f_+)\dot{x}_j  +( \ddot{f}_- \dot{f}_+- \ddot{f}_+ \dot{f}_-)x_j}{\dot{f}_+ f_- - \dot{f}_- f_+}\: h
+    , 
+\end{align}
+where in the final equation, all \(f\) terms are evaluated at \(t_j\). In general, unless \(f\) is an exact solution, one cannot expect the coefficient of \(h\) in the second equation to be the same as \(\ddot{x}_j\), and thus the approach~\eqref{eqn:x_step_wrong}~\&~\eqref{eqn:x_dot_step_wrong} fails to recover the Runge-Kutta result. Thus, decreasing the step size does not improve accuracy, and this algorithm is not convergent.
+
+The above issue also suggests a solution. We require an alternative to~\eqref{eqn:x_dot_step_wrong} which steps \(\dot{x}_j\) such that in the limit of small \(h\) the stepping procedure reduces to \(\dot{x}_{j+1} = \dot{x}_j + \ddot{x}_j\: h\).
+We should therefore perform a separate step for \(\dot{x}\), with the solution matched onto the values of \(\dot{x}_j\) and \(\ddot{x}_j\):
+\begin{align}
+    \dot{x}(t) &\approx  B_+ \dot{f}_+(t) + B_- \dot{f}_-(t), \\
+    B_\pm &= \frac{\ddot{x}_j \dot{f}_\mp(t_j) - \dot{x}_j \ddot{f}_\mp(t_j) }{\ddot{f}_\pm(t_j) \dot{f}_\mp(t_j) - \ddot{f}_\mp(t_j) \ddot{f}_\pm(t_j)}. 
+    \label{eqn:Bpm}
+\end{align}
+Most importantly, one may determine \(\ddot{x}_j\) from \(\dot{x}_j\) and \(x_j\) via the original second order linear differential equation~\eqref{eqn:general_second_order}.
 
 The general stepping procedure is then as follows:
 \begin{align}
-  x_{j+1} &= A_+ f_+(t_j + h) + A_- f_-(t_j + h)
+  x_{j+1} &= A_+ f_+(t_j + h) + A_- f_-(t_j + h),
   \label{eqn:x_step} \\
-  \dot{x}_{j+1} &= B_+ \dot{f}_+(t_j + h) + B_- \dot{f}_-(t_j + h)
+  \dot{x}_{j+1} &= B_+ \dot{f}_+(t_j + h) + B_- \dot{f}_-(t_j + h),
   \label{eqn:x_dot_step} \\
   t_{j+1} &= t_j+h,
   \label{eqn:t_step}
 \end{align}
-and at every iteration \(t_j\), \(\ddot{x}_j\) is determined from \(\dot{x}_j\) and \(x_j\) via the original second order linear differential equation.
-
-\subsection{The necessity of two expansions}
-It is not immediately obvious why we require separate expansions for \(x\) and \(\dot{x}\) in the method detailed above, utilising four coefficients \(A_\pm\) and \(B_\pm\). Indeed, an early version of this algorithm simply used a single WKB expansion as a stepper for both \(x\) and \(\dot{x}\): 
+and at every iteration, \(A_\pm\) and \(B_\pm\) are determined by equations~\eqref{eqn:Apm}~\&~\eqref{eqn:Bpm} with \(\ddot{x}_j\) calculated from \(\dot{x}_j\) and \(x_j\) via the original second order linear differential equation. By definition (or somewhat laborious algebra), in the limit of small \(h\), this recovers the RK result:
 \begin{align}
-  x_{j+1} &= A_+ f_+(t_j + h) + A_- f_-(t_j + h) \tag{WRONG!},\\
-  \dot{x}_{j+1} &= A_+ \dot{f}_+(t_j + h) + A_- \dot{f}_-(t_j + h) \tag{WRONG!},\\
-  t_{j+1} &= t_j+h \tag{WRONG!}
-\end{align}
-Alas, such a method is doomed to failure\footnote{Credit here is due to Prof.\ Anthony Challinor for spotting our error.}. Simply put, since a given solution is defined entirely by the value of \(x\) and \(\dot{x}\) at a single point, using the values \(x_j\) and \(\dot{x}_{j}\) to forecast onto \(x_{j+1}\) and \(\dot{x}_{j+1}\) merely replicates the solution of the previous step.  The method then merely follows a single curve ad infinitum.
-
-One can see this more concretely by observing that this method should replicate a simple Runge-Kutta approach in the limit of vanishing step size \(h\). The single stepper does not. In the limit of small \(h\), one has:
-\begin{align}
-    f(t_{j+1}) &\approx f(t_j) + \dot{f}(t_j) \: h +\mathcal{O}(h^2),  \tag{WRONG!} \\
-    \dot{f}(t_{j+1}) &\approx f(t_j) + \ddot{f}(t_j) \: h +\mathcal{O}(h^2), \tag{WRONG!} \\
-    \Rightarrow x_{j+1} &= x_j + \dot{x}_j \: h , \tag{WRONG!} \\
-    \Rightarrow \dot{x}_{j+1} &= \dot{x}_j + 
-    \frac{(\ddot{f}_+ f_- - \ddot{f}_- f_+)\dot{x}_j  +( \ddot{f}_- \dot{f}_+- \ddot{f}_+ \dot{f}_-)x_j}{\dot{f}_+ f_- - \dot{f}_- f_+}\: h
-    , \tag{WRONG!}
-\end{align}
-where in the final equation, all \(f\) terms are evaluated at \(t_j\).
-
-If however, we use two expansions, then by definition (or rather laborious algebra):
-\begin{align}
-    x_{j+1} &= x_j + \dot{x}_j \: h, \\
-    \dot{x}_{j+1} &= \dot{x}_j + \ddot{x}_j \: h.
+    x_{j+1} &= x_j + \dot{x}_j \: h + \mathcal{O}(h^2), \\
+    \dot{x}_{j+1} &= \dot{x}_j  + \ddot{x}_j\: h + \mathcal{O}(h^2). 
 \end{align}
 
 
+\section{The RKWKB method}
+\label{sec:rkwkb}
+We now specialise the generic technique detailed in Section~\ref{sec:stepping_methods} to the case of equations with oscillatory solutions. Our strategy is to combine the versatility of RK methods with the power of WKB in dealing with oscillating solutions, and term the combination RKWKB\@. 
+
+We apply the generalised stepping technique~\eqref{eqn:x_step},~\eqref{eqn:x_dot_step}~\&~\eqref{eqn:t_step} by choosing \(f_\pm\) to be the WKB solutions:
+\begin{equation}
+    f_\pm(t) = \frac{1}{\sqrt{\omega(t)}}\exp(\pm i \int^t \omega(\tau)\d{\tau} +\ldots).
+\end{equation}
+As can be seen in Figure~\ref{fig:matching}, choosing these as \(f_\pm\) means that our stepping procedure naturally encodes the oscillatory nature of the solutions, particularly if the frequency is large. Instead of following every peak and trough as a RK scheme must do, it is potentially able to leap over many oscillations at once, greatly increasing the speed of solution.
 
 \subsection{Step size adjustment}
 To tune the step size \(h\), we use the same strategy as adaptive Runge-Kutta schemes. We compute both the order \(n\) and order \(n-1\) WKB solutions, and use the fractional difference between the two:
