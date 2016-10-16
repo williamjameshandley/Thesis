@@ -3,6 +3,8 @@
 *.fls
 *.log
 *.pdf
+*.ps
+*.dvi
 *.bbl
 *.blg
 *.out
