@@ -26,7 +26,7 @@ If \(\omega(t)=\omega = \mathrm{constant}\), then the solutions are sinusoidal: 
 
 In general, any second order linear differential equation may be transformed into the form of~\eqref{eqn:lode} by either changing the independent variable \(t\) or dependent variable \(x\). The method we shall describe can easily be adapted to other linear differential equations, but we shall work with~\eqref{eqn:lode} for its simplicity of exposition.
 
-Equation~\eqref{eqn:lode} is ubiquitous in physics, particularly in quantum mechanics. The authors' particular interest in its efficient solution comes from work in quantum fields in curved spacetime.
+Equation~\eqref{eqn:lode} is ubiquitous in physics, particularly in quantum mechanics. Our particular interest in its efficient solution comes from work in quantum fields in curved spacetime.
 
 
 
@@ -67,7 +67,7 @@ This is termed {\em Euler's method}, and for arbitrarily small \(h\) will recove
 
 Euler's method is normally impractical for real numerical work. Runge-Kutta schemes work by generalising~\eqref{eqn:euler}~\&~\eqref{eqn:RK_y_step} by including additional intermediate function evaluations that integrate~\eqref{eqn:ode} with greater accuracy.
 
-A possibly more important adjustment is to equip the algorithm with the ability to choose the step size \(h\) according to the accuracy required. A popular stratagem is to run two steps, one of order \(p\), and another of order \(p-1\), and use the difference between the two as an estimate of the error. Particularly smart algorithms use the same function evaluations for both orders. An example of this is the Runge-Kutta-Fehlberg \(4(5)\) method detailed in Section~\ref{sec:rkf}.
+A possibly more important adjustment is to equip the algorithm with the ability to choose the step size \(h\) according to the accuracy required. A popular stratagem is to run two steps, one of order \(p\), and another of order \(p-1\), and use the difference between the two as an estimate of the error. Particularly smart algorithms use the same function evaluations for both orders. An example of this is the Runge-Kutta-Fehlberg \(4(5)\) method detailed in Appendix~\ref{sec:rkf}.
 
 All methods based on this principle struggle to solve equations such as~\eqref{eqn:lode} when the algorithm must scale a very large number of peaks and troughs. Errors accumulate rapidly in these approaches, even if the variation of \(\omega(t)\) in \(t\) is very simple. Given the regularity of the solution from Figure~\ref{fig:airy}, one would imagine that there should be a more efficient method.
 
@@ -134,7 +134,7 @@ A na\"{\i}ve approach would be to use the approximate matched solution~\eqref{eq
   \dot{x}_{j+1} &= A_+ \dot{f}_+(t_j + h) + A_- \dot{f}_-(t_j + h) ,\label{eqn:x_dot_step_wrong}\\
   t_{j+1} &= t_j+h\label{eqn:t_step_wrong}.
 \end{align}
-Alas, such a method is doomed to failure\footnote{Credit here is due to Prof.\ Anthony Challinor for spotting this error in an earlier version of our approach.}. Since the approximate solution \(A_+ f_+ + A_- f_-\) is defined entirely by the value of \(x\) and \(\dot{x}\) at any given point, using the values \(x_j\) and \(\dot{x}_{j}\) to forecast onto \(x_{j+1}\) and \(\dot{x}_{j+1}\) merely continues the solution of the previous step. The coefficients \(A_\pm\) do not change, and such a method merely follows a single curve ad infinitum.
+Alas, such a method is doomed to failure\footnote{Credit here is due to Anthony Challinor for spotting this error in an earlier version of our approach.}. Since the approximate solution \(A_+ f_+ + A_- f_-\) is defined entirely by the value of \(x\) and \(\dot{x}\) at any given point, using the values \(x_j\) and \(\dot{x}_{j}\) to forecast onto \(x_{j+1}\) and \(\dot{x}_{j+1}\) merely continues the solution of the previous step. The coefficients \(A_\pm\) do not change, and such a method merely follows a single curve ad infinitum.
 
 One can see this more concretely by observing that this method should replicate a simple Runge-Kutta approach in the limit of vanishing step size \(h\) (which this method does not). In the limit of small \(h\), one has:
 \begin{align}
@@ -206,7 +206,7 @@ This allows the step size to increase in the regions where the initial step size
 \subsection{Dynamic switching}
 In general, one cannot expect the WKB expansion to be efficient throughout the solution region. If \(\omega\) is too small, or too quickly varying, then the step size \(h\) will decrease to an inefficiently small size. This problem can be countered by simultaneously attempting a step using a standard adaptive RK method. One chooses between RK and WKB by selecting the method with the smallest error. This provides a natural switching mechanism, without having to delve into the details of whether WKB is valid or not.
 
-We choose the Runge-Kutta-Fehlberg \(4(5)\) method for our alternative solver, which is detailed in Section~\ref{sec:rkf}. However, this may be substituted with any ODE solver according to the user's preference.
+We choose the Runge-Kutta-Fehlberg \(4(5)\) method for our alternative solver, which is detailed in Appendix~\ref{sec:rkf}. However, this may be substituted with any ODE solver according to the user's preference.
 
 \section{Example: The Airy equation}
 
@@ -241,7 +241,7 @@ In contrast to a ``pure'' RK method, the RKWKB method finds the Airy equation ma
 \begin{figure}[tp]
   \centering
   \includegraphics[width=\textwidth]{chapters/RKWKB/figures/error}
-  \caption{Fractional difference between the analytical solution and RKWKB solution from Figure~\protect\ref{fig:data}. The algorithm's fractional error begins at \(t=0\) with an error of \(\sim10^{-4}\), but rises in the RK phase. This is to be expected as RK methods accumulate errors (particularly for oscillatory solutions). Upon entering the WKB region, the fractional error levels off. Note the rapidly increasing step size, and accuracy at extremely late times \(t\). To the authors' knowledge, no numerical scheme to date has demonstrated the ability to solve the Airy equation~\protect\eqref{eqn:airy_equation} to times as late as this.}\label{fig:error}
+  \caption{Fractional difference between the analytical solution and RKWKB solution from Figure~\protect\ref{fig:data}. The algorithm's fractional error begins at \(t=0\) with an error of \(\sim10^{-4}\), but rises in the RK phase. This is to be expected as RK methods accumulate errors (particularly for oscillatory solutions). Upon entering the WKB region, the fractional error levels off. Note the rapidly increasing step size, and accuracy at extremely late times \(t\). To our knowledge, no numerical scheme to date has demonstrated the ability to solve the Airy equation~\protect\eqref{eqn:airy_equation} to times as late as this.}\label{fig:error}
 \end{figure}
 
 
