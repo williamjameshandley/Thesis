@@ -77,10 +77,10 @@ where:
   \label{eqn:cos:angle_element}\\
   S_k^2(\chi) &=
   \left\{
-  \begin{array}{rl}
-    \sin^2\chi &: k>0 \\
+  \begin{array}{ll}
+    \frac{1}{k}\sin^2\left(\chi\sqrt{k}\right) &: k>0 \\
     \chi^2 &: k=0 \\
-    \sinh^2\chi &: k<0. \\
+    \frac{1}{|k|}\sinh^2\left(\chi\sqrt{|k|}\right) &: k<0. \\
   \end{array}
   \right.\label{eqn:cos:S_def}
 \end{align}
@@ -498,7 +498,7 @@ This is termed the {\em comoving curvature perturbation}, since in the comoving 
 After some effort, the Einstein equations~\eqref{eqn:cos:einsteins_equations}~\&~\eqref{eqn:cos:einsteins_equations_perturb} and conservation equations~\eqref{eqn:cos:SET_conservation}~\&~\eqref{eqn:cos:SET_conservation_perturb} evaluated using the perturbed metric~\eqref{eqn:cos:FRW_perturb} and the perturbed stress energy tensor~\eqref{eqn:cos:SET_perfect_fluid}~\&~\eqref{eqn:cos:matter_perturb} yield:
 \begin{equation}
   \frac{\d{\mathcal{R}}}{\d{\log a}} = 
-  -\frac{k^2}{a^2}\frac{\dot{P}}{\dot{\rho}}\frac{\m^2\mathcal{R}}{(5\rho + 3P)}
+  -\frac{k^2}{a^2}\frac{\dot{P}}{\dot{\rho}}\frac{6\m^2\mathcal{R}}{(5\rho + 3P)}
   -\frac{\delta P_\mathrm{en}}{\rho+P},
 \end{equation}
 where for simplicity we have assumed there is no anisotropic stress. For adiabatic perturbations \(\delta P_\mathrm{en}=0\), and given that \(\rho,P\sim \m^2 H^2\), \(\dot{\rho}\sim\dot{P}\), the above equation says that: \(\frac{\d{\log \mathcal{R}}}{\d{\log a}} \sim \frac{k^2}{a^2H^2}\). As the universe inflates, \(k\ll aH\), and \(\mathcal{R}\) ``freezes out'' and becomes constant.
