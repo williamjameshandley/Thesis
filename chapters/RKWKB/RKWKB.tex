@@ -24,7 +24,7 @@ We seek to create a numerical method which efficiently solves linear differentia
 \end{equation}
 If \(\omega(t)=\omega = \mathrm{constant}\), then the solutions are sinusoidal: \(x\propto \exp{(\pm i \omega t)}\). If \(\omega(t)\) changes slowly with \(t\), then the solutions are approximately sinusoidal with a slowly varying frequency and amplitude (these ideas will be made more concrete in Section~\ref{sec:wkb}). An example of such a solution can be seen in Figure~\ref{fig:airy}.
 
-In general, any second order linear differential equation may be transformed into the form of~\eqref{eqn:lode} by either changing the independent variable \(t\) or dependent variable \(x\). The method we shall describe can easily be adapted to other linear differential equations, but we shall work with~\eqref{eqn:lode} for its simplicity of exposition.
+In general, any second-order linear differential equation may be transformed into the form of~\eqref{eqn:lode} by either changing the independent variable \(t\) or dependent variable \(x\). The method we shall describe can easily be adapted to other linear differential equations, but we shall work with~\eqref{eqn:lode} for its simplicity of exposition.
 
 Equation~\eqref{eqn:lode} is ubiquitous in physics, particularly in quantum mechanics. Our particular interest in its efficient solution comes from work in quantum fields in curved spacetime.
 
@@ -107,7 +107,7 @@ For further detail on the intricacies of WKB approaches, the reader should consu
 \label{sec:stepping_methods}
 In Section~\ref{sec:rkwkb} we shall combine the power of WKB approaches with RK to form a method specialised to navigating oscillatory solutions. However, to avoid confusion of the details of WKB with the generic nature of our approach, we shall work in a more general case for this section.
 
-In the general case, one aims to solve numerically a linear, homogeneous, second order differential equation with non constant coefficients:
+In the general case, one aims to solve numerically a linear, homogeneous, second-order differential equation with non-constant coefficients:
 \begin{equation}
     \alpha(t) \frac{\d{}^2}{\d{t}^2}x(t) + \beta(t) \frac{\d{}}{\d{t}}x(t) + \gamma(t) x(t) = 0.
     \label{eqn:general_second_order}
@@ -157,7 +157,7 @@ We should therefore perform a separate step for \(\dot{x}\), with the solution m
     B_\pm &= \frac{\ddot{x}_j \dot{f}_\mp(t_j) - \dot{x}_j \ddot{f}_\mp(t_j) }{\ddot{f}_\pm(t_j) \dot{f}_\mp(t_j) - \ddot{f}_\mp(t_j) \ddot{f}_\pm(t_j)}. 
     \label{eqn:Bpm}
 \end{align}
-Most importantly, one may determine \(\ddot{x}_j\) from \(\dot{x}_j\) and \(x_j\) via the original second order linear differential equation~\eqref{eqn:general_second_order}.
+Most importantly, one may determine \(\ddot{x}_j\) from \(\dot{x}_j\) and \(x_j\) via the original second-order linear differential equation~\eqref{eqn:general_second_order}.
 
 The general stepping procedure is then as follows:
 \begin{align}
@@ -168,7 +168,7 @@ The general stepping procedure is then as follows:
   t_{j+1} &= t_j+h,
   \label{eqn:t_step}
 \end{align}
-and at every iteration, \(A_\pm\) and \(B_\pm\) are determined by equations~\eqref{eqn:Apm}~\&~\eqref{eqn:Bpm} with \(\ddot{x}_j\) calculated from \(\dot{x}_j\) and \(x_j\) via the original second order linear differential equation. By definition (or somewhat laborious algebra), in the limit of small \(h\), this recovers the RK result:
+and at every iteration, \(A_\pm\) and \(B_\pm\) are determined by equations~\eqref{eqn:Apm}~\&~\eqref{eqn:Bpm} with \(\ddot{x}_j\) calculated from \(\dot{x}_j\) and \(x_j\) via the original second-order linear differential equation. By definition (or somewhat laborious algebra), in the limit of small \(h\), this recovers the RK result:
 \begin{align}
     x_{j+1} &= x_j + \dot{x}_j \: h + \mathcal{O}(h^2), \\
     \dot{x}_{j+1} &= \dot{x}_j  + \ddot{x}_j\: h + \mathcal{O}(h^2). 
