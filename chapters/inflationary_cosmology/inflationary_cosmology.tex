@@ -260,6 +260,7 @@ Thus, the condition that \(w<-1/3\) is equivalent to requiring that at some poin
 which can be recognised as a violation of the {\em strong energy condition}. For more detail, see~\cite{SEC_violation}.
 
 \subsection{Horizon problem}
+\label{sec:horizon_problem}
 \begin{figure}[tp]
   \centering
   \tikzsetnextfilename{horizon_problem}
@@ -371,7 +372,7 @@ Perturbations of the matter content will take the form:
 \begin{align}
   \rho \rightarrow \rho + \delta \rho, \qquad 
   P \rightarrow P + \delta P, \qquad
-  u_\mu \rightarrow \left[ 1+\Phi, \delta q_i/(\rho+P)\right].
+  u_\mu \rightarrow \left[ 1+\Phi, -\delta q_i/(\rho+P)\right].
   \label{eqn:cos:matter_perturb}
 \end{align}
 The density and pressure perturbations are self-explanatory. The perturbation to the fluid velocity is first chosen so that \(u^\mu u_\mu=1\) to first order, and \(\delta q_i\) is the perturbation to the momentum density. The advantage of this is that for non-interacting fluids, \(\delta\rho\), \(\delta P\) and \(\delta q_i\) are all additive, as in equation~\eqref{eqn:cos:multi_component}. We have neglected a perturbation to the anisotropic stress. Anisotropic stress may be included if desired (for example in the case of neutrinos) but will add complexity unnecessary for this exposition. 
@@ -469,7 +470,7 @@ Whilst choosing a gauge will give one a set of soluble equations, the question s
   \Psi^{(B)} &=  \Psi + HT \nonumber, \\
   \delta\rho^{(B)} &= \delta\rho - \dot{\rho}T, &
   \delta P^{(B)} &= \delta P - \dot{P}T  \nonumber,\\
-  \delta q^{(B)} &= \delta q - (\rho + P)T, &
+  \delta q^{(B)} &= \delta q + (\rho + P)T, &
   \delta \phi^{(B)} &= \delta \phi - \dot{\phi}T, 
   \label{eqn:cos:bardeen}
 \end{align}
@@ -494,14 +495,33 @@ It is convenient to examine the gauge-invariant variable:
   \mathcal{R} = \Psi - \frac{H}{\rho+P}\delta q.
   \label{eqn:cos:CCP}
 \end{equation}
-This is termed the {\em comoving curvature perturbation}, since in the comoving gauge (\(\delta q=0\)) \(\mathcal{R}=\Psi\).
-After some effort, the Einstein equations~\eqref{eqn:cos:einsteins_equations}~\&~\eqref{eqn:cos:einsteins_equations_perturb} and conservation equations~\eqref{eqn:cos:SET_conservation}~\&~\eqref{eqn:cos:SET_conservation_perturb} evaluated using the perturbed metric~\eqref{eqn:cos:FRW_perturb} and the perturbed stress energy tensor~\eqref{eqn:cos:SET_perfect_fluid}~\&~\eqref{eqn:cos:matter_perturb} yield:
+This is termed the {\em comoving curvature perturbation}. This has the powerful conservation property that adiabatic (\(\delta P_\mathrm{en}=0\)) modes outside the horizon (\(k\ll a H\)) are conserved. Since one of the crucial properties of inflation is a shrinking horizon (Section~\ref{sec:horizon_problem}), this means that an inflating universe acts to ``freeze-out'' extremely early-time primordial fluctuations. These re-enter the horizon at a later time where our understanding of physics is much more concrete, allowing us to observe the effects of extremely high energy physics on the universe we see today.
+
+
+To show this conservation property, it is convenient to work in the comoving gauge (\(\delta q = E = 0\)), since in this gauge, \( \mathcal{R} = \Psi \).  
+The time-space components of the perturbed Einstein equations (\( \delta G^{0}_i = \frac{1}{\m^2}\delta T^{0}_i\)) become:
 \begin{equation}
-  \frac{\d{\mathcal{R}}}{\d{\log a}} = 
-  -\frac{k^2}{a^2}\frac{\dot{P}}{\dot{\rho}}\frac{6\m^2\mathcal{R}}{(5\rho + 3P)}
-  -\frac{\delta P_\mathrm{en}}{\rho+P},
+    \dot{\mathcal{R}} + H \Phi = 0.
 \end{equation}
-where for simplicity we have assumed there is no anisotropic stress. For adiabatic perturbations \(\delta P_\mathrm{en}=0\), and given that \(\rho,P\sim \m^2 H^2\), \(\dot{\rho}\sim\dot{P}\), the above equation says that: \(\frac{\d{\log \mathcal{R}}}{\d{\log a}} \sim \frac{k^2}{a^2H^2}\). As the universe inflates, \(k\ll aH\), and \(\mathcal{R}\) ``freezes out'' and becomes constant.
+The time-time component of the perturbed Einstein equation (\( \delta G^{0}_0 = \frac{1}{\m^2}\delta T^{0}_0\)) coupled with above equation shows:
+\begin{equation}
+    \frac{k^2}{a^2}\left(a H B - \mathcal{R} \right) = \frac{\delta\rho}{2\m^2}.
+\end{equation}
+The spatial components of the perturbed conservation equation \(\delta( \nabla_\mu T^\mu_i )\) become:
+\begin{equation}
+    \delta P + (P + \rho)\Phi = 0.
+\end{equation}
+Combining the above three equations, along with definition~\eqref{eqn:cos:adiabatic_entropic} for the entropic part of the pressure perturbation yeilds:
+\begin{equation}
+    \frac{\d{\mathcal{R}}}{\d{\log a}} = \frac{2\m^2 k^2}{a^2(\rho + P)}\frac{\dot{P}}{\dot{\rho}}(a H B - \mathcal{R}) + \frac{\delta P_\mathrm{en}}{\rho + P}.
+\end{equation}
+As the universe inflates, the perturbations move far outside the horizon (\( {k \ll a H} \)). Since \(\rho + P \sim H^2\), under these conditions perturbations in \(\mathcal{R}\) become driven purely by entropic pressure fluctuations: 
+\begin{equation}
+    \lim\limits_{k\ll aH} \frac{\d{\mathcal{R}}}{\d{\log a}} =  \frac{\delta P_\mathrm{en}}{\rho + P},
+\end{equation}
+which is a gauge-invariant expression. Thus for adiabatic perturbations (\({\delta P_\mathrm{en}=0}\)) \(\mathcal{R}\) is conserved outside the horizon.
+
+
 
 \subsection{Quantum behaviour}
 Using the Lagrangians as defined by equations~\eqref{eqn:cos:L_grav}~\&~\eqref{eqn:cos:scalar_field_lagrangian}, we may construct the action:
@@ -682,5 +702,3 @@ Treating this calculation fully is beyond the scope of this thesis, but it suffi
 
 \section{Conclusions}
 We have now covered all the necessary background theory. The picture is summarised in Figure~\ref{fig:cos:transfer}. Inflation's fundamental contribution to our model of the universe is that it predicts the primordial power spectrum \(\Punnorm_\mathcal{R}(k)\) at some early time. The universe's accelerated expansion then freezes these perturbations out until much later on in cosmic history, when we understand the physics in a lot more detail. We can then use standard physics to evolve these initial conditions set by inflation to make predictions about the sky that we see today.
-
-
