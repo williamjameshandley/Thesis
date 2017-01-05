@@ -482,7 +482,7 @@ Procedurally, one of  the most powerful approaches is to choose the Newtonian ga
 \begin{table}[tp]
   \centering
   \input{chapters/inflationary_cosmology/tables/gauge_choice.tex}
-\caption{Popular gauge choices for the working with the scalar perturbation equations.}\label{tab:cos:gauge_choice}
+\caption{Popular gauge choices for the scalar perturbation equations.}\label{tab:cos:gauge_choice}
 \end{table}
 
 \section{Comoving curvature perturbation}
@@ -498,28 +498,46 @@ It is convenient to examine the gauge-invariant variable:
 This is termed the {\em comoving curvature perturbation}. This has the powerful conservation property that adiabatic (\(\delta P_\mathrm{en}=0\)) modes outside the horizon (\(k\ll a H\)) are conserved. Since one of the crucial properties of inflation is a shrinking horizon (Section~\ref{sec:horizon_problem}), this means that an inflating universe acts to ``freeze-out'' extremely early-time primordial fluctuations. These re-enter the horizon at a later time where our understanding of physics is much more concrete, allowing us to observe the effects of extremely high energy physics on the universe we see today.
 
 
-To show this conservation property, it is convenient to work in the comoving gauge (\(\delta q = E = 0\)), since in this gauge, \( \mathcal{R} = \Psi \).  
+To show this conservation property, it is convenient to work in the comoving gauge (\(\delta q = E = 0\)), since in this gauge, \( \mathcal{R} = \Psi \). We begin by stating the relevent equations.
 The time-space components of the perturbed Einstein equations (\( \delta G^{0}_i = \frac{1}{\m^2}\delta T^{0}_i\)) become:
 \begin{equation}
     \dot{\mathcal{R}} + H \Phi = 0.
+    \label{eqn:dEi0}
 \end{equation}
 The time-time component of the perturbed Einstein equation (\( \delta G^{0}_0 = \frac{1}{\m^2}\delta T^{0}_0\)) coupled with above equation shows:
 \begin{equation}
     \frac{k^2}{a^2}\left(a H B - \mathcal{R} \right) = \frac{\delta\rho}{2\m^2}.
+    \label{eqn:dE00}
 \end{equation}
-The spatial components of the perturbed conservation equation \(\delta( \nabla_\mu T^\mu_i )\) become:
+The spatial components of the perturbed conservation equation \(\delta( \nabla_\mu T^\mu_i )=0\) become:
 \begin{equation}
     \delta P + (P + \rho)\Phi = 0.
+    \label{eqn:dcons0}
 \end{equation}
-Combining the above three equations, along with definition~\eqref{eqn:cos:adiabatic_entropic} for the entropic part of the pressure perturbation yeilds:
+The spatial components of the perturbed Einstein equations (\( \delta G^{i}_j = \frac{1}{\m^2}\delta T^{i}_j\)) read:
+\begin{equation}
+    \Phi - \mathcal{R} + 2 H a B + a\dot{B} = 0.
+    \label{eqn:dEij}
+\end{equation}
+
+
+We now derive two equations that demonstrate \(\mathcal{R}\) is conserved outside of the horizon. First, eliminating \(\Phi\) from~\eqref{eqn:dEij} using~\eqref{eqn:dE00} and rearranging yields:
+\begin{equation}
+    \frac{\d{}}{\d{t}}(a\mathcal{R}) = H \frac{\d{}}{\d{t}}(a^2B).
+    \label{eqn:Beqn}
+\end{equation}
+Second, combining equations~\eqref{eqn:dEi0},~\eqref{eqn:dE00}~\&~\eqref{eqn:dcons0}, along with definition~\eqref{eqn:cos:adiabatic_entropic} for the entropic part of the pressure perturbation, we find:
 \begin{equation}
     \frac{\d{\mathcal{R}}}{\d{\log a}} = \frac{2\m^2 k^2}{a^2(\rho + P)}\frac{\dot{P}}{\dot{\rho}}(a H B - \mathcal{R}) + \frac{\delta P_\mathrm{en}}{\rho + P}.
+    \label{eqn:Reqn}
 \end{equation}
-As the universe inflates, the perturbations move far outside the horizon (\( {k \ll a H} \)). Since \(\rho + P \sim H^2\), under these conditions perturbations in \(\mathcal{R}\) become driven purely by entropic pressure fluctuations: 
+where \(B\) is evaluated in the comoving gauge for both~\eqref{eqn:Beqn} and~\eqref{eqn:Reqn}. 
+
+As the universe inflates, \(H\) is approximately constant and perturbations move far outside the horizon (\( {k \ll a H} \)). Equation~\eqref{eqn:Beqn} therefore shows that \(\mathcal{R} - a H B \sim 1/a\), and since \(\rho + P \sim H^2\), under these conditions  equation~\eqref{eqn:Reqn} becomes: 
 \begin{equation}
     \lim\limits_{k\ll aH} \frac{\d{\mathcal{R}}}{\d{\log a}} =  \frac{\delta P_\mathrm{en}}{\rho + P},
 \end{equation}
-which is a gauge-invariant expression. Thus for adiabatic perturbations (\({\delta P_\mathrm{en}=0}\)) \(\mathcal{R}\) is conserved outside the horizon.
+which is a gauge-invariant expression. Outside the horizon, perturbations in \(\mathcal{R}\) become driven purely by entropic pressure fluctuations. Thus for adiabatic perturbations (\({\delta P_\mathrm{en}=0}\)) \(\mathcal{R}\) is conserved outside the horizon.
 
 
 
