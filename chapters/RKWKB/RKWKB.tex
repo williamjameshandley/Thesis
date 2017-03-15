@@ -95,7 +95,7 @@ Substituting this into~\eqref{eqn:lode_T} and setting each coefficient of \(T\) 
 \end{align}
 and in general:
 \begin{equation}
-    \dot{S}_0(t) = \pm i \omega, \qquad \dot{S}_n = -\frac{1}{\dot{S}_0} \left( \ddot{S}_{n-1}+ \sum_{j=1}^{n-1}\dot{S}_j\dot{S}_{n-j}  \right).
+    \dot{S}_0(t) = \pm i \omega, \qquad \dot{S}_n = -\frac{1}{2\dot{S}_0} \left( \ddot{S}_{n-1}+ \sum_{j=1}^{n-1}\dot{S}_j\dot{S}_{n-j}  \right).
     \label{eqn:WKB_general}
 \end{equation}
 Note that at \(0\)\textsuperscript{th} order, the solution is \(x\propto\exp\left(\pm i \int \omega \d{t} \right)\), which should be compared with the traditional sinusoidal solution.
@@ -154,7 +154,7 @@ The above issue also suggests a solution. We require an alternative to~\eqref{eq
 We should therefore perform a separate step for \(\dot{x}\), with the solution matched onto the values of \(\dot{x}_j\) and \(\ddot{x}_j\):
 \begin{align}
     \dot{x}(t) &\approx  B_+ \dot{f}_+(t) + B_- \dot{f}_-(t), \\
-    B_\pm &= \frac{\ddot{x}_j \dot{f}_\mp(t_j) - \dot{x}_j \ddot{f}_\mp(t_j) }{\ddot{f}_\pm(t_j) \dot{f}_\mp(t_j) - \ddot{f}_\mp(t_j) \ddot{f}_\pm(t_j)}. 
+    B_\pm &= \frac{\ddot{x}_j \dot{f}_\mp(t_j) - \dot{x}_j \ddot{f}_\mp(t_j) }{\ddot{f}_\pm(t_j) \dot{f}_\mp(t_j) - \ddot{f}_\mp(t_j) \dot{f}_\pm(t_j)}. 
     \label{eqn:Bpm}
 \end{align}
 Most importantly, one may determine \(\ddot{x}_j\) from \(\dot{x}_j\) and \(x_j\) via the original second-order linear differential equation~\eqref{eqn:general_second_order}.
